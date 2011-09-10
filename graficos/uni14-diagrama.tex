@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\pagestyle{empty}
+% Grafico hecho en pstricks, para convertirlo a eps:
+% latex archivo.tex; dvips archivo.dvi -E -o archivo.eps
+% para convertirlo a png:
+% gs -r300 -dEPSCrop -dTextAlphaBits=4 -sDEVICE=png16m \
+%   -sOutputFile=archivo.png -dBATCH -dNOPAUSE archivo.eps
+\begin{document}
+%\color{white}% fbox invisible
+\psframe[fillcolor=lightgray, fillstyle=solid](6,-3)(9,-1)
+\rput[bl]{*0}(6.2,-0.7){\bf Point}
+\rput[br]{*0}(5.5,-2){\bf p}
+\rput[cl]{*0}(6.5,-1.5){\bf x}
+\rput[cl]{*0}(6.5,-2.5){\bf y}
+\psline[linewidth=0.7pt]{->}(5.6,-1.9)(5.99,-1.9)
+\psline[linewidth=0.7pt]{->}(6.8,-1.5)(7.4,-1.5)
+\psline[linewidth=0.7pt]{->}(6.8,-2.5)(7.4,-2.5)
+\rput[cl]{*0}(7.5,-1.5){\bf 5}
+\rput[cl]{*0}(7.5,-2.5){\bf 7}
+\end{document}
+

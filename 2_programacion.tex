@@ -1,0 +1,578 @@
+% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
+
+% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Commons:
+%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%    http://creativecommons.org/licenses/by-sa/2.5/ar/
+%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
+%
+% A su criterio, puede utilizar una u otra licencia, o las dos.
+% Para ver una copia de las licencias, puede visitar los sitios
+% mencionados, o enviar una carta a Creative Commons,
+% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\chapter[Programas sencillos]{Programas sencillos}
+
+En esta unidad empezaremos a resolver problemas sencillos, y a
+programarlos en Python.
+
+\section{Construcción de programas}
+
+Cuando nos piden que hagamos un programa debemos seguir una cierta
+cantidad de pasos para asegurarnos de que tendremos éxito en la
+tarea. La acción irreflexiva (me piden algo, me siento frente a la
+computadora y escribo rápidamente y sin pensarlo lo que me parece
+que es la solución) no constituye una actitud profesional (e
+ingenieril) de resolución de problemas. Toda construcción tiene
+que seguir una metodología, un protocolo de desarrollo, dado.
+
+Existen muchas metodologías para construir programas, pero en este
+curso aplicaremos una metodología sencilla, que es adecuada para
+la construcción de programas pequeños, y que se puede resumir en
+los siguientes pasos:
+
+\begin{enumerate}
+\item {\bf Analizar el problema.} Entender profundamente {\it cuál} es
+el problema que se trata de resolver, incluyendo el contexto en el
+cual se usará.
+
+\begin{observacion}
+Una vez analizado el problema, asentar el análisis por escrito.
+\end{observacion}
+
+\item {\bf Especificar la solución.} Éste es el punto en el cual
+se describe {\it qué} debe hacer el programa, sin importar
+el cómo. En el caso de los problemas sencillos que abordaremos,
+deberemos decidir cuáles son los datos de entrada que se nos
+proveen, cuáles son las salidas que debemos producir, y cuál es la
+relación entre todos ellos.
+
+\begin{observacion}
+Al especificar el problema a resolver, documentar la especificación por
+escrito.
+\end{observacion}
+
+\item {\bf Diseñar la solución.} Éste es el punto en el cuál
+atacamos el {\it cómo} vamos a resolver el problema, cuáles son
+los algoritmos y las estructuras de datos que usaremos. Analizamos
+posibles variantes, y las decisiones las tomamos usando como dato
+de la realidad el contexto en el que se aplicará la solución, y
+los costos asociados a cada diseño.
+
+\begin{observacion}
+Luego de diseñar la solución, asentar por escrito el diseño, asegurándonos de
+que esté completo.
+\end{observacion}
+
+\item {\bf Implementar el diseño.} Traducir a un lenguaje de
+programación (en nuestro caso, y por el momento, Python) el diseño
+que elegimos en el punto anterior.
+
+\begin{observacion}
+La implementación también se debe documentar, con comentarios
+dentro y fuera del código, al respecto de qué hace el programa, cómo lo hace y
+por qué lo hace de esa forma.
+\end{observacion}
+
+\item {\bf Probar el programa.} Diseñar un conjunto de pruebas
+para probar cada una de sus partes por separado, y también la
+correcta integración entre ellas. Utilizar el {\it depurador} como
+instrumento para descubir dónde se producen ciertos errores.
+
+\begin{observacion}
+Al ejecutar las pruebas, documentar los resultados obtenidos.
+\end{observacion}
+
+\item {\bf Mantener el programa.} Realizar los cambios en
+respuesta a nuevas demandas.
+
+\begin{observacion}
+Cuando se realicen cambios, es necesario documentar el análisis,
+la especificación, el diseño, la implementación y las pruebas que surjan para
+llevar estos cambios a cabo.
+\end{observacion}
+
+\end{enumerate}
+
+\section{Realizando un programa sencillo}
+
+Al leer un artículo en una revista norteamericana que contiene información de
+longitudes expresadas en millas, pies y pulgadas, queremos poder convertir esas
+distancias de modo que sean fáciles de entender.  Para ello, decidimos escribir
+un programa que convierta las longitudes del sistema inglés al sistema métrico
+decimal.
+
+Antes de comenzar a programar, utilizamos la guía de la sección anterior, para
+analizar, especificar, diseñar, implementar y probar el problema.
+
+\begin{enumerate}
+\item {\bf Análisis del problema.} En este caso el problema es
+sencillo: nos dan un valor expresado en millas, pies y pulgadas y
+queremos transformarlo en un valor en el sistema métrico decimal.
+Sin embargo hay varias respuestas posibles, porque no hemos fijado
+en qué unidad queremos el resultado. Supongamos que decidimos que
+queremos expresar todo en metros.
+
+\item {\bf Especificación.} Debemos establecer la relación entre
+los datos de entrada y los datos de salida. Ante todo debemos
+averiguar los valores para la conversión de las unidades básicas.
+Buscando en Internet encontramos la siguiente tabla:
+
+\begin{itemize}
+\item 1 milla = 1.609344 km
+\item 1 pie = 30.48 cm
+\item 1 pulgada = 2.54 cm
+\end{itemize}
+
+\begin{atencion}
+A lo largo de todo el curso usaremos punto decimal,
+en lugar de coma decimal, para representar valores no enteros,
+dado que esa es la notación que utiliza Python.
+\end{atencion}
+
+La tabla obtenida no traduce las longitudes a metros. La manipulamos para
+llevar todo a metros:
+
+\begin{itemize}
+\item 1 milla = 1609.344 m
+\item 1 pie = 0.3048 m
+\item 1 pulgada = 0.0254 m
+\end{itemize}
+
+Si una longitud se expresa como $L$ millas, $F$ pies y $P$ pulgadas, su
+conversión a metros se calculará como 
+$M = 1609.344 * L + 0.3048 * F + 0.0254 * P.$
+
+Hemos especificado el problema. Pasamos entonces a la próxima etapa.
+
+\item {\bf Diseño.} La estructura de este programa es sencilla:
+leer los datos de entrada, calcular la solución, mostrar el
+resultado, o {\it Entrada-Cálculo-Salida}.
+
+Antes de escribir el programa, escribiremos en {\it pseudocódigo}
+(un castellano preciso que se usa para describir lo que hace un
+programa) una descripción del mismo:
+
+\begin{verbatim}
+Leer cuántas millas tiene la longitud dada
+ (y referenciarlo con la variable millas)
+
+Leer cuántos pies tiene la longitud dada
+ (y referenciarlo con la variable pies)
+
+Leer cuántas pulgadas tiene la longitud dada
+ (y referenciarlo con la variable pulgadas)
+
+Calcular metros = 1609.344 * millas +
+    0.3048 * pies + 0.0254 * pulgadas
+
+Mostrar por pantalla la variable metros
+\end{verbatim}
+
+\item {\bf Implementación.} Ahora estamos en condiciones de
+traducir este pseudocódigo a un programa en lenguaje Python:
+
+\begin{codigo}{ametrico.py}{Convierte medidas inglesas a sistema metrico}
+\begin{codigo-python}
+def main():
+      print "Convierte medidas inglesas a sistema metrico"
+      millas = input("Cuántas millas?: ")
+      pies = input("Y cuántos pies?: ")
+      pulgadas = input("Y cuántas pulgadas?: ")
+
+      metros = 1609.344 * millas + 0.3048 * pies + 0.0254 * pulgadas
+      print "La longitud es de ", metros, " metros"
+main()
+\end{codigo-python}
+\end{codigo}
+
+\item {\bf Prueba.} Probaremos el programa para valores para los que conocemos
+la solución:
+
+\begin{itemize}
+\item 1 milla, 0 pies, 0 pulgadas.
+\item 0 millas, 1 pie, 0 pulgada.
+\item 0 millas, 0 pies, 1 pulgada.
+\end{itemize}
+
+La prueba la documentaremos con la sesión de Python
+correspondiente a las tres invocaciones a \lstinline!ametrico.py!.
+\end{enumerate}
+
+En la sección anterior hicimos hincapié en la necesidad de
+documentar todo el proceso de desarrollo. En este ejemplo la
+documentación completa del proceso lo constituye todo lo escrito
+en esta sección.
+
+\begin{atencion}
+Al entregar un ejercicio, se deberá presentar el desarrollo completo con
+todas las etapas, desde el análisis hasta las pruebas (y el mantenimiento, si
+hubo cambios).
+\end{atencion}
+
+\section {Piezas de un programa Python}
+Para poder empezar a programar en Python es necesario que conocer los elementos
+que constituyen un programa en dicho lenguaje y las reglas para construirlos.
+
+\begin{observacion}
+Cuando empezamos a hablar en un idioma extranjero es posible que nos entiendan
+pese a que cometamos errores. No sucede lo mismo con los lenguajes de
+programación: la computadora no nos entenderá si nos desviamos un poco de
+alguna de las reglas.
+\end{observacion}
+
+\subsection{Nombres}
+Ya hemos visto que se usan nombres para denominar a los programas
+(\lstinline!ametrico!) y para denominar a las funciones dentro de un
+módulo (\lstinline!main!). Cuando queremos dar nombres a valores usamos
+variables (\lstinline!millas!, \lstinline!pies!, \lstinline!pulgadas!,
+\lstinline!metros!). Todos esos nombres se llaman {\it identificadores}
+y Python tiene reglas sobre qué es un identificador válido y qué
+no lo es.
+
+Un identificador comienza con una letra o con guión bajo (\_) y
+luego sigue con una secuencia de letras, números y guiones bajos.
+Los espacios no están permitidos dentro de los identificadores.
+
+Los siguientes son todos identificadores válidos de Python:
+
+\begin{itemize}
+\item \lstinline!hola!
+\item \lstinline!hola12t!
+\item \lstinline!_hola!
+\item \lstinline!Hola!
+\end{itemize}
+
+Python distingue mayúsculas de minúsculas, así que \lstinline!Hola! es
+un identificador y \lstinline!hola! es otro identificador.
+
+\begin{observacion}
+Por convención, no usaremos identificadores que empiezan con mayúscula.
+\end{observacion}
+
+Los siguientes son todos identificadores inválidos de Python:
+
+\begin{itemize}
+\item \lstinline!hola a12t!
+\item \lstinline!8hola!
+\item \lstinline!hola\%!
+\item \lstinline!Hola*9!
+\end{itemize}
+
+Python reserva 31 palabras para describir la estructura del
+programa, y no permite que se usen como identificadores. Cuando en
+un programa nos encontramos con que un nombre no es admitido pese
+a que su formato es válido, seguramente se trata de una de las
+palabras de esta lista, a la que llamaremos de {\it palabras
+reservadas}. La lista completa de las palabras reservadas de
+Python aparecen en el cuadro \ref{kw}.
+
+\begin{table}[h]
+\begin{tabular}[l]{l l l l l}
+
+\lstinline!and! & \lstinline!del! & \lstinline!from! & \lstinline!not! & \lstinline!while! \\
+\lstinline!as! & \lstinline!elif! & \lstinline!global! & \lstinline!or! & \lstinline!with! \\
+\lstinline!assert! & \lstinline!else! & \lstinline!if! & \lstinline!pass! & \lstinline!yield! \\
+ \lstinline!break! & \lstinline!except! & \lstinline!import! & \lstinline!print! \\
+\lstinline!class! & \lstinline!exec! & \lstinline!in! & \lstinline!raise! \\
+\lstinline!continue! & \lstinline!finally! & \lstinline!is! & \lstinline!return! \\
+ \lstinline!def! & \lstinline!for! & \lstinline!lambda! & \lstinline!try! \\
+\end{tabular}
+
+\vspace{.5cm} \caption{Las palabras reservadas de Python. Estas
+palabras no pueden ser usadas como identificadores.}\label{kw}
+\end{table}
+
+\subsection{Expresiones}
+Una {\it expresión} es una porción de código Python que produce o
+calcula un valor (resultado).
+
+\begin{itemize}
+\item Un valor es una expresión (de hecho es la expresión más
+sencilla). Por ejemplo el resultado de la expresión \lstinline!111! es
+precisamente el número \lstinline!111!.
+
+\item Una variable es una expresión, y el valor que produce es el
+que tiene asociado en el estado (si \lstinline!x! $\ra$ 5 en el estado,
+entonces el resultado de la expresión \lstinline!x!  es el número 5).
+
+\item Usamos operaciones para combinar expresiones y construir
+expresiones más complejas:
+
+\begin{itemize}
+\item Si \lstinline!x! es como antes, \lstinline!x + 1! es una expresión cuyo
+resultado es 6.
+
+\item Si en el estado \lstinline!millas! $\ra$ 1, \lstinline!pies! $\ra$ 0 y
+\lstinline!pulgadas! $\ra$ 0, entonces
+\lstinline!1609.344 * millas + 0.3048 * pies + 0.0254 * pulgadas! es una
+expresión cuyo resultado es 1609.344.
+
+\item La exponenciación se representa con el símbolo \lstinline!**!. Por
+ejemplo, \lstinline!x**3! significa $x^3$.
+
+\item Se pueden usar paréntesis para indicar un orden de
+evaluación: \lstinline!((b * b) - (4 * a * c)) / (2 * a)!.
+
+\item Igual que en la matemática, si no hay paréntesis en la
+expresión primero se agrupan las exponenciaciones, luego los
+productos y cocientes, y luego las sumas y restas.
+
+\item Sin embargo, hay que tener cuidado con lo que sucede con los
+cocientes, porque si \lstinline!x! e \lstinline!y! son números enteros,
+entonces \lstinline!x / y! se calcula como la {\it división entera}
+entre \lstinline!x! e \lstinline!y!:
+
+Si \lstinline!x! se refiere al valor 12 e \lstinline!y! se refiere al valor 9
+entonces \lstinline!x / y! se refiere al valor 1.
+
+\item Si \lstinline!x! e \lstinline!y! son números enteros, entonces
+\lstinline!x % y!
+se calcula como el {\it resto de la división entera} entre \lstinline!x!
+e \lstinline!y!:
+
+Si \lstinline!x! se refiere al valor 12 e \lstinline!y! se refiere al valor 9
+entonces  \lstinline!x % y!  se refiere al valor 3.
+
+\begin{observacion}
+Los números pueden ser tanto enteros (\lstinline!111!, \lstinline!-24!), como
+reales (\lstinline!12.5!, \lstinline!12.0!, \lstinline!-12.5!). Dentro de la
+computadora se representan de manera diferente, y se comportan de manera
+diferente frente a las operaciones.
+\end{observacion}
+
+\end{itemize}
+
+\item Conocemos también dos expresiones muy particulares:
+
+\begin{itemize}
+\item \lstinline!input!, que devuelve el valor ingresado por teclado tal
+como se lo digita (en particular sirve para ingresar valores
+numéricos).
+\item \lstinline!raw_input!, que devuelve lo ingresado por
+teclado como si fuera un texto.
+\end{itemize}
+
+\end{itemize}
+
+\ejercicioc{
+
+Aplicando las reglas matemáticas de asociatividad, decidir
+cuáles de las siguientes expresiones son iguales entre sí:
+
+\begin{partes}
+\item \lstinline!((b * b) - (4 * a * c)) / (2 * a)!,
+\item \lstinline!(b * b - 4 * a * c) / (2 * a)!,
+\item \lstinline!b * b - 4 * a * c / 2 * a!,
+\item \lstinline!(b * b) - (4 * a * c / 2 * a)!
+\item \lstinline!1 / 2 * b!
+\item \lstinline!b / 2!.
+\end{partes}}
+
+\ejercicioc{En Python hagan lo siguiente: Denle a \lstinline!a!, \lstinline!b! y
+\lstinline!c!  los valores 10, 100 y 1000 respectivamente y evalúen las
+expresiones del ejercicio anterior.}
+
+\ejercicioc{En Python hagan lo siguiente: Denle a \lstinline!a!, \lstinline!b! y
+\lstinline!c!  los valores 10.0, 100.0 y 1000.0 respectivamente y evalúen las
+expresiones del punto anterior.}
+
+\section{No sólo de números viven los programas} \label{nosolo}
+
+No sólo tendremos expresiones numéricas en un programa Python.
+Recuerden el programa que se usó para saludar a muchos amigos:
+
+\begin{codigo-python-sn}
+def hola(alguien):
+    print "Hola", alguien, "!"
+    print "Estoy programando en Python."
+\end{codigo-python-sn}
+
+Para invocar a ese programa y hacer que saludara a Ana había que
+escribir \lstinline!hola("Ana")!.
+
+La variable \lstinline!alguien! en dicha invocación queda ligada a un
+valor que es una cadena de caracteres (letras, dígitos, símbolos,
+etc.), en este caso, \lstinline!"Ana"!.
+
+Python usa también una notación con comillas simples para referirse a las
+cadenas de caracteres, y habla de \lstinline!'Ana'!.
+
+Como en la sección anterior, veremos las reglas de qué constituyen
+expresiones con caracteres:
+
+\begin{itemize}
+\item Un valor también acá es una expresión. Por ejemplo el
+resultado de la expresión \lstinline!'Ana'! es precisamente
+\lstinline!'Ana'!.
+
+\item Una variable es una expresión, y el valor que produce es el
+que tiene asociado en el estado (si \lstinline!amiga! $\ra$ 
+\lstinline!'Ana'! en el estado, entonces el resultado de la
+expresión \lstinline!amiga! es la cadena \lstinline!'Ana'!).
+
+\item Usamos operaciones para combinar expresiones y construir
+expresiones más complejas, pero atención con qué operaciones están
+permitidas sobre cadenas:
+
+\begin{itemize}
+\item El signo \lstinline!+! no representa la suma sino la concatenación
+de cadenas: Si \lstinline!amiga! es como antes, \lstinline!amiga + 'Laura'! 
+es una expresión cuyo valor es \lstinline!AnaLaura!.
+
+\begin{atencion}
+No se pueden sumar cadenas más números.
+\begin{codigo-python-sn}
+>>> amiga="Ana"
+>>> amiga+'Laura'
+'AnaLaura'
+>>> amiga+3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: cannot concatenate 'str' and 'int' objects
+>>>
+\end{codigo-python-sn}
+\end{atencion}
+
+\item El signo \lstinline!*! se usa para indicar cuántas veces se repite
+una cadena: \lstinline!amiga * 3! es una expresión cuyo valor es 
+\lstinline!'AnaAnaAna'!.
+
+\begin{atencion}
+No se pueden multiplicar cadenas entre sí
+
+\begin{codigo-python-sn}
+>>> amiga * 3
+'AnaAnaAna'
+>>> amiga * amiga
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can't multiply sequence by non-int of type 'str'
+\end{codigo-python-sn}
+\end{atencion}
+
+\end{itemize}
+
+\end{itemize}
+
+\section{Instrucciones}
+
+Las {\it instrucciones} son las órdenes que entiende Python. Ya
+hemos usado varias instrucciones:
+
+\begin{itemize}
+
+\item hemos mostrado valores por pantalla mediante la instrucción
+\lstinline!print!,
+
+\item hemos retornado valores de una función mediante la
+instrucción \lstinline!return!,
+
+\item hemos asociado valores con variables y
+
+\item hemos usado un ciclo para repetir un cálculo.
+\end{itemize}
+
+\section{Ciclos definidos}
+\label{ciclosdef}
+Hemos ya usado la instrucción \lstinline!for! en el programa que calcula
+cuadrados de enteros en un rango. 
+
+\begin{codigo-python-sn}
+    for x in range(n1, n2):
+        print x*x
+\end{codigo-python-sn}
+
+Este ciclo se llama definido porque de entrada, y una vez leídos 
+\lstinline!n1! y \lstinline!n2!, se sabe exactamente cuántas veces se ejecutará
+el cuerpo y qué valores tomará \lstinline!x!.
+
+Un ciclo definido es de la forma
+
+\begin{codigo-python-sn}
+for <variable> in <secuencia de valores>:
+    <cuerpo>
+\end{codigo-python-sn}
+
+En nuestro ejemplo la secuencia de valores es el intervalo de
+enteros \lstinline![n1, n1+1, ..., n2-1]! y la variable es \lstinline!x!.
+
+La secuencia de valores se puede indicar como:
+
+\begin{itemize}
+\item \lstinline!range(n)!. Establece como secuencia de valores a
+ \lstinline![0, 1, ..., n-1]!.
+
+\item \lstinline!range(n1, n2)!. Establece como secuencia de valores a
+\lstinline![n1, n1+1, ..., n2-1]!.
+
+\item Se puede definir a mano una secuencia entre corchetes. Por ejemplo,
+
+\begin{codigo-python-sn}
+for x in [1, 3, 9, 27]:
+        print x*x
+\end{codigo-python-sn}
+
+imprimirá los cuadrados de los números 1, 3, 9 y 27.
+
+\end{itemize}
+
+\section{Una guía para el diseño}
+En su artículo ``How to program it'', Simon Thompson plantea
+algunas preguntas a sus alumnos que son muy útiles para la etapa
+de diseño:
+
+\begin{itemize}
+\item ¿Han visto este problema antes, aunque sea de manera
+ligeramente diferente?
+
+\item ¿Conocen un problema relacionado? ¿Conocen un programa que
+puede ser útil?
+
+\item Fíjense en la especificación. Traten de encontrar un
+problema que les resulte familiar y que tenga la misma
+especificación o una parecida.
+
+\item Acá hay un problema relacionado con el que ustedes tienen y que ya fue
+resuelto. ¿Lo pueden usar? ¿Pueden usar sus resultados?  ¿Pueden usar sus
+métodos? ¿Pueden agregarle alguna parte auxiliar a ese programa del que ya
+disponen?
+
+\item Si no pueden resolver el problema propuesto, traten de
+resolver uno relacionado. ¿Pueden imaginarse uno relacionado que
+sea más fácil de resolver? ¿Uno más general? ¿Uno más específico?
+¿Un problema análogo?
+
+\item ¿Pueden resolver una parte del problema?  ¿Pueden sacar algo
+útil de los datos de entrada? ¿Pueden pensar qué información es
+útil para calcular las salidas? ¿De qué manera se pueden manipular
+las entradas y las salidas de modo tal que estén ``más cerca''
+unas de las otras?
+
+\item ¿Usaron todos los datos de entrada? ¿Usaron las condiciones
+especiales sobre los datos de entrada que aparecen en el
+enunciado? ¿Han tenido en cuenta todos los requisitos que se
+enuncian en la especificación?
+
+\end{itemize}
+
+\section{Ejercicios}
+
+\ejercicioc{Escribir un ciclo definido para imprimir por pantalla
+todos los números entre 10 y 20.}
+
+\ejercicioc{Escribir un ciclo definido que salude por pantalla a
+sus cinco mejores amigos/as.}
+
+\ejercicioc{Escribir un programa que use un ciclo definido con
+rango numérico, que pregunte los nombres de sus cinco mejores
+amigos/as, y los salude.}
+
+\ejercicioc{Escribir un programa que use un ciclo definido con
+rango numérico, que pregunte los nombres de sus seis mejores
+amigos/as, y los salude.}
+
+\ejercicioc{Escribir un programa que use un ciclo definido con
+rango numérico, que averigue a cuántos amigos quieren saludar, les
+pregunte los nombres de esos amigos/as, y los salude.}

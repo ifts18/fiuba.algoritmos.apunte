@@ -1,0 +1,339 @@
+% Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
+%               Margarita Manterola <margamanterola@gmail.com>
+
+% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Commons:
+%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%    http://creativecommons.org/licenses/by-sa/2.5/ar/
+%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
+%
+% A su criterio, puede utilizar una u otra licencia, o las dos.
+% Para ver una copia de las licencias, puede visitar los sitios
+% mencionados, o enviar una carta a Creative Commons,
+% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\chapter{Algunos ordenamientos recursivos}
+
+Los métodos de ordenamiento vistos en la unidad anterior eran métodos
+iterativos cuyo tiempo estaba relacionado con $N^2$.
+
+En esta unidad veremos dos métodos de ordenamiento, basados
+éstos en un planteo recursivo del problema, que nos permitirán obtener el
+mismo resultado de forma más eficiente.
+
+\section{Ordenamiento por mezcla, o {\it Merge sort} }
+
+Este método se basa en la siguiente idea:
+\begin{enumerate}
+\item Si la lista es pequeña (vacía o de tamaño 1) ya está ordenada y
+no hay nada que hacer. De lo contrario hacer lo siguiente:
+\item Dividir la lista al medio, formando dos sublistas de (aproximadamente) el
+mismo tamaño cada una.
+\item Ordenar cada una de esas dos sublistas (usando
+este mismo método).
+\item Una vez que se ordenaron ambas sublistas, intercalarlas de manera ordenada.
+\end{enumerate}
+
+Por ejemplo, si la lista original es \lstinline+[6, 7, -1, 0, 5, 2, 3, 8]+
+deberemos ordenar recursivamente \lstinline+[6, 7, -1, 0]+ y 
+\lstinline+[5, 2, 3, 8]+ con lo cual obtendremos \lstinline+[-1, 0, 6, 7]+ y
+\lstinline+[2, 3, 5, 8]+.  Si intercalamos ordenadamente las dos listas
+ordenadas obtenemos la solución buscada: 
+\lstinline+[-1, 0, 2, 3, 5, 6, 7, 8]+.
+
+Diseñamos la {\bf función \lstinline!merge_sort(lista)!}:
+
+\begin{enumerate}
+\item Si lista es pequeña (vacía o de tamaño 1) ya está ordenada y
+no hay nada que hacer. Se devuelve lista tal cual.
+\item De lo contrario:
+\begin{enumerate}
+\item medio = len(lista)/2
+\item izq = merge\_sort(lista[:m])
+\item der = merge\_sort(lista[m:])
+\item Se devuelve merge(izq, der).
+\end{enumerate}
+\end{enumerate}
+
+Falta sólo diseñar la función \lstinline!merge! que realiza la
+intercalación ordenada de dos listas ordenadas (dadas dos listas ordenadas
+se debe obtener una nueva lista que resulte de intercalar a ambas de manera
+ordenada).
+
+Diseñamos la {\bf función \lstinline!merge(lista1, lista2)!}:
+
+\begin{enumerate}
+\item Utilizaremos dos índices, \lstinline!i! y \lstinline!j!, para recorrer
+cada una de las dos listas.
+\item Utilizaremos una tercera lista, \lstinline!resultado!, donde
+almacenaremos el resultado.
+
+\item Mientras \lstinline!i! sea menor que el largo de \lstinline!lista1! y
+\lstinline!j! menor que el largo de \lstinline!lista2!, significa que hay
+elementos para comparar en ambas listas.
+
+\begin{enumerate}
+\item Si el menor es el de \lstinline!lista1!:
+\begin{enumerate}
+\item Agregar el elemento \lstinline!i! de \lstinline!lista1! al final del
+resultado.  
+\item Avanzar el índice \lstinline!i!.
+\end{enumerate}
+\item de lo contrario:
+\begin{enumerate}
+\item Agregar el elemento \lstinline!j! de \lstinline!lista2! al final del
+resultado.
+\item Avanzar el índice \lstinline!j!.
+\end{enumerate}
+
+\end{enumerate}
+
+\item Una vez que una de las dos listas se termina, simplemente hay que
+agregar todo lo que queda en la otra al final del resultado.
+\end{enumerate}
+
+\begin{codigo}{mergesort.py}{Una implementación de {\it Merge sort}}
+\lstinputlisting{src/20_ordenamiento_recursivo/mergesort.py}
+\label{src:mergesort}
+\end{codigo}	
+
+El código resultante del diseño de ambas funciones puede verse en el Código
+\ref{src:mergesort}. 
+
+\begin{sabias_que}
+El método que hemos usado para resolver este problema se llama {\bf División y
+Conquista}, y se aplica en las situaciones en las que vale el siguiente
+principio:
+
+Para obtener una solución es posible partir el problema en varios subproblemas
+de tamaño menor, resolver cada uno de esos subproblemas por separado aplicando
+la misma técnica (en nuestro caso ordenar por mezcla cada una de las dos
+sublistas), y finalmente juntar estas soluciones parciales en una solución
+completa del problema mayor (en nuestro caso la intercalación ordenada de las
+dos sublistas ordenadas).
+
+Como siempre sucede con las soluciones recursivas, debemos encontrar un caso
+base en el cual no se aplica la llamada recursiva (en nuestro caso la base
+sería el paso 1: Si la lista es pequeña (vacía o de tamaño 1) ya está ordenada
+y no hay nada que hacer). Además debemos asegurar que siempre se alcanza el
+caso base, y en nuestro caso aseguramos eso porque las lista original se divide
+siempre en mitades cuando su longitud es mayor que 1.
+\end{sabias_que}
+
+\section{¿Cuánto cuesta el {\it Merge sort}?}
+Sea $N$ la longitud de la lista. Observamos lo siguiente:
+\begin{itemize}
+
+\item Para intercalar dos listas de longitud $N/2$ hace falta recorrer
+ambas listas que en total tienen $N$ elementos, por lo que es proporcional
+a $N$. Llamemos $a * N$ a ese tiempo.
+
+\item Si llamamos $T(N)$ al tiempo que tarda el algoritmo en ordenar
+una lista de longitud $N$, vemos que $T(N) = 2 * T(N/2) + a * N$.
+
+\item Además, cuando la lista es pequeña, la operación es de tiempo
+constante: $T(1) = T(0) = b$.
+\end{itemize}
+
+Para simplificar la cuenta vamos a suponer que $N = 2^k$.
+
+\begin{eqnarray}
+T(N) = T(2^k) &=& 2 * T(2^{k-1}) + a * 2^k \\
+              &=& 2 * \left( 2*T(2^{k-2} ) + a * 2^{k-1} \right) + a * 2^k\\
+&=& 2^2*T(2^{k-2} ) + a*2^k + a*2^k\\
+&&\vdots\\
+&=& 2^i* T(2^{k-i})+ i * a * 2^k\\
+&&\vdots\\
+&=& 2^k*T(1) + k * a * 2^k\\
+&=& b * 2^k  + k * a * 2^k
+\end{eqnarray}
+
+Pero si $N = 2^k$ entonces $k=\log_2N$, y por lo tanto hemos demostrado
+que:
+
+\begin{equation}
+T(N) = b N + a N \log_2N.
+\end{equation}
+
+Como lo que nos interesa es aproximar el valor, diremos (despreciando el
+término de menor orden) que $T(N) \sim N*\log_2N$. Hemos mostrado entonces
+un algoritmo que se porta mucho mejor que los que vimos en la unidad
+pasada.
+
+Si analizamos el espacio que consume, vemos que a cada paso genera una
+nueva lista, de la suma de los tamaños de las dos listas, es decir que 
+duplica el espacio consumido.
+
+\section{Ordenamiento rápido o {\it Quick sort}}
+
+Veremos ahora el más famoso de los algoritmos recursivos de ordenamiento.
+Su fama radica en que en la práctica, con casos reales, es uno de los
+algoritmos más eficientes para ordenar.
+
+Este método se basa en la siguiente idea:
+
+\begin{enumerate}
+\item Si la lista es pequeña (vacía o de tamaño 1) ya está ordenada y
+no hay nada que hacer. De lo contrario hacer lo siguiente:
+
+\item Tomar un elemento de la lista (por ejemplo el primero) al que
+llamaremos {\bf pivote} y armar a partir de esa lista tres sublistas: la de
+todos los elementos de la lista menores al pivote, la formada sólo por el
+pivote, y la de los elementos mayores o iguales al pivote, pero sin
+contarlo al pivote.
+
+\item Ordenar cada una de esas tres sublistas (usando este mismo método).
+
+\item Concatenar las tres sublistas ya ordenadas.
+\end{enumerate}
+
+Por ejemplo, si la lista original es \lstinline+[6, 7, -1, 0, 5, 2, 3, 8]+
+consideramos que el pivote es el primer elemento (el 6) y armamos las
+sublistas \lstinline+[-1, 0, 5, 2, 3]+, \lstinline+[6]+ y 
+\lstinline+[7,8]+. Se ordenan recursivamente \lstinline+[-1, 0, 5, 2, 3]+
+(obtenemos \lstinline+[-1, 0, 2, 3, 5]+) y \lstinline+[7, 8]+ (obtenemos la
+misma) y concatenamos en el orden adecuado, y así obtenemos 
+\lstinline+[-1, 0, 2, 3, 5, 6, 7, 8]+.
+
+Para diseñar, vemos que lo más importante es conseguir armar las tres
+listas en las que se parte la lista original. Para eso definiremos una
+función auxiliar \lstinline!_partition! que recibe una lista no vacía y
+devuelve las tres sublistas \lstinline!menores!, \lstinline!medio! y
+\lstinline!mayores!  (incluye los iguales, de haberlos) en las que se parte
+la lista original usando como pivote al primer elemento.
+
+Contando con la función \lstinline!_partition!, el diseño del {\it Quick sort}
+es muy simple:
+
+\begin{enumerate}
+\item Si lista es pequeña (vacía o de tamaño 1) ya está ordenada y
+no hay nada que hacer. Se devuelve lista tal cual.
+\item De lo contrario:
+\begin{enumerate}
+\item Dividir la lista en tres, usando \lstinline!_partition!.
+\item Llamar a \lstinline!quick_sort(menores)!,
+\lstinline!quick_sort(mayores)!, y concatenarlo con \lstinline!medio! en el
+medio.
+\end{enumerate}
+\end{enumerate}
+
+Por otro lado, en cuanto a la {\bf función \lstinline!_partition(lista)!}:
+
+\begin{enumerate}
+\item Tiene como precondición que la lista es no vacía.
+\item Se elige el primer elemento como pivote.
+\item Se inicializan como vacías las listas \lstinline!menores! y
+\lstinline!mayores!.
+\item Para cada elemento de la lista después del primero:
+\begin{enumerate}
+\item Si es menor que el pivote, se lo agrega a menores.
+\item De lo contrario, se lo a agrega a mayores.
+\end{enumerate}
+\item Devolver menores, [pivote], mayores
+\end{enumerate}
+
+Una primera aproximación a este código se puede ver en el Código
+\ref{src:quicksort-copia}.
+
+\begin{codigo}{quicksort\_copia.py}{Una primera aproximación al {\it Quick sort}}
+\lstinputlisting{src/20_ordenamiento_recursivo/quicksort_copia.py}
+\label{src:quicksort-copia}
+\end{codigo}
+
+\section{¿Cuánto cuesta el {\it Quick sort}?}
+
+A primera vista, la ecuación del tiempo consumido parece ser la misma que
+en el {\it Mergesort}: Una partición que se hace en tiempo lineal más dos
+llamadas recursivas a mitades de la lista original.
+
+Pero el problema acá es que la partición tomando como pivote
+\lstinline!lista[0]! no siempre parte la lista en mitades: puede suceder (y
+ese es el peor caso) que parta a la lista en (\lstinline![]!,
+\lstinline![lista[0]]!, \lstinline!lista[1:]!) (esto es lo que pasa cuando
+la lista está ordenada de entrada, para el algoritmo presentado), y en ese
+caso se comporta como {\it selección}.
+
+En cambio, cuando la lista tiene números ubicados de manera arbitraria
+dentro de ella, podemos imaginar un comportamiento parecido al del
+Mergesort, y por lo tanto ahí sí $T(N) \sim N * \log_2 N$.
+
+Si analizamos el espacio que consume, el código mostrado en Código
+\ref{src:quicksort-copia} crea nuevas listas a cada paso, con lo cual al
+igual que el {\it Merge sort} utiliza el doble de memoria.
+
+\section{Una versión mejorada de {\it Quick sort}}
+
+Sin embargo, es posible hacer la partición de otra forma, operando sobre la
+misma lista recibida, reubicando los elementos en su interior, de modo que
+no se consuma el doble de memoria.
+
+En este caso, tendremos una función \lstinline!_quick_sort!, que será muy
+similar al de la vista anteriormente, con la particularidad de que en lugar
+de recibir listas cada vez más pequeñas, recibirá los índices de inicio y
+fin que indican la porción de la lista sobre la que debe operar.
+
+Habrá, además una función \lstinline!quick_sort!, que recibirá la lista más
+parámetros, y se encargará de llamar \lstinline!_quick_sort! con los
+índices correspondientes.
+
+Por otro lado, la función \lstinline!_partition! recibirá también los
+índices de inicio y fin.  En este caso, la función se encargará de cambiar
+de lugar los elementos de la lista, de modo que todos los menores al pivote
+se encuentren antes de él y todos los mayores se encuentren después.
+
+Existen varias formas de llevar esto a cabo.  Este es un posible diseño
+para la función \lstinline!_partition!:
+
+\begin{enumerate}
+\item Elegir el pivote como el primero de los elementos a procesar.
+\item Inicializar un índice \lstinline!menores! con el valor del primer
+elemento de la porción a procesar.
+\item Recorrer los elementos desde el segundo hasta el último a procesar:
+\begin{enumerate}
+\item Si el elemento es menor al pivote, incrementar el índice
+\lstinline!menores! y de ser necesario, intercambiar el elemento para que
+pase a ser el último de los menores.
+\end{enumerate}
+\item Intercambiar el pivote con el último de los menores
+\item Devolver la posición del pivote.
+\end{enumerate}
+
+El código resultante de este nuevo diseño se reproduce en el Código
+\ref{src:quicksort}.
+
+\begin{codigo}{quicksort.py}{Una versión más eficiente de {\it Quicksort}}
+\lstinputlisting{src/20_ordenamiento_recursivo/quicksort.py}
+\label{src:quicksort}
+\end{codigo}
+
+Este código, si bien más complejo, cumple con el objetivo de proveer un
+algoritmo de ordenamiento que en el caso promedio tarda 
+$T(N) \sim N log_2 N$.
+
+\section{Resumen}
+
+\begin{itemize}
+
+\item Los ordenamientos de selección e inserción, presentados en la unidad
+anterior son ordenamientos sencillos pero que costosos en cantidad de
+intercambios o de comparaciones.  Sin embargo, es posible conseguir
+ordenamientos con mejor orden utilizando algoritmos recursivos.
+
+\item El algoritmo {\bf Merge Sort} consiste en dividir la lista a ordenar
+hasta que tenga 1 ó 0 elementos y luego combinar la lista de forma ordenada.
+De esta manera se logra un tiempo proporcional a $N log N$.  Tiene como
+desventaja que siempre utiliza el doble de la memoria requerida por la lista a
+ordenar.
+
+\item El algoritmo {\bf Quick Sort} consiste en elegir un elemento, llamado
+{\it pivote} y ordenar los elementos de tal forma que todos los menores queden
+a la izquierda y todos los mayores a la derecha, y a continuación ordenar de la
+misma forma cada una de las dos sublistas formadas.  Puede implementarse de tal
+forma que opere sobre la misma lista, sin necesidad de utilizar más memoria.
+Tiene como desventaja que si bien en el caso promedio tarda $N log N$, en el
+peor caso (según cuál sea el pivote elegido) puede llegar a tardar $N^2$.
+
+\end{itemize}
+
+

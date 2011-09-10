@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\pagestyle{empty}
+% Grafico hecho en pstricks, para convertirlo a eps:
+% latex archivo.tex; dvips archivo.dvi -E -o archivo.eps
+% para convertirlo a png:
+% gs -r300 -dEPSCrop -dTextAlphaBits=4 -sDEVICE=png16m \
+%   -sOutputFile=archivo.png -dBATCH -dNOPAUSE archivo.eps
+\begin{document}
+%\color{white}% fbox invisible
+\psframe[fillcolor=lightgray, fillstyle=solid](0,-2.5)(4,-0.5)
+\rput[bl]{*0}(0.5,-1.5){\bf len $\rightarrow$ 2}
+\rput[bl]{*0}(0.5,-2){\bf prim}
+\psline[linewidth=0.7pt]{->}(2,-1.9)(5,-1.9)
+\psframe[fillcolor=lightgray, fillstyle=solid](5,-2.5)(9,-0.5)
+\rput[bl]{*0}(5.5,-1.5){\bf dato $\rightarrow$ 'Peras'}
+\rput[bl]{*0}(5.5,-2){\bf prox}
+\psline[linewidth=0.7pt]{->}(7,-1.9)(10,-1.9)
+\psframe[fillcolor=lightgray, fillstyle=solid](10,-2.5)(14,-0.5)
+\rput[bl]{*0}(10.5,-1.5){\bf dato $\rightarrow$ 'Bananas'}
+% No anda XBox \rput[bl]{*0}(10.5,-2){\bf prox \XBox}
+\rput[bl]{*0}(10.5,-2){\bf prox}
+\rput[bc]{*0}(2,0){\bf ListaEnlazada}
+\end{document}
+

@@ -1,0 +1,717 @@
+% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
+% Copyright (C) Margarita Manterola <margamanterola@gmail.com>
+
+% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Commons:
+%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%    http://creativecommons.org/licenses/by-sa/2.5/ar/
+%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
+%
+% A su criterio, puede utilizar una u otra licencia, o las dos.
+% Para ver una copia de las licencias, puede visitar los sitios
+% mencionados, o enviar una carta a Creative Commons,
+% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\chapter{Cadenas de caracteres}
+
+Una cadena es una secuencia de caracteres. Ya las hemos usado para mostrar
+mensajes, pero sus usos son mucho más amplios que sólo ése: los textos que
+manipulamos mediante los editores de texto, los textos de Internet que
+analizan los buscadores, los mensajes enviados mediante correo electrónico,
+son todos ejemplos de cadenas de caracteres. Pero para poder programar este
+tipo de aplicaciones debemos aprender a manipularlas. Comenzaremos a ver
+ahora cómo hacer cálculos con cadenas.
+
+\section{Operaciones con cadenas}
+
+Ya vimos en la sección \ref{nosolo} que es posible:
+
+\begin{itemize}
+\item Sumar cadenas entre sí (y el resultado es la concatenación
+de todas las cadenas dadas):
+
+\begin{codigo-python-sn}
+>>> "Un divertido "+"programa "+"de "+ "radio"
+'Un divertido programa de radio'
+>>>
+\end{codigo-python-sn}
+
+\item Multiplicar una cadena \lstinline+s+ por un número \lstinline+k+ (y
+el resultado es la concatenación de \lstinline+s+ consigo misma,
+\lstinline+k+ veces):
+
+\begin{codigo-python-sn}
+>>> 3*"programas "
+'programas programas programas '
+>>> "programas "*3
+'programas programas programas '
+>>>
+\end{codigo-python-sn}
+\end{itemize}
+
+A continuación, otras operaciones y particularidades de las cadenas.
+
+\subsection{Obtener el largo de una cadena}
+
+Además, se puede averiguar la longitud de una cadena utilizando
+una función provista por Python: \lstinline+len{}+.
+\begin{codigo-python-sn}
+>>> len("programas ")
+10
+>>>
+\end{codigo-python-sn}
+
+Existe una cadena especial, que llamaremos {\it cadena vacía}, que
+es la cadena que no contiene ningún carácter (se la indica sólo con
+un apóstrofe o comilla que abre, y un apóstrofe o comilla que cierra),
+y que por lo tanto tiene longitud cero:
+
+\begin{codigo-python-sn}
+>>> s=""
+>>> s
+''
+>>> len(s)
+0
+>>>
+\end{codigo-python-sn}
+
+\subsection[Recorrer una cadena]{Una operación para recorrer todos los caracteres de una cadena}
+
+Python nos permite recorrer todos los caracteres de una cadena de
+manera muy sencilla, usando directamente un ciclo definido:
+
+\begin{codigo-python-sn}
+>>> for x in "programas ":
+...     print x
+...
+p
+r
+o
+g
+r
+a
+m
+a
+s
+
+>>>
+\end{codigo-python-sn}
+
+\subsection{Acceder a una posición de la cadena}
+
+Queremos averiguar cuál es el carácter que está en la posición i-ésima de
+una cadena.  Para ello Python nos provee de una notación con corchetes:
+escribiremos \lstinline+a[i]+ para hablar de la posición i-ésima de la cadena
+\lstinline!a!.
+
+Trataremos de averiguar con qué letra empieza una cadena.
+
+\begin{codigo-python-sn}
+>>> a="Veronica"
+>>> a[1]
+'e'
+>>>
+\end{codigo-python-sn}
+
+Algo falló: ¡\lstinline+a[1]+ nos muestra la segunda letra, no la
+primera! Lo que sucede es que en Python las posiciones se cuentan
+desde 0.
+
+\begin{codigo-python-sn}
+>>> a[0]
+'V'
+>>>
+\end{codigo-python-sn}
+
+Ahora sí hemos conseguido averiguar en Python cuál es el primer carácter de
+\lstinline!a!.
+
+\begin{atencion}
+Las distintas posiciones de una cadena \lstinline!a! se llaman
+{\it índices}. Los índices son números enteros que pueden tomar
+valores entre \lstinline!-len(a)! y \lstinline!len(a) - 1!.
+
+Los índices entre \lstinline!0! y \lstinline!len(a) - 1! son lo que ya
+vimos: los caracteres de la cadena del primero al útimo. Los índices
+negativos proveen una notación que hace más fácil indicar cuál es el último
+carácter de la cadena: \lstinline!a[-1]! es el último carácter de
+\lstinline!a!, \lstinline!a[-2]! es el penúltimo carácter de \lstinline!a!,
+\lstinline!a[-len(a)]! es el primer carácter de \lstinline!a!.
+\end{atencion}
+
+Algunos ejemplos de acceso a distintas posiciones en una cadena.
+
+\begin{codigo-python-sn}
+>>> a="Veronica"
+>>> len(a)
+8
+>>> a[0]
+'V'
+>>> a[7]
+'a'
+>>> a[8]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>> a[-1]
+'a'
+>>> a[-8]
+'V'
+>>> a[-9]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>>
+\end{codigo-python-sn}
+
+\ejercicioc{Escribir un ciclo que permita mostrar los caracteres de una
+cadena del final al principio.}
+
+\section{Segmentos de cadenas}
+
+Python ofrece también una notación para identificar segmentos de una
+cadena. La notación es similar a la de los rangos que vimos en los ciclos
+definidos: \lstinline+a[0:2]+ se refiere a la subcadena formada por los
+caracteres cuyos índices están en el rango \lstinline+[0,2)+:
+
+\begin{codigo-python-sn}
+>>> a[0:2]
+'Ve'
+>>> a[-4:-2]
+'ni'
+>>> a[0:8]
+'Veronica'
+>>>
+\end{codigo-python-sn}
+
+Si \lstinline!j! es un entero no negativo, se puede usar la notación
+\lstinline+a[:j]+ para representar al segmento \lstinline+a[0:j]+; también
+se puede usar la notación \lstinline+a[j:]+ para representar al segmento
+\lstinline+a[j:len(a)]+.
+
+\begin{codigo-python-sn}
+>>> a[:3]
+'Ver'
+>>> a[3:]
+'onica'
+>>>
+\end{codigo-python-sn}
+
+Pero hay que tener cuidado con salirse del rango (en particular hay que
+tener cuidado con la cadena vacía):
+
+\begin{codigo-python-sn}
+>>> a[10]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+>>>
+>>> s=""
+>>> s
+''
+>>> len(s)
+0
+>>> s[0]
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+IndexError: string index out of range
+\end{codigo-python-sn}
+
+Sin embargo \lstinline+s[0:0]+ no da error. ¿Por qué?
+\begin{codigo-python-sn}
+>>> s[0:0]
+''
+>>>
+\end{codigo-python-sn}
+
+\ejercicioc{Investigar qué significa la notación \lstinline+a[:]+.}
+
+\ejercicioc{Investigar qué significan las notaciones
+\lstinline+a[:j]+ y  \lstinline+a[j:]+ si \lstinline!j! es un número negativo.}
+
+\section{Las cadenas son inmutables}
+
+Nos dicen que la persona sobre la que estamos hablando en realidad se llama
+"Veronika" (sí, con "k").  Como conocemos la notación de corchetes,
+tratamos de corregir sólo el carácter correspondiente de la variable
+\lstinline!a!:
+
+\begin{codigo-python-sn}
+>>> a[6]="k"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+>>>
+\end{codigo-python-sn}
+
+El error que se despliega nos dice que la cadena no soporta
+la modificación de un carácter. Decimos que {\it las cadenas
+son inmutables}.
+
+Si queremos corregir la ortografía de una cadena, debemos hacer
+que la cadena \lstinline!a! se refiera a otro valor:
+
+\begin{codigo-python-sn}
+>>> a="Veronika"
+>>> a
+'Veronika'
+>>>
+\end{codigo-python-sn}
+
+\section{Procesamiento sencillo de cadenas}
+
+\problemac{Nuestro primer problema es muy simple: Queremos contar
+cuántas letras ``A'' hay en una cadena \lstinline!x!.}
+
+\begin{enumerate}
+
+\item {\bf Especificación: } Dada una cadena \lstinline!x!, la función
+retorna un valor  \lstinline!contador! que representa cuántas letras ``A''
+tiene \lstinline!x!.
+
+\item {\bf Diseño: }
+
+¿Se parece a algo que ya conocemos?
+
+Ante todo es claro que se trata de un ciclo definido, porque lo que hay que
+tratar es cada uno de los caracteres de la cadena \lstinline!x!, o sea que
+estamos frente a un esquema:
+
+\begin{tabbing}
+para \= cada letra de \lstinline+x+\\
+\> averiguar si la letra es ``A''\\
+\> y tratarla en consecuencia\\
+\end{tabbing}
+
+Nos dice la especificación que se necesita una variable
+\lstinline!contador! que cuenta la cantidad de letras ``A'' que contiene
+\lstinline!x!. Y por lo tanto sabemos que el tratamiento es: si la letra es
+``A'' se incrementa el contador en $1$, y si la letra no es ``A'' no se lo
+incrementa, o sea que nos quedamos con un esquema de la forma:
+
+\begin{tabbing}
+para \= cada letra de \lstinline+x+\\
+\> averiguar si la letra es ``A'' \\
+\> y si lo es, incrementar en $1$ el contador\\
+\end{tabbing}
+
+¿Estará todo completo? Alicia Hacker nos hace notar que en el diseño no
+planteamos el retorno del valor del contador. Lo completamos entonces:
+
+\begin{tabbing}
+para \= cada letra de \verb+x+\\
+\> averiguar si la letra es ``A'' \\
+\> y si lo es, incrementar en $1$ el contador\\
+retornar el valor del contador\\
+\end{tabbing}
+
+¿Y ahora estará todo completo? E. Lapurado, nuestro alumno impaciente nos
+induce a poner manos a la obra y a programar esta solución, y el resto del
+curso está de acuerdo.
+
+
+\item {\bf Implementación}
+
+Ya vimos que Python nos provee de un mecanismo muy poderoso para
+recorrer una cadena: una instrucción \lstinline!for! que nos brinda un
+carácter por vez, del primero al último.
+
+Proponemos la siguiente solución:
+
+\begin{codigo-python}
+def contarA(x):
+    for letra in x:
+        if letra == "A":
+           contador = contador + 1
+    return(contador)
+\end{codigo-python}
+
+Y la probamos
+
+\begin{codigo-python-sn}
+>>> contarA("Ana")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 4, in contarA
+UnboundLocalError: local variable 'contador' referenced before assignment
+>>>
+\end{codigo-python-sn}
+
+¿Qué es lo que falló? ¡Falló el diseño! Evidentemente la variable
+\lstinline+contador+ debe tomar un valor inicial antes de empezar a contar
+las apariciones del caracter ``A''. Volvamos al diseño entonces.
+
+\begin{observacion}
+Es muy tentador quedarse arreglando la implementación, sin volver al diseño,
+pero eso es de muy mala práctica, porque el diseño queda mal documentado, 
+y además podemos estar dejando de tener en cuenta otras situaciones erróneas.
+\end{observacion}
+
+\item {\bf Diseño (revisado)}
+Habíamos llegado a un esquema de la forma
+
+\begin{tabbing}
+para \= cada letra de \verb+x+\\
+\> averiguar si la letra es ``A'' \\
+\> y si lo es, incrementar en $1$ el contador\\
+retornar el valor del contador\\
+\end{tabbing}
+
+¿Cuál es el valor inicial que debe tomar \lstinline+contador+?  Como nos
+dice la especificación \lstinline+contador+ cuenta la cantidad de letras
+``A'' que tiene la cadena \lstinline+x+. Pero si nos detenemos en medio de
+la computación, cuando aún no se recorrió toda la cadena sino sólo los
+primeros 10 caracteres, por ejemplo, el valor de \lstinline+contador+
+refleja la cantidad de ``A'' que hay en los primeros 10 caracteres de
+\lstinline+x+.
+
+Si llamamos {\it parte izquierda de } \lstinline+x+ al segmento de
+\lstinline+x+ que ya se recorrió, diremos que cuando leímos los primeros 10
+caracteres de \lstinline+x+, su parte izquierda es el segmento
+\lstinline+x[0:10]+.
+
+El valor inicial que debemos darle a \lstinline+contador+ debe reflejar la
+cantidad de ``A'' que contiene la parte izquierda de \lstinline+x+ cuando
+aún no iniciamos el recorrido, es decir cuando esta parte izquierda es
+\lstinline+x[0:0]+ (o sea la cadena vacía). Pero la cantidad de caracteres
+iguales a ``A'' de la cadena vacía es $0$.
+
+Por lo tanto el diseño será:
+
+\begin{tabbing}
+inicializar el contador en $0$\\
+para \= cada letra de \lstinline+x+\\
+\> averiguar si la letra es ``A'' \\
+\> y si lo es, incrementar en $1$ el contador\\
+retornar el valor del contador\\
+\end{tabbing}
+
+(lo identificaremos como el esquema {\it Inicialización - Ciclo de tratamiento - Retorno de valor}).
+
+Pasamos ahora a implementar este diseño:
+
+\item {\bf Implementación (del diseño revisado)}
+
+\begin{codigo-python}
+def contarA (x):
+    """ La funcion contarA(x) cuenta cuántas
+        letras "A" aparecen en la cadena x ."""
+    contador = 0
+    for letra in x:
+        if letra == "A":
+           contador = contador + 1
+    return(contador)
+\end{codigo-python}
+
+\item Prueba
+\begin{codigo-python-sn}
+>>> contarA ("banana")
+0
+>>> contarA ("Ana")
+1
+>>> contarA ("lAn")
+1
+>>> contarA ("lAAn")
+2
+>>> contarA ("lAnA")
+2
+>>>
+\end{codigo-python-sn}
+
+\item {\bf Mantenimiento:}
+
+Esta función resulta un poco limitada. Cuando nos pidan que contemos
+cuántas letras ``E'' hay en una cadena tendremos que hacer otra función.
+Tiene sentido hacer una función más general que nos permita contar cuántas
+veces aparece un carácter dado en una cadena.
+
+\ejercicioc{Escribir una función \lstinline+contar(l, x)+ que cuente
+cuántas veces aparece un carácter \lstinline!l! dado en una cadena
+\lstinline!x!.}
+
+\ejercicioc{¿Hay más letras ``A'' o más letras ``E'' en una cadena?
+Escribir un programa que lo decida.}
+
+\ejercicioc{Escribir un programa que cuente cúantas veces aparecen cada una
+de las vocales en una cadena. No importa si la vocal aparece en mayúscula o
+en minúscula.}
+
+\end{enumerate}
+
+
+\section{Nuestro primer juego}
+Con todo esto ya estamos en condiciones de escribir un programa para jugar con
+la computadora: el {\it Mastermind}. El Mastermind es un juego que consiste en
+deducir un código numérico de (por ejemplo) cuatro cifras.
+
+\begin{enumerate}
+
+\item {\bf Análisis } (explicación del juego):
+
+Cada vez que se empieza un partido, el programa debe ``eligir'' un número de
+cuatro cifras (sin cifras repetidas), que será el código que el jugador debe
+adivinar en la menor cantidad de intentos posibles. Cada intento consiste en
+una propuesta de un código posible que tipea el jugador, y una respuesta del
+programa. Las respuestas le darán pistas al jugador para que pueda deducir el
+código.
+
+Estas pistas indican cuán cerca estuvo el número propuesto de la solución a
+través de dos valores: la cantidad de {\it aciertos} es la cantidad de
+dígitos que propuso el jugador que también están en el código {\it en la
+misma posición}. La cantidad de {\it coincidencias} es la cantidad de
+digitos que propuso el jugador que también están en el código pero {\it en
+una posición distinta}.
+
+Por ejemplo, si el código que eligió el programa es el \lstinline!2607!, y el
+jugador propone el \lstinline!1406!, el programa le debe responder un acierto (el
+\lstinline!0!, que está en el código original en el mismo lugar, el tercero), y
+una coincidencia (el \lstinline!6!, que también está en el código original, pero
+en la segunda posición, no en el cuarto como fue propuesto). Si el jugador
+hubiera propuesto el \lstinline!3591!, habría obtenido como respuesta ningún
+acierto y ninguna coincidencia, ya que no hay números en común con el
+código original, y si se obtienen cuatro aciertos es porque el jugador
+adivinó el código y ganó el juego.
+
+\item {\bf Especificación: }
+El programa, entonces, debe generar un número que el jugador no pueda predecir.
+A continuación, debe pedirle al usuario que introduzca un número de cuatro
+cifras distintas, y cuando éste lo ingresa, procesar la propuesta y evaluar el
+número de aciertos y de coincidencias que tiene de acuerdo al código elegido. Si
+es el código original, se termina el programa con un mensaje de felicitación. En
+caso contrario, se informa al jugador la cantidad de aciertos y la de
+coincidencias, y se le pide una nueva propuesta. Este proceso se repite hasta
+que el jugador adivine el código.
+
+\item {\bf Diseño:}
+\label{str:disenno}
+
+Lo primero que tenemos que hacer es indicarle al programa que tiene que
+``elegir'' un número de cuatro cifras al azar. Esto lo hacemos a través del
+módulo \lstinline!random!. Este módulo provee funciones para hacer elecciones
+aleatorias\footnote{En realidad, la computadora nunca puede hacer
+elecciones {\it completamente} aleatorias. Por eso los números ``al azar''
+que puede elegir se llaman {\it pseudoaleatorios}.}.
+
+La función del módulo que vamos a usar se llama \lstinline!choice!. Esta función
+devuelve un elemento al azar de una n-upla, y toma como parámetro la n-upla de
+la que tiene que elegir. Vamos a usarla entonces para elegir cifras. Para eso
+tenemos que construir una n-upla que tenga todas las cifras, lo hacemos de la
+misma manera que en la parte \ref{fun:multiple_return}:
+
+\begin{verbatim}
+digitos = ('0','1','2','3','4','5','6','7','8','9')
+\end{verbatim}
+
+Como están entre comillas, los dígitos son tratados como cadenas de caracteres
+de longitud uno. Sin las comillas, habrían sido considerados números enteros. En
+este caso elegimos verlos como cadenas de caracteres porque lo que nos interesa
+hacer con ellos no son cuentas sino comparaciones, concatenaciones, contar
+cuántas veces aparece o donde está en una cadena de mayor longitud, es decir,
+las operaciones que se aplican a cadenas de texto. Entonces que sean
+variables de tipo cadena de caracteres es lo que mejor se adapta a nuestro
+problema.
+
+Ahora tenemos que generar el número al azar, asegurándonos de que no haya cifras
+repetidas. Esto lo podemos modelar así:
+\begin{enumerate}
+\item Tomar una cadena vacía
+\item Repetir cuatro veces:
+\begin{enumerate}
+\item Elegir un elemento al azar de la lista de dígitos \label{str:azar}
+\item Si el elemento no está en la cadena, agregarlo
+\item En caso contrario, volver al punto \ref{str:azar}
+\end{enumerate}
+\end{enumerate}
+
+Una vez elegido el número, hay que interactuar con el usuario y pedirle su
+primera propuesta. Si el número no coincide con el código, hay que buscar la
+cantidad de aciertos y de coincidencias y repetir el pedido de propuestas, hasta
+que el jugador adivine el código.
+
+Para verificar la cantidad de aciertos se pueden recorrer las cuatro posiciones
+de la propuesta: si alguna coincide con los dígitos en el código en esa
+posición, se incrementa en uno la cantidad de aciertos. En caso contrario, se
+verifica si el dígito está en alguna otra posición del código, y en ese caso se
+incrementa la cantidad de coincidencias. En cualquier caso, hay que incrementar
+en uno también la cantidad de intentos que lleva el jugador.
+
+Finalmente, cuando el jugador acierta el código elegido, hay que dejar de pedir
+propuestas, informar al usuario que ha ganado y terminar el programa.
+
+\item {\bf Implementación:}
+Entonces, de acuerdo a lo diseñado en \ref{str:disenno}, el programa quedaría
+más o menos así:
+
+\lstinputlisting{src/mastermind.py}
+
+\begin{observacion}
+Cuando lo que queremos escribir es demasiado largo como para una sola línea que
+entre cómodamente en el editor o en el campo visual, le indicamos al intérprete
+que queremos seguir en la siguiente línea por medio de la barra invertida (como
+al final de la línea 36).
+\end{observacion}
+
+\item {\bf Pruebas:}
+La forma más directa de probar el programa es jugándolo, y verificando
+manualmente que las respuestas que da son correctas, por ejemplo:
+
+\begin{verbatim}
+jugador@casino:~$ python mastermind.py
+Bienvenido/a al Mastermind!
+Tenes que adivinar un numero de 4 cifras distintas
+Que codigo propones?: 1234
+Tu propuesta ( 1234 ) tiene 0 aciertos y  1 coincidencias.
+Propone otro codigo: 5678
+Tu propuesta ( 5678 ) tiene 0 aciertos y  1 coincidencias.
+Propone otro codigo: 1590
+Tu propuesta ( 1590 ) tiene 1 aciertos y  1 coincidencias.
+Propone otro codigo: 2960
+Tu propuesta ( 2960 ) tiene 2 aciertos y  1 coincidencias.
+Propone otro codigo: 0963
+Tu propuesta ( 0963 ) tiene 1 aciertos y  2 coincidencias.
+Propone otro codigo: 9460
+Tu propuesta ( 9460 ) tiene 1 aciertos y  3 coincidencias.
+Propone otro codigo: 6940
+Felicitaciones! Adivinaste el codigo en 7 intentos.
+\end{verbatim}
+
+Podemos ver que para este caso el programa parece haberse comportado bien.
+¿Pero cómo podemos saber que el código final era realmente el que eligió
+originalmente el programa? ¿O qué habría pasado si no encontrábamos la
+solución?
+
+Para probar estas cosas recurrimos a la depuración del programa. Una forma
+de hacerlo es simplemente agregar algunas líneas en el código que nos
+informen lo que está sucediendo que no podemos ver. Por ejemplo, los
+números que va eligiendo al azar y el código que queda al final. Así
+podremos verificar si las respuestas son correctas a medida que las hacemos
+y podremos elegir mejor las propuestas enlas pruebas.
+
+\lstinputlisting[firstline = 9, lastline = 18]{src/master_debug.py}
+
+De esta manera podemos monitorear cómo se va formando el código que hay que
+adivinar, y los candidatos que van apareciendo pero se rechazan por estar
+repetidos:
+
+\begin{verbatim}
+jugador@casino:~$ python master_debug.py
+DEBUG: el codigo va siendo = 8
+DEBUG: candidato = 8
+DEBUG: el codigo va siendo = 81
+DEBUG: candidato = 1
+DEBUG: el codigo va siendo = 814
+DEBUG: el codigo va siendo = 8145
+Bienvenido/a al Mastermind!
+Tenes que adivinar un numero de 4 cifras distintas
+Que codigo propones?:
+\end{verbatim}
+
+\item {\bf Mantenimiento:}
+\label{str:mant}
+Supongamos que queremos jugar el mismo juego, pero en lugar de hacerlo con un
+número de cuatro cifras, adivinar uno de cinco. ¿Qué tendríamos que hacer para
+cambiarlo?
+
+Para empezar, habría que reemplazar el 4 en la línea 11 del programa por un
+5, indicando que hay que elegir 5 dígitos al azar. Pero además, el ciclo en la
+línea 31 también necesita cambiar la cantidad de veces que se va a ejecutar, 5
+en lugar de 4. Y hay un lugar más, adentro del mensaje al usuario que indica las
+instrucciones del juego en la línea 20.
+
+El problema de ir cambiando estos números de a uno es que si quisiéramos volver
+al programa de los 4 dígitos o quisiéramos cambiarlo por uno que juegue con 3,
+tenemos que volver a hacer los reemplazos en todos lados cada vez que lo
+queremos cambiar, y corremos el riesgo de olvidarnos de alguno e introducir
+errores en el código.
+
+Una forma de evitar esto es fijar la cantidad de cifras en una variable y
+cambiarla sólo ahí:
+\lstinputlisting[firstline = 9, lastline = 14]{src/master_enh.py}
+
+El mensaje al usuario queda entonces:
+
+\lstinputlisting[firstline = 19, lastline = 22]{src/master_enh.py}
+
+Y el chequeo de aciertos y coincidencias:
+
+\lstinputlisting[firstline = 32, lastline = 34]{src/master_enh.py}
+
+Con 5 dígitos, el juego se pone más difícil. Nos damos cuenta que si el jugador
+no logra adivinar el código, el programa no termina: se queda preguntando
+códigos y respondiendo aciertos y coincidencias para siempre. Entonces queremos
+darle al usuario la posibilidad de rendirse y saber cuál era la respuesta y
+terminar el programa.
+
+Para esto agregamos en el ciclo \lstinline!while! principal una condición
+extra: para seguir preguntando, la propuesta tiene que ser distinta al
+código pero además tiene que ser distinta del texto \lstinline!"Me doy"!.
+
+\lstinputlisting[firstline = 25, lastline = 29]{src/master_enh.py}
+
+Entonces, ahora no sólamente sale del \lstinline!while! si acierta el
+código, sino además si se rinde y quiere saber cuál era el código. Entonces
+afuera del while tenemos que separar las dos posibilidades, y dar distintos
+mensajes:
+
+\lstinputlisting[firstline = 42]{src/master_enh.py}
+
+El código de todo el programa queda entonces así:
+
+\lstinputlisting{src/master_enh.py}
+\end{enumerate}
+
+\section{Ejercicios}
+\ejercicioc{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
+guardara el valor de la cantidad de dígitos para no tener que cambiarlo todas
+las veces. ¿Cómo harían para evitar esta variable usando la función
+\lstinline!len(cadena)!?}
+
+\ejercicioc{Modificar el programa para permitir repeticiones de dígitos.
+¡Cuidado con el cómputo de aciertos y coincidencias!}
+
+% Ejercicios que no tienen mucho que ver con la unidad:
+%       usar los singulares en caso de haber 1 sólo A o C
+%       incluir un número máximo de intentos
+%       incluir una pista si el jugador tipea "pista"
+%       preguntar si se quiere jugar otra vez
+
+\section{Resumen}
+
+\begin{itemize}
+\item Las cadenas de caracteres nos sirven para operar con todo tipo de
+textos.  Contamos con funciones para ver su longitud, sus elementos uno a
+uno, o por segmentos, comparar estos elementos con otros, etc.
+
+
+\end{itemize}
+
+\begin{referencia_python}
+
+\begin{sintaxis}{\lstinline!len(cadena)!}
+Devuelve el largo de una cadena, 0 si se trata de una cadena vacía.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!for letra in cadena!}
+Permite realizar una acción para cada una de las letras de una cadena.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena[i]!}
+Corresponde al valor de la cadena en la posición \lstinline!i!, comenzando
+desde 0.  
+
+Si se utilizan números negativos, se puede acceder a los
+elementos desde el último (\lstinline!-1!) hasta el primero
+(\lstinline!-len(cadena)!).
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena[i:j]!}
+Permite obtener un segmento de la cadena, desde la posición \lstinline!i!
+inclusive, hasta la posición \lstinline!j! exclusive.
+
+En el caso de que se omita \lstinline!i!, se asume \lstinline!0!.  En el
+caso de que se omita \lstinline!j!, se asume \lstinline!len(cadena)!.  Si
+se omiten ambos, se obtiene la cadena completa.
+\end{sintaxis}
+
+\end{referencia_python}

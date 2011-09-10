@@ -1,0 +1,468 @@
+% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
+% Copyright (C) Margarita Manterola <margamanterola@gmail.com>
+
+% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Commons:
+%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%    http://creativecommons.org/licenses/by-sa/2.5/ar/
+%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
+%
+% A su criterio, puede utilizar una u otra licencia, o las dos.
+% Para ver una copia de las licencias, puede visitar los sitios
+% mencionados, o enviar una carta a Creative Commons,
+% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\chapter{Más sobre ciclos}
+
+El último problema analizado en la unidad anterior decía:
+
+\begin{quote}
+Leer un número. Si el número es positivo escribir un mensaje
+``Numero positivo'', si el número es igual a 0 un mensaje ``Igual a
+0'', y si el número es negativo escribir un mensaje ``Numero
+negativo''.
+\end{quote}
+
+Se nos plantea a continuación un nuevo problema, similar al anterior:
+
+\problemac{El usuario debe poder ingresar muchos números y
+cada vez que se ingresa uno debemos informar si es positivo, cero o
+negativo.} \\
+
+Utilizando los ciclos definidos vistos en las primeras unidades, es posible
+preguntarle al usuario cada vez, al inicio del programa, cuántos números va a
+ingresar para consultar. La solución propuesta resulta:
+
+\begin{codigo-python}
+def muchos_pcn():
+    i = input("Cuantos numeros quiere procesar: ")
+    for j in range(0,i):
+        x = input("Ingrese un numero: ")
+        if x > 0:
+            print "Numero positivo"
+        elif x == 0:
+            print "Igual a 0"
+        else:
+            print "Numero negativo"
+\end{codigo-python}
+
+Su ejecución es exitosa:
+
+\begin{codigo-python-sn}
+>>> muchos_pcn()
+Cuantos numeros quiere procesar: 3
+Ingrese un numero: 25
+Numero positivo
+Ingrese un numero: 0
+Igual a 0
+Ingrese un numero: -5
+Numero negativo
+>>>
+\end{codigo-python-sn}
+
+Sin embargo al usuario considera que este programa no es muy intuitivo, porque
+lo obliga a contar de antemano cuántos números va a querer procesar, sin
+equivocarse, en lugar de ingresar uno a uno los números hasta procesarlos a
+todos.
+
+\section{Ciclos indefinidos}
+
+Para poder resolver este problema sin averiguar primero la cantidad de números
+a procesar, debemos introducir una instrucción que nos permita construir ciclos
+que no requieran que se informe de antemano la cantidad de veces que se
+repetirá el cálculo del cuerpo.  Se trata de {\it ciclos indefinidos} en los
+cuales se repite el cálculo del cuerpo mientras una cierta condición es
+verdadera.
+
+Un ciclo indefinido es de la forma
+
+\begin{codigo-python-sn}
+while <condición>:
+    <hacer algo>
+\end{codigo-python-sn}
+
+Donde \lstinline+while+ es una palabra reservada, la condición es una expresión
+booleana, igual que en las instrucciones \lstinline!if!.  Y el cuerpo es, como
+siempre, una o más instrucciones de Python.
+
+El sentido de esta instrucción es el siguiente:
+
+\begin{enumerate}
+\item Evaluar la condición.
+\item Si la condición es falsa, salir del ciclo.
+\item Si la condición es verdadera, ejecutar el cuerpo.
+\item Volver a 1.
+\end{enumerate}
+
+\section{Ciclo interactivo}
+
+¿Cuál es la condición y cuál es el cuerpo del ciclo en nuestro problema?
+Claramente, el cuerpo del ciclo es el ingreso de datos y la verificación de si
+es positivo, negativo o cero.  En cuanto a la condición, es que haya más datos
+para seguir calculando.
+
+Definimos una variable \lstinline!hayMasDatos!, que valdrá ``Si'' mientras
+haya datos.
+
+Se le debe preguntar al usuario, después de cada cálculo, si hay o no más datos.
+Cuando el usuario deje de responder ``Si'', dejaremos de ejecutar el cuerpo del
+ciclo.
+
+Una primera aproximación al código necesario para resolver este problema podría
+ser:
+
+\begin{codigo-python}
+def pcn_loop():
+    while hayMasDatos == "Si":
+        x = input("Ingrese un numero: ")
+        if x > 0:
+            print "Numero positivo"
+        elif x == 0:
+            print "Igual a 0"
+        else:
+            print "Numero negativo"
+
+        hayMasDatos = raw_input("¿Quiere seguir? <Si-No>: ")
+\end{codigo-python}
+
+Veamos qué pasa si ejecutamos la función tal como fue presentada:
+
+\begin{codigo-python-sn}
+>>> pcn_loop()
+
+Traceback (most recent call last):
+  File "<pyshell#25>", line 1, in <module>
+    pcn_loop()
+  File "<pyshell#24>", line 2, in pcn_loop
+    while hayMasDatos == "Si":
+UnboundLocalError: local variable 'hayMasDatos' referenced before assignment
+>>>
+\end{codigo-python-sn}
+
+El problema que se presentó en este caso, es que \lstinline!hayMasDatos! no
+tiene un valor asignado en el momento de evaluar la condición del ciclo por
+primera vez.
+
+\begin{observacion}
+Es importante prestar atención a cuáles son las variables que hay que
+inicializar antes de ejecutar un ciclo: al menos tiene que tener algún valor la
+expresión booleana que lo controla.
+\end{observacion}
+
+Una posibilidad es preguntarle al usario, antes de evaluar la condición, si
+tiene datos; otra posibilidad es suponer que si llamó a este programa es porque
+tenía algún dato para calcular, y darle el valor inicial ``Si'' a
+\lstinline!hayMasDatos!.
+
+Acá encararemos la segunda posibilidad:
+
+\begin{codigo-python}
+def pcn_loop():
+    hayMasDatos = "Si"
+    while hayMasDatos == "Si":
+        x = input("Ingrese un numero: ")
+        if x > 0:
+            print "Numero positivo"
+        elif x == 0:
+            print "Igual a 0"
+        else:
+            print "Numero negativo"
+
+        hayMasDatos = raw_input("Quiere seguir? <Si-No>: ")
+\end{codigo-python}
+
+El esquema del ciclo interactivo es el siguiente:
+\begin{itemize}
+\item \lstinline!hayMasDatos! hace referencia a ``Si''.
+\item Mientras \lstinline!hayMasDatos! haga referencia a ``Si'':
+
+\begin{itemize}
+\item Pedir datos.
+\item Realizar cálculos.
+\item Preguntar al usuario si hay más datos (``Si'' cuando los hay).
+\lstinline!hayMasDatos! hace referencia al valor ingresado.
+\end{itemize}
+
+\end{itemize}
+
+Ésta es una ejecución:
+
+\begin{codigo-python-sn}
+>>> pcn_loop()
+Ingrese un numero: 25
+Numero positivo
+Quiere seguir? <Si-No>: "Si"
+Ingrese un numero: 0
+Igual a 0
+Quiere seguir? <Si-No>: "Si"
+Ingrese un numero: -5
+Numero negativo
+Quiere seguir? <Si-No>: "No"
+>>>
+\end{codigo-python-sn}
+
+\section{Ciclo con centinela} 
+\label{centinela}
+
+Un problema que tiene nuestra primera solución es que resulta poco amigable
+preguntarle al usuario después de cada cálculo si desea continuar. Se puede
+usar el método del {\it centinela}: un valor distinguido que, si se lee, le
+indica al programa que el usuario desea salir del ciclo. En este caso,
+podemos suponer que si ingresa el caracter \lstinline!*! es una indicación
+de que desea terminar.
+
+El esquema del ciclo con centinela es el siguiente:
+
+\begin{itemize}
+\item Pedir datos.
+\item Mientras el dato pedido no coincida con el centinela:
+\begin{itemize}
+\item Realizar cálculos.
+\item Pedir datos.
+\end{itemize}
+\end{itemize}
+
+En nuestro caso, pedir datos corresponde a lo siguiente:
+
+\begin{itemize}
+\item Pedir número.
+\end{itemize}
+
+El programa resultante es el siguiente:
+
+\begin{codigo-python}
+def pcn_loop2():
+    x=input("Ingrese un numero ('*' para terminar): ")
+
+    while x <>"*":
+        if x > 0:
+            print "Numero positivo"
+        elif x == 0:
+            print "Igual a 0"
+        else:
+            print "Numero negativo"
+
+        x=input("Ingrese un numero ('*' para terminar): ")
+\end{codigo-python}
+
+Y ahora lo ejecutamos:
+
+\begin{codigo-python-sn}
+>>> pcn_loop2()
+Ingrese un numero ('*' para terminar): 25
+Numero positivo
+Ingrese un numero ('*' para terminar): 0
+Igual a 0
+Ingrese un numero ('*' para terminar): -5
+Numero negativo
+Ingrese un numero ('*' para terminar): '*'
+>>>
+\end{codigo-python-sn}
+
+\section{Cómo romper un ciclo}
+
+El ciclo con centinela es muy claro pero tiene un problema: hay dos lugares
+(la primera línea del cuerpo y la última línea del ciclo) donde se ingresa
+el mismo dato. Si en la etapa de mantenimiento tuviéramos que realizar un
+cambio en el ingreso del dato (cambio de mensaje, por ejemplo) deberíamos
+estar atentos y hacer dos correcciones iguales.
+
+Sería preferible poder leer el dato \lstinline!x! en un único punto del
+programa.  A continuación, tratamos de diseñar una solución con esa
+restricción.
+
+Es claro que en ese caso la lectura tiene que estar dentro del ciclo para
+poder leer más de un número, pero entonces la condición del ciclo no puede
+depender del valor leído, ni tampoco de valores calculados dentro del
+ciclo.
+
+Pero un ciclo que no puede depender de valores leídos o calculados dentro
+de él será de la forma:
+
+\begin{itemize}
+\item Repetir indefinidamente:
+\begin{itemize}
+\item Hacer algo.
+\end{itemize}
+\end{itemize}
+
+Y esto se traduce a Python como:
+
+\begin{codigo-python-sn}
+while True:
+    <hacer algo>
+\end{codigo-python-sn}
+
+Un ciclo cuya condición es \lstinline!True! parece ser un ciclo infinito (o
+sea que nunca va a terminar). ¡Pero eso es gravísimo! ¡Nuestros programas
+tienen que terminar!
+
+Afortunadamente hay una instrucción de Python, \lstinline!break!, que nos
+permite salir de adentro de un ciclo (tanto sea \lstinline!for! como
+\lstinline!while!) en medio de su ejecución.
+
+En esta construcción
+
+\begin{codigo-python-sn}
+while <condicion>:
+    <hacer algo_1>
+    if <condif>:
+        break
+    <hacer algo_2>
+\end{codigo-python-sn}
+
+el sentido del \lstinline!break! es el siguiente:
+
+\begin{enumerate}
+\item Se evalúa {\it $<$condición$>$} y si es falsa se sale del ciclo.
+\item Se ejecuta {\it $<$hacer algo$_1>$}.
+\item Se evalúa {\it $<$condif$>$} y si es verdadera se sale del ciclo (con \lstinline!break!).
+\item Se ejecuta {\it $<$hacer algo$_2>$}.
+\item Se vuelve al paso 1.
+\end{enumerate}
+
+Diseñamos entonces:
+
+\begin{itemize}
+\item Repetir indefinidamente:
+\begin{itemize}
+\item Pedir dato.
+\item Si el dato ingresado es el centinela, salir del ciclo.
+\item Operar con el dato.
+\end{itemize}
+\end{itemize}
+
+Codificamos en Python la solución al problema de los números usando ese
+esquema:
+
+\begin{codigo-python}
+def pcn_loop3():
+    while True:
+        x = input("Ingrese un numero ('*' para terminar): ")
+        if x == '*':
+            break
+        elif x > 0:
+            print "Numero positivo"
+        elif x == 0:
+            print "Igual a 0"
+        else:
+            print "Numero negativo"
+\end{codigo-python}
+
+Y la probamos:
+
+\begin{codigo-python-sn}
+>>> pcn_loop3()
+Ingrese un numero ('*' para terminar): 25
+Numero positivo
+Ingrese un numero ('*' para terminar): 0
+Igual a 0
+Ingrese un numero ('*' para terminar): -5
+Numero negativo
+Ingrese un numero ('*' para terminar): '*'
+>>>
+\end{codigo-python-sn}
+
+\begin{sabias_que}
+Desde hace mucho tiempo los ciclos infinitos vienen trayéndoles dolores de
+cabeza a los programadores.  Cuando un programa deja de responder y se
+queda utilizando todo el procesador de la computadora, suele deberse a que
+el programa entró en un ciclo del que no puede salir.
+
+Estos ciclos pueden aparecer por una gran variedad de causas.  A
+continuación algunos ejemplos de ciclos de los que no se puede salir,
+siempre o para ciertos parámetros.  Queda como ejercicio encontrar el error
+en cada uno.
+
+\begin{codigo-python-sn}
+def menor_factor_primo(x):
+    """ Devuelve el menor factor primo del número x. """
+    n = 2
+    while n <= x:
+        if x % n == 0:
+            return n
+\end{codigo-python-sn}
+
+\begin{codigo-python-sn}
+def buscar_impar(x):
+    """ Divide el número recibido por 2 hasta que sea impar. """
+    while x % 2 == 0:
+        x = x / 2
+    return x
+\end{codigo-python-sn}
+\end{sabias_que}
+
+\section{Ejercicios}
+
+\ejercicioc{Nuevamente, se desea facturar el uso de un telefono.  Para ello
+se informa la tarifa por segundo y la duracion de cada comunicacion
+expresada en horas, minutos y segundos.  Como resultado se informa la
+duracion en segundos de cada comunicacion y su costo. Resolver este
+problema usando
+
+\begin{enumerate}
+\item Ciclo definido.
+\item Ciclo interactivo.
+\item Ciclo con centinela.
+\item Ciclo ``infinito'' que se rompe.
+\end{enumerate}
+}
+
+\ejercicioc{Mantenimiento del tarifador: al final del día se debe informar
+cuántas llamadas hubo y el total facturado. Hacerlo con todos los esquemas
+anteriores.}
+
+\ejercicioc{Nos piden que escribamos una función que le pida al usuario que
+ingrese un número positivo. Si el usuario ingresa cualquier cosa que no sea
+lo pedido se le debe informar de su error mediante un mensaje y volverle a
+pedir el número.
+
+Resolver este problema usando
+
+\begin{enumerate}
+\item Ciclo interactivo.
+\item Ciclo con centinela.
+\item Ciclo ``infinito'' que se rompe.
+\end{enumerate}
+
+¿Tendría sentido hacerlo con ciclo definido? Justificar.
+}
+
+\newpage
+\section{Resumen}
+
+\begin{itemize}
+
+\item Además de los ciclos definidos, en los que se sabe cuáles son los
+posibles valores que tomará una determinada variable, existen los ciclos
+indefinidos, que se terminan cuando no se cumple una determinada condición.
+
+\item La condición que termina el ciclo puede estar relacionada con una entrada
+de usuario o depender del procesamiento de los datos.
+
+\item Se utiliza el método del {\it centinela} cuando se quiere que un ciclo se
+repita hasta que el usuario indique que no quiere continuar.
+
+\item Además de la condición que hace que el ciclo se termine, es posible
+interrumpir su ejecución con código específico dentro del ciclo.
+
+\end{itemize}
+
+\begin{referencia_python}
+
+\begin{sintaxis}{\lstinline!while <condicion>:!}
+Introduce un ciclo indefinido, que se termina cuando la condición sea falsa.
+\begin{codigo-python-sn}
+while <condición>:
+    # acciones a ejecutar mientras condición sea verdadera
+\end{codigo-python-sn}
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!break!}
+Interrumpe la ejecución del ciclo actual. Puede utilizarse tanto para ciclos
+definidos como indefinidos.
+\end{sintaxis}
+
+\end{referencia_python}
+

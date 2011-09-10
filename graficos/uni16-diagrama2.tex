@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{pstricks}
+\usepackage{pst-plot}
+\pagestyle{empty}
+% Grafico hecho en pstricks, para convertirlo a eps:
+% latex archivo.tex; dvips archivo.dvi -E -o archivo.eps
+% para convertirlo a png:
+% gs -r300 -dEPSCrop -dTextAlphaBits=4 -sDEVICE=png16m \
+%   -sOutputFile=archivo.png -dBATCH -dNOPAUSE archivo.eps
+\begin{document}
+%\color{white}% fbox invisible
+\psframe[fillcolor=lightgray, fillstyle=solid](6,-3)(9,-1)
+\psframe[fillcolor=lightgray, fillstyle=solid](2,-3.5)(5.5,-0.5)
+\rput[bl]{*0}(6.2,-0.7){\bf Point}
+\rput[cl]{*0}(6.5,-1.5){\bf x}
+\rput[cl]{*0}(6.5,-2.5){\bf y}
+\psline[linewidth=0.7pt]{->}(4.25,-2.6)(5.99,-2.6)
+\psline[linewidth=0.7pt]{->}(6.8,-1.5)(7.35,-1.5)
+\psline[linewidth=0.7pt]{->}(6.8,-2.5)(7.35,-2.5)
+\rput[cl]{*0}(7.5,-1.5){\bf 7}
+\rput[cl]{*0}(7.5,-2.5){\bf 2}
+\rput[bl]{*0}(2.2,-0.3){\bf Rectangulo}
+\rput[bl]{*0}(2.2,-1.5){\bf base}
+\rput[bl]{*0}(2.2,-2){\bf altura}
+\rput[bl]{*0}(2.2,-2.8){\bf esquinaSO}
+\psline[linewidth=0.7pt]{->}(3.5,-1.4)(4,-1.4)
+\psline[linewidth=0.7pt]{->}(3.5,-1.9)(4,-1.9)
+\rput[bl]{*0}(4.05,-1.5){\bf 2}
+\rput[bl]{*0}(4.05,-2){\bf 4}
+\rput[cr]{*0}(1,-1.5){\bf r}
+\psline[linewidth=0.7pt]{->}(1.15,-1.5)(1.99,-1.5)
+\rput[cl]{*0}(10,-1.5){\bf q}
+\psline[linewidth=0.7pt]{<-}(9.01,-1.5)(9.85,-1.5)
+\end{document}
+

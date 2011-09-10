@@ -1,0 +1,458 @@
+% Copyright (C) 2009-2010 Maximiliano Curia <maxy@gnuservers.com.ar>,
+%               Margarita Manterola <margamanterola@gmail.com>
+
+% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Commons:
+%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%    http://creativecommons.org/licenses/by-sa/2.5/ar/
+%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
+%
+% A su criterio, puede utilizar una u otra licencia, o las dos.
+% Para ver una copia de las licencias, puede visitar los sitios
+% mencionados, o enviar una carta a Creative Commons,
+% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\chapter{Contratos y Mutabilidad}
+
+En esta unidad se le dará cierta formalización a algunos temas que se habían
+visto informalmente, como por ejemplo, la documentación de las funciones. 
+
+Se formalizarán las condiciones que debe cumplir un algoritmo, al comenzar, en
+su transcurso, y al terminar, y algunas técnicas para tener en cuenta estas
+condiciones.
+
+También se verá una forma de modelizar el espacio donde \textit{viven} las
+variables.
+
+\section{Pre y Postcondiciones}
+
+Cuando hablamos de \textit{contratos} o \textit{programación por
+contratos}, nos referimos a la necesidad de estipular tanto lo que necesita
+como lo que devuelve nuestro código. 
+
+Las condiciones que deben estar dadas para que el código funcione las llamamos
+\emph{precondiciones} y las condiciones sobre el estado en que quedan las
+variables y él o los valores de retorno, las llamamos \emph{postcondiciones}.
+
+En definitiva, este concepto es similar al ya mencionado con respecto a la
+documentación de funciones, es decir que se debe \emph{documentar cómo deben
+ser los parámetros recibidos, cómo va a ser lo que se devuelve, y qué
+sucede con los parámetros en caso de ser modificados}.
+
+Esta estipulación es mayormente para que la utilicen otros programadores,
+por lo que es particularmente útil cuando se encuentra dentro de la
+documentación. En ciertos casos, además, puede quererse que el programa
+revise si las condiciones realmente se cumplen y de no ser así, actúe en
+consecuencia.
+
+Existen herramientas en algunos lenguajes de programación que facilitan estas
+acciones, en el caso de Python, es posible utilizar la instrucción
+\lstinline!assert!.
+ 
+\subsection{Precondiciones}
+
+Las precondiciones son las condiciones que deben cumplir los parámetros que
+una función recibe, para que esta se comporte correctamente.
+
+Por ejemplo, en una función división las precondiciones son que los parámetros
+son números, y que el divisor sea distinto de 0. Tener una precondición
+permite asumir desde el código que no es necesario lidiar con los casos en que
+las precondiciones no se cumplen.
+
+\subsection{Postcondiciones}
+
+Las postcodiciones son las condiciones que cumplirá el valor de retorno, y
+los parámetros recibidos, en caso de que hayan sido alterados, 
+siempre que se hayan cumplido las precondiciones 
+
+En el ejemplo anterior, la función división con las precondiciones asignadas,
+puede asegurar que devolverá un número correspondiente al cociente solicitado.
+
+\subsection{Aseveraciones}
+
+Tanto las precondiciones como las postcondiciones son \textit{aseveraciones}
+(en inglés \textit{assert}). Es decir, afirmaciones realizadas en un momento
+particular de la ejecución sobre el estado computacional. Si llegaran a ser
+falsas significaría que hay algún error en el diseño o utilización del algoritmo.
+
+Para comprobar estas afirmaciones desde el código en algunos casos podemos
+utilizar la instrucción \lstinline!assert!, está instrucción recibe una
+condición a verificar y, opcionalmente, un mensaje de error que devolverá en
+caso que la condición no se cumpla.
+
+\begin{codigo-python-sn}
+>>> n=0
+>>> assert n!=0, "El divisor no puede ser 0"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError: El divisor no puede ser 0
+\end{codigo-python-sn}
+
+\begin{atencion}
+Es importante tener en cuenta que \lstinline!assert! está pensado para ser
+usado en la etapa de desarrollo. Un programa terminado nunca debería dejar
+de funcionar por este tipo de errores.
+\end{atencion}
+
+\subsection{Ejemplos}
+
+Usando los ejemplos anteriores, la función \lstinline!division! nos
+quedaría de la siguiente forma:
+
+\begin{codigo-python-sn}
+def division(dividendo, divisor):
+    """ Calculo de la división
+
+    Pre: Recibe dos números, divisor debe ser distinto de 0.
+    Post: Devuelve un número real, con el cociente de ambos.	
+    """
+    assert divisor != 0, "El divisor no puede ser 0"
+    return dividendo  / ( divisor * 1.0 )
+\end{codigo-python-sn}
+
+Otro ejemplo, tal vez más interesante, puede ser una función que implemente
+una sumatoria ($\sum_{i=inicial}^{final} f(i)$).  En este caso hay que
+analizar cuáles van a ser los parámetros que recibirá la función, y las
+precondiciones que estos parámetros deberán cumplir.
+
+La función sumatoria a escribir, necesita de un valor inicial, un valor
+final, y una función a la cual llamar en cada paso. Es decir que recibe
+tres parámetros.
+
+\begin{codigo-python-sn}
+def sumatoria(inicial, final, f):
+\end{codigo-python-sn}
+
+Tanto \lstinline!inicial! como \lstinline!final! deben ser números enteros,
+y dependiendo de la implementación a realizar o de la especificación
+previa, puede ser necesario que \lstinline!final! deba ser mayor o igual a
+\lstinline!inicial!.
+
+Con respecto a \lstinline!f!, se trata de una función que será llamada con
+un parámetro en cada paso y se requiere poder sumar el resultado, por lo
+que debe ser una función que reciba un número y devuelva un número.
+
+La declaración de la función queda, entonces, de la siguiente manera.
+
+\begin{codigo-python-sn}
+def sumatoria(inicial, final, f):
+    """Calcula la sumatoria desde i=inicial hasta final de f(i)
+
+    Pre: inicial y final son números enteros, f es una función que 
+         recibe un entero y devuelve un número.
+    Post: Se devuelve el valor de la sumatoria de aplicar f a cada
+          número comprendido entre inicial y final.
+	"""
+\end{codigo-python-sn}
+
+\begin{ejercicio}
+Realizar la implementación correspondiente a la función \lstinline!sumatoria!.
+\end{ejercicio}
+
+En definitiva, la documentación de pre y postcondiciones dentro de la documentación
+de las funciones es una forma de especificar claramente el comportamiento del
+código de forma que quienes lo vayan a utilizar no requieran conocer cómo está
+implementado para poder aprovecharlo.
+
+Esto es útil incluso en los casos en los que el programador de las funciones
+es el mismo que el que las va a utilizar, ya que permite separar
+responsabilidades. Las pre y postcondiciones son, en efecto, un
+\textit{contrato} entre el código invocante y el invocado.
+
+\section{Invariantes de ciclo}
+
+% TODO: conseguir frase, la vida es siempre igual, siempre está cambiando.
+%\begin{quote}
+%``Dadme un punto de apoyo y moveré el mundo´´ Arquímedes
+%\end{quote}
+
+Los invariantes se refieren a estados o situaciones que no cambian dentro
+de un contexto o porción de código.  Hay invariantes de ciclo, que son los
+que veremos a continuación, e invariantes de estado, que se verán más
+adelante.
+
+El invariante de ciclo permite conocer cómo llegar desde las precondiciones
+hasta las postcondiciones. El invariante de ciclo es, entonces, una
+aseveración que debe ser verdadera al comienzo de cada iteración.
+
+Por ejemplo, si el problema es ir desde el punto A al punto B, las
+precondiciones dicen que estamos parados en A y las postcondiciones que
+estamos parados en B, un invariante podría ser ``estamos en algún punto entre
+A y B, en el punto más cercano a B que estuvimos hasta ahora.''.
+
+Más específicamente, si analizamos el ciclo para buscar el máximo en una lista
+desordenada, la precondición es que la lista contiene elementos que son
+comparables y la postcondición es que se devuelve el elemento máximo de la
+lista.
+
+\begin{codigo-python}
+def maximo(lista):
+    "Devuelve el elemento máximo de la lista o None si está vacía."
+    if not len(lista):
+        return None
+    max_elem = lista[0]
+    for elemento in lista:
+        if elemento > max_elem:
+            max_elem = elemento
+    return max_elem
+\end{codigo-python}
+
+En este caso, el invariante del ciclo es que \lstinline!max_elem! contiene el
+valor máximo de la porción de lista analizada. \\
+
+Los invariantes son de gran importancia al momento de demostrar que un
+algoritmo funciona, pero aún cuando no hagamos una demostración formal es muy
+útil tener los invariantes a la vista, ya que de esta forma es más fácil
+entender cómo funciona un algoritmo y encontrar posibles errores.
+
+Los invariantes, además, son útiles a la hora de determinar las condiciones
+iniciales de un algoritmo, ya que también deben cumplirse para ese caso.  Por
+ejemplo, consideremos el algoritmo para obtener la potencia \lstinline!n! de
+un número.  
+
+\begin{codigo-python}
+def potencia(b, n):
+    "Devuelve la potencia n del número b, con n entero mayor que 0."
+    p = 1
+    for i in range(n):
+        p *= b
+    return p
+\end{codigo-python}
+
+En este caso, el invariante del ciclo es que la variable \lstinline!p!
+contiene el valor de la potencia correspondiente a esa iteración. Teniendo en
+cuenta esta condición, es fácil ver que \lstinline!p! debe comenzar el ciclo
+con un valor de 1, ya que ese es el valor correspondiente a $p^0$.
+
+De la misma manera, si la operación que se quiere realizar es sumar todos los
+elementos de una lista, el invariante será que una variable \lstinline!suma!
+contenga la suma de todos los elementos ya recorridos, por lo que es claro que
+este invariante debe ser 0 cuando aún no se haya recorrido ningún elemento.
+
+\begin{codigo-python}
+def suma(lista):
+    "Devuelve la suma de todos los elementos de la lista."
+    suma = 0
+    for elemento in lista:
+        suma += elemento
+    return suma
+\end{codigo-python}
+
+% TODO
+% \subsection{Invariantes como medida de cuánto falta}
+
+%Dependiendo del problema y las herramientas con las que contemos algunos
+%invariantes se pueden medir retomando el ejemplo de ir de A a B, uno podría
+%medir la distancia hasta B para esta, pero si para medir la distancia hay que ir hasta B
+%y volver deja de tener sentido. O al estar buscando el mínimo en una
+%secuencia, cómo hago para comprobar que paso a paso tengo el mínimo de la
+%secuencia que ya recorrí sin usar
+
+\subsection{Comprobación de invariantes desde el código}
+
+Cuando la comprobación necesaria para saber si seguimos ``en camino'' es simple,
+se la puede tener directamente dentro del código.  Evitando seguir avanzando
+con el algoritmo si se produjo un error crítico.
+
+Por ejemplo, en una búsqueda binaria, el elemento a buscar debe ser mayor que
+el elemento inicial y menor que el elemento final, de no ser así, no tiene sentido
+continuar con la búsqueda.  Es posible, entonces, agregar una instrucción
+que compruebe esta condición y de no ser cierta realice alguna acción para
+indicar el error, por ejemplo, utilizando la instrucción \lstinline!assert!,
+vista anteriormente. 
+
+\section{Mutabilidad e Inmutabilidad}
+
+Hasta ahora cada vez que estudiamos un tipo de variables indicamos si son
+mutables o inmutables.
+
+Cuando una variable es de un tipo inmutable, como por ejemplo una cadena, es
+posible asignar un nuevo valor a esa variable, pero no es posible modificar su
+contenido.
+
+\begin{codigo-python-sn}
+>>> a="ejemplo"
+>>> a="otro"
+>>> a[2]="c"
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'str' object does not support item assignment
+\end{codigo-python-sn}
+
+Esto se debe a que cuando se realiza una nueva asignación, no se modifica la
+cadena en sí, sino que la variable \lstinline!a! pasa a \emph{apuntar} a otra cadena.
+En cambio, no es posible asignar un nuevo caracter en una posición, ya que
+esto implicaría modificar la cadena inmutable.
+
+En el caso de los parámetros mutables, la asignación tiene el mismo
+comportamiento, es decir que las variables pasan a apuntar a un nuevo valor.
+
+\begin{codigo-python-sn}
+>>> lista1 = [10, 20, 30]
+>>> lista2 = lista1
+>>> lista1 = [3, 5, 7]
+>>> lista1
+[3, 5, 7]
+>>> lista2
+[10, 20, 30]
+\end{codigo-python-sn}
+
+Algo importante a tener en cuenta en el caso de las variables de tipo
+mutable es que si hay dos o más variables que \textit{apuntan} a un mismo
+dato, y este dato se modifica, el cambio se ve reflejado en ambas variables.
+
+\begin{codigo-python-sn}
+>>> lista1=[1, 2, 3]
+>>> lista2 = lista1
+>>> lista2[1] = 5
+>>> lista1
+[1, 5, 3]
+\end{codigo-python-sn}
+
+\begin{sabias_que}
+En otros lenguajes, como C o C++, existe un tipo de variable especial
+llamado {\it puntero}, que se comporta como una referencia a una variable,
+como es el caso de las variables mutables del ejemplo anterior.
+
+En Python no hay punteros como los de C o C++, pero todas las variables son
+referencias a una porción de memoria, de modo que cuando se asigna una
+variable a otra, lo que se está asignando es la porción de memoria a la que
+refieren.  Si esa porción de memoria cambia, el cambio se puede ver en
+todas las variables que apuntan a esa porción.
+\end{sabias_que}
+
+% TODO: describir en más detalle el modelo de referencia de python ?
+
+\subsection{Parámetros mutables e inmutables}
+
+Las funciones reciben parámetros que pueden ser mutables o inmutables.
+
+Si dentro del cuerpo de la función se modifica uno de estos parámetros para
+que \textbf{apunte} a otro valor, este cambio no se verá reflejado fuera de la
+función.  Si, en cambio, se modifica el \textbf{contenido} de alguno de los
+parámetros mutables, este cambio \textbf{sí} se verá reflejado fuera de la
+función.
+
+A continuación un ejemplo en el cual se asigna la variable recibida, a un
+nuevo valor.  Esa asignación sólo tiene efecto dentro de la función.
+
+\begin{codigo-python-sn}
+>>> def no_cambia_lista(lista):
+...     lista = range(len(lista))
+...     print lista
+...
+>>> lista = [10, 20, 30, 40]
+>>> no_cambia_lista(lista)
+[0, 1, 2, 3]
+>>> lista
+[10, 20, 30, 40]
+\end{codigo-python-sn}
+
+A continuación un ejemplo en el cual se modifica la variable recibida. En este
+caso, los cambios realizados tienen efecto tanto dentro como fuera de la
+función.
+
+\begin{codigo-python-sn}
+>>> def cambia_lista(lista):
+...     for i in range(len(lista)):
+...             lista[i] = lista[i]**3
+...
+>>> lista = [1, 2, 3, 4]
+>>> cambia_lista(lista)
+>>> lista
+[1, 8, 27, 64]
+\end{codigo-python-sn}
+
+\begin{atencion}
+En general, se espera que una función que recibe parámetros mutables, no los
+modifique, ya que si se los modifica se podría perder información valiosa.
+
+En el caso en que por una decisión de diseño o especificación se modifiquen
+los parámetros recibidos, esto debe estar claramente documentado, dentro de
+las postcondiciones.
+\end{atencion}
+
+\section{Resumen}
+
+\begin{itemize}
+\item Las \textbf{precondiciones} son las condiciones que deben cumplir los
+parámetros recibidos por una función.
+\item Las \textbf{postcondiciones} son las condiciones cumplidads por los
+resultados que la función devuelve y por los parámetros recibidos, siempre
+que las precondiciones hayan sido válidas.
+\item Los \textbf{invariantes de ciclo} son las condiciones que deben
+cumplirse al comienzo de cada iteración de un ciclo.
+\item En el caso en que estas \textbf{aseveraciones} no sean verdaderas, se
+deberá a un error en el diseño o utilización del código.
+\item En general una función no debe modificar el contenido de sus parámetros,
+aún cuando esto sea posible, a menos que sea la funcionalidad explícita de esa
+función.
+\end{itemize}
+
+\begin{referencia_python}
+
+\begin{sintaxis}{\lstinline!assert condicion[,mensaje]!}
+Verifica si la condición es verdadera.  En caso contrario, levanta una
+excepción con el mensaje recibido por parámetro.
+\end{sintaxis}
+
+\end{referencia_python}
+
+\section{Apéndice - Acertijo MU}
+
+El acertijo MU\footnote{
+\url{http://en.wikipedia.org/wiki/Invariant\_(computer\_science)}} es un buen
+ejemplo de un problema lógico donde es útil determinar el invariante.  El
+acertijo consiste en buscar si es posible convertir MI a MU, utilizando las
+siguientes operaciones.
+
+\begin{enumerate}
+\item Si una cadena termina con una I, se le puede agregar una U (xI -> xIU)
+\item Cualquier cadena luego de una M puede ser totalmente duplicada (Mx ->
+Mxx)
+\item Donde haya tres Is consecutivas (III) se las puede reemplazar por una U
+(xIIIy -> xUy)
+\item Dos Us consecutivas, pueden ser eliminadas (xUUy -> xy)
+\end{enumerate}
+
+Para resolver este problema, es posible pasar horas aplicando estas reglas
+a distintas cadenas.  Sin embargo, puede ser más fácil encontrar una
+afirmación que sea invariante para todas las reglas y que muestre si es o
+no posible llegar a obtener MU.
+
+Al analizar las reglas, la forma de deshacerse de las Is es conseguir tener
+tres Is consecutivas en la cadena.  La única forma de deshacerse de todas las
+Is es que haya un cantidad de Is consecutivas múltiplo de tres.
+
+Es por esto que es interesante considerar la siguiente afirmación como
+invariante: el número de Is en la cadena no es múltiplo de tres.
+
+Para que esta afirmación sea invariante al acertijo, para
+cada una de las reglas se debe cumplir que: si el invariante era verdadero
+antes de aplicar la regla, seguirá siendo verdadero luego de aplicarla.
+
+Para ver si esto es cierto o no, es necesario considerar la aplicación del
+invariante para cada una de las reglas.
+
+\begin{enumerate}
+\item Se agrega una U, la cantidad de Is no varía, por lo cual se mantiene el
+invariante.
+\item Se duplica toda la cadena luego de la M, siendo $n$ la cantidad de
+Is antes de la duplicación, si $n$ no es múltiplo de 3, $2n$ tampoco lo será.
+\item Se reemplazan tres Is por una U.  Al igual que antes, siendo $n$ la
+cantidad de Is antes del reemplazo, si $n$ no es múltiplo de 3, $n-3$ tampoco
+lo será.
+\item Se eliminan Us, la cantidad de Is no varía, por lo cual se mantiene el
+invariante.
+\end{enumerate}
+
+Todo esto indica claramente que el invariante se mantiene para cada una de las
+posibles transformaciones.  Esto significa que sea cual fuere la regla que se
+elija, si la cantidad de Is no es un múltiplo de tres antes de aplicarla, no
+lo será luego de hacerlo.
+
+Teniendo en cuenta que hay una única I en la cadena inicial MI, y que uno no
+es múltiplo de tres, es imposible llegar a MU con estas reglas, ya que MU
+tiene cero Is, que sí es múltiplo de tres.
+

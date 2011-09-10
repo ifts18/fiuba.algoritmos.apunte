@@ -1,0 +1,1181 @@
+% Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
+%               Margarita Manterola <margamanterola@gmail.com>
+
+% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Commons:
+%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%    http://creativecommons.org/licenses/by-sa/2.5/ar/
+%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
+%
+% A su criterio, puede utilizar una u otra licencia, o las dos.
+% Para ver una copia de las licencias, puede visitar los sitios
+% mencionados, o enviar una carta a Creative Commons,
+% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\chapter{Modelo de ejecución de funciones y recursividad}
+
+\section{La pila de ejecución de las funciones}
+
+% TODO:
+% Esta sección debería estar en un capítulo muy anterior.  Estos conceptos
+% los venimos usando desde bastante antes de ver objetos.
+
+Si miramos el siguiente segmento de código y su ejecución podemos comprobar
+que, pese a tener el mismo nombre, la variable de \lstinline!x! de la función
+\lstinline!f! y la variable de \lstinline!x! de la función \lstinline!g! no
+tienen nada que ver: una y otra se refieren a valores distintos, y modificar
+una no modifica a la otra.
+
+\begin{codigo-python-sn}
+def f():
+    x = 50
+    a = 20
+    print "En f, x vale", x
+
+def g():
+    x = 10
+    b = 45
+    print "En g, antes de llamar a f, x vale", x
+    f()
+    print "En g, después de llamar a f, x vale", x
+\end{codigo-python-sn}
+
+Esta es la ejecución de \lstinline!g()!:
+
+\begin{codigo-python-sn}
+>>> g()
+En g, antes de llamar a f, x vale 10
+En f, x vale 50
+En g, después de llamar a f, x vale 10
+\end{codigo-python-sn}
+
+Este comportamiento lo hemos ido viendo desde el principio, sin embargo,
+nunca se explicó porqué sucede.  Vamos a ver en esta sección cómo se
+ejecutan las llamadas a funciones, para comprender cuál es la razón de este
+comportamiento.
+
+Cada función tiene asociado por un lado un código (el texto del programa)
+que se ejecutará, y por el otro un conjunto de variables que le son propias
+(en este caso \lstinline!x! y \lstinline!a! se asocian con \lstinline!f! y
+\lstinline!x! y \lstinline!b! se asocian con \lstinline!g!) y que no se
+confunden entre sí pese a tener el mismo nombre (no debería llamarnos la
+atención ya que después de todo conocemos a muchas personas que tienen el
+mismo nombre, en este caso la función a la que pertenecen funciona como una
+especie de ``apellido'').
+
+Estos nombres asociados a una función los va {\it descubriendo} el intérprete de
+Python a medida que va ejecutando el programa (hay otros lenguajes en los
+que los nombres se descubren todos juntos antes de iniciar la ejecución).
+
+La ejecución del programa se puede modelar por el siguiente diagrama, en el
+cual los nombres asociados a cada función se encerrarán en una caja o {\it
+marco}:
+
+% Pila de ejecución del código
+\begin{enumerate}
+
+\item  \verb|g()   | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|g|&\verb!     !\\
+	\hline
+	\end{tabular}
+
+\item  \verb|x = 10| \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	\hline
+	\end{tabular}
+
+\item  \verb|b = 45| \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	        & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+
+\item  \verb|print | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	             & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+	\hspace{1cm}
+	\begin{tabular}{l}
+	Imprime: \\
+	{\tt En g, antes de llamar a f, x vale 10}
+	\end{tabular}
+
+\item  \verb|f()   | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|f|&\\
+	\hline
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	        & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+
+\item  \verb|x = 50| \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|f|& x$\rightarrow$ 50 \\
+	\hline
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	             & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+
+\item  \verb|a = 20| \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|f|& x$\rightarrow$ 50 \\
+	             & a$\rightarrow$ 20 \\
+	\hline
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	             & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+
+\item  \verb|print | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|f|& x$\rightarrow$ 50 \\
+	             & a$\rightarrow$ 20 \\
+	\hline
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	             & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+	\hspace{1cm}
+	\begin{tabular}{l}
+	Imprime: \\
+	{\tt En f, x vale 50}
+	\end{tabular}
+
+\item  \verb|print | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|g|& x$\rightarrow$ 10 \\
+	             & b$\rightarrow$ 45 \\
+	\hline
+	\end{tabular}
+	\hspace{1cm}
+	\begin{tabular}{l}
+	Imprime: \\
+	{\tt En g, despues de llamar a f, x vale 10}
+	\end{tabular}
+
+\item  \verb|      | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	pila vacía\\
+	\hline
+	\end{tabular}
+
+\end{enumerate}
+
+Se puede observar que:
+\begin{itemize}
+
+\item Cuando se invoca a \lstinline|g|, se arma un {\it marco} vacío para
+contener las referencias a las variables asociadas con \lstinline|g|. Ese
+marco se apila sobre una {\it pila vacía}.
+
+\item Cuando se ejecuta dentro de \lstinline|g| la invocación
+\lstinline|f()| (en 5) se {\it apila} un {\it marco} vacío que va a alojar
+las variables asociadas con \lstinline|f| (y se transfiere el control del
+programa a la primera instrucción de \lstinline|f|).  El marco de
+\lstinline|g| queda debajo del tope de la pila, y por lo tanto el
+intérprete no lo ve.
+
+\item Mientras se ejecuta \lstinline|f|, todo el tiempo el intérprete busca los
+valores que necesita usando el marco que está en el tope de la pila.
+
+\item Después de ejecutar 8, se encuentra el final de la ejecución de
+\lstinline|f|.  Se desapila el marco de \lstinline|f| y reaparece el marco
+de \lstinline|g| en el tope de la pila. Sigue ejecutando \lstinline|g| a
+partir de donde se suspendió por la invocación a \lstinline|f|.
+\lstinline|g| sólo ve su marco en el tope de la pila.
+
+\item Después de ejecutar 9, se encuentra el final de la ejecución de
+\lstinline|g|.  Se desapila el marco de \lstinline|g| y queda la pila vacía.
+
+\end{itemize}
+
+El {\bf ámbito de definición} de una variable está constituido por todas las
+partes del programa desde donde esa variable {\it se ve}.
+
+\section{Pasaje de parámetros}
+
+Un parámetro es un nombre más dentro del marco de una función.
+Sólo hay que tener en cuenta que si en la invocación se le pasa
+un valor a ese parámetro, en el marco inicial esa variable ya aparecerá
+ligada a un valor. Analicemos el siguiente código de ejemplo:
+
+\begin{codigo-python-sn}
+def fun1(a):
+    print a+1
+
+def fun2(b):
+    fun1 (b+5)
+    print "Volvio a fun2"
+\end{codigo-python-sn}
+
+Con la siguiente ejecución:
+
+\begin{codigo-python-sn}
+>>> fun2(43)
+49
+Volvio a fun2
+\end{codigo-python-sn}
+
+En este caso, la ejecución se puede representar de la siguiente manera:
+
+% Tablas de ejecución
+\begin{enumerate}
+
+\item  \verb|fun2(43) | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|fun2|&b $\rightarrow$43\\
+	\hline
+	\end{tabular}
+
+\item  \verb|fun1(b+5)| \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|fun1|&a $\rightarrow$48\\
+	\hline
+	\hline
+	\verb|fun2|&b $\rightarrow$43\\
+	\hline
+	\end{tabular}
+
+\item  \verb|print    | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|fun1|&a $\rightarrow$48\\
+	\hline
+	\hline
+	\verb|fun2|&b $\rightarrow$43\\
+	\hline
+	\end{tabular}
+	\hspace{1cm}
+	\begin{tabular}{l}
+	Imprime: \\
+	{\tt 49} (es decir 48+1)
+	\end{tabular}
+
+\item  \verb|print    | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|fun2|&b $\rightarrow$43\\
+	\hline
+	\end{tabular}
+	\hspace{1cm}
+	\begin{tabular}{l}
+	Imprime: \\
+	{\tt Volvio a fun2}
+	\end{tabular}
+
+\item  \verb|         | \hspace{1.5cm}
+	\begin{tabular}{r|r|}
+	\hline
+	pila vacía\\
+	\hline
+	\end{tabular}
+
+\end{enumerate}
+
+Cuando se pasan objetos como parámetros, las dos variables hacen referencia al {\it mismo}
+objeto. Eso significa que si el objeto pasado es mutable, cualquier modificación que
+la función invocada realice sobre su parámetro se reflejará en el argumento de la función llamadora,
+como se puede ver en el siguiente ejemplo:
+
+\begin{codigo-python-sn}
+def modif(lista):
+    lista[0]=5
+
+def llama():
+    ls = [1,2,3,4]
+    print ls
+    modif(ls)
+    print ls
+\end{codigo-python-sn}
+
+Y esta es la ejecución:
+\begin{codigo-python-sn}
+>>> llama()
+[1, 2, 3, 4]
+[5, 2, 3, 4]
+\end{codigo-python-sn}
+
+\begin{itemize}
+
+\item Cuando se invoca a \lstinline|modif(ls)| desde \lstinline|llama|, el
+esquema de la pila es
+el siguiente:
+
+\begin{tabular}{rcc|c|}
+en \lstinline|modif|: &\lstinline!lista!& $\rightarrow$ & \\
+                      &  &  & [1,2,3,4] \\
+en \lstinline|llama|: &\lstinline!ls!& $\rightarrow$ & \\
+\end{tabular}
+
+\item Cuando se modifica la lista desde \lstinline|modif|, el esquema de la
+pila es el siguiente:
+
+\begin{tabular}{rcc|c|}
+en \lstinline|modif|: &\lstinline!lista!& $\rightarrow$ & \\
+                      &  &  & [5,2,3,4] \\
+en \lstinline|llama|: &\lstinline!ls!& $\rightarrow$ & \\
+\end{tabular}
+
+\item Cuando la ejecución vuelve a \lstinline|llama|, \lstinline!ls!
+seguirá apuntando a la lista \lstinline|[5, 2, 3, 4]|.
+
+\end{itemize}
+
+En cambio, cuando el parámetro cambia la referencia que se le pasó por una
+referencia a otro objeto, el llamador no se entera:
+
+\begin{codigo-python-sn}
+def cambia_ref(lista):
+    lista=[5,1,2,3,4]
+
+def llama2():
+    ls=[1,2,3,4]
+    print ls
+    cambia_ref(ls)
+    print ls
+\end{codigo-python-sn}
+
+\begin{codigo-python-sn}
+>>> llama2()
+[1, 2, 3, 4]
+[1, 2, 3, 4]
+\end{codigo-python-sn}
+
+\begin{itemize}
+
+\item Cuando se invoca a \lstinline|cambia_ref(ls)| desde
+\lstinline|llama2|, el esquema de la pila es el siguiente:
+
+\begin{tabular}{rcc|c|}
+en \lstinline|cambia_ref|:&\lstinline!lista!& $\rightarrow$ & \\
+                          &                 &               & [1,2,3,4] \\
+en \lstinline|llama2|:&\lstinline!ls!& $\rightarrow$ &  \\
+\end{tabular}
+
+\item Cuando se cambia referencia a la lista desde \verb|cambia_ref|, el esquema de la pila es
+el siguiente:
+
+\begin{tabular}{rcc|c|}
+en \lstinline|cambia_ref|:&\lstinline!lista!& $\rightarrow$ & [5,1,2,3,4]\\
+[0cm] \\
+en \lstinline|llama2|:&\lstinline!ls!& $\rightarrow$ &  [1,2,3,4]\\
+\end{tabular}
+
+\item Cuando la ejecución vuelve a \lstinline|llama2|, \lstinline!ls!
+seguirá apuntando a la lista \lstinline|[1, 2, 3, 4]|.
+
+\end{itemize}
+
+\section{Devolución de resultados}
+
+Finalmente, para completar los distintos seguimientos, debemos tener en
+cuenta que los resultados que devuelve la función llamada, se {\it reciben}
+en la expresión correspondiente de la función llamadora.
+
+\begin{codigo-python-sn}
+def devuelve(valor):
+    cuadrado = valor * valor
+    return cuadrado
+
+def recibe(valor):
+    cuad = devuelve(valor+1)
+    print cuad
+\end{codigo-python-sn}
+
+En este caso, si hacemos el seguimiento de la llamada:
+\begin{codigo-python-sn}
+>>> recibe(5)
+36
+\end{codigo-python-sn}
+
+Veremos algo como lo siguiente:
+
+% Tablas de ejecución
+\begin{enumerate}
+
+\item  \verb|recibe(5)               | \hspace{1.5cm}
+	\begin{tabular}{r|l|}
+	\hline
+	\verb|recibe|&valor $\rightarrow$5\\
+	\hline
+	\end{tabular}
+
+\item  \verb|cuad = devuelve(valor+1)| \hspace{1.5cm}
+	\begin{tabular}{r|l|}
+	\hline
+	\verb|recibe|&valor $\rightarrow$5\\
+	\hline
+	\end{tabular}
+	\begin{tabular}{l}
+	Se suspende la ejecución.\\
+	Se llama a \verb|devuelve(6)|.
+	\end{tabular}
+
+\item  \verb|devuelve(6)             | \hspace{1.5cm}
+	\begin{tabular}{r|l|}
+	\hline
+	\verb|devuelve|&valor $\rightarrow$6\\
+	\hline
+	\hline
+	\verb|recibe|&valor $\rightarrow$5\\
+	\hline
+	\end{tabular}
+	\hspace{1cm}
+	
+\item  \verb|cuadrado = valor * valor| \hspace{1.5cm}
+	\begin{tabular}{r|l|}
+	\hline
+	\verb|devuelve|&valor $\rightarrow$6\\
+	           &cuadrado $\rightarrow$36\\
+	\hline
+	\hline
+	\verb|recibe|&valor $\rightarrow$5\\
+	\hline
+	\end{tabular}
+
+\item  
+\begin{tabular}{l}
+En \lstinline!devuelve(6)!: \\ \verb|    return cuadrado| \\
+En \lstinline!recibe(5)!:   \\ \verb|    cuad = devuelve(valor+1) |
+\end{tabular}
+	\begin{tabular}{r|l|}
+	\hline
+	\verb|recibe|&valor $\rightarrow$5\\
+	             &cuad  $\rightarrow$36\\
+	\hline
+	\end{tabular}
+
+\item  \verb!print cuad              ! \hspace{1.5cm}
+	\begin{tabular}{r|l|}
+	\hline
+	\verb|recibe|&valor $\rightarrow$5\\
+	             &cuad  $\rightarrow$36\\
+	\hline
+	\end{tabular}
+	\begin{tabular}{l}
+	Imprime:\\
+	\verb|36|.
+	\end{tabular}
+
+\item  \verb|                        | \hspace{1.5cm}
+	\begin{tabular}{r|l|}
+	\hline
+	pila vacía\\
+	\hline
+	\end{tabular}
+
+\end{enumerate}
+
+Según se ve en el paso 5, al momento de devolver un valor, el valor de
+retorno correspondiente a la función \lstinline!devuelve! es el que se
+asigna a la variable \lstinline!cuad!, a la vez que la llamada a la función
+se elimina de la pila.
+
+% FIXME: el newpage hace falta por la figura que viene después.  No debería
+% ser necesario.
+%\newpage
+\section{La recursión y cómo puede ser que funcione}
+
+% FIXME: el wrapfigure no funciona cuando este no es el único capítulo :(
+%\begin{wrapfigure}{R}{0.4\textwidth}
+%  \vspace{-0.7cm}
+%  \capstart
+%  \begin{center}
+%    \includegraphics[width=0.38\textwidth]{graficos/droste}
+%  \end{center}
+%  \caption{\small Una imagen recursiva: la publicidad de Cacao Droste,
+%bajada de \url{http://en.wikipedia.org/wiki/Image:Droste.jpg}}
+%  \vspace{-3cm}
+%\end{wrapfigure}
+
+Estamos acostumbrados a escribir funciones que llaman a otras funciones.
+Pero lo cierto es que nada impide que en Python (y en muchos otros
+lenguajes) una función se llame a sí misma. Y lo más interesante es que
+esta propiedad, que se llama {\it recursión}, permite en muchos casos
+encontrar soluciones muy elegantes para determinados problemas. \\
+
+En materias de matemática se estudian los razonamientos por inducción para
+probar propiedades de números enteros, la recursión no es más que una
+generalización de la inducción a más estructuras: las listas, las cadenas
+de caracteres, las funciones, etc. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[width=0.38\textwidth]{graficos/droste}
+  \end{center}
+  \caption{\small Una imagen recursiva: la publicidad de Cacao Droste,
+bajada de \url{http://en.wikipedia.org/wiki/Image:Droste.jpg}}
+\end{figure}
+
+A continuación estudiaremos diversas situaciones en las cuales aparece la
+recursión, veremos cómo es que esto puede funcionar, algunas situaciones en
+las que es conveniente utilizarla y otras situaciones en las que no. 
+
+% TODO: más que dejar lugar, habría que escribir algo más.
+%\vspace{2.5cm}
+
+\section{Una función recursiva matemática}
+
+Es muy común tener definiciones inductivas de operaciones, como por ejemplo:
+
+$x! = x * (x-1)!$ si $x>0$, $0! = 1$
+
+Este tipo de definición se traduce naturalmente en una función en Python:
+
+\begin{codigo-python-sn}
+def factorial(n):
+    """ Precondición: n entero >=0
+        Devuelve: n! """
+    if n == 0:
+        return 1
+
+    return n * factorial(n-1)
+\end{codigo-python-sn}
+
+Esta es la ejecución del factorial para \lstinline!n=0! y para
+\lstinline!n=3!.
+
+\begin{codigo-python-sn}
+>>> factorial(0)
+1
+>>> factorial(3)
+6
+\end{codigo-python-sn}
+
+El sentido de la instrucción de la instrucción 
+\lstinline|n * factorial (n-1)| es exactamente el mismo que el de la
+definición inductiva: para calcular el factorial de $n$ se debe multiplicar
+$n$ por el factorial de $n-1$.
+
+Dos piezas fundamentales para garantizar el funcionamiento de este programa
+son:
+
+\begin{itemize}
+\item Que se defina un {\it caso base} (en este caso la indicación, no recursiva,
+de cómo calcular \lstinline|factorial(0)|), que corta las llamadas recursivas.
+
+\item Que el argumento de la función respete la precondición
+de que \lstinline!n! debe ser {\it un entero mayor o igual que 0}.
+\end{itemize}
+
+Dado que ya vimos la pila de evaluación, y cómo funciona, no debería
+llamarnos la atención que esto pueda funcionar adecuadamente en un lenguaje
+de programación que utilice pila para evaluar.
+
+Para poder analizar qué sucede a cada paso de la ejecución de la función,
+utilizaremos una versión más detallada del mismo código, en la que cada
+paso se asigna a una variable.
+
+\begin{codigo-python-sn}
+def factorial(n):
+    """ Precondición: n entero >=0
+        Devuelve: n! """
+    if n == 0:
+        r = 1
+        return r
+
+    f = factorial(n-1)
+    r = n * f
+    return r
+\end{codigo-python-sn}
+
+Esta porción de código funciona exactamente igual que la anterior, pero nos
+permite ponerles nombres a los resultados intermedios de cada operación
+para poder estudiar qué sucede a cada paso.
+Analicemos, entonces, el \lstinline|factorial(3)|  mediante la pila de
+evaluación:
+
+\begin{enumerate}
+
+\item  \verb|factorial(3)              | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|if n == 0:                | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|f = factorial (n-1)       |
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+	\begin{tabular}{l}
+	Se suspende el cálculo. \\
+	Se llama a \verb|factorial(2)|.
+	\end{tabular}
+
+\item  \verb|factorial(2)              | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|if n == 0:                | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|f = factorial (n-1)       |
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+	\begin{tabular}{l}
+	Se suspende el cálculo. \\
+	Se llama a \verb|factorial(1)|.
+	\end{tabular}
+
+\item  \verb|factorial(1)              | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|if n == 0:                | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|f = factorial (n-1)       | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+	\begin{tabular}{l}
+	Se suspende el cálculo. \\
+	Se llama a \verb|factorial(0)|.
+	\end{tabular}
+
+\item  \verb|factorial(0)              | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$0\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|if n == 0:                | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$0\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|r = 1                     | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$0\\
+	          &r $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item
+\begin{tabular}{l}
+En \lstinline!factorial(0)!: \\ \verb|    return r| \\
+En \lstinline!factorial(1)!: \\ \verb|    f = factorial (n-1) |
+\end{tabular}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$1\\
+	&f $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|r = n * f                 | 
+\begin{tabular}{r|r|}
+\hline
+\verb|factorial|&n $\rightarrow$1\\
+  &f $\rightarrow$1\\
+  &r $\rightarrow$1\\
+\hline
+\hline
+\verb|factorial|&n $\rightarrow$2\\
+\hline
+\hline
+\verb|factorial|&n $\rightarrow$3\\
+\hline
+\end{tabular}
+
+\item
+\begin{tabular}{l}
+En \lstinline!factorial(1)!: \\ \verb|    return r| \\
+En \lstinline!factorial(2)!: \\ \verb|    f = factorial (n-1) |
+\end{tabular}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	&f $\rightarrow$1\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item  \verb|r = n * f                 | 
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$2\\
+	  &f $\rightarrow$1\\
+	  &r $\rightarrow$2\\
+	\hline
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	\hline
+	\end{tabular}
+
+\item
+\begin{tabular}{l}
+En \lstinline!factorial(2)!: \\ \verb|    return r| \\
+En \lstinline!factorial(3)!: \\ \verb|    f = factorial (n-1) |
+\end{tabular}
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	&f $\rightarrow$2\\
+	\hline
+	\end{tabular}
+
+\item  \verb|r = n * f                 |
+	\begin{tabular}{r|r|}
+	\hline
+	\verb|factorial|&n $\rightarrow$3\\
+	  &f $\rightarrow$2\\
+	  &r $\rightarrow$6\\
+	\hline
+	\end{tabular}
+
+\item  \verb|return r                  |
+	\begin{tabular}{r|r|}
+	\hline
+	\verb!    ! pila vacía \verb!   ! \\
+	\hline
+	\end{tabular}
+	\hspace{0.2cm} Devuelve el valor $6$
+\end{enumerate}
+
+\begin{minipage}{\linewidth}
+\centering%
+\includegraphics[width=10cm]{graficos/recursive}
+\figcaption{Otra imagen recursiva: captura de pantalla de RedHat, bajada de http://www.jfedor.org/}%
+\label{fig:redhat_recursivo}%
+\end{minipage}
+
+\section{Algoritmos recursivos y algoritmos iterativos}
+
+Llamaremos {\it algoritmos recursivos} a aquellos que realizan llamadas
+recursivas para llegar al resultado, y {\it algoritmos iterativos} a
+aquellos que llegan a un resultado a través de una iteración mediante un
+ciclo definido o indefinido.
+
+Todo algoritmo recursivo puede expresarse como iterativo y viceversa.  Sin
+embargo, según las condiciones del problema a resolver podrá ser preferible
+utilizar la solución recursiva o la iterativa.
+
+Una posible implementación iterativa de la función \lstinline!factorial!
+vista anteriormente sería:
+
+\begin{codigo-python-sn}
+def factorial(n):
+    """ Precondición: n entero >=0
+        Devuelve: n! """
+
+    fact = 1
+    for num in xrange(n, 1, -1):
+        fact *= num
+    return fact
+\end{codigo-python-sn}
+
+Se puede ver que en este caso no es necesario incluir un caso base, ya que
+el mismo ciclo incluye una condición de corte, pero que sí es necesario
+incluir un acumulador, que en el caso recursivo no era necesario.
+
+Por otro lado, si hiciéramos el seguimiento de esta función, como se hizo
+para la versión recursiva, veríamos que se trata de una única pila, en la
+cual se van modificando los valores de \lstinline!num! y \lstinline!fact!.
+
+Es por esto que las versiones recursivas de los algoritmos, en general,
+utilizan más memoria (la pila del estado de las funciones se guarda en
+memoria) pero suelen ser más elegantes.
+
+\section{Un ejemplo de recursividad elegante}
+
+Consideremos ahora otro problema que puede ser resuelto de forma elegante
+mediante un algoritmo recursivo.
+
+La función \lstinline!potencia(b,n)!, vista en unidades anteriores,
+realizaba \lstinline!n! iteraciones para poder obtener el valor de $b^n$.
+Sin embargo, es posible optimizarla teniendo en cuenta que: \\
+
+\begin{tabular}{ll}
+$b^n = b^{n/2} \times b^{n/2}$ & Si $n$ es par. \\
+$b^n = b^{(n-1)/2} \times b^{(n-1)/2} \times b$ &  Si $n$ es impar. \\
+\end{tabular} \\
+
+Antes de programar cualquier función recursiva es necesario decidir cuál
+será el {\it caso base} y cuál el {\it caso recursivo}.  Para esta función,
+tomaremos $n=0$ como el caso base, en el que devolveremos $1$; y el caso
+recursivo tendrá dos partes, correspondientes a los dos posibles grupos de
+valores de $n$.
+
+\begin{codigo-python-sn}
+def potencia(b,n):
+    """ Precondición: n debe ser mayor o igual que cero.
+        Devuelve: b^n. """
+
+    # Caso base
+    if n <= 0:
+        return 1
+
+    # n par
+    if n % 2 == 0:
+        pot = potencia(b, n/2)
+        return pot * pot
+    # n impar
+    else:
+        pot = potencia(b, (n-1)/2)
+        return pot * pot * b
+\end{codigo-python-sn}
+
+El uso de la variable \lstinline!pot! en este caso no es optativo, ya que
+es una de las ventajas principales de esta implementación: se aprovecha el
+resultado calculado en lugar de tener que calcularlo dos veces. Vemos que
+este código funciona correctamente:
+
+\begin{codigo-python-sn}
+>>> potencia(2,10)
+1024
+>>> potencia(3,3)
+27
+>>> potencia(5,0)
+1
+\end{codigo-python-sn}
+
+El orden de las llamadas, haciendo un seguimiento simplificado de la
+función será:
+
+\begin{enumerate}
+\item \verb!potencia(2,10)! 
+\item \hspace{1cm} \verb!pot = potencia(2,5) !
+\hspace{4cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 10\end{tabular}
+\item \hspace{2cm} \verb!pot = potencia(2,2) !
+\hspace{3cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 5$\;\,$\end{tabular}
+\item \hspace{3cm} \verb!pot = potencia(2,1) !
+\hspace{2cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 2$\;\,$\end{tabular}
+\item \hspace{4cm} \verb!pot = potencia(2,0) ! 
+\hspace{1cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 1$\;\,$\end{tabular}
+\item \hspace{5cm} \verb!return 1            !
+\hspace{0cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 0$\;\,$\end{tabular}
+\item \hspace{4cm} \verb!return 1 * 1 * 2    !
+\hspace{1cm} \begin{tabular}{|c|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 1$\;\,$
+& pot $\rightarrow$ 1$\;\,$ \end{tabular}
+\item \hspace{3cm} \verb!return 2 * 2        !
+\hspace{2cm} \begin{tabular}{|c|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 2$\;\,$
+& pot $\rightarrow$ 2$\;\,$ \end{tabular}
+\item \hspace{2cm} \verb!return 4 * 4 * 2    !
+\hspace{3cm} \begin{tabular}{|c|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 5$\;\,$
+& pot $\rightarrow$ 4$\;\,$ \end{tabular}
+\item \hspace{1cm} \verb!return 32 * 32      ! 
+\hspace{4cm} \begin{tabular}{|c|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 10
+& pot $\rightarrow$ 32 \end{tabular}
+\end{enumerate}
+
+Se puede ver, entonces, que para calcular $2^{10}$ se realizaron 5 llamadas a
+\lstinline!potencia!, mientras que en la implementación más sencilla se
+realizaban 10 iteraciones. Y esta optimización será cada vez más importante
+a medida que aumenta \lstinline!n!, por ejemplo, para $n = 100$ se
+realizarán 8 llamadas recursivas, para $n = 1000$, 11 llamadas. \\
+
+% Esto no es para darlo, es sólo para que esté
+
+Para transformar este algoritmo recursivo en un algoritmo iterativo, es
+necesario {\it simular} la pila de llamadas a funciones mediante una pila que
+almacene los valores que sean necesarios.  En este caso, lo que apilaremos será
+si el valor de \lstinline!n! es par o no.
+
+\begin{codigo-python-sn}
+def potencia(b,n):
+    """ Precondición: n debe ser mayor o igual que cero.
+        Devuelve: b^n. """
+
+    pila = []
+    while n > 0:
+        if n % 2 == 0:
+            pila.append(True)
+            n /= 2
+        else:
+            pila.append(False)
+            n = (n-1)/2
+
+    pot = 1
+    while pila:
+        es_par = pila.pop()
+        if es_par:
+            pot = pot * pot
+        else:
+            pot = pot * pot * b
+
+    return pot
+\end{codigo-python-sn}
+
+Como se puede ver, este código es mucho más complejo que la versión recursiva,
+esto se debe a que utilizando recursividad el uso de la pila de llamadas a
+funciones oculta el proceso de apilado y desapilado y permite concentrarse
+en la parte importante del algoritmo.
+
+\section{Un ejemplo de recursividad poco eficiente}
+
+Del ejemplo anterior se podría deducir que siempre es mejor utilizar algoritmos
+recursivos, sin embargo -como ya se dijo- cada situación debe ser analizada por
+separado.
+
+Un ejemplo clásico en el cual la recursividad tiene un resultado muy poco
+eficiente es el de los números de fibonacci.  La sucesión de fibonacci está
+definida por la siguiente relación:
+
+\begin{tabular}{rcl}
+\lstinline!fib(0)! &=& 0 \\
+\lstinline!fib(1)! &=& 1 \\
+\lstinline!fib(n)! &=& \lstinline!fib(n-1)! + \lstinline!fib(n-2)!
+\end{tabular}
+
+Los primeros números de esta sucesión son: $0$, $1$, $1$, $2$, $3$, $5$, $8$,
+$13$, $21$, $34$, $55$. 
+
+Dada la definición recursiva de la sucesión, puede resultar muy tentador
+escribir una función que calcule en valor de \lstinline!fib(n)! de la siguiente
+forma:
+
+\begin{codigo-python-sn}
+def fib(n):
+    """ Precondición: n debe ser >= 0.
+        Devuelve: el número de fibonacci número n. """
+    if n == 0 or n == 1:
+        return n
+    return fib(n-1) + fib(n-2)
+\end{codigo-python-sn}
+
+Sin embargo, si bien es muy sencillo y elegante, este código es extremadamente
+poco eficiente.  Ya que para calcular \lstinline!fib(n-1)! es necesario calcular
+\lstinline!fib(n-2)!, que luego volverá a ser calculado para obtener el valor de
+\lstinline!fib(n)!.
+
+Por ejemplo, una simple llamada a \lstinline!fib(5)!, generaría
+recursivamente todas las llamadas ilustradas en la Figura \ref{fibonacci}.
+Puede verse que muchas de estas llamadas están repetidas, generando un
+total de 15 llamadas a la función \lstinline!fib!, sólo para devolver el
+número 5.
+
+\begin{figure}[htb]
+\includegraphics{graficos/18_fibonacci}
+\caption{Árbol de llamadas para \lstinline!fib(5)!}
+\label{fibonacci}
+\end{figure}
+
+En este caso, será mucho más conveniente utilizar una versión iterativa,
+que vaya almacenando los valores de las dos variables anteriores a medida
+que los va calculando.  
+
+% FIXME: hace falta un newpage, porque sino corta el código mal
+\newpage
+
+\begin{codigo-python-sn}
+def fib(n):
+    """ Precondición: n debe ser >= 0.
+        Devuelve: el número de fibonacci número n. """
+    if n == 0 or n == 1:
+        return n
+
+    ant2 = 0
+    ant1 = 1
+    for i in xrange(2, n+1):
+        fibn = ant1 + ant2
+        ant2 = ant1
+        ant1 = fibn
+    return fibn
+\end{codigo-python-sn}
+
+Vemos que el caso base es el mismo para ambos algoritmos, pero que en el
+caso iterativo se calcula el número de fibonacci de forma incremental, de
+modo que para obtener el valor de \lstinline!fib(n)! se harán $n-1$
+iteraciones.
+
+\begin{atencion}
+En definitiva, vemos que un algoritmo recursivo {\bf no} es mejor que uno
+iterativo, ni viceversa.  En cada situación será conveniente analizar cuál
+algoritmo provee la solución al problema de forma más clara y eficiente.
+\end{atencion}
+
+\section{Limitaciones}
+
+Si creamos una función sin {\it caso base}, obtendremos el equivalente
+recursivo de un bucle infinito.  Sin embargo, como cada llamada recursiva
+agrega un elemento a la pila de llamadas a funciones y la memoria de
+nuestras computadoras no es infinita, el ciclo deberá terminarse cuando se
+agote la memoria disponible.
+
+En particular, en Python, para evitar que la memoria se termine, la pila de
+ejecución de funciones tiene un límite. Es decir, que si se ejecuta un
+código como el que sigue:
+
+\begin{codigo-python-sn}
+def inutil(n):
+    return inutil(n-1)
+\end{codigo-python-sn}
+
+Se obtendrá un resultado como el siguiente:
+
+\begin{codigo-python-sn}
+>>> inutil(1)
+  File "<stdin>", line 2, in inutil
+  File "<stdin>", line 2, in inutil
+  (...)
+  File "<stdin>", line 2, in inutil
+RuntimeError: maximum recursion depth exceeded
+\end{codigo-python-sn}
+
+El límite por omisión es de 1000 llamadas recursivas. Es posible modificar
+el tamaño máximo de la pila de recursión mediante la instrucción
+\lstinline!sys.setrecursionlimit(n)!.  Sin embargo, si se está alcanzando
+este límite suele ser una buena idea pensar si realmente el algoritmo
+recursivo es el que mejor resuelve el problema.
+
+\begin{sabias_que}
+Existen algunos lenguajes {\it funcionales}, como Haskell, ML, o Scheme, en
+los cuales la recursividad es la única forma de realizar un ciclo.  Es
+decir, no existen construcciones {\tt while} ni {\tt for}. 
+
+Estos lenguajes cuentan con una optimización especial, llamada {\it
+optimización de recursión por cola} ({\it tail recursion optimization}),
+que permite que cuando una función realiza su llamada recursiva como {\bf
+última} acción antes de terminar, no se apile el estado de la función
+innecesariamente, evitando el consumo adicional de memoria mencionado
+anteriormente.
+
+La función \lstinline!factorial! vista en esta unidad es un ejemplo de {\it
+recursión por cola} cuya ejecución puede ser optimizada por el compilador o
+intérprete del lenguaje.
+\end{sabias_que}
+
+\section{Resumen}
+
+\begin{itemize}
+
+\item A medida que se realizan llamadas a funciones, el estado de las
+funciones anteriores se almacena en una {\it pila} de llamadas a funciones.
+
+\item Esto permite que sea posible que una función se llame a sí misma,
+pero que las variables dentro de la función tomen distintos valores.
+
+\item La {\bf recursión} es el proceso en el cual una función se llama a
+sí misma.  Este proceso permite crear un nuevo tipo de ciclos.
+
+\item Siempre que se escribe una función recursiva es importante considerar
+el {\bf caso base} (el que detendrá la recursividad) y el {\bf caso
+recursivo} (el que realizará la llamada recursiva).  Una función recursiva
+sin caso base, es equivalente a un bucle infinito.
+
+\item Una función no es mejor ni peor por ser recursiva.  En cada situación
+a resolver puede ser conveniente utilizar una solución recursiva o una
+iterativa.  Para elegir una o la otra será necesario analizar las
+características de elegancia y eficiencia.
+
+\end{itemize}
