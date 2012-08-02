@@ -2,7 +2,7 @@
 #encoding: latin1
 
 def py_qsort(l):
-	""" Otra implementación de quicksort, devuelve una nueva lista. """
+    """ Otra implementación de quicksort, devuelve una nueva lista. """
     if len(l) <= 1:
         return l
 	# Separa en menores y mayores mediante listas por comprensión

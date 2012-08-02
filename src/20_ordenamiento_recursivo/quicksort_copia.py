@@ -20,7 +20,7 @@ def _partition(lista):
     pivote = lista[0]
     menores = []
     mayores = []
-    for x in xrange(1,len(lista)-1):
+    for x in xrange(1, len(lista)):
         if lista[x] < pivote:
             menores.append(lista[x])
         else:

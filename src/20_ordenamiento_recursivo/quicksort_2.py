@@ -2,7 +2,7 @@
 #encoding: latin1
 
 def qsort(lista):
-	""" Otra implementación de quicksort. """
+    """ Otra implementación de quicksort. """
     def _qsort(lista, inicio, fin):
         if inicio >= fin:
             return
