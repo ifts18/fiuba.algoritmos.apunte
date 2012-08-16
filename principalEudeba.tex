@@ -13,7 +13,7 @@
 % 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
 
-\documentclass[oldfontcommands, 12pt]{memoir}
+\documentclass[oldfontcommands, 11pt]{memoir}
 \setlength{\pdfpagewidth}{15.7cm}
 \setlength{\pdfpageheight}{23cm}
 
@@ -77,6 +77,7 @@
 % 1in(fijo) + \voffset + \topmargin + \headheight + \headsep + \textheight +
 % \footskip
 
+%Esto se sacó para agregar Eudeba:
 %\setlength\oddsidemargin{-0.04cm}
 %\setlength\evensidemargin{-0.04cm}
 %\setlength\topmargin{0cm}
@@ -90,6 +91,8 @@
 
 %\leftmargin 2.5cm
 %\rightmargin 2.5cm
+
+%Hasta acá se sacó todo por Eudeba
 
 \usepackage{fancyhdr}         %
 \pagestyle{fancy}
@@ -183,6 +186,9 @@
     numberstyle=\tiny,
     numbersep=5pt,
     showstringspaces=false,
+%    basicstyle=\small, 
+%	stringstyle=\ttfamily % print whole listing small
+%}
     basicstyle=\ttfamily}
 %    basicstyle=\ttfamily\normalsize,
 %    keywordstyle=\ttfamily\bfseries,

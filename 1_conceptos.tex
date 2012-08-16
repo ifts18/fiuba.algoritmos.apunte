@@ -584,16 +584,23 @@ mostramos las funciones asociadas a una cadena.
 
 \begin{lstlisting}[numbers=none]
 >>> dir("hola")
-['__add__', '__class__', '__contains__', '__delattr__', '__doc__', '__eq__',
-'__ge__', '__getattribute__', '__getitem__', '__getnewargs__', '__getslice__',
-'__gt__', '__hash__', '__init__', '__le__', '__len__', '__lt__', '__mod__',
-'__mul__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__',
-'__rmod__', '__rmul__', '__setattr__', '__str__', 'capitalize', 'center',
-'count', 'decode', 'encode', 'endswith', 'expandtabs', 'find', 'index',
-'isalnum', 'isalpha', 'isdigit', 'islower', 'isspace', 'istitle', 'isupper',
-'join', 'ljust', 'lower', 'lstrip', 'partition', 'replace', 'rfind', 'rindex',
-'rjust', 'rpartition', 'rsplit', 'rstrip', 'split', 'splitlines',
-'startswith', 'strip', 'swapcase', 'title', 'translate', 'upper', 'zfill']
+['__add__', '__class__', '__contains__', 
+'__delattr__', '__doc__', '__eq__',
+'__ge__', '__getattribute__', '__getitem__', 
+'__getnewargs__', '__getslice__', '__gt__', 
+'__hash__', '__init__', '__le__', '__len__', 
+'__lt__', '__mod__', '__mul__', '__ne__', 
+'__new__', '__reduce__', '__reduce_ex__', 
+'__repr__', '__rmod__', '__rmul__', '__setattr__', 
+'__str__', 'capitalize', 'center', 'count', 
+'decode', 'encode', 'endswith', 'expandtabs', 
+'find', 'index', 'isalnum', 'isalpha', 
+'isdigit', 'islower', 'isspace', 'istitle', 
+'isupper', 'join', 'ljust', 'lower', 'lstrip', 
+'partition', 'replace', 'rfind', 'rindex',
+'rjust', 'rpartition', 'rsplit', 'rstrip', 
+'split', 'splitlines', 'startswith', 'strip', 
+'swapcase', 'title', 'translate', 'upper', 'zfill']
 \end{lstlisting}
 
 Como se puede ver son muchas las funciones asociadas a las cadenas, pero no
@@ -651,7 +658,8 @@ programa se encuentra en el Código \ref{cuad.py}.
 \label{cuad.py}
 \begin{codigo-python}
 #!/usr/bin/env python
-""" Un programa sencillo, para calcular cuadrados de números """
+""" Un programa sencillo, para calcular cuadrados 
+de números """
 
 def main():
     print "Se calcularán cuadrados de números"
@@ -810,7 +818,7 @@ denomina {\it computación}.
 Para ejemplificar estos conceptos veamos qué sucede cuando se
 ejecuta el programa \lstinline!cuad!:
 
-\begin{tabular}[c]{|p{5.5cm}|p{7cm}|b{1.5cm}|}
+\begin{longtable}[c]{|p{5.5cm}|p{3.5cm}|b{1.5cm}|}
 \hline
 {\bf Instrucción} & {\bf Qué sucede} & {\bf Estado}\\
 
@@ -892,7 +900,7 @@ se sale del ciclo.
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
 
 \hline
-\end{tabular}
+\end{longtable}
 
 \section{Depuración de programas}
 
