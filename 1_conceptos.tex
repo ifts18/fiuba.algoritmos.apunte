@@ -409,7 +409,7 @@ def cuad1(num):
 \end{codigo}
 
 Para invocarlo, deberemos hacer:
-\begin{lstlisting}
+\begin{lstlisting}[numbers=none]
 >>> cuad1(5)
 25
 >>>
@@ -729,13 +729,13 @@ procese y ejecute.
 \section{La forma de un programa Python}
 
 La primera instrucción de \verb+cuad.main+ es
-\begin{lstlisting}[firstnumber=5]
+\begin{lstlisting}[firstnumber=6]
     print "Se calcularán cuadrados de números"
 \end{lstlisting}
 que lo que hace es mostrar un mensaje por pantalla.
 
 Las instrucciones segunda y tercera
-\begin{lstlisting}[firstnumber=7]
+\begin{lstlisting}[firstnumber=8]
     n1 = input("Ingrese un número entero: ")
     n2 = input("Ingrese otro número entero: ")
 \end{lstlisting}
@@ -774,7 +774,7 @@ variable \lstinline+n1+ y el valor 5 con la variable \lstinline+n2+.
 
 Luego de leer esos valores, se procede a ejecutar el ciclo
 
-\begin{lstlisting}[firstnumber=10]
+\begin{lstlisting}[firstnumber=11]
     for x in range(n1, n2):
         print x*x
 \end{lstlisting}
@@ -787,7 +787,7 @@ pantalla los valores de los cuadrados de 3 y 4).
 Finalmente, cuando se terminan las repeticiones indicadas en el ciclo, se
 ejecuta la instrucción
 
-\begin{lstlisting}[firstnumber=13]
+\begin{lstlisting}[firstnumber=14]
 	print "Es todo por ahora"
 \end{lstlisting}
 
@@ -908,6 +908,8 @@ Una manera de seguir la evolución del estado es insertar instrucciones de impres
 en sitios críticos del programa. Esto nos será de utilidad para detectar errores
 y también para comprender cómo funcionan determinadas instrucciones.
 
+
+\newpage
 \section{Ejercicios}
 
 \ejercicioc{Correr tres veces el programa \lstinline!cuad! con valores
@@ -926,4 +928,49 @@ número junto a su cuadrado. Ejecutar el programa nuevo.}
 
 \ejercicioc{Si la salida sigue siendo poco informativa seguir mejorándola hasta
 que sea lo suficientemente clara.}
+
+\ejercicioc{Escribir un programa que pregunte al usuario:}
+\begin{partes}
+  \item su nombre, y luego lo salude.
+  \item dos números y luego muestre el producto.
+\end{partes}
+
+\ejercicioc{Implementar algoritmos que permitan:}
+\begin{partes}
+ \item Calcular el perímetro y área de un rectángulo dada su base y su altura.
+ \item Calcular el perímetro y área de un círculo dado su radio.
+ \item Calcular el volumen de una esfera dado su radio.
+ \item Calcular el área de un rectángulo (alineado con los ejes x e y) dadas sus coordenadas x1,x2,y1,y2. 
+ \item Dados los catetos de un triángulo rectángulo, calcular su hipotenusa.
+\end{partes}
+
+%\begin{ejercicio} Mostrar una ejecución y el estado en memoria de las variables utilizadas en cada uno de los algoritmos del ejercicio anterior
+%\end{ejercicio}
+
+\ejercicioc{Mostrar el resultado de ejecutar estos bloques de código en el intérprete de python:}
+\begin{partes}
+\item \begin{verbatim}
+>>> for i in range(5):
+        print i * i
+\end{verbatim}
+\item \begin{verbatim}
+>>> for i in range(2,6):
+        print i, 2**i
+\end{verbatim}
+\item \begin{verbatim}
+>>> for d in [3, 1, 4, 1, 5]:
+        print d,
+\end{verbatim}
+\end{partes}
+
+
+\ejercicioc{Implementar algoritmos que resuelvan los siguientes problemas:}
+\begin{partes}
+  \item Dados dos números, indicar la suma, resta, división y multiplicación de ambos. 
+  \item Dado un número entero N, imprimir su tabla de multiplicar.
+  \item Dado un número entero N, imprimir su factorial.
+\end{partes}
+
+\ejercicioc{Escribir un programa que le pida una palabra al usuario, para luego 
+imprimirla 1000 veces, con espacios intermedios.}
 
