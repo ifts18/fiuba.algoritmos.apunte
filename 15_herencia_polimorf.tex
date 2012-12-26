@@ -498,3 +498,36 @@ variable en una porción de código cualquiera.
 \end{itemize}
 
 
+\newpage
+\section{Ejercicios}
+
+\ejercicio{\bf Papel, Birome, Marcador}
+\begin{partes}
+    \item Escribir una clase {\it Papel} que contenga un texto, un método {\it
+escribir}, que reciba una cadena para agregar al texto, y el método {\it
+\_\_str\_\_} que imprima el contenido del texto.
+    \item Escribir una clase {\it Birome} que contenga una cantidad de tinta, y
+un método {\it escribir}, que reciba un texto y un papel sobre el cual
+escribir. Cada letra escrita debe reducir la cantidad de tinta contenida.
+Cuando la tinta se acabe, debe lanzar una excepción.
+    \item Escribir una clase {\it Marcador} que herede de Birome, y agregue el
+método {\it recargar}, que reciba la cantidad de tinta a agregar.
+\end{partes}
+
+
+\ejercicio{Juego de Rol}
+\begin{partes}
+    \item Escribir una clase {\it Personaje} que contenga los atributos {\it
+vida}, {\it posicion} y {\it velocidad}, y los métodos {\it
+recibir\_ataque}, que reduzca la vida según una cantidad recibida y lance
+una excepción si la vida pasa a ser menor o igual que cero, y {\it
+mover} que reciba una dirección y se mueva en esa dirección la cantidad
+indicada por velocidad.
+    \item Escribir una clase {\it Soldado} que herede de Personaje, y agregue
+el atributo {\it ataque} y el método {\it atacar}, que reciba otro
+personaje, al que le debe hacer el daño indicado por el atributo ataque.
+    \item Escribir una clase {\it Campesino} que herede de Personaje, y agregue
+el atributo {\it cosecha} y el método {\it cosechar}, que devuelva la
+cantidad cosechada.
+\end{partes}
+

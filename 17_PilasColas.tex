@@ -711,6 +711,59 @@ caso de un cola de atención de clientes.
 
 \end{itemize}
 
+\newpage
+\section{Ejercicios}
+
+\ejercicio{
+Escribir una clase {\it TorreDeControl} que modele el trabajo de una torre
+de control de un aeropuerto, con una pista de aterrizaje.  La torre trabaja
+en dos etapas: {\it reconocimiento} y {\it acción}.
+}
+\begin{partes}
+    \item Escribir un método \verb!reconocimiento!, que verifique si hay algún
+nuevo avión esperando para aterrizar y/o despegar, y de ser así los encole
+en la cola correspondiente. Para ello, utilizar \verb!random.randrange(2)!.
+    \item Escribir un método \verb!acción!, que haga aterrizar o
+bien despegar, al primero de los aviones que esté esperando (los que
+esperan para aterrizar tienen prioridad). Debe desencolar el avión de su
+cola y devolver la información correspondiente.
+    \item Escribir un método \verb!__str__! que imprima el estado actual de
+ambas colas.
+    \item Escribir un programa que inicialice la torre de control, y luego llame
+continuamente a los métodos \verb!reconocimiento! y \verb!acción!,
+imprimiendo la acción tomada y el estado de la torre de control cada vez.
+\end{partes}
+
+
+\ejercicio{Atención a los pacientes de un consultorio médico, con varios doctores.}
+\begin{partes}
+    \item Escribir una clase {\it ColaDePacientes}, con los métodos {\it
+nuevo\_paciente}, que reciba el nombre del paciente y lo encole, y un
+método {\it proximo\_paciente} que devuelva el primer paciente en la cola y
+lo desencole.
+    \item Escribir una clase {\it Recepcion}, que contenga un diccionario con
+las colas correspondientes a cada doctor o doctora, y los métodos {\it
+nuevo\_paciente} que reciba el nombre del paciente y del especialista, y
+{\it proximo\_paciente} que reciba el nombre de la persona liberada y
+devuelva el próximo paciente en espera.
+    \item Escribir un programa que permita al usuario ingresar nuevos pacientes
+o indicar que un consultorio se ha liberado y en ese caso imprima el
+próximo paciente en espera.
+\end{partes}
+
+
+\ejercicio{Juego de Cartas}
+\begin{partes}
+    \item Crear una clase {\it Carta} que contenga un palo y un valor.
+    \item Crear una clase {\it PilaDeCartas} que vaya apilando las cartas una
+debajo de otra, pero sólo permita apilarlas si son de un número
+inmediatamente inferior y de distinto palo. Si se intenta apilar una carta
+incorrecta, debe lanzar una excepción.
+    \item Agregar el método {\it \_\_str\_\_} a la clase PilaDeCartas, para
+imprimir las cartas que se hayan apilado hasta el momento.
+\end{partes}
+
+\newpage
 \section{Apéndice}
 
 A continuación el código completo de la pila y las colas implementadas en

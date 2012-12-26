@@ -940,3 +940,118 @@ siguiente.
 \end{referencia_python} 
 
 
+\newpage
+\section{Ejercicios}
+
+\ejercicio{Escribir una función que reciba una tupla de elementos 
+e indique si se encuentran ordenados de menor a mayor o no.}
+
+
+\ejercicio{\bf Dominó.}
+\begin{partes}
+\item Escribir una función que indique si dos fichas de dominó {\it
+encajan} o no. Las fichas son recibidas en dos tuplas, por ejemplo:
+\verb!(3,4)! y \verb!(5,4)!
+\item Escribir una función que indique si dos fichas de dominó {\it
+encajan} o no. Las fichas son recibidas en una cadena, por ejemplo:
+\verb!3-4 2-5!. {\bf Nota:} utilizar la función \verb!split! de las cadenas.
+\end{partes}
+
+
+\ejercicio{\bf Campaña electoral}
+\begin{partes}
+\item Escribir una función que reciba una tupla con nombres, y para cada
+nombre imprima el mensaje {\it Estimado <nombre>, vote por mí.}
+\item Escribir una función que reciba una tupla con nombres, una posición
+de origen \verb!p!y una cantidad \verb!n!, e imprima el mensaje anterior
+para los \verb!n! nombres que se encuentran a partir de la posición
+\verb!p!.
+\item Modificar las funciones anteriores para que tengan en cuenta el
+género del destinatario, para ello, deberán recibir una tupla de tuplas,
+conteniendo el nombre y el género.
+\end{partes}
+
+
+\ejercicio{\bf Vectores}
+\begin{partes}
+\item Escribir una función que reciba dos vectores y devuelva su producto
+escalar.
+\item Escribir una función que reciba dos vectores y devuelva si son o no
+ortogonales.
+\item Escribir una función que reciba dos vectores y devuelva si son
+paralelos o no.
+\item Escribir una función que reciba un vector y devuelva su norma.
+\end{partes}
+
+
+\ejercicio{ Dada una lista de números enteros, escribir una función que: }
+\begin{partes}
+\item Devuelva una lista con todos los que sean primos.
+\item Devuelva la sumatoria y el promedio de los valores.
+\item Devuelva una lista con el factorial de cada uno de esos números.
+\end{partes}
+
+
+\ejercicio{ Dada una lista de números enteros y un entero k, escribir una función que: }
+\begin{partes}
+\item Devuelva tres listas, una con los menores, otra con los mayores y
+otra con los iguales a k.
+\item Devuelva una lista con aquellos que son múltiplos de k.
+\end{partes}
+
+
+\ejercicio{Escribir una función que reciba una lista de tuplas (Apellido,
+Nombre, Inicial\_segundo\_nombre) y devuelva una lista de cadenas
+donde cada una contenga primero el nombre, luego la inicial con un punto, y luego el
+apellido.}
+
+
+\ejercicio{ \bf Inversión de listas}
+\begin{partes}
+\item Realizar una función que, dada una lista, devuelva una nueva lista cuyo
+contenido sea igual a la original pero invertida. Así, dada la lista
+\lstinline!['Di', 'buen', 'día', 'a', 'papa']!, deberá devolver
+\lstinline!['papa', 'a', 'día', 'buen', 'Di']!.
+
+\item Realizar otra función que invierta la lista, pero en lugar de devolver
+una nueva, modifique la lista dada para invertirla, {\bf si}  usar listas
+auxiliares. 
+\end{partes}
+
+
+\ejercicio{Escribir una función "empaquetar" para una lista, donde
+epaquetar significa indicar la repetición de valores consecutivos
+mediante una tupla (valor, cantidad de repeticiones). Por ejemplo,
+\verb!empaquetar ([1,1,1,3,5,1,1,3,3])! debe devolver
+\verb![(1, 3) , (3, 1) , (5, 1), (1, 2), (3, 2)]!.}
+
+
+\ejercicio{\bf Matrices.}
+\begin{partes}
+\item Escribir una función que reciba dos matrices y devuelva la suma.
+\item Escribir una función que reciba dos matrices y devuelva el producto.
+\item Escribir una función que opere sobre una matriz y mediante {\it
+eliminación gaussiana} devuelva una matriz triangular superior.
+\item Escribir una función que indique si un grupo de vectores, recibidos
+mediante una lista, son linealmente independientes o no.
+\end{partes}
+
+
+\ejercicio{{\bf Plegado de un texto.} Escribir una función que reciba un texto y una
+longitud y devuelva una lista de cadenas de como máximo esa longitud. Las
+líneas deben ser cortadas correctamente en los espacios (sin cortar las
+palabras).}
+
+
+\ejercicio{\bf Funciones que reciben funciones.}
+\begin{partes}
+\item Escribir una funcion llamada {\bf map}, que reciba una función y una
+lista y devuelva la lista que resulta de aplicar la función recibida a
+cada uno de los elementos de la lista recibida.
+\item Escribir una función llamada {\bf filter}, que reciba una función y
+una lista y devuelva una lista con los elementos de la lista recibida para
+los cuales la función recibida devuelve un valor verdadero.
+\item ¿En qué ejercicios de esta guía podría haber utilizado estas
+funciones?
+\end{partes}
+

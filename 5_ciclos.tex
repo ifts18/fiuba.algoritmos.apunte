@@ -466,3 +466,110 @@ definidos como indefinidos.
 
 \end{referencia_python}
 
+\newpage
+\section{Ejercicios}
+
+\ejercicio{Escribir un programa que reciba una a una las notas del usuario,
+preguntando a cada paso si desea ingresar más notas, e imprimiendo el
+promedio correspondiente.}
+
+\ejercicio{Escribir una función que reciba un número entero $k$ e imprima su 
+descomposición en factores primos.}
+
+\ejercicio{\bf Manejo de contraseñas}
+\begin{partes}
+    \item Escribir un programa que contenga una contraseña inventada, que le
+pregunte al usuario la contraseña, y no le permita continuar hasta que la
+haya ingresado correctamente.
+    \item Modificar el programa anterior para que solamente permita una
+cantidad fija de intentos.
+    \item Modificar el programa anterior para que después de cada intento
+agregue una pausa cada vez mayor, utilizando la función \verb!sleep! del
+módulo \verb!time!.
+    \item Modificar el programa anterior para que sea una función que devuelva
+si el usuario ingresó o no la contraseña correctamente, mediante un valor
+booleano (True o False).
+\end{partes}
+
+
+\ejercicio{Utilizando la función \verb!randrange! del módulo \verb!random!, 
+escribir un programa que obtenga un número aleatorio secreto, y luego
+permita al usuario ingresar números y le indique sin son menores o mayores
+que el número a adivinar, hasta que el usuario ingrese el número correcto.}
+
+
+\ejercicio{\bf Algoritmo de Euclides} 
+\begin{partes}
+    \item Implementar en python el algoritmo de Euclides para calcular el máximo
+común divisor de dos números $n$ y $m$, dado por los siguientes pasos.
+    \begin{enumerate}
+        \item Teniendo $n$ y $m$, se obtiene $r$, el resto de la
+división entera de $m/n$.
+        \item Si $r$ es cero, $n$ es el mcd de los valores iniciales.
+        \item Se reemplaza $m \leftarrow n$, $n \leftarrow r$, y se vuelve al
+primer paso.
+    \end{enumerate}
+    \item Hacer un seguimiento del algoritmo implementado para los siguientes
+pares de números: (15,9); (9,15); (10,8); (12,6).
+\end{partes}
+
+\ejercicio{Potencias de dos.}
+\begin{partes}
+    \item Escribir una función \verb!es_potencia_de_dos! que reciba como parámetro
+un número natural, y devuelva \verb!True! si el número es una potencia de 2,
+y \verb!False! en caso contrario.
+    \item Escribir una función que, dados dos números naturales pasados como
+parámetros, devuelva la suma de todas las potencias de 2 que hay en el
+rango formado por esos números (0 si no hay ninguna potencia de 2 entre los
+dos). Utilizar la función \verb!es_potencia_de_dos!, descripta en el
+punto anterior.
+\end{partes}
+
+
+\ejercicio{\bf Números perfectos y números amigos}
+\begin{partes}
+    \item Escribir una función que devuelva la suma de todos los divisores de
+un número $n$, sin incluirlo.
+    \item Usando la función anterior, escribir una función que imprima los
+primeros $m$ números tales que la suma de sus divisores sea igual a sí
+mismo (es decir los primeros $m$ números {\it perfectos}).
+    \item Usando la primera función, escribir una función que imprima las
+primeras $m$ parejas de números ($a$,$b$), tales que la suma de los
+divisores de $a$ es igual a $b$ y la suma de los divisores de $b$ es igual
+a $a$ (es decir las primeras $m$ parejas de números {\it amigos}).
+    \item Proponer optimizaciones a las funciones anteriores para disminuir el
+tiempo de ejecución.
+\end{partes}
+
+\ejercicio{Escribir un programa que le pida al usuario que ingrese una sucesión
+de números naturales (primero uno, luego otro, y así hasta que el
+usuario ingrese '-1' como condición de salida). Al final, el programa
+debe imprimir cuántos números fueron ingresados, la suma total de los
+valores y el promedio.}
+
+\ejercicio{Escribir una función que reciba dos números como parámetros, y
+devuelva cuántos múltiplos del primero hay, que sean menores que el
+segundo.}
+\begin{partes}
+    \item Implementarla utilizando un ciclo \verb!for!, desde el primer número
+hasta el segundo.
+    \item Implementarla utilizando un ciclo \verb!while!, que multiplique el primer
+número hasta que sea mayor que el segundo. 
+    \item Comparar ambas implementaciones: ¿Cuál es más clara? ¿Cuál realiza menos
+operaciones?
+\end{partes}
+
+\ejercicio{Escribir una función que reciba un número natural e imprima todos
+los números primos que hay hasta ese número.}
+
+\ejercicio{Escribir una función que reciba un dígito y un número natural, y
+decida numéricamente si el dígito se encuentra en la notación decimal
+del segundo.}
+
+\ejercicio{Escribir una función que dada la cantidad de ejercicios de un examen, 
+y el porcentaje necesario de ejercicios bien resueltos necesario para aprobar 
+dicho examen, revise un grupo de examenes. Para ello, en cada paso debe preguntar 
+la cantidad de ejercicios resueltos por el alumno, indicando con un valor centinela
+que no hay más examenes a revisar. Debe mostrar por pantalla el porcentaje
+correspondiente a la cantidad de ejercicios resueltos respecto a la
+cantidad de ejercicios del examen y una leyenda que indique si aprobó o no.}

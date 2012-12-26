@@ -720,3 +720,67 @@ v = f(y)
 
 \end{referencia_python}
 
+\newpage
+\section{Ejercicios}
+
+\ejercicio{Escribir dos funciones que permitan calcular:}
+\begin{partes}
+    \item La cantidad de segundos en un tiempo dado en horas, minutos y segundos.
+    \item La cantidad de horas, minutos y segundos de un tiempo dado en segundos. 
+\end{partes}
+
+\ejercicio{Usando las funciones del ejercicio anterior, escribir un programa que lea
+de teclado dos tiempos expresados en horas, minutos y segundos; las sume y
+muestre el resultado en horas, minutos y segundos por pantalla.}
+
+\ejercicio{Escribir una función que dados cuatro números, devuelva el mayor
+producto de dos de ellos. Por ejemplo, si recibe los números 1, 5, -2,
+-4 debe devolver 8, que es el producto más grande que se puede obtener
+entre ellos}
+
+\ejercicio{\bf Área de un triángulo en base a sus puntos}
+\begin{partes}
+    \item Escribir una función que dado un vector al origen (definido por sus
+ puntos \verb!x,y!), devuelva la norma del vector, dada por 
+ $||\vec{(x,y)}||=\sqrt{x^2+y^2}$
+ 
+    \item Escribir una función que dados dos puntos en el plano (\verb!x1,y1! y 
+ \verb!x2,y2!), devuelva la resta de ambos (debe devolver un par de
+ valores).
+ 
+    \item Utilizando las funciones anteriores, escribir una función que dados dos
+ puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva la distancia
+ entre ambos.
+
+    \item Escribir una función que reciba un vector al origen (definido por sus
+ puntos \verb!x,y!) y devuelva un vector equivalente, normalizado (debe
+ devolver un par de valores). 
+
+    \item Utilizando las funciones anteriores (b y d), escribir una función que
+ dados dos puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva el
+ vector dirección unitario correspondiente a la recta que los une.
+
+    \item Escribir una función que reciba un punto (\verb!x,y!), una dirección
+ unitaria de una recta (\verb!dx,dy!) y un punto perteneciente a esa recta
+ (\verb!cx,cy!) y devuelva la proyección del punto sobre la recta. \\
+ {\bf Diseño del algoritmo}:
+ \begin{enumerate}
+     \setlength{\itemsep}{0pt}
+     \setlength{\parsep}{0pt}
+     \item Al punto a proyectar (\verb!x,y!) restarle el punto de la recta
+ (\verb!cx,cy!) 
+     \item Obtener la matriz de proyección $P$, dada por:  \\
+ $p_{11} = d_x^2$,  $p_{12} = p_{21} = d_x*d_y$, $p_{22} = d_y^2$. 
+     \item Multiplicar la matriz $P$ por el punto obtenido en el paso 1: \\
+ $r_x = p_{11} * x + p_12 * y$, $r_y = p_{21} * x + p_{22} * y$. 
+     \item Al resultado obtenido sumar el punto restado en el paso 1, y
+ devolverlo.
+ \end{enumerate}
+
+    \item Escribir una función que calcule el área de un triángulo a partir de
+ su base y su altura. 
+
+    \item Utilizando las funciones anteriores escribir una función que reciba
+ tres puntos en el plano (\verb!x1,y1!, \verb!x2,y2! y \verb!x3,y3!) y
+ devuelva el área del triángulo correspondiente.
+\end{partes}

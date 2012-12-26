@@ -101,10 +101,10 @@
 \renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
 
 \usepackage{color}            % Permite definir colores
-\definecolor{rosa}{RGB}{1.00,0.90,0.90}
-\definecolor{celeste}{RGB}{0.90,0.90,0.95}
-\definecolor{verde}{RGB}{0.85,1.00,0.85}
-\definecolor{amarillo}{RGB}{1.00,1.00,1.00}
+\definecolor{rosa}{rgb}{1,0.90,0.90}
+\definecolor{celeste}{rgb}{0.90,0.90,0.95}
+\definecolor{verde}{rgb}{0.85,1.00,0.85}
+\definecolor{amarillo}{rgb}{1.00,1.00,0.85}
 
 % Caja temporal para guardar el texto - Que se usa en las cajas de texto
 \newsavebox{\temporalbox}
@@ -149,7 +149,7 @@
 
 % Cuadros de referencia del lenguaje. - Icono: logo python
 \newenvironment{referencia_python}
- {\definecolor{shadecolor}{RGB}{0.85,1.00,0.85}%
+ {\definecolor{shadecolor}{rgb}{0.85,1.00,0.85}%
   \begin{shaded}%
   \begin{minipage}{0.80\textwidth}\hspace{-1em}\bf Referencia del lenguaje Python\end{minipage}%
   \hfill%
@@ -343,6 +343,7 @@
 % Carat no esta.
 %\include{carat}
 \title{Algoritmos y Programación I \\ Un enfoque basado en Python}
+\date{}
 \maketitle
 
 \tableofcontents  %Comentar  para no imprimir la toc
@@ -350,6 +351,7 @@
 % Comando para configurar el número de capítulo
 % \setcounter{chapter}{17}
 
+\include{0_prologo}
 \include{1_conceptos}
 \include{2_programacion}
 \include{3_funciones}

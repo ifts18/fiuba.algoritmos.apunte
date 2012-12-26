@@ -12,7 +12,6 @@
 % mencionados, o enviar una carta a Creative Commons,
 % 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
-
 \documentclass[oldfontcommands, 11pt]{memoir}
 \setlength{\pdfpagewidth}{15.7cm}
 \setlength{\pdfpageheight}{23cm}
@@ -218,7 +217,7 @@
 \newtheorem{definicion}{Definici\'on}[section]
 \newtheorem{ejemplo}{Ejemplo}[section]
 \newtheorem{problema}{Problema}[section]
-\newtheorem{ejercicio}{Ejercicio}[section]
+\newtheorem{ejercicio}{Ejercicio}[chapter]
 \newtheorem{ejerciciof}{}[section]
 \newtheorem{problemac}{Problema}[chapter]
 \newtheorem{ejercicioc}{Ejercicio}[chapter]
@@ -388,6 +387,7 @@
 % Comando para configurar el número de capítulo
 % \setcounter{chapter}{17}
 
+\include{0_prologo}
 \include{1_conceptos}
 \include{2_programacion}
 \include{3_funciones}

@@ -911,22 +911,6 @@ False
 True
 \end{codigo-python-sn}
 
-\section{Ejercicios}
-
-\ejercicioc{Modificar el método \lstinline!__cmp__! de \lstinline!Hotel!
-para poder ordenar de menor a mayor las listas de hoteles según el criterio:
-primero por ubicación, en orden alfabético y dentro de cada ubicación por
-la relación calidad-precio.}
-
-\ejercicioc{Escribir una clase \lstinline!Caja! para representar cuánto
-dinero hay en una caja de un negocio, desglosado por tipo de billete (por
-ejemplo, en el quiosco de la esquina hay 5 billetes de 10 pesos, 7 monedas
-de 25 centavos y 4 monedas de 10 centavos).
-
-Se tiene que poder comparar cajas por la cantidad de dinero que
-hay en cada una, y además ordenar una lista de cajas
-de menor a mayor según la cantidad de dinero disponible.}
-
 \section{Resumen}
 
 \begin{itemize}
@@ -1020,4 +1004,88 @@ desigualdad.  Reciben las dos instancias a comparar.  Devuelven
 \end{sintaxis}
 
 \end{referencia_python}
+
+
+\newpage
+\section{Ejercicios}
+
+\ejercicio{Modificar el método \lstinline!__cmp__! de \lstinline!Hotel!
+para poder ordenar de menor a mayor las listas de hoteles según el criterio:
+primero por ubicación, en orden alfabético y dentro de cada ubicación por
+la relación calidad-precio.}
+
+\ejercicio{Escribir una clase \lstinline!Caja! para representar cuánto
+dinero hay en una caja de un negocio, desglosado por tipo de billete (por
+ejemplo, en el quiosco de la esquina hay 5 billetes de 10 pesos, 7 monedas
+de 25 centavos y 4 monedas de 10 centavos).
+
+Se tiene que poder comparar cajas por la cantidad de dinero que
+hay en cada una, y además ordenar una lista de cajas
+de menor a mayor según la cantidad de dinero disponible.}
+
+\ejercicio{Fracciones}
+\begin{partes}
+    \item Crear una clase \verb!Fraccion!, que cuente con dos atributos:
+\verb!dividendo! y \verb!divisor!, que se asignan en el constructor, y se
+imprimen como \verb!X/Y! en el método \verb!__str__!.
+    \item Crear un método \verb!sumar! que recibe otra fracción y devuelve una
+nueva fracción con la suma de ambas.
+    \item Crear un método \verb!multiplicar! que recibe otra fracción y
+devuelve una nueva fracción con el producto de ambas.
+    \item Crear un método \verb!simplificar! que modifica la fracción actual de
+forma que los valores del \verb!dividendo! y \verb!divisor! sean los
+menores posibles.
+\end{partes}
+
+
+\ejercicio{Vectores}
+\begin{partes}
+    \item Crear una clase \verb!Vector!, que en su constructor reciba una lista
+de elementos que serán sus coordenadas.  En el método \verb!__str__! se
+imprime su contenido con el formato \verb![x,y,z]!
+    \item Crear un método \verb!escalar! que reciba un número y devuelva un
+nuevo vector, con los elementos multiplicados por ese número.
+    \item Crear un método \verb!sumar! que recibe otro vector, verifica si
+tienen la misma cantidad de elementos y devuelve un nuevo vector con la
+suma de ambos.  Si no tienen la misma cantidad de elementos debe levantar
+una excepción.
+\end{partes}
+
+
+\ejercicio{Botella y Sacacorchos}
+\begin{partes}
+    \item Escribir una clase {\it Corcho}, que contenga un atributo {\it
+bodega} (cadena con el nombre de la bodega).
+    \item Escribir una clase {\it Botella} que contenga un atributo {\it
+corcho} con una referencia al corcho que la tapa, o \verb!None! si está
+destapada.
+    \item Escribir una clase {\it Sacacorchos} que tenga un método {\it
+destapar} que le reciba una botella, le saque el corcho y se guarde una
+referencia al corcho sacado.  Debe lanzar una excepción en el caso en que
+la botella ya esté destapada, o si el sacacorchos ya contiene un corcho.
+    \item Agregar un método {\it limpiar}, que saque el corcho del sacacorchos,
+o lance una excepción en el caso en el que no haya un corcho.
+\end{partes}
+
+
+\ejercicio{Modelar una clase {\it Mate} que describa el funcionamiento de la
+conocida bebida tradicional local. La clase debe contener como miembros:}
+\begin{partes}
+    \item Un atributo para la cantidad de cebadas restantes hasta que se lava
+el mate (representada por un número).
+    \item Un atributo para el estado (lleno o vacío).
+    \item El constructor debe recibir como parámetro \verb!n!, la cantidad
+máxima de cebadas en base a la cantidad de yerba vertida en el recipiente.
+    \item Un método \verb!cebar!, que llena el mate con agua. Si se intenta
+cebar con el mate lleno, se debe lanzar una excepción que imprima el
+mensaje "Cuidado! Te quemaste!"
+    \item Un método \verb!beber!, que vacía el mate y le resta una cebada 
+disponible. Si se intenta beber un mate vacío, se debe lanzar una excepción 
+que imprima el mensaje "El mate está vacío!"
+    \item Es posible seguir cebando y bebiendo el mate aunque no haya cebadas
+disponibes. En ese caso la cantidad de cebadas restantes se mantendrá
+en 0, y cada vez que se intente beber se debe imprimir un mensaje de
+aviso: "Advertencia: el mate está lavado.", pero no se debe lanzar una
+excepción.
+\end{partes}
 

@@ -557,22 +557,86 @@ enuncian en la especificación?
 
 \end{itemize}
 
+\newpage
 \section{Ejercicios}
+En los ejercicios a continuación, utilizar los conceptos de análisis,
+especificación y diseño antes de realizar la implementación.
 
-\ejercicioc{Escribir un ciclo definido para imprimir por pantalla
-todos los números entre 10 y 20.}
-
-\ejercicioc{Escribir un ciclo definido que salude por pantalla a
-sus cinco mejores amigos/as.}
-
-\ejercicioc{Escribir un programa que use un ciclo definido con
+\ejercicio{Ciclos definidos}
+\begin{partes}
+	\item Escribir un ciclo definido para imprimir por pantalla 
+todos los números entre 10 y 20.
+	\item Escribir un ciclo definido que salude por pantalla a 
+sus cinco mejores amigos/as.
+	\item Escribir un programa que use un ciclo definido con 
 rango numérico, que pregunte los nombres de sus cinco mejores
-amigos/as, y los salude.}
-
-\ejercicioc{Escribir un programa que use un ciclo definido con
+amigos/as, y los salude.
+	\item Escribir un programa que use un ciclo definido con
 rango numérico, que pregunte los nombres de sus seis mejores
-amigos/as, y los salude.}
-
-\ejercicioc{Escribir un programa que use un ciclo definido con
+amigos/as, y los salude.
+	\item Escribir un programa que use un ciclo definido con
 rango numérico, que averigue a cuántos amigos quieren saludar, les
-pregunte los nombres de esos amigos/as, y los salude.}
+pregunte los nombres de esos amigos/as, y los salude.
+\end{partes}
+
+\begin{ejercicio} 
+Escribir un programa que le pregunte al usuario una cantidad de pesos,
+una tasa de interés y un número de años y muestre como resultado el monto
+final a obtener.  La fórmula a utilizar es:
+\begin{displaymath}
+C_n = C \times (1+x/100)^n
+\end{displaymath}
+Donde $C$ es el capital inicial, $x$ es la tasa de interés y $n$ es el
+número de años a calcular.
+\end{ejercicio}
+
+\begin{ejercicio}
+Escribir un programa que convierta un valor dado en grados Fahrenheit a
+grados Celsius.  Recordar que la fórmula para la conversión es:
+$F = \frac{9}{5}C+32$
+\end{ejercicio}
+
+\begin{ejercicio}
+Utilice el programa anterior para generar una tabla de conversión de
+temperaturas, desde 0°F hasta 120 °F, de 10 en 10.
+\end{ejercicio}
+
+\begin{ejercicio}
+Escribir un programa que imprima todos los números pares entre dos números
+que se le pidan al usuario.
+\end{ejercicio}
+
+\begin{ejercicio} 
+Escribir un programa que reciba un número $n$ por
+parámetro e imprima los primeros $n$ números triangulares, junto con su
+índice. Los números triangulares se obtienen mediante la suma de los números
+naturales desde $1$ hasta $n$.  Es decir, si se piden los primeros 5
+números triangulares, el programa debe imprimir:
+
+\begin{verbatim}
+1 - 1
+2 - 3
+3 - 6
+4 - 10
+5 - 15
+\end{verbatim}
+
+{\bf Nota}: hacerlo usando y sin usar la ecuación $\sum_{i=1}^n i = n*(n+1)/2$.
+¿Cuál realiza más operaciones?
+\end{ejercicio}
+
+\begin{ejercicio}
+Escribir un programa que tome una cantidad $m$ de valores ingresados
+por el usuario, a cada uno le calcule el factorial e imprima el resultado
+junto con el número de orden correspondiente.
+\end{ejercicio}
+
+\begin{ejercicio}
+Escribir un programa que imprima por pantalla todas las fichas de dominó, de
+una por línea y sin repetir.
+\end{ejercicio}
+
+\begin{ejercicio}
+Modificar el programa anterior para que pueda generar fichas de un juego
+que puede tener números de 0 a n.
+\end{ejercicio}
