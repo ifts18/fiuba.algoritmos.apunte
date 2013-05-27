@@ -1,13 +1,16 @@
 #! /usr/bin/env python
 #encoding: latin1
 
+
 class Nodo(object):
     """ Un nodo para formar una lista enlazada. """
-    def __init__(self, dato=None, prox = None):
+    def __init__(self, dato=None, prox=None):
         self.dato = dato
         self.prox = prox
+
     def __str__(self):
         return str(self.dato)
+
 
 def verLista(nodo):
     """ Recorre todos los nodos a través de sus enlaces,
