@@ -467,13 +467,13 @@ del método \lstinline!pop!.
             Si i está fuera de rango, se levanta la excepción IndexError.
             Si no se recibe la posición, devuelve el último elemento. """
 
-        # Verificación de los límites
-        if (i < 0) or (i >= self.len):
-            raise IndexError("Índice fuera de rango")
-
         # Si no se recibió i, se devuelve el último.
-        if i == None:
+        if i is None:
             i = self.len - 1
+
+        # Verificación de los límites
+        if not (0 <= i < self.len):
+            raise IndexError("Índice fuera de rango")
 
         # Caso particular, si es el primero, 
         # hay que saltear la cabecera de la lista
