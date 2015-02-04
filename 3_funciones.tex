@@ -267,16 +267,16 @@ def print_asegundos (horas, minutos, segundos):
     """ Transforma en segundos una medida de tiempo expresada en
         horas, minutos y segundos """
     segsal = 3600 * horas + 60 * minutos + segundos
-    print "Son",segsal, "segundos"
+    print "Son", segsal, "segundos"
 
 def main():
 	""" Lee tres tiempos expresados en hs, min y seg, y usa
 		print_asegundos para mostrar en pantalla la conversión a
         segundos """
     for x in range(3):
-        hs = raw_input("Cuantas horas?: ")
-        min = raw_input("Cuantos minutos?: ")
-        seg = raw_input("Cuantos segundos?: ")
+        hs = input("Cuantas horas?: ")
+        min = input("Cuantos minutos?: ")
+        seg = input("Cuantos segundos?: ")
         print_asegundos(hs, min, seg)
 
 main()
