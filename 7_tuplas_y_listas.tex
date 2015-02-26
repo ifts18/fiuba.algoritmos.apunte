@@ -424,7 +424,7 @@ tuplas y cadenas
 \end{observacion}
 
 \item Para averiguar la posición de un valor dentro de una lista usaremos
-la operación \lstinline+index()+.  
+la operación \lstinline+index()+.
 
 \begin{codigo-python-sn}
 >>> xs.index(78455)
@@ -453,7 +453,8 @@ Si el valor está repetido, el índice que devuelve es el de la primera aparición:
 \end{codigo-python-sn}
 
 \begin{observacion}
-Esta operación está disponible en cadenas, pero no en tuplas.
+En versiones de Python anteriores a la 2.6 esta operación no está disponible
+en tuplas.
 \end{observacion}
 
 \item Para iterar sobre todos los elementos de una lista usaremos una
@@ -841,7 +842,7 @@ tupla_unitaria = (3459,)
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline![valor1, valor2, valor3]!}
-Las listas se definen como una suceción de valores encerrados entre
+Las listas se definen como una sucesión de valores encerrados entre
 corchetes.  Se les puede agregar, quitar o cambiar los valores que
 contienen.
 
