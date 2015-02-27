@@ -30,12 +30,12 @@ def busqueda_binaria(lista, x):
         # derecha
         elif lista[medio] > x:
             der = medio-1
-        # sino, sigue buscando en el segmento de la derecha:
+        # si no, sigue buscando en el segmento de la derecha:
         # [medio+1, der], descartando la izquierda
         else:
             izq = medio+1
         # si no salió del ciclo, vuelve a iterar con el nuevo segmento
-            
+
     # salió del ciclo de manera no exitosa: el valor no fue encontrado
     return -1
 
