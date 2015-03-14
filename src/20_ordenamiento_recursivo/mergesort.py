@@ -1,15 +1,15 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def merge_sort(lista):
-	""" Ordena lista mediante el mÈtodo merge sort. 
+	""" Ordena lista mediante el m√©todo merge sort. 
 		Pre: lista debe contener elementos comparables.
 		Devuelve: una nueva lista ordenada. """
 
-	# Una lista de 1 o 0 elementos, ya est· ordenada
+	# Una lista de 1 o 0 elementos, ya est√° ordenada
     if len(lista) < 2:
         return lista
-    # Si tiene 2 o m·s elementos, se divide al medio y ordena cada parte
+    # Si tiene 2 o m√°s elementos, se divide al medio y ordena cada parte
     medio = len(lista) / 2
     izq = merge_sort(lista[:medio])
     der = merge_sort(lista[medio:])

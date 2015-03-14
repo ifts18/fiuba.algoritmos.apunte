@@ -1,5 +1,5 @@
 #/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def swap(l, i, j):
     print "intercambiando %d, %d " % (i, j), l

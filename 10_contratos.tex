@@ -1,11 +1,11 @@
 % Copyright (C) 2009-2010 Maximiliano Curia <maxy@gnuservers.com.ar>,
 %               Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Esta obra estÃ¡ licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -15,71 +15,71 @@
 
 \chapter{Contratos y Mutabilidad}
 
-En esta unidad se le dará cierta formalización a algunos temas que se habían
-visto informalmente, como por ejemplo, la documentación de las funciones. 
+En esta unidad se le darÃ¡ cierta formalizaciÃ³n a algunos temas que se habÃ­an
+visto informalmente, como por ejemplo, la documentaciÃ³n de las funciones. 
 
-Se formalizarán las condiciones que debe cumplir un algoritmo, al comenzar, en
-su transcurso, y al terminar, y algunas técnicas para tener en cuenta estas
+Se formalizarÃ¡n las condiciones que debe cumplir un algoritmo, al comenzar, en
+su transcurso, y al terminar, y algunas tÃ©cnicas para tener en cuenta estas
 condiciones.
 
-También se verá una forma de modelizar el espacio donde \textit{viven} las
+TambiÃ©n se verÃ¡ una forma de modelizar el espacio donde \textit{viven} las
 variables.
 
 \section{Pre y Postcondiciones}
 
-Cuando hablamos de \textit{contratos} o \textit{programación por
+Cuando hablamos de \textit{contratos} o \textit{programaciÃ³n por
 contratos}, nos referimos a la necesidad de estipular tanto lo que necesita
-como lo que devuelve nuestro código. 
+como lo que devuelve nuestro cÃ³digo. 
 
-Las condiciones que deben estar dadas para que el código funcione las llamamos
+Las condiciones que deben estar dadas para que el cÃ³digo funcione las llamamos
 \emph{precondiciones} y las condiciones sobre el estado en que quedan las
-variables y él o los valores de retorno, las llamamos \emph{postcondiciones}.
+variables y Ã©l o los valores de retorno, las llamamos \emph{postcondiciones}.
 
 En definitiva, este concepto es similar al ya mencionado con respecto a la
-documentación de funciones, es decir que se debe \emph{documentar cómo deben
-ser los parámetros recibidos, cómo va a ser lo que se devuelve, y qué
-sucede con los parámetros en caso de ser modificados}.
+documentaciÃ³n de funciones, es decir que se debe \emph{documentar cÃ³mo deben
+ser los parÃ¡metros recibidos, cÃ³mo va a ser lo que se devuelve, y quÃ©
+sucede con los parÃ¡metros en caso de ser modificados}.
 
-Esta estipulación es mayormente para que la utilicen otros programadores,
-por lo que es particularmente útil cuando se encuentra dentro de la
-documentación. En ciertos casos, además, puede quererse que el programa
-revise si las condiciones realmente se cumplen y de no ser así, actúe en
+Esta estipulaciÃ³n es mayormente para que la utilicen otros programadores,
+por lo que es particularmente Ãºtil cuando se encuentra dentro de la
+documentaciÃ³n. En ciertos casos, ademÃ¡s, puede quererse que el programa
+revise si las condiciones realmente se cumplen y de no ser asÃ­, actÃºe en
 consecuencia.
 
-Existen herramientas en algunos lenguajes de programación que facilitan estas
-acciones, en el caso de Python, es posible utilizar la instrucción
+Existen herramientas en algunos lenguajes de programaciÃ³n que facilitan estas
+acciones, en el caso de Python, es posible utilizar la instrucciÃ³n
 \lstinline!assert!.
  
 \subsection{Precondiciones}
 
-Las precondiciones son las condiciones que deben cumplir los parámetros que
-una función recibe, para que esta se comporte correctamente.
+Las precondiciones son las condiciones que deben cumplir los parÃ¡metros que
+una funciÃ³n recibe, para que esta se comporte correctamente.
 
-Por ejemplo, en una función división las precondiciones son que los parámetros
-son números, y que el divisor sea distinto de 0. Tener una precondición
-permite asumir desde el código que no es necesario lidiar con los casos en que
+Por ejemplo, en una funciÃ³n divisiÃ³n las precondiciones son que los parÃ¡metros
+son nÃºmeros, y que el divisor sea distinto de 0. Tener una precondiciÃ³n
+permite asumir desde el cÃ³digo que no es necesario lidiar con los casos en que
 las precondiciones no se cumplen.
 
 \subsection{Postcondiciones}
 
-Las postcodiciones son las condiciones que cumplirá el valor de retorno, y
-los parámetros recibidos, en caso de que hayan sido alterados, 
+Las postcodiciones son las condiciones que cumplirÃ¡ el valor de retorno, y
+los parÃ¡metros recibidos, en caso de que hayan sido alterados, 
 siempre que se hayan cumplido las precondiciones 
 
-En el ejemplo anterior, la función división con las precondiciones asignadas,
-puede asegurar que devolverá un número correspondiente al cociente solicitado.
+En el ejemplo anterior, la funciÃ³n divisiÃ³n con las precondiciones asignadas,
+puede asegurar que devolverÃ¡ un nÃºmero correspondiente al cociente solicitado.
 
 \subsection{Aseveraciones}
 
 Tanto las precondiciones como las postcondiciones son \textit{aseveraciones}
-(en inglés \textit{assert}). Es decir, afirmaciones realizadas en un momento
-particular de la ejecución sobre el estado computacional. Si llegaran a ser
-falsas significaría que hay algún error en el diseño o utilización del algoritmo.
+(en inglÃ©s \textit{assert}). Es decir, afirmaciones realizadas en un momento
+particular de la ejecuciÃ³n sobre el estado computacional. Si llegaran a ser
+falsas significarÃ­a que hay algÃºn error en el diseÃ±o o utilizaciÃ³n del algoritmo.
 
-Para comprobar estas afirmaciones desde el código en algunos casos podemos
-utilizar la instrucción \lstinline!assert!, está instrucción recibe una
-condición a verificar y, opcionalmente, un mensaje de error que devolverá en
-caso que la condición no se cumpla.
+Para comprobar estas afirmaciones desde el cÃ³digo en algunos casos podemos
+utilizar la instrucciÃ³n \lstinline!assert!, estÃ¡ instrucciÃ³n recibe una
+condiciÃ³n a verificar y, opcionalmente, un mensaje de error que devolverÃ¡ en
+caso que la condiciÃ³n no se cumpla.
 
 \begin{codigo-python-sn}
 >>> n=0
@@ -90,105 +90,105 @@ AssertionError: El divisor no puede ser 0
 \end{codigo-python-sn}
 
 \begin{atencion}
-Es importante tener en cuenta que \lstinline!assert! está pensado para ser
-usado en la etapa de desarrollo. Un programa terminado nunca debería dejar
+Es importante tener en cuenta que \lstinline!assert! estÃ¡ pensado para ser
+usado en la etapa de desarrollo. Un programa terminado nunca deberÃ­a dejar
 de funcionar por este tipo de errores.
 \end{atencion}
 
 \subsection{Ejemplos}
 
-Usando los ejemplos anteriores, la función \lstinline!division! nos
-quedaría de la siguiente forma:
+Usando los ejemplos anteriores, la funciÃ³n \lstinline!division! nos
+quedarÃ­a de la siguiente forma:
 
 \begin{codigo-python-sn}
 def division(dividendo, divisor):
-    """ Calculo de la división
+    """ Calculo de la divisiÃ³n
 
-    Pre: Recibe dos números, divisor debe ser distinto de 0.
-    Post: Devuelve un número real, con el cociente de ambos.	
+    Pre: Recibe dos nÃºmeros, divisor debe ser distinto de 0.
+    Post: Devuelve un nÃºmero real, con el cociente de ambos.	
     """
     assert divisor != 0, "El divisor no puede ser 0"
     return dividendo  / ( divisor * 1.0 )
 \end{codigo-python-sn}
 
-Otro ejemplo, tal vez más interesante, puede ser una función que implemente
+Otro ejemplo, tal vez mÃ¡s interesante, puede ser una funciÃ³n que implemente
 una sumatoria ($\sum_{i=inicial}^{final} f(i)$).  En este caso hay que
-analizar cuáles van a ser los parámetros que recibirá la función, y las
-precondiciones que estos parámetros deberán cumplir.
+analizar cuÃ¡les van a ser los parÃ¡metros que recibirÃ¡ la funciÃ³n, y las
+precondiciones que estos parÃ¡metros deberÃ¡n cumplir.
 
-La función sumatoria a escribir, necesita de un valor inicial, un valor
-final, y una función a la cual llamar en cada paso. Es decir que recibe
-tres parámetros.
+La funciÃ³n sumatoria a escribir, necesita de un valor inicial, un valor
+final, y una funciÃ³n a la cual llamar en cada paso. Es decir que recibe
+tres parÃ¡metros.
 
 \begin{codigo-python-sn}
 def sumatoria(inicial, final, f):
 \end{codigo-python-sn}
 
-Tanto \lstinline!inicial! como \lstinline!final! deben ser números enteros,
-y dependiendo de la implementación a realizar o de la especificación
+Tanto \lstinline!inicial! como \lstinline!final! deben ser nÃºmeros enteros,
+y dependiendo de la implementaciÃ³n a realizar o de la especificaciÃ³n
 previa, puede ser necesario que \lstinline!final! deba ser mayor o igual a
 \lstinline!inicial!.
 
-Con respecto a \lstinline!f!, se trata de una función que será llamada con
-un parámetro en cada paso y se requiere poder sumar el resultado, por lo
-que debe ser una función que reciba un número y devuelva un número.
+Con respecto a \lstinline!f!, se trata de una funciÃ³n que serÃ¡ llamada con
+un parÃ¡metro en cada paso y se requiere poder sumar el resultado, por lo
+que debe ser una funciÃ³n que reciba un nÃºmero y devuelva un nÃºmero.
 
-La declaración de la función queda, entonces, de la siguiente manera.
+La declaraciÃ³n de la funciÃ³n queda, entonces, de la siguiente manera.
 
 \begin{codigo-python-sn}
 def sumatoria(inicial, final, f):
     """Calcula la sumatoria desde i=inicial hasta final de f(i)
 
-    Pre: inicial y final son números enteros, f es una función que 
-         recibe un entero y devuelve un número.
+    Pre: inicial y final son nÃºmeros enteros, f es una funciÃ³n que 
+         recibe un entero y devuelve un nÃºmero.
     Post: Se devuelve el valor de la sumatoria de aplicar f a cada
-          número comprendido entre inicial y final.
+          nÃºmero comprendido entre inicial y final.
 	"""
 \end{codigo-python-sn}
 
 \begin{ejercicio}
-Realizar la implementación correspondiente a la función \lstinline!sumatoria!.
+Realizar la implementaciÃ³n correspondiente a la funciÃ³n \lstinline!sumatoria!.
 \end{ejercicio}
 
-En definitiva, la documentación de pre y postcondiciones dentro de la documentación
+En definitiva, la documentaciÃ³n de pre y postcondiciones dentro de la documentaciÃ³n
 de las funciones es una forma de especificar claramente el comportamiento del
-código de forma que quienes lo vayan a utilizar no requieran conocer cómo está
+cÃ³digo de forma que quienes lo vayan a utilizar no requieran conocer cÃ³mo estÃ¡
 implementado para poder aprovecharlo.
 
-Esto es útil incluso en los casos en los que el programador de las funciones
+Esto es Ãºtil incluso en los casos en los que el programador de las funciones
 es el mismo que el que las va a utilizar, ya que permite separar
 responsabilidades. Las pre y postcondiciones son, en efecto, un
-\textit{contrato} entre el código invocante y el invocado.
+\textit{contrato} entre el cÃ³digo invocante y el invocado.
 
 \section{Invariantes de ciclo}
 
-% TODO: conseguir frase, la vida es siempre igual, siempre está cambiando.
+% TODO: conseguir frase, la vida es siempre igual, siempre estÃ¡ cambiando.
 %\begin{quote}
-%``Dadme un punto de apoyo y moveré el mundo´´ Arquímedes
+%``Dadme un punto de apoyo y moverÃ© el mundoÅ½Å½ ArquÃ­medes
 %\end{quote}
 
 Los invariantes se refieren a estados o situaciones que no cambian dentro
-de un contexto o porción de código.  Hay invariantes de ciclo, que son los
-que veremos a continuación, e invariantes de estado, que se verán más
+de un contexto o porciÃ³n de cÃ³digo.  Hay invariantes de ciclo, que son los
+que veremos a continuaciÃ³n, e invariantes de estado, que se verÃ¡n mÃ¡s
 adelante.
 
-El invariante de ciclo permite conocer cómo llegar desde las precondiciones
+El invariante de ciclo permite conocer cÃ³mo llegar desde las precondiciones
 hasta las postcondiciones. El invariante de ciclo es, entonces, una
-aseveración que debe ser verdadera al comienzo de cada iteración.
+aseveraciÃ³n que debe ser verdadera al comienzo de cada iteraciÃ³n.
 
 Por ejemplo, si el problema es ir desde el punto A al punto B, las
 precondiciones dicen que estamos parados en A y las postcondiciones que
-estamos parados en B, un invariante podría ser ``estamos en algún punto entre
-A y B, en el punto más cercano a B que estuvimos hasta ahora.''.
+estamos parados en B, un invariante podrÃ­a ser ``estamos en algÃºn punto entre
+A y B, en el punto mÃ¡s cercano a B que estuvimos hasta ahora.''.
 
-Más específicamente, si analizamos el ciclo para buscar el máximo en una lista
-desordenada, la precondición es que la lista contiene elementos que son
-comparables y la postcondición es que se devuelve el elemento máximo de la
+MÃ¡s especÃ­ficamente, si analizamos el ciclo para buscar el mÃ¡ximo en una lista
+desordenada, la precondiciÃ³n es que la lista contiene elementos que son
+comparables y la postcondiciÃ³n es que se devuelve el elemento mÃ¡ximo de la
 lista.
 
 \begin{codigo-python}
 def maximo(lista):
-    "Devuelve el elemento máximo de la lista o None si está vacía."
+    "Devuelve el elemento mÃ¡ximo de la lista o None si estÃ¡ vacÃ­a."
     if not len(lista):
         return None
     max_elem = lista[0]
@@ -199,21 +199,21 @@ def maximo(lista):
 \end{codigo-python}
 
 En este caso, el invariante del ciclo es que \lstinline!max_elem! contiene el
-valor máximo de la porción de lista analizada. \\
+valor mÃ¡ximo de la porciÃ³n de lista analizada. \\
 
 Los invariantes son de gran importancia al momento de demostrar que un
-algoritmo funciona, pero aún cuando no hagamos una demostración formal es muy
-útil tener los invariantes a la vista, ya que de esta forma es más fácil
-entender cómo funciona un algoritmo y encontrar posibles errores.
+algoritmo funciona, pero aÃºn cuando no hagamos una demostraciÃ³n formal es muy
+Ãºtil tener los invariantes a la vista, ya que de esta forma es mÃ¡s fÃ¡cil
+entender cÃ³mo funciona un algoritmo y encontrar posibles errores.
 
-Los invariantes, además, son útiles a la hora de determinar las condiciones
-iniciales de un algoritmo, ya que también deben cumplirse para ese caso.  Por
+Los invariantes, ademÃ¡s, son Ãºtiles a la hora de determinar las condiciones
+iniciales de un algoritmo, ya que tambiÃ©n deben cumplirse para ese caso.  Por
 ejemplo, consideremos el algoritmo para obtener la potencia \lstinline!n! de
-un número.  
+un nÃºmero.  
 
 \begin{codigo-python}
 def potencia(b, n):
-    "Devuelve la potencia n del número b, con n entero mayor que 0."
+    "Devuelve la potencia n del nÃºmero b, con n entero mayor que 0."
     p = 1
     for i in range(n):
         p *= b
@@ -221,14 +221,14 @@ def potencia(b, n):
 \end{codigo-python}
 
 En este caso, el invariante del ciclo es que la variable \lstinline!p!
-contiene el valor de la potencia correspondiente a esa iteración. Teniendo en
-cuenta esta condición, es fácil ver que \lstinline!p! debe comenzar el ciclo
+contiene el valor de la potencia correspondiente a esa iteraciÃ³n. Teniendo en
+cuenta esta condiciÃ³n, es fÃ¡cil ver que \lstinline!p! debe comenzar el ciclo
 con un valor de 1, ya que ese es el valor correspondiente a $p^0$.
 
-De la misma manera, si la operación que se quiere realizar es sumar todos los
-elementos de una lista, el invariante será que una variable \lstinline!suma!
+De la misma manera, si la operaciÃ³n que se quiere realizar es sumar todos los
+elementos de una lista, el invariante serÃ¡ que una variable \lstinline!suma!
 contenga la suma de todos los elementos ya recorridos, por lo que es claro que
-este invariante debe ser 0 cuando aún no se haya recorrido ningún elemento.
+este invariante debe ser 0 cuando aÃºn no se haya recorrido ningÃºn elemento.
 
 \begin{codigo-python}
 def suma(lista):
@@ -240,26 +240,26 @@ def suma(lista):
 \end{codigo-python}
 
 % TODO
-% \subsection{Invariantes como medida de cuánto falta}
+% \subsection{Invariantes como medida de cuÃ¡nto falta}
 
 %Dependiendo del problema y las herramientas con las que contemos algunos
-%invariantes se pueden medir retomando el ejemplo de ir de A a B, uno podría
+%invariantes se pueden medir retomando el ejemplo de ir de A a B, uno podrÃ­a
 %medir la distancia hasta B para esta, pero si para medir la distancia hay que ir hasta B
-%y volver deja de tener sentido. O al estar buscando el mínimo en una
-%secuencia, cómo hago para comprobar que paso a paso tengo el mínimo de la
-%secuencia que ya recorrí sin usar
+%y volver deja de tener sentido. O al estar buscando el mÃ­nimo en una
+%secuencia, cÃ³mo hago para comprobar que paso a paso tengo el mÃ­nimo de la
+%secuencia que ya recorrÃ­ sin usar
 
-\subsection{Comprobación de invariantes desde el código}
+\subsection{ComprobaciÃ³n de invariantes desde el cÃ³digo}
 
-Cuando la comprobación necesaria para saber si seguimos ``en camino'' es simple,
-se la puede tener directamente dentro del código.  Evitando seguir avanzando
-con el algoritmo si se produjo un error crítico.
+Cuando la comprobaciÃ³n necesaria para saber si seguimos ``en camino'' es simple,
+se la puede tener directamente dentro del cÃ³digo.  Evitando seguir avanzando
+con el algoritmo si se produjo un error crÃ­tico.
 
-Por ejemplo, en una búsqueda binaria, el elemento a buscar debe ser mayor que
-el elemento inicial y menor que el elemento final, de no ser así, no tiene sentido
-continuar con la búsqueda.  Es posible, entonces, agregar una instrucción
-que compruebe esta condición y de no ser cierta realice alguna acción para
-indicar el error, por ejemplo, utilizando la instrucción \lstinline!assert!,
+Por ejemplo, en una bÃºsqueda binaria, el elemento a buscar debe ser mayor que
+el elemento inicial y menor que el elemento final, de no ser asÃ­, no tiene sentido
+continuar con la bÃºsqueda.  Es posible, entonces, agregar una instrucciÃ³n
+que compruebe esta condiciÃ³n y de no ser cierta realice alguna acciÃ³n para
+indicar el error, por ejemplo, utilizando la instrucciÃ³n \lstinline!assert!,
 vista anteriormente. 
 
 \section{Mutabilidad e Inmutabilidad}
@@ -280,12 +280,12 @@ Traceback (most recent call last):
 TypeError: 'str' object does not support item assignment
 \end{codigo-python-sn}
 
-Esto se debe a que cuando se realiza una nueva asignación, no se modifica la
-cadena en sí, sino que la variable \lstinline!a! pasa a \emph{apuntar} a otra cadena.
-En cambio, no es posible asignar un nuevo caracter en una posición, ya que
-esto implicaría modificar la cadena inmutable.
+Esto se debe a que cuando se realiza una nueva asignaciÃ³n, no se modifica la
+cadena en sÃ­, sino que la variable \lstinline!a! pasa a \emph{apuntar} a otra cadena.
+En cambio, no es posible asignar un nuevo caracter en una posiciÃ³n, ya que
+esto implicarÃ­a modificar la cadena inmutable.
 
-En el caso de los parámetros mutables, la asignación tiene el mismo
+En el caso de los parÃ¡metros mutables, la asignaciÃ³n tiene el mismo
 comportamiento, es decir que las variables pasan a apuntar a un nuevo valor.
 
 \begin{codigo-python-sn}
@@ -299,7 +299,7 @@ comportamiento, es decir que las variables pasan a apuntar a un nuevo valor.
 \end{codigo-python-sn}
 
 Algo importante a tener en cuenta en el caso de las variables de tipo
-mutable es que si hay dos o más variables que \textit{apuntan} a un mismo
+mutable es que si hay dos o mÃ¡s variables que \textit{apuntan} a un mismo
 dato, y este dato se modifica, el cambio se ve reflejado en ambas variables.
 
 \begin{codigo-python-sn}
@@ -316,26 +316,26 @@ llamado {\it puntero}, que se comporta como una referencia a una variable,
 como es el caso de las variables mutables del ejemplo anterior.
 
 En Python no hay punteros como los de C o C++, pero todas las variables son
-referencias a una porción de memoria, de modo que cuando se asigna una
-variable a otra, lo que se está asignando es la porción de memoria a la que
-refieren.  Si esa porción de memoria cambia, el cambio se puede ver en
-todas las variables que apuntan a esa porción.
+referencias a una porciÃ³n de memoria, de modo que cuando se asigna una
+variable a otra, lo que se estÃ¡ asignando es la porciÃ³n de memoria a la que
+refieren.  Si esa porciÃ³n de memoria cambia, el cambio se puede ver en
+todas las variables que apuntan a esa porciÃ³n.
 \end{sabias_que}
 
-% TODO: describir en más detalle el modelo de referencia de python ?
+% TODO: describir en mÃ¡s detalle el modelo de referencia de python ?
 
-\subsection{Parámetros mutables e inmutables}
+\subsection{ParÃ¡metros mutables e inmutables}
 
-Las funciones reciben parámetros que pueden ser mutables o inmutables.
+Las funciones reciben parÃ¡metros que pueden ser mutables o inmutables.
 
-Si dentro del cuerpo de la función se modifica uno de estos parámetros para
-que \textbf{apunte} a otro valor, este cambio no se verá reflejado fuera de la
-función.  Si, en cambio, se modifica el \textbf{contenido} de alguno de los
-parámetros mutables, este cambio \textbf{sí} se verá reflejado fuera de la
-función.
+Si dentro del cuerpo de la funciÃ³n se modifica uno de estos parÃ¡metros para
+que \textbf{apunte} a otro valor, este cambio no se verÃ¡ reflejado fuera de la
+funciÃ³n.  Si, en cambio, se modifica el \textbf{contenido} de alguno de los
+parÃ¡metros mutables, este cambio \textbf{sÃ­} se verÃ¡ reflejado fuera de la
+funciÃ³n.
 
-A continuación un ejemplo en el cual se asigna la variable recibida, a un
-nuevo valor.  Esa asignación sólo tiene efecto dentro de la función.
+A continuaciÃ³n un ejemplo en el cual se asigna la variable recibida, a un
+nuevo valor.  Esa asignaciÃ³n sÃ³lo tiene efecto dentro de la funciÃ³n.
 
 \begin{codigo-python-sn}
 >>> def no_cambia_lista(lista):
@@ -349,9 +349,9 @@ nuevo valor.  Esa asignación sólo tiene efecto dentro de la función.
 [10, 20, 30, 40]
 \end{codigo-python-sn}
 
-A continuación un ejemplo en el cual se modifica la variable recibida. En este
+A continuaciÃ³n un ejemplo en el cual se modifica la variable recibida. En este
 caso, los cambios realizados tienen efecto tanto dentro como fuera de la
-función.
+funciÃ³n.
 
 \begin{codigo-python-sn}
 >>> def cambia_lista(lista):
@@ -365,11 +365,11 @@ función.
 \end{codigo-python-sn}
 
 \begin{atencion}
-En general, se espera que una función que recibe parámetros mutables, no los
-modifique, ya que si se los modifica se podría perder información valiosa.
+En general, se espera que una funciÃ³n que recibe parÃ¡metros mutables, no los
+modifique, ya que si se los modifica se podrÃ­a perder informaciÃ³n valiosa.
 
-En el caso en que por una decisión de diseño o especificación se modifiquen
-los parámetros recibidos, esto debe estar claramente documentado, dentro de
+En el caso en que por una decisiÃ³n de diseÃ±o o especificaciÃ³n se modifiquen
+los parÃ¡metros recibidos, esto debe estar claramente documentado, dentro de
 las postcondiciones.
 \end{atencion}
 
@@ -377,33 +377,33 @@ las postcondiciones.
 
 \begin{itemize}
 \item Las \textbf{precondiciones} son las condiciones que deben cumplir los
-parámetros recibidos por una función.
+parÃ¡metros recibidos por una funciÃ³n.
 \item Las \textbf{postcondiciones} son las condiciones cumplidads por los
-resultados que la función devuelve y por los parámetros recibidos, siempre
-que las precondiciones hayan sido válidas.
+resultados que la funciÃ³n devuelve y por los parÃ¡metros recibidos, siempre
+que las precondiciones hayan sido vÃ¡lidas.
 \item Los \textbf{invariantes de ciclo} son las condiciones que deben
-cumplirse al comienzo de cada iteración de un ciclo.
+cumplirse al comienzo de cada iteraciÃ³n de un ciclo.
 \item En el caso en que estas \textbf{aseveraciones} no sean verdaderas, se
-deberá a un error en el diseño o utilización del código.
-\item En general una función no debe modificar el contenido de sus parámetros,
-aún cuando esto sea posible, a menos que sea la funcionalidad explícita de esa
-función.
+deberÃ¡ a un error en el diseÃ±o o utilizaciÃ³n del cÃ³digo.
+\item En general una funciÃ³n no debe modificar el contenido de sus parÃ¡metros,
+aÃºn cuando esto sea posible, a menos que sea la funcionalidad explÃ­cita de esa
+funciÃ³n.
 \end{itemize}
 
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!assert condicion[,mensaje]!}
-Verifica si la condición es verdadera.  En caso contrario, levanta una
-excepción con el mensaje recibido por parámetro.
+Verifica si la condiciÃ³n es verdadera.  En caso contrario, levanta una
+excepciÃ³n con el mensaje recibido por parÃ¡metro.
 \end{sintaxis}
 
 \end{referencia_python}
 
-\section{Apéndice - Acertijo MU}
+\section{ApÃ©ndice - Acertijo MU}
 
 El acertijo MU\footnote{
 \url{http://en.wikipedia.org/wiki/Invariant\_(computer\_science)}} es un buen
-ejemplo de un problema lógico donde es útil determinar el invariante.  El
+ejemplo de un problema lÃ³gico donde es Ãºtil determinar el invariante.  El
 acertijo consiste en buscar si es posible convertir MI a MU, utilizando las
 siguientes operaciones.
 
@@ -417,42 +417,42 @@ Mxx)
 \end{enumerate}
 
 Para resolver este problema, es posible pasar horas aplicando estas reglas
-a distintas cadenas.  Sin embargo, puede ser más fácil encontrar una
-afirmación que sea invariante para todas las reglas y que muestre si es o
+a distintas cadenas.  Sin embargo, puede ser mÃ¡s fÃ¡cil encontrar una
+afirmaciÃ³n que sea invariante para todas las reglas y que muestre si es o
 no posible llegar a obtener MU.
 
 Al analizar las reglas, la forma de deshacerse de las Is es conseguir tener
-tres Is consecutivas en la cadena.  La única forma de deshacerse de todas las
-Is es que haya un cantidad de Is consecutivas múltiplo de tres.
+tres Is consecutivas en la cadena.  La Ãºnica forma de deshacerse de todas las
+Is es que haya un cantidad de Is consecutivas mÃºltiplo de tres.
 
-Es por esto que es interesante considerar la siguiente afirmación como
-invariante: el número de Is en la cadena no es múltiplo de tres.
+Es por esto que es interesante considerar la siguiente afirmaciÃ³n como
+invariante: el nÃºmero de Is en la cadena no es mÃºltiplo de tres.
 
-Para que esta afirmación sea invariante al acertijo, para
+Para que esta afirmaciÃ³n sea invariante al acertijo, para
 cada una de las reglas se debe cumplir que: si el invariante era verdadero
-antes de aplicar la regla, seguirá siendo verdadero luego de aplicarla.
+antes de aplicar la regla, seguirÃ¡ siendo verdadero luego de aplicarla.
 
-Para ver si esto es cierto o no, es necesario considerar la aplicación del
+Para ver si esto es cierto o no, es necesario considerar la aplicaciÃ³n del
 invariante para cada una de las reglas.
 
 \begin{enumerate}
-\item Se agrega una U, la cantidad de Is no varía, por lo cual se mantiene el
+\item Se agrega una U, la cantidad de Is no varÃ­a, por lo cual se mantiene el
 invariante.
 \item Se duplica toda la cadena luego de la M, siendo $n$ la cantidad de
-Is antes de la duplicación, si $n$ no es múltiplo de 3, $2n$ tampoco lo será.
+Is antes de la duplicaciÃ³n, si $n$ no es mÃºltiplo de 3, $2n$ tampoco lo serÃ¡.
 \item Se reemplazan tres Is por una U.  Al igual que antes, siendo $n$ la
-cantidad de Is antes del reemplazo, si $n$ no es múltiplo de 3, $n-3$ tampoco
-lo será.
-\item Se eliminan Us, la cantidad de Is no varía, por lo cual se mantiene el
+cantidad de Is antes del reemplazo, si $n$ no es mÃºltiplo de 3, $n-3$ tampoco
+lo serÃ¡.
+\item Se eliminan Us, la cantidad de Is no varÃ­a, por lo cual se mantiene el
 invariante.
 \end{enumerate}
 
 Todo esto indica claramente que el invariante se mantiene para cada una de las
 posibles transformaciones.  Esto significa que sea cual fuere la regla que se
-elija, si la cantidad de Is no es un múltiplo de tres antes de aplicarla, no
-lo será luego de hacerlo.
+elija, si la cantidad de Is no es un mÃºltiplo de tres antes de aplicarla, no
+lo serÃ¡ luego de hacerlo.
 
-Teniendo en cuenta que hay una única I en la cadena inicial MI, y que uno no
-es múltiplo de tres, es imposible llegar a MU con estas reglas, ya que MU
-tiene cero Is, que sí es múltiplo de tres.
+Teniendo en cuenta que hay una Ãºnica I en la cadena inicial MI, y que uno no
+es mÃºltiplo de tres, es imposible llegar a MU con estas reglas, ya que MU
+tiene cero Is, que sÃ­ es mÃºltiplo de tres.
 

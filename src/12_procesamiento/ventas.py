@@ -1,18 +1,18 @@
-# encoding: latin1
+# encoding: utf-8
 import csv
 
 def leer_datos(datos):
-	""" Devuelve el siguiente registro o None si no hay más """
+	""" Devuelve el siguiente registro o None si no hay mÃ¡s """
 	try:
 		return datos.next()
 	except:
 		return None
 
 def ventas_clientes_mes(archivo_ventas):
-	""" Recorre un archivo csv, con la información almacenada en el
-	formato: cliente,año,mes,día,venta """
+	""" Recorre un archivo csv, con la informaciÃ³n almacenada en el
+	formato: cliente,aÃ±o,mes,dÃ­a,venta """
 
-	# Inicialización
+	# InicializaciÃ³n
 	ventas = open(archivo_ventas)
 	ventas_csv = csv.reader(ventas)
 
@@ -20,16 +20,16 @@ def ventas_clientes_mes(archivo_ventas):
 	total = 0
 
 	while item:
-		# Inicialización para el bucle de cliente
+		# InicializaciÃ³n para el bucle de cliente
 		cliente = item[0]
 		total_cliente = 0
 		print "Cliente %s" % cliente
 
 		while item and item[0] == cliente:
-			# Inicialización para el bucle de año
+			# InicializaciÃ³n para el bucle de aÃ±o
 			anyo = item[1]
 			total_anyo = 0
-			print "\tAño: %s" % anyo
+			print "\tAÃ±o: %s" % anyo
 
 			while item and item[0] == cliente and item[1] == anyo:
 				mes, monto = item[2], float(item[3])
@@ -38,8 +38,8 @@ def ventas_clientes_mes(archivo_ventas):
 				# Siguiente registro
 				item = leer_datos(ventas_csv)
 
-			# Final del bucle de año
-			print "\tTotal para el año %s: %.2f" % (anyo, total_anyo)
+			# Final del bucle de aÃ±o
+			print "\tTotal para el aÃ±o %s: %.2f" % (anyo, total_anyo)
 			total_cliente += total_anyo
 
 		# Final del bucle de cliente

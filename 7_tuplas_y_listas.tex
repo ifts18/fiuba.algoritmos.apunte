@@ -1,11 +1,11 @@
 % Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
 % Copyright (C) 2010 Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Esta obra estÃ¡ licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -16,31 +16,31 @@
 \chapter{Tuplas y listas}
 
 Python cuenta con una gran variedad de tipos de datos que permiten
-representar la información según cómo esté estructurada.  En esta unidad se
+representar la informaciÃ³n segÃºn cÃ³mo estÃ© estructurada.  En esta unidad se
 estudian las tuplas y las listas, que son tipos de datos utilizados cuando
 se quiere agrupar elementos.
 
 \section{Tuplas}
 
-En la conversión de un tiempo a horas, minutos y segundos, en la sección
+En la conversiÃ³n de un tiempo a horas, minutos y segundos, en la secciÃ³n
 \ref{fun:multiple_return}, usamos n-uplas (o {\it tuplas}) como una
-construcción que nos permitía que una función devolviera múltiples valores.
+construcciÃ³n que nos permitÃ­a que una funciÃ³n devolviera mÃºltiples valores.
 
-En programación, en general, al querer modelar objetos de la vida real, es
-muy común que queramos describir un objeto como un agrupamiento de datos
+En programaciÃ³n, en general, al querer modelar objetos de la vida real, es
+muy comÃºn que queramos describir un objeto como un agrupamiento de datos
 de distintos tipos. Veamos algunos ejemplos:
 
 \begin{itemize}
 
-\item Una fecha la podemos querer representar como la terna día (un número
-entero), mes (una cadena de caracteres), y año (un número entero), y
+\item Una fecha la podemos querer representar como la terna dÃ­a (un nÃºmero
+entero), mes (una cadena de caracteres), y aÃ±o (un nÃºmero entero), y
 tendremos por ejemplo: \lstinline!(25, "Mayo", 1810)!.
 
-\item Como datos de los alumnos queremos guardar número de padrón, nombre y
+\item Como datos de los alumnos queremos guardar nÃºmero de padrÃ³n, nombre y
 apellido, como por ejemplo \lstinline!(89766, "Alicia", "Hacker")!.
 
 \item {\bf Es posible anidar tuplas:} como datos de los alumnos
-queremos guardar número de padrón, nombre, apellido y fecha de nacimiento,
+queremos guardar nÃºmero de padrÃ³n, nombre, apellido y fecha de nacimiento,
 como por ejemplo: \\
 \lstinline!(89766, "Alicia", "Hacker", (9, "Julio", 1988))!.
 \end{itemize}
@@ -48,7 +48,7 @@ como por ejemplo: \\
 \subsection{Elementos y segmentos de tuplas}
 
 Las tuplas son secuencias, igual que las cadenas, y se puede utilizar la
-misma notación de índices que en las cadenas para obtener cada una de sus
+misma notaciÃ³n de Ã­ndices que en las cadenas para obtener cada una de sus
 componentes. 
 
 \begin{itemize}
@@ -69,7 +69,7 @@ componentes.
 
 \begin{atencion}
 Todas las secuencias en Python comienzan a numerarse desde 0.  Es por eso
-que se produce un error si se quiere acceder al n-ésimo elemento de un
+que se produce un error si se quiere acceder al n-Ã©simo elemento de un
 tupla:
 
 \begin{codigo-python-sn}
@@ -80,17 +80,17 @@ IndexError: tuple index out of range
 \end{codigo-python-sn}
 \end{atencion}
 
-También se puede utilizar la notación de rangos, que se vio aplicada a
+TambiÃ©n se puede utilizar la notaciÃ³n de rangos, que se vio aplicada a
 cadenas para obtener una nueva tupla, con un subconjunto de componentes. Si
-en el ejemplo de la fecha queremos quedarnos con un par que sólo contenga
-día y mes podremos tomar el rango [:2] de la misma:
+en el ejemplo de la fecha queremos quedarnos con un par que sÃ³lo contenga
+dÃ­a y mes podremos tomar el rango [:2] de la misma:
 
 \begin{codigo-python-sn}
 >>> t[:2]
 (25, 'Mayo')
 \end{codigo-python-sn}
 
-\ejercicioc{¿Cuál es el cuarto elemento de 
+\ejercicioc{Â¿CuÃ¡l es el cuarto elemento de 
 \lstinline!(89766, "Alicia", "Hacker", (9, "Julio", 1988))!?}
 
 \subsection{Las tuplas son inmutables}
@@ -107,20 +107,20 @@ TypeError: 'tuple' object does not support item assignment
 
 \subsection{Longitud de tuplas}
 
-A las tuplas también se les puede aplicar la función \lstinline+len()+
-para calcular su longitud. El valor de esta función aplicada a
-una tupla nos indica cuántas componentes tiene esa tupla.
+A las tuplas tambiÃ©n se les puede aplicar la funciÃ³n \lstinline+len()+
+para calcular su longitud. El valor de esta funciÃ³n aplicada a
+una tupla nos indica cuÃ¡ntas componentes tiene esa tupla.
 
 \begin{codigo-python-sn}
 >>> len(t)
 3
 \end{codigo-python-sn}
 
-\ejercicioc{¿Cuál es la longitud de 
+\ejercicioc{Â¿CuÃ¡l es la longitud de 
 \lstinline!(89766, "Alicia", "Hacker", (9, "Julio", 1988))!?}
 
 \begin{itemize}
-\item Una {\it tupla vacía} es una tupla con $0$ componentes, y se la
+\item Una {\it tupla vacÃ­a} es una tupla con $0$ componentes, y se la
 indica como \lstinline+()+.
 
 \begin{codigo-python-sn}
@@ -135,10 +135,10 @@ IndexError: tuple index out of range
 
 \item Una {\it tupla unitaria} es una tupla con una componente. Para
 distinguir la tupla unitaria de la componente que contiene, Python exige
-que a la componente no sólo se la encierre entre paréntesis sino que se le
-ponga una coma a continuación del valor de la componente (así
-\lstinline+(1810)+ es un número, pero \lstinline+(1810,)+ es la tupla
-unitaria cuya única componente vale 1810).
+que a la componente no sÃ³lo se la encierre entre parÃ©ntesis sino que se le
+ponga una coma a continuaciÃ³n del valor de la componente (asÃ­
+\lstinline+(1810)+ es un nÃºmero, pero \lstinline+(1810,)+ es la tupla
+unitaria cuya Ãºnica componente vale 1810).
 
 \begin{codigo-python-sn}
 >>> u=(1810)
@@ -156,8 +156,8 @@ TypeError: object of type 'int' has no len()
 
 \subsection{Empaquetado y desempaquetado de tuplas}
 Si a una variable se le asigna una secuencia de valores separados por comas,
-el valor de esa variable será la tupla formada por todos los valores asignados.
-A esta operación se la denomina {\it empaquetado de tuplas}.
+el valor de esa variable serÃ¡ la tupla formada por todos los valores asignados.
+A esta operaciÃ³n se la denomina {\it empaquetado de tuplas}.
 
 \begin{codigo-python-sn}
 >>> a=125
@@ -172,8 +172,8 @@ A esta operación se la denomina {\it empaquetado de tuplas}.
 \end{codigo-python-sn}
 
 Si se tiene una tupla de longitud \lstinline+k+, se puede asignar
-la tupla a \lstinline+k+ variables distintas y en cada variable quedará
-una de las componentes de la tupla. A esta operación se la denomina
+la tupla a \lstinline+k+ variables distintas y en cada variable quedarÃ¡
+una de las componentes de la tupla. A esta operaciÃ³n se la denomina
 {\it desempaquetado de tuplas}.
 
 \begin{codigo-python-sn}
@@ -209,58 +209,58 @@ ValueError: need more than 3 values to unpack
 
 \ejercicioc{Cartas como tuplas.
 \begin{partes}
-\item Proponer una representación con tuplas para las cartas de la baraja
+\item Proponer una representaciÃ³n con tuplas para las cartas de la baraja
 francesa.
 
-\item Escribir una función \lstinline!poker! que reciba cinco cartas de la
-baraja francesa e informe (devuelva el valor lógico correspondiente) si esas
+\item Escribir una funciÃ³n \lstinline!poker! que reciba cinco cartas de la
+baraja francesa e informe (devuelva el valor lÃ³gico correspondiente) si esas
 cartas forman o no un {\it poker} (es decir que hay 4 cartas con el mismo
-número).
+nÃºmero).
 \end{partes}
 }
 
 \ejercicioc{El tiempo como tuplas.
 \begin{partes}
-\item Proponer una representación con tuplas para representar el tiempo.
-\item Escribir una función \lstinline!sumaTiempo! que reciba dos tiempos dados y
+\item Proponer una representaciÃ³n con tuplas para representar el tiempo.
+\item Escribir una funciÃ³n \lstinline!sumaTiempo! que reciba dos tiempos dados y
 devuelva su suma.
 \end{partes}
 }
 
-\ejercicioc{Escribir una función \lstinline!diaSiguienteE! que dada una fecha
-expresada como la terna (Día, Mes, Año) (donde Día, Mes y Año son números
-enteros) calcule el día siguiente al dado, en el mismo formato.}
+\ejercicioc{Escribir una funciÃ³n \lstinline!diaSiguienteE! que dada una fecha
+expresada como la terna (DÃ­a, Mes, AÃ±o) (donde DÃ­a, Mes y AÃ±o son nÃºmeros
+enteros) calcule el dÃ­a siguiente al dado, en el mismo formato.}
 
-\ejercicioc{Escribir una función \lstinline!diaSiguienteT! que dada una fecha
-expresada como la terna (Día, Mes, Año) (donde Día y Año son números
+\ejercicioc{Escribir una funciÃ³n \lstinline!diaSiguienteT! que dada una fecha
+expresada como la terna (DÃ­a, Mes, AÃ±o) (donde DÃ­a y AÃ±o son nÃºmeros
 enteros, y Mes es el texto \lstinline!"Ene"!, \lstinline!"Feb"!, $\ldots$,
-\lstinline!"Dic"!, según corresponda) calcule el día siguiente al dado, en
+\lstinline!"Dic"!, segÃºn corresponda) calcule el dÃ­a siguiente al dado, en
 el mismo formato.}
 
 \section{Listas}
 
 Presentaremos ahora una nueva estructura de datos: la {\it lista}.
 Usaremos listas para poder modelar datos compuestos pero cuya cantidad y
-valor varían a lo largo del tiempo. Son secuencias {\it mutables} y vienen
-dotadas de una variedad de operaciones muy útiles.
+valor varÃ­an a lo largo del tiempo. Son secuencias {\it mutables} y vienen
+dotadas de una variedad de operaciones muy Ãºtiles.
 
-La notación para lista es una secuencia de valores encerrados entre
+La notaciÃ³n para lista es una secuencia de valores encerrados entre
 corchetes y separados por comas.  Por ejemplo, si representamos a los
-alumnos mediante su número de padrón, se puede tener una lista de
+alumnos mediante su nÃºmero de padrÃ³n, se puede tener una lista de
 inscriptos en la materia como la siguiente: i
 \lstinline![78455, 89211, 66540, 45750]!.
-Al abrirse la inscripción, antes de que hubiera inscriptos, la lista de
-inscriptos se representará por una lista vacía: \lstinline![]!.
+Al abrirse la inscripciÃ³n, antes de que hubiera inscriptos, la lista de
+inscriptos se representarÃ¡ por una lista vacÃ­a: \lstinline![]!.
 
 \subsection{Longitud de la lista. Elementos y segmentos de listas}
 
 \begin{itemize}
 
-\item Como a las secuencias ya vistas, a las listas también se les puede
-aplicar la función \lstinline+len()+ para conocer su longitud.
+\item Como a las secuencias ya vistas, a las listas tambiÃ©n se les puede
+aplicar la funciÃ³n \lstinline+len()+ para conocer su longitud.
 
-\item Para acceder a los distintos elementos de la lista se utilizará la
-misma notación de índices de cadenas y tuplas, con valores que van de $0$ a la
+\item Para acceder a los distintos elementos de la lista se utilizarÃ¡ la
+misma notaciÃ³n de Ã­ndices de cadenas y tuplas, con valores que van de $0$ a la
 longitud de la lista $-1$.
 
 \begin{codigo-python-sn}
@@ -278,9 +278,9 @@ IndexError: list index out of range
 \end{codigo-python-sn}
 
 \item Para obtener una sublista a partir de la lista original, se utiliza
-la notación de rangos, como en las otras secuencias.
+la notaciÃ³n de rangos, como en las otras secuencias.
 
-Para obtener la lista que contiene sólo a quién se inscribió en segundo
+Para obtener la lista que contiene sÃ³lo a quiÃ©n se inscribiÃ³ en segundo
 lugar podemos escribir:
 
 \begin{codigo-python-sn}
@@ -306,7 +306,7 @@ podemos escribir:
 
 \end{itemize}
 
-\subsection{Cómo mutar listas}
+\subsection{CÃ³mo mutar listas}
 
 Dijimos antes que las listas son secuencias mutables. Para lograr la
 mutabilidad Python provee operaciones que nos permiten cambiarle valores,
@@ -315,7 +315,7 @@ agregarle valores y quitarle valores.
 \begin{itemize}
 
 \item Para cambiar una componente de una lista, se selecciona la componente
-mediante su índice y se le asigna el nuevo valor:
+mediante su Ã­ndice y se le asigna el nuevo valor:
 
 \begin{codigo-python-sn}
 >>> xs[1]=79211
@@ -324,8 +324,8 @@ mediante su índice y se le asigna el nuevo valor:
 \end{codigo-python-sn}
 
 \item Para agregar un nuevo valor al final de la lista se utiliza la
-operación \lstinline+append()+.  Escribimos \lstinline+xs.append(47890)+ para
-agregar el padrón 47890 al final de \lstinline+xs+.
+operaciÃ³n \lstinline+append()+.  Escribimos \lstinline+xs.append(47890)+ para
+agregar el padrÃ³n 47890 al final de \lstinline+xs+.
 
 \begin{codigo-python-sn}
 >>> xs.append(47890)
@@ -334,12 +334,12 @@ agregar el padrón 47890 al final de \lstinline+xs+.
 >>>
 \end{codigo-python-sn}
 
-\item Para insertar un nuevo valor en la posición cuyo índice es
+\item Para insertar un nuevo valor en la posiciÃ³n cuyo Ã­ndice es
 \lstinline+k+ (y desplazar un lugar el resto de la lista) se utiliza la
-operación \lstinline+insert()+.
+operaciÃ³n \lstinline+insert()+.
 
-Escribimos \lstinline+xs.insert(2, 54988)+ para insertar el padrón 54988 en
-la tercera posición de \lstinline+xs+.
+Escribimos \lstinline+xs.insert(2, 54988)+ para insertar el padrÃ³n 54988 en
+la tercera posiciÃ³n de \lstinline+xs+.
 
 \begin{codigo-python-sn}
 >>> xs.insert(2, 54988)
@@ -349,7 +349,7 @@ la tercera posición de \lstinline+xs+.
 
 \begin{observacion}
 Las listas no controlan si se insertan elementos repetidos, si necesitamos
-exigir unicidad, debemos hacerlo mediante el código de nuestros programas.
+exigir unicidad, debemos hacerlo mediante el cÃ³digo de nuestros programas.
 \end{observacion}
 
 \begin{codigo-python-sn}
@@ -358,10 +358,10 @@ exigir unicidad, debemos hacerlo mediante el código de nuestros programas.
 [78455, 78455, 79211, 54988, 66540, 45750, 47890]
 \end{codigo-python-sn}
 
-\item Para eliminar un valor de una lista se utiliza la operación
+\item Para eliminar un valor de una lista se utiliza la operaciÃ³n
 \lstinline+remove()+.
 
-Escribimos \lstinline+xs.remove(45750)+ para borrar el padrón 45750 de la
+Escribimos \lstinline+xs.remove(45750)+ para borrar el padrÃ³n 45750 de la
 lista de inscriptos:
 
 \begin{codigo-python-sn}
@@ -370,7 +370,7 @@ lista de inscriptos:
 [78455, 78455, 79211, 54988, 66540, 47890]
 \end{codigo-python-sn}
 
-Si el valor a borrar está repetido, se borra sólo su primera aparición:
+Si el valor a borrar estÃ¡ repetido, se borra sÃ³lo su primera apariciÃ³n:
 
 \begin{codigo-python-sn}
 >>> xs.remove(78455)
@@ -390,23 +390,23 @@ ValueError: list.remove(x): x not in list
 \end{atencion}
 \end{itemize}
 
-\subsection{Cómo buscar dentro de las listas}
+\subsection{CÃ³mo buscar dentro de las listas}
 
-Queremos poder formular dos preguntas más respecto de la lista de
+Queremos poder formular dos preguntas mÃ¡s respecto de la lista de
 inscriptos:
 
 \begin{itemize}
-\item ¿Está la persona cuyo padrón es $v$ inscripta en esta materia?
+\item Â¿EstÃ¡ la persona cuyo padrÃ³n es $v$ inscripta en esta materia?
 
-\item ¿En qué orden se inscribió la persona cuyo padrón es $v$?.
+\item Â¿En quÃ© orden se inscribiÃ³ la persona cuyo padrÃ³n es $v$?.
 \end{itemize}
 
-Veamos qué operaciones sobre listas se pueden usar para lograr esos dos
+Veamos quÃ© operaciones sobre listas se pueden usar para lograr esos dos
 objetivos:
 
 \begin{itemize}
 \item Para preguntar si un valor determinado es un elemento de una lista
-usaremos la operación \lstinline+in+:
+usaremos la operaciÃ³n \lstinline+in+:
 
 \begin{codigo-python-sn}
 >>> xs
@@ -419,12 +419,12 @@ True
 \end{codigo-python-sn}
 
 \begin{observacion}
-Esta operación se puede utilizar para todas las secuencias, incluyendo
+Esta operaciÃ³n se puede utilizar para todas las secuencias, incluyendo
 tuplas y cadenas
 \end{observacion}
 
-\item Para averiguar la posición de un valor dentro de una lista usaremos
-la operación \lstinline+index()+.
+\item Para averiguar la posiciÃ³n de un valor dentro de una lista usaremos
+la operaciÃ³n \lstinline+index()+.
 
 \begin{codigo-python-sn}
 >>> xs.index(78455)
@@ -434,7 +434,7 @@ la operación \lstinline+index()+.
 \end{codigo-python-sn}
 
 \begin{atencion}
-Si el valor no se encuentra en la lista, se producirá un error:
+Si el valor no se encuentra en la lista, se producirÃ¡ un error:
 
 \begin{codigo-python-sn}
 >>> xs.index(78)
@@ -444,7 +444,7 @@ ValueError: list.index(x): x not in list
 \end{codigo-python-sn}
 \end{atencion}
 
-Si el valor está repetido, el índice que devuelve es el de la primera aparición:
+Si el valor estÃ¡ repetido, el Ã­ndice que devuelve es el de la primera apariciÃ³n:
 
 \begin{codigo-python-sn}
 >>> ys=[10,20,10]
@@ -453,12 +453,12 @@ Si el valor está repetido, el índice que devuelve es el de la primera aparición:
 \end{codigo-python-sn}
 
 \begin{observacion}
-En versiones de Python anteriores a la 2.6 esta operación no está disponible
+En versiones de Python anteriores a la 2.6 esta operaciÃ³n no estÃ¡ disponible
 en tuplas.
 \end{observacion}
 
 \item Para iterar sobre todos los elementos de una lista usaremos una
-construcción \lstinline+for+:
+construcciÃ³n \lstinline+for+:
 
 \begin{codigo-python-sn}
 >>> zs = [5, 3, 8, 10, 2]
@@ -473,7 +473,7 @@ construcción \lstinline+for+:
 \end{codigo-python-sn}
 
 \begin{observacion}
-Esta construcción se puede utilizar sobre cualquier secuencia, incluyendo
+Esta construcciÃ³n se puede utilizar sobre cualquier secuencia, incluyendo
 tuplas y cadenas.
 \end{observacion}
 
@@ -485,7 +485,7 @@ de las {\it secuencias}.  Todas las secuencias cuentan con las siguientes
 operaciones:
 
 \begin{tabular}{l|l}
-Operación & Resultado \\
+OperaciÃ³n & Resultado \\
 \hline
 \lstinline!x in s! & Indica si la variable \lstinline!x! se encuentra en
 \lstinline!s! \\
@@ -493,13 +493,13 @@ Operación & Resultado \\
 \lstinline!s * n! & Concatena \lstinline!n! copias de \lstinline!s!. \\
 \lstinline!s[i]! & Elemento \lstinline!i! de \lstinline!s!, empezando por
 0. \\
-\lstinline!s[i:j]! & Porción de la secuencia \lstinline!s! desde
+\lstinline!s[i:j]! & PorciÃ³n de la secuencia \lstinline!s! desde
 \lstinline!i! hasta \lstinline!j! (no inclusive). \\
-\lstinline!s[i:j:k]! & Porción de la secuencia \lstinline!s! desde 
+\lstinline!s[i:j:k]! & PorciÃ³n de la secuencia \lstinline!s! desde 
 \lstinline!i! hasta \lstinline!j! (no inclusive), con paso \lstinline!k!.  \\
 \lstinline!len(s)! & Cantidad de elementos de la secuencia \lstinline!s!.  \\
-\lstinline!min(s)! & Mínimo elemento de la secuencia \lstinline!s!. \\
-\lstinline!max(s)! & Máximo elemento de la secuencia \lstinline!s!. \\
+\lstinline!min(s)! & MÃ­nimo elemento de la secuencia \lstinline!s!. \\
+\lstinline!max(s)! & MÃ¡ximo elemento de la secuencia \lstinline!s!. \\
 \end{tabular}
 
 \end{sabias_que}
@@ -510,67 +510,67 @@ los inscriptos de una materia.}
 
 \begin{enumerate}
 
-\item {\bf Análisis:} El usuario ingresa datos de padrones que se van
+\item {\bf AnÃ¡lisis:} El usuario ingresa datos de padrones que se van
 guardando en una lista.
 
-\item {\bf Especificación:} El programa solicitará al usuario que ingrese
-uno a uno los padrones de los inscriptos. Con esos números construirá una
-lista, que al final se mostrará.
+\item {\bf EspecificaciÃ³n:} El programa solicitarÃ¡ al usuario que ingrese
+uno a uno los padrones de los inscriptos. Con esos nÃºmeros construirÃ¡ una
+lista, que al final se mostrarÃ¡.
 
-\item {\bf Diseño:}
+\item {\bf DiseÃ±o:}
 \begin{itemize}
-\item ¿Qué estructura tiene este programa? ¿Se parece a algo conocido?
+\item Â¿QuÃ© estructura tiene este programa? Â¿Se parece a algo conocido?
 
 Es claramente un ciclo en el cual se le pide al usuario que ingrese uno a
-uno los padrones de los inscriptos, y estos números se agregan a una lista.
-Y en algún momento, cuando se terminaron los inscriptos, el usuario deja de
+uno los padrones de los inscriptos, y estos nÃºmeros se agregan a una lista.
+Y en algÃºn momento, cuando se terminaron los inscriptos, el usuario deja de
 cargar.
 
-\item ¿El ciclo es definido o indefinido?
+\item Â¿El ciclo es definido o indefinido?
 
-Para que fuera un ciclo definido deberíamos contar de antemano cuántos
+Para que fuera un ciclo definido deberÃ­amos contar de antemano cuÃ¡ntos
 inscriptos tenemos, y luego cargar exactamente esa cantidad, pero eso no
-parece muy útil.
+parece muy Ãºtil.
 
-Estamos frente a una situación parecida al problema de la lectura de los
-números, en el sentido de que no sabemos cuántos elementos queremos cargar
-de antemano. Para ese problema, en \ref{centinela}, vimos una solución muy
-sencilla y cómoda: se le piden datos al usuario y, cuando se cargaron todos
-los datos se ingresa un valor distinguido (que se usa sólo para indicar que
-no hay más información). A ese diseño lo hemos llamado ciclo con centinela
+Estamos frente a una situaciÃ³n parecida al problema de la lectura de los
+nÃºmeros, en el sentido de que no sabemos cuÃ¡ntos elementos queremos cargar
+de antemano. Para ese problema, en \ref{centinela}, vimos una soluciÃ³n muy
+sencilla y cÃ³moda: se le piden datos al usuario y, cuando se cargaron todos
+los datos se ingresa un valor distinguido (que se usa sÃ³lo para indicar que
+no hay mÃ¡s informaciÃ³n). A ese diseÃ±o lo hemos llamado ciclo con centinela
 y tiene el siguiente esquema:
 
 \begin{itemize}
 \item Pedir datos.
 \item Mientras el dato pedido no coincida con el centinela:
 \begin{itemize}
-\item Realizar cálculos.
+\item Realizar cÃ¡lculos.
 \item Pedir datos.
 \end{itemize}
 \end{itemize}
 
-Como sabemos que los números de padrón son siempre enteros positivos,
-podemos considerar que el centinela puede ser cualquier número menor o
-igual a cero.  También sabemos que en nuestro caso tenemos que ir armando
-una lista que inicialmente no tiene ningún inscripto.
+Como sabemos que los nÃºmeros de padrÃ³n son siempre enteros positivos,
+podemos considerar que el centinela puede ser cualquier nÃºmero menor o
+igual a cero.  TambiÃ©n sabemos que en nuestro caso tenemos que ir armando
+una lista que inicialmente no tiene ningÃºn inscripto.
 
-Modificamos el esquema anterior para ajustarnos a nuestra situación:
+Modificamos el esquema anterior para ajustarnos a nuestra situaciÃ³n:
 
 \begin{itemize}
-\item La lista de inscriptos es vacía.
-\item Pedir padrón.
-\item Mientras el padrón sea positivo:
+\item La lista de inscriptos es vacÃ­a.
+\item Pedir padrÃ³n.
+\item Mientras el padrÃ³n sea positivo:
 \begin{itemize}
-\item Agregar el padrón a la lista.
-\item Pedir padrón.
+\item Agregar el padrÃ³n a la lista.
+\item Pedir padrÃ³n.
 \end{itemize}
 \end{itemize}
 
 \end{itemize}
 
-\item {\bf Implementación:}
-De acuerdo a lo diseñado en el párrafo anterior, el programa quedaría como
-se muestra en el Código \ref{ins0}.
+\item {\bf ImplementaciÃ³n:}
+De acuerdo a lo diseÃ±ado en el pÃ¡rrafo anterior, el programa quedarÃ­a como
+se muestra en el CÃ³digo \ref{ins0}.
 
 \begin{codigo}{inscriptos.py}{Permite ingresar padrones de alumnos
 inscriptos}
@@ -579,61 +579,61 @@ inscriptos}
 \end{codigo}
 
 \item {\bf Prueba:}
-Para probarlo lo ejecutamos con algunos lotes de prueba (inscripción de
-tres alumnos, inscripción de cero alumnos, inscripción de alumnos
+Para probarlo lo ejecutamos con algunos lotes de prueba (inscripciÃ³n de
+tres alumnos, inscripciÃ³n de cero alumnos, inscripciÃ³n de alumnos
 repetidos):
 
 \begin{codigo-python-sn}
-Inscripción en el curso 04 de 75.40
-Ingresá un padrón (<=0 para terminar): 30
-Ingresá un padrón (<=0 para terminar): 40
-Ingresá un padrón (<=0 para terminar): 50
-Ingresá un padrón (<=0 para terminar): 0
+InscripciÃ³n en el curso 04 de 75.40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 30
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 50
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 0
 Esta es la lista de inscriptos:  [30, 40, 50]
 >>>
-Inscripción en el curso 04 de 75.40
-Ingresá un padrón (<=0 para terminar): 0
+InscripciÃ³n en el curso 04 de 75.40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 0
 Esta es la lista de inscriptos:  []
 >>>
-Inscripción en el curso 04 de 75.40
-Ingresá un padrón (<=0 para terminar): 30
-Ingresá un padrón (<=0 para terminar): 40
-Ingresá un padrón (<=0 para terminar): 40
-Ingresá un padrón (<=0 para terminar): 30
-Ingresá un padrón (<=0 para terminar): 50
-Ingresá un padrón (<=0 para terminar): 0
+InscripciÃ³n en el curso 04 de 75.40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 30
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 30
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 50
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 0
 Esta es la lista de inscriptos:  [30, 40, 40, 30, 50]
 \end{codigo-python-sn}
 
 Evidentemente el programa funciona de acuerdo a lo especificado, pero
 hay algo que no tuvimos en cuenta: permite inscribir a una misma persona
-más de una vez.
+mÃ¡s de una vez.
 
 \item {\bf Mantenimiento:} No permitir que haya padrones repetidos.
 
-\item {\bf Diseño revisado:} Para no permitir que haya padrones repetidos
-debemos revisar que no exista el padrón antes de agregarlo en la lista:
+\item {\bf DiseÃ±o revisado:} Para no permitir que haya padrones repetidos
+debemos revisar que no exista el padrÃ³n antes de agregarlo en la lista:
 
 \begin{itemize}
-\item La lista de inscriptos es vacía.
-\item Pedir padrón.
-\item Mientras el padrón sea positivo:
+\item La lista de inscriptos es vacÃ­a.
+\item Pedir padrÃ³n.
+\item Mientras el padrÃ³n sea positivo:
 \begin{itemize}
-\item Si el padrón no está en la lista:
+\item Si el padrÃ³n no estÃ¡ en la lista:
 \begin{itemize}
-\item Agregar el padrón a la lista
+\item Agregar el padrÃ³n a la lista
 \end{itemize}
-\item pero si está en la lista:
+\item pero si estÃ¡ en la lista:
 \begin{itemize}
-\item Avisar que el padrón ya está en la lista
+\item Avisar que el padrÃ³n ya estÃ¡ en la lista
 \end{itemize}
-\item Pedir padrón.
+\item Pedir padrÃ³n.
 \end{itemize}
 \end{itemize}
 
-\item {\bf Nueva implementación:}
-De acuerdo a lo diseñado en el párrafo anterior, el programa ahora quedaría
-como se muestra en el Código \ref{ins1}.
+\item {\bf Nueva implementaciÃ³n:}
+De acuerdo a lo diseÃ±ado en el pÃ¡rrafo anterior, el programa ahora quedarÃ­a
+como se muestra en el CÃ³digo \ref{ins1}.
 
 \begin{codigo}{inscriptos.py}{Permite ingresar padrones, sin repetir} 
 \label{ins1}
@@ -642,30 +642,30 @@ como se muestra en el Código \ref{ins1}.
 
 \item {\bf Nueva prueba:}
 Para probarlo lo ejecutamos con los mismos lotes de prueba anteriores
-(inscripción de tres alumnos, inscripción de cero alumnos, inscripción de
+(inscripciÃ³n de tres alumnos, inscripciÃ³n de cero alumnos, inscripciÃ³n de
 alumnos repetidos):
 
 \begin{codigo-python-sn}
-Inscripción en el curso 04 de 75.40
-Ingresá un padrón (<=0 para terminar): 30
-Ingresá un padrón (<=0 para terminar): 40
-Ingresá un padrón (<=0 para terminar): 50
-Ingresá un padrón (<=0 para terminar): 0
+InscripciÃ³n en el curso 04 de 75.40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 30
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 50
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 0
 Esta es la lista de inscriptos:  [30, 40, 50]
 >>>
-Inscripción en el curso 04 de 75.40
-Ingresá un padrón (<=0 para terminar): 0
+InscripciÃ³n en el curso 04 de 75.40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 0
 Esta es la lista de inscriptos:  []
 >>>
-Inscripción en el curso 04 de 75.40
-Ingresá un padrón (<=0 para terminar): 30
-Ingresá un padrón (<=0 para terminar): 40
-Ingresá un padrón (<=0 para terminar): 40
+InscripciÃ³n en el curso 04 de 75.40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 30
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 40
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 40
 Ya figura en la lista
-Ingresá un padrón (<=0 para terminar): 30
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 30
 Ya figura en la lista
-Ingresá un padrón (<=0 para terminar): 50
-Ingresá un padrón (<=0 para terminar): 0
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 50
+IngresÃ¡ un padrÃ³n (<=0 para terminar): 0
 Esta es la lista de inscriptos:  [30, 40, 50]
 \end{codigo-python-sn}
 
@@ -675,18 +675,18 @@ Pero ahora el resultado es satisfactorio: no tenemos inscriptos repetidos.
 
 \ejercicioc{Permitir que los alumnos se puedan inscribir o borrar.}
 
-\ejercicioc{Inscribir y borrar alumnos como antes, pero registrar también
+\ejercicioc{Inscribir y borrar alumnos como antes, pero registrar tambiÃ©n
 el nombre y apellido de la persona inscripta, de modo de tener como lista
 de inscriptos:
-\lstinline![(20, "Ana", "García"), (10, "Juan", "Salas")]!.}
+\lstinline![(20, "Ana", "GarcÃ­a"), (10, "Juan", "Salas")]!.}
 
 \section{Ordenar listas}
 
-Nos puede interesar que los elementos de una lista estén ordenados: una vez
-que finalizó la inscripción en un curso, tener a los padrones de los
-alumnos por orden de inscripción puede ser muy incómodo, siempre será
-preferible tenerlos ordenados por número para realizar cualquier
-comprobación.
+Nos puede interesar que los elementos de una lista estÃ©n ordenados: una vez
+que finalizÃ³ la inscripciÃ³n en un curso, tener a los padrones de los
+alumnos por orden de inscripciÃ³n puede ser muy incÃ³modo, siempre serÃ¡
+preferible tenerlos ordenados por nÃºmero para realizar cualquier
+comprobaciÃ³n.
 
 Python provee dos operaciones para obtener una lista ordenada a partir de
 una lista desordenada.
@@ -694,7 +694,7 @@ una lista desordenada.
 \begin{itemize}
 
 \item Para dejar la lista original intacta pero obtener una nueva lista
-ordenada a partir de ella, se usa la función \lstinline!sorted!.
+ordenada a partir de ella, se usa la funciÃ³n \lstinline!sorted!.
 
 \begin{codigo-python-sn}
 >>> bs=[5,2,4,2]
@@ -705,7 +705,7 @@ ordenada a partir de ella, se usa la función \lstinline!sorted!.
 [2, 2, 4, 5]
 \end{codigo-python-sn}
 
-\item Para modificar directamente la lista original usaremos la operación
+\item Para modificar directamente la lista original usaremos la operaciÃ³n
 \lstinline+sort()+.
 
 \begin{codigo-python-sn}
@@ -720,9 +720,9 @@ ordenada a partir de ella, se usa la función \lstinline!sorted!.
 \section{Listas y cadenas}
 
 A partir de una cadena de caracteres, podemos obtener una lista con sus
-componentes usando la función \lstinline!split!.
+componentes usando la funciÃ³n \lstinline!split!.
 
-Si queremos obtener las palabras (separadas entre sí por espacios) que
+Si queremos obtener las palabras (separadas entre sÃ­ por espacios) que
 componen la cadena \lstinline!xs! escribiremos simplemente
 \lstinline!xs.split()!:
 
@@ -732,15 +732,15 @@ componen la cadena \lstinline!xs! escribiremos simplemente
 ['Una', 'cadena', 'con', 'espacios']
 \end{codigo-python-sn}
 
-En este caso \lstinline!split! elimina todos los blancos de más, y devuelve
-sólo las palabras que conforman la cadena.
+En este caso \lstinline!split! elimina todos los blancos de mÃ¡s, y devuelve
+sÃ³lo las palabras que conforman la cadena.
 
-Si en cambio el separador es otro carácter (por ejemplo la arroba,
-\lstinline!"@"!), se lo debemos pasar como parámetro a la función
+Si en cambio el separador es otro carÃ¡cter (por ejemplo la arroba,
+\lstinline!"@"!), se lo debemos pasar como parÃ¡metro a la funciÃ³n
 \lstinline!split!. En ese caso se considera una componente todo lo que se
 encuentra entre dos arrobas consecutivas. En el caso particular de que el
-texto contenga dos arrobas una a continuación de la otra, se devolverá una
-componente vacía:
+texto contenga dos arrobas una a continuaciÃ³n de la otra, se devolverÃ¡ una
+componente vacÃ­a:
 
 \begin{codigo-python-sn}
 >>> d="@@Una@@@cadena@@@con@@arrobas@"
@@ -749,7 +749,7 @@ componente vacía:
 >>>
 \end{codigo-python-sn}
 
-La ``casi''--inversa de \lstinline!split! es una función \lstinline!join!
+La ``casi''--inversa de \lstinline!split! es una funciÃ³n \lstinline!join!
 que tiene la siguiente sintaxis:
 
 \begin{codigo-python-sn}
@@ -757,7 +757,7 @@ que tiene la siguiente sintaxis:
 \end{codigo-python-sn}
 
 y que devuelve la cadena que resulta de unir todas las componentes
-separadas entre sí por medio del {\it separador}:
+separadas entre sÃ­ por medio del {\it separador}:
 
 \begin{codigo-python-sn}
 >>> xs = ['aaa', 'bbb', 'cccc']
@@ -771,25 +771,25 @@ separadas entre sí por medio del {\it separador}:
 
 \subsection{Ejercicios con listas y cadenas}
 
-\ejercicioc{Escribir una función que reciba como parámetro una cadena de
-palabras separadas por espacios y devuelva, como resultado, cuántas
-palabras de más de cinco letras tiene la cadena dada.}
+\ejercicioc{Escribir una funciÃ³n que reciba como parÃ¡metro una cadena de
+palabras separadas por espacios y devuelva, como resultado, cuÃ¡ntas
+palabras de mÃ¡s de cinco letras tiene la cadena dada.}
 
 \ejercicioc{{\bf Procesamiento de telegramas.} Un oficial de correos decide
-optimizar el trabajo de su oficina cortando todas las palabras de más de
-cinco letras a sólo cinco letras (e indicando que una palabra fue cortada
-con el agregado de una arroba). Además elimina todos los espacios en blanco
-de más.
+optimizar el trabajo de su oficina cortando todas las palabras de mÃ¡s de
+cinco letras a sÃ³lo cinco letras (e indicando que una palabra fue cortada
+con el agregado de una arroba). AdemÃ¡s elimina todos los espacios en blanco
+de mÃ¡s.
 
 Por ejemplo, al texto
-\lstinline+"   Llego   mañana   alrededor  del   mediodía   "+ 
-se transcribe como \lstinline+"Llego mañan@ alred@ del medio@"+.
+\lstinline+"   Llego   maÃ±ana   alrededor  del   mediodÃ­a   "+ 
+se transcribe como \lstinline+"Llego maÃ±an@ alred@ del medio@"+.
 
 Por otro lado cobra un valor para las palabras cortas y otro valor para las
 palabras largas (que deben ser cortadas).
 
 \begin{partes}
-\item Escribir una función que reciba un texto, la longitud máxima de las
+\item Escribir una funciÃ³n que reciba un texto, la longitud mÃ¡xima de las
 palabras, el costo de cada palabra corta, el costo de cada palabra larga, y
 devuelva como resultado el texto del telegrama y el costo del mismo.
 
@@ -797,11 +797,11 @@ devuelva como resultado el texto del telegrama y el costo del mismo.
 final (que puede faltar en el texto original) se indica como "STOPSTOP".
 
 Al texto: \\
-\lstinline+"   Llego   mañana   alrededor  del   mediodía. Voy a almorzar "+ \\
+\lstinline+"   Llego   maÃ±ana   alrededor  del   mediodÃ­a. Voy a almorzar "+ \\
 Se lo transcribe como: \\
-\lstinline+"Llego mañan@ alred@ del medio@ STOP Voy a almor@ STOPSTOP"+.
+\lstinline+"Llego maÃ±an@ alred@ del medio@ STOP Voy a almor@ STOPSTOP"+.
 
-Extender la función anterior para agregar el tratamiento de los puntos.
+Extender la funciÃ³n anterior para agregar el tratamiento de los puntos.
 \end{partes}
 }
 
@@ -816,22 +816,22 @@ listas} son estructuras mutables que permiten agrupar valores, con la
 posibilidad de agregar, quitar o reemplazar sus elementos.
 
 \item Las tuplas se utilizan para modelar situaciones en las cuales al
-momento de crearlas ya se sabe cuál va a ser la información a almacenar.
+momento de crearlas ya se sabe cuÃ¡l va a ser la informaciÃ³n a almacenar.
 Por ejemplo, para representar una fecha, una carta de la baraja, una ficha
-de dominó.
+de dominÃ³.
 
 \item Las listas se utilizan en las situaciones en las que los elementos a
 agrupar pueden ir variando a lo largo del tiempo.  Por ejemplo, para
 representar un las notas de un alumno en diversas materias, los inscriptos
-para un evento o la clasificación de los equipos en una competencia.
+para un evento o la clasificaciÃ³n de los equipos en una competencia.
 
 \end{itemize}
 
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!(valor1, valor2, valor3)!}
-Las tuplas se definen como una sucesión de valores encerrados entre
-paréntesis. Una vez definidas, no se pueden modificar los valores
+Las tuplas se definen como una sucesiÃ³n de valores encerrados entre
+parÃ©ntesis. Una vez definidas, no se pueden modificar los valores
 asignados.
 
 Casos particulares:
@@ -842,7 +842,7 @@ tupla_unitaria = (3459,)
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline![valor1, valor2, valor3]!}
-Las listas se definen como una sucesión de valores encerrados entre
+Las listas se definen como una sucesiÃ³n de valores encerrados entre
 corchetes.  Se les puede agregar, quitar o cambiar los valores que
 contienen.
 
@@ -860,11 +860,11 @@ lista_vacia = []
 \begin{sintaxis}{\lstinline!x,y,z = tupla!}
 Para {\it desempaquetar} una secuencia, es posible asignar la variable que
 contiene la tupla a tantas variables como elementos tenga, cada variable
-tomará el valor del elemento que se encuentra en la misma posición.
+tomarÃ¡ el valor del elemento que se encuentra en la misma posiciÃ³n.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!len(secuencia)!}
-Devuelve el largo de la secuencia, 0 si está vacía.
+Devuelve el largo de la secuencia, 0 si estÃ¡ vacÃ­a.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!for elemento in secuencia:!}
@@ -876,21 +876,21 @@ Indica si el elemento se encuentra o no en la secuencia
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!secuencia[i]!}
-Corresponde al valor de la secuencia en la posición \lstinline!i!, comenzando
+Corresponde al valor de la secuencia en la posiciÃ³n \lstinline!i!, comenzando
 desde 0.
 
-Si se utilizan números negativos, se puede acceder a los
-elementos desde el último (\lstinline!-1!) hasta el primero
+Si se utilizan nÃºmeros negativos, se puede acceder a los
+elementos desde el Ãºltimo (\lstinline!-1!) hasta el primero
 (\lstinline!-len(secuencia)!).
 
-En el caso de las tuplas (inmutables) sólo puede usarse para obtener el
-valor, mientra que en las listas (mutables) puede usarse también para
+En el caso de las tuplas (inmutables) sÃ³lo puede usarse para obtener el
+valor, mientra que en las listas (mutables) puede usarse tambiÃ©n para
 modificar su valor.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!secuencia[i:j:k]!}
-Permite obtener un segmento de la secuencia, desde la posición \lstinline!i!
-inclusive, hasta la posición \lstinline!j! exclusive, con paso
+Permite obtener un segmento de la secuencia, desde la posiciÃ³n \lstinline!i!
+inclusive, hasta la posiciÃ³n \lstinline!j! exclusive, con paso
 \lstinline!k!.
 
 En el caso de que se omita \lstinline!i!, se asume \lstinline!0!.  En el
@@ -904,16 +904,16 @@ Agrega un elemento al final de la lista.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!lista.insert(posicion, valor)!}
-Agrega un elemento a la lista, en la posición \lstinline!posicion!.
+Agrega un elemento a la lista, en la posiciÃ³n \lstinline!posicion!.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!lista.remove(valor)!}
-Borra la primera aparción de elemento, si se encuentra en la lista.  De no
+Borra la primera aparciÃ³n de elemento, si se encuentra en la lista.  De no
 encontrarse en la lista, se produce un error.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!lista.index(valor)!}
-Devuelve la posición de la primera aparición de valor.  Si no se encuentra
+Devuelve la posiciÃ³n de la primera apariciÃ³n de valor.  Si no se encuentra
 en la lista, se produce un error.
 \end{sintaxis}
 
@@ -935,7 +935,7 @@ separadores.
 
 \begin{sintaxis}{\lstinline!separador.join(lista)!}
 Genera una cadena a partir de los elementos de \lstinline!lista!,
-utilizando \lstinline!separador! como unión entre cada elemento y el
+utilizando \lstinline!separador! como uniÃ³n entre cada elemento y el
 siguiente.
 \end{sintaxis}
 \end{referencia_python} 
@@ -944,84 +944,84 @@ siguiente.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Escribir una función que reciba una tupla de elementos 
+\ejercicio{Escribir una funciÃ³n que reciba una tupla de elementos 
 e indique si se encuentran ordenados de menor a mayor o no.}
 
 
-\ejercicio{\bf Dominó.}
+\ejercicio{\bf DominÃ³.}
 \begin{partes}
-\item Escribir una función que indique si dos fichas de dominó {\it
+\item Escribir una funciÃ³n que indique si dos fichas de dominÃ³ {\it
 encajan} o no. Las fichas son recibidas en dos tuplas, por ejemplo:
 \verb!(3,4)! y \verb!(5,4)!
-\item Escribir una función que indique si dos fichas de dominó {\it
+\item Escribir una funciÃ³n que indique si dos fichas de dominÃ³ {\it
 encajan} o no. Las fichas son recibidas en una cadena, por ejemplo:
-\verb!3-4 2-5!. {\bf Nota:} utilizar la función \verb!split! de las cadenas.
+\verb!3-4 2-5!. {\bf Nota:} utilizar la funciÃ³n \verb!split! de las cadenas.
 \end{partes}
 
 
-\ejercicio{\bf Campaña electoral}
+\ejercicio{\bf CampaÃ±a electoral}
 \begin{partes}
-\item Escribir una función que reciba una tupla con nombres, y para cada
-nombre imprima el mensaje {\it Estimado <nombre>, vote por mí.}
-\item Escribir una función que reciba una tupla con nombres, una posición
+\item Escribir una funciÃ³n que reciba una tupla con nombres, y para cada
+nombre imprima el mensaje {\it Estimado <nombre>, vote por mÃ­.}
+\item Escribir una funciÃ³n que reciba una tupla con nombres, una posiciÃ³n
 de origen \verb!p!y una cantidad \verb!n!, e imprima el mensaje anterior
-para los \verb!n! nombres que se encuentran a partir de la posición
+para los \verb!n! nombres que se encuentran a partir de la posiciÃ³n
 \verb!p!.
 \item Modificar las funciones anteriores para que tengan en cuenta el
-género del destinatario, para ello, deberán recibir una tupla de tuplas,
-conteniendo el nombre y el género.
+gÃ©nero del destinatario, para ello, deberÃ¡n recibir una tupla de tuplas,
+conteniendo el nombre y el gÃ©nero.
 \end{partes}
 
 
 \ejercicio{\bf Vectores}
 \begin{partes}
-\item Escribir una función que reciba dos vectores y devuelva su producto
+\item Escribir una funciÃ³n que reciba dos vectores y devuelva su producto
 escalar.
-\item Escribir una función que reciba dos vectores y devuelva si son o no
+\item Escribir una funciÃ³n que reciba dos vectores y devuelva si son o no
 ortogonales.
-\item Escribir una función que reciba dos vectores y devuelva si son
+\item Escribir una funciÃ³n que reciba dos vectores y devuelva si son
 paralelos o no.
-\item Escribir una función que reciba un vector y devuelva su norma.
+\item Escribir una funciÃ³n que reciba un vector y devuelva su norma.
 \end{partes}
 
 
-\ejercicio{ Dada una lista de números enteros, escribir una función que: }
+\ejercicio{ Dada una lista de nÃºmeros enteros, escribir una funciÃ³n que: }
 \begin{partes}
 \item Devuelva una lista con todos los que sean primos.
 \item Devuelva la sumatoria y el promedio de los valores.
-\item Devuelva una lista con el factorial de cada uno de esos números.
+\item Devuelva una lista con el factorial de cada uno de esos nÃºmeros.
 \end{partes}
 
 
-\ejercicio{ Dada una lista de números enteros y un entero k, escribir una función que: }
+\ejercicio{ Dada una lista de nÃºmeros enteros y un entero k, escribir una funciÃ³n que: }
 \begin{partes}
 \item Devuelva tres listas, una con los menores, otra con los mayores y
 otra con los iguales a k.
-\item Devuelva una lista con aquellos que son múltiplos de k.
+\item Devuelva una lista con aquellos que son mÃºltiplos de k.
 \end{partes}
 
 
-\ejercicio{Escribir una función que reciba una lista de tuplas (Apellido,
+\ejercicio{Escribir una funciÃ³n que reciba una lista de tuplas (Apellido,
 Nombre, Inicial\_segundo\_nombre) y devuelva una lista de cadenas
 donde cada una contenga primero el nombre, luego la inicial con un punto, y luego el
 apellido.}
 
 
-\ejercicio{ \bf Inversión de listas}
+\ejercicio{ \bf InversiÃ³n de listas}
 \begin{partes}
-\item Realizar una función que, dada una lista, devuelva una nueva lista cuyo
-contenido sea igual a la original pero invertida. Así, dada la lista
-\lstinline!['Di', 'buen', 'día', 'a', 'papa']!, deberá devolver
-\lstinline!['papa', 'a', 'día', 'buen', 'Di']!.
+\item Realizar una funciÃ³n que, dada una lista, devuelva una nueva lista cuyo
+contenido sea igual a la original pero invertida. AsÃ­, dada la lista
+\lstinline!['Di', 'buen', 'dÃ­a', 'a', 'papa']!, deberÃ¡ devolver
+\lstinline!['papa', 'a', 'dÃ­a', 'buen', 'Di']!.
 
-\item Realizar otra función que invierta la lista, pero en lugar de devolver
+\item Realizar otra funciÃ³n que invierta la lista, pero en lugar de devolver
 una nueva, modifique la lista dada para invertirla, {\bf si}  usar listas
 auxiliares. 
 \end{partes}
 
 
-\ejercicio{Escribir una función "empaquetar" para una lista, donde
-epaquetar significa indicar la repetición de valores consecutivos
+\ejercicio{Escribir una funciÃ³n "empaquetar" para una lista, donde
+epaquetar significa indicar la repeticiÃ³n de valores consecutivos
 mediante una tupla (valor, cantidad de repeticiones). Por ejemplo,
 \verb!empaquetar ([1,1,1,3,5,1,1,3,3])! debe devolver
 \verb![(1, 3) , (3, 1) , (5, 1), (1, 2), (3, 2)]!.}
@@ -1029,30 +1029,30 @@ mediante una tupla (valor, cantidad de repeticiones). Por ejemplo,
 
 \ejercicio{\bf Matrices.}
 \begin{partes}
-\item Escribir una función que reciba dos matrices y devuelva la suma.
-\item Escribir una función que reciba dos matrices y devuelva el producto.
-\item Escribir una función que opere sobre una matriz y mediante {\it
-eliminación gaussiana} devuelva una matriz triangular superior.
-\item Escribir una función que indique si un grupo de vectores, recibidos
+\item Escribir una funciÃ³n que reciba dos matrices y devuelva la suma.
+\item Escribir una funciÃ³n que reciba dos matrices y devuelva el producto.
+\item Escribir una funciÃ³n que opere sobre una matriz y mediante {\it
+eliminaciÃ³n gaussiana} devuelva una matriz triangular superior.
+\item Escribir una funciÃ³n que indique si un grupo de vectores, recibidos
 mediante una lista, son linealmente independientes o no.
 \end{partes}
 
 
-\ejercicio{{\bf Plegado de un texto.} Escribir una función que reciba un texto y una
-longitud y devuelva una lista de cadenas de como máximo esa longitud. Las
-líneas deben ser cortadas correctamente en los espacios (sin cortar las
+\ejercicio{{\bf Plegado de un texto.} Escribir una funciÃ³n que reciba un texto y una
+longitud y devuelva una lista de cadenas de como mÃ¡ximo esa longitud. Las
+lÃ­neas deben ser cortadas correctamente en los espacios (sin cortar las
 palabras).}
 
 
 \ejercicio{\bf Funciones que reciben funciones.}
 \begin{partes}
-\item Escribir una funcion llamada {\bf map}, que reciba una función y una
-lista y devuelva la lista que resulta de aplicar la función recibida a
+\item Escribir una funcion llamada {\bf map}, que reciba una funciÃ³n y una
+lista y devuelva la lista que resulta de aplicar la funciÃ³n recibida a
 cada uno de los elementos de la lista recibida.
-\item Escribir una función llamada {\bf filter}, que reciba una función y
+\item Escribir una funciÃ³n llamada {\bf filter}, que reciba una funciÃ³n y
 una lista y devuelva una lista con los elementos de la lista recibida para
-los cuales la función recibida devuelve un valor verdadero.
-\item ¿En qué ejercicios de esta guía podría haber utilizado estas
+los cuales la funciÃ³n recibida devuelve un valor verdadero.
+\item Â¿En quÃ© ejercicios de esta guÃ­a podrÃ­a haber utilizado estas
 funciones?
 \end{partes}
 

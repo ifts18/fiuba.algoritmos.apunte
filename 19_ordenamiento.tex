@@ -1,11 +1,11 @@
 % Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
 %               Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -15,22 +15,22 @@
 
 \chapter{Ordenar listas}
 
-Al estudiar las listas de Python, vimos que poseen un mÈtodo \lstinline!sort!
+Al estudiar las listas de Python, vimos que poseen un m√©todo \lstinline!sort!
 que las ordena de menor a mayor de acuerdo a una clave (e incluso de acuerdo a
-una relaciÛn de orden que se desee, dada a travÈs del par·metro
+una relaci√≥n de orden que se desee, dada a trav√©s del par√°metro
 \lstinline!cmp!).
 
-Sin embargo, no todas las estructuras cuentan con un mÈtodo
+Sin embargo, no todas las estructuras cuentan con un m√©todo
 \lstinline!sort! que las ordene.  Es por ello que en esta unidad nos
-plantearemos cÛmo se hace para ordenar cuando no hay un mÈtodo
-\lstinline!sort!, y cu·nto cuesta ordenar.
+plantearemos c√≥mo se hace para ordenar cuando no hay un m√©todo
+\lstinline!sort!, y cu√°nto cuesta ordenar.
 
 Ante todo una advertencia: hay varias maneras de ordenar, y no todas
-cuestan lo mismo. Vamos a empezar viendo las m·s sencillas de escribir
-(que en general suelen ser las m·s caras).
+cuestan lo mismo. Vamos a empezar viendo las m√°s sencillas de escribir
+(que en general suelen ser las m√°s caras).
 
-\section{Ordenamiento por selecciÛn}
-…ste mÈtodo de ordenamiento se basa en la siguiente idea:
+\section{Ordenamiento por selecci√≥n}
+√âste m√©todo de ordenamiento se basa en la siguiente idea:
 
 \begin{itemize}
 
@@ -45,11 +45,11 @@ cuestan lo mismo. Vamos a empezar viendo las m·s sencillas de escribir
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-Encuentra el valor $5$ en la posiciÛn $3$. 
+Encuentra el valor $5$ en la posici√≥n $3$. 
 \end{tabular}\\
 
-\item {\bf Paso 1.2}: Poner el mayor al final (intercambiar el que est· en la ˙ltima
-posiciÛn de la lista con el mayor encontrado).\\
+\item {\bf Paso 1.2}: Poner el mayor al final (intercambiar el que est√° en la √∫ltima
+posici√≥n de la lista con el mayor encontrado).\\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -59,12 +59,12 @@ posiciÛn de la lista con el mayor encontrado).\\
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-Intercambia el elemento de la posiciÛn $3$ con el de la posiciÛn $5$. \\
-{\it En la ˙ltima posiciÛn de la lista est· el mayor de todos.}
+Intercambia el elemento de la posici√≥n $3$ con el de la posici√≥n $5$. \\
+{\it En la √∫ltima posici√≥n de la lista est√° el mayor de todos.}
 \end{tabular} \\
 
 \item {\bf Paso 2.1}: Buscar el mayor de todos los elementos del segmento de la lista
-entre la primera y la ante˙ltima posiciÛn. \\
+entre la primera y la ante√∫ltima posici√≥n. \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -74,11 +74,11 @@ entre la primera y la ante˙ltima posiciÛn. \\
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-Encuentra el valor $3$ en la posiciÛn $0$.
+Encuentra el valor $3$ en la posici√≥n $0$.
 \end{tabular} \\
 
-\item {\bf Paso 2.2}: Poner el mayor al final del segmento (intercambiar el que est· en la ˙ltima
-posiciÛn del segmento --o sea ante˙ltima posiciÛn de la lista-- con el mayor encontrado). \\
+\item {\bf Paso 2.2}: Poner el mayor al final del segmento (intercambiar el que est√° en la √∫ltima
+posici√≥n del segmento --o sea ante√∫ltima posici√≥n de la lista-- con el mayor encontrado). \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -88,14 +88,14 @@ posiciÛn del segmento --o sea ante˙ltima posiciÛn de la lista-- con el mayor enc
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-Intercambia el elemento de la posiciÛn $0$ con el valor de la posiciÛn $4$. \\
-{\it En la ante˙ltima y ˙ltima posiciÛn de la lista est·n los dos mayores en su posiciÛn definitiva.}
+Intercambia el elemento de la posici√≥n $0$ con el valor de la posici√≥n $4$. \\
+{\it En la ante√∫ltima y √∫ltima posici√≥n de la lista est√°n los dos mayores en su posici√≥n definitiva.}
 \end{tabular} \\
 
 $\dots$\\
 
-\item {\bf Paso n}: Se termina cuando queda un ˙nico elemento sin tratar: el que est·
-en la primera posiciÛn de la lista, y que es el menor de todos porque todos los
+\item {\bf Paso n}: Se termina cuando queda un √∫nico elemento sin tratar: el que est√°
+en la primera posici√≥n de la lista, y que es el menor de todos porque todos los
 mayores fueron reubicados. \\
 
 \hspace{0.75cm}
@@ -110,23 +110,23 @@ mayores fueron reubicados. \\
 \end{tabular}\\
 \end{itemize}
 
-\begin{codigo}{seleccion.py}{Ordena una lista por selecciÛn}
+\begin{codigo}{seleccion.py}{Ordena una lista por selecci√≥n}
 \label{ord_seleccion}
 \lstinputlisting{src/19_ordenamiento/seleccion.py}
 \end{codigo}
 
-La implementaciÛn en Python puede verse en el CÛdigo \ref{ord_seleccion}.
+La implementaci√≥n en Python puede verse en el C√≥digo \ref{ord_seleccion}.
 
 
-La funciÛn principal, \lstinline!ord_seleccion! es la encargada de recorrer
+La funci√≥n principal, \lstinline!ord_seleccion! es la encargada de recorrer
 la lista, ubicando el mayor elemento al final del segmento y luego
 reduciendo el segmento a analizar.  
 
-Mientras que \lstinline!buscar_max! es una funciÛn que ya se estudiÛ
+Mientras que \lstinline!buscar_max! es una funci√≥n que ya se estudi√≥
 previamente, que busca el mayor elemento de la lista y devuelve su
-posiciÛn.
+posici√≥n.
 
-A continuaciÛn, algunas una ejecuciones de prueba de ese cÛdigo:
+A continuaci√≥n, algunas una ejecuciones de prueba de ese c√≥digo:
 
 \begin{codigo-python-sn}
 >>> l=[3, 2, -1, 5, 0, 2]
@@ -152,48 +152,48 @@ DEBUG:  2 2 [1, 2, 3, 4, 5]
 DEBUG:  1 1 [1, 2, 3, 4, 5]
 \end{codigo-python-sn}
 
-Puede verse que a˙n cuando la lista est· ordenada, se la recorre buscando
-los mayores elementos y ubic·ndolos en la misma posiciÛn en la que se
+Puede verse que a√∫n cuando la lista est√° ordenada, se la recorre buscando
+los mayores elementos y ubic√°ndolos en la misma posici√≥n en la que se
 encuentran.
 
-\subsection{Invariante en el ordenamiento por selecciÛn}
+\subsection{Invariante en el ordenamiento por selecci√≥n}
 
 Todo ordenamiento tiene un invariante que permite asegurarse de que cada
-paso que se toma va en la direcciÛn de obtener una lista ordenada.
+paso que se toma va en la direcci√≥n de obtener una lista ordenada.
 
-En el caso del ordenamiento por selecciÛn, el invariante es que los
-elementos desde \lstinline!n+1! hasta el final de la lista est·n ordenados y
+En el caso del ordenamiento por selecci√≥n, el invariante es que los
+elementos desde \lstinline!n+1! hasta el final de la lista est√°n ordenados y
 son mayores que los elementos de \lstinline!0! a \lstinline!n!, es decir
-que ya est·n en su posiciÛn definitiva.
+que ya est√°n en su posici√≥n definitiva.
 
-\subsection{øCu·nto cuesta ordenar por selecciÛn?}
+\subsection{¬øCu√°nto cuesta ordenar por selecci√≥n?}
 
-Como se puede ver en el cÛdigo de la funciÛn \lstinline!buscar_max!, para
-buscar el m·ximo elemento en un segmento de lista se debe recorrer todo ese
+Como se puede ver en el c√≥digo de la funci√≥n \lstinline!buscar_max!, para
+buscar el m√°ximo elemento en un segmento de lista se debe recorrer todo ese
 segmento, por lo que en nuestro caso debemos recorrer en el primer paso $N$
 elementos, en el segundo paso $N-1$ elementos, en el tercer paso $N-2$
 elementos, etc. Cada visita a un elemento implica una cantidad constante y
-pequeÒa de comparaciones (que no depende de $N$). Por lo tanto tenemos que
+peque√±a de comparaciones (que no depende de $N$). Por lo tanto tenemos que
 
 \begin{equation}
 T(N) \approx c * (2 + 3 + \ldots + N) \approx c * N * (N+1)/2 \sim N^2
 \end{equation}
 
-O sea que ordenar por selecciÛn una lista de tamaÒo $N$ insume tiempo del
+O sea que ordenar por selecci√≥n una lista de tama√±o $N$ insume tiempo del
 orden de $N^2$.  Como ya se vio, este tiempo es independiente de si la
 lista estaba previamente ordenda o no.
 
-En cuanto al espacio utilizado, sÛlo se tiene en memoria la
-lista que se desea ordenar y algunas variables de tamaÒo 1.
+En cuanto al espacio utilizado, s√≥lo se tiene en memoria la
+lista que se desea ordenar y algunas variables de tama√±o 1.
 
-\section{Ordenamiento por inserciÛn}
+\section{Ordenamiento por inserci√≥n}
 
-…ste otro mÈtodo de ordenamiento se basa en la siguiente idea:
+√âste otro m√©todo de ordenamiento se basa en la siguiente idea:
 
 \begin{itemize}
 
 \item {\bf Paso 0}: Partimos de la misma lista de ejemplo utilizada para el ordenamiento
-por selecciÛn. \\
+por selecci√≥n. \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -204,8 +204,8 @@ por selecciÛn. \\
 \hspace{0.75cm}
 
 \item {\bf Paso 1}: Considerar el segundo elemento de la lista,
-y ordenarlo respecto del primero, deplaz·ndolo hasta la
-posiciÛn correcta, si corresponde. \\
+y ordenarlo respecto del primero, deplaz√°ndolo hasta la
+posici√≥n correcta, si corresponde. \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -219,8 +219,8 @@ Se desplaza el valor $2$ antes de $3$.
 \end{tabular}
 
 \item {\bf Paso 2}: Considerar el tercer elemento de la lista,
-y ordenarlo respecto del primero y el segundo, deplaz·ndolo hasta la
-posiciÛn correcta, si corresponde. \\
+y ordenarlo respecto del primero y el segundo, deplaz√°ndolo hasta la
+posici√≥n correcta, si corresponde. \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -234,8 +234,8 @@ Se desplaza el valor $-1$ antes de $2$ y de $3$.
 \end{tabular}
 
 \item {\bf Paso 3}: Considerar el cuarto elemento de la lista,
-y ordenarlo respecto del primero, el segundo y el tercero, deplaz·ndolo hasta la
-posiciÛn correcta, si corresponde. \\
+y ordenarlo respecto del primero, el segundo y el tercero, deplaz√°ndolo hasta la
+posici√≥n correcta, si corresponde. \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -245,8 +245,8 @@ posiciÛn correcta, si corresponde. \\
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-El $5$ est· correctamente ubicado respecto de $-1$,$2$ y $3$ (como el segmento
-hasta la tercera posiciÛn est· ordenado, basta con comparar con el tercer elemento del
+El $5$ est√° correctamente ubicado respecto de $-1$,$2$ y $3$ (como el segmento
+hasta la tercera posici√≥n est√° ordenado, basta con comparar con el tercer elemento del
 segmento para verificarlo).\\
 \end{tabular}
 
@@ -262,13 +262,13 @@ $\dots$\\
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-Todos los elementos excepto el ante-˙ltimo ya se encuentran ordenados.
+Todos los elementos excepto el ante-√∫ltimo ya se encuentran ordenados.
 \end{tabular}
 
 \item {\bf Paso N}:
-Considerar el $N$--Èsimo elemento de la lista, y ordenarlo respecto del
-segmento formado por el primero hasta el $N-1$--Èsimo, deplaz·ndolo hasta
-la posiciÛn correcta, si corresponde. \\
+Considerar el $N$--√©simo elemento de la lista, y ordenarlo respecto del
+segmento formado por el primero hasta el $N-1$--√©simo, deplaz√°ndolo hasta
+la posici√≥n correcta, si corresponde. \\
 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
@@ -283,24 +283,24 @@ Se desplaza el valor $2$ antes de $3$ y de $5$.
 
 \end{itemize}
 
-\begin{codigo}{insercion.py}{Ordena una lista por InserciÛn}
+\begin{codigo}{insercion.py}{Ordena una lista por Inserci√≥n}
 \label{ord_insercion}
 \lstinputlisting{src/19_ordenamiento/insercion.py}
 \end{codigo}
 
-Una posible implementaciÛn en Python de este algoritmo se incluye en el
-CÛdigo \ref{ord_insercion}.
+Una posible implementaci√≥n en Python de este algoritmo se incluye en el
+C√≥digo \ref{ord_insercion}.
 
-La funciÛn principal, \lstinline!ord_insercion!, recorre la lista desde el
-segundo elemento hasta el ˙ltimo, y cuando uno de estos elementos no est·
-ordenado con respecto al anterior, llama a la funciÛn auxiliar
-\lstinline!reubicar!, que se encarga de colocar el elemento en la posiciÛn
+La funci√≥n principal, \lstinline!ord_insercion!, recorre la lista desde el
+segundo elemento hasta el √∫ltimo, y cuando uno de estos elementos no est√°
+ordenado con respecto al anterior, llama a la funci√≥n auxiliar
+\lstinline!reubicar!, que se encarga de colocar el elemento en la posici√≥n
 que le corresponde.
 
-En la funciÛn \lstinline!reubicar! se busca la posiciÛn correcta donde debe
+En la funci√≥n \lstinline!reubicar! se busca la posici√≥n correcta donde debe
 colocarse el elemento, a la vez que se van corriendo todos los elementos un
-lugar a la derecha, de modo que cuando se encuentra la posiciÛn, el valor a
-insertar reemplaza al valor que se encontraba allÌ anteriormente.
+lugar a la derecha, de modo que cuando se encuentra la posici√≥n, el valor a
+insertar reemplaza al valor que se encontraba all√≠ anteriormente.
 
 En las siguientes ejecuciones puede verse que funciona correctamente.
 
@@ -331,20 +331,20 @@ DEBUG:  [1, 2, 3, 4, 5, 6]
 [1, 2, 3, 4, 5, 6]
 \end{codigo-python-sn}
 
-\subsection{Invariante del ordenamiento por inserciÛn}
+\subsection{Invariante del ordenamiento por inserci√≥n}
 
-En el ordenamiento por inserciÛn, a cada paso se considera que los
-elementos que se encuentran en el segmento de $0$ a $i$ est·n ordenados, de
-manera que agregar un nuevo elemento implica colocarlo en la posiciÛn
-correspondiente y el segmento seguir· ordenado.
+En el ordenamiento por inserci√≥n, a cada paso se considera que los
+elementos que se encuentran en el segmento de $0$ a $i$ est√°n ordenados, de
+manera que agregar un nuevo elemento implica colocarlo en la posici√≥n
+correspondiente y el segmento seguir√° ordenado.
 
-\subsection{øCu·nto cuesta ordenar por inserciÛn?}
+\subsection{¬øCu√°nto cuesta ordenar por inserci√≥n?}
 
-Del CÛdigo \ref{ord_insercion} se puede ver que la funciÛn principal avanza por la
-lista de izquierda a derecha, mientras que la funciÛn \lstinline!reubicar!
+Del C√≥digo \ref{ord_insercion} se puede ver que la funci√≥n principal avanza por la
+lista de izquierda a derecha, mientras que la funci√≥n \lstinline!reubicar!
 cambia los elementos de lugar de derecha a izquierda.
 
-Lo peor que le puede pasar a un elemento que est· en la posiciÛn
+Lo peor que le puede pasar a un elemento que est√° en la posici√≥n
 $j$ es que deba ser ubicado al principio de la lista.  Y lo peor que le
 puede pasar a una lista es que todos sus elementos deban ser reubicados.
 
@@ -361,20 +361,20 @@ ubica adelante de todo; etc...
 T(N) \approx c * (2 + 3 + \ldots + N) \approx c * N * (N+1)/2 \sim N^2
 \end{equation}
 
-Es decir que ordenar por inserciÛn una lista de tamaÒo $N$ puede insumir
+Es decir que ordenar por inserci√≥n una lista de tama√±o $N$ puede insumir
 (en el peor caso) tiempo del orden de $N^2$. En cuanto al espacio
-utilizado, nuevamente sÛlo se tiene en memoria la lista que se desea
-ordenar y algunas variables de tamaÒo 1.
+utilizado, nuevamente s√≥lo se tiene en memoria la lista que se desea
+ordenar y algunas variables de tama√±o 1.
 
-\subsection{InserciÛn en una lista ordenada}
+\subsection{Inserci√≥n en una lista ordenada}
 
 Sin embargo, algo interesante a notar es que cuando la lista se encuentra
-ordenada, este algoritmo no hace ning˙n movimiento de elementos,
+ordenada, este algoritmo no hace ning√∫n movimiento de elementos,
 simplemente compara cada elemento con el anterior, y si es mayor sigue
 adelante.
 
 Es decir que para el caso de una lista de $N$ elementos que se encuentra
-ordenada, el tiempo que insume el algoritmo de inserciÛn es:
+ordenada, el tiempo que insume el algoritmo de inserci√≥n es:
 
 \begin{equation}
 T(N) \sim N
@@ -386,24 +386,24 @@ T(N) \sim N
 
 \begin{itemize}
 
-\item El ordenamiento por selecciÛn, es uno de los m·s sencillos, pero es
-bastante ineficiente, se basa en la idea de buscar el m·ximo en una secuencia,
-ubicarlo al final y seguir analizando la secuencia sin el ˙ltimo elemento.
+\item El ordenamiento por selecci√≥n, es uno de los m√°s sencillos, pero es
+bastante ineficiente, se basa en la idea de buscar el m√°ximo en una secuencia,
+ubicarlo al final y seguir analizando la secuencia sin el √∫ltimo elemento.
 Tiene como ventaja que hace una baja cantidad de ``intercambios'' ($N$), pero
 como desventaja que necesita una alta cantidad de comparaciones ($N^2$).
 Siempre tiene el mismo comportamiento.
 
-\item El ordenamiento por inserciÛn, es un algoritmo bastante intuitivo y se
+\item El ordenamiento por inserci√≥n, es un algoritmo bastante intuitivo y se
 suele usar para ordenar en la vida real. Se basa en la idea de ir insertando
-ordenadamente, en cada paso se considera la inserciÛn de un elemento m·s de
-secuencia y la inserciÛn se empieza a hacer desde el final de los datos ya
+ordenadamente, en cada paso se considera la inserci√≥n de un elemento m√°s de
+secuencia y la inserci√≥n se empieza a hacer desde el final de los datos ya
 ordenados.
 
 Tiene como ventaja que en el caso de tener los datos ya ordenados no hace
-ning˙n intercambio (y hace sÛlo $N-1$ comparaciones). En el peor caso, cuando
-la secuencia est· invertida, se hace una gran cantidad de intercambios y
+ning√∫n intercambio (y hace s√≥lo $N-1$ comparaciones). En el peor caso, cuando
+la secuencia est√° invertida, se hace una gran cantidad de intercambios y
 comparaciones ($N^2$). Si bien es un algoritmo ineficiente, para secuencias
-cortas, el tiempo de ejecuciÛn es bastante bueno.
+cortas, el tiempo de ejecuci√≥n es bastante bueno.
 
 %\item Burbujeo
 \end{itemize}

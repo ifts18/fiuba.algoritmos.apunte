@@ -1,11 +1,11 @@
 % Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
 % Copyright (C) Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Esta obra estÃ¡ licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -16,19 +16,19 @@
 \chapter{Cadenas de caracteres}
 
 Una cadena es una secuencia de caracteres. Ya las hemos usado para mostrar
-mensajes, pero sus usos son mucho más amplios que sólo ése: los textos que
+mensajes, pero sus usos son mucho mÃ¡s amplios que sÃ³lo Ã©se: los textos que
 manipulamos mediante los editores de texto, los textos de Internet que
-analizan los buscadores, los mensajes enviados mediante correo electrónico,
+analizan los buscadores, los mensajes enviados mediante correo electrÃ³nico,
 son todos ejemplos de cadenas de caracteres. Pero para poder programar este
 tipo de aplicaciones debemos aprender a manipularlas. Comenzaremos a ver
-ahora cómo hacer cálculos con cadenas.
+ahora cÃ³mo hacer cÃ¡lculos con cadenas.
 
 \section{Operaciones con cadenas}
 
-Ya vimos en la sección \ref{nosolo} que es posible:
+Ya vimos en la secciÃ³n \ref{nosolo} que es posible:
 
 \begin{itemize}
-\item Sumar cadenas entre sí (y el resultado es la concatenación
+\item Sumar cadenas entre sÃ­ (y el resultado es la concatenaciÃ³n
 de todas las cadenas dadas):
 
 \begin{codigo-python-sn}
@@ -37,8 +37,8 @@ de todas las cadenas dadas):
 >>>
 \end{codigo-python-sn}
 
-\item Multiplicar una cadena \lstinline+s+ por un número \lstinline+k+ (y
-el resultado es la concatenación de \lstinline+s+ consigo misma,
+\item Multiplicar una cadena \lstinline+s+ por un nÃºmero \lstinline+k+ (y
+el resultado es la concatenaciÃ³n de \lstinline+s+ consigo misma,
 \lstinline+k+ veces):
 
 \begin{codigo-python-sn}
@@ -50,21 +50,21 @@ el resultado es la concatenación de \lstinline+s+ consigo misma,
 \end{codigo-python-sn}
 \end{itemize}
 
-A continuación, otras operaciones y particularidades de las cadenas.
+A continuaciÃ³n, otras operaciones y particularidades de las cadenas.
 
 \subsection{Obtener el largo de una cadena}
 
-Además, se puede averiguar la longitud de una cadena utilizando
-una función provista por Python: \lstinline+len{}+.
+AdemÃ¡s, se puede averiguar la longitud de una cadena utilizando
+una funciÃ³n provista por Python: \lstinline+len{}+.
 \begin{codigo-python-sn}
 >>> len("programas ")
 10
 >>>
 \end{codigo-python-sn}
 
-Existe una cadena especial, que llamaremos {\it cadena vacía}, que
-es la cadena que no contiene ningún carácter (se la indica sólo con
-un apóstrofe o comilla que abre, y un apóstrofe o comilla que cierra),
+Existe una cadena especial, que llamaremos {\it cadena vacÃ­a}, que
+es la cadena que no contiene ningÃºn carÃ¡cter (se la indica sÃ³lo con
+un apÃ³strofe o comilla que abre, y un apÃ³strofe o comilla que cierra),
 y que por lo tanto tiene longitud cero:
 
 \begin{codigo-python-sn}
@@ -76,7 +76,7 @@ y que por lo tanto tiene longitud cero:
 >>>
 \end{codigo-python-sn}
 
-\subsection[Recorrer una cadena]{Una operación para recorrer todos los caracteres de una cadena}
+\subsection[Recorrer una cadena]{Una operaciÃ³n para recorrer todos los caracteres de una cadena}
 
 Python nos permite recorrer todos los caracteres de una cadena de
 manera muy sencilla, usando directamente un ciclo definido:
@@ -98,14 +98,14 @@ s
 >>>
 \end{codigo-python-sn}
 
-\subsection{Acceder a una posición de la cadena}
+\subsection{Acceder a una posiciÃ³n de la cadena}
 
-Queremos averiguar cuál es el carácter que está en la posición i-ésima de
-una cadena.  Para ello Python nos provee de una notación con corchetes:
-escribiremos \lstinline+a[i]+ para hablar de la posición i-ésima de la cadena
+Queremos averiguar cuÃ¡l es el carÃ¡cter que estÃ¡ en la posiciÃ³n i-Ã©sima de
+una cadena.  Para ello Python nos provee de una notaciÃ³n con corchetes:
+escribiremos \lstinline+a[i]+ para hablar de la posiciÃ³n i-Ã©sima de la cadena
 \lstinline!a!.
 
-Trataremos de averiguar con qué letra empieza una cadena.
+Trataremos de averiguar con quÃ© letra empieza una cadena.
 
 \begin{codigo-python-sn}
 >>> a="Veronica"
@@ -114,7 +114,7 @@ Trataremos de averiguar con qué letra empieza una cadena.
 >>>
 \end{codigo-python-sn}
 
-Algo falló: ¡\lstinline+a[1]+ nos muestra la segunda letra, no la
+Algo fallÃ³: Â¡\lstinline+a[1]+ nos muestra la segunda letra, no la
 primera! Lo que sucede es que en Python las posiciones se cuentan
 desde 0.
 
@@ -124,20 +124,20 @@ desde 0.
 >>>
 \end{codigo-python-sn}
 
-Ahora sí hemos conseguido averiguar en Python cuál es el primer carácter de
+Ahora sÃ­ hemos conseguido averiguar en Python cuÃ¡l es el primer carÃ¡cter de
 \lstinline!a!.
 
 \begin{atencion}
 Las distintas posiciones de una cadena \lstinline!a! se llaman
-{\it índices}. Los índices son números enteros que pueden tomar
+{\it Ã­ndices}. Los Ã­ndices son nÃºmeros enteros que pueden tomar
 valores entre \lstinline!-len(a)! y \lstinline!len(a) - 1!.
 
-Los índices entre \lstinline!0! y \lstinline!len(a) - 1! son lo que ya
-vimos: los caracteres de la cadena del primero al útimo. Los índices
-negativos proveen una notación que hace más fácil indicar cuál es el último
-carácter de la cadena: \lstinline!a[-1]! es el último carácter de
-\lstinline!a!, \lstinline!a[-2]! es el penúltimo carácter de \lstinline!a!,
-\lstinline!a[-len(a)]! es el primer carácter de \lstinline!a!.
+Los Ã­ndices entre \lstinline!0! y \lstinline!len(a) - 1! son lo que ya
+vimos: los caracteres de la cadena del primero al Ãºtimo. Los Ã­ndices
+negativos proveen una notaciÃ³n que hace mÃ¡s fÃ¡cil indicar cuÃ¡l es el Ãºltimo
+carÃ¡cter de la cadena: \lstinline!a[-1]! es el Ãºltimo carÃ¡cter de
+\lstinline!a!, \lstinline!a[-2]! es el penÃºltimo carÃ¡cter de \lstinline!a!,
+\lstinline!a[-len(a)]! es el primer carÃ¡cter de \lstinline!a!.
 \end{atencion}
 
 Algunos ejemplos de acceso a distintas posiciones en una cadena.
@@ -170,10 +170,10 @@ cadena del final al principio.}
 
 \section{Segmentos de cadenas}
 
-Python ofrece también una notación para identificar segmentos de una
-cadena. La notación es similar a la de los rangos que vimos en los ciclos
+Python ofrece tambiÃ©n una notaciÃ³n para identificar segmentos de una
+cadena. La notaciÃ³n es similar a la de los rangos que vimos en los ciclos
 definidos: \lstinline+a[0:2]+ se refiere a la subcadena formada por los
-caracteres cuyos índices están en el rango \lstinline+[0,2)+:
+caracteres cuyos Ã­ndices estÃ¡n en el rango \lstinline+[0,2)+:
 
 \begin{codigo-python-sn}
 >>> a[0:2]
@@ -185,9 +185,9 @@ caracteres cuyos índices están en el rango \lstinline+[0,2)+:
 >>>
 \end{codigo-python-sn}
 
-Si \lstinline!j! es un entero no negativo, se puede usar la notación
-\lstinline+a[:j]+ para representar al segmento \lstinline+a[0:j]+; también
-se puede usar la notación \lstinline+a[j:]+ para representar al segmento
+Si \lstinline!j! es un entero no negativo, se puede usar la notaciÃ³n
+\lstinline+a[:j]+ para representar al segmento \lstinline+a[0:j]+; tambiÃ©n
+se puede usar la notaciÃ³n \lstinline+a[j:]+ para representar al segmento
 \lstinline+a[j:len(a)]+.
 
 \begin{codigo-python-sn}
@@ -199,7 +199,7 @@ se puede usar la notación \lstinline+a[j:]+ para representar al segmento
 \end{codigo-python-sn}
 
 Pero hay que tener cuidado con salirse del rango (en particular hay que
-tener cuidado con la cadena vacía):
+tener cuidado con la cadena vacÃ­a):
 
 \begin{codigo-python-sn}
 >>> a[10]
@@ -218,23 +218,23 @@ Traceback (most recent call last):
 IndexError: string index out of range
 \end{codigo-python-sn}
 
-Sin embargo \lstinline+s[0:0]+ no da error. ¿Por qué?
+Sin embargo \lstinline+s[0:0]+ no da error. Â¿Por quÃ©?
 \begin{codigo-python-sn}
 >>> s[0:0]
 ''
 >>>
 \end{codigo-python-sn}
 
-\ejercicioc{Investigar qué significa la notación \lstinline+a[:]+.}
+\ejercicioc{Investigar quÃ© significa la notaciÃ³n \lstinline+a[:]+.}
 
-\ejercicioc{Investigar qué significan las notaciones
-\lstinline+a[:j]+ y  \lstinline+a[j:]+ si \lstinline!j! es un número negativo.}
+\ejercicioc{Investigar quÃ© significan las notaciones
+\lstinline+a[:j]+ y  \lstinline+a[j:]+ si \lstinline!j! es un nÃºmero negativo.}
 
 \section{Las cadenas son inmutables}
 
 Nos dicen que la persona sobre la que estamos hablando en realidad se llama
-"Veronika" (sí, con "k").  Como conocemos la notación de corchetes,
-tratamos de corregir sólo el carácter correspondiente de la variable
+"Veronika" (sÃ­, con "k").  Como conocemos la notaciÃ³n de corchetes,
+tratamos de corregir sÃ³lo el carÃ¡cter correspondiente de la variable
 \lstinline!a!:
 
 \begin{codigo-python-sn}
@@ -246,10 +246,10 @@ TypeError: 'str' object does not support item assignment
 \end{codigo-python-sn}
 
 El error que se despliega nos dice que la cadena no soporta
-la modificación de un carácter. Decimos que {\it las cadenas
+la modificaciÃ³n de un carÃ¡cter. Decimos que {\it las cadenas
 son inmutables}.
 
-Si queremos corregir la ortografía de una cadena, debemos hacer
+Si queremos corregir la ortografÃ­a de una cadena, debemos hacer
 que la cadena \lstinline!a! se refiera a otro valor:
 
 \begin{codigo-python-sn}
@@ -262,17 +262,17 @@ que la cadena \lstinline!a! se refiera a otro valor:
 \section{Procesamiento sencillo de cadenas}
 
 \problemac{Nuestro primer problema es muy simple: Queremos contar
-cuántas letras ``A'' hay en una cadena \lstinline!x!.}
+cuÃ¡ntas letras ``A'' hay en una cadena \lstinline!x!.}
 
 \begin{enumerate}
 
-\item {\bf Especificación: } Dada una cadena \lstinline!x!, la función
-retorna un valor  \lstinline!contador! que representa cuántas letras ``A''
+\item {\bf EspecificaciÃ³n: } Dada una cadena \lstinline!x!, la funciÃ³n
+retorna un valor  \lstinline!contador! que representa cuÃ¡ntas letras ``A''
 tiene \lstinline!x!.
 
-\item {\bf Diseño: }
+\item {\bf DiseÃ±o: }
 
-¿Se parece a algo que ya conocemos?
+Â¿Se parece a algo que ya conocemos?
 
 Ante todo es claro que se trata de un ciclo definido, porque lo que hay que
 tratar es cada uno de los caracteres de la cadena \lstinline!x!, o sea que
@@ -284,7 +284,7 @@ para \= cada letra de \lstinline+x+\\
 \> y tratarla en consecuencia\\
 \end{tabbing}
 
-Nos dice la especificación que se necesita una variable
+Nos dice la especificaciÃ³n que se necesita una variable
 \lstinline!contador! que cuenta la cantidad de letras ``A'' que contiene
 \lstinline!x!. Y por lo tanto sabemos que el tratamiento es: si la letra es
 ``A'' se incrementa el contador en $1$, y si la letra no es ``A'' no se lo
@@ -296,7 +296,7 @@ para \= cada letra de \lstinline+x+\\
 \> y si lo es, incrementar en $1$ el contador\\
 \end{tabbing}
 
-¿Estará todo completo? Alicia Hacker nos hace notar que en el diseño no
+Â¿EstarÃ¡ todo completo? Alicia Hacker nos hace notar que en el diseÃ±o no
 planteamos el retorno del valor del contador. Lo completamos entonces:
 
 \begin{tabbing}
@@ -306,18 +306,18 @@ para \= cada letra de \verb+x+\\
 retornar el valor del contador\\
 \end{tabbing}
 
-¿Y ahora estará todo completo? E. Lapurado, nuestro alumno impaciente nos
-induce a poner manos a la obra y a programar esta solución, y el resto del
-curso está de acuerdo.
+Â¿Y ahora estarÃ¡ todo completo? E. Lapurado, nuestro alumno impaciente nos
+induce a poner manos a la obra y a programar esta soluciÃ³n, y el resto del
+curso estÃ¡ de acuerdo.
 
 
-\item {\bf Implementación}
+\item {\bf ImplementaciÃ³n}
 
 Ya vimos que Python nos provee de un mecanismo muy poderoso para
-recorrer una cadena: una instrucción \lstinline!for! que nos brinda un
-carácter por vez, del primero al último.
+recorrer una cadena: una instrucciÃ³n \lstinline!for! que nos brinda un
+carÃ¡cter por vez, del primero al Ãºltimo.
 
-Proponemos la siguiente solución:
+Proponemos la siguiente soluciÃ³n:
 
 \begin{codigo-python}
 def contarA(x):
@@ -338,18 +338,18 @@ UnboundLocalError: local variable 'contador' referenced before assignment
 >>>
 \end{codigo-python-sn}
 
-¿Qué es lo que falló? ¡Falló el diseño! Evidentemente la variable
+Â¿QuÃ© es lo que fallÃ³? Â¡FallÃ³ el diseÃ±o! Evidentemente la variable
 \lstinline+contador+ debe tomar un valor inicial antes de empezar a contar
-las apariciones del caracter ``A''. Volvamos al diseño entonces.
+las apariciones del caracter ``A''. Volvamos al diseÃ±o entonces.
 
 \begin{observacion}
-Es muy tentador quedarse arreglando la implementación, sin volver al diseño,
-pero eso es de muy mala práctica, porque el diseño queda mal documentado, 
-y además podemos estar dejando de tener en cuenta otras situaciones erróneas.
+Es muy tentador quedarse arreglando la implementaciÃ³n, sin volver al diseÃ±o,
+pero eso es de muy mala prÃ¡ctica, porque el diseÃ±o queda mal documentado, 
+y ademÃ¡s podemos estar dejando de tener en cuenta otras situaciones errÃ³neas.
 \end{observacion}
 
-\item {\bf Diseño (revisado)}
-Habíamos llegado a un esquema de la forma
+\item {\bf DiseÃ±o (revisado)}
+HabÃ­amos llegado a un esquema de la forma
 
 \begin{tabbing}
 para \= cada letra de \verb+x+\\
@@ -358,26 +358,26 @@ para \= cada letra de \verb+x+\\
 retornar el valor del contador\\
 \end{tabbing}
 
-¿Cuál es el valor inicial que debe tomar \lstinline+contador+?  Como nos
-dice la especificación \lstinline+contador+ cuenta la cantidad de letras
+Â¿CuÃ¡l es el valor inicial que debe tomar \lstinline+contador+?  Como nos
+dice la especificaciÃ³n \lstinline+contador+ cuenta la cantidad de letras
 ``A'' que tiene la cadena \lstinline+x+. Pero si nos detenemos en medio de
-la computación, cuando aún no se recorrió toda la cadena sino sólo los
+la computaciÃ³n, cuando aÃºn no se recorriÃ³ toda la cadena sino sÃ³lo los
 primeros 10 caracteres, por ejemplo, el valor de \lstinline+contador+
 refleja la cantidad de ``A'' que hay en los primeros 10 caracteres de
 \lstinline+x+.
 
 Si llamamos {\it parte izquierda de } \lstinline+x+ al segmento de
-\lstinline+x+ que ya se recorrió, diremos que cuando leímos los primeros 10
+\lstinline+x+ que ya se recorriÃ³, diremos que cuando leÃ­mos los primeros 10
 caracteres de \lstinline+x+, su parte izquierda es el segmento
 \lstinline+x[0:10]+.
 
 El valor inicial que debemos darle a \lstinline+contador+ debe reflejar la
 cantidad de ``A'' que contiene la parte izquierda de \lstinline+x+ cuando
-aún no iniciamos el recorrido, es decir cuando esta parte izquierda es
-\lstinline+x[0:0]+ (o sea la cadena vacía). Pero la cantidad de caracteres
-iguales a ``A'' de la cadena vacía es $0$.
+aÃºn no iniciamos el recorrido, es decir cuando esta parte izquierda es
+\lstinline+x[0:0]+ (o sea la cadena vacÃ­a). Pero la cantidad de caracteres
+iguales a ``A'' de la cadena vacÃ­a es $0$.
 
-Por lo tanto el diseño será:
+Por lo tanto el diseÃ±o serÃ¡:
 
 \begin{tabbing}
 inicializar el contador en $0$\\
@@ -387,15 +387,15 @@ para \= cada letra de \lstinline+x+\\
 retornar el valor del contador\\
 \end{tabbing}
 
-(lo identificaremos como el esquema {\it Inicialización - Ciclo de tratamiento - Retorno de valor}).
+(lo identificaremos como el esquema {\it InicializaciÃ³n - Ciclo de tratamiento - Retorno de valor}).
 
-Pasamos ahora a implementar este diseño:
+Pasamos ahora a implementar este diseÃ±o:
 
-\item {\bf Implementación (del diseño revisado)}
+\item {\bf ImplementaciÃ³n (del diseÃ±o revisado)}
 
 \begin{codigo-python}
 def contarA (x):
-    """ La funcion contarA(x) cuenta cuántas
+    """ La funcion contarA(x) cuenta cuÃ¡ntas
         letras "A" aparecen en la cadena x ."""
     contador = 0
     for letra in x:
@@ -421,21 +421,21 @@ def contarA (x):
 
 \item {\bf Mantenimiento:}
 
-Esta función resulta un poco limitada. Cuando nos pidan que contemos
-cuántas letras ``E'' hay en una cadena tendremos que hacer otra función.
-Tiene sentido hacer una función más general que nos permita contar cuántas
-veces aparece un carácter dado en una cadena.
+Esta funciÃ³n resulta un poco limitada. Cuando nos pidan que contemos
+cuÃ¡ntas letras ``E'' hay en una cadena tendremos que hacer otra funciÃ³n.
+Tiene sentido hacer una funciÃ³n mÃ¡s general que nos permita contar cuÃ¡ntas
+veces aparece un carÃ¡cter dado en una cadena.
 
-\ejercicioc{Escribir una función \lstinline+contar(l, x)+ que cuente
-cuántas veces aparece un carácter \lstinline!l! dado en una cadena
+\ejercicioc{Escribir una funciÃ³n \lstinline+contar(l, x)+ que cuente
+cuÃ¡ntas veces aparece un carÃ¡cter \lstinline!l! dado en una cadena
 \lstinline!x!.}
 
-\ejercicioc{¿Hay más letras ``A'' o más letras ``E'' en una cadena?
+\ejercicioc{Â¿Hay mÃ¡s letras ``A'' o mÃ¡s letras ``E'' en una cadena?
 Escribir un programa que lo decida.}
 
-\ejercicioc{Escribir un programa que cuente cúantas veces aparecen cada una
-de las vocales en una cadena. No importa si la vocal aparece en mayúscula o
-en minúscula.}
+\ejercicioc{Escribir un programa que cuente cÃºantas veces aparecen cada una
+de las vocales en una cadena. No importa si la vocal aparece en mayÃºscula o
+en minÃºscula.}
 
 \end{enumerate}
 
@@ -443,58 +443,58 @@ en minúscula.}
 \section{Nuestro primer juego}
 Con todo esto ya estamos en condiciones de escribir un programa para jugar con
 la computadora: el {\it Mastermind}. El Mastermind es un juego que consiste en
-deducir un código numérico de (por ejemplo) cuatro cifras.
+deducir un cÃ³digo numÃ©rico de (por ejemplo) cuatro cifras.
 
 \begin{enumerate}
 
-\item {\bf Análisis } (explicación del juego):
+\item {\bf AnÃ¡lisis } (explicaciÃ³n del juego):
 
-Cada vez que se empieza un partido, el programa debe ``eligir'' un número de
-cuatro cifras (sin cifras repetidas), que será el código que el jugador debe
+Cada vez que se empieza un partido, el programa debe ``eligir'' un nÃºmero de
+cuatro cifras (sin cifras repetidas), que serÃ¡ el cÃ³digo que el jugador debe
 adivinar en la menor cantidad de intentos posibles. Cada intento consiste en
-una propuesta de un código posible que tipea el jugador, y una respuesta del
-programa. Las respuestas le darán pistas al jugador para que pueda deducir el
-código.
+una propuesta de un cÃ³digo posible que tipea el jugador, y una respuesta del
+programa. Las respuestas le darÃ¡n pistas al jugador para que pueda deducir el
+cÃ³digo.
 
-Estas pistas indican cuán cerca estuvo el número propuesto de la solución a
-través de dos valores: la cantidad de {\it aciertos} es la cantidad de
-dígitos que propuso el jugador que también están en el código {\it en la
-misma posición}. La cantidad de {\it coincidencias} es la cantidad de
-digitos que propuso el jugador que también están en el código pero {\it en
-una posición distinta}.
+Estas pistas indican cuÃ¡n cerca estuvo el nÃºmero propuesto de la soluciÃ³n a
+travÃ©s de dos valores: la cantidad de {\it aciertos} es la cantidad de
+dÃ­gitos que propuso el jugador que tambiÃ©n estÃ¡n en el cÃ³digo {\it en la
+misma posiciÃ³n}. La cantidad de {\it coincidencias} es la cantidad de
+digitos que propuso el jugador que tambiÃ©n estÃ¡n en el cÃ³digo pero {\it en
+una posiciÃ³n distinta}.
 
-Por ejemplo, si el código que eligió el programa es el \lstinline!2607!, y el
+Por ejemplo, si el cÃ³digo que eligiÃ³ el programa es el \lstinline!2607!, y el
 jugador propone el \lstinline!1406!, el programa le debe responder un acierto (el
-\lstinline!0!, que está en el código original en el mismo lugar, el tercero), y
-una coincidencia (el \lstinline!6!, que también está en el código original, pero
-en la segunda posición, no en el cuarto como fue propuesto). Si el jugador
-hubiera propuesto el \lstinline!3591!, habría obtenido como respuesta ningún
-acierto y ninguna coincidencia, ya que no hay números en común con el
-código original, y si se obtienen cuatro aciertos es porque el jugador
-adivinó el código y ganó el juego.
+\lstinline!0!, que estÃ¡ en el cÃ³digo original en el mismo lugar, el tercero), y
+una coincidencia (el \lstinline!6!, que tambiÃ©n estÃ¡ en el cÃ³digo original, pero
+en la segunda posiciÃ³n, no en el cuarto como fue propuesto). Si el jugador
+hubiera propuesto el \lstinline!3591!, habrÃ­a obtenido como respuesta ningÃºn
+acierto y ninguna coincidencia, ya que no hay nÃºmeros en comÃºn con el
+cÃ³digo original, y si se obtienen cuatro aciertos es porque el jugador
+adivinÃ³ el cÃ³digo y ganÃ³ el juego.
 
-\item {\bf Especificación: }
-El programa, entonces, debe generar un número que el jugador no pueda predecir.
-A continuación, debe pedirle al usuario que introduzca un número de cuatro
-cifras distintas, y cuando éste lo ingresa, procesar la propuesta y evaluar el
-número de aciertos y de coincidencias que tiene de acuerdo al código elegido. Si
-es el código original, se termina el programa con un mensaje de felicitación. En
+\item {\bf EspecificaciÃ³n: }
+El programa, entonces, debe generar un nÃºmero que el jugador no pueda predecir.
+A continuaciÃ³n, debe pedirle al usuario que introduzca un nÃºmero de cuatro
+cifras distintas, y cuando Ã©ste lo ingresa, procesar la propuesta y evaluar el
+nÃºmero de aciertos y de coincidencias que tiene de acuerdo al cÃ³digo elegido. Si
+es el cÃ³digo original, se termina el programa con un mensaje de felicitaciÃ³n. En
 caso contrario, se informa al jugador la cantidad de aciertos y la de
 coincidencias, y se le pide una nueva propuesta. Este proceso se repite hasta
-que el jugador adivine el código.
+que el jugador adivine el cÃ³digo.
 
-\item {\bf Diseño:}
+\item {\bf DiseÃ±o:}
 \label{str:disenno}
 
 Lo primero que tenemos que hacer es indicarle al programa que tiene que
-``elegir'' un número de cuatro cifras al azar. Esto lo hacemos a través del
-módulo \lstinline!random!. Este módulo provee funciones para hacer elecciones
+``elegir'' un nÃºmero de cuatro cifras al azar. Esto lo hacemos a travÃ©s del
+mÃ³dulo \lstinline!random!. Este mÃ³dulo provee funciones para hacer elecciones
 aleatorias\footnote{En realidad, la computadora nunca puede hacer
-elecciones {\it completamente} aleatorias. Por eso los números ``al azar''
+elecciones {\it completamente} aleatorias. Por eso los nÃºmeros ``al azar''
 que puede elegir se llaman {\it pseudoaleatorios}.}.
 
-La función del módulo que vamos a usar se llama \lstinline!choice!. Esta función
-devuelve un elemento al azar de una n-upla, y toma como parámetro la n-upla de
+La funciÃ³n del mÃ³dulo que vamos a usar se llama \lstinline!choice!. Esta funciÃ³n
+devuelve un elemento al azar de una n-upla, y toma como parÃ¡metro la n-upla de
 la que tiene que elegir. Vamos a usarla entonces para elegir cifras. Para eso
 tenemos que construir una n-upla que tenga todas las cifras, lo hacemos de la
 misma manera que en la parte \ref{fun:multiple_return}:
@@ -503,57 +503,57 @@ misma manera que en la parte \ref{fun:multiple_return}:
 digitos = ('0','1','2','3','4','5','6','7','8','9')
 \end{verbatim}
 
-Como están entre comillas, los dígitos son tratados como cadenas de caracteres
-de longitud uno. Sin las comillas, habrían sido considerados números enteros. En
+Como estÃ¡n entre comillas, los dÃ­gitos son tratados como cadenas de caracteres
+de longitud uno. Sin las comillas, habrÃ­an sido considerados nÃºmeros enteros. En
 este caso elegimos verlos como cadenas de caracteres porque lo que nos interesa
 hacer con ellos no son cuentas sino comparaciones, concatenaciones, contar
-cuántas veces aparece o donde está en una cadena de mayor longitud, es decir,
+cuÃ¡ntas veces aparece o donde estÃ¡ en una cadena de mayor longitud, es decir,
 las operaciones que se aplican a cadenas de texto. Entonces que sean
 variables de tipo cadena de caracteres es lo que mejor se adapta a nuestro
 problema.
 
-Ahora tenemos que generar el número al azar, asegurándonos de que no haya cifras
-repetidas. Esto lo podemos modelar así:
+Ahora tenemos que generar el nÃºmero al azar, asegurÃ¡ndonos de que no haya cifras
+repetidas. Esto lo podemos modelar asÃ­:
 \begin{enumerate}
-\item Tomar una cadena vacía
+\item Tomar una cadena vacÃ­a
 \item Repetir cuatro veces:
 \begin{enumerate}
-\item Elegir un elemento al azar de la lista de dígitos \label{str:azar}
-\item Si el elemento no está en la cadena, agregarlo
+\item Elegir un elemento al azar de la lista de dÃ­gitos \label{str:azar}
+\item Si el elemento no estÃ¡ en la cadena, agregarlo
 \item En caso contrario, volver al punto \ref{str:azar}
 \end{enumerate}
 \end{enumerate}
 
-Una vez elegido el número, hay que interactuar con el usuario y pedirle su
-primera propuesta. Si el número no coincide con el código, hay que buscar la
+Una vez elegido el nÃºmero, hay que interactuar con el usuario y pedirle su
+primera propuesta. Si el nÃºmero no coincide con el cÃ³digo, hay que buscar la
 cantidad de aciertos y de coincidencias y repetir el pedido de propuestas, hasta
-que el jugador adivine el código.
+que el jugador adivine el cÃ³digo.
 
 Para verificar la cantidad de aciertos se pueden recorrer las cuatro posiciones
-de la propuesta: si alguna coincide con los dígitos en el código en esa
-posición, se incrementa en uno la cantidad de aciertos. En caso contrario, se
-verifica si el dígito está en alguna otra posición del código, y en ese caso se
+de la propuesta: si alguna coincide con los dÃ­gitos en el cÃ³digo en esa
+posiciÃ³n, se incrementa en uno la cantidad de aciertos. En caso contrario, se
+verifica si el dÃ­gito estÃ¡ en alguna otra posiciÃ³n del cÃ³digo, y en ese caso se
 incrementa la cantidad de coincidencias. En cualquier caso, hay que incrementar
-en uno también la cantidad de intentos que lleva el jugador.
+en uno tambiÃ©n la cantidad de intentos que lleva el jugador.
 
-Finalmente, cuando el jugador acierta el código elegido, hay que dejar de pedir
+Finalmente, cuando el jugador acierta el cÃ³digo elegido, hay que dejar de pedir
 propuestas, informar al usuario que ha ganado y terminar el programa.
 
-\item {\bf Implementación:}
-Entonces, de acuerdo a lo diseñado en \ref{str:disenno}, el programa quedaría
-más o menos así:
+\item {\bf ImplementaciÃ³n:}
+Entonces, de acuerdo a lo diseÃ±ado en \ref{str:disenno}, el programa quedarÃ­a
+mÃ¡s o menos asÃ­:
 
 \lstinputlisting{src/mastermind.py}
 
 \begin{observacion}
-Cuando lo que queremos escribir es demasiado largo como para una sola línea que
-entre cómodamente en el editor o en el campo visual, le indicamos al intérprete
-que queremos seguir en la siguiente línea por medio de la barra invertida (como
-al final de la línea 36).
+Cuando lo que queremos escribir es demasiado largo como para una sola lÃ­nea que
+entre cÃ³modamente en el editor o en el campo visual, le indicamos al intÃ©rprete
+que queremos seguir en la siguiente lÃ­nea por medio de la barra invertida (como
+al final de la lÃ­nea 36).
 \end{observacion}
 
 \item {\bf Pruebas:}
-La forma más directa de probar el programa es jugándolo, y verificando
+La forma mÃ¡s directa de probar el programa es jugÃ¡ndolo, y verificando
 manualmente que las respuestas que da son correctas, por ejemplo:
 
 \begin{verbatim}
@@ -577,20 +577,20 @@ Felicitaciones! Adivinaste el codigo en 7 intentos.
 \end{verbatim}
 
 Podemos ver que para este caso el programa parece haberse comportado bien.
-¿Pero cómo podemos saber que el código final era realmente el que eligió
-originalmente el programa? ¿O qué habría pasado si no encontrábamos la
-solución?
+Â¿Pero cÃ³mo podemos saber que el cÃ³digo final era realmente el que eligiÃ³
+originalmente el programa? Â¿O quÃ© habrÃ­a pasado si no encontrÃ¡bamos la
+soluciÃ³n?
 
-Para probar estas cosas recurrimos a la depuración del programa. Una forma
-de hacerlo es simplemente agregar algunas líneas en el código que nos
-informen lo que está sucediendo que no podemos ver. Por ejemplo, los
-números que va eligiendo al azar y el código que queda al final. Así
+Para probar estas cosas recurrimos a la depuraciÃ³n del programa. Una forma
+de hacerlo es simplemente agregar algunas lÃ­neas en el cÃ³digo que nos
+informen lo que estÃ¡ sucediendo que no podemos ver. Por ejemplo, los
+nÃºmeros que va eligiendo al azar y el cÃ³digo que queda al final. AsÃ­
 podremos verificar si las respuestas son correctas a medida que las hacemos
 y podremos elegir mejor las propuestas enlas pruebas.
 
 \lstinputlisting[firstline = 9, lastline = 18]{src/master_debug.py}
 
-De esta manera podemos monitorear cómo se va formando el código que hay que
+De esta manera podemos monitorear cÃ³mo se va formando el cÃ³digo que hay que
 adivinar, y los candidatos que van apareciendo pero se rechazan por estar
 repetidos:
 
@@ -610,23 +610,23 @@ Que codigo propones?:
 \item {\bf Mantenimiento:}
 \label{str:mant}
 Supongamos que queremos jugar el mismo juego, pero en lugar de hacerlo con un
-número de cuatro cifras, adivinar uno de cinco. ¿Qué tendríamos que hacer para
+nÃºmero de cuatro cifras, adivinar uno de cinco. Â¿QuÃ© tendrÃ­amos que hacer para
 cambiarlo?
 
-Para empezar, habría que reemplazar el 4 en la línea 11 del programa por un
-5, indicando que hay que elegir 5 dígitos al azar. Pero además, el ciclo en la
-línea 31 también necesita cambiar la cantidad de veces que se va a ejecutar, 5
-en lugar de 4. Y hay un lugar más, adentro del mensaje al usuario que indica las
-instrucciones del juego en la línea 20.
+Para empezar, habrÃ­a que reemplazar el 4 en la lÃ­nea 11 del programa por un
+5, indicando que hay que elegir 5 dÃ­gitos al azar. Pero ademÃ¡s, el ciclo en la
+lÃ­nea 31 tambiÃ©n necesita cambiar la cantidad de veces que se va a ejecutar, 5
+en lugar de 4. Y hay un lugar mÃ¡s, adentro del mensaje al usuario que indica las
+instrucciones del juego en la lÃ­nea 20.
 
-El problema de ir cambiando estos números de a uno es que si quisiéramos volver
-al programa de los 4 dígitos o quisiéramos cambiarlo por uno que juegue con 3,
+El problema de ir cambiando estos nÃºmeros de a uno es que si quisiÃ©ramos volver
+al programa de los 4 dÃ­gitos o quisiÃ©ramos cambiarlo por uno que juegue con 3,
 tenemos que volver a hacer los reemplazos en todos lados cada vez que lo
 queremos cambiar, y corremos el riesgo de olvidarnos de alguno e introducir
-errores en el código.
+errores en el cÃ³digo.
 
 Una forma de evitar esto es fijar la cantidad de cifras en una variable y
-cambiarla sólo ahí:
+cambiarla sÃ³lo ahÃ­:
 \lstinputlisting[firstline = 9, lastline = 14]{src/master_enh.py}
 
 El mensaje al usuario queda entonces:
@@ -637,42 +637,42 @@ Y el chequeo de aciertos y coincidencias:
 
 \lstinputlisting[firstline = 32, lastline = 34]{src/master_enh.py}
 
-Con 5 dígitos, el juego se pone más difícil. Nos damos cuenta que si el jugador
-no logra adivinar el código, el programa no termina: se queda preguntando
-códigos y respondiendo aciertos y coincidencias para siempre. Entonces queremos
-darle al usuario la posibilidad de rendirse y saber cuál era la respuesta y
+Con 5 dÃ­gitos, el juego se pone mÃ¡s difÃ­cil. Nos damos cuenta que si el jugador
+no logra adivinar el cÃ³digo, el programa no termina: se queda preguntando
+cÃ³digos y respondiendo aciertos y coincidencias para siempre. Entonces queremos
+darle al usuario la posibilidad de rendirse y saber cuÃ¡l era la respuesta y
 terminar el programa.
 
-Para esto agregamos en el ciclo \lstinline!while! principal una condición
+Para esto agregamos en el ciclo \lstinline!while! principal una condiciÃ³n
 extra: para seguir preguntando, la propuesta tiene que ser distinta al
-código pero además tiene que ser distinta del texto \lstinline!"Me doy"!.
+cÃ³digo pero ademÃ¡s tiene que ser distinta del texto \lstinline!"Me doy"!.
 
 \lstinputlisting[firstline = 25, lastline = 29]{src/master_enh.py}
 
-Entonces, ahora no sólamente sale del \lstinline!while! si acierta el
-código, sino además si se rinde y quiere saber cuál era el código. Entonces
+Entonces, ahora no sÃ³lamente sale del \lstinline!while! si acierta el
+cÃ³digo, sino ademÃ¡s si se rinde y quiere saber cuÃ¡l era el cÃ³digo. Entonces
 afuera del while tenemos que separar las dos posibilidades, y dar distintos
 mensajes:
 
 \lstinputlisting[firstline = 42]{src/master_enh.py}
 
-El código de todo el programa queda entonces así:
+El cÃ³digo de todo el programa queda entonces asÃ­:
 
 \lstinputlisting{src/master_enh.py}
 \end{enumerate}
 
 \section{Ejercicios}
 \ejercicioc{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
-guardara el valor de la cantidad de dígitos para no tener que cambiarlo todas
-las veces. ¿Cómo harían para evitar esta variable usando la función
+guardara el valor de la cantidad de dÃ­gitos para no tener que cambiarlo todas
+las veces. Â¿CÃ³mo harÃ­an para evitar esta variable usando la funciÃ³n
 \lstinline!len(cadena)!?}
 
-\ejercicioc{Modificar el programa para permitir repeticiones de dígitos.
-¡Cuidado con el cómputo de aciertos y coincidencias!}
+\ejercicioc{Modificar el programa para permitir repeticiones de dÃ­gitos.
+Â¡Cuidado con el cÃ³mputo de aciertos y coincidencias!}
 
 % Ejercicios que no tienen mucho que ver con la unidad:
-%       usar los singulares en caso de haber 1 sólo A o C
-%       incluir un número máximo de intentos
+%       usar los singulares en caso de haber 1 sÃ³lo A o C
+%       incluir un nÃºmero mÃ¡ximo de intentos
 %       incluir una pista si el jugador tipea "pista"
 %       preguntar si se quiere jugar otra vez
 
@@ -689,25 +689,25 @@ uno, o por segmentos, comparar estos elementos con otros, etc.
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!len(cadena)!}
-Devuelve el largo de una cadena, 0 si se trata de una cadena vacía.
+Devuelve el largo de una cadena, 0 si se trata de una cadena vacÃ­a.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!for letra in cadena!}
-Permite realizar una acción para cada una de las letras de una cadena.
+Permite realizar una acciÃ³n para cada una de las letras de una cadena.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!cadena[i]!}
-Corresponde al valor de la cadena en la posición \lstinline!i!, comenzando
+Corresponde al valor de la cadena en la posiciÃ³n \lstinline!i!, comenzando
 desde 0.  
 
-Si se utilizan números negativos, se puede acceder a los
-elementos desde el último (\lstinline!-1!) hasta el primero
+Si se utilizan nÃºmeros negativos, se puede acceder a los
+elementos desde el Ãºltimo (\lstinline!-1!) hasta el primero
 (\lstinline!-len(cadena)!).
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!cadena[i:j]!}
-Permite obtener un segmento de la cadena, desde la posición \lstinline!i!
-inclusive, hasta la posición \lstinline!j! exclusive.
+Permite obtener un segmento de la cadena, desde la posiciÃ³n \lstinline!i!
+inclusive, hasta la posiciÃ³n \lstinline!j! exclusive.
 
 En el caso de que se omita \lstinline!i!, se asume \lstinline!0!.  En el
 caso de que se omita \lstinline!j!, se asume \lstinline!len(cadena)!.  Si
@@ -723,8 +723,8 @@ se omiten ambos, se obtiene la cadena completa.
 \ejercicio{Escribir funciones que dada una cadena de caracteres:}
 \begin{partes}
 \item Imprima los dos primeros caracteres.
-\item Imprima los tres últimos caracteres.
-\item Imprima dicha cadena cada dos caracteres. Ej.: \texttt{'recta'} debería
+\item Imprima los tres Ãºltimos caracteres.
+\item Imprima dicha cadena cada dos caracteres. Ej.: \texttt{'recta'} deberÃ­a
 imprimir \texttt{'rca'}
 \item Dicha cadena en sentido inverso. Ej.: \texttt{'hola mundo!'} debe
 imprimir \texttt{'!odnum aloh'}
@@ -736,33 +736,33 @@ imprimir \texttt{'!odnum aloh'}
 \ejercicio{Escribir funciones que dada una cadena y un caracter:}
 \begin{partes}
 \item Inserte el caracter entre cada letra de la cadena. Ej: \texttt{'separar'}
-y \texttt{','} debería devolver \texttt{'s,e,p,a,r,a,r'}
+y \texttt{','} deberÃ­a devolver \texttt{'s,e,p,a,r,a,r'}
 \item Reemplace todos los espacios por el caracter. Ej: \texttt{'mi archivo de
-texto.txt'} y \texttt{'\_'} debería devolver\\
+texto.txt'} y \texttt{'\_'} deberÃ­a devolver\\
 \texttt{'mi\_archivo\_de\_texto.txt'}
-\item Reemplace todos los dígitos en la cadena por el caracter. Ej: \texttt{'su
-clave es: 1540'} y \texttt{'X'} debería devolver \texttt{'su clave es: XXXX'}
-\item Inserte el caracter cada 3 dígitos en la cadena. Ej.
-\texttt{'2552552550'} y \texttt{'.'} debería devolver \texttt{'255.255.255.0'}
+\item Reemplace todos los dÃ­gitos en la cadena por el caracter. Ej: \texttt{'su
+clave es: 1540'} y \texttt{'X'} deberÃ­a devolver \texttt{'su clave es: XXXX'}
+\item Inserte el caracter cada 3 dÃ­gitos en la cadena. Ej.
+\texttt{'2552552550'} y \texttt{'.'} deberÃ­a devolver \texttt{'255.255.255.0'}
 \end{partes}
 
 
-\ejercicio{Modificar las funciones anteriores, para que reciban un parámetro que indique
-la cantidad máxima de reemplazos o inserciones a realizar.}
+\ejercicio{Modificar las funciones anteriores, para que reciban un parÃ¡metro que indique
+la cantidad mÃ¡xima de reemplazos o inserciones a realizar.}
 
 
-\ejercicio{Escribir una función que reciba una cadena que contiene un largo número entero y
-devuelva una cadena con el número y las separaciones de miles. Por ejemplo, si
+\ejercicio{Escribir una funciÃ³n que reciba una cadena que contiene un largo nÃºmero entero y
+devuelva una cadena con el nÃºmero y las separaciones de miles. Por ejemplo, si
 recibe \texttt{'1234567890'}, debe devolver \texttt{'1.234.567.890'}}.
 
 
-\ejercicio{Escribir una función que dada una cadena de caracteres, devuelva:}
+\ejercicio{Escribir una funciÃ³n que dada una cadena de caracteres, devuelva:}
 \begin{partes}
 \item La primera letra de cada palabra. Por ejemplo, si recibe
 \texttt{'Universal Serial Bus'} debe devolver \texttt{'USB'}.
-\item Dicha cadena con la primera letra de cada palabra en mayúsculas. Por
-ejemplo, si recibe \texttt{'república argentina'} debe devolver
-\texttt{'República Argentina'}.
+\item Dicha cadena con la primera letra de cada palabra en mayÃºsculas. Por
+ejemplo, si recibe \texttt{'repÃºblica argentina'} debe devolver
+\texttt{'RepÃºblica Argentina'}.
 \item Las palabras que comiencen con la letra 'A'. Por ejemplo, si recibe
 \texttt{'Antes de ayer'} debe devolver \texttt{'Antes ayer'}
 \end{partes}
@@ -776,8 +776,8 @@ ejemplo, si recibe \texttt{'república argentina'} debe devolver
 consonantes'} debe devolver \texttt{'i ooae'}.
 \item Reemplace cada vocal por su siguiente vocal. Por ejemplo, si recibe
 \texttt{'vestuario'} debe devolver \texttt{'vistaerou'}.
-\item Indique si se trata de un palíndromo. Por ejemplo, \texttt{'anita
-lava la tina'} es un palíndromo (se lee igual de izquierda a derecha que de
+\item Indique si se trata de un palÃ­ndromo. Por ejemplo, \texttt{'anita
+lava la tina'} es un palÃ­ndromo (se lee igual de izquierda a derecha que de
 derecha a izquierda).
 \end{partes}
 
@@ -786,12 +786,12 @@ derecha a izquierda).
 \begin{partes}
 \item Indique si la segunda cadena es una subcadena de la primera. Por ejemplo,
 \texttt{'cadena'} es una subcadena de \texttt{'subcadena'}.
-\item Devuelva la que sea anterior en orden alfábetico. Por ejemplo, si recibe
+\item Devuelva la que sea anterior en orden alfÃ¡betico. Por ejemplo, si recibe
 \texttt{'kde'} y \texttt{'gnome'} debe devolver \texttt{'gnome'}.
 \end{partes}
 
 
-\ejercicio{Escribir una función que reciba una cadena de unos y ceros (es decir, un
-número en representación binaria) y devuelva el valor decimal
+\ejercicio{Escribir una funciÃ³n que reciba una cadena de unos y ceros (es decir, un
+nÃºmero en representaciÃ³n binaria) y devuelva el valor decimal
 correspondiente.}
 

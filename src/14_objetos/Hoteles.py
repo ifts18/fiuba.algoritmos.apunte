@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 #validaciones de condiciones generales de los datos
 from validaciones import es_numero, es_cadena_no_vacia

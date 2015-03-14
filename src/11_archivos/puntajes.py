@@ -1,9 +1,9 @@
 #! /usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
 def guardar_puntajes(nombre_archivo, puntajes):
     """ Guarda la lista de puntajes en el archivo.
-    Pre: nombre_archivo corresponde a un archivo v·lido,
+    Pre: nombre_archivo corresponde a un archivo v√°lido,
          puntajes corresponde a una lista de tuplas de 3 elementos.
     Post: se guardaron los valores en el archivo, 
           separados por comas.

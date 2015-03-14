@@ -1,10 +1,10 @@
 % Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -24,7 +24,7 @@
 
 % Entrada de texto
 \usepackage[spanish]{babel}   % Traduce los textos a castellano
-\usepackage[latin1]{inputenc} % Permite escribir directamente ·ÈÌÛ˙Ò
+\usepackage[utf8]{inputenc}   % Permite escribir directamente √°√©√≠√≥√∫√±
 \usepackage{t1enc}            % Agrega caracteres extendidos al font
 
 % Cuestiones de estilo
@@ -36,16 +36,16 @@
 % Opcionales
 \usepackage{longtable}        % tablas largas y flexibles
 \usepackage{nonfloat}         % Hace que las figuras no floten
-\usepackage{array}            % Permite alinear los p·rrafos en las celdas verticalmente
+\usepackage{array}            % Permite alinear los p√°rrafos en las celdas verticalmente
 \usepackage{url}              % Para incluir URLs
 
-\usepackage{wrapfig}          % Para poner texto junto a las im·genes.
+\usepackage{wrapfig}          % Para poner texto junto a las im√°genes.
 
 \usepackage{setspace}
 
 
-%\usepackage{fancyvrb}         % Agrega m·s entornos verbatim
-%\usepackage{stmaryrd}         % Agrega m·s sÌmbolos matem·ticos
+%\usepackage{fancyvrb}         % Agrega m√°s entornos verbatim
+%\usepackage{stmaryrd}         % Agrega m√°s s√≠mbolos matem√°ticos
 %\usepackage{enumerate}        % Agrega flexibilidad a las enumeraciones
 %\usepackage{ifthen}           % Permite usar condicionales en comandos
 %\usepackage{subfigure}        % Permite subfiguras dentro de las figuras
@@ -55,7 +55,7 @@
 %\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
 %\usepackage{multido}      % From PSTricks
 
-% ?? Este archivo no est· en el svn.
+% ?? Este archivo no est√° en el svn.
 %\input{random.tex}        % From CTAN/macros/generic
 
 % Paquetes matematicos.  Hacen falta?
@@ -76,7 +76,7 @@
 % 1in(fijo) + \voffset + \topmargin + \headheight + \headsep + \textheight +
 % \footskip
 
-%Esto se sacÛ para agregar Eudeba:
+%Esto se sac√≥ para agregar Eudeba:
 %\setlength\oddsidemargin{-0.04cm}
 %\setlength\evensidemargin{-0.04cm}
 %\setlength\topmargin{0cm}
@@ -91,7 +91,7 @@
 %\leftmargin 2.5cm
 %\rightmargin 2.5cm
 
-%Hasta ac· se sacÛ todo por Eudeba
+%Hasta ac√° se sac√≥ todo por Eudeba
 
 \usepackage{fancyhdr}         %
 \pagestyle{fancy}
@@ -131,11 +131,11 @@
   \fcolorbox{black}{rosa}{
   \usebox{\temporalbox}}\vspace{0.5ex}}
 
-% Cuadros de Sabias quÈ - Icono: lamparita
+% Cuadros de Sabias qu√© - Icono: lamparita
 \newenvironment{sabias_que}
  {\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
   \begin{minipage}{0.05\textwidth}\includegraphics[height=4ex]{graficos/lamparita}\end{minipage}
-  \begin{minipage}{0.80\textwidth}\bf SabÌas que \ldots\end{minipage}\\
+  \begin{minipage}{0.80\textwidth}\bf Sab√≠as que \ldots\end{minipage}\\
   \begin{small}}
  {\end{small}\end{minipage}\end{lrbox}
   \begin{figure*}[ht]
@@ -145,11 +145,11 @@
   \usebox{\temporalbox}}
   \end{figure*}}
 
-% Cuadros de AtenciÛn - Icono: Tri·ngulo con !
+% Cuadros de Atenci√≥n - Icono: Tri√°ngulo con !
 \newenvironment{atencion}
  {\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
   \begin{minipage}{0.05\textwidth}\includegraphics[height=3ex]{graficos/atencion}\end{minipage}
-  \begin{minipage}{0.80\textwidth}\bf AtenciÛn \end{minipage}\vspace{0.8ex}\\
+  \begin{minipage}{0.80\textwidth}\bf Atenci√≥n \end{minipage}\vspace{0.8ex}\\
   \begin{small}}
  {\end{small}\end{minipage}\end{lrbox}
   \begin{figure*}[ht]
@@ -199,7 +199,7 @@
 
 \floatstyle{ruled}
 \newfloat{codigo-float}{htbp}{lop}[chapter]
-\floatname{codigo-float}{CÛdigo}
+\floatname{codigo-float}{C√≥digo}
 
 \newenvironment{codigo}[2]{\begin{codigo-float}
     \caption{{\small\texttt{#1}}\textbf{:}\ \small #2}
@@ -222,7 +222,7 @@
 \newtheorem{problemac}{Problema}[chapter]
 \newtheorem{ejercicioc}{Ejercicio}[chapter]
 \renewcommand{\qedsymbol}{} % El proof inserta dos qed al final
-\newenvironment{solucion}[1][SoluciÛn]{\begin{proof}[#1]}{\end{proof}}
+\newenvironment{solucion}[1][Soluci√≥n]{\begin{proof}[#1]}{\end{proof}}
 
 \theoremstyle{remark}
 %\newtheorem{observacion}{Observaci\'on}[section]
@@ -267,7 +267,7 @@
 %\newtheorem{corolario}[teorema]{Corolario}
 %\newtheorem{lema}[teorema]{Lema}
 
-% Estas no hacen falta, ya est·n traducidos correctamente en babel
+% Estas no hacen falta, ya est√°n traducidos correctamente en babel
 %\renewcommand{\abstractname}{Resumen}
 %\renewcommand{\partname }{Parte }
 %\renewcommand{\indexname}{Indice }
@@ -350,7 +350,7 @@
 \hypersetup{%
 	linkcolor=black,
 	urlcolor=blue,
-	pdftitle={Algoritmos y ProgramaciÛn I - Con lenguaje Python},
+	pdftitle={Algoritmos y Programaci√≥n I - Con lenguaje Python},
 	bookmarksnumbered,
 }%
 \usepackage{hypcap}
@@ -365,13 +365,13 @@
 \clubpenalty=100000 \widowpenalty=100000
 
 % La caja de Eudeba
-%\setstocksize{297mm}{210mm} %el tama√±o del papel A4
-\setstocksize{23cm}{15.7cm} %el tama√±o del papel
-\settrimmedsize{23cm}{15.7cm}{*} %el tama√±o del papel recortado
-\settypeblocksize{18.5cm}{11.7cm}{*} %el tama√±o de la caja
-\setulmargins{2.6cm}{*}{*} % m·rgenes superior e inferior
+%\setstocksize{297mm}{210mm} %el tama√É¬±o del papel A4
+\setstocksize{23cm}{15.7cm} %el tama√É¬±o del papel
+\settrimmedsize{23cm}{15.7cm}{*} %el tama√É¬±o del papel recortado
+\settypeblocksize{18.5cm}{11.7cm}{*} %el tama√É¬±o de la caja
+\setulmargins{2.6cm}{*}{*} % m√°rgenes superior e inferior
 %\setlength{\topmargin}{0in}
-\setlrmargins{2cm}{*}{*} % margen izquierdo de las p·ginas
+\setlrmargins{2cm}{*}{*} % margen izquierdo de las p√°ginas
 \setlength{\footskip}{24pt} \checkandfixthelayout
 
 
@@ -379,12 +379,12 @@
 
 % Carat no esta.
 %\include{carat}
-\title{Algoritmos y ProgramaciÛn I \\ Con lenguaje Python}
+\title{Algoritmos y Programaci√≥n I \\ Con lenguaje Python}
 \maketitle
 
 \tableofcontents  %Comentar  para no imprimir la toc
 
-% Comando para configurar el n˙mero de capÌtulo
+% Comando para configurar el n√∫mero de cap√≠tulo
 % \setcounter{chapter}{17}
 
 \include{0_prologo}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 class Persona(object):
     "Clase que representa a una persona."

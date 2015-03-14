@@ -1,16 +1,16 @@
 #!/usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
 def busqueda_lineal(lista, x):
-    """ Búsqueda lineal.
-	Si x está en lista devuelve su posición en lista, de lo
+    """ BÃºsqueda lineal.
+	Si x estÃ¡ en lista devuelve su posiciÃ³n en lista, de lo
     contrario devuelve -1.
     """
 
     # Estrategia: se recorren uno a uno los elementos de la lista
     # y se los compara con el valor x buscado.
 
-    i=0 # i tiene la posición actual en la lista, comienza en 0
+    i=0 # i tiene la posiciÃ³n actual en la lista, comienza en 0
 
     # el ciclo for recorre todos los elementos de lista:
     for z in lista:
@@ -20,9 +20,9 @@ def busqueda_lineal(lista, x):
         if z == x:
             return i
       
-        # si z es distinto de x, incrementa i, y continúa el ciclo
+        # si z es distinto de x, incrementa i, y continÃºa el ciclo
         i=i+1
 
-    # si salió del ciclo sin haber encontrado el valor, devuelve -1
+    # si saliÃ³ del ciclo sin haber encontrado el valor, devuelve -1
     return -1
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python
-#encoding: latin
+# encoding: utf-8
 
 def potencia(b,n):
-	""" Precondición: n debe ser mayor o igual que cero.
+	""" PrecondiciÃ³n: n debe ser mayor o igual que cero.
 	    Devuelve: b^n. """
 	
 	# Caso base

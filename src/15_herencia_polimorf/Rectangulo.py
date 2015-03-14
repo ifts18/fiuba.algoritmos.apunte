@@ -1,14 +1,14 @@
 #! /usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 from Punto import Punto
 
 class Rectangulo(object):
-    """ Esta clase modela un rectángulo en el plano. """
+    """ Esta clase modela un rectÃ¡ngulo en el plano. """
 
     def __init__(self, base, altura, origen):
-        """ base (número) es la longitud de su base,
-            altura (número) es la longitud de su base,
+        """ base (nÃºmero) es la longitud de su base,
+            altura (nÃºmero) es la longitud de su base,
             origen (Punto) es el punto del plano de su esquina
                            inferior izquierda. """
         self.base = base
@@ -22,7 +22,7 @@ class Rectangulo(object):
         return self.base * self.altura
 
     def __str__(self):
-        """ muestra el rectángulo """
+        """ muestra el rectÃ¡ngulo """
         return "Base: %s, Altura: %s, Esquina inf. izq.: %s " % \
                (self.base, self.altura, self.origen)
 

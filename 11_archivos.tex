@@ -1,11 +1,11 @@
 % Copyright (C) 2009-2010 Maximiliano Curia <maxy@gnuservers.com.ar>,
 %               Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -14,7 +14,7 @@
 % 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
 % TODO: temas que faltan:
-% - acceso secuencial y aleatorio, (para la siguiente unidad: datos de tamaÒo
+% - acceso secuencial y aleatorio, (para la siguiente unidad: datos de tama√±o
 % fijo, indice)
 % - entrada y salida estandard y estandard error
 
@@ -25,27 +25,27 @@
 \chapter{Manejo de archivos}
 \label{uni:archivos}
 
-Veremos en esta unidad cÛmo manejar archivos desde nuestros
+Veremos en esta unidad c√≥mo manejar archivos desde nuestros
 programas.
 
-Existen dos formas b·sicas de acceder a un archivo, una es
-utilizarlo como un archivo de texto, que procesaremos lÌnea por
-lÌnea; la otra es tratarlo como un archivo binario, que
+Existen dos formas b√°sicas de acceder a un archivo, una es
+utilizarlo como un archivo de texto, que procesaremos l√≠nea por
+l√≠nea; la otra es tratarlo como un archivo binario, que
 procesaremos byte por byte.
 
-En Python, para abrir un archivo usaremos la funciÛn \lstinline!open!, que
+En Python, para abrir un archivo usaremos la funci√≥n \lstinline!open!, que
 recibe el nombre del archivo a abrir.
 
 \begin{codigo-python-sn}
 archivo = open("archivo.txt")
 \end{codigo-python-sn}
 
-Esta funciÛn intentar· abrir el archivo con el nombre indicado.  Si tiene
-Èxito, devolver· una variable que nos permitir· manipular el archivo de
+Esta funci√≥n intentar√° abrir el archivo con el nombre indicado.  Si tiene
+√©xito, devolver√° una variable que nos permitir√° manipular el archivo de
 diversas maneras.
 
-La operaciÛn m·s sencilla a realizar sobre un archivo es leer su contenido.
-Para procesarlo lÌnea por lÌnea, es posible hacerlo de la siguiente forma:
+La operaci√≥n m√°s sencilla a realizar sobre un archivo es leer su contenido.
+Para procesarlo l√≠nea por l√≠nea, es posible hacerlo de la siguiente forma:
 
 \begin{codigo-python-sn}
 linea=archivo.readline()
@@ -55,9 +55,9 @@ while linea != '':
 \end{codigo-python-sn}
 
 Esto funciona ya que cada archivo que se encuentre abierto tiene una
-posiciÛn asociada, que indica el ˙ltimo punto que fue leÌdo.  Cada vez que
-se lee una lÌnea, avanza esa posiciÛn. Es por ello que
-\lstinline!readline()! devuelve cada vez una lÌnea distinta y no siempre la
+posici√≥n asociada, que indica el √∫ltimo punto que fue le√≠do.  Cada vez que
+se lee una l√≠nea, avanza esa posici√≥n. Es por ello que
+\lstinline!readline()! devuelve cada vez una l√≠nea distinta y no siempre la
 misma.
 
 La siguiente estructura es una forma equivalente a la vista en el ejemplo
@@ -68,34 +68,34 @@ for linea in archivo:
     # procesar linea
 \end{codigo-python-sn}
 
-De esta manera, la variable \lstinline!linea! ir· almacenando distintas cadenas
-correspondientes a cada una de las lÌneas del archivo.
+De esta manera, la variable \lstinline!linea! ir√° almacenando distintas cadenas
+correspondientes a cada una de las l√≠neas del archivo.
 
-Es posible, adem·s, obtener todas las lÌneas del archivo utilizando una
-sola llamada a funciÛn:
+Es posible, adem√°s, obtener todas las l√≠neas del archivo utilizando una
+sola llamada a funci√≥n:
 
 \begin{codigo-python-sn}
 lineas = archivo.readlines()
 \end{codigo-python-sn}
 
-En este caso, la variable \lstinline!lineas! tendr· una lista de cadenas con
-todas las lÌneas del archivo.
+En este caso, la variable \lstinline!lineas! tendr√° una lista de cadenas con
+todas las l√≠neas del archivo.
 
 \begin{atencion}
 Es importante tener en cuenta que cuando se utilizan funciones como
-\lstinline!archivo.readlines()!, se est· cargando en memoria
-el archivo completo.  Siempre que una instrucciÛn cargue un archivo
-completo en memoria debe tenerse cuidado de utilizarla sÛlo con archivos
-pequeÒos, ya que de otro modo podrÌa agotarse la memoria de la computadora.
+\lstinline!archivo.readlines()!, se est√° cargando en memoria
+el archivo completo.  Siempre que una instrucci√≥n cargue un archivo
+completo en memoria debe tenerse cuidado de utilizarla s√≥lo con archivos
+peque√±os, ya que de otro modo podr√≠a agotarse la memoria de la computadora.
 \end{atencion}
 
 \section{Cerrar un archivo}
 
 Al terminar de trabajar con un archivo, es recomendable cerrarlo,
-por diversos motivos: en algunos sistemas los archivos sÛlo pueden
+por diversos motivos: en algunos sistemas los archivos s√≥lo pueden
 ser abiertos de a un programa por la vez; en otros, lo que se haya
-escrito no se guardar· realmente hasta no cerrar el archivo; o el
-lÌmite de cantidad de archivos que puede manejar un programa puede
+escrito no se guardar√° realmente hasta no cerrar el archivo; o el
+l√≠mite de cantidad de archivos que puede manejar un programa puede
 ser bajo, etc.
 
 Para cerrar un archivo simplemente se debe llamar a:
@@ -105,10 +105,10 @@ archivo.close()
 
 \section{Ejemplo de procesamiento de archivos}
 
-Por ejemplo, para mostrar todas las lÌneas de un archivo,
-precedidas por el n˙mero de lÌnea, podemos hacerlo como en el CÛdigo \ref{numera_lineas}.
+Por ejemplo, para mostrar todas las l√≠neas de un archivo,
+precedidas por el n√∫mero de l√≠nea, podemos hacerlo como en el C√≥digo \ref{numera_lineas}.
 
-\begin{codigo}{numera\_lineas.py}{Imprime las lÌneas de un archivo con su n˙mero}
+\begin{codigo}{numera\_lineas.py}{Imprime las l√≠neas de un archivo con su n√∫mero}
 \label{numera_lineas}
 \begin{codigo-python}
 archivo = open("archivo.txt")
@@ -121,32 +121,32 @@ archivo.close()
 \end{codigo-python}
 \end{codigo}
 
-La llamada a \lstinline!rstrip! es necesaria ya que cada lÌnea que se lee del
-archivo contiene un fin de lÌnea y con la llamada a
+La llamada a \lstinline!rstrip! es necesaria ya que cada l√≠nea que se lee del
+archivo contiene un fin de l√≠nea y con la llamada a
 \lstinline!rstrip("\n")! se remueve.
 
 \begin{sabias_que}
 Los archivos de texto son sencillos de manejar, pero existen por lo menos 3
-formas distintas de marcar un fin de lÌnea. En Unix tradicionalmente se usa
-el caracter '\verb!\n!' (valor de ASCII 10, definido como nueva lÌnea) para
-el fin de lÌnea, mientras que en Macintosh el fin de lÌnea se solÌa
+formas distintas de marcar un fin de l√≠nea. En Unix tradicionalmente se usa
+el caracter '\verb!\n!' (valor de ASCII 10, definido como nueva l√≠nea) para
+el fin de l√≠nea, mientras que en Macintosh el fin de l√≠nea se sol√≠a
 representar como un '\verb!\r!' (valor ASCII 13, definido como retorno de
 carro) y en Windows se usan ambos caracteres '\verb!\r\n!'. 
 
 Si bien esto es algo que hay que tener en cuenta en una diversidad de
-casos, en particular en Python por omisiÛn se maneja cualquier tipo de fin
-de lÌnea como si fuese un '\verb!\n!', salvo que se le pida lo contrario.
-Para manejar los caracteres de fin de lÌnea \textit{a mano} se puede poner
-una 'U' en el par·metro modo que le pasamos a \lstinline!open!.
+casos, en particular en Python por omisi√≥n se maneja cualquier tipo de fin
+de l√≠nea como si fuese un '\verb!\n!', salvo que se le pida lo contrario.
+Para manejar los caracteres de fin de l√≠nea \textit{a mano} se puede poner
+una 'U' en el par√°metro modo que le pasamos a \lstinline!open!.
 \end{sabias_que}
 
-Otra opciÛn para hacer exactamente lo mismo serÌa utilizar la funciÛn de
-Python \lstinline!enumerate(secuencia)!.  Esta funciÛn devuelve un contador
+Otra opci√≥n para hacer exactamente lo mismo ser√≠a utilizar la funci√≥n de
+Python \lstinline!enumerate(secuencia)!.  Esta funci√≥n devuelve un contador
 por cada uno de los elementos que se recorren, puede usarse con cualquier
-tipo de secuencia, incluyendo archivos.  La versiÛn equivalente se muestra
-en el CÛdigo \ref{numera_lineas_enumerate}.
+tipo de secuencia, incluyendo archivos.  La versi√≥n equivalente se muestra
+en el C√≥digo \ref{numera_lineas_enumerate}.
 
-\begin{codigo}{numera\_lineas2.py}{Imprime las lÌneas de un archivo con su n˙mero}
+\begin{codigo}{numera\_lineas2.py}{Imprime las l√≠neas de un archivo con su n√∫mero}
 \label{numera_lineas_enumerate}
 \begin{codigo-python}
 archivo = open("archivo.txt")
@@ -159,19 +159,19 @@ archivo.close()
 
 \section{Modo de apertura de los archivos}
 
-La funciÛn \lstinline!open! recibe un par·metro opcional para indicar el
-modo en que se abrir· el archivo.  Los tres modos de apertura que se pueden
+La funci√≥n \lstinline!open! recibe un par√°metro opcional para indicar el
+modo en que se abrir√° el archivo.  Los tres modos de apertura que se pueden
 especificar son:
 
 \begin{itemize}
-\item Modo de \textbf{sÛlo lectura} (\lstinline!'r'!).   En este caso no es
+\item Modo de \textbf{s√≥lo lectura} (\lstinline!'r'!).   En este caso no es
 posible realizar modificaciones sobre el archivo, solamente leer su
 contenido.
 
-\item Modo de \textbf{sÛlo escritura} (\lstinline!'w'!). En este caso el
+\item Modo de \textbf{s√≥lo escritura} (\lstinline!'w'!). En este caso el
 archivo es truncado (vaciado) si existe, y se lo crea si no existe.
 
-\item Modo \textbf{sÛlo escritura posicion·ndose al final del archivo}
+\item Modo \textbf{s√≥lo escritura posicion√°ndose al final del archivo}
 (\lstinline!a!). En este caso se crea el archivo, si no existe, pero en
 caso de que exista se posiciona al final, manteniendo el contenido
 original.
@@ -182,22 +182,22 @@ Por otro lado, en cualquiera de estos modos se puede agregar un
 \lstinline!+! para pasar a un modo lectura-escritura. El comportamiento de
 \lstinline!r+! y de \lstinline!w+! no es el mismo, ya que en el primer caso
 se tiene el archivo completo, y en el segundo caso se trunca el archivo,
-perdiendo asÌ los datos.
+perdiendo as√≠ los datos.
 
 \begin{observacion}
-Si un archivo no existe y se lo intenta abrir en modo lectura, se generar·
-un error; en cambio si se lo abre para escritura, Python se encargar· de
+Si un archivo no existe y se lo intenta abrir en modo lectura, se generar√°
+un error; en cambio si se lo abre para escritura, Python se encargar√° de
 crear el archivo al momento de abrirlo, ya sea con \lstinline!'w'!,
 \lstinline!'a'!, \lstinline!'w+'! o con \lstinline!'a+')!.
 \end{observacion}
 
-En caso de que no se especifique el modo, los archivos ser·n abiertos en
-modo sÛlo lectura (\lstinline!r!).
+En caso de que no se especifique el modo, los archivos ser√°n abiertos en
+modo s√≥lo lectura (\lstinline!r!).
 
 \begin{atencion}
 Si un archivo existente se abre en modo escritura (\lstinline!'w'! o
 \lstinline!'w+'!), todos los datos anteriores son borrados y reemplazados
-por lo que se escriba en Èl.
+por lo que se escriba en √©l.
 \end{atencion}
 
 \section{Escribir en un archivo}
@@ -215,9 +215,9 @@ O mediante listas de cadenas:
 archivo.writelines(lista_de_cadenas)
 \end{codigo-python-sn}
 
-AsÌ como la funciÛn \lstinline!read! devuelve las lÌneas con los caracteres
-de fin de lÌnea (\lstinline!\n!), ser· necesario agregar los caracteres de
-fin de lÌnea a las cadenas que se vayan a escribir en el archivo.
+As√≠ como la funci√≥n \lstinline!read! devuelve las l√≠neas con los caracteres
+de fin de l√≠nea (\lstinline!\n!), ser√° necesario agregar los caracteres de
+fin de l√≠nea a las cadenas que se vayan a escribir en el archivo.
 
 \begin{codigo}{genera\_saludo.py}{Genera el archivo saludo.py}
 \label{genera_saludo}
@@ -230,173 +230,173 @@ saludo.close()
 \end{codigo-python}
 \end{codigo}
 
-El ejemplo que se muestra en el CÛdigo \ref{genera_saludo} contiene un
-programa Python que a su vez genera el cÛdigo de otro programa Python.
+El ejemplo que se muestra en el C√≥digo \ref{genera_saludo} contiene un
+programa Python que a su vez genera el c√≥digo de otro programa Python.
 
 \begin{atencion}
 Si un archivo existente se abre en modo lectura-escritura, al escribir en
-Èl se sobreescribir·n los datos anteriores, a menos que se haya llegado al
+√©l se sobreescribir√°n los datos anteriores, a menos que se haya llegado al
 final del archivo.
 
 Este proceso de sobreescritura se realiza caracter por caracter, sin
-consideraciones adicionales para los caracteres de fin de lÌnea ni otros
+consideraciones adicionales para los caracteres de fin de l√≠nea ni otros
 caracteres especiales.
 \end{atencion}
 
-\section{Agregar informaciÛn a un archivo}
+\section{Agregar informaci√≥n a un archivo}
 
 Abrir un archivo en modo {\it agregar al final} puede parece raro,
-pero es bastante ˙til.
+pero es bastante √∫til.
 
-Uno de sus usos es para escribir un archivo de bit·cora (o archivo de
+Uno de sus usos es para escribir un archivo de bit√°cora (o archivo de
 {\textit log}), que nos permita ver los distintos eventos que se fueron
-sucediendo, y asÌ encontrar la secuencia de pasos (no siempre evidente) que
+sucediendo, y as√≠ encontrar la secuencia de pasos (no siempre evidente) que
 hace nuestro programa.
 
 Esta es una forma muy habitual de buscar problemas o hacer un seguimiento
 de los sucesos. Para los administradores de sistemas es una herramienta
 esencial de trabajo. \\
 
-En el CÛdigo \ref{modulo_log} se muestra un mÛdulo para manejo de logs, que
-se encarga de la apertura del archivo, del guardado de las lÌneas una por
+En el C√≥digo \ref{modulo_log} se muestra un m√≥dulo para manejo de logs, que
+se encarga de la apertura del archivo, del guardado de las l√≠neas una por
 una y del cerrado final del archivo.
 
-\begin{codigo}{log.py}{MÛdulo para manipulaciÛn de archivos de log}
+\begin{codigo}{log.py}{M√≥dulo para manipulaci√≥n de archivos de log}
 \label{modulo_log}
 \lstinputlisting{src/11_archivos/log.py}
 \end{codigo}
 
-En este mÛdulo se utiliza el mÛdulo de Python \lstinline!datetime! para
-obtener la fecha y hora actual que se guardar· en los archivos.  Es
-importante notar que en el mÛdulo mostrado no se abre o cierra un archivo
-en particular, sino que las funciones est·n programadas de modo tal que
+En este m√≥dulo se utiliza el m√≥dulo de Python \lstinline!datetime! para
+obtener la fecha y hora actual que se guardar√° en los archivos.  Es
+importante notar que en el m√≥dulo mostrado no se abre o cierra un archivo
+en particular, sino que las funciones est√°n programadas de modo tal que
 puedan ser utilizadas desde otro programa. 
 
-Se trata de un mÛdulo genÈrico que podr· ser utilizado por diversos programas,
+Se trata de un m√≥dulo gen√©rico que podr√° ser utilizado por diversos programas,
 que requieran la funcionalidad de registrar los posibles errores o eventos que
-se produzcan durante la ejecuciÛn. \\
+se produzcan durante la ejecuci√≥n. \\
 
-Para utilizar este mÛdulo, ser· necesario primero llamar a
+Para utilizar este m√≥dulo, ser√° necesario primero llamar a
 \lstinline!abrir_log! para abrir el archivo de log, luego llamar a
 \lstinline!guardar_log! por cada mensaje que se quiera registrar, y
 finalmente llamar a \lstinline!cerrar_log! cuando se quiera concluir la
-registraciÛn de mensajes. \\
+registraci√≥n de mensajes. \\
 
-\begin{codigo}{usa\_log.py}{MÛdulo que utiliza el mÛdulo de log}
+\begin{codigo}{usa\_log.py}{M√≥dulo que utiliza el m√≥dulo de log}
 \label{usa_log}
 \lstinputlisting{src/11_archivos/usa_log.py}
 \end{codigo}
 
-Por ejemplo, en el CÛdigo \ref{usa_log} se muestra un posible programa que
-utiliza el mÛdulo de log incluido anteriormente.
+Por ejemplo, en el C√≥digo \ref{usa_log} se muestra un posible programa que
+utiliza el m√≥dulo de log incluido anteriormente.
 
-Este cÛdigo, que incluye el mÛdulo \lstinline!log! mostrado anteriormente,
-muestra una forma b·sica de utilizar un archivo de log.  Al iniciarse el
+Este c√≥digo, que incluye el m√≥dulo \lstinline!log! mostrado anteriormente,
+muestra una forma b√°sica de utilizar un archivo de log.  Al iniciarse el
 programa se abre el archivo de log, de forma que queda registrada la fecha
-y hora de inicio.  Posteriormente se realizan tareas varias que podrÌan
-provocar errores, y de haber alg˙n error se lo guarda en el archivo de log.
+y hora de inicio.  Posteriormente se realizan tareas varias que podr√≠an
+provocar errores, y de haber alg√∫n error se lo guarda en el archivo de log.
 Finalmente, al terminar el programa, se cierra el archivo de log, quedando
-registrada la fecha y hora de finalizaciÛn.
+registrada la fecha y hora de finalizaci√≥n.
 
-El archivo de log generado tendr· la forma:
+El archivo de log generado tendr√° la forma:
 
 \begin{verbatim}
 2010-04-10 15:20:32.229556 Iniciando registro de errores
 2010-04-10 15:20:50.721415 ERROR: no se pudo acceder al recurso
-2010-04-10 15:21:58.625432 ERROR: formato de entrada inv·lido
+2010-04-10 15:21:58.625432 ERROR: formato de entrada inv√°lido
 2010-04-10 15:22:10.109376 Fin del registro de errores
 \end{verbatim}
 
 \section{Manipular un archivo en forma binaria}
 
 No todos los archivos son archivos de texto, y por lo tanto no todos los
-archivos pueden ser procesados por lÌneas. Existen archivos en los que cada
+archivos pueden ser procesados por l√≠neas. Existen archivos en los que cada
 byte tiene un significado particular, y es necesario manipularlos conociendo
-el formato en que est·n los datos para poder procesar esa informaciÛn.
+el formato en que est√°n los datos para poder procesar esa informaci√≥n.
 
 Para abrir un archivo y manejarlo de forma binaria es necesario agregarle
 una \verb!'b'! al parametro de modo.
 
 \begin{sabias_que}
 La \texttt{b} en el modo de apertura viene de \textit{binario}, por el
-sistema de numeraciÛn binaria, ya que en el procesador de la computadora la
-informaciÛn es manejada ˙nicamente mediante ceros o unos (bits) que
-conforman n˙meros binarios.
+sistema de numeraci√≥n binaria, ya que en el procesador de la computadora la
+informaci√≥n es manejada √∫nicamente mediante ceros o unos (bits) que
+conforman n√∫meros binarios.
 
 Si bien no es necesaria en todos los sistemas (en general el mismo sistema
 detecta que es un archivo binario sin que se lo pidamos), es una buena
-costumbre usarla, por m·s que sirva principalmente como documentaciÛn.
+costumbre usarla, por m√°s que sirva principalmente como documentaci√≥n.
 \end{sabias_que}
 
-Para procesar el archivo de a bytes en lugar de lÌneas, se utiliza la
-funciÛn \lstinline!contenido = archivo.read(n)! para leer \lstinline!n!
+Para procesar el archivo de a bytes en lugar de l√≠neas, se utiliza la
+funci√≥n \lstinline!contenido = archivo.read(n)! para leer \lstinline!n!
 bytes y \lstinline!archivo.write(contenido)!, para
-escribir \lstinline!contenido! en la posiciÛn actual del archivo.
+escribir \lstinline!contenido! en la posici√≥n actual del archivo.
 
 Al manejar un archivo binario, es necesario poder conocer la
-posiciÛn actual en el archivo y poder modificarla. Para obtener la
-posiciÛn actual se utiliza \lstinline!archivo.tell()!, que 
+posici√≥n actual en el archivo y poder modificarla. Para obtener la
+posici√≥n actual se utiliza \lstinline!archivo.tell()!, que 
 indica la cantidad de bytes desde el comienzo del archivo.
 
-Para modificar la posiciÛn actual se utiliza 
+Para modificar la posici√≥n actual se utiliza 
 \lstinline!archivo.seek(corrimiento, desde)!, que permite desplazarse una
 cantidad de bytes en el archivo, contando desde el comienzo del archivo,
-desde la posiciÛn actual o desde el final.
+desde la posici√≥n actual o desde el final.
 
 % TODO: Ejemplo usando tell y seek
 
 \section{Persistencia de datos}
 
 Se llama {\bf persistencia} a la capacidad de guardar la
-informaciÛn de un programa para poder volver a utilizarla en otro
+informaci√≥n de un programa para poder volver a utilizarla en otro
 momento. Es lo que los usuarios conocen como {\it Guardar el archivo}
-y despuÈs {\it Abrir el archivo}. Pero para un programador puede
-significar m·s cosas y suele involucrar un proceso de {\it
-serializaciÛn} de los datos a un archivo o a una base de datos o a
-alg˙n otro medio similar, y el proceso inverso de recuperar los
-datos a partir de la informaciÛn {\it serializada}.
+y despu√©s {\it Abrir el archivo}. Pero para un programador puede
+significar m√°s cosas y suele involucrar un proceso de {\it
+serializaci√≥n} de los datos a un archivo o a una base de datos o a
+alg√∫n otro medio similar, y el proceso inverso de recuperar los
+datos a partir de la informaci√≥n {\it serializada}.
 
 % Ejemplo Highscores
 
 Por ejemplo, supongamos que en el desarrollo de un juego se quiere guardar
-en un archivo la informaciÛn referente a los ganadores, el puntaje m·ximo
+en un archivo la informaci√≥n referente a los ganadores, el puntaje m√°ximo
 obtenido y el tiempo de juego en el que obtuvieron ese puntaje.
 
-En el juego, esa informaciÛn podrÌa estar almacenada en una lista de
+En el juego, esa informaci√≥n podr√≠a estar almacenada en una lista de
 tuplas:
 \begin{codigo-python-sn}
 [(nombre1, puntaje1, tiempo1), (nombre2, puntaje2, tiempo2), ...]
 \end{codigo-python-sn}
 
-Esta informaciÛn se puede guardar en un archivo de muchas formas distintas.
+Esta informaci√≥n se puede guardar en un archivo de muchas formas distintas.
 En este caso, para facilitar la lectura del archivo de puntajes para los
 humanos, se decide guardarlos en un archivo de texto, donde cada tupla
-ocupar· una lÌnea y los valores de las tuplas estar·n separados por
+ocupar√° una l√≠nea y los valores de las tuplas estar√°n separados por
 comas.
 
-En el CÛdigo \ref{puntajes} se muestra un mÛdulo capaz de guardar y
+En el C√≥digo \ref{puntajes} se muestra un m√≥dulo capaz de guardar y
 recuperar los puntajes en el formato especificado.
 
-\begin{codigo}{puntajes.py}{MÛdulo para guardar y recuperar puntajes en un archivo}
+\begin{codigo}{puntajes.py}{M√≥dulo para guardar y recuperar puntajes en un archivo}
 \label{puntajes}
 \lstinputlisting{src/11_archivos/puntajes.py}
 \end{codigo}
 
 Dadas las especificaciones del problema al guardar los valores en el
-archivo, es necesario convertir el puntaje (que es un valor numÈrico) en
+archivo, es necesario convertir el puntaje (que es un valor num√©rico) en
 una cadena, y al abrir el archivo es necesario convertirlo nuevamente en un
-valor numÈrico.
+valor num√©rico.
 
 \begin{observacion}
-Es importante notar que tanto la funciÛn que almacena los datos como la que
-los recupera requieren que la informaciÛn se encuentre de una forma
-determinada y de no ser asÌ, fallar·n.  Es por eso que estas condiciones se
-indican en la documentaciÛn de las funciones como sus precondiciones. En
-prÛximas unidades veremos cÛmo evitar que falle una funciÛn si alguna de
+Es importante notar que tanto la funci√≥n que almacena los datos como la que
+los recupera requieren que la informaci√≥n se encuentre de una forma
+determinada y de no ser as√≠, fallar√°n.  Es por eso que estas condiciones se
+indican en la documentaci√≥n de las funciones como sus precondiciones. En
+pr√≥ximas unidades veremos c√≥mo evitar que falle una funci√≥n si alguna de
 sus condiciones no se cumple.
 \end{observacion}
 
-Es bastate sencillo probar el mÛdulo programado y ver que lo que se guarda
+Es bastate sencillo probar el m√≥dulo programado y ver que lo que se guarda
 es igual que lo que se recupera:
 
 \begin{codigo-python-sn}
@@ -412,40 +412,40 @@ es igual que lo que se recupera:
 
 Guardar el estado de un programa se puede hacer tanto en un
 archivo de texto, como en un archivo binario. En muchas
-situaciones es preferible guardar la informaciÛn en un archivo de
-texto, ya que de esta manera es posible modificarlo f·cilmente
+situaciones es preferible guardar la informaci√≥n en un archivo de
+texto, ya que de esta manera es posible modificarlo f√°cilmente
 desde cualquier editor de textos.
 
-En general, los archivos de texto van a desperdiciar un poco m·s de
-espacio, pero son m·s faciles de entender y f·ciles de usar desde
+En general, los archivos de texto van a desperdiciar un poco m√°s de
+espacio, pero son m√°s faciles de entender y f√°ciles de usar desde
 cualquier programa.  
 
 Por otro lado, en un archivo binario bien definido se puede evitar el
-desperdicio de espacio, o tambiÈn hacer que sea m·s r·pido acceder a los
-datos.  Adem·s, para ciertas aplicaciones como archivos de sonido o video,
-tendrÌa poco sentido almacenarlos en archivos de texto.
+desperdicio de espacio, o tambi√©n hacer que sea m√°s r√°pido acceder a los
+datos.  Adem√°s, para ciertas aplicaciones como archivos de sonido o video,
+tendr√≠a poco sentido almacenarlos en archivos de texto.
 
-En definitiva, la decisiÛn de quÈ formato usar queda a discreciÛn del
-programador. Es importante recordar que el sentido com˙n es el valor m·s
+En definitiva, la decisi√≥n de qu√© formato usar queda a discreci√≥n del
+programador. Es importante recordar que el sentido com√∫n es el valor m√°s
 preciado en un programador.
 
 \subsection{Persistencia en archivos CSV}
 
 Un formato que suele usarse para transferir datos entre programas es
-\textbf{csv} (del inglÈs {\it comma separated values}: valores separados
+\textbf{csv} (del ingl√©s {\it comma separated values}: valores separados
 por comas) es un formato bastante sencillo, tanto para leerlo como para
-procesarlo desde el cÛdigo, se parece al formato visto en el ejemplo
+procesarlo desde el c√≥digo, se parece al formato visto en el ejemplo
 anteriormente.
 
 \begin{verbatim}
-Nombre,Apellido,Telefono,CumpleaÒos
+Nombre,Apellido,Telefono,Cumplea√±os
 "John","Smith","555-0101","1973-11-24"
 "Jane","Smith","555-0101","1975-06-12"
 \end{verbatim}
 
-En el ejemplo se puede ver una pequeÒa base de datos. En la primera lÌnea
+En el ejemplo se puede ver una peque√±a base de datos. En la primera l√≠nea
 del archivo tenemos los nombres de los campos, un dato opcional desde el
-punto de vista del procesamiento de la informaciÛn, pero que facilita
+punto de vista del procesamiento de la informaci√≥n, pero que facilita
 entender el archivo. 
 
 En las siguientes lineas se ingresan los datos de la base de datos, cada
@@ -454,19 +454,19 @@ entre comillas dobles, si alguna cadena contiene alguna comilla doble se la
 reemplaza por \verb!\"! y una contrabarra se escribe como \verb!\\!. 
 
 En Python es bastante sencillo procesar de este tipo de archivos, tanto
-para la lectura como para la escritura, mediante el mÛdulo \verb!csv! que
+para la lectura como para la escritura, mediante el m√≥dulo \verb!csv! que
 ya se encuentra preparado para eso.
 
-La funciones del ejemplo anterior podrÌa programarse mediante el mÛdulo
-csv.  En el CÛdigo \ref{puntajes_csv} se muestra una posible implementaciÛn
-que utiliza este mÛdulo.
+La funciones del ejemplo anterior podr√≠a programarse mediante el m√≥dulo
+csv.  En el C√≥digo \ref{puntajes_csv} se muestra una posible implementaci√≥n
+que utiliza este m√≥dulo.
 
-\begin{codigo}{puntajes\_csv.py}{MÛdulo para guardar y recuperar puntajes en un archivo que usa csv}
+\begin{codigo}{puntajes\_csv.py}{M√≥dulo para guardar y recuperar puntajes en un archivo que usa csv}
 \label{puntajes_csv}
 \lstinputlisting{src/11_archivos/puntajes_csv.py}
 \end{codigo}
 
-Si se prueba este cÛdigo, se obtiene un resultado idÈntico al obtenido
+Si se prueba este c√≥digo, se obtiene un resultado id√©ntico al obtenido
 anteriormente:
 
 \begin{codigo-python-sn}
@@ -478,41 +478,41 @@ anteriormente:
 [('Pepe', 108, '4:16'), ('Juana', 2315, '8:42')]
 \end{codigo-python-sn}
 
-El cÛdigo, en este caso, es muy similar, ya que en el ejemplo original se
-hacÌan muy pocas consideraciones al respecto de los valores: se asumÌa que
+El c√≥digo, en este caso, es muy similar, ya que en el ejemplo original se
+hac√≠an muy pocas consideraciones al respecto de los valores: se asum√≠a que
 el primero y el tercero eran cadenas mientras que el segundo necesitaba ser
 convertido a cadena.
 
 \begin{observacion}
-Es importante notar, entonces, que al utilizar el mÛdulo \lstinline!csv!
+Es importante notar, entonces, que al utilizar el m√≥dulo \lstinline!csv!
 en lugar de hacer el procesamiento en forma manual, se obtiene un
-comportamiento m·s robusto, ya que el mÛdulo \lstinline!csv! tiene en
-cuenta muchos m·s casos que nuestro cÛdigo original no. Por ejemplo, el
-cÛdigo anterior no tenÌa en cuenta que el nombre pudiera contener una coma.
+comportamiento m√°s robusto, ya que el m√≥dulo \lstinline!csv! tiene en
+cuenta muchos m√°s casos que nuestro c√≥digo original no. Por ejemplo, el
+c√≥digo anterior no ten√≠a en cuenta que el nombre pudiera contener una coma.
 \end{observacion}
 
-En el apÈndice de esta unidad puede verse una aplicaciÛn completa de una
+En el ap√©ndice de esta unidad puede verse una aplicaci√≥n completa de una
 agenda, que almacena los datos del programa en archivos csv.
 
 \subsection{Persistencia en archivos binarios}
 
-En el caso de que decidiÈramos grabar los datos en un archivo binario,
+En el caso de que decidi√©ramos grabar los datos en un archivo binario,
 Python incluye una herramienta llamada \textbf{pickle} que permite hacerlo
 de forma muy sencilla.  Hay que tener en cuenta, sin embargo, que no es
 nada simple acceder a un archivo en este formato desde un programa que no
-estÈ escrito en Python.
+est√© escrito en Python.
 
-En el CÛdigo \ref{puntajes_pickle} se muestra el mismo ejemplo de
-almacenamiento de puntajes, utilizando el mÛdulo \lstinline!pickle!.
+En el C√≥digo \ref{puntajes_pickle} se muestra el mismo ejemplo de
+almacenamiento de puntajes, utilizando el m√≥dulo \lstinline!pickle!.
 
-\begin{codigo}{puntajes\_pickle.py}{MÛdulo para guardar y recuperar puntajes en un archivo que usa pickle}
+\begin{codigo}{puntajes\_pickle.py}{M√≥dulo para guardar y recuperar puntajes en un archivo que usa pickle}
 \label{puntajes_pickle}
 \lstinputlisting{src/11_archivos/puntajes_pickle.py}
 \end{codigo}
 
-El funcionamiento de este programa ser· idÈntico a los anteriores.  Pero el
-archivo generado ser· muy distinto a los archivos generados anteriormente.
-En lugar de ser un archivo de f·cil lectura, tendr· la forma:
+El funcionamiento de este programa ser√° id√©ntico a los anteriores.  Pero el
+archivo generado ser√° muy distinto a los archivos generados anteriormente.
+En lugar de ser un archivo de f√°cil lectura, tendr√° la forma:
 
 \begin{verbatim}
 (lp0
@@ -530,16 +530,16 @@ p5
 tp6
 \end{verbatim}
 
-En el apÈndice de esta unidad puede verse una aplicaciÛn completa de una
+En el ap√©ndice de esta unidad puede verse una aplicaci√≥n completa de una
 agenda, que utiliza pickle para almacenar datos en archivos.
 
 \section{Directorios}
 
-Hasta aquÌ se ha mostrado el acceso a los archivos utilizando sÛlo el
+Hasta aqu√≠ se ha mostrado el acceso a los archivos utilizando s√≥lo el
 nombre del archivo, esto nos permite acceder a los archivos en el
 directorio actual donde corre el programa.
 
-Un problema relacionado con la utilizaciÛn de directorios es que los
+Un problema relacionado con la utilizaci√≥n de directorios es que los
 separadores de directorios en distintos sistemas son distintos, \verb!/! en
 Unix y Macintosh, \verb!\! en Windows. La manera de acceder a directorios
 independientemente del sistema en el que estamos desde Python es usando el
@@ -554,17 +554,17 @@ os.path.join("data","archivo.csv")
 \begin{itemize}
 \item Para utilizar un archivo desde un programa, es necesario abrirlo, y
 cuando ya no se lo necesite, se lo debe cerrar.
-\item Las intrucciones m·s b·sicas para manejar un archivo son leer y escribir. 
-\item Cada archivo abierto tiene relacionada una posiciÛn que se puede
+\item Las intrucciones m√°s b√°sicas para manejar un archivo son leer y escribir. 
+\item Cada archivo abierto tiene relacionada una posici√≥n que se puede
 consultar o cambiar. 
-\item Los archivos de texto se procesan generalmente lÌnea por lÌnea y
-sirven para intercambiar informaciÛn entre diversos programas o entre
+\item Los archivos de texto se procesan generalmente l√≠nea por l√≠nea y
+sirven para intercambiar informaci√≥n entre diversos programas o entre
 programas y humanos.
 \item En el caso de los archivos binarios, cada formato tiene sus propias
 reglas a seguir.
 \item Es posible acceder de forma secuencial a los datos, o se puede ir
 accediendo a posiciones en distintas partes del archivo, dependiendo de
-cÛmo estÈ almacenada la informaciÛn y quÈ se quiera hacer con ella.
+c√≥mo est√© almacenada la informaci√≥n y qu√© se quiera hacer con ella.
 \item Leer todo el contenido de un archivo, puede consumir memoria
 innecesariamente.
 \end{itemize}
@@ -575,18 +575,18 @@ innecesariamente.
 
 \begin{referencia_python}
 
-\begin{sintaxis}{\lstinline{archivo=open(nombre[,modo[,tamaÒo\_buffer]])}}
+\begin{sintaxis}{\lstinline{archivo=open(nombre[,modo[,tama√±o\_buffer]])}}
 
 Abre un archivo, \texttt{nombre} es el nombre completo del archivo,
 \texttt{modo} especifica si se va usar para lectura ('\verb!r!'), escritura
 truncando el archivo ('\verb!w!'), o escritura agregando al final del archivo
-('\verb!a!'), agreg·ndole un '\verb!+!' al modo el archivo se abre en
-lectura-escritura, agreg·ndole una '\verb!b!' el archivo se maneja como archivo
-binario, agreg·ndole '\verb!U!' los fin de lÌnea se manejan a mano.
-\texttt{tamaÒo\_buffer} es un entero que especifica el tamaÒo del buffer
-deseado, si es negativo (por omisiÛn es \verb!-1!) el sistema operativo decide
-el tamaÒo del buffer, si es \verb!0! no se usa buffer, si es \verb!1! se usa
-buffer por lÌneas.
+('\verb!a!'), agreg√°ndole un '\verb!+!' al modo el archivo se abre en
+lectura-escritura, agreg√°ndole una '\verb!b!' el archivo se maneja como archivo
+binario, agreg√°ndole '\verb!U!' los fin de l√≠nea se manejan a mano.
+\texttt{tama√±o\_buffer} es un entero que especifica el tama√±o del buffer
+deseado, si es negativo (por omisi√≥n es \verb!-1!) el sistema operativo decide
+el tama√±o del buffer, si es \verb!0! no se usa buffer, si es \verb!1! se usa
+buffer por l√≠neas.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!archivo.close()!}
@@ -594,7 +594,7 @@ Cierra el archivo.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!linea=archivo.readline()!}
-Lee una lÌnea de texto del archivo
+Lee una l√≠nea de texto del archivo
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!for linea in archivo:!}
@@ -607,48 +607,48 @@ Itera sobre las lineas del archivo.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!lineas = archivo.readlines()!}
-Devuelve una lista con todas las lÌneas del archivo.
+Devuelve una lista con todas las l√≠neas del archivo.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!bytes = archivo.read([n])!}
-Devuelve la cadena de \lstinline!n! bytes situada en la posiciÛn actual de
+Devuelve la cadena de \lstinline!n! bytes situada en la posici√≥n actual de
 \lstinline!archivo!.
 
-Si la cadena devuelta no contiene ning˙n caracter, es que se ha llegado al
+Si la cadena devuelta no contiene ning√∫n caracter, es que se ha llegado al
 final del archivo.
 
-De omitirse el par·metro \lstinline!n!, devuelve una cadena que contiene
+De omitirse el par√°metro \lstinline!n!, devuelve una cadena que contiene
 todo el contenido del archivo.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!archivo.write(contenido)!}
-Escribe \lstinline!contenido! en la posiciÛn actual de \lstinline!archivo!.
+Escribe \lstinline!contenido! en la posici√≥n actual de \lstinline!archivo!.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!posicion = archivo.tell()!}
-Devuelve un n˙mero que indica la posiciÛn actual en \lstinline!archivo!, es
+Devuelve un n√∫mero que indica la posici√≥n actual en \lstinline!archivo!, es
 equivalente a la cantidad de bytes desde el comienzo del archivo.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!archivo.seek(corrimiento, [desde]!)}
 
-Modifica la posiciÛn actual en \lstinline!archivo!, traslad·ndose
-\lstinline!corrimiento! bytes.  El par·metro opcional \lstinline!desde!
-especifica desde dÛnde se mide el valor que le pasemos a
+Modifica la posici√≥n actual en \lstinline!archivo!, traslad√°ndose
+\lstinline!corrimiento! bytes.  El par√°metro opcional \lstinline!desde!
+especifica desde d√≥nde se mide el valor que le pasemos a
 \lstinline!corrimiento!.
 
 \begin{itemize}
-\item \lstinline!desde=0!, contar· desde el comienzo del archivo. \textit{Valor
+\item \lstinline!desde=0!, contar√° desde el comienzo del archivo. \textit{Valor
 predeterminado}.
-\item \lstinline!desde=1!, contar· desde la posiciÛn actual.
-\item \lstinline!desde=2!, contar· desde el final del archivo.
+\item \lstinline!desde=1!, contar√° desde la posici√≥n actual.
+\item \lstinline!desde=2!, contar√° desde el final del archivo.
 \end{itemize}
 
 Ejemplos:
 \begin{codigo-python-sn}
 archivo.seek(0)     # va al principio del archivo
 archivo.seek(0,2)   # va al final del archivo
-archivo.seek(-16,1) # retrocede 16 bytes de la posiciÛn actual
+archivo.seek(-16,1) # retrocede 16 bytes de la posici√≥n actual
 \end{codigo-python-sn}
 
 \end{sintaxis}
@@ -683,7 +683,7 @@ Indica si la ruta existe y es un directorio.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!os.path.join(ruta, ruta1[, ... rutaN]])!}
-Une las rutas con el caracter de separaciÛn de directorios que le corresponda
+Une las rutas con el caracter de separaci√≥n de directorios que le corresponda
 al sistema en uso.
 \end{sintaxis}
 
@@ -693,14 +693,14 @@ al sistema en uso.
 \section{Ejercicios}
 
 \ejercicio{
-Escribir un programa, llamado {\bf head} que reciba un archivo y un n˙mero
-\lstinline!N! e imprima las primeras \lstinline!N! lÌneas del archivo.
+Escribir un programa, llamado {\bf head} que reciba un archivo y un n√∫mero
+\lstinline!N! e imprima las primeras \lstinline!N! l√≠neas del archivo.
 }
 
 \ejercicio{
 Escribir un programa, llamado {\bf cp.py}, que copie todo el contenido de un
 archivo (sea de texto o binario) a otro, de modo que quede exactamente igual.\\ 
-{\bf Nota}: utilizar \lstinline!archivo.read(bytes)! para leer como m·ximo
+{\bf Nota}: utilizar \lstinline!archivo.read(bytes)! para leer como m√°ximo
 una cantidad de bytes.
 }
 
@@ -712,38 +712,38 @@ por ese delimitador.
 
 \ejercicio{
 Escribir un programa, llamado {\bf wc.py} que reciba un archivo, lo procese e
-imprima por pantalla cu·ntas lÌneas, cuantas palabras y cu·ntos caracteres
+imprima por pantalla cu√°ntas l√≠neas, cuantas palabras y cu√°ntos caracteres
 contiene el archivo.
 }
 
 \ejercicio{
-Escribir un programa, llamado {\bf grep.py} que reciba una expresiÛn y un
-archivo e imprima las lÌneas del archivo que contienen la expresiÛn recibida.
+Escribir un programa, llamado {\bf grep.py} que reciba una expresi√≥n y un
+archivo e imprima las l√≠neas del archivo que contienen la expresi√≥n recibida.
 }
 
 \ejercicio{
 Escribir un programa, llamado {\bf rot13.py} que reciba un archivo de texto de
-origen y uno de destino, de modo que para cada lÌnea del archivo origen, se
-guarde una lÌnea {\it cifrada} en el archivo destino.  El algoritmo de cifrado
-a utilizar ser· muy sencillo: a cada caracter comprendido entre la a y la z, se
-le suma 13 y luego se aplica el mÛdulo 26, para obtener un nuevo caracter.
+origen y uno de destino, de modo que para cada l√≠nea del archivo origen, se
+guarde una l√≠nea {\it cifrada} en el archivo destino.  El algoritmo de cifrado
+a utilizar ser√° muy sencillo: a cada caracter comprendido entre la a y la z, se
+le suma 13 y luego se aplica el m√≥dulo 26, para obtener un nuevo caracter.
 }
 
 \ejercicio{\bf Persistencia de un diccionario}
 \begin{partes}
-  \item Escribir una funciÛn \lstinline!cargar_datos! que reciba un nombre de
+  \item Escribir una funci√≥n \lstinline!cargar_datos! que reciba un nombre de
 archivo, cuyo contenido tiene el formato \lstinline!clave, valor! y devuelva un
 diccionario con el primer campo como clave y el segundo como diccionario.
-  \item Escribir una funciÛn \lstinline!guardar_datos! que reciba un diccionario
+  \item Escribir una funci√≥n \lstinline!guardar_datos! que reciba un diccionario
 y un nombre de archivo, y guarde el contenido del diccionario en el archivo,
 con el formato \lstinline!clave, valor!.
 \end{partes}
 
 
 \newpage
-\section{ApÈndice}
+\section{Ap√©ndice}
 
-A continuaciÛn, el cÛdigo para un programa de agenda que utiliza archivos
+A continuaci√≥n, el c√≥digo para un programa de agenda que utiliza archivos
 csv. Luego, los cambios necesarios para que la agenda que utilice archivos
 en formato pickle, en lugar de csv.
 

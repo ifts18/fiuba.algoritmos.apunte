@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def modif(lista):
     lista[0]=5
