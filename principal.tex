@@ -166,13 +166,32 @@
    \begin{minipage}{0.05\textwidth}\end{minipage}\hfill\begin{minipage}{0.90\textwidth}}
   {\end{minipage}\hfill\begin{minipage}{0.05\textwidth}\end{minipage}\\}
 
-% Parametros para los listings de python
+% Parámetros para los listings de python
 \lstset{language=Python,
     numbers=left,
     numberstyle=\tiny,
     numbersep=5pt,
     showstringspaces=false,
-    basicstyle=\ttfamily}
+    basicstyle=\ttfamily,
+    % NOTA: esta sección se podría omitir usando XeTeX.
+    extendedchars=true,
+    % inputencoding=utf8x,
+    literate={á}{{\'a}}1
+             {é}{{\'e}}1
+             {í}{{\'i}}1
+             {ó}{{\'o}}1
+             {ú}{{\'u}}1
+             {ü}{{\"u}}1
+             {ñ}{{\~n}}1
+             {Á}{{\'A}}1
+             {É}{{\'E}}1
+             {Í}{{\'I}}1
+             {Ó}{{\'O}}1
+             {Ú}{{\'U}}1
+             {Ü}{{\"U}}1
+             {Ñ}{{\~N}}1
+             {¿}{{?`}}1
+             {¡}{{!`}}1}
 %    basicstyle=\ttfamily\normalsize,
 %    keywordstyle=\ttfamily\bfseries,
 %    identifierstyle=\ttfamily,
