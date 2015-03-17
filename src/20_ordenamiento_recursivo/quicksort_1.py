@@ -20,10 +20,10 @@ def _partition(lista, inicio, fin):
 
 	# Optimización para listas ordenadas, cambia el medio con el inicio
 	m = ( inicio + fin ) / 2
-	_swap(lista, m, inicio)	
+	_swap(lista, m, inicio)
 
 	p, i, j = inicio, inicio+1, fin
-	
+
 	while i <= j:
 		# Saltea todos los que ya están correctamente ubicados
 		while i <= j and lista[i] < lista[p]:
@@ -31,7 +31,7 @@ def _partition(lista, inicio, fin):
 		while i <= j and lista[j] >= lista[p]:
 			j-=1
 		# intercambia el elemento i con el j
-		if i < j: 
+		if i < j:
 			_swap(lista, i, j)
 
 	# Una vez que todos están correctamente ubicados, pone el pivote en el medio
@@ -42,4 +42,4 @@ def _partition(lista, inicio, fin):
 
 def _swap(lista, i, j):
 	lista[i], lista[j] = lista[j], lista[i]
-	
+

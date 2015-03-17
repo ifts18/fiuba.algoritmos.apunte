@@ -5,7 +5,7 @@ from clasePila import Pila
 
 def calculadora_polaca(elementos):
     """ Dada una lista de elementos que representan las componentes de
-        una expresión en notacion polaca inversa, evalúa dicha expresión.  
+        una expresión en notacion polaca inversa, evalúa dicha expresión.
         Si la expresion está mal formada, levanta ValueError. """
 
     p = Pila()

@@ -17,8 +17,8 @@ def guardar_puntajes(nombre_archivo, puntajes):
 def recuperar_puntajes(nombre_archivo):
     """ Recupera los puntajes a partir del archivo provisto.
         Devuelve una lista con los valores de los puntajes.
-    Pre: el archivo contiene los puntajes en formato pickle 
-    Post: la lista devuelta contiene los puntajes en el 
+    Pre: el archivo contiene los puntajes en formato pickle
+    Post: la lista devuelta contiene los puntajes en el
           mismo formato que se los almacenó.
     """
 

@@ -16,7 +16,7 @@ class Pila:
         self.items.append(x)
 
     def desapilar(self):
-        """ Devuelve el elemento tope y lo elimina de la pila. 
+        """ Devuelve el elemento tope y lo elimina de la pila.
             Si la pila está vacía levanta una excepción. """
         try:
             return self.items.pop()
@@ -26,4 +26,3 @@ class Pila:
     def es_vacia(self):
         """ Devuelve True si la lista está vacía, False si no. """
         return self.items == []
-    

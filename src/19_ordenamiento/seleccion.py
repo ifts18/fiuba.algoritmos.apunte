@@ -15,7 +15,7 @@ def ord_seleccion(lista):
         # p es la posicion del mayor valor del segmento
         p = buscar_max(lista, 0, n)
 
-        # intercambia el valor que está en p con el valor que 
+        # intercambia el valor que está en p con el valor que
         # está en la última posición del segmento
         lista[p], lista[n] = lista[n], lista[p]
 
@@ -26,11 +26,11 @@ def ord_seleccion(lista):
 
 def buscar_max(lista, ini, fin):
     """ Devuelve la posición del máximo elemento en un segmento de
-        lista de elementos comparables.  
+        lista de elementos comparables.
         Se trabaja sobre lista, que no debe ser vacía.
         ini es la posición inicial del segmento, debe ser válida.
         fin es la posición final del segmento, debe ser válida. """
-        
+
     pos_max = ini
     for i in xrange(ini+1, fin+1):
         if lista[i] > lista[pos_max]:

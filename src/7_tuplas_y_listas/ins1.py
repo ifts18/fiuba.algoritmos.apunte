@@ -22,5 +22,5 @@ while padron > 0:
        # Leemos otro padrón mas
        padron=input("Ingresá un padrón (<=0 para terminar): ")
 
-# Mostramos el resultado       
+# Mostramos el resultado
 print "Esta es la lista de inscriptos: ", ins

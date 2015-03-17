@@ -16,7 +16,7 @@ class Cola:
 
     def encolar(self, x):
         """ Agrega el elemento x como último de la cola. """
-        nuevo = Nodo(x)        
+        nuevo = Nodo(x)
         # Si ya hay un último, agrega el nuevo y cambia la referencia.
         if self.ultimo:
             self.ultimo.prox = nuevo
@@ -27,7 +27,7 @@ class Cola:
             self.ultimo = nuevo
 
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su 
+        """ Elimina el primer elemento de la cola y devuelve su
             valor. Si la cola está vacía, levanta ValueError. """
         # Si hay un nodo para desencolar
         if self.primero:

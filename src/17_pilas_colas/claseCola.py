@@ -16,7 +16,7 @@ class Cola:
         self.items.append(x)
 
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su 
+        """ Elimina el primer elemento de la cola y devuelve su
             valor. Si la cola está vacía, levanta ValueError. """
         try:
           return self.items.pop(0)

@@ -1,7 +1,7 @@
 #/usr/bin/env python
 # encoding: utf-8
 
-# Módulo para hacer validaciones de tipos 
+# Módulo para hacer validaciones de tipos
 from validaciones import es_numero
 
 class Punto(object):
@@ -21,7 +21,7 @@ class Punto(object):
         return Punto(self.x - otro.x, self.y - otro.y)
 
     def norma(self):
-        """ Devuelve la norma del vector que va desde el origen 
+        """ Devuelve la norma del vector que va desde el origen
             hasta el punto. """
         return (self.x*self.x + self.y*self.y)**0.5
 
@@ -57,10 +57,9 @@ class Punto(object):
 
     def __mul__(self, escalar):
         if es_numero(escalar):
-        	return Punto(self.x * escalar, self.y * escalar)
+            return Punto(self.x * escalar, self.y * escalar)
         else:
-        	raise TypeError ("Sólo se puede multiplicar por un escalar")	
+            raise TypeError ("Sólo se puede multiplicar por un escalar")
 
     def __rmul__(self, escalar):
-    	return self * escalar
-
+        return self * escalar

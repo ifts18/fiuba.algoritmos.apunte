@@ -45,7 +45,7 @@ def ventas_clientes_mes(archivo_ventas):
 		# Final del bucle de cliente
 		print "Total para el cliente %s: %.2f\n" % (cliente, total_cliente)
 		total += total_cliente
-	
+
 	# Final del bucle principal
 	print "Total general: %.2f" % total
 

@@ -17,7 +17,7 @@ def ord_insercion(lista):
         print "DEBUG: ", lista
 
 def reubicar(lista, p):
-    """ Reubica al elemento que está en la posición p de la lista 
+    """ Reubica al elemento que está en la posición p de la lista
         dentro del segmento [0:p-1].
         Pre: p tiene que ser una posicion válida de lista. """
 
@@ -26,7 +26,7 @@ def reubicar(lista, p):
 
     # Recorre el segmento [0:p-1] de derecha a izquierda hasta
     # encontrar la posición j tal que lista[j-1] <= v < lista[j].
-    j = p 
+    j = p
     while j > 0 and v < lista[j-1]:
 		# Desplaza los elementos hacia la derecha, dejando lugar
 		# para insertar el elemento v donde corresponda.

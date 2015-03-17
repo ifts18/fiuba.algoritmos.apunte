@@ -48,7 +48,7 @@ def buscar(nombre, apellido, datos):
 	return None
 
 def menu_alta(nombre, apellido, datos):
-	""" Pregunta si se desea ingresar un nombre y apellido y 
+	""" Pregunta si se desea ingresar un nombre y apellido y
         de ser así, pide los datos al usuario. """
 	print "No se encuentra %s %s en la agenda." % (nombre, apellido)
 	confirmacion = raw_input("¿Desea ingresarlo? (s/n) ")
@@ -67,7 +67,7 @@ def mostrar_elemento(elemento):
 	print
 
 def menu_elemento():
-	""" Muestra por pantalla las opciones disponibles para un elemento 
+	""" Muestra por pantalla las opciones disponibles para un elemento
 	    existente. """
 	o = raw_input("b: borrar, m: modificar, ENTER para continuar (b/m): ")
 	return o.lower()
@@ -95,7 +95,7 @@ def confirmar_salida():
 	return confirmacion.lower() == "s"
 
 def agenda():
-	""" Función principal de la agenda. 
+	""" Función principal de la agenda.
 	    Carga los datos del archivo, permite hacer búsquedas, modificar
 		borrar, y al salir guarda. """
 	datos = leer_datos(ARCHIVO)
