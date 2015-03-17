@@ -144,7 +144,7 @@ utilizar la función \lstinline{has_key} o la palabra reservada
 d = {'x': 12, 'y': 7}
 if d.has_key('x'):
     print d['x']   # Imprime 12
-if d.has_key('z'): 
+if d.has_key('z'):
     print d['z']   # No se ejecuta
 if 'y' in d:
     print d['y']   # Imprime 7
@@ -162,7 +162,7 @@ diccionario es muy distinto que el que utiliza para buscar en listas.
 Para buscar en las listas, se utiliza un algoritmos de comparación que
 tarda cada vez más a medida que la lista se hace más larga.  En cambio,
 para buscar en diccionarios se utiliza un algoritmo llamado {\it hash},
-que se basa en realizar un cálculo numérico sobre la clave del elemento, 
+que se basa en realizar un cálculo numérico sobre la clave del elemento,
 y tiene una propiedad muy interesante: sin importar cuántos elementos
 tenga el diccionario, el tiempo de búsqueda es siempre aproximadamente
 igual.
@@ -181,7 +181,7 @@ posible tomarlos en orden.
 
 Los diccionarios son una herramienta muy versátil.  Se puede utilizar un
 diccionario, por ejemplo, para contar cuántas apariciones de cada palabra
-hay en un texto, o cuántas apariciones de cada letra.  
+hay en un texto, o cuántas apariciones de cada letra.
 
 Es posible utilizar un diccionario, también, para tener una agenda donde la
 clave es el nombre de la persona, y el valor es una lista con los datos
@@ -293,7 +293,7 @@ Escribir una función que reciba una lista de tuplas, y que devuelva
 un diccionario en donde las claves sean los primeros elementos de las
 tuplas, y los valores una lista con los segundos.}
 
-Por ejemplo: 
+Por ejemplo:
 \begin{lstlisting}[numbers=none]
 l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'), ('Buenos', 'días') ]
 print tuplas_a_diccionario(l)

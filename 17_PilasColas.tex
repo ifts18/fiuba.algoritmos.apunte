@@ -101,7 +101,7 @@ excepción, para no revelar la implementación.
 
 \begin{codigo-python-sn}
     def desapilar(self):
-        """ Devuelve el elemento tope y lo elimina de la pila. 
+        """ Devuelve el elemento tope y lo elimina de la pila.
             Si la pila está vacía levanta una excepción. """
         try:
             return self.items.pop()
@@ -175,11 +175,11 @@ operación se apila.
 \item Si la expresión está bien formada, tiene que quedar al final un único
 número en la pila (el resultado).
 
-\item Los posibles errores son: 
+\item Los posibles errores son:
 
 \begin{itemize}
 \item Queda más de un número al final (por ejemplo si la cadena de entrada
-fue \verb|"5 3"|), 
+fue \verb|"5 3"|),
 
 \item Ingresa algún caracter que no se puede interpretar ni como número ni como
 una de las cinco operaciones válidas (por ejemplo si la cadena de entrada
@@ -376,7 +376,7 @@ ingresó por teclado (incluyendo <BACKSPACE>  que se reconoce como
 ejemplo, \lstinline|visualizar("Holas\b chau")| debe devolver 'Hola chau').
 
 Atención, que muchas veces la gente aprieta de más la tecla de <BACKSPACE>,
-y no por eso hay que cancelar la ejecución de toda la función.  
+y no por eso hay que cancelar la ejecución de toda la función.
 }
 
 \subsection{¿Cuánto cuestan los métodos?}
@@ -449,7 +449,7 @@ class Cola:
     """ Representa a una cola, con operaciones de encolar y
         desencolar.  El primero en ser encolado es también el primero
         en ser desencolado. """
-    
+
     def __init__(self):
         """ Crea una cola vacía. """
         # La cola vacía se representa por una lista vacía
@@ -473,7 +473,7 @@ está vacía se levantará una excepción.
 
 \begin{codigo-python-sn}
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su 
+        """ Elimina el primer elemento de la cola y devuelve su
             valor. Si la cola está vacía, levanta ValueError. """
         try:
           return self.items.pop(0)
@@ -623,7 +623,7 @@ En este caso, además de actualizar la referencia de
 
 \begin{codigo-python-sn}
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su 
+        """ Elimina el primer elemento de la cola y devuelve su
             valor. Si la cola está vacía, levanta ValueError. """
         # Si hay un nodo para desencolar
         if self.primero:
@@ -699,7 +699,7 @@ forma que una pila (de platos, libros, cartas, etc) en la vida real.
 
 \item Las pilas son útiles en las situaciones en las que se desea operar
 primero con los últimos elementos agregados, como es el caso de la notación
-polaca inversa. 
+polaca inversa.
 
 \item Una {\bf cola} es un tipo abstracto de datos que permite agregar
 elementos y sacarlos en el mismo orden en que se los colocó, como una cola

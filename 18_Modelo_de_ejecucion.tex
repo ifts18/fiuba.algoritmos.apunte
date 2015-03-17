@@ -445,7 +445,7 @@ Veremos algo como lo siguiente:
 	\hline
 	\end{tabular}
 	\hspace{1cm}
-	
+
 \item  \verb|cuadrado = valor * valor| \hspace{1.5cm}
 	\begin{tabular}{r|l|}
 	\hline
@@ -457,7 +457,7 @@ Veremos algo como lo siguiente:
 	\hline
 	\end{tabular}
 
-\item  
+\item
 \begin{tabular}{l}
 En \lstinline!devuelve(6)!: \\ \verb|    return cuadrado| \\
 En \lstinline!recibe(5)!:   \\ \verb|    cuad = devuelve(valor+1) |
@@ -521,7 +521,7 @@ encontrar soluciones muy elegantes para determinados problemas. \\
 En materias de matemática se estudian los razonamientos por inducción para
 probar propiedades de números enteros, la recursión no es más que una
 generalización de la inducción a más estructuras: las listas, las cadenas
-de caracteres, las funciones, etc. 
+de caracteres, las funciones, etc.
 
 \begin{figure}
   \begin{center}
@@ -533,7 +533,7 @@ bajada de \url{http://en.wikipedia.org/wiki/Image:Droste.jpg}}
 
 A continuación estudiaremos diversas situaciones en las cuales aparece la
 recursión, veremos cómo es que esto puede funcionar, algunas situaciones en
-las que es conveniente utilizarla y otras situaciones en las que no. 
+las que es conveniente utilizarla y otras situaciones en las que no.
 
 % TODO: más que dejar lugar, habría que escribir algo más.
 %\vspace{2.5cm}
@@ -566,7 +566,7 @@ Esta es la ejecución del factorial para \lstinline!n=0! y para
 6
 \end{codigo-python-sn}
 
-El sentido de la instrucción de la instrucción 
+El sentido de la instrucción de la instrucción
 \lstinline|n * factorial (n-1)| es exactamente el mismo que el de la
 definición inductiva: para calcular el factorial de $n$ se debe multiplicar
 $n$ por el factorial de $n-1$.
@@ -611,14 +611,14 @@ evaluación:
 
 \begin{enumerate}
 
-\item  \verb|factorial(3)              | 
+\item  \verb|factorial(3)              |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$3\\
 	\hline
 	\end{tabular}
 
-\item  \verb|if n == 0:                | 
+\item  \verb|if n == 0:                |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$3\\
@@ -636,7 +636,7 @@ evaluación:
 	Se llama a \verb|factorial(2)|.
 	\end{tabular}
 
-\item  \verb|factorial(2)              | 
+\item  \verb|factorial(2)              |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$2\\
@@ -646,7 +646,7 @@ evaluación:
 	\hline
 	\end{tabular}
 
-\item  \verb|if n == 0:                | 
+\item  \verb|if n == 0:                |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$2\\
@@ -670,7 +670,7 @@ evaluación:
 	Se llama a \verb|factorial(1)|.
 	\end{tabular}
 
-\item  \verb|factorial(1)              | 
+\item  \verb|factorial(1)              |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$1\\
@@ -683,7 +683,7 @@ evaluación:
 	\hline
 	\end{tabular}
 
-\item  \verb|if n == 0:                | 
+\item  \verb|if n == 0:                |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$1\\
@@ -696,7 +696,7 @@ evaluación:
 	\hline
 	\end{tabular}
 
-\item  \verb|f = factorial (n-1)       | 
+\item  \verb|f = factorial (n-1)       |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$1\\
@@ -713,7 +713,7 @@ evaluación:
 	Se llama a \verb|factorial(0)|.
 	\end{tabular}
 
-\item  \verb|factorial(0)              | 
+\item  \verb|factorial(0)              |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$0\\
@@ -729,7 +729,7 @@ evaluación:
 	\hline
 	\end{tabular}
 
-\item  \verb|if n == 0:                | 
+\item  \verb|if n == 0:                |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$0\\
@@ -745,7 +745,7 @@ evaluación:
 	\hline
 	\end{tabular}
 
-\item  \verb|r = 1                     | 
+\item  \verb|r = 1                     |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$0\\
@@ -780,7 +780,7 @@ En \lstinline!factorial(1)!: \\ \verb|    f = factorial (n-1) |
 	\hline
 	\end{tabular}
 
-\item  \verb|r = n * f                 | 
+\item  \verb|r = n * f                 |
 \begin{tabular}{r|r|}
 \hline
 \verb|factorial|&n $\rightarrow$1\\
@@ -810,7 +810,7 @@ En \lstinline!factorial(2)!: \\ \verb|    f = factorial (n-1) |
 	\hline
 	\end{tabular}
 
-\item  \verb|r = n * f                 | 
+\item  \verb|r = n * f                 |
 	\begin{tabular}{r|r|}
 	\hline
 	\verb|factorial|&n $\rightarrow$2\\
@@ -953,14 +953,14 @@ El orden de las llamadas, haciendo un seguimiento simplificado de la
 función será:
 
 \begin{enumerate}
-\item \verb!potencia(2,10)! 
+\item \verb!potencia(2,10)!
 \item \hspace{1cm} \verb!pot = potencia(2,5) !
 \hspace{4cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 10\end{tabular}
 \item \hspace{2cm} \verb!pot = potencia(2,2) !
 \hspace{3cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 5$\;\,$\end{tabular}
 \item \hspace{3cm} \verb!pot = potencia(2,1) !
 \hspace{2cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 2$\;\,$\end{tabular}
-\item \hspace{4cm} \verb!pot = potencia(2,0) ! 
+\item \hspace{4cm} \verb!pot = potencia(2,0) !
 \hspace{1cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 1$\;\,$\end{tabular}
 \item \hspace{5cm} \verb!return 1            !
 \hspace{0cm} \begin{tabular}{|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 0$\;\,$\end{tabular}
@@ -973,7 +973,7 @@ función será:
 \item \hspace{2cm} \verb!return 4 * 4 * 2    !
 \hspace{3cm} \begin{tabular}{|c|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 5$\;\,$
 & pot $\rightarrow$ 4$\;\,$ \end{tabular}
-\item \hspace{1cm} \verb!return 32 * 32      ! 
+\item \hspace{1cm} \verb!return 32 * 32      !
 \hspace{4cm} \begin{tabular}{|c|c|c|}b $\rightarrow$ 2 & n $\rightarrow$ 10
 & pot $\rightarrow$ 32 \end{tabular}
 \end{enumerate}
@@ -1038,7 +1038,7 @@ definida por la siguiente relación:
 \end{tabular}
 
 Los primeros números de esta sucesión son: $0$, $1$, $1$, $2$, $3$, $5$, $8$,
-$13$, $21$, $34$, $55$. 
+$13$, $21$, $34$, $55$.
 
 Dada la definición recursiva de la sucesión, puede resultar muy tentador
 escribir una función que calcule en valor de \lstinline!fib(n)! de la siguiente
@@ -1072,7 +1072,7 @@ número 5.
 
 En este caso, será mucho más conveniente utilizar una versión iterativa,
 que vaya almacenando los valores de las dos variables anteriores a medida
-que los va calculando.  
+que los va calculando.
 
 % FIXME: hace falta un newpage, porque sino corta el código mal
 \newpage
@@ -1141,7 +1141,7 @@ recursivo es el que mejor resuelve el problema.
 \begin{sabias_que}
 Existen algunos lenguajes {\it funcionales}, como Haskell, ML, o Scheme, en
 los cuales la recursividad es la única forma de realizar un ciclo.  Es
-decir, no existen construcciones {\tt while} ni {\tt for}. 
+decir, no existen construcciones {\tt while} ni {\tt for}.
 
 Estos lenguajes cuentan con una optimización especial, llamada {\it
 optimización de recursión por cola} ({\it tail recursion optimization}),
@@ -1184,7 +1184,7 @@ características de elegancia y eficiencia.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Escribir una función que reciba un número positivo $n$ 
+\ejercicio{Escribir una función que reciba un número positivo $n$
 y devuelva la cantidad de dígitos que tiene.}
 
 \ejercicio{
@@ -1199,7 +1199,7 @@ pero quiere su libertad, por lo que recorrerá los caminos hasta salir de la jau
 La función debe devolver el tiempo que tarda la rata en salir de la jaula.
 }
 
-\ejercicio{Escribir una función que reciba 2 enteros {\it n} y {\it b} 
+\ejercicio{Escribir una función que reciba 2 enteros {\it n} y {\it b}
 y devuelva \verb!True! si{\it n} es potencia de {\it b}.}
 Ejemplos:
 \begin{verbatim}
@@ -1212,8 +1212,8 @@ False
 \end{verbatim}
 
 
-\ejercicio{Escribir una funcion recursiva que reciba como parámetros dos strings 
-{\it a} y{\it b}, y devuelva una lista con las posiciones en donde se encuentra 
+\ejercicio{Escribir una funcion recursiva que reciba como parámetros dos strings
+{\it a} y{\it b}, y devuelva una lista con las posiciones en donde se encuentra
 {\it b} dentro de {\it a}.}
 Ejemplo:
 \begin{verbatim}
@@ -1231,7 +1231,7 @@ determinen la paridad del numero natural dado, conociendo solo que:}
 \end{itemize}
 
 
-\ejercicio{Escribir una función que calcule recursivamente el n-ésimo 
+\ejercicio{Escribir una función que calcule recursivamente el n-ésimo
 número triangular (el número 1 + 2 + 3 + ... + n).}
 
 
@@ -1247,7 +1247,7 @@ Escribir una funcion recursiva que encuentre el mayor elemento de una lista.
 }
 
 \ejercicio{
-Escribir una función recursiva para replicar los elementos de una lista una 
+Escribir una función recursiva para replicar los elementos de una lista una
 cantidad n de veces. Por ejemplo,
 \verb!replicar ([1, 3, 3, 7], 2) = ([1, 1, 3, 3, 3, 3, 7, 7])!
 }

@@ -82,7 +82,7 @@ empresariales, {\bf openerp}, {\bf tryton}; herramientas de desarrollo,
 bittorrent}, {\bf bittornado}, {\bf deluge}; montones de juegos de todo
 tipo, y muchísimas aplicaciones más.
 
-Todas estas aplicaciones son software libre, por lo que se puede obtener y 
+Todas estas aplicaciones son software libre, por lo que se puede obtener y
 estudiar el código con el que están hechas
 \end{sabias_que}
 
@@ -177,7 +177,7 @@ sino que proviene de \textit{algorismo}. En la antigüedad, los
 \textit{algoristas} eran los que calculaban usando la numeración arábiga y
 mientras que los \textit{abacistas} eran los que calculaban usando ábacos.
 Con el tiempo el \textit{algorismo} se deformó en \textit{algoritmo},
-influenciado por el término \textit{aritmética}. 
+influenciado por el término \textit{aritmética}.
 
 A su vez el uso de la palabra \textit{algorismo} proviene del nombre de un
 matemático persa famoso, en su época y para los estudiosos de esa época,
@@ -583,22 +583,22 @@ mostramos las funciones asociadas a una cadena.
 
 \begin{lstlisting}[numbers=none]
 >>> dir("hola")
-['__add__', '__class__', '__contains__', 
+['__add__', '__class__', '__contains__',
 '__delattr__', '__doc__', '__eq__',
-'__ge__', '__getattribute__', '__getitem__', 
-'__getnewargs__', '__getslice__', '__gt__', 
-'__hash__', '__init__', '__le__', '__len__', 
-'__lt__', '__mod__', '__mul__', '__ne__', 
-'__new__', '__reduce__', '__reduce_ex__', 
-'__repr__', '__rmod__', '__rmul__', '__setattr__', 
-'__str__', 'capitalize', 'center', 'count', 
-'decode', 'encode', 'endswith', 'expandtabs', 
-'find', 'index', 'isalnum', 'isalpha', 
-'isdigit', 'islower', 'isspace', 'istitle', 
-'isupper', 'join', 'ljust', 'lower', 'lstrip', 
+'__ge__', '__getattribute__', '__getitem__',
+'__getnewargs__', '__getslice__', '__gt__',
+'__hash__', '__init__', '__le__', '__len__',
+'__lt__', '__mod__', '__mul__', '__ne__',
+'__new__', '__reduce__', '__reduce_ex__',
+'__repr__', '__rmod__', '__rmul__', '__setattr__',
+'__str__', 'capitalize', 'center', 'count',
+'decode', 'encode', 'endswith', 'expandtabs',
+'find', 'index', 'isalnum', 'isalpha',
+'isdigit', 'islower', 'isspace', 'istitle',
+'isupper', 'join', 'ljust', 'lower', 'lstrip',
 'partition', 'replace', 'rfind', 'rindex',
-'rjust', 'rpartition', 'rsplit', 'rstrip', 
-'split', 'splitlines', 'startswith', 'strip', 
+'rjust', 'rpartition', 'rsplit', 'rstrip',
+'split', 'splitlines', 'startswith', 'strip',
 'swapcase', 'title', 'translate', 'upper', 'zfill']
 \end{lstlisting}
 
@@ -634,7 +634,7 @@ archivo para saber cómo procesarlo (por eso el \verb!.py!), mientras que
 todos los sistemas derivados de Unix (OS X, Linux, Solaris, etc) analizan
 los permisos del archivo (en particular, el permiso de ejecución) y los
 primeros caracteres, para saber como procesarlos (por ello es necesario
-incluir esa primera línea mágica). 
+incluir esa primera línea mágica).
 \end{sabias_que}
 
 \begin{problema}
@@ -657,7 +657,7 @@ programa se encuentra en el Código \ref{cuad.py}.
 \label{cuad.py}
 \begin{codigo-python}
 #!/usr/bin/env python
-""" Un programa sencillo, para calcular cuadrados 
+""" Un programa sencillo, para calcular cuadrados
 de números """
 
 def main():
@@ -832,30 +832,30 @@ números'' en la pantalla. & \\
 programa se queda esperando que el usuario ingrese un número. & \\
 
 \hline
-& Supondremos que el usuario ingresa el número 3 
-y luego oprime la tecla <ENTER>. 
+& Supondremos que el usuario ingresa el número 3
+y luego oprime la tecla <ENTER>.
 
 Se asocia el número 3 con la variable \lstinline!n1!. &
 \lstinline!n1! $\ra$ 3\\
 
 \hline
-\lstinline!n2 = input("Ingrese ! \lstinline!otro número entero: ")! 
+\lstinline!n2 = input("Ingrese ! \lstinline!otro número entero: ")!
 & Se despliega el texto ``Ingrese otro número entero:'' en la
 pantalla y el programa se queda esperando que el
 usuario ingrese un número. & \lstinline!n1! $\ra$ 3\\
 
 \hline
-& Supondremos que el usuario ingresa el número 5 
-y luego oprime la tecla <ENTER>. 
+& Supondremos que el usuario ingresa el número 5
+y luego oprime la tecla <ENTER>.
 
-Se asocia el número 5 con la variable \lstinline!n2!. 
+Se asocia el número 5 con la variable \lstinline!n2!.
 &\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ \lstinline!n2! $\ra$ 5 } \\
 
 \hline
-\lstinline+ for x in range(n1, n2):+ 
+\lstinline+ for x in range(n1, n2):+
 &Se asocia el primer número de \lstinline![n1,n2)! con la variable
 \lstinline!x! y se ejecuta el cuerpo del ciclo.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ 
+&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 3 } \\
 
 
@@ -869,33 +869,33 @@ Se asocia el número 5 con la variable \lstinline!n2!.
 \hline
 \lstinline+   print x*x+
 & Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (9)
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ 
+&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 3 } \\
 
 \hline
-\lstinline+ for x in range(n1, n2):+ 
+\lstinline+ for x in range(n1, n2):+
 &Se asocia el segundo número de \lstinline![n1,n2)! con la variable
 \lstinline!x! y se ejecuta el cuerpo del ciclo.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ 
+&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
 
 \hline
 \lstinline+   print x*x+
 & Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (16)
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ 
+&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4} \\
 
 \hline
-\lstinline+ for x in range(n1, n2):+ 
+\lstinline+ for x in range(n1, n2):+
 &Como no quedan más valores por tratar en \lstinline![n1,n2)!,
 se sale del ciclo.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ 
+&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
 
 \hline
-\lstinline+print "Es todo por ahora"+ 
-& Se despliega por pantalla el mensaje ``Es todo por ahora''  
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ 
+\lstinline+print "Es todo por ahora"+
+& Se despliega por pantalla el mensaje ``Es todo por ahora''
+&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
 
 \hline
@@ -939,7 +939,7 @@ que sea lo suficientemente clara.}
  \item Calcular el perímetro y área de un rectángulo dada su base y su altura.
  \item Calcular el perímetro y área de un círculo dado su radio.
  \item Calcular el volumen de una esfera dado su radio.
- \item Calcular el área de un rectángulo (alineado con los ejes x e y) dadas sus coordenadas x1,x2,y1,y2. 
+ \item Calcular el área de un rectángulo (alineado con los ejes x e y) dadas sus coordenadas x1,x2,y1,y2.
  \item Dados los catetos de un triángulo rectángulo, calcular su hipotenusa.
 \end{partes}
 
@@ -965,10 +965,10 @@ que sea lo suficientemente clara.}
 
 \ejercicio{Implementar algoritmos que resuelvan los siguientes problemas:}
 \begin{partes}
-  \item Dados dos números, indicar la suma, resta, división y multiplicación de ambos. 
+  \item Dados dos números, indicar la suma, resta, división y multiplicación de ambos.
   \item Dado un número entero N, imprimir su tabla de multiplicar.
   \item Dado un número entero N, imprimir su factorial.
 \end{partes}
 
-\ejercicio{Escribir un programa que le pida una palabra al usuario, para luego 
+\ejercicio{Escribir un programa que le pida una palabra al usuario, para luego
 imprimirla 1000 veces, con espacios intermedios.}

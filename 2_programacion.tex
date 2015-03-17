@@ -141,7 +141,7 @@ llevar todo a metros:
 \end{itemize}
 
 Si una longitud se expresa como $L$ millas, $F$ pies y $P$ pulgadas, su
-conversión a metros se calculará como 
+conversión a metros se calculará como
 $M = 1609.344 * L + 0.3048 * F + 0.0254 * P.$
 
 Hemos especificado el problema. Pasamos entonces a la próxima etapa.
@@ -408,7 +408,7 @@ resultado de la expresión \lstinline!'Ana'! es precisamente
 \lstinline!'Ana'!.
 
 \item Una variable es una expresión, y el valor que produce es el
-que tiene asociado en el estado (si \lstinline!amiga! $\ra$ 
+que tiene asociado en el estado (si \lstinline!amiga! $\ra$
 \lstinline!'Ana'! en el estado, entonces el resultado de la
 expresión \lstinline!amiga! es la cadena \lstinline!'Ana'!).
 
@@ -418,7 +418,7 @@ permitidas sobre cadenas:
 
 \begin{itemize}
 \item El signo \lstinline!+! no representa la suma sino la concatenación
-de cadenas: Si \lstinline!amiga! es como antes, \lstinline!amiga + 'Laura'! 
+de cadenas: Si \lstinline!amiga! es como antes, \lstinline!amiga + 'Laura'!
 es una expresión cuyo valor es \lstinline!AnaLaura!.
 
 \begin{atencion}
@@ -436,7 +436,7 @@ TypeError: cannot concatenate 'str' and 'int' objects
 \end{atencion}
 
 \item El signo \lstinline!*! se usa para indicar cuántas veces se repite
-una cadena: \lstinline!amiga * 3! es una expresión cuyo valor es 
+una cadena: \lstinline!amiga * 3! es una expresión cuyo valor es
 \lstinline!'AnaAnaAna'!.
 
 \begin{atencion}
@@ -477,14 +477,14 @@ instrucción \lstinline!return!,
 \section{Ciclos definidos}
 \label{ciclosdef}
 Hemos ya usado la instrucción \lstinline!for! en el programa que calcula
-cuadrados de enteros en un rango. 
+cuadrados de enteros en un rango.
 
 \begin{codigo-python-sn}
     for x in range(n1, n2):
         print x*x
 \end{codigo-python-sn}
 
-Este ciclo se llama definido porque de entrada, y una vez leídos 
+Este ciclo se llama definido porque de entrada, y una vez leídos
 \lstinline!n1! y \lstinline!n2!, se sabe exactamente cuántas veces se ejecutará
 el cuerpo y qué valores tomará \lstinline!x!.
 
@@ -564,11 +564,11 @@ especificación y diseño antes de realizar la implementación.
 
 \ejercicio{Ciclos definidos}
 \begin{partes}
-	\item Escribir un ciclo definido para imprimir por pantalla 
+	\item Escribir un ciclo definido para imprimir por pantalla
 todos los números entre 10 y 20.
-	\item Escribir un ciclo definido que salude por pantalla a 
+	\item Escribir un ciclo definido que salude por pantalla a
 sus cinco mejores amigos/as.
-	\item Escribir un programa que use un ciclo definido con 
+	\item Escribir un programa que use un ciclo definido con
 rango numérico, que pregunte los nombres de sus cinco mejores
 amigos/as, y los salude.
 	\item Escribir un programa que use un ciclo definido con
@@ -579,7 +579,7 @@ rango numérico, que averigue a cuántos amigos quieren saludar, les
 pregunte los nombres de esos amigos/as, y los salude.
 \end{partes}
 
-\begin{ejercicio} 
+\begin{ejercicio}
 Escribir un programa que le pregunte al usuario una cantidad de pesos,
 una tasa de interés y un número de años y muestre como resultado el monto
 final a obtener.  La fórmula a utilizar es:
@@ -606,7 +606,7 @@ Escribir un programa que imprima todos los números pares entre dos números
 que se le pidan al usuario.
 \end{ejercicio}
 
-\begin{ejercicio} 
+\begin{ejercicio}
 Escribir un programa que reciba un número $n$ por
 parámetro e imprima los primeros $n$ números triangulares, junto con su
 índice. Los números triangulares se obtienen mediante la suma de los números

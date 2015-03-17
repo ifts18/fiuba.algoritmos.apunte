@@ -16,7 +16,7 @@
 \chapter{Contratos y Mutabilidad}
 
 En esta unidad se le dará cierta formalización a algunos temas que se habían
-visto informalmente, como por ejemplo, la documentación de las funciones. 
+visto informalmente, como por ejemplo, la documentación de las funciones.
 
 Se formalizarán las condiciones que debe cumplir un algoritmo, al comenzar, en
 su transcurso, y al terminar, y algunas técnicas para tener en cuenta estas
@@ -29,7 +29,7 @@ variables.
 
 Cuando hablamos de \textit{contratos} o \textit{programación por
 contratos}, nos referimos a la necesidad de estipular tanto lo que necesita
-como lo que devuelve nuestro código. 
+como lo que devuelve nuestro código.
 
 Las condiciones que deben estar dadas para que el código funcione las llamamos
 \emph{precondiciones} y las condiciones sobre el estado en que quedan las
@@ -49,7 +49,7 @@ consecuencia.
 Existen herramientas en algunos lenguajes de programación que facilitan estas
 acciones, en el caso de Python, es posible utilizar la instrucción
 \lstinline!assert!.
- 
+
 \subsection{Precondiciones}
 
 Las precondiciones son las condiciones que deben cumplir los parámetros que
@@ -63,8 +63,8 @@ las precondiciones no se cumplen.
 \subsection{Postcondiciones}
 
 Las postcodiciones son las condiciones que cumplirá el valor de retorno, y
-los parámetros recibidos, en caso de que hayan sido alterados, 
-siempre que se hayan cumplido las precondiciones 
+los parámetros recibidos, en caso de que hayan sido alterados,
+siempre que se hayan cumplido las precondiciones.
 
 En el ejemplo anterior, la función división con las precondiciones asignadas,
 puede asegurar que devolverá un número correspondiente al cociente solicitado.
@@ -105,7 +105,7 @@ def division(dividendo, divisor):
     """ Calculo de la división
 
     Pre: Recibe dos números, divisor debe ser distinto de 0.
-    Post: Devuelve un número real, con el cociente de ambos.	
+    Post: Devuelve un número real, con el cociente de ambos.
     """
     assert divisor != 0, "El divisor no puede ser 0"
     return dividendo  / ( divisor * 1.0 )
@@ -139,7 +139,7 @@ La declaración de la función queda, entonces, de la siguiente manera.
 def sumatoria(inicial, final, f):
     """Calcula la sumatoria desde i=inicial hasta final de f(i)
 
-    Pre: inicial y final son números enteros, f es una función que 
+    Pre: inicial y final son números enteros, f es una función que
          recibe un entero y devuelve un número.
     Post: Se devuelve el valor de la sumatoria de aplicar f a cada
           número comprendido entre inicial y final.
@@ -209,7 +209,7 @@ entender cómo funciona un algoritmo y encontrar posibles errores.
 Los invariantes, además, son útiles a la hora de determinar las condiciones
 iniciales de un algoritmo, ya que también deben cumplirse para ese caso.  Por
 ejemplo, consideremos el algoritmo para obtener la potencia \lstinline!n! de
-un número.  
+un número.
 
 \begin{codigo-python}
 def potencia(b, n):
@@ -260,7 +260,7 @@ el elemento inicial y menor que el elemento final, de no ser así, no tiene sent
 continuar con la búsqueda.  Es posible, entonces, agregar una instrucción
 que compruebe esta condición y de no ser cierta realice alguna acción para
 indicar el error, por ejemplo, utilizando la instrucción \lstinline!assert!,
-vista anteriormente. 
+vista anteriormente.
 
 \section{Mutabilidad e Inmutabilidad}
 

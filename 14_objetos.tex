@@ -128,7 +128,7 @@ ordenada de agrupar datos (los {\it atributos}) y operaciones a utilizar
 sobre esos datos (los {\it métodos}).
 
 Es importante notar que cuando decimos {\it objetos} podemos estar haciendo
-referencia a dos cosas parecidas, pero distintas.  
+referencia a dos cosas parecidas, pero distintas.
 
 Por un lado, la definición del tipo, donde se indican cuáles son los
 atributos y métodos que van a tener todas las variables que sean de ese
@@ -224,7 +224,7 @@ En nuestro ejemplo \lstinline!self.x! y \lstinline!self.y! y se usarán como
 \lstinline!punto.x! y \lstinline!punto.y!.
 
 Para utilizar esta clase que acabamos de definir, lo haremos de la
-siguiente forma: 
+siguiente forma:
 
 \begin{codigo-python-sn}
 >>> p = Punto(5,7)
@@ -305,7 +305,7 @@ Python cuenta con un listado de excepciones que se pueden lanzar ante
 distintas situaciones, en este caso se utilizó \lstinline!TypeError! que es
 la excepción que se lanza cuando una operación o función interna se aplica
 a un objeto de tipo inadecuado. El valor asociado es una cadena con
-detalles de la incoherencia de tipos. 
+detalles de la incoherencia de tipos.
 
 Otra excepción que podríamos querer utilizar es \lstinline!ValueError!, que
 se lanza cuando una operación o función interna recibe un argumento del
@@ -319,7 +319,7 @@ excepción.
 El listado completo de las excepciones provistas por el lenguaje se
 encuentra en:
 \begin{itemize}
-\item \url{http://docs.python.org/library/exceptions.html} 
+\item \url{http://docs.python.org/library/exceptions.html}
 \item \url{http://pyspanishdoc.sourceforge.net/lib/module-exceptions.html}
 \end{itemize}
 \end{sabias_que}
@@ -376,7 +376,7 @@ se forma uniendo un punto con el origen.
 
 \begin{codigo-python-sn}
     def norma(self):
-        """ Devuelve la norma del vector que va desde el origen 
+        """ Devuelve la norma del vector que va desde el origen
             hasta el punto. """
         return (self.x*self.x + self.y*self.y)**0.5
 \end{codigo-python-sn}
@@ -469,7 +469,7 @@ cuando se le pide que imprima una variable de la clase \lstinline!Punto!.
 Muchas de las funciones provistas por Python, que ya hemos utilizado en
 unidades anteriores, como \lstinline!str!, \lstinline!len! o
 \lstinline!help!, invocan internamente a los métodos especiales de los
-objetos.  
+objetos.
 
 Es decir que la función \lstinline!str!  internamente invoca al método
 \lstinline!__str__! del objeto que recibe como parámetro. Y de la misma
@@ -533,11 +533,11 @@ matemático, será necesario definir el método apropiado.
 \begin{sabias_que}
 La posibilidad de definir cuál será el comportamiento de los operadores
 básicos (como \lstinline!+, -, *, /!), se llama {\bf sobrecarga de
-operadores}. 
+operadores}.
 
 No todos los lenguajes lo permiten, y si bien es cómodo y permite que el
 código sea más elegante, no es algo esencial a la Programación Orientada a
-Objetos.  
+Objetos.
 
 Entre los lenguajes más conocidos que no soportan sobrecarga de operadores
 están C, Java, Pascal, Objective C.  Entre los lenguajes más conocidos que
@@ -622,7 +622,7 @@ class Hotel(object):
     def __init__(self, nombre = '*', ubicacion = '*',
                  puntaje = 0, precio = float("inf")):
         """ nombre y ubicacion deben ser cadenas no vacías,
-            puntaje y precio son números.  
+            puntaje y precio son números.
             Si el precio es 0 se reemplaza por infinito. """
 
         if es_cadena_no_vacia (nombre):
@@ -687,7 +687,7 @@ una instancia de Hotel según la fórmula indicada:
 
 \begin{codigo-python-sn}
     def ratio(self):
-        """ Calcula la relación calidad-precio de un hotel de acuerdo 
+        """ Calcula la relación calidad-precio de un hotel de acuerdo
             a la fórmula que nos dio el cliente. """
         return ((self.puntaje**2)*10.)/self.precio
 \end{codigo-python-sn}
@@ -724,14 +724,14 @@ True
 
 En una unidad anterior vimos que se puede ordenar una lista usando el
 método \lstinline!sort!:
- 
+
 \begin{codigo-python-sn}
 >>> l1 = [10, -5, 8, 12, 0]
 >>> l1.sort()
 >>> l1
 [-5, 0, 8, 10, 12]
 \end{codigo-python-sn}
- 
+
 De la misma forma, una vez que hemos definido el método
 \lstinline!__cmp__!, podemos ordenar listas de hoteles, ya que
 internamente el método \lstinline!sort! comparará los hoteles mediante
@@ -746,7 +746,7 @@ el método de comparación que hemos definido:
 >>> lista.sort()
 >>> for hotel in lista:
 ...     print hotel
-... 
+...
 Hotel 3* carisimo de MDQ - Puntaje: 3 - Precio: 130 pesos.
 Hotel 1* normal de MDQ - Puntaje: 1 - Precio: 10 pesos.
 Hotel 2* normal de MDQ - Puntaje: 2 - Precio: 40 pesos.
@@ -800,7 +800,7 @@ Hemos por lo tanto ordenado la lista de acuerdo al criterio solicitado.
 %
 %>>>
 % \end{verbatim}
-% 
+%
 %y ordenamos la lista anterior según ese nuevo criterio:
 %
 %\begin{verbatim}
@@ -848,7 +848,7 @@ Así, para ordenar según el precio, deberemos hacerlo de la siguiente forma:
 >>> lista.sort(cmp=Hotel.cmpPrecio)
 >>> for hotel in lista:
 ...     print hotel
-... 
+...
 Posada El Cairo de Salta - Puntaje: 2.5 - Precio: 15 pesos.
 Hostería París de Rosario - Puntaje: 1 - Precio: 35 pesos.
 Hotel Guadalajara de Pinamar - Puntaje: 2 - Precio: 55 pesos.
@@ -1079,8 +1079,8 @@ máxima de cebadas en base a la cantidad de yerba vertida en el recipiente.
     \item Un método \verb!cebar!, que llena el mate con agua. Si se intenta
 cebar con el mate lleno, se debe lanzar una excepción que imprima el
 mensaje "Cuidado! Te quemaste!"
-    \item Un método \verb!beber!, que vacía el mate y le resta una cebada 
-disponible. Si se intenta beber un mate vacío, se debe lanzar una excepción 
+    \item Un método \verb!beber!, que vacía el mate y le resta una cebada
+disponible. Si se intenta beber un mate vacío, se debe lanzar una excepción
 que imprima el mensaje "El mate está vacío!"
     \item Es posible seguir cebando y bebiendo el mate aunque no haya cebadas
 disponibes. En ese caso la cantidad de cebadas restantes se mantendrá

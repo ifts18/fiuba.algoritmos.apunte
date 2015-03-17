@@ -25,15 +25,15 @@ El concepto de {\it polimorfismo} (del griego {\it muchas formas}) implica
 que si en una porción de código se invoca un determinado método de un
 objeto, podrán obtenerse distintos resultados según la clase del objeto.
 Esto se debe a que distintos objetos pueden tener un método con un mismo
-nombre, pero que realice distintas operaciones.  
+nombre, pero que realice distintas operaciones.
 
 En las unidades anteriores, varias veces utilizamos las posibilidades
 provistas por el polimorfismo, sin haberle puesto este nombre.
 
 Se vio, por ejemplo, que es posible recorrer cualquier tipo de secuencia
 (ya sea una lista, una tupla, un diccionario, un archivo o cualquier otro tipo
-de secuencia) utilizando la misma estructura de código 
-(\lstinline!for elemento in secuencia!).  
+de secuencia) utilizando la misma estructura de código
+(\lstinline!for elemento in secuencia!).
 
 De la misma forma, hemos utilizado funciones que podían trabajar con los
 distintos tipos numéricos sin hacer distinción sobre de qué tipo de número
@@ -125,7 +125,7 @@ En la unidad anterior se vio la clase \lstinline!Punto! que representa a un
 punto en el plano.  Es posible definir también una clase
 \lstinline!Punto3D!, que represente un punto en el espacio.  Esta nueva
 clase contendrá los mismos métodos que se vieron para \lstinline!Punto!,
-pero para tres coordenadas.  
+pero para tres coordenadas.
 
 Si a ambas clases le agregamos un método para multiplicar por un escalar
 (\lstinline!__mul__(self, escalar)!), podríamos tener la siguiente función
@@ -270,7 +270,7 @@ proveedores, o lo que fuera necesario según la aplicación que estemos
 desarrollando.
 
 \begin{sabias_que}
-En el diseño de jerarquias de herencia no siempre es del todo fácil decidir 
+En el diseño de jerarquias de herencia no siempre es del todo fácil decidir
 cuándo una clase debe extender a otra.
 La regla práctica para decidir si una clase (S) puede ser
 definida como heredera de otra (T) es que debe cumplirse que ``S es un T''.
@@ -370,7 +370,7 @@ disponibilidad de las habitaciones del hotel para distintas fechas.  La
 clase \lstinline!Hotel! debería tener, entonces, los métodos
 \lstinline!consultar_disponibilidad!, \lstinline!reservar! y
 \lstinline!cancelar!, que todos delegarían en la clase
-\lstinline!Disponibilidad! su funcionamiento principal. 
+\lstinline!Disponibilidad! su funcionamiento principal.
 
 % TODO: completar el ejemplo.
 
@@ -423,7 +423,7 @@ Para construir y utilizar el rectángulo, lo haremos de la siguiente forma:
 >>> from Rectangulo import Rectangulo
 >>> r = Rectangulo(2, 3, Punto(1, 2))
 >>> print r
-Base: 2, Altura: 3, Esquina inf. izq.: (1, 2) 
+Base: 2, Altura: 3, Esquina inf. izq.: (1, 2)
 >>> print r.area()
 6
 \end{codigo-python-sn}
@@ -447,7 +447,7 @@ punto contenido dentro del rectángulo.
 \begin{codigo-python-sn}
 >>> r.trasladar(2,4)
 >>> print r
-Base: 2, Altura: 3, Esquina inf. izq.: (3, 6) 
+Base: 2, Altura: 3, Esquina inf. izq.: (3, 6)
 \end{codigo-python-sn}
 
 También es posible directamente reemplazar el punto contenido, por un nuevo
@@ -473,7 +473,7 @@ Con lo cual el diagrama pasa a ser el de la Figura
 El \lstinline!Punto(1, 2)! y \lstinline!Punto(3,6)! que habían sido creados
 previamente, están ahora fuera de uso, por lo que quedan a disposición de un
 mecanismo de {\it recolección de basura}, que no es tema de esta materia,
-que se encarga de juntar todos los pedazos de memoria que se descartan 
+que se encarga de juntar todos los pedazos de memoria que se descartan
 durante la ejecución de un programa.
 \end{observacion}
 

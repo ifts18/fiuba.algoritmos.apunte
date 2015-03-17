@@ -36,10 +36,10 @@ este mismo método).
 \end{enumerate}
 
 Por ejemplo, si la lista original es \lstinline+[6, 7, -1, 0, 5, 2, 3, 8]+
-deberemos ordenar recursivamente \lstinline+[6, 7, -1, 0]+ y 
+deberemos ordenar recursivamente \lstinline+[6, 7, -1, 0]+ y
 \lstinline+[5, 2, 3, 8]+ con lo cual obtendremos \lstinline+[-1, 0, 6, 7]+ y
 \lstinline+[2, 3, 5, 8]+.  Si intercalamos ordenadamente las dos listas
-ordenadas obtenemos la solución buscada: 
+ordenadas obtenemos la solución buscada:
 \lstinline+[-1, 0, 2, 3, 5, 6, 7, 8]+.
 
 Diseñamos la {\bf función \lstinline!merge_sort(lista)!}:
@@ -77,7 +77,7 @@ elementos para comparar en ambas listas.
 \item Si el menor es el de \lstinline!lista1!:
 \begin{enumerate}
 \item Agregar el elemento \lstinline!i! de \lstinline!lista1! al final del
-resultado.  
+resultado.
 \item Avanzar el índice \lstinline!i!.
 \end{enumerate}
 \item de lo contrario:
@@ -96,10 +96,10 @@ agregar todo lo que queda en la otra al final del resultado.
 \begin{codigo}{mergesort.py}{Una implementación de {\it Merge sort}}
 \lstinputlisting{src/20_ordenamiento_recursivo/mergesort.py}
 \label{src:mergesort}
-\end{codigo}	
+\end{codigo}
 
 El código resultante del diseño de ambas funciones puede verse en el Código
-\ref{src:mergesort}. 
+\ref{src:mergesort}.
 
 \begin{sabias_que}
 El método que hemos usado para resolver este problema se llama {\bf División y
@@ -162,7 +162,7 @@ un algoritmo que se porta mucho mejor que los que vimos en la unidad
 pasada.
 
 Si analizamos el espacio que consume, vemos que a cada paso genera una
-nueva lista, de la suma de los tamaños de las dos listas, es decir que 
+nueva lista, de la suma de los tamaños de las dos listas, es decir que
 duplica el espacio consumido.
 
 \section{Ordenamiento rápido o {\it Quick sort}}
@@ -190,10 +190,10 @@ contarlo al pivote.
 
 Por ejemplo, si la lista original es \lstinline+[6, 7, -1, 0, 5, 2, 3, 8]+
 consideramos que el pivote es el primer elemento (el 6) y armamos las
-sublistas \lstinline+[-1, 0, 5, 2, 3]+, \lstinline+[6]+ y 
+sublistas \lstinline+[-1, 0, 5, 2, 3]+, \lstinline+[6]+ y
 \lstinline+[7,8]+. Se ordenan recursivamente \lstinline+[-1, 0, 5, 2, 3]+
 (obtenemos \lstinline+[-1, 0, 2, 3, 5]+) y \lstinline+[7, 8]+ (obtenemos la
-misma) y concatenamos en el orden adecuado, y así obtenemos 
+misma) y concatenamos en el orden adecuado, y así obtenemos
 \lstinline+[-1, 0, 2, 3, 5, 6, 7, 8]+.
 
 Para diseñar, vemos que lo más importante es conseguir armar las tres
@@ -308,7 +308,7 @@ El código resultante de este nuevo diseño se reproduce en el Código
 \end{codigo}
 
 Este código, si bien más complejo, cumple con el objetivo de proveer un
-algoritmo de ordenamiento que en el caso promedio tarda 
+algoritmo de ordenamiento que en el caso promedio tarda
 $T(N) \sim N log_2 N$.
 
 \section{Resumen}

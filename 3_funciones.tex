@@ -71,7 +71,7 @@ el ejemplo anterior:
 
 \begin{codigo-python-sn}
 def hola(alguien):
-    """ Imprime por pantalla un saludo, dirigido a la persona que 
+    """ Imprime por pantalla un saludo, dirigido a la persona que
         se indica por parámetro. """
     print "Hola ", alguien, "!"
     print "Estoy programando en Python."
@@ -95,8 +95,8 @@ información.
 
 \section{Imprimir versus Devolver}
 
-A continuación se define una función 
-\lstinline+print_asegundos (horas, minutos, segundos)+ 
+A continuación se define una función
+\lstinline+print_asegundos (horas, minutos, segundos)+
 con tres parámetros (\lstinline+horas+, \lstinline+minutos+
 y \lstinline+segundos+) que imprime por pantalla la transformación a segundos
 de una medida de tiempo expresada en horas, minutos y segundos:
@@ -122,7 +122,7 @@ biblioteca de instrucciones con problemas que vamos resolviendo, y que se
 pueden reutilizar en la resolución de nuevos problemas (como partes de un
 problema más grande, por ejemplo) tal como lo sugiere Thompson en ``How to
 program it''.
- 
+
 Sin embargo, más útil que tener una biblioteca donde los resultados
 se imprimen por pantalla, es contar con una biblioteca donde los
 resultados se devuelven, para que la gente que usa esas funciones manipule
@@ -179,7 +179,7 @@ que las necesitemos en un programa.
 
 Para utilizar las funciones definidas anteriormente, escribiremos un programa
 que pida tres duraciones, y en los tres casos las transforme a segundos y las
-muestra por pantalla. 
+muestra por pantalla.
 
 \begin{enumerate}
 
@@ -345,7 +345,7 @@ NameError: name 'cua' is not defined
 \begin{observacion}
 Las variables y los parámetros que se declaran
 dentro de una función no existen fuera de ella, no se los conoce.
-Fuera de la función se puede ver sólo el valor que retorna 
+Fuera de la función se puede ver sólo el valor que retorna
 y es por eso que es necesario introducir la instrucción \lstinline!return!.
 \end{observacion}
 
@@ -432,14 +432,14 @@ que necesitamos. Veamos las diferencias entre sus especificaciones.
 \begin{verbatim}
 repetir 3 veces:
     <hacer cosas>
-\end{verbatim} 
+\end{verbatim}
 &
 \begin{verbatim}
 leer el valor de f
 leer el valor de n
 repetir n veces:
     <hacer cosas>
-\end{verbatim} 
+\end{verbatim}
 \\
 \hline
 El cuerpo del ciclo:
@@ -451,7 +451,7 @@ Leer el valor de seg
 Invocar print_asegundos(hs, min, seg)
 
 
-\end{verbatim} 
+\end{verbatim}
 } &
 El cuerpo del ciclo:
 {\footnotesize
@@ -462,7 +462,7 @@ Leer el valor de seg
 Asignar segcalc = asegundos(hs, min, seg)
 Calcular costo = segcalc * f
 Mostrar por pantalla segcalc y costo
-\end{verbatim} 
+\end{verbatim}
 } \\
 \hline
 {\footnotesize
@@ -470,7 +470,7 @@ Mostrar por pantalla segcalc y costo
 print_asegundos (hs, min, seg):
 	segsal = 3600*hs+60*min+seg
 	print segsal
-\end{verbatim} 
+\end{verbatim}
 } &
 {\footnotesize
 \begin{verbatim}
@@ -726,7 +726,7 @@ v = f(y)
 \ejercicio{Escribir dos funciones que permitan calcular:}
 \begin{partes}
     \item La cantidad de segundos en un tiempo dado en horas, minutos y segundos.
-    \item La cantidad de horas, minutos y segundos de un tiempo dado en segundos. 
+    \item La cantidad de horas, minutos y segundos de un tiempo dado en segundos.
 \end{partes}
 
 \ejercicio{Usando las funciones del ejercicio anterior, escribir un programa que lea
@@ -741,20 +741,20 @@ entre ellos}
 \ejercicio{\bf Área de un triángulo en base a sus puntos}
 \begin{partes}
     \item Escribir una función que dado un vector al origen (definido por sus
- puntos \verb!x,y!), devuelva la norma del vector, dada por 
+ puntos \verb!x,y!), devuelva la norma del vector, dada por
  $||\vec{(x,y)}||=\sqrt{x^2+y^2}$
- 
-    \item Escribir una función que dados dos puntos en el plano (\verb!x1,y1! y 
+
+    \item Escribir una función que dados dos puntos en el plano (\verb!x1,y1! y
  \verb!x2,y2!), devuelva la resta de ambos (debe devolver un par de
  valores).
- 
+
     \item Utilizando las funciones anteriores, escribir una función que dados dos
  puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva la distancia
  entre ambos.
 
     \item Escribir una función que reciba un vector al origen (definido por sus
  puntos \verb!x,y!) y devuelva un vector equivalente, normalizado (debe
- devolver un par de valores). 
+ devolver un par de valores).
 
     \item Utilizando las funciones anteriores (b y d), escribir una función que
  dados dos puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva el
@@ -768,17 +768,17 @@ entre ellos}
      \setlength{\itemsep}{0pt}
      \setlength{\parsep}{0pt}
      \item Al punto a proyectar (\verb!x,y!) restarle el punto de la recta
- (\verb!cx,cy!) 
+ (\verb!cx,cy!)
      \item Obtener la matriz de proyección $P$, dada por:  \\
- $p_{11} = d_x^2$,  $p_{12} = p_{21} = d_x*d_y$, $p_{22} = d_y^2$. 
+ $p_{11} = d_x^2$,  $p_{12} = p_{21} = d_x*d_y$, $p_{22} = d_y^2$.
      \item Multiplicar la matriz $P$ por el punto obtenido en el paso 1: \\
- $r_x = p_{11} * x + p_12 * y$, $r_y = p_{21} * x + p_{22} * y$. 
+ $r_x = p_{11} * x + p_12 * y$, $r_y = p_{21} * x + p_{22} * y$.
      \item Al resultado obtenido sumar el punto restado en el paso 1, y
  devolverlo.
  \end{enumerate}
 
     \item Escribir una función que calcule el área de un triángulo a partir de
- su base y su altura. 
+ su base y su altura.
 
     \item Utilizando las funciones anteriores escribir una función que reciba
  tres puntos en el plano (\verb!x1,y1!, \verb!x2,y2! y \verb!x3,y3!) y

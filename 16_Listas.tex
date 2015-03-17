@@ -20,7 +20,7 @@ consistirán de cadenas de objetos enlazadas mediante referencias, como las
 vistas en la unidad anterior.
 
 Si bien Python ya cuenta con sus propias listas, las listas enlazadas que
-implementaremos en esta unidad nos resultarán también útiles.  
+implementaremos en esta unidad nos resultarán también útiles.
 
 \section{Una clase sencilla de {\it vagones}}
 
@@ -118,7 +118,7 @@ De esta manera también se pueden generar estructuras impensables.
 y sin embargo en este caso \lstinline!verLista(v1)!  no termina más. Hemos
 creado una {\it lista infinita}, también llamada {\it lista circular}.
 
-% Este ejercicio no se entiende 
+% Este ejercicio no se entiende
 %\ejercicioc{¿Cuál es la mejor manera
 %de tener siempre manzanas y peras a disposición de uno?}
 
@@ -230,7 +230,7 @@ operaciones de lista.
 
 Más allá de la implementación en particular, se podrá notar que implementaremos
 los mismos métodos de las listas de Python, de modo que más allá del
-funcionamiento interno, ambas serán {\bf listas}. 
+funcionamiento interno, ambas serán {\bf listas}.
 
 Definimos a continuación las operaciones que inicialmente deberá cumplir la
 clase \lstinline!ListaEnlazada!.
@@ -310,7 +310,7 @@ class ListaEnlazada(object):
         """ Crea una lista enlazada vacía. """
         # prim: apuntará al primer nodo - None con la lista vacía
         self.prim = None
-        # len: longitud de la lista - 0 con la lista vacía 
+        # len: longitud de la lista - 0 con la lista vacía
         self.len = 0
 \end{codigo-python-sn}
 
@@ -331,7 +331,7 @@ Una característica importante de la implementación de lista enlazadas es que
 borrar el primer elemento es una operación de {\it tiempo constante}, es
 decir que no depende del largo de la lista, a diferencia de las listas de
 Python, en las que esta operación requiere un {\it tiempo proporcional a la
-longitud de la lista}). 
+longitud de la lista}).
 
 Sin embargo no todo es tan positivo: el acceso a la posición {\tt p} se realiza
 en {\it tiempo proporcional a p}, mientras que en las listas de Python esta
@@ -384,7 +384,7 @@ caso, además de borrar el nodo, hay que cambiar la referencia de
 Esto se resuelve con este fragmento de código:
 
 \begin{codigo-python-sn}
-        # Caso particular, si es el primero, 
+        # Caso particular, si es el primero,
         # hay que saltear la cabecera de la lista
         if i == 0:
             dato = self.prim.dato
@@ -448,7 +448,7 @@ según era necesario:
 el nodo eliminado y decrementar la longitud en 1:
 
 \begin{codigo-python-sn}
-        # hay que restar 1 de len  
+        # hay que restar 1 de len
         self.len -= 1
         # y devolver el valor borrado
         return dato
@@ -475,7 +475,7 @@ del método \lstinline!pop!.
         if not (0 <= i < self.len):
             raise IndexError("Índice fuera de rango")
 
-        # Caso particular, si es el primero, 
+        # Caso particular, si es el primero,
         # hay que saltear la cabecera de la lista
         if i == 0:
             dato = self.prim.dato
@@ -493,7 +493,7 @@ del método \lstinline!pop!.
             dato = n_act.dato
             n_ant.prox = n_act.prox
 
-        # hay que restar 1 de len  
+        # hay que restar 1 de len
         self.len -= 1
         # y devolver el valor borrado
         return dato
@@ -852,13 +852,13 @@ pasar a través de la lista enlazada.
 \end{atencion}
 
 Para inicializar la clase, lo único que se necesita es una referencia al
-primer elemento de la lista.  
+primer elemento de la lista.
 
 \begin{codigo-python-sn}
 class _IteradorListaEnlazada(object):
     " Iterador para la clase ListaEnlazada "
     def __init__(self, prim):
-        """ Constructor del iterador.  
+        """ Constructor del iterador.
             prim es el primer elemento de la lista. """
         self.actual = prim
 \end{codigo-python-sn}
@@ -896,7 +896,7 @@ iterador.
 class _IteradorListaEnlazada(object):
     " Iterador para la clase ListaEnlazada "
     def __init__(self, prim):
-        """ Constructor del iterador.  
+        """ Constructor del iterador.
             prim es el primer elemento de la lista. """
         self.actual = prim
 
@@ -934,7 +934,7 @@ que estamos acostumbrados.
 >>> l.append(5)
 >>> for valor in l:
 ...     print valor
-... 
+...
 1
 3
 5
@@ -1000,9 +1000,9 @@ ListaEnlazada} y agregue a la lista actual los elementos que se encuentran
 en la lista recibida.
 }
 
-% No es un buen ejemplo que LE Ordenada herede de LE ya que se tiene que bloquear 
+% No es un buen ejemplo que LE Ordenada herede de LE ya que se tiene que bloquear
 % o redefinir el significado del método append.
-% 
+%
 %\ejercicioc{
 %Escribir una clase {\it ListaEnlazadaOrdenada} que herede de {\it
 %ListaEnlazada}, redefiniendo el método \verb!insert! para que inserte los
@@ -1020,7 +1020,7 @@ Escribir la clase {\it ListaCircular}, incluyendo los métodos \verb!insert!,
 \ejercicio{
 Una {\bf lista doblemente enlazada} es una lista en la cual cada nodo tiene
 una referencia al anterior además de al próximo de modo que es posible
-recorrerla en ambas direcciones. \\ 
+recorrerla en ambas direcciones. \\
 Escribir la clase {\it ListaDobleEnlazada}, incluyendo los métodos
 \verb!insert!, \verb!append!, \verb!remove! y \verb!pop!.
 }

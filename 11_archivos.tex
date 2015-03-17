@@ -131,7 +131,7 @@ formas distintas de marcar un fin de línea. En Unix tradicionalmente se usa
 el caracter '\verb!\n!' (valor de ASCII 10, definido como nueva línea) para
 el fin de línea, mientras que en Macintosh el fin de línea se solía
 representar como un '\verb!\r!' (valor ASCII 13, definido como retorno de
-carro) y en Windows se usan ambos caracteres '\verb!\r\n!'. 
+carro) y en Windows se usan ambos caracteres '\verb!\r\n!'.
 
 Si bien esto es algo que hay que tener en cuenta en una diversidad de
 casos, en particular en Python por omisión se maneja cualquier tipo de fin
@@ -270,7 +270,7 @@ En este módulo se utiliza el módulo de Python \lstinline!datetime! para
 obtener la fecha y hora actual que se guardará en los archivos.  Es
 importante notar que en el módulo mostrado no se abre o cierra un archivo
 en particular, sino que las funciones están programadas de modo tal que
-puedan ser utilizadas desde otro programa. 
+puedan ser utilizadas desde otro programa.
 
 Se trata de un módulo genérico que podrá ser utilizado por diversos programas,
 que requieran la funcionalidad de registrar los posibles errores o eventos que
@@ -335,10 +335,10 @@ escribir \lstinline!contenido! en la posición actual del archivo.
 
 Al manejar un archivo binario, es necesario poder conocer la
 posición actual en el archivo y poder modificarla. Para obtener la
-posición actual se utiliza \lstinline!archivo.tell()!, que 
+posición actual se utiliza \lstinline!archivo.tell()!, que
 indica la cantidad de bytes desde el comienzo del archivo.
 
-Para modificar la posición actual se utiliza 
+Para modificar la posición actual se utiliza
 \lstinline!archivo.seek(corrimiento, desde)!, que permite desplazarse una
 cantidad de bytes en el archivo, contando desde el comienzo del archivo,
 desde la posición actual o desde el final.
@@ -418,7 +418,7 @@ desde cualquier editor de textos.
 
 En general, los archivos de texto van a desperdiciar un poco más de
 espacio, pero son más faciles de entender y fáciles de usar desde
-cualquier programa.  
+cualquier programa.
 
 Por otro lado, en un archivo binario bien definido se puede evitar el
 desperdicio de espacio, o también hacer que sea más rápido acceder a los
@@ -446,12 +446,12 @@ Nombre,Apellido,Telefono,Cumpleaños
 En el ejemplo se puede ver una pequeña base de datos. En la primera línea
 del archivo tenemos los nombres de los campos, un dato opcional desde el
 punto de vista del procesamiento de la información, pero que facilita
-entender el archivo. 
+entender el archivo.
 
 En las siguientes lineas se ingresan los datos de la base de datos, cada
 campo separado por comas. Los campos que son cadenas se suelen escribir
 entre comillas dobles, si alguna cadena contiene alguna comilla doble se la
-reemplaza por \verb!\"! y una contrabarra se escribe como \verb!\\!. 
+reemplaza por \verb!\"! y una contrabarra se escribe como \verb!\\!.
 
 En Python es bastante sencillo procesar de este tipo de archivos, tanto
 para la lectura como para la escritura, mediante el módulo \verb!csv! que
@@ -554,9 +554,9 @@ os.path.join("data","archivo.csv")
 \begin{itemize}
 \item Para utilizar un archivo desde un programa, es necesario abrirlo, y
 cuando ya no se lo necesite, se lo debe cerrar.
-\item Las intrucciones más básicas para manejar un archivo son leer y escribir. 
+\item Las intrucciones más básicas para manejar un archivo son leer y escribir.
 \item Cada archivo abierto tiene relacionada una posición que se puede
-consultar o cambiar. 
+consultar o cambiar.
 \item Los archivos de texto se procesan generalmente línea por línea y
 sirven para intercambiar información entre diversos programas o entre
 programas y humanos.
@@ -699,7 +699,7 @@ Escribir un programa, llamado {\bf head} que reciba un archivo y un número
 
 \ejercicio{
 Escribir un programa, llamado {\bf cp.py}, que copie todo el contenido de un
-archivo (sea de texto o binario) a otro, de modo que quede exactamente igual.\\ 
+archivo (sea de texto o binario) a otro, de modo que quede exactamente igual.\\
 {\bf Nota}: utilizar \lstinline!archivo.read(bytes)! para leer como máximo
 una cantidad de bytes.
 }

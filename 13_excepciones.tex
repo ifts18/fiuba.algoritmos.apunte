@@ -66,7 +66,7 @@ maneja, la excepción continua propagándose hasta llegar a la función inicial
 del programa y si esta tampoco la maneja se interrumpe la ejecución del
 programa. Veamos entonces como manejar excepciones.
 
-\subsection{Manejo de excepciones} 
+\subsection{Manejo de excepciones}
 
 Para el manejo de excepciones los lenguajes proveen ciertas palabras
 reservadas, que nos permiten manejar las excepciones que puedan surgir y
@@ -76,7 +76,7 @@ el programa.
 
 En el caso de Python, el manejo de excepciones se hace mediante los
 bloques que utilizan las sentencias \lstinline!try!, \lstinline!except! y
-\lstinline!finally!. 
+\lstinline!finally!.
 
 Dentro del bloque \lstinline!try! se ubica todo el código que pueda llegar
 a {\it levantar} una excepción, se utiliza el término {\it levantar} para
@@ -84,7 +84,7 @@ referirse a la acción de generar una excepción.
 
 A continuación se ubica el bloque \lstinline!except!, que se encarga de
 capturar la excepción y nos da la oportunidad de procesarla mostrando por
-ejemplo un mensaje adecuado al usuario. 
+ejemplo un mensaje adecuado al usuario.
 
 Veamos qué sucede si se quiere realizar una división por cero:
 
@@ -107,13 +107,13 @@ la ejecución del programa, se utiliza el bloque
 ...     cociente = dividendo / divisor
 ... except:
 ...     print "No se permite la división por cero"
-... 
+...
 No se permite la división por cero
 \end{codigo-python-sn}
 
 Dado que dentro de un mismo bloque \lstinline!try! pueden producirse
 excepciones de distinto tipo, es posible utilizar varios bloques
-\lstinline!except!, cada uno para capturar un tipo distinto de excepción. 
+\lstinline!except!, cada uno para capturar un tipo distinto de excepción.
 
 Esto se hace especificando a continuación de la sentencia
 \lstinline!except! el nombre de la excepción que se pretende capturar. Un
@@ -181,7 +181,7 @@ ejecución del bloque \lstinline!finally!, si se encuentra definido.
 Si, por otra parte, no hay problemas durante la ejecución del bloque
 \lstinline!try!, se completa la ejecución del bloque, y luego se pasa
 directamente a la ejecución del bloque \lstinline!finally! (si es que está
-definido). 
+definido).
 
 Bajemos todo esto a un ejemplo concreto, supongamos que nuestro programa
 tiene que procesar cierta información ingresada por el usuario y guardarla
@@ -243,7 +243,7 @@ quien invocó a la función actual y que posiblemente contenga cierta
 información de contexto. Para levantar una excepción de cualquier tipo,
 utilizamos también la sentencia \lstinline!raise!, pero indicándole el tipo
 de excepción que deseamos lanzar y pasando a la excepción los parámetros
-con información adicional que queramos brindar. 
+con información adicional que queramos brindar.
 
 El siguiente fragmento de código muestra este uso de \lstinline!raise!.
 
@@ -277,7 +277,7 @@ except Exception, ex:
 	# es accesible a través del identificador ex
 \end{codigo-python-sn}
 
-% TODO: 
+% TODO:
 % abuso de excepciones
 % La idea sería hablar de uso de excepciones para manejar casos excepcionales
 % y no para todo.
@@ -420,7 +420,7 @@ def lee_entero():
 
 Por otro lado, cuando la entrada ingresada sea una cadena, no es esperable que
 el usuario la vaya a ingresar en mayúsculas o minúsculas, ambos casos deben
-ser considerados. 
+ser considerados.
 
 \begin{codigo-python-sn}
 def lee_opcion():
@@ -448,7 +448,7 @@ Sin embargo, ya hemos visto que tanto las listas como las tuplas y las
 cadenas son secuencias, y muchas de las funciones utilizadas puede utilizar
 cualquiera de estas secuencias. De la misma manera, una función puede
 utilizar un valor numérico, y que opere correctamente ya sea entero,
-flotante, o complejo. 
+flotante, o complejo.
 
 Es posible comprobar el tipo de nuestra variable contra una secuencia de
 tipos posibles.
@@ -463,7 +463,7 @@ ser restrictivo ya que -como se verá más adelante- cada programador puede
 definir sus propios tipos utilizando como base los que ya están definidos.
 Con este código se están descartando todos los tipos que se basen en
 \lstinline!int!, \lstinline!float!,
-\lstinline!long! o \lstinline!complex!. 
+\lstinline!long! o \lstinline!complex!.
 
 Para poder incluir estos tipos en la comprobación a realizar, Python nos
 provee de la función \lstinline!isinstance(variable, tipos)!.
@@ -536,7 +536,7 @@ para convertir la variable a una cadena.
 \begin{sabias_que}
 Python utiliza la idea de {\it duck typing}, que viene del concepto de que
 si algo parece un pato, camina como un pato y grazna como un pato,
-entonces, se lo puede considerar un pato. 
+entonces, se lo puede considerar un pato.
 
 Esto se refiere a no diferenciar las variables por los tipos a los que
 pertenecen, sino por las funciones que tienen.
@@ -656,7 +656,7 @@ acontecido.
 
 \section{Apéndice}
 A continuación se muestran dos ejemplos de implementación de un programa que
-calcula la serie de Fibonacci para números menores a 20. 
+calcula la serie de Fibonacci para números menores a 20.
 
 En primer lugar se muestra una implementación sin uso de excepciones, con
 las herramientas vistas antes de esta unidad.
@@ -691,7 +691,7 @@ def calcularFibonacciConExcepciones(n):
 	except AssertionError:
 		raise ValueError
 	a=0
-	b=1           
+	b=1
 	salida = []
 	for x in range(n):
 		salida.append(b)
