@@ -32,7 +32,7 @@ Ya vimos en la sección \ref{nosolo} que es posible:
 de todas las cadenas dadas):
 
 \begin{codigo-python-sn}
->>> "Un divertido "+"programa "+"de "+ "radio"
+>>> "Un divertido " + "programa " + "de " + "radio"
 'Un divertido programa de radio'
 >>>
 \end{codigo-python-sn}
@@ -42,9 +42,9 @@ el resultado es la concatenación de \lstinline+s+ consigo misma,
 \lstinline+k+ veces):
 
 \begin{codigo-python-sn}
->>> 3*"programas "
+>>> 3 * "programas "
 'programas programas programas '
->>> "programas "*3
+>>> "programas " * 3
 'programas programas programas '
 >>>
 \end{codigo-python-sn}
@@ -108,7 +108,7 @@ escribiremos \lstinline+a[i]+ para hablar de la posición i-ésima de la cadena
 Trataremos de averiguar con qué letra empieza una cadena.
 
 \begin{codigo-python-sn}
->>> a="Veronica"
+>>> a = "Veronica"
 >>> a[1]
 'e'
 >>>
@@ -143,7 +143,7 @@ carácter de la cadena: \lstinline!a[-1]! es el último carácter de
 Algunos ejemplos de acceso a distintas posiciones en una cadena.
 
 \begin{codigo-python-sn}
->>> a="Veronica"
+>>> a = "Veronica"
 >>> len(a)
 8
 >>> a[0]
@@ -207,7 +207,7 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
 >>>
->>> s=""
+>>> s = ""
 >>> s
 ''
 >>> len(s)
@@ -238,7 +238,7 @@ tratamos de corregir sólo el carácter correspondiente de la variable
 \lstinline!a!:
 
 \begin{codigo-python-sn}
->>> a[6]="k"
+>>> a[6] = "k"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'str' object does not support item assignment
@@ -253,7 +253,7 @@ Si queremos corregir la ortografía de una cadena, debemos hacer
 que la cadena \lstinline!a! se refiera a otro valor:
 
 \begin{codigo-python-sn}
->>> a="Veronika"
+>>> a = "Veronika"
 >>> a
 'Veronika'
 >>>
@@ -323,7 +323,7 @@ Proponemos la siguiente solución:
 def contarA(x):
     for letra in x:
         if letra == "A":
-           contador = contador + 1
+            contador = contador + 1
     return(contador)
 \end{codigo-python}
 
@@ -400,7 +400,7 @@ def contarA (x):
     contador = 0
     for letra in x:
         if letra == "A":
-           contador = contador + 1
+            contador = contador + 1
     return(contador)
 \end{codigo-python}
 
