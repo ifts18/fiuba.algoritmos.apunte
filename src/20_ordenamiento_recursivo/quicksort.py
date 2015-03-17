@@ -1,17 +1,17 @@
 #/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def quick_sort(lista):
     """ Ordena la lista de forma recursiva.
         Pre: los elementos de la lista deben ser comparables.
-        Post: la lista est· ordenada. """
+        Post: la lista est√° ordenada. """
 
     quick_sort(lista, 0, len(lista) - 1)
 
 def _quick_sort(lista, inicio, fin):
-    """ FunciÛn quick_sort recursiva.
-        Pre: los Ìndices inicio y fin indican sobre quÈ porciÛn operar.
-        Post: la lista est· ordenada.
+    """ Funci√≥n quick_sort recursiva.
+        Pre: los √≠ndices inicio y fin indican sobre qu√© porci√≥n operar.
+        Post: la lista est√° ordenada.
     """
     # Caso base
     if inicio >= fin:
@@ -23,10 +23,10 @@ def _quick_sort(lista, inicio, fin):
     _quick_sort(lista, menores + 1, fin)
 
 def _partition(lista, inicio, fin):
-    """ FunciÛn particiÛn que trabaja sobre la misma lista.
-        Pre: los Ìndices inicio y fin indican sobre quÈ porciÛn operar.
-        Post: los menores est·n antes que el pivote, los mayores despuÈs.
-        Devuelve: la posiciÛn en la que quedÛ ubicado el pivote. """
+    """ Funci√≥n partici√≥n que trabaja sobre la misma lista.
+        Pre: los √≠ndices inicio y fin indican sobre qu√© porci√≥n operar.
+        Post: los menores est√°n antes que el pivote, los mayores despu√©s.
+        Devuelve: la posici√≥n en la que qued√≥ ubicado el pivote. """
 
     pivote = lista[inicio]
     menores = inicio
@@ -40,7 +40,7 @@ def _partition(lista, inicio, fin):
     # Pone el pivote al final de los menores
     if inicio != menores:
         _swap(lista, inicio, menores)
-    # Devuelve la posiciÛn del pivote
+    # Devuelve la posici√≥n del pivote
     return menores
 
 def _swap(lista, i, j):

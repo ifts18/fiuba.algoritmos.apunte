@@ -1,11 +1,11 @@
 % Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
 % Copyright (C) 2010 Maximiliano Curia <maxy@gnuservers.com.ar>
 
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Esta obra estÃ¡ licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -13,21 +13,21 @@
 % mencionados, o enviar una carta a Creative Commons,
 % 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
-\chapter[Algoritmos de búsqueda]{Algoritmos de búsqueda}
+\chapter[Algoritmos de bÃºsqueda]{Algoritmos de bÃºsqueda}
 
-\section{El problema de la búsqueda}
+\section{El problema de la bÃºsqueda}
 
-Presentamos ahora uno de los problemas más clásicos de la computación, {\it el
-problema de la búsqueda}, que se puede enunciar de la siguiente manera:
+Presentamos ahora uno de los problemas mÃ¡s clÃ¡sicos de la computaciÃ³n, {\it el
+problema de la bÃºsqueda}, que se puede enunciar de la siguiente manera:
 
-{\bf Problema: } Dada una lista $xs$ y un valor $x$ devolver el índice de $x$
-en $xs$ si $x$ está en $xs$, y $-1$ si $x$ no está en $xs$.
+{\bf Problema: } Dada una lista $xs$ y un valor $x$ devolver el Ã­ndice de $x$
+en $xs$ si $x$ estÃ¡ en $xs$, y $-1$ si $x$ no estÃ¡ en $xs$.
 
-Alicia Hacker afirma que este problema tiene una solución muy sencilla en
-Python: se puede usar directamente la poderosa función \lstinline+index()+ de
+Alicia Hacker afirma que este problema tiene una soluciÃ³n muy sencilla en
+Python: se puede usar directamente la poderosa funciÃ³n \lstinline+index()+ de
 lista.
 
-Probamos esa solución para ver qué pasa:
+Probamos esa soluciÃ³n para ver quÃ© pasa:
 
 \begin{codigo-python-sn}
 >>> [1,3,5,7].index(5)
@@ -38,12 +38,12 @@ Traceback (most recent call last):
 ValueError: list.index(x): x not in list
 \end{codigo-python-sn}
 
-Vemos que usar la función \lstinline+index()+ resuelve nuestro problema si el
-valor buscado está en la lista, pero si el valor no está no sólo no devuelve
+Vemos que usar la funciÃ³n \lstinline+index()+ resuelve nuestro problema si el
+valor buscado estÃ¡ en la lista, pero si el valor no estÃ¡ no sÃ³lo no devuelve
 un $-1$, sino que se produce un error.
 
-El problema es que para poder aplicar la función \lstinline+index()+ debemos
-estar seguros de que el valor está en la lista, y para averiguar eso Python
+El problema es que para poder aplicar la funciÃ³n \lstinline+index()+ debemos
+estar seguros de que el valor estÃ¡ en la lista, y para averiguar eso Python
 nos provee del operador \lstinline+in+:
 
 \begin{codigo-python-sn}
@@ -53,18 +53,18 @@ True
 False
 \end{codigo-python-sn}
 
-O sea que si llamamos a la función \lstinline+index()+ sólo cuando el
+O sea que si llamamos a la funciÃ³n \lstinline+index()+ sÃ³lo cuando el
 resultado de \lstinline+in+ es verdadero, y devolvemos $-1$ cuando el
 resultado de \lstinline+in+ es falso, estaremos resolviendo el problema
-planteado usando sólo funciones provistas por Python. La solución se
-muestra en el Código \ref{busquedaconindex}. \\
+planteado usando sÃ³lo funciones provistas por Python. La soluciÃ³n se
+muestra en el CÃ³digo \ref{busquedaconindex}. \\
 
 \begin{codigo}{busqueda\_con\_index.py}{Busca utilizando index e in provistos por Python}
 \label{busquedaconindex}
 \lstinputlisting{src/8_busqueda/busConIndex.py}
 \end{codigo}
 
-Probamos la función \verb+busqueda_con_index()+:
+Probamos la funciÃ³n \verb+busqueda_con_index()+:
 \begin{verbatim}
 >>> busqueda_con_index([1, 4, 54, 3, 0, -1], 1)
 0
@@ -78,47 +78,47 @@ Probamos la función \verb+busqueda_con_index()+:
 -1
 \end{verbatim}
 
-\subsection*{¿Cuántas comparaciones hace este programa?}
+\subsection*{Â¿CuÃ¡ntas comparaciones hace este programa?}
 
-La pregunta del título se refiere a ¿cuánto esfuerzo computacional requiere
-este programa?, ¿cuántas veces compara el valor que buscamos con los datos de
-la lista? No lo sabemos porque no sabemos cómo están implementadas las
+La pregunta del tÃ­tulo se refiere a Â¿cuÃ¡nto esfuerzo computacional requiere
+este programa?, Â¿cuÃ¡ntas veces compara el valor que buscamos con los datos de
+la lista? No lo sabemos porque no sabemos cÃ³mo estÃ¡n implementadas las
 funciones \lstinline+in+ e \lstinline+index()+. La pregunta queda planteada
-por ahora pero daremos un método para averiguarlo más adelante en esta unidad.
+por ahora pero daremos un mÃ©todo para averiguarlo mÃ¡s adelante en esta unidad.
 
 
-\section{Cómo programar la búsqueda lineal a mano}
+\section{CÃ³mo programar la bÃºsqueda lineal a mano}
 
-Nos interesa ver qué sucede si programamos la búsqueda usando operaciones más
+Nos interesa ver quÃ© sucede si programamos la bÃºsqueda usando operaciones mÃ¡s
 elementales, y no las grandes primitivas \lstinline+in+ e \lstinline+index()+.
-Esto nos permitirá estudiar una solución que puede portarse a otros lenguajes
+Esto nos permitirÃ¡ estudiar una soluciÃ³n que puede portarse a otros lenguajes
 que no tienen instrucciones tan poderosas.
 
 
-Supongamos entonces que nuestra versión de Python no existen ni \lstinline+in+
+Supongamos entonces que nuestra versiÃ³n de Python no existen ni \lstinline+in+
 ni \lstinline+index()+. Podemos en cambio acceder a cada uno de los elementos
-de la lista a través de una construcción \lstinline+for+, y también, por
-supuesto, podemos acceder a un elemento de la lista mediante un índice.
+de la lista a travÃ©s de una construcciÃ³n \lstinline+for+, y tambiÃ©n, por
+supuesto, podemos acceder a un elemento de la lista mediante un Ã­ndice.
 
-\section{Búsqueda lineal}
+\section{BÃºsqueda lineal}
 
-Diseñamos una solución: Podemos comparar uno a uno los elementos de la
-lista con el valor de \lstinline!x!, y retornar el valor de la posición
+DiseÃ±amos una soluciÃ³n: Podemos comparar uno a uno los elementos de la
+lista con el valor de \lstinline!x!, y retornar el valor de la posiciÃ³n
 donde lo encontramos en caso de encontrarlo.
 
-Si llegamos al final de la lista sin haber salido antes de la función es
-porque el valor de \lstinline!x! no está en la lista, y en ese caso
+Si llegamos al final de la lista sin haber salido antes de la funciÃ³n es
+porque el valor de \lstinline!x! no estÃ¡ en la lista, y en ese caso
 retornamos $-1$.
 
-En esta solución necesitamos una variable \lstinline!i! que cuente en cada
-momento en qué posición de la lista estamos parados. Esta variable se
+En esta soluciÃ³n necesitamos una variable \lstinline!i! que cuente en cada
+momento en quÃ© posiciÃ³n de la lista estamos parados. Esta variable se
 inicializa en $0$ antes de entrar en el ciclo y se incrementa en $1$ en
 cada paso.
 
-El programa nos queda entonces como se muestra en el Código
+El programa nos queda entonces como se muestra en el CÃ³digo
 \ref{busquedalineal}. \\
 
-\begin{codigo}{busqueda\_lineal.py}{Función de búsqueda lineal}
+\begin{codigo}{busqueda\_lineal.py}{FunciÃ³n de bÃºsqueda lineal}
 \label{busquedalineal}
 \lstinputlisting{src/8_busqueda/busl.py}
 \end{codigo}
@@ -136,207 +136,207 @@ Y ahora lo probamos:
 >>>
 \end{verbatim}
 
-\subsection*{¿Cuántas comparaciones hace este programa?}
+\subsection*{Â¿CuÃ¡ntas comparaciones hace este programa?}
 
-Volvemos a preguntarnos lo mismo que en la sección anterior, pero con el nuevo
-programa: ¿cuánto esfuerzo computacional requiere este programa?, ¿cuántas
+Volvemos a preguntarnos lo mismo que en la secciÃ³n anterior, pero con el nuevo
+programa: Â¿cuÃ¡nto esfuerzo computacional requiere este programa?, Â¿cuÃ¡ntas
 veces compara el valor que buscamos con los datos de la lista? Ahora podemos
 analizar el texto de \lstinline!busqueda_lineal!:
 
 \begin{itemize}
-\item La {\bf línea 16} del código es un ciclo que recorre uno a uno los
-elementos de la lista, y en el cuerpo de ese ciclo, en la {\bf línea 20} se
+\item La {\bf lÃ­nea 16} del cÃ³digo es un ciclo que recorre uno a uno los
+elementos de la lista, y en el cuerpo de ese ciclo, en la {\bf lÃ­nea 20} se
 compara cada elemento con el valor buscado. En el caso de encontrarlo ({\bf
-línea 21}) se devuelve la posición.
+lÃ­nea 21}) se devuelve la posiciÃ³n.
 
-\item Si el valor no está en la lista se recorrerá la lista entera, haciendo
-una comparación por elemento.
+\item Si el valor no estÃ¡ en la lista se recorrerÃ¡ la lista entera, haciendo
+una comparaciÃ³n por elemento.
 \end{itemize}
 
-O sea que si el valor está en la posición $p$ de la lista se hacen $p$
-comparaciones, y si el valor no está se hacen tantas comparaciones como
+O sea que si el valor estÃ¡ en la posiciÃ³n $p$ de la lista se hacen $p$
+comparaciones, y si el valor no estÃ¡ se hacen tantas comparaciones como
 elementos tenga la lista.
 
-Nuestra hipótesis es: {\bf Si la lista crece, la cantidad de comparaciones
-para encontrar un valor arbitrario crecerá en forma proporcional al tamaño de
+Nuestra hipÃ³tesis es: {\bf Si la lista crece, la cantidad de comparaciones
+para encontrar un valor arbitrario crecerÃ¡ en forma proporcional al tamaÃ±o de
 la lista}.
 
 Diremos que este algoritmo tiene un comportamiento {\it proporcional a la
 longitud de la lista involucrada}, o que es un algoritmo {\it lineal}.
 
-En la próxima sección veremos cómo probar esta hipótesis.
+En la prÃ³xima secciÃ³n veremos cÃ³mo probar esta hipÃ³tesis.
 
 \section{Buscar sobre una lista ordenada}
 
-Por supuesto que si la lista está ordenada podemos hacer lo mismo que antes,
-con algunas modificaciones que den cuenta de la condición de ordenada de la
+Por supuesto que si la lista estÃ¡ ordenada podemos hacer lo mismo que antes,
+con algunas modificaciones que den cuenta de la condiciÃ³n de ordenada de la
 lista.
 
-\ejercicioc{Modificar la búsqueda lineal para el caso de listas ordenadas.
-¿Cuál es nuestra nueva hipótesis sobre comportamiento del algoritmo?}
+\ejercicioc{Modificar la bÃºsqueda lineal para el caso de listas ordenadas.
+Â¿CuÃ¡l es nuestra nueva hipÃ³tesis sobre comportamiento del algoritmo?}
 
-\section{Búsqueda binaria}
+\section{BÃºsqueda binaria}
 
-¿Podemos hacer algo mejor? Trataremos de aprovechar el hecho de que la lista
-está ordenada y vamos a hacer algo distinto: nuestro espacio de búsqueda se
-irá achicando a segmentos cada vez menores de la lista original.
+Â¿Podemos hacer algo mejor? Trataremos de aprovechar el hecho de que la lista
+estÃ¡ ordenada y vamos a hacer algo distinto: nuestro espacio de bÃºsqueda se
+irÃ¡ achicando a segmentos cada vez menores de la lista original.
 La idea es descartar segmentos de la lista donde el valor seguro que no puede
 estar:
 
 \begin{enumerate}
-\item Consideramos como segmento inicial de búsqueda a la lista completa.
+\item Consideramos como segmento inicial de bÃºsqueda a la lista completa.
 
 \item Analizamos el punto medio del segmento (el valor central), si es el valor
-buscado, devolvemos el índice del punto medio.
+buscado, devolvemos el Ã­ndice del punto medio.
 
 \item Si el valor central es mayor al buscado, podemos descartar el segmento
-que está desde el punto medio hacia la a derecha.
+que estÃ¡ desde el punto medio hacia la a derecha.
 
 \item Si el valor central es menor al buscado, podemos descartar el segmento
-que está desde el punto medio hacia la izquierda.
+que estÃ¡ desde el punto medio hacia la izquierda.
 
 \item Una vez descartado el segmento que no nos interesa, volvemos a analizar
 el segmento restante, de la misma forma.
 
-\item Si en algún momento el segmento a analizar tiene longitud 0 o negativa
+\item Si en algÃºn momento el segmento a analizar tiene longitud 0 o negativa
 significa que el valor buscado no se encuentra en la lista.
 \end{enumerate}
 
-Para señalar la porción del segmento que se está analizando a cada paso,
+Para seÃ±alar la porciÃ³n del segmento que se estÃ¡ analizando a cada paso,
 utilizaremos dos variables (\lstinline!izq! y \lstinline!der!) que
-contienen la posición de inicio y la posición de fin del segmento que se
-está considerando. De la misma manera usaremos la varible \lstinline!medio!
-para contener la posición del punto medio del segmento. \\
+contienen la posiciÃ³n de inicio y la posiciÃ³n de fin del segmento que se
+estÃ¡ considerando. De la misma manera usaremos la varible \lstinline!medio!
+para contener la posiciÃ³n del punto medio del segmento. \\
 
-En el gráfico que se incluye a continuación, vemos qué pasa cuando se busca
+En el grÃ¡fico que se incluye a continuaciÃ³n, vemos quÃ© pasa cuando se busca
 el valor 18 en la lista [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23].
 
 {\centering
 \includegraphics{graficos/uni8-seguimiento}
 }
 
-Como no se encontró al valor buscado, devuelve $-1$.
+Como no se encontrÃ³ al valor buscado, devuelve $-1$.
 
-En el Código \ref{busquedabinaria} mostramos una posible implementación de
+En el CÃ³digo \ref{busquedabinaria} mostramos una posible implementaciÃ³n de
 este algoritmo. \\
 
-\begin{codigo}{busqueda\_binaria.py}{Función de búsqueda binaria}
+\begin{codigo}{busqueda\_binaria.py}{FunciÃ³n de bÃºsqueda binaria}
 \label{busquedabinaria}
 \lstinputlisting{src/8_busqueda/busb.py}
 \end{codigo}
 
-A continuación varias ejecuciones de prueba:
+A continuaciÃ³n varias ejecuciones de prueba:
 
 \begin{verbatim}
 Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 0
+Â¿Valor buscado?: 0
 DEBUG: izq: 0 der: 2 medio: 1
 DEBUG: izq: 0 der: 0 medio: 0
 Resultado: -1
 Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 1
+Â¿Valor buscado?: 1
 DEBUG: izq: 0 der: 2 medio: 1
 DEBUG: izq: 0 der: 0 medio: 0
 Resultado: 0
 Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 2
+Â¿Valor buscado?: 2
 DEBUG: izq: 0 der: 2 medio: 1
 DEBUG: izq: 0 der: 0 medio: 0
 Resultado: -1
 Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 3
+Â¿Valor buscado?: 3
 DEBUG: izq: 0 der: 2 medio: 1
 Resultado: 1
 Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 5
+Â¿Valor buscado?: 5
 DEBUG: izq: 0 der: 2 medio: 1
 DEBUG: izq: 2 der: 2 medio: 2
 Resultado: 2
 Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 6
+Â¿Valor buscado?: 6
 DEBUG: izq: 0 der: 2 medio: 1
 DEBUG: izq: 2 der: 2 medio: 2
 Resultado: -1
 Dame una lista ordenada ([[]] para terminar): []
-¿Valor buscado?: 0
+Â¿Valor buscado?: 0
 Resultado: -1
 Dame una lista ordenada ([[]] para terminar): [1]
-¿Valor buscado?: 1
+Â¿Valor buscado?: 1
 DEBUG: izq: 0 der: 0 medio: 0
 Resultado: 0
 Dame una lista ordenada ([[]] para terminar): [1]
-¿Valor buscado?: 3
+Â¿Valor buscado?: 3
 DEBUG: izq: 0 der: 0 medio: 0
 Resultado: -1
 Dame una lista ordenada ([[]] para terminar): [[]]
 \end{verbatim}
 
-\subsection*{¿Cuántas comparaciones hace este programa?}
+\subsection*{Â¿CuÃ¡ntas comparaciones hace este programa?}
 
 Para responder esto pensemos en el peor caso, es decir, que se descartaron
-varias veces partes del segmento para finalmente llegar a un segmento vacío y
+varias veces partes del segmento para finalmente llegar a un segmento vacÃ­o y
 porque el valor buscado no se encontraba en la lista.
 
 En cada paso el segmento se divide por la mitad y se desecha una de esas
-mitades, y en cada paso se hace una comparación con el valor buscado. Por lo
+mitades, y en cada paso se hace una comparaciÃ³n con el valor buscado. Por lo
 tanto, la cantidad de comparaciones que hacen con el valor buscado es
 aproximadamente igual a la cantidad de pasos necesarios para llegar a un
-segmento de tamaño 1.
-Veamos el caso más sencillo para razonar, y supongamos que la longitud de la
+segmento de tamaÃ±o 1.
+Veamos el caso mÃ¡s sencillo para razonar, y supongamos que la longitud de la
 lista es una potencia de 2, es decir \lstinline+len(lista)+$= 2^k$:
 
 \begin{itemize}
-\item Luego del primer paso, el segmento a tratar es de tamaño $2^k$.
-\item Luego del segundo paso, el segmento a tratar es de tamaño $2^{k-1}$.
-\item Luego del tercer paso, el segmento a tratar es de tamaño $2^{k-2}$.
+\item Luego del primer paso, el segmento a tratar es de tamaÃ±o $2^k$.
+\item Luego del segundo paso, el segmento a tratar es de tamaÃ±o $2^{k-1}$.
+\item Luego del tercer paso, el segmento a tratar es de tamaÃ±o $2^{k-2}$.
 
 $\ldots$
 
-\item Luego del paso $k$, el segmento a tratar es de tamaño $2^{k-k}=1$.
+\item Luego del paso $k$, el segmento a tratar es de tamaÃ±o $2^{k-k}=1$.
 \end{itemize}
 
 Por lo tanto este programa hace aproximadamente $k$ comparaciones con el valor
 buscado cuando \lstinline+len(lista)+$= 2^k$.
-Pero si despejamos $k$ de la ecuación anterior, podemos ver que este programa
+Pero si despejamos $k$ de la ecuaciÃ³n anterior, podemos ver que este programa
 realiza aproximadamente $\log_2$(\lstinline+len(lista)+) comparaciones.
 
 Cuando \lstinline+len(lista)+ no es una potencia de 2 el razonamiento es menos
-prolijo, pero también vale que este programa realiza aproximadamente
+prolijo, pero tambiÃ©n vale que este programa realiza aproximadamente
 $\log_2$(\lstinline+len(lista)+) comparaciones.
 
-Vemos entonces que si \lstinline!lista! es una lista ordenada, la búsqueda binaria es
-\underline{muchísimo} más eficiente que la búsqueda lineal (por ejemplo, dado
+Vemos entonces que si \lstinline!lista! es una lista ordenada, la bÃºsqueda binaria es
+\underline{muchÃ­simo} mÃ¡s eficiente que la bÃºsqueda lineal (por ejemplo, dado
 que $2^{20}$ es aproximadamente 1.000.000, si \lstinline!lista! tiene 1.000.000 de
-elementos, la búsqueda lineal sobre \lstinline+lista+ será proporcional a 1.000.000, y
-en promedio hará unas 500.000 comparaciones, mientras que la búsqueda binaria
-hará como máximo 20 comparaciones).
+elementos, la bÃºsqueda lineal sobre \lstinline+lista+ serÃ¡ proporcional a 1.000.000, y
+en promedio harÃ¡ unas 500.000 comparaciones, mientras que la bÃºsqueda binaria
+harÃ¡ como mÃ¡ximo 20 comparaciones).
 
 \section{Resumen}
 
 \begin{itemize}
 
-\item La {\bf búsqueda} de un elemento en una secuencia es un
-algoritmo básico pero importante. El problema que intenta resolver puede
+\item La {\bf bÃºsqueda} de un elemento en una secuencia es un
+algoritmo bÃ¡sico pero importante. El problema que intenta resolver puede
 plantearse de la siguiente manera: Dada una secuencia de valores y un
-valor, devolver el índice del valor en la secuencia, si se encuentra, de no
-encontrarse el valor en la secuencia señalizarlo apropiadamente.
+valor, devolver el Ã­ndice del valor en la secuencia, si se encuentra, de no
+encontrarse el valor en la secuencia seÃ±alizarlo apropiadamente.
 
 \item Una de las formas de resolver el problema es mediante la {\bf
-búsqueda lineal}, que consiste en ir revisando uno a uno los elementos de
-la secuencia y comparándolos con el elemento a buscar.  Este algoritmo no
+bÃºsqueda lineal}, que consiste en ir revisando uno a uno los elementos de
+la secuencia y comparÃ¡ndolos con el elemento a buscar.  Este algoritmo no
 requiere que la secuencia se encuentre ordenada.
 
-\item Cuando la secuencia sobre la que se quiere buscar está ordenada, se
-puede utilizar el algoritmo de {\bf búsqueda binaria}.  Al estar ordenada
+\item Cuando la secuencia sobre la que se quiere buscar estÃ¡ ordenada, se
+puede utilizar el algoritmo de {\bf bÃºsqueda binaria}.  Al estar ordenada
 la secuencia, se puede desacartar en cada paso la mitad de los elementos,
-quedando entonces con una eficiencia algorítmica relativa al
-$log($\lstinline!len(secuencia)!$)$. Este algoritmo sólo tiene sentido
+quedando entonces con una eficiencia algorÃ­tmica relativa al
+$log($\lstinline!len(secuencia)!$)$. Este algoritmo sÃ³lo tiene sentido
 utilizarlo sobre una secuencia ordenada.
 
-\item El análisis del comportamiento de un algoritmo puede ser muy engañoso
-si se tiene en cuenta el mejor caso, por eso suele ser mucho más
+\item El anÃ¡lisis del comportamiento de un algoritmo puede ser muy engaÃ±oso
+si se tiene en cuenta el mejor caso, por eso suele ser mucho mÃ¡s
 ilustrativo tener en cuenta el {\bf peor caso}.  En algunos casos
-particulares podrá ser útil tener en cuenta, además, el {\bf caso
+particulares podrÃ¡ ser Ãºtil tener en cuenta, ademÃ¡s, el {\bf caso
 promedio}.
 \end{itemize}
 
@@ -344,49 +344,49 @@ promedio}.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Escribir una función que reciba una lista desordenada y un elemento, que:}
+\ejercicio{Escribir una funciÃ³n que reciba una lista desordenada y un elemento, que:}
 \begin{partes}
-\item Busque todos los elementos coincidan con el pasado por parámetro y
+\item Busque todos los elementos coincidan con el pasado por parÃ¡metro y
 devuelva la cantidad de coincidencias encontradas.
 \item Busque la primera coincidencia del elemento en la lista y devuelva su
-posición.
-\item Utilizando la función anterior, busque todos los elementos coincidan
-con el pasado por parámetro y devuelva una lista con las posiciones.
+posiciÃ³n.
+\item Utilizando la funciÃ³n anterior, busque todos los elementos coincidan
+con el pasado por parÃ¡metro y devuelva una lista con las posiciones.
 \end{partes}
 
 
-\ejercicio{Escribir una función que reciba una lista de números no ordenada, que:}
+\ejercicio{Escribir una funciÃ³n que reciba una lista de nÃºmeros no ordenada, que:}
 \begin{partes}
-\item Devuelva el valor máximo.
-\item Devuelva una tupla que incluya el valor máximo y su posición.
-\item ¿Qué sucede si los elementos son cadenas de caracteres?
+\item Devuelva el valor mÃ¡ximo.
+\item Devuelva una tupla que incluya el valor mÃ¡ximo y su posiciÃ³n.
+\item Â¿QuÃ© sucede si los elementos son cadenas de caracteres?
 \end{partes}
 {\bf Nota:} no utilizar \verb!lista.sort()!
 
 
 \ejercicio{{\bf Agenda simplificada} \\
-Escribir una función que reciba una cadena a buscar y una lista de tuplas
+Escribir una funciÃ³n que reciba una cadena a buscar y una lista de tuplas
 (nombre\_completo, telefono), y busque dentro de la lista, todas las
 entradas que contengan en el nombre completo la cadena recibida (puede
-ser el nombre, el apellido o sólo una parte de cualquiera de ellos). 
+ser el nombre, el apellido o sÃ³lo una parte de cualquiera de ellos).
 Debe devolver una lista con todas las tuplas encontradas.}
 
 
-\ejercicio{ {\bf Sistema de facturación simplificado} \\
+\ejercicio{ {\bf Sistema de facturaciÃ³n simplificado} \\
 Se cuenta con una lista ordenada de productos, en la que uno consiste en
-una tupla de (identificador, descripción, precio), y una lista de los
+una tupla de (identificador, descripciÃ³n, precio), y una lista de los
 productos a facturar, en la que cada uno consiste en una tupla de
 (identificador, cantidad). \\
-Se desea generar una factura que incluya la cantidad, la descripción, el
+Se desea generar una factura que incluya la cantidad, la descripciÃ³n, el
 precio unitario y el precio total de cada producto comprado, y al final
 imprima el total general. \\
-Escribir una función que reciba ambas listas e imprima por
+Escribir una funciÃ³n que reciba ambas listas e imprima por
 pantalla la factura solicitada.}
 
 
-\ejercicio{Escribir una función que reciba una lista ordenada y un elemento, si el
-elemento se encuentra en la lista, debe encontrar su posición, mediante
-búsqueda binaria y devolverlo.  Si no se encuentra, debe agregarlo a la
-lista en la posición correcta y devolver esa nueva posición. (No utilizar
+\ejercicio{Escribir una funciÃ³n que reciba una lista ordenada y un elemento, si el
+elemento se encuentra en la lista, debe encontrar su posiciÃ³n, mediante
+bÃºsqueda binaria y devolverlo.  Si no se encuentra, debe agregarlo a la
+lista en la posiciÃ³n correcta y devolver esa nueva posiciÃ³n. (No utilizar
 \verb!lista.sort()!)}
 

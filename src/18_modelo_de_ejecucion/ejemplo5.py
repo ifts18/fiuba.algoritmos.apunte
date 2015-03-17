@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def devuelve(valor):
 	cuadrado = valor * valor

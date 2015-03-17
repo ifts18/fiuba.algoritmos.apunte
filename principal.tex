@@ -1,11 +1,11 @@
 % Copyright (C) 2008-2013 Rosita Wachenchauzer <rositaw@gmail.com>,
 %                         Maximliano Curia <maxy@gnuservers.com.ar>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -20,7 +20,7 @@
 
 % Entrada de texto
 \usepackage[spanish]{babel}   % Traduce los textos a castellano
-\usepackage[latin1]{inputenc} % Permite escribir directamente ·ÈÌÛ˙Ò
+\usepackage[utf8x]{inputenc}  % Permite escribir directamente √°√©√≠√≥√∫√±
 \usepackage{t1enc}            % Agrega caracteres extendidos al font
 
 % Cuestiones de estilo
@@ -32,13 +32,13 @@
 % Opcionales
 \usepackage{longtable}        % tablas largas y flexibles
 \usepackage{nonfloat}         % Hace que las figuras no floten
-\usepackage{array}            % Permite alinear los p·rrafos en las celdas verticalmente
+\usepackage{array}            % Permite alinear los p√°rrafos en las celdas verticalmente
 \usepackage{url}              % Para incluir URLs
 
-\usepackage{wrapfig}          % Para poner texto junto a las im·genes.
+\usepackage{wrapfig}          % Para poner texto junto a las im√°genes.
 
-%\usepackage{fancyvrb}         % Agrega m·s entornos verbatim
-%\usepackage{stmaryrd}         % Agrega m·s sÌmbolos matem·ticos
+%\usepackage{fancyvrb}         % Agrega m√°s entornos verbatim
+%\usepackage{stmaryrd}         % Agrega m√°s s√≠mbolos matem√°ticos
 %\usepackage{enumerate}        % Agrega flexibilidad a las enumeraciones
 %\usepackage{ifthen}           % Permite usar condicionales en comandos
 %\usepackage{subfigure}        % Permite subfiguras dentro de las figuras
@@ -48,7 +48,7 @@
 %\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
 %\usepackage{multido}      % From PSTricks
 
-% ?? Este archivo no est· en el svn.
+% ?? Este archivo no est√° en el svn.
 %\input{random.tex}        % From CTAN/macros/generic
 
 % Paquetes matematicos.  Hacen falta?
@@ -118,11 +118,11 @@
   \fcolorbox{black}{rosa}{
   \usebox{\temporalbox}}\vspace{0.5ex}}
 
-% Cuadros de Sabias quÈ - Icono: lamparita
+% Cuadros de Sabias qu√© - Icono: lamparita
 \newenvironment{sabias_que}
  {\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
   \begin{minipage}{0.05\textwidth}\includegraphics[height=4ex]{graficos/lamparita}\end{minipage}
-  \begin{minipage}{0.80\textwidth}\bf SabÌas que \ldots\end{minipage}\\
+  \begin{minipage}{0.80\textwidth}\bf Sab√≠as que \ldots\end{minipage}\\
   \begin{small}}
  {\end{small}\end{minipage}\end{lrbox}
   \begin{figure*}[ht]
@@ -132,11 +132,11 @@
   \usebox{\temporalbox}}
   \end{figure*}}
 
-% Cuadros de AtenciÛn - Icono: Tri·ngulo con !
+% Cuadros de Atenci√≥n - Icono: Tri√°ngulo con !
 \newenvironment{atencion}
  {\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
   \begin{minipage}{0.05\textwidth}\includegraphics[height=3ex]{graficos/atencion}\end{minipage}
-  \begin{minipage}{0.80\textwidth}\bf AtenciÛn \end{minipage}\vspace{0.8ex}\\
+  \begin{minipage}{0.80\textwidth}\bf Atenci√≥n \end{minipage}\vspace{0.8ex}\\
   \begin{small}}
  {\end{small}\end{minipage}\end{lrbox}
   \begin{figure*}[ht]
@@ -166,13 +166,32 @@
    \begin{minipage}{0.05\textwidth}\end{minipage}\hfill\begin{minipage}{0.90\textwidth}}
   {\end{minipage}\hfill\begin{minipage}{0.05\textwidth}\end{minipage}\\}
 
-% Parametros para los listings de python
+% Par√°metros para los listings de python
 \lstset{language=Python,
     numbers=left,
     numberstyle=\tiny,
     numbersep=5pt,
     showstringspaces=false,
-    basicstyle=\ttfamily}
+    basicstyle=\ttfamily,
+    % NOTA: esta secci√≥n se podr√≠a omitir usando XeTeX.
+    extendedchars=true,
+    inputencoding=utf8x,
+    literate={√°}{{\'a}}1
+             {√©}{{\'e}}1
+             {√≠}{{\'i}}1
+             {√≥}{{\'o}}1
+             {√∫}{{\'u}}1
+             {√º}{{\"u}}1
+             {√±}{{\~n}}1
+             {√Å}{{\'A}}1
+             {√â}{{\'E}}1
+             {√ç}{{\'I}}1
+             {√ì}{{\'O}}1
+             {√ö}{{\'U}}1
+             {√ú}{{\"U}}1
+             {√ë}{{\~N}}1
+             {¬ø}{{?`}}1
+             {¬°}{{!`}}1}
 %    basicstyle=\ttfamily\normalsize,
 %    keywordstyle=\ttfamily\bfseries,
 %    identifierstyle=\ttfamily,
@@ -183,7 +202,7 @@
 
 \floatstyle{ruled}
 \newfloat{codigo-float}{htbp}{lop}[chapter]
-\floatname{codigo-float}{CÛdigo}
+\floatname{codigo-float}{C√≥digo}
 
 \newenvironment{codigo}[2]{\begin{codigo-float}
     \caption{{\small\texttt{#1}}\textbf{:}\ \small #2}
@@ -206,7 +225,7 @@
 \newtheorem{problemac}{Problema}[chapter]
 \newtheorem{ejercicioc}{Ejercicio}[chapter]
 \renewcommand{\qedsymbol}{} % El proof inserta dos qed al final
-\newenvironment{solucion}[1][SoluciÛn]{\begin{proof}[#1]}{\end{proof}}
+\newenvironment{solucion}[1][Soluci√≥n]{\begin{proof}[#1]}{\end{proof}}
 
 \theoremstyle{remark}
 %\newtheorem{observacion}{Observaci\'on}[section]
@@ -251,7 +270,7 @@
 %\newtheorem{corolario}[teorema]{Corolario}
 %\newtheorem{lema}[teorema]{Lema}
 
-% Estas no hacen falta, ya est·n traducidos correctamente en babel
+% Estas no hacen falta, ya est√°n traducidos correctamente en babel
 %\renewcommand{\abstractname}{Resumen}
 %\renewcommand{\partname }{Parte }
 %\renewcommand{\indexname}{Indice }
@@ -330,11 +349,11 @@
 %\newcommand{\bino}[2] {\ifm {{#1}\choose{#2}} {${#1}\choose{#2}$}}
 
 % Para tener hiperlinks, en el panel lateral y en la toc.
-\usepackage[pdftex,colorlinks]{hyperref}         
+\usepackage[pdftex,colorlinks]{hyperref}
 \hypersetup{%
 	linkcolor=black,
 	urlcolor=blue,
-	pdftitle={Algoritmos y ProgramaciÛn I - Aprendiendo a programar usando Python como herramienta},
+	pdftitle={Algoritmos y Programaci√≥n I - Aprendiendo a programar usando Python como herramienta},
 	bookmarksnumbered,
 }%
 \usepackage{hypcap}
@@ -343,13 +362,13 @@
 
 % Carat no esta.
 %\include{carat}
-\title{Algoritmos y ProgramaciÛn I \\ Aprendiendo a programar usando Python como herramienta}
+\title{Algoritmos y Programaci√≥n I \\ Aprendiendo a programar usando Python como herramienta}
 \date{}
 \maketitle
 
 \tableofcontents  %Comentar  para no imprimir la toc
 
-% Comando para configurar el n˙mero de capÌtulo
+% Comando para configurar el n√∫mero de cap√≠tulo
 % \setcounter{chapter}{17}
 
 \include{0_prologo}

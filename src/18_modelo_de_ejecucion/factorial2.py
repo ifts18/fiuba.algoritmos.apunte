@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def factorial(n):
     """ Precondición: n entero >=0
@@ -7,7 +7,7 @@ def factorial(n):
     if n == 0:
         resultado = 1
         return resultado
-    
+
     fact_ant = factorial(n-1)
     resultado = n * fact_ant
     return resultado

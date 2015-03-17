@@ -35,17 +35,12 @@ def busb1(xs, x):
     izq = 0
     der = len(xs)-1
     n=len(xs)
-    while izq < der: 
+    while izq < der:
         med = (izq+der)//2
-        if xs[med] < x: izq = med + 1 
+        if xs[med] < x: izq = med + 1
         else: der = med
 
     if (izq < n):
-	if (xs[izq] == x):
-        	return izq
-    return -1
-
-    
-    
-       
-
+        if (xs[izq] == x):
+                return izq
+    return -1

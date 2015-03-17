@@ -1,11 +1,11 @@
 % Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
 % Copyright (C) Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
+% Esta obra estÃ¡ licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
+%  * AtribuciÃ³n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -13,26 +13,26 @@
 % mencionados, o enviar una carta a Creative Commons,
 % 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
-\chapter{Más sobre ciclos}
+\chapter{MÃ¡s sobre ciclos}
 
-El último problema analizado en la unidad anterior decía:
+El Ãºltimo problema analizado en la unidad anterior decÃ­a:
 
 \begin{quote}
-Leer un número. Si el número es positivo escribir un mensaje
-``Numero positivo'', si el número es igual a 0 un mensaje ``Igual a
-0'', y si el número es negativo escribir un mensaje ``Numero
+Leer un nÃºmero. Si el nÃºmero es positivo escribir un mensaje
+``Numero positivo'', si el nÃºmero es igual a 0 un mensaje ``Igual a
+0'', y si el nÃºmero es negativo escribir un mensaje ``Numero
 negativo''.
 \end{quote}
 
-Se nos plantea a continuación un nuevo problema, similar al anterior:
+Se nos plantea a continuaciÃ³n un nuevo problema, similar al anterior:
 
-\problemac{El usuario debe poder ingresar muchos números y
+\problemac{El usuario debe poder ingresar muchos nÃºmeros y
 cada vez que se ingresa uno debemos informar si es positivo, cero o
 negativo.} \\
 
 Utilizando los ciclos definidos vistos en las primeras unidades, es posible
-preguntarle al usuario cada vez, al inicio del programa, cuántos números va a
-ingresar para consultar. La solución propuesta resulta:
+preguntarle al usuario cada vez, al inicio del programa, cuÃ¡ntos nÃºmeros va a
+ingresar para consultar. La soluciÃ³n propuesta resulta:
 
 \begin{codigo-python}
 def muchos_pcn():
@@ -47,7 +47,7 @@ def muchos_pcn():
             print "Numero negativo"
 \end{codigo-python}
 
-Su ejecución es exitosa:
+Su ejecuciÃ³n es exitosa:
 
 \begin{codigo-python-sn}
 >>> muchos_pcn()
@@ -62,54 +62,54 @@ Numero negativo
 \end{codigo-python-sn}
 
 Sin embargo al usuario considera que este programa no es muy intuitivo, porque
-lo obliga a contar de antemano cuántos números va a querer procesar, sin
-equivocarse, en lugar de ingresar uno a uno los números hasta procesarlos a
+lo obliga a contar de antemano cuÃ¡ntos nÃºmeros va a querer procesar, sin
+equivocarse, en lugar de ingresar uno a uno los nÃºmeros hasta procesarlos a
 todos.
 
 \section{Ciclos indefinidos}
 
-Para poder resolver este problema sin averiguar primero la cantidad de números
-a procesar, debemos introducir una instrucción que nos permita construir ciclos
+Para poder resolver este problema sin averiguar primero la cantidad de nÃºmeros
+a procesar, debemos introducir una instrucciÃ³n que nos permita construir ciclos
 que no requieran que se informe de antemano la cantidad de veces que se
-repetirá el cálculo del cuerpo.  Se trata de {\it ciclos indefinidos} en los
-cuales se repite el cálculo del cuerpo mientras una cierta condición es
+repetirÃ¡ el cÃ¡lculo del cuerpo.  Se trata de {\it ciclos indefinidos} en los
+cuales se repite el cÃ¡lculo del cuerpo mientras una cierta condiciÃ³n es
 verdadera.
 
 Un ciclo indefinido es de la forma
 
 \begin{codigo-python-sn}
-while <condición>:
+while <condiciÃ³n>:
     <hacer algo>
 \end{codigo-python-sn}
 
-Donde \lstinline+while+ es una palabra reservada, la condición es una expresión
+Donde \lstinline+while+ es una palabra reservada, la condiciÃ³n es una expresiÃ³n
 booleana, igual que en las instrucciones \lstinline!if!.  Y el cuerpo es, como
-siempre, una o más instrucciones de Python.
+siempre, una o mÃ¡s instrucciones de Python.
 
-El sentido de esta instrucción es el siguiente:
+El sentido de esta instrucciÃ³n es el siguiente:
 
 \begin{enumerate}
-\item Evaluar la condición.
-\item Si la condición es falsa, salir del ciclo.
-\item Si la condición es verdadera, ejecutar el cuerpo.
+\item Evaluar la condiciÃ³n.
+\item Si la condiciÃ³n es falsa, salir del ciclo.
+\item Si la condiciÃ³n es verdadera, ejecutar el cuerpo.
 \item Volver a 1.
 \end{enumerate}
 
 \section{Ciclo interactivo}
 
-¿Cuál es la condición y cuál es el cuerpo del ciclo en nuestro problema?
-Claramente, el cuerpo del ciclo es el ingreso de datos y la verificación de si
-es positivo, negativo o cero.  En cuanto a la condición, es que haya más datos
+Â¿CuÃ¡l es la condiciÃ³n y cuÃ¡l es el cuerpo del ciclo en nuestro problema?
+Claramente, el cuerpo del ciclo es el ingreso de datos y la verificaciÃ³n de si
+es positivo, negativo o cero.  En cuanto a la condiciÃ³n, es que haya mÃ¡s datos
 para seguir calculando.
 
-Definimos una variable \lstinline!hayMasDatos!, que valdrá ``Si'' mientras
+Definimos una variable \lstinline!hayMasDatos!, que valdrÃ¡ ``Si'' mientras
 haya datos.
 
-Se le debe preguntar al usuario, después de cada cálculo, si hay o no más datos.
+Se le debe preguntar al usuario, despuÃ©s de cada cÃ¡lculo, si hay o no mÃ¡s datos.
 Cuando el usuario deje de responder ``Si'', dejaremos de ejecutar el cuerpo del
 ciclo.
 
-Una primera aproximación al código necesario para resolver este problema podría
+Una primera aproximaciÃ³n al cÃ³digo necesario para resolver este problema podrÃ­a
 ser:
 
 \begin{codigo-python}
@@ -123,10 +123,10 @@ def pcn_loop():
         else:
             print "Numero negativo"
 
-        hayMasDatos = raw_input("¿Quiere seguir? <Si-No>: ")
+        hayMasDatos = raw_input("Â¿Quiere seguir? <Si-No>: ")
 \end{codigo-python}
 
-Veamos qué pasa si ejecutamos la función tal como fue presentada:
+Veamos quÃ© pasa si ejecutamos la funciÃ³n tal como fue presentada:
 
 \begin{codigo-python-sn}
 >>> pcn_loop()
@@ -140,22 +140,22 @@ UnboundLocalError: local variable 'hayMasDatos' referenced before assignment
 >>>
 \end{codigo-python-sn}
 
-El problema que se presentó en este caso, es que \lstinline!hayMasDatos! no
-tiene un valor asignado en el momento de evaluar la condición del ciclo por
+El problema que se presentÃ³ en este caso, es que \lstinline!hayMasDatos! no
+tiene un valor asignado en el momento de evaluar la condiciÃ³n del ciclo por
 primera vez.
 
 \begin{observacion}
-Es importante prestar atención a cuáles son las variables que hay que
-inicializar antes de ejecutar un ciclo: al menos tiene que tener algún valor la
-expresión booleana que lo controla.
+Es importante prestar atenciÃ³n a cuÃ¡les son las variables que hay que
+inicializar antes de ejecutar un ciclo: al menos tiene que tener algÃºn valor la
+expresiÃ³n booleana que lo controla.
 \end{observacion}
 
-Una posibilidad es preguntarle al usario, antes de evaluar la condición, si
-tiene datos; otra posibilidad es suponer que si llamó a este programa es porque
-tenía algún dato para calcular, y darle el valor inicial ``Si'' a
+Una posibilidad es preguntarle al usario, antes de evaluar la condiciÃ³n, si
+tiene datos; otra posibilidad es suponer que si llamÃ³ a este programa es porque
+tenÃ­a algÃºn dato para calcular, y darle el valor inicial ``Si'' a
 \lstinline!hayMasDatos!.
 
-Acá encararemos la segunda posibilidad:
+AcÃ¡ encararemos la segunda posibilidad:
 
 \begin{codigo-python}
 def pcn_loop():
@@ -179,14 +179,14 @@ El esquema del ciclo interactivo es el siguiente:
 
 \begin{itemize}
 \item Pedir datos.
-\item Realizar cálculos.
-\item Preguntar al usuario si hay más datos (``Si'' cuando los hay).
+\item Realizar cÃ¡lculos.
+\item Preguntar al usuario si hay mÃ¡s datos (``Si'' cuando los hay).
 \lstinline!hayMasDatos! hace referencia al valor ingresado.
 \end{itemize}
 
 \end{itemize}
 
-Ésta es una ejecución:
+Ã‰sta es una ejecuciÃ³n:
 
 \begin{codigo-python-sn}
 >>> pcn_loop()
@@ -202,14 +202,14 @@ Quiere seguir? <Si-No>: "No"
 >>>
 \end{codigo-python-sn}
 
-\section{Ciclo con centinela} 
+\section{Ciclo con centinela}
 \label{centinela}
 
-Un problema que tiene nuestra primera solución es que resulta poco amigable
-preguntarle al usuario después de cada cálculo si desea continuar. Se puede
-usar el método del {\it centinela}: un valor distinguido que, si se lee, le
+Un problema que tiene nuestra primera soluciÃ³n es que resulta poco amigable
+preguntarle al usuario despuÃ©s de cada cÃ¡lculo si desea continuar. Se puede
+usar el mÃ©todo del {\it centinela}: un valor distinguido que, si se lee, le
 indica al programa que el usuario desea salir del ciclo. En este caso,
-podemos suponer que si ingresa el caracter \lstinline!*! es una indicación
+podemos suponer que si ingresa el caracter \lstinline!*! es una indicaciÃ³n
 de que desea terminar.
 
 El esquema del ciclo con centinela es el siguiente:
@@ -218,7 +218,7 @@ El esquema del ciclo con centinela es el siguiente:
 \item Pedir datos.
 \item Mientras el dato pedido no coincida con el centinela:
 \begin{itemize}
-\item Realizar cálculos.
+\item Realizar cÃ¡lculos.
 \item Pedir datos.
 \end{itemize}
 \end{itemize}
@@ -226,7 +226,7 @@ El esquema del ciclo con centinela es el siguiente:
 En nuestro caso, pedir datos corresponde a lo siguiente:
 
 \begin{itemize}
-\item Pedir número.
+\item Pedir nÃºmero.
 \end{itemize}
 
 El programa resultante es el siguiente:
@@ -260,25 +260,25 @@ Ingrese un numero ('*' para terminar): '*'
 >>>
 \end{codigo-python-sn}
 
-\section{Cómo romper un ciclo}
+\section{CÃ³mo romper un ciclo}
 
 El ciclo con centinela es muy claro pero tiene un problema: hay dos lugares
-(la primera línea del cuerpo y la última línea del ciclo) donde se ingresa
-el mismo dato. Si en la etapa de mantenimiento tuviéramos que realizar un
-cambio en el ingreso del dato (cambio de mensaje, por ejemplo) deberíamos
+(la primera lÃ­nea del cuerpo y la Ãºltima lÃ­nea del ciclo) donde se ingresa
+el mismo dato. Si en la etapa de mantenimiento tuviÃ©ramos que realizar un
+cambio en el ingreso del dato (cambio de mensaje, por ejemplo) deberÃ­amos
 estar atentos y hacer dos correcciones iguales.
 
-Sería preferible poder leer el dato \lstinline!x! en un único punto del
-programa.  A continuación, tratamos de diseñar una solución con esa
-restricción.
+SerÃ­a preferible poder leer el dato \lstinline!x! en un Ãºnico punto del
+programa.  A continuaciÃ³n, tratamos de diseÃ±ar una soluciÃ³n con esa
+restricciÃ³n.
 
 Es claro que en ese caso la lectura tiene que estar dentro del ciclo para
-poder leer más de un número, pero entonces la condición del ciclo no puede
-depender del valor leído, ni tampoco de valores calculados dentro del
+poder leer mÃ¡s de un nÃºmero, pero entonces la condiciÃ³n del ciclo no puede
+depender del valor leÃ­do, ni tampoco de valores calculados dentro del
 ciclo.
 
-Pero un ciclo que no puede depender de valores leídos o calculados dentro
-de él será de la forma:
+Pero un ciclo que no puede depender de valores leÃ­dos o calculados dentro
+de Ã©l serÃ¡ de la forma:
 
 \begin{itemize}
 \item Repetir indefinidamente:
@@ -294,15 +294,15 @@ while True:
     <hacer algo>
 \end{codigo-python-sn}
 
-Un ciclo cuya condición es \lstinline!True! parece ser un ciclo infinito (o
-sea que nunca va a terminar). ¡Pero eso es gravísimo! ¡Nuestros programas
+Un ciclo cuya condiciÃ³n es \lstinline!True! parece ser un ciclo infinito (o
+sea que nunca va a terminar). Â¡Pero eso es gravÃ­simo! Â¡Nuestros programas
 tienen que terminar!
 
-Afortunadamente hay una instrucción de Python, \lstinline!break!, que nos
+Afortunadamente hay una instrucciÃ³n de Python, \lstinline!break!, que nos
 permite salir de adentro de un ciclo (tanto sea \lstinline!for! como
-\lstinline!while!) en medio de su ejecución.
+\lstinline!while!) en medio de su ejecuciÃ³n.
 
-En esta construcción
+En esta construcciÃ³n
 
 \begin{codigo-python-sn}
 while <condicion>:
@@ -315,14 +315,14 @@ while <condicion>:
 el sentido del \lstinline!break! es el siguiente:
 
 \begin{enumerate}
-\item Se evalúa {\it $<$condición$>$} y si es falsa se sale del ciclo.
+\item Se evalÃºa {\it $<$condiciÃ³n$>$} y si es falsa se sale del ciclo.
 \item Se ejecuta {\it $<$hacer algo$_1>$}.
-\item Se evalúa {\it $<$condif$>$} y si es verdadera se sale del ciclo (con \lstinline!break!).
+\item Se evalÃºa {\it $<$condif$>$} y si es verdadera se sale del ciclo (con \lstinline!break!).
 \item Se ejecuta {\it $<$hacer algo$_2>$}.
 \item Se vuelve al paso 1.
 \end{enumerate}
 
-Diseñamos entonces:
+DiseÃ±amos entonces:
 
 \begin{itemize}
 \item Repetir indefinidamente:
@@ -333,7 +333,7 @@ Diseñamos entonces:
 \end{itemize}
 \end{itemize}
 
-Codificamos en Python la solución al problema de los números usando ese
+Codificamos en Python la soluciÃ³n al problema de los nÃºmeros usando ese
 esquema:
 
 \begin{codigo-python}
@@ -365,19 +365,19 @@ Ingrese un numero ('*' para terminar): '*'
 \end{codigo-python-sn}
 
 \begin{sabias_que}
-Desde hace mucho tiempo los ciclos infinitos vienen trayéndoles dolores de
+Desde hace mucho tiempo los ciclos infinitos vienen trayÃ©ndoles dolores de
 cabeza a los programadores.  Cuando un programa deja de responder y se
 queda utilizando todo el procesador de la computadora, suele deberse a que
-el programa entró en un ciclo del que no puede salir.
+el programa entrÃ³ en un ciclo del que no puede salir.
 
 Estos ciclos pueden aparecer por una gran variedad de causas.  A
-continuación algunos ejemplos de ciclos de los que no se puede salir,
-siempre o para ciertos parámetros.  Queda como ejercicio encontrar el error
+continuaciÃ³n algunos ejemplos de ciclos de los que no se puede salir,
+siempre o para ciertos parÃ¡metros.  Queda como ejercicio encontrar el error
 en cada uno.
 
 \begin{codigo-python-sn}
 def menor_factor_primo(x):
-    """ Devuelve el menor factor primo del número x. """
+    """ Devuelve el menor factor primo del nÃºmero x. """
     n = 2
     while n <= x:
         if x % n == 0:
@@ -386,7 +386,7 @@ def menor_factor_primo(x):
 
 \begin{codigo-python-sn}
 def buscar_impar(x):
-    """ Divide el número recibido por 2 hasta que sea impar. """
+    """ Divide el nÃºmero recibido por 2 hasta que sea impar. """
     while x % 2 == 0:
         x = x / 2
     return x
@@ -409,14 +409,14 @@ problema usando
 \end{enumerate}
 }
 
-\ejercicioc{Mantenimiento del tarifador: al final del día se debe informar
-cuántas llamadas hubo y el total facturado. Hacerlo con todos los esquemas
+\ejercicioc{Mantenimiento del tarifador: al final del dÃ­a se debe informar
+cuÃ¡ntas llamadas hubo y el total facturado. Hacerlo con todos los esquemas
 anteriores.}
 
-\ejercicioc{Nos piden que escribamos una función que le pida al usuario que
-ingrese un número positivo. Si el usuario ingresa cualquier cosa que no sea
+\ejercicioc{Nos piden que escribamos una funciÃ³n que le pida al usuario que
+ingrese un nÃºmero positivo. Si el usuario ingresa cualquier cosa que no sea
 lo pedido se le debe informar de su error mediante un mensaje y volverle a
-pedir el número.
+pedir el nÃºmero.
 
 Resolver este problema usando
 
@@ -426,7 +426,7 @@ Resolver este problema usando
 \item Ciclo ``infinito'' que se rompe.
 \end{enumerate}
 
-¿Tendría sentido hacerlo con ciclo definido? Justificar.
+Â¿TendrÃ­a sentido hacerlo con ciclo definido? Justificar.
 }
 
 \newpage
@@ -434,33 +434,33 @@ Resolver este problema usando
 
 \begin{itemize}
 
-\item Además de los ciclos definidos, en los que se sabe cuáles son los
-posibles valores que tomará una determinada variable, existen los ciclos
-indefinidos, que se terminan cuando no se cumple una determinada condición.
+\item AdemÃ¡s de los ciclos definidos, en los que se sabe cuÃ¡les son los
+posibles valores que tomarÃ¡ una determinada variable, existen los ciclos
+indefinidos, que se terminan cuando no se cumple una determinada condiciÃ³n.
 
-\item La condición que termina el ciclo puede estar relacionada con una entrada
+\item La condiciÃ³n que termina el ciclo puede estar relacionada con una entrada
 de usuario o depender del procesamiento de los datos.
 
-\item Se utiliza el método del {\it centinela} cuando se quiere que un ciclo se
+\item Se utiliza el mÃ©todo del {\it centinela} cuando se quiere que un ciclo se
 repita hasta que el usuario indique que no quiere continuar.
 
-\item Además de la condición que hace que el ciclo se termine, es posible
-interrumpir su ejecución con código específico dentro del ciclo.
+\item AdemÃ¡s de la condiciÃ³n que hace que el ciclo se termine, es posible
+interrumpir su ejecuciÃ³n con cÃ³digo especÃ­fico dentro del ciclo.
 
 \end{itemize}
 
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!while <condicion>:!}
-Introduce un ciclo indefinido, que se termina cuando la condición sea falsa.
+Introduce un ciclo indefinido, que se termina cuando la condiciÃ³n sea falsa.
 \begin{codigo-python-sn}
-while <condición>:
-    # acciones a ejecutar mientras condición sea verdadera
+while <condiciÃ³n>:
+    # acciones a ejecutar mientras condiciÃ³n sea verdadera
 \end{codigo-python-sn}
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!break!}
-Interrumpe la ejecución del ciclo actual. Puede utilizarse tanto para ciclos
+Interrumpe la ejecuciÃ³n del ciclo actual. Puede utilizarse tanto para ciclos
 definidos como indefinidos.
 \end{sintaxis}
 
@@ -470,106 +470,106 @@ definidos como indefinidos.
 \section{Ejercicios}
 
 \ejercicio{Escribir un programa que reciba una a una las notas del usuario,
-preguntando a cada paso si desea ingresar más notas, e imprimiendo el
+preguntando a cada paso si desea ingresar mÃ¡s notas, e imprimiendo el
 promedio correspondiente.}
 
-\ejercicio{Escribir una función que reciba un número entero $k$ e imprima su 
-descomposición en factores primos.}
+\ejercicio{Escribir una funciÃ³n que reciba un nÃºmero entero $k$ e imprima su
+descomposiciÃ³n en factores primos.}
 
-\ejercicio{\bf Manejo de contraseñas}
+\ejercicio{\bf Manejo de contraseÃ±as}
 \begin{partes}
-    \item Escribir un programa que contenga una contraseña inventada, que le
-pregunte al usuario la contraseña, y no le permita continuar hasta que la
+    \item Escribir un programa que contenga una contraseÃ±a inventada, que le
+pregunte al usuario la contraseÃ±a, y no le permita continuar hasta que la
 haya ingresado correctamente.
     \item Modificar el programa anterior para que solamente permita una
 cantidad fija de intentos.
-    \item Modificar el programa anterior para que después de cada intento
-agregue una pausa cada vez mayor, utilizando la función \verb!sleep! del
-módulo \verb!time!.
-    \item Modificar el programa anterior para que sea una función que devuelva
-si el usuario ingresó o no la contraseña correctamente, mediante un valor
+    \item Modificar el programa anterior para que despuÃ©s de cada intento
+agregue una pausa cada vez mayor, utilizando la funciÃ³n \verb!sleep! del
+mÃ³dulo \verb!time!.
+    \item Modificar el programa anterior para que sea una funciÃ³n que devuelva
+si el usuario ingresÃ³ o no la contraseÃ±a correctamente, mediante un valor
 booleano (True o False).
 \end{partes}
 
 
-\ejercicio{Utilizando la función \verb!randrange! del módulo \verb!random!, 
-escribir un programa que obtenga un número aleatorio secreto, y luego
-permita al usuario ingresar números y le indique sin son menores o mayores
-que el número a adivinar, hasta que el usuario ingrese el número correcto.}
+\ejercicio{Utilizando la funciÃ³n \verb!randrange! del mÃ³dulo \verb!random!,
+escribir un programa que obtenga un nÃºmero aleatorio secreto, y luego
+permita al usuario ingresar nÃºmeros y le indique sin son menores o mayores
+que el nÃºmero a adivinar, hasta que el usuario ingrese el nÃºmero correcto.}
 
 
-\ejercicio{\bf Algoritmo de Euclides} 
+\ejercicio{\bf Algoritmo de Euclides}
 \begin{partes}
-    \item Implementar en python el algoritmo de Euclides para calcular el máximo
-común divisor de dos números $n$ y $m$, dado por los siguientes pasos.
+    \item Implementar en python el algoritmo de Euclides para calcular el mÃ¡ximo
+comÃºn divisor de dos nÃºmeros $n$ y $m$, dado por los siguientes pasos.
     \begin{enumerate}
         \item Teniendo $n$ y $m$, se obtiene $r$, el resto de la
-división entera de $m/n$.
+divisiÃ³n entera de $m/n$.
         \item Si $r$ es cero, $n$ es el mcd de los valores iniciales.
         \item Se reemplaza $m \leftarrow n$, $n \leftarrow r$, y se vuelve al
 primer paso.
     \end{enumerate}
     \item Hacer un seguimiento del algoritmo implementado para los siguientes
-pares de números: (15,9); (9,15); (10,8); (12,6).
+pares de nÃºmeros: (15,9); (9,15); (10,8); (12,6).
 \end{partes}
 
 \ejercicio{Potencias de dos.}
 \begin{partes}
-    \item Escribir una función \verb!es_potencia_de_dos! que reciba como parámetro
-un número natural, y devuelva \verb!True! si el número es una potencia de 2,
+    \item Escribir una funciÃ³n \verb!es_potencia_de_dos! que reciba como parÃ¡metro
+un nÃºmero natural, y devuelva \verb!True! si el nÃºmero es una potencia de 2,
 y \verb!False! en caso contrario.
-    \item Escribir una función que, dados dos números naturales pasados como
-parámetros, devuelva la suma de todas las potencias de 2 que hay en el
-rango formado por esos números (0 si no hay ninguna potencia de 2 entre los
-dos). Utilizar la función \verb!es_potencia_de_dos!, descripta en el
+    \item Escribir una funciÃ³n que, dados dos nÃºmeros naturales pasados como
+parÃ¡metros, devuelva la suma de todas las potencias de 2 que hay en el
+rango formado por esos nÃºmeros (0 si no hay ninguna potencia de 2 entre los
+dos). Utilizar la funciÃ³n \verb!es_potencia_de_dos!, descripta en el
 punto anterior.
 \end{partes}
 
 
-\ejercicio{\bf Números perfectos y números amigos}
+\ejercicio{\bf NÃºmeros perfectos y nÃºmeros amigos}
 \begin{partes}
-    \item Escribir una función que devuelva la suma de todos los divisores de
-un número $n$, sin incluirlo.
-    \item Usando la función anterior, escribir una función que imprima los
-primeros $m$ números tales que la suma de sus divisores sea igual a sí
-mismo (es decir los primeros $m$ números {\it perfectos}).
-    \item Usando la primera función, escribir una función que imprima las
-primeras $m$ parejas de números ($a$,$b$), tales que la suma de los
+    \item Escribir una funciÃ³n que devuelva la suma de todos los divisores de
+un nÃºmero $n$, sin incluirlo.
+    \item Usando la funciÃ³n anterior, escribir una funciÃ³n que imprima los
+primeros $m$ nÃºmeros tales que la suma de sus divisores sea igual a sÃ­
+mismo (es decir los primeros $m$ nÃºmeros {\it perfectos}).
+    \item Usando la primera funciÃ³n, escribir una funciÃ³n que imprima las
+primeras $m$ parejas de nÃºmeros ($a$,$b$), tales que la suma de los
 divisores de $a$ es igual a $b$ y la suma de los divisores de $b$ es igual
-a $a$ (es decir las primeras $m$ parejas de números {\it amigos}).
+a $a$ (es decir las primeras $m$ parejas de nÃºmeros {\it amigos}).
     \item Proponer optimizaciones a las funciones anteriores para disminuir el
-tiempo de ejecución.
+tiempo de ejecuciÃ³n.
 \end{partes}
 
-\ejercicio{Escribir un programa que le pida al usuario que ingrese una sucesión
-de números naturales (primero uno, luego otro, y así hasta que el
-usuario ingrese '-1' como condición de salida). Al final, el programa
-debe imprimir cuántos números fueron ingresados, la suma total de los
+\ejercicio{Escribir un programa que le pida al usuario que ingrese una sucesiÃ³n
+de nÃºmeros naturales (primero uno, luego otro, y asÃ­ hasta que el
+usuario ingrese '-1' como condiciÃ³n de salida). Al final, el programa
+debe imprimir cuÃ¡ntos nÃºmeros fueron ingresados, la suma total de los
 valores y el promedio.}
 
-\ejercicio{Escribir una función que reciba dos números como parámetros, y
-devuelva cuántos múltiplos del primero hay, que sean menores que el
+\ejercicio{Escribir una funciÃ³n que reciba dos nÃºmeros como parÃ¡metros, y
+devuelva cuÃ¡ntos mÃºltiplos del primero hay, que sean menores que el
 segundo.}
 \begin{partes}
-    \item Implementarla utilizando un ciclo \verb!for!, desde el primer número
+    \item Implementarla utilizando un ciclo \verb!for!, desde el primer nÃºmero
 hasta el segundo.
     \item Implementarla utilizando un ciclo \verb!while!, que multiplique el primer
-número hasta que sea mayor que el segundo. 
-    \item Comparar ambas implementaciones: ¿Cuál es más clara? ¿Cuál realiza menos
+nÃºmero hasta que sea mayor que el segundo.
+    \item Comparar ambas implementaciones: Â¿CuÃ¡l es mÃ¡s clara? Â¿CuÃ¡l realiza menos
 operaciones?
 \end{partes}
 
-\ejercicio{Escribir una función que reciba un número natural e imprima todos
-los números primos que hay hasta ese número.}
+\ejercicio{Escribir una funciÃ³n que reciba un nÃºmero natural e imprima todos
+los nÃºmeros primos que hay hasta ese nÃºmero.}
 
-\ejercicio{Escribir una función que reciba un dígito y un número natural, y
-decida numéricamente si el dígito se encuentra en la notación decimal
+\ejercicio{Escribir una funciÃ³n que reciba un dÃ­gito y un nÃºmero natural, y
+decida numÃ©ricamente si el dÃ­gito se encuentra en la notaciÃ³n decimal
 del segundo.}
 
-\ejercicio{Escribir una función que dada la cantidad de ejercicios de un examen, 
-y el porcentaje necesario de ejercicios bien resueltos necesario para aprobar 
-dicho examen, revise un grupo de examenes. Para ello, en cada paso debe preguntar 
+\ejercicio{Escribir una funciÃ³n que dada la cantidad de ejercicios de un examen,
+y el porcentaje necesario de ejercicios bien resueltos necesario para aprobar
+dicho examen, revise un grupo de examenes. Para ello, en cada paso debe preguntar
 la cantidad de ejercicios resueltos por el alumno, indicando con un valor centinela
-que no hay más examenes a revisar. Debe mostrar por pantalla el porcentaje
+que no hay mÃ¡s examenes a revisar. Debe mostrar por pantalla el porcentaje
 correspondiente a la cantidad de ejercicios resueltos respecto a la
-cantidad de ejercicios del examen y una leyenda que indique si aprobó o no.}
+cantidad de ejercicios del examen y una leyenda que indique si aprobÃ³ o no.}

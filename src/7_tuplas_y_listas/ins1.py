@@ -1,26 +1,26 @@
 #!/usr/bin/env python
-# encoding: latin1
-""" Módulo para inscribir alumnos al curso - versión 1 """
+# encoding: utf-8
+""" MÃ³dulo para inscribir alumnos al curso - versiÃ³n 1 """
 
-# Iniciamos la interacción con el usuario
+# Iniciamos la interacciÃ³n con el usuario
 print "Inscripcion en el curso 04 de 75.40"
 
-# Leemos el primer padrón
-padron=input("Ingresa un padrón (<=0 para terminar): ")
+# Leemos el primer padrÃ³n
+padron=input("Ingresa un padrÃ³n (<=0 para terminar): ")
 
 # Procesamos los padrones
 # Inicialmente no hay inscriptos
 ins = []
 while padron > 0:
-       # Si todavía no está, agregamos el padrón a la lista de inscriptos,
+       # Si todavÃ­a no estÃ¡, agregamos el padrÃ³n a la lista de inscriptos,
        if padron not in ins:
               ins.append(padron)
        # de lo contrario avisamos que ya figura
        else:
               print "Ya figura en la lista"
 
-       # Leemos otro padrón mas
-       padron=input("Ingresá un padrón (<=0 para terminar): ")
+       # Leemos otro padrÃ³n mas
+       padron=input("IngresÃ¡ un padrÃ³n (<=0 para terminar): ")
 
-# Mostramos el resultado       
+# Mostramos el resultado
 print "Esta es la lista de inscriptos: ", ins

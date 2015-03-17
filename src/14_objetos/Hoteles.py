@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 #validaciones de condiciones generales de los datos
 from validaciones import es_numero, es_cadena_no_vacia
@@ -7,10 +7,10 @@ from validaciones import es_numero, es_cadena_no_vacia
 class Hotel(object):
     """ Hotel: sus atributos son: nombre, ubicacion, puntaje y precio. """
 
-    def __init__(self, nombre = '*', ubicacion = '*', 
+    def __init__(self, nombre = '*', ubicacion = '*',
                  puntaje = 0, precio = float("inf")):
         """ nombre y ubicacion deben ser cadenas no vacías,
-            puntaje y precio son números.  
+            puntaje y precio son números.
             Si el precio es 0 se reemplaza por infinito. """
 
         if es_cadena_no_vacia (nombre):
@@ -23,7 +23,7 @@ class Hotel(object):
         else:
             raise TypeError ("La ubicación debe ser una cadena no vacía")
 
-        if es_numero(puntaje):    
+        if es_numero(puntaje):
             self.puntaje = puntaje
         else:
             raise TypeError ("El puntaje debe ser un número")
@@ -43,7 +43,7 @@ class Hotel(object):
                 str(self.precio)+ " pesos."
 
     def ratio(self):
-        """ Calcula la relación calidad-precio de un hotel de acuerdo 
+        """ Calcula la relación calidad-precio de un hotel de acuerdo
             a la fórmula que nos dio el cliente. """
         return ((self.puntaje**2)*10.)/self.precio
 
@@ -93,4 +93,3 @@ class Hotel(object):
 #        else:
 #            return 1
 #
-

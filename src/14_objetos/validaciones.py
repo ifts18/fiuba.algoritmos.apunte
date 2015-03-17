@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 """ Módulo para realizar validaciones. """
 
 def es_numero(valor):
-    """ Indica si un valor es numérico o no. """ 
+    """ Indica si un valor es numérico o no. """
     return isinstance(valor, (int, float, long, complex) )
 
 def es_cadena_no_vacia(valor):

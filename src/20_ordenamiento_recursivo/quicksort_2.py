@@ -1,8 +1,8 @@
 #/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def qsort(lista):
-    """ Otra implementación de quicksort. """
+    """ Otra implementaciÃ³n de quicksort. """
     def _qsort(lista, inicio, fin):
         if inicio >= fin:
             return

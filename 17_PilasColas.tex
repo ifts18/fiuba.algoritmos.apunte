@@ -1,11 +1,11 @@
 % Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
 %               Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -15,75 +15,75 @@
 
 \chapter{Pilas y colas}
 
-En esta unidad veremos dos ejemplos de tipos abstractos de datos, de los m·s
-cl·sicos: {\it pilas} y {\it colas}.
+En esta unidad veremos dos ejemplos de tipos abstractos de datos, de los m√°s
+cl√°sicos: {\it pilas} y {\it colas}.
 
 \section{Pilas}
 
-Una {\it pila} es un TAD que tiene las siguientes operaciones (se describe tambiÈn la acciÛn que
-lleva adelante cada operaciÛn):
+Una {\it pila} es un TAD que tiene las siguientes operaciones (se describe tambi√©n la acci√≥n que
+lleva adelante cada operaci√≥n):
 
 \begin{itemize}
-\item \lstinline+__init__+: Inicializa una pila nueva, vacÌa.
+\item \lstinline+__init__+: Inicializa una pila nueva, vac√≠a.
 
 \item \lstinline!apilar!: Agrega un nuevo elemento a la pila.
 
 \item \lstinline!desapilar!: Elimina el tope de la pila y lo devuelve.
-El elemento que se devuelve es siempre el ˙ltimo que se agregÛ.
+El elemento que se devuelve es siempre el √∫ltimo que se agreg√≥.
 
 \item \lstinline!es_vacia!: Devuelve \lstinline!True! o \lstinline!False!
-seg˙n si la pila est· vacÌa o no.
+seg√∫n si la pila est√° vac√≠a o no.
 
 \end{itemize}
 
 El comportamiento de una pila se puede describir mediante la frase
-``Lo ˙ltimo que se apilÛ es lo primero que se usa'', que es exactamente lo que
-uno hace con una pila (de platos por ejemplo): en una pila de platos uno sÛlo
-puede ver la apariencia completa del plato de arriba, y sÛlo puede tomar el
-plato de arriba (si se intenta tomar un plato del medio de la pila lo m·s
-probable es que alguno de sus vecinos, o Èl mismo, se arruine).
+``Lo √∫ltimo que se apil√≥ es lo primero que se usa'', que es exactamente lo que
+uno hace con una pila (de platos por ejemplo): en una pila de platos uno s√≥lo
+puede ver la apariencia completa del plato de arriba, y s√≥lo puede tomar el
+plato de arriba (si se intenta tomar un plato del medio de la pila lo m√°s
+probable es que alguno de sus vecinos, o √©l mismo, se arruine).
 
 Como ya se dijo, al crear un tipo abstracto de datos, es importante decidir
-cu·l ser· la representaciÛn a utilizar.  En el caso de la pila, si bien puede
-haber m·s de una representaciÛn, por ahora veremos la m·s sencilla:
+cu√°l ser√° la representaci√≥n a utilizar.  En el caso de la pila, si bien puede
+haber m√°s de una representaci√≥n, por ahora veremos la m√°s sencilla:
 representaremos una pila mediante una lista de Python.
 
 Sin embargo, para los que construyen programas que usan un TAD vale el
-siguiente llamado de atenciÛn:
+siguiente llamado de atenci√≥n:
 
 \begin{atencion}
-Al usar esa pila dentro de un programa, deberemos ignorar que se est·
-trabajando sobre una lista: solamente podremos usar los mÈtodos de pila.
+Al usar esa pila dentro de un programa, deberemos ignorar que se est√°
+trabajando sobre una lista: solamente podremos usar los m√©todos de pila.
 
-Si alguien viola este principio, y usa la representaciÛn dentro del
+Si alguien viola este principio, y usa la representaci√≥n dentro del
 programa usuario, termina por recibir el peor castigo imaginable para un/a
 programador/a: sus programas pueden dejar de funcionar el cualquier
 momento, tan pronto como quien produce del TAD decida cambiar, aunque sea
-sutilmente, dicha representaciÛn.
+sutilmente, dicha representaci√≥n.
 \end{atencion}
 
 \subsection{Pilas representadas por listas}
 
 Definiremos una clase \lstinline!Pila! con un atributo, \lstinline!items!,
-de tipo lista, que contendr· los elementos de la pila. El tope de la pila
-se encontrar· en la ˙ltima posiciÛn de la lista, y cada vez que se apile un
-nuevo elemento, se lo agregar· al final.
+de tipo lista, que contendr√° los elementos de la pila. El tope de la pila
+se encontrar√° en la √∫ltima posici√≥n de la lista, y cada vez que se apile un
+nuevo elemento, se lo agregar√° al final.
 
-El mÈtodo \lstinline+__init__+ no recibir· par·metros adicionales, ya que
-deber· crear una pila vacÌa (que representaremos por una lista vacÌa):
+El m√©todo \lstinline+__init__+ no recibir√° par√°metros adicionales, ya que
+deber√° crear una pila vac√≠a (que representaremos por una lista vac√≠a):
 
 \begin{codigo-python-sn}
 class Pila:
     """ Representa una pila con operaciones de apilar, desapilar y
-        verificar si est· vacÌa. """
+        verificar si est√° vac√≠a. """
 
     def __init__(self):
-        """ Crea una pila vacÌa. """
-        # La pila vacÌa se representa con una lista vacÌa
+        """ Crea una pila vac√≠a. """
+        # La pila vac√≠a se representa con una lista vac√≠a
         self.items=[]
 \end{codigo-python-sn}
 
-El mÈtodo \lstinline!apilar! se implementar· agregando el nuevo elemento al
+El m√©todo \lstinline!apilar! se implementar√° agregando el nuevo elemento al
 final de la lista:
 
 \begin{codigo-python-sn}
@@ -93,34 +93,34 @@ final de la lista:
         self.items.append(x)
 \end{codigo-python-sn}
 
-Para implementar \lstinline!desapilar!, se usar· el mÈtodo \lstinline!pop!
-de lista que hace exactamente lo requerido: elimina el ˙ltimo elemento de
-la lista y devuelve el valor del elemento eliminado. Si la lista est· vacÌa
-levanta una excepciÛn, haremos lo mismo, pero cambiaremos el tipo de
-excepciÛn, para no revelar la implementaciÛn.
+Para implementar \lstinline!desapilar!, se usar√° el m√©todo \lstinline!pop!
+de lista que hace exactamente lo requerido: elimina el √∫ltimo elemento de
+la lista y devuelve el valor del elemento eliminado. Si la lista est√° vac√≠a
+levanta una excepci√≥n, haremos lo mismo, pero cambiaremos el tipo de
+excepci√≥n, para no revelar la implementaci√≥n.
 
 \begin{codigo-python-sn}
     def desapilar(self):
-        """ Devuelve el elemento tope y lo elimina de la pila. 
-            Si la pila est· vacÌa levanta una excepciÛn. """
+        """ Devuelve el elemento tope y lo elimina de la pila.
+            Si la pila est√° vac√≠a levanta una excepci√≥n. """
         try:
             return self.items.pop()
         except IndexError:
-            raise ValueError("La pila est· vacÌa")
+            raise ValueError("La pila est√° vac√≠a")
 \end{codigo-python-sn}
 
 \begin{observacion}
-Utilizamos los mÈtodos \lstinline!append! y \lstinline!pop! de las listas de
-Python, porque sabemos que estos mÈtodos se ejecutan en tiempo constante.
+Utilizamos los m√©todos \lstinline!append! y \lstinline!pop! de las listas de
+Python, porque sabemos que estos m√©todos se ejecutan en tiempo constante.
 Queremos que el tiempo de apilar o desapilar de la pila no dependa de la
 cantidad de elementos contenidos.
 \end{observacion}
 
-Finalmente, el mÈtodo para indicar si se trata de una pila vacÌa.
+Finalmente, el m√©todo para indicar si se trata de una pila vac√≠a.
 
 \begin{codigo-python-sn}
     def es_vacia(self):
-        """ Devuelve True si la lista est· vacÌa, False si no. """
+        """ Devuelve True si la lista est√° vac√≠a, False si no. """
         return self.items == []
 \end{codigo-python-sn}
 
@@ -146,60 +146,60 @@ False
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "clasePila.py", line 24, in desapilar
-    raise ValueError("La pila est· vacÌa")
-ValueError: La pila est· vacÌa
+    raise ValueError("La pila est√° vac√≠a")
+ValueError: La pila est√° vac√≠a
 \end{codigo-python-sn}
 
-\subsection{Uso de pila: calculadora cientÌfica}
+\subsection{Uso de pila: calculadora cient√≠fica}
 
-La famosa calculadora port·til HP-35 (de 1972) popularizÛ la notaciÛn
-polaca inversa (o notaciÛn prefijo) para hacer c·lculos sin necesidad de
-usar parÈntesis. Esa notaciÛn, inventada por el lÛgico polaco Jan
+La famosa calculadora port√°til HP-35 (de 1972) populariz√≥ la notaci√≥n
+polaca inversa (o notaci√≥n prefijo) para hacer c√°lculos sin necesidad de
+usar par√©ntesis. Esa notaci√≥n, inventada por el l√≥gico polaco Jan
 Lukasiewicz en 1920, se basa en el principio de que un operador siempre se
-escribe a continuaciÛn de sus operandos. La operaciÛn $(5-3)+8$ se
-escribir· como \lstinline|5 3 - 8 +|, que se interpretar· como: ``restar 3
+escribe a continuaci√≥n de sus operandos. La operaci√≥n $(5-3)+8$ se
+escribir√° como \lstinline|5 3 - 8 +|, que se interpretar√° como: ``restar 3
 de 5, y al resultado sumarle 8''.
 
-Es posible implementar esta notaciÛn de manera sencilla usando una pila de
+Es posible implementar esta notaci√≥n de manera sencilla usando una pila de
 la siguiente manera, a partir de una cadena de entrada de valores separados
 por blancos:
 
 \begin{itemize}
-\item Mientras se lean n˙meros, se apilan.
+\item Mientras se lean n√∫meros, se apilan.
 
-\item En el momento en el que se detecta una operaciÛn binaria \verb|+|,
-\verb|-|, \verb|*|, \verb|/| o \verb|%| se desapilan los dos ˙ltimos
-n˙meros apilados, se ejecuta la operaciÛn indicada, y el resultado de esa
-operaciÛn se apila.
+\item En el momento en el que se detecta una operaci√≥n binaria \verb|+|,
+\verb|-|, \verb|*|, \verb|/| o \verb|%| se desapilan los dos √∫ltimos
+n√∫meros apilados, se ejecuta la operaci√≥n indicada, y el resultado de esa
+operaci√≥n se apila.
 
-\item Si la expresiÛn est· bien formada, tiene que quedar al final un ˙nico
-n˙mero en la pila (el resultado).
+\item Si la expresi√≥n est√° bien formada, tiene que quedar al final un √∫nico
+n√∫mero en la pila (el resultado).
 
-\item Los posibles errores son: 
+\item Los posibles errores son:
 
 \begin{itemize}
-\item Queda m·s de un n˙mero al final (por ejemplo si la cadena de entrada
-fue \verb|"5 3"|), 
+\item Queda m√°s de un n√∫mero al final (por ejemplo si la cadena de entrada
+fue \verb|"5 3"|),
 
-\item Ingresa alg˙n caracter que no se puede interpretar ni como n˙mero ni como
-una de las cinco operaciones v·lidas (por ejemplo si la cadena de entrada
+\item Ingresa alg√∫n caracter que no se puede interpretar ni como n√∫mero ni como
+una de las cinco operaciones v√°lidas (por ejemplo si la cadena de entrada
 fue \verb|"5 3 &"|)
 
-\item No hay suficientes operandos para realizar la operaciÛn (por ejemplo
+\item No hay suficientes operandos para realizar la operaci√≥n (por ejemplo
 si la cadena de entrada fue \verb|"5 3 - +"|).
 \end{itemize}
 \end{itemize}
 
-La siguiente es la estrategia de resoluciÛn:
+La siguiente es la estrategia de resoluci√≥n:
 
-Dada una cadena con la expresiÛn a evaluar, podemos separar sus componentes
-utilizando el mÈtodo \lstinline!split()!.  Recorreremos luego la lista de
-componentes realizando las acciones indicadas en el p·rrafo anterior,
-utilizando una pila auxiliar para operar. Si la expresiÛn est· bien formada
-devolveremos el resultado, de lo contrario levantaremos una excepciÛn
+Dada una cadena con la expresi√≥n a evaluar, podemos separar sus componentes
+utilizando el m√©todo \lstinline!split()!.  Recorreremos luego la lista de
+componentes realizando las acciones indicadas en el p√°rrafo anterior,
+utilizando una pila auxiliar para operar. Si la expresi√≥n est√° bien formada
+devolveremos el resultado, de lo contrario levantaremos una excepci√≥n
 (devolveremos \lstinline!None!).
 
-En el CÛdigo \ref{calculadora_polaca} est· la implementaciÛn de la
+En el C√≥digo \ref{calculadora_polaca} est√° la implementaci√≥n de la
 calculadora descripta.
 
 \begin{codigo}{\label{calculadora_polaca} calculadora\_polaca.py}{Una calculadora polaca inversa}
@@ -209,7 +209,7 @@ calculadora descripta.
 Veamos algunos casos de prueba:
 
 \begin{itemize}
-\item El caso de una expresiÛn que es sÛlo un n˙mero (es correcta):
+\item El caso de una expresi√≥n que es s√≥lo un n√∫mero (es correcta):
 
 \begin{codigo-python-sn}
 >>> calculadora_polaca.main()
@@ -257,7 +257,7 @@ Traceback (most recent call last):
 ValueError: Faltan operandos
 \end{codigo-python-sn}
 
-\item El caso de un operador inv·lido:
+\item El caso de un operador inv√°lido:
 
 \begin{codigo-python-sn}
 >>> calculadora_polaca.main()
@@ -272,8 +272,8 @@ Traceback (most recent call last):
   File "calculadora_polaca.py", line 64, in main
     print calculadora_polaca(elementos)
   File "calculadora_polaca.py", line 26, in calculadora_polaca
-    raise ValueError("Operando inv·lido")
-ValueError: Operando inv·lido
+    raise ValueError("Operando inv√°lido")
+ValueError: Operando inv√°lido
 \end{codigo-python-sn}
 
 \item \verb|4 % 5|
@@ -366,131 +366,131 @@ DEBUG: apila  99.0
 \end{itemize}
 
 \ejercicioc{Si se oprime la tecla <BACKSPACE> (o <$\leftarrow$>) del
-teclado, se borra el ˙ltimo caracter ingresado. Construir una funciÛn
+teclado, se borra el √∫ltimo caracter ingresado. Construir una funci√≥n
 \lstinline!visualizar! para modelar el tipeo de una cadena de caracteres
 desde un teclado:
 
-La funciÛn recibe una cadena de caracteres con todo lo que el usuario
-ingresÛ por teclado (incluyendo <BACKSPACE>  que se reconoce como
+La funci√≥n recibe una cadena de caracteres con todo lo que el usuario
+ingres√≥ por teclado (incluyendo <BACKSPACE>  que se reconoce como
 \lstinline|\b|), y devuelve el texto tal como debe presentarse (por
 ejemplo, \lstinline|visualizar("Holas\b chau")| debe devolver 'Hola chau').
 
-AtenciÛn, que muchas veces la gente aprieta de m·s la tecla de <BACKSPACE>,
-y no por eso hay que cancelar la ejecuciÛn de toda la funciÛn.  
+Atenci√≥n, que muchas veces la gente aprieta de m√°s la tecla de <BACKSPACE>,
+y no por eso hay que cancelar la ejecuci√≥n de toda la funci√≥n.
 }
 
-\subsection{øCu·nto cuestan los mÈtodos?}
+\subsection{¬øCu√°nto cuestan los m√©todos?}
 
-Al elegir de una representaciÛn debemos tener en cuenta cu·nto nos costar·n
-los mÈtodos implementados. En nuestro caso, el tope de la pila se encuentra
-en la ˙ltima posiciÛn de la lista, y cada vez que se apila un nuevo
-elemento, se lo agregar· al final.
+Al elegir de una representaci√≥n debemos tener en cuenta cu√°nto nos costar√°n
+los m√©todos implementados. En nuestro caso, el tope de la pila se encuentra
+en la √∫ltima posici√≥n de la lista, y cada vez que se apila un nuevo
+elemento, se lo agregar√° al final.
 
-Por lo tanto se puede implementar el mÈtodo \lstinline!apilar! mediante un
+Por lo tanto se puede implementar el m√©todo \lstinline!apilar! mediante un
 \lstinline!append!  de la lista, {\it que se ejecuta en tiempo constante}.
-TambiÈn el mÈtodo \lstinline!desapilar!, que se implementa mediante
+Tambi√©n el m√©todo \lstinline!desapilar!, que se implementa mediante
 \lstinline!pop! de lista, {\it se ejecuta en tiempo constante}.
 
 Vemos que la alternativa que elegimos fue barata.
 
 Otra alternativa posible hubiera sido agregar el nuevo elemento en la
-posiciÛn $0$ de la lista, es decir implementar el mÈtodo \lstinline!apilar!
-mediante \lstinline|self.items.insert(0,x)| y el mÈtodo
+posici√≥n $0$ de la lista, es decir implementar el m√©todo \lstinline!apilar!
+mediante \lstinline|self.items.insert(0,x)| y el m√©todo
 \lstinline!desapilar! mediante \lstinline|del self.items[0]|. Sin embargo,
-Èsta no es una soluciÛn inteligente, ya que tanto insertar al comienzo de
+√©sta no es una soluci√≥n inteligente, ya que tanto insertar al comienzo de
 la lista como borrar al comienzo de la lista {\it consumen tiempo
 proporcional a la longitud de la lista}.
 
-\ejercicioc{DiseÒar un pequeÒo experimento para verificar que la
-implementaciÛn elegida es mucho mejor que la implementaciÛn con listas en
+\ejercicioc{Dise√±ar un peque√±o experimento para verificar que la
+implementaci√≥n elegida es mucho mejor que la implementaci√≥n con listas en
 la cual el elemento nuevo se inserta al principio de la lista}.
 
 \ejercicioc{Implementar pilas mediante listas enlazadas. Analizar el costo
-de los mÈtodos a utilizar.}
+de los m√©todos a utilizar.}
 
 \section{Colas}
-Todos sabemos lo que es una cola. M·s a˙n, °estamos hartos de hacer colas!
+Todos sabemos lo que es una cola. M√°s a√∫n, ¬°estamos hartos de hacer colas!
 
 El TAD {\it cola} modela precisamente ese comportamiento: el primero que llega
-es el primero en ser atendido, los dem·s se van {\it encolando} hasta que
+es el primero en ser atendido, los dem√°s se van {\it encolando} hasta que
 les toque su turno.
 
 Sus operaciones son:
 
 \begin{itemize}
 
-\item \lstinline+__init__+: Inicializa una cola nueva, vacÌa.
+\item \lstinline+__init__+: Inicializa una cola nueva, vac√≠a.
 
 \item \lstinline!encolar!: Agrega un nuevo elemento al final de la cola.
 
 \item \lstinline!desencolar!: Elimina el primero de la cola y lo devuelve.
 
 \item \lstinline!es_vacia!: Devuelve \lstinline!True! o
-\lstinline!False! seg˙n si la cola est· vacÌa o no.
+\lstinline!False! seg√∫n si la cola est√° vac√≠a o no.
 
 \end{itemize}
 
 \subsection{Colas implementadas sobre listas}
 
-Al momento de realizar una implementaciÛn de una Cola, deberemos
-preguntarnos øCÛmo representamos a las colas? Veamos, en primer lugar, si
+Al momento de realizar una implementaci√≥n de una Cola, deberemos
+preguntarnos ¬øC√≥mo representamos a las colas? Veamos, en primer lugar, si
 podemos implementar colas usando listas de Python, como hicimos con la Pila.
 
 Definiremos una clase {\tt Cola} con un atributo, {\tt items}, de tipo
-lista, que contendr· los elementos de la cola. El primero de la cola se
-encontrar· en la primera posiciÛn de la lista, y cada vez que encole un
-nuevo elemento, se lo agregar· al final.
+lista, que contendr√° los elementos de la cola. El primero de la cola se
+encontrar√° en la primera posici√≥n de la lista, y cada vez que encole un
+nuevo elemento, se lo agregar√° al final.
 
-El mÈtodo \lstinline+__init__+ no recibir· par·metros adicionales, ya que
-deber· crear una cola vacÌa (que representaremos por una lista vacÌa):
+El m√©todo \lstinline+__init__+ no recibir√° par√°metros adicionales, ya que
+deber√° crear una cola vac√≠a (que representaremos por una lista vac√≠a):
 
 \begin{codigo-python-sn}
 class Cola:
     """ Representa a una cola, con operaciones de encolar y
-        desencolar.  El primero en ser encolado es tambiÈn el primero
+        desencolar.  El primero en ser encolado es tambi√©n el primero
         en ser desencolado. """
-    
+
     def __init__(self):
-        """ Crea una cola vacÌa. """
-        # La cola vacÌa se representa por una lista vacÌa
+        """ Crea una cola vac√≠a. """
+        # La cola vac√≠a se representa por una lista vac√≠a
         self.items=[]
 \end{codigo-python-sn}
 
-El mÈtodo \lstinline!encolar! se implementar· agregando el nuevo elemento
+El m√©todo \lstinline!encolar! se implementar√° agregando el nuevo elemento
 al final de la lista:
 
 \begin{codigo-python-sn}
     def encolar(self, x):
-        """ Agrega el elemento x como ˙ltimo de la cola. """
+        """ Agrega el elemento x como √∫ltimo de la cola. """
         self.items.append(x)
 \end{codigo-python-sn}
 
-Para implementar \lstinline!desencolar!, se eliminar· el primer elemento de
-la lista y se devolver· el valor del elemento eliminado, utilizaremos
-nuevamente el mÈtodo \lstinline!pop!, pero en este caso le pasaremos la
-posiciÛn $0$, para que elimine el primer elemento, no el ˙ltimo. Si la cola
-est· vacÌa se levantar· una excepciÛn.
+Para implementar \lstinline!desencolar!, se eliminar√° el primer elemento de
+la lista y se devolver√° el valor del elemento eliminado, utilizaremos
+nuevamente el m√©todo \lstinline!pop!, pero en este caso le pasaremos la
+posici√≥n $0$, para que elimine el primer elemento, no el √∫ltimo. Si la cola
+est√° vac√≠a se levantar√° una excepci√≥n.
 
 \begin{codigo-python-sn}
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su 
-            valor. Si la cola est· vacÌa, levanta ValueError. """
+        """ Elimina el primer elemento de la cola y devuelve su
+            valor. Si la cola est√° vac√≠a, levanta ValueError. """
         try:
           return self.items.pop(0)
         except:
-          raise ValueError("La cola est· vacÌa")
+          raise ValueError("La cola est√° vac√≠a")
 \end{codigo-python-sn}
 
-Por ˙ltimo, el mÈtodo \lstinline!es_vacia!, que indicar· si la cola est·
-o no vacÌa.
+Por √∫ltimo, el m√©todo \lstinline!es_vacia!, que indicar√° si la cola est√°
+o no vac√≠a.
 
 \begin{codigo-python-sn}
     def es_vacia(self):
-        """ Devuelve True si la cola esta vacÌa, False si no."""
+        """ Devuelve True si la cola esta vac√≠a, False si no."""
         return self.items == []
 \end{codigo-python-sn}
 
-Veamos una ejecuciÛn de este cÛdigo:
+Veamos una ejecuci√≥n de este c√≥digo:
 
 \begin{codigo-python-sn}
 >>> from claseCola import Cola
@@ -517,33 +517,33 @@ True
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "claseCola.py", line 24, in desencolar
-    raise ValueError("La cola est· vacÌa")
-ValueError: La cola est· vacÌa
+    raise ValueError("La cola est√° vac√≠a")
+ValueError: La cola est√° vac√≠a
 \end{codigo-python-sn}
 
-øCu·nto cuesta esta implementaciÛn?  Dijimos en la secciÛn anterior que
+¬øCu√°nto cuesta esta implementaci√≥n?  Dijimos en la secci√≥n anterior que
 usar listas comunes para borrar elementos al principio da muy malos
 resultados. Como en este caso necesitamos agregar elementos por un extremo
-y quitar por el otro extremo, esta implementaciÛn ser· una buena
-alternativa sÛlo si nuestras listas son pequeÒas, ya que e medida que la
-cola crece, el mÈtodo \lstinline!desencolar! tardar· cada vez m·s.
+y quitar por el otro extremo, esta implementaci√≥n ser√° una buena
+alternativa s√≥lo si nuestras listas son peque√±as, ya que e medida que la
+cola crece, el m√©todo \lstinline!desencolar! tardar√° cada vez m√°s.
 
 Pero si queremos hacer que tanto el \lstinline!encolar! como el
 \lstinline!desencolar!  se ejecuten en tiempo constante, debemos apelar a
-otra implementaciÛn.
+otra implementaci√≥n.
 
 \subsection{Colas y listas enlazadas}
 
 En la unidad anterior vimos la clase \lstinline!ListaEnlazada!.
-La clase presentada ejecutaba la inserciÛn en la primera posiciÛn en
-tiempo constante, pero el \lstinline|append| se habÌa convertido en lineal.
+La clase presentada ejecutaba la inserci√≥n en la primera posici√≥n en
+tiempo constante, pero el \lstinline|append| se hab√≠a convertido en lineal.
 
 Sin embargo, como ejercicio, se propuso mejorar el \lstinline|append|,
-agregando un nuevo atributo que apunte al ˙ltimo nodo, de modo de poder
+agregando un nuevo atributo que apunte al √∫ltimo nodo, de modo de poder
 agregar elementos en tiempo constante.
 
 Si esas mejoras estuvieran hechas, cambiar nuestra clase \lstinline!Cola!
-para que utilice la \lstinline!ListaEnlazada! serÌa tan simple como cambiar
+para que utilice la \lstinline!ListaEnlazada! ser√≠a tan simple como cambiar
 el constructor, para que en lugar de construir una lista de Python
 construyera una lista enlazada.
 
@@ -551,31 +551,31 @@ construyera una lista enlazada.
 class Cola:
     """ Cola implementada sobre lista enlazada"""
     def __init__(self):
-        """ Crea una cola vacÌa. """
-        # La cola se representa por una lista enlazada vacÌa.
+        """ Crea una cola vac√≠a. """
+        # La cola se representa por una lista enlazada vac√≠a.
         self.items = claseListaEnlazadaConUlt.ListaEnlazada()
 \end{codigo-python-sn}
 
-Sin embargo, una \lstinline!Cola! es bastante m·s sencilla que una
-\lstinline!ListaEnlazadaConUlt!, por lo que tambiÈn podemos
-implementar una clase \lstinline!Cola! utilizando las tÈcnicas de referencias,
+Sin embargo, una \lstinline!Cola! es bastante m√°s sencilla que una
+\lstinline!ListaEnlazadaConUlt!, por lo que tambi√©n podemos
+implementar una clase \lstinline!Cola! utilizando las t√©cnicas de referencias,
 que se vieron en las {\it listas enlazadas}.
 
-Planteamos otra soluciÛn posible para obtener una cola que sea eficiente tanto al
+Planteamos otra soluci√≥n posible para obtener una cola que sea eficiente tanto al
 encolar como al desencolar, utilizando los nodos de las listas enlazadas,
 y solamente implementaremos insertar al final y remover al principio.
 
-Para ello, la cola deber· tener dos atributos, \lstinline!self.primero! y
-\lstinline!self.ultimo!, que en todo momento deber·n apuntar al primer y
-˙ltimo nodo de la cola, es decir que ser·n los invariantes de esta cola.
+Para ello, la cola deber√° tener dos atributos, \lstinline!self.primero! y
+\lstinline!self.ultimo!, que en todo momento deber√°n apuntar al primer y
+√∫ltimo nodo de la cola, es decir que ser√°n los invariantes de esta cola.
 
-En primer lugar los crearemos vacÌos, ambos referenciando a
+En primer lugar los crearemos vac√≠os, ambos referenciando a
 \lstinline!None!.
 
 \begin{codigo-python-sn}
     def __init__(self):
-        """ Crea una cola vacÌa. """
-        # En el primer momento, tanto el primero como el ˙ltimo son None
+        """ Crea una cola vac√≠a. """
+        # En el primer momento, tanto el primero como el √∫ltimo son None
         self.primero = None
         self.ultimo = None
 \end{codigo-python-sn}
@@ -583,68 +583,68 @@ En primer lugar los crearemos vacÌos, ambos referenciando a
 Al momento de encolar, hay dos situaciones a tener en cuenta:
 \begin{itemize}
 
-\item Si la cola est· vacÌa (es decir, \lstinline!self.ultimo! es
+\item Si la cola est√° vac√≠a (es decir, \lstinline!self.ultimo! es
 \lstinline!None!), tanto \lstinline!self.primero! como
 \lstinline!self.ultimo! deben pasar a referenciar al nuevo nodo, ya que
-este nodo ser· a la vez el primero y el ˙ltimo.
+este nodo ser√° a la vez el primero y el √∫ltimo.
 
-\item Si ya habÌa nodos en la cola, simplemente hay que agregar el nuevo a
-continuaciÛn del ˙ltimo y actualizar la referencia de
+\item Si ya hab√≠a nodos en la cola, simplemente hay que agregar el nuevo a
+continuaci√≥n del √∫ltimo y actualizar la referencia de
 \lstinline!self.ultimo!.
 
 \end{itemize}
 
-El cÛdigo resultante es el siguiente.
+El c√≥digo resultante es el siguiente.
 
 \begin{codigo-python-sn}
     def encolar(self, x):
-        """ Agrega el elemento x como ˙ltimo de la cola. """
+        """ Agrega el elemento x como √∫ltimo de la cola. """
         nuevo = Nodo(x)
-        # Si ya hay un ˙ltimo, agrega el nuevo y cambia la referencia.
+        # Si ya hay un √∫ltimo, agrega el nuevo y cambia la referencia.
         if self.ultimo:
             self.ultimo.prox = nuevo
             self.ultimo = nuevo
-        # Si la cola estaba vacÌa, el primero es tambiÈn el ˙ltimo.
+        # Si la cola estaba vac√≠a, el primero es tambi√©n el √∫ltimo.
         else:
             self.primero = nuevo
             self.ultimo = nuevo
 \end{codigo-python-sn}
 
-Al momento de desencolar, ser· necesario verificar que la cola no estÈ
-vacÌa, y de ser asÌ levantar una excepciÛn.  Si la cola no est· vacÌa,
+Al momento de desencolar, ser√° necesario verificar que la cola no est√©
+vac√≠a, y de ser as√≠ levantar una excepci√≥n.  Si la cola no est√° vac√≠a,
 se almacena el valor del primer nodo de la cola y luego se avanza la
 referencia \lstinline!self.primero! al siguiente elemento.
 
 Nuevamente hay un caso particular a tener en cuenta y es el que sucede
-cuando luego de eliminar el primer nodo de la cola, la cola queda vacÌa.
-En este caso, adem·s de actualizar la referencia de
-\lstinline!self.primero!, tambiÈn hay que actualizar la referencia de
+cuando luego de eliminar el primer nodo de la cola, la cola queda vac√≠a.
+En este caso, adem√°s de actualizar la referencia de
+\lstinline!self.primero!, tambi√©n hay que actualizar la referencia de
 \lstinline!self.ultimo!.
 
 \begin{codigo-python-sn}
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su 
-            valor. Si la cola est· vacÌa, levanta ValueError. """
+        """ Elimina el primer elemento de la cola y devuelve su
+            valor. Si la cola est√° vac√≠a, levanta ValueError. """
         # Si hay un nodo para desencolar
         if self.primero:
             valor = self.primero.dato
             self.primero = self.primero.prox
-            # Si despuÈs de avanzar no quedÛ nada, tambiÈn hay que
-            # eliminar la referencia del ˙ltimo.
+            # Si despu√©s de avanzar no qued√≥ nada, tambi√©n hay que
+            # eliminar la referencia del √∫ltimo.
             if not self.primero:
                 self.ultimo = None
             return valor
         else:
-            raise ValueError("La cola est· vacÌa")
+            raise ValueError("La cola est√° vac√≠a")
 \end{codigo-python-sn}
 
-Finalmente, para saber si la cola est· vacÌa, es posible verificar tanto si
+Finalmente, para saber si la cola est√° vac√≠a, es posible verificar tanto si
 \lstinline!self.primero! o \lstinline!self.ultimo! referencian a
 \lstinline!None!.
 
 \begin{codigo-python-sn}
     def es_vacia(self):
-        """ Devuelve True si la cola esta vacÌa, False si no."""
+        """ Devuelve True si la cola esta vac√≠a, False si no."""
         return self.items == []
 \end{codigo-python-sn}
 
@@ -665,28 +665,28 @@ False
 'Manzanas'
 >>> q.desencolar()
 'Peras'
->>> q.encolar("Guaran·")
+>>> q.encolar("Guaran√°")
 >>> q.desencolar()
 'Bananas'
 >>> q.desencolar()
-'Guaran·'
+'Guaran√°'
 >>> q.desencolar()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "claseColaEnlazada.py", line 42, in desencolar
-    raise ValueError("La cola est· vacÌa")
-ValueError: La cola est· vacÌa
+    raise ValueError("La cola est√° vac√≠a")
+ValueError: La cola est√° vac√≠a
 \end{codigo-python-sn}
 
-\ejercicioc{Este ejercicio surgiÛ (y lo hicieron ya muchas generaciones de alumnos),
+\ejercicioc{Este ejercicio surgi√≥ (y lo hicieron ya muchas generaciones de alumnos),
 haciendo cola:
 
-Hace un montÛn de aÒos habÌa una viejÌsma sucursal del correo en la vereda impar
-de Av. de Mayo al 800 que tenÌa un cartel que decÌa ``No se recibir·n m·s de 5 cartas por persona''.
-O sea que la gente entregaba sus cartas (hasta la cantidad permitida) y luego tenÌa que volver
-a hacer la cola si tenÌa m·s cartas para despachar.
+Hace un mont√≥n de a√±os hab√≠a una viej√≠sma sucursal del correo en la vereda impar
+de Av. de Mayo al 800 que ten√≠a un cartel que dec√≠a ``No se recibir√°n m√°s de 5 cartas por persona''.
+O sea que la gente entregaba sus cartas (hasta la cantidad permitida) y luego ten√≠a que volver
+a hacer la cola si ten√≠a m√°s cartas para despachar.
 
-Modelar una cola de correo generalizada, donde en la inicializaciÛn se indica la cantidad
+Modelar una cola de correo generalizada, donde en la inicializaci√≥n se indica la cantidad
 (no necesariamente 5) de cartas que se reciben por persona.}
 
 \section{Resumen}
@@ -694,20 +694,20 @@ Modelar una cola de correo generalizada, donde en la inicializaciÛn se indica la
 \begin{itemize}
 
 \item Una {\bf pila} es un tipo abstracto de datos que permite agregar
-elementos y sacarlos en el orden inverso al que se los colocÛ, de la misma
+elementos y sacarlos en el orden inverso al que se los coloc√≥, de la misma
 forma que una pila (de platos, libros, cartas, etc) en la vida real.
 
-\item Las pilas son ˙tiles en las situaciones en las que se desea operar
-primero con los ˙ltimos elementos agregados, como es el caso de la notaciÛn
-polaca inversa. 
+\item Las pilas son √∫tiles en las situaciones en las que se desea operar
+primero con los √∫ltimos elementos agregados, como es el caso de la notaci√≥n
+polaca inversa.
 
 \item Una {\bf cola} es un tipo abstracto de datos que permite agregar
-elementos y sacarlos en el mismo orden en que se los colocÛ, como una cola
-de atenciÛn en la vida real.
+elementos y sacarlos en el mismo orden en que se los coloc√≥, como una cola
+de atenci√≥n en la vida real.
 
-\item Las colas son ˙tiles en las situaciones en las que se desea operar
+\item Las colas son √∫tiles en las situaciones en las que se desea operar
 con los elementos en el orden en el que se los fue agregando, como es el
-caso de un cola de atenciÛn de clientes.
+caso de un cola de atenci√≥n de clientes.
 
 \end{itemize}
 
@@ -717,38 +717,38 @@ caso de un cola de atenciÛn de clientes.
 \ejercicio{
 Escribir una clase {\it TorreDeControl} que modele el trabajo de una torre
 de control de un aeropuerto, con una pista de aterrizaje.  La torre trabaja
-en dos etapas: {\it reconocimiento} y {\it acciÛn}.
+en dos etapas: {\it reconocimiento} y {\it acci√≥n}.
 }
 \begin{partes}
-    \item Escribir un mÈtodo \verb!reconocimiento!, que verifique si hay alg˙n
-nuevo aviÛn esperando para aterrizar y/o despegar, y de ser asÌ los encole
+    \item Escribir un m√©todo \verb!reconocimiento!, que verifique si hay alg√∫n
+nuevo avi√≥n esperando para aterrizar y/o despegar, y de ser as√≠ los encole
 en la cola correspondiente. Para ello, utilizar \verb!random.randrange(2)!.
-    \item Escribir un mÈtodo \verb!acciÛn!, que haga aterrizar o
-bien despegar, al primero de los aviones que estÈ esperando (los que
-esperan para aterrizar tienen prioridad). Debe desencolar el aviÛn de su
-cola y devolver la informaciÛn correspondiente.
-    \item Escribir un mÈtodo \verb!__str__! que imprima el estado actual de
+    \item Escribir un m√©todo \verb!acci√≥n!, que haga aterrizar o
+bien despegar, al primero de los aviones que est√© esperando (los que
+esperan para aterrizar tienen prioridad). Debe desencolar el avi√≥n de su
+cola y devolver la informaci√≥n correspondiente.
+    \item Escribir un m√©todo \verb!__str__! que imprima el estado actual de
 ambas colas.
     \item Escribir un programa que inicialice la torre de control, y luego llame
-continuamente a los mÈtodos \verb!reconocimiento! y \verb!acciÛn!,
-imprimiendo la acciÛn tomada y el estado de la torre de control cada vez.
+continuamente a los m√©todos \verb!reconocimiento! y \verb!acci√≥n!,
+imprimiendo la acci√≥n tomada y el estado de la torre de control cada vez.
 \end{partes}
 
 
-\ejercicio{AtenciÛn a los pacientes de un consultorio mÈdico, con varios doctores.}
+\ejercicio{Atenci√≥n a los pacientes de un consultorio m√©dico, con varios doctores.}
 \begin{partes}
-    \item Escribir una clase {\it ColaDePacientes}, con los mÈtodos {\it
+    \item Escribir una clase {\it ColaDePacientes}, con los m√©todos {\it
 nuevo\_paciente}, que reciba el nombre del paciente y lo encole, y un
-mÈtodo {\it proximo\_paciente} que devuelva el primer paciente en la cola y
+m√©todo {\it proximo\_paciente} que devuelva el primer paciente en la cola y
 lo desencole.
     \item Escribir una clase {\it Recepcion}, que contenga un diccionario con
-las colas correspondientes a cada doctor o doctora, y los mÈtodos {\it
+las colas correspondientes a cada doctor o doctora, y los m√©todos {\it
 nuevo\_paciente} que reciba el nombre del paciente y del especialista, y
 {\it proximo\_paciente} que reciba el nombre de la persona liberada y
-devuelva el prÛximo paciente en espera.
+devuelva el pr√≥ximo paciente en espera.
     \item Escribir un programa que permita al usuario ingresar nuevos pacientes
 o indicar que un consultorio se ha liberado y en ese caso imprima el
-prÛximo paciente en espera.
+pr√≥ximo paciente en espera.
 \end{partes}
 
 
@@ -756,28 +756,28 @@ prÛximo paciente en espera.
 \begin{partes}
     \item Crear una clase {\it Carta} que contenga un palo y un valor.
     \item Crear una clase {\it PilaDeCartas} que vaya apilando las cartas una
-debajo de otra, pero sÛlo permita apilarlas si son de un n˙mero
+debajo de otra, pero s√≥lo permita apilarlas si son de un n√∫mero
 inmediatamente inferior y de distinto palo. Si se intenta apilar una carta
-incorrecta, debe lanzar una excepciÛn.
-    \item Agregar el mÈtodo {\it \_\_str\_\_} a la clase PilaDeCartas, para
+incorrecta, debe lanzar una excepci√≥n.
+    \item Agregar el m√©todo {\it \_\_str\_\_} a la clase PilaDeCartas, para
 imprimir las cartas que se hayan apilado hasta el momento.
 \end{partes}
 
 \newpage
-\section{ApÈndice}
+\section{Ap√©ndice}
 
-A continuaciÛn el cÛdigo completo de la pila y las colas implementadas en
+A continuaci√≥n el c√≥digo completo de la pila y las colas implementadas en
 esta unidad.
 
-\begin{codigo}{clasePila.py}{ImplementaciÛn b·sica de una pila}
+\begin{codigo}{clasePila.py}{Implementaci√≥n b√°sica de una pila}
 \lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/clasePila.py}
 \end{codigo}
 
-\begin{codigo}{claseCola.py}{ImplementaciÛn b·sica de una cola}
+\begin{codigo}{claseCola.py}{Implementaci√≥n b√°sica de una cola}
 \lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/claseCola.py}
 \end{codigo}
 
-\begin{codigo}{claseColaEnlazada.py}{ImplementaciÛn de una cola enlazada}
+\begin{codigo}{claseColaEnlazada.py}{Implementaci√≥n de una cola enlazada}
 \lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/claseColaEnlazada.py}
 \end{codigo}
 

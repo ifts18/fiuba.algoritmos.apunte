@@ -1,27 +1,27 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 from clasePila import Pila
 
 def calculadora_polaca(elementos):
     """ Dada una lista de elementos que representan las componentes de
-        una expresión en notacion polaca inversa, evalúa dicha expresión.  
-        Si la expresion está mal formada, levanta ValueError. """
+        una expresiÃ³n en notacion polaca inversa, evalÃºa dicha expresiÃ³n.
+        Si la expresion estÃ¡ mal formada, levanta ValueError. """
 
     p = Pila()
     for elemento in elementos:
         print "DEBUG:", elemento
-        # Intenta convertirlo a número
+        # Intenta convertirlo a nÃºmero
         try:
             numero = float(elemento)
             p.apilar(numero)
             print "DEBUG: apila ", numero
-        # Si no se puede convertir a número, debería ser un operando
+        # Si no se puede convertir a nÃºmero, deberÃ­a ser un operando
         except ValueError:
-            # Si no es un operando válido, levanta ValueError
+            # Si no es un operando vÃ¡lido, levanta ValueError
             if elemento not in "+-*/%" or len(elemento) != 1:
-                raise ValueError("Operando inválido")
-            # Si es un operando válido, intenta desapilar y operar
+                raise ValueError("Operando invÃ¡lido")
+            # Si es un operando vÃ¡lido, intenta desapilar y operar
             try:
                 a1 = p.desapilar()
                 print "DEBUG: desapila ",a1
@@ -44,7 +44,7 @@ def calculadora_polaca(elementos):
                 resultado = a2 % a1
             print "DEBUG: apila ", resultado
             p.apilar(resultado)
-    # Al final, el resultado debe ser lo único en la Pila
+    # Al final, el resultado debe ser lo Ãºnico en la Pila
     res = p.desapilar()
     if p.esPilaVacia():
         return res

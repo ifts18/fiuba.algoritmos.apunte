@@ -1,13 +1,13 @@
 #! /usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
-# El mÛdulo datetime se utiliza para obtener la fecha y hora actual.
+# El m√≥dulo datetime se utiliza para obtener la fecha y hora actual.
 import datetime
 
 def abrir_log(nombre_log):
     """ Abre el archivo de log indicado. Devuelve el archivo abierto.
-    Pre: el nombre corresponde a un nombre de archivo v·lido.
-    Post: el archivo ha sido abierto posicion·ndose al final. """
+    Pre: el nombre corresponde a un nombre de archivo v√°lido.
+    Post: el archivo ha sido abierto posicion√°ndose al final. """
     archivo_log = open(nombre_log, "a")
     guardar_log(archivo_log, "Iniciando registro de errores")
     return archivo_log

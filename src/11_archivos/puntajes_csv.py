@@ -1,13 +1,13 @@
 #! /usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
 import csv
 
 def guardar_puntajes(nombre_archivo, puntajes):
     """ Guarda la lista de puntajes en el archivo.
-    Pre: nombre_archivo corresponde a un archivo v·lido,
+    Pre: nombre_archivo corresponde a un archivo v√°lido,
          puntajes corresponde a una lista de secuencias de elementos.
-    Post: se guardaron los valores en el archivo, 
+    Post: se guardaron los valores en el archivo,
           separados por comas.
     """
 
@@ -19,16 +19,16 @@ def guardar_puntajes(nombre_archivo, puntajes):
 def recuperar_puntajes(nombre_archivo):
     """ Recupera los puntajes a partir del archivo provisto.
         Devuelve una lista con los valores de los puntajes.
-    Pre: el archivo contiene los puntajes en el formato esperado, 
+    Pre: el archivo contiene los puntajes en el formato esperado,
          separados por comas
     Post: la lista devuelta contiene los puntajes en el formato:
-          [(nombre1,puntaje1,tiempo1),(nombre2,puntaje2,tiempo2)]. 
+          [(nombre1,puntaje1,tiempo1),(nombre2,puntaje2,tiempo2)].
     """
 
     puntajes = []
     archivo = open(nombre_archivo, "r")
     archivo_csv = csv.reader(archivo)
     for nombre, puntaje, tiempo in archivo_csv:
-    	puntajes.append((nombre, int(puntaje), tiempo))
+        puntajes.append((nombre, int(puntaje), tiempo))
     archivo.close()
     return puntajes

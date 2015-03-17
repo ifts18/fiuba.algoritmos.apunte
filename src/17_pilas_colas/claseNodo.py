@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 class Nodo(object):
     """ Un nodo para formar una lista enlazada. """

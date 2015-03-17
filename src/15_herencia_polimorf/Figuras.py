@@ -1,32 +1,32 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 from math import pi
 
 class Figura(object):
     """ Una figura en el plano. """
     def area(self):
-        " Este método debe ser redefinido. "
+        " Este mÃ©todo debe ser redefinido. "
         pass
 
 class Circulo(Figura):
-    """ Un círculo en el plano. """
+    """ Un cÃ­rculo en el plano. """
     def __init__(self, radio=0):
-        " Constructor de círculo. "
+        " Constructor de cÃ­rculo. "
         self.radio = radio
 
     def area(self):
-        " Devuelve el área del círculo. "
+        " Devuelve el Ã¡rea del cÃ­rculo. "
         return pi * self.radio * self.radio
 
 class Triangulo(Figura):
-    """ Un triángulo en el plano. """
+    """ Un triÃ¡ngulo en el plano. """
     def __init__(self, base=0, altura=0):
-        " Constructor de triángulo. "
+        " Constructor de triÃ¡ngulo. "
         self.base = base
         self.altura = altura
 
     def area(self):
-        " Devuelve el área del triángulo. "
+        " Devuelve el Ã¡rea del triÃ¡ngulo. "
         return self.base * self.altura / 2.
 

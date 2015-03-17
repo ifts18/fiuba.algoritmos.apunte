@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
 import pickle
 
@@ -32,14 +32,14 @@ def buscar(nombre, apellido, datos):
 	return None
 
 def menu_alta(nombre, apellido, datos):
-	""" Pregunta si se desea ingresar un nombre y apellido y 
-        de ser así, pide los datos al usuario. """
+	""" Pregunta si se desea ingresar un nombre y apellido y
+        de ser asÃ­, pide los datos al usuario. """
 	print "No se encuentra %s %s en la agenda." % (nombre, apellido)
-	confirmacion = raw_input("¿Desea ingresarlo? (s/n) ")
+	confirmacion = raw_input("Â¿Desea ingresarlo? (s/n) ")
 	if confirmacion.lower() != "s":
 		return
 	telefono = raw_input("Telefono: ")
-	cumple = raw_input("Cumpleaños: ")
+	cumple = raw_input("CumpleaÃ±os: ")
 	datos.append([nombre,apellido,telefono,cumple])
 
 def mostrar_elemento(elemento):
@@ -47,11 +47,11 @@ def mostrar_elemento(elemento):
 	print
 	print "%s %s" % (elemento[0],elemento[1])
 	print "Telefono: %s" % elemento[2]
-	print "Cumpleaños: %s" % elemento[3]
+	print "CumpleaÃ±os: %s" % elemento[3]
 	print
 
 def menu_elemento():
-	""" Muestra por pantalla las opciones disponibles para un elemento 
+	""" Muestra por pantalla las opciones disponibles para un elemento
 	    existente. """
 	o = raw_input("b: borrar, m: modificar, ENTER para continuar (b/m): ")
 	return o.lower()
@@ -65,8 +65,8 @@ def menu_modificacion(elemento, datos):
 	""" Solicita al usuario los datos para modificar una entrada. """
 	nombre = raw_input("Nuevo nombre: ")
 	apellido = raw_input("Nuevo apellido: ")
-	telefono = raw_input("Nuevo teléfono: ")
-	cumple = raw_input("Nuevo cumpleaños: ")
+	telefono = raw_input("Nuevo telÃ©fono: ")
+	cumple = raw_input("Nuevo cumpleaÃ±os: ")
 	modificar(elemento, [nombre, apellido, telefono, cumple], datos)
 
 def baja(elemento, datos):
@@ -74,13 +74,13 @@ def baja(elemento, datos):
 	datos.remove(elemento)
 
 def confirmar_salida():
-	""" Solicita confirmación para salir """
-	confirmacion = raw_input("¿Desea salir? (s/n) ")
+	""" Solicita confirmaciÃ³n para salir """
+	confirmacion = raw_input("Â¿Desea salir? (s/n) ")
 	return confirmacion.lower() == "s"
 
 def agenda():
-	""" Función principal de la agenda. 
-	    Carga los datos del archivo, permite hacer búsquedas, modificar
+	""" FunciÃ³n principal de la agenda.
+	    Carga los datos del archivo, permite hacer bÃºsquedas, modificar
 		borrar, y al salir guarda. """
 	datos = leer_datos(ARCHIVO)
 	fin = False
@@ -102,4 +102,3 @@ def agenda():
 	guardar_datos(datos, ARCHIVO)
 
 agenda()
-

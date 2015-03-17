@@ -1,11 +1,11 @@
 % Copyright (C) 2008-2010 Rosita Wachenchauzer <rositaw@gmail.com>
 %               Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -16,20 +16,20 @@
 \chapter{Listas enlazadas}
 
 En esta unidad, nos dedicaremos a construir nuestras propias listas, que
-consistir·n de cadenas de objetos enlazadas mediante referencias, como las
+consistir√°n de cadenas de objetos enlazadas mediante referencias, como las
 vistas en la unidad anterior.
 
 Si bien Python ya cuenta con sus propias listas, las listas enlazadas que
-implementaremos en esta unidad nos resultar·n tambiÈn ˙tiles.  
+implementaremos en esta unidad nos resultar√°n tambi√©n √∫tiles.
 
 \section{Una clase sencilla de {\it vagones}}
 
 En primer lugar, definiremos una clase muy simple, \lstinline!Nodo!, que se
-comportar· como un vagÛn: tendr· sÛlo dos atributos: \lstinline!dato!, que
-servir· para almacenar cualquier informaciÛn, y \lstinline!prox!, que servir·
-para poner una referencia al siguiente vagÛn.
+comportar√° como un vag√≥n: tendr√° s√≥lo dos atributos: \lstinline!dato!, que
+servir√° para almacenar cualquier informaci√≥n, y \lstinline!prox!, que servir√°
+para poner una referencia al siguiente vag√≥n.
 
-Adem·s, como siempre, implementaremos el constructor y el mÈtodo
+Adem√°s, como siempre, implementaremos el constructor y el m√©todo
 \lstinline!__str__! para poder imprimir el contenido del nodo.
 
 \begin{codigo-python-sn}
@@ -41,7 +41,7 @@ class Nodo(object):
         return str(self.dato)
 \end{codigo-python-sn}
 
-Ejecutamos este cÛdigo:
+Ejecutamos este c√≥digo:
 
 \begin{codigo-python-sn}
 >>> v3=Nodo("Bananas")
@@ -64,14 +64,14 @@ Con esto hemos generado la estructura de la Figura \ref{nodos}.
 \end{figure}
 
 El atributo \lstinline!prox! de \lstinline!v3! tiene una referencia nula,
-lo que indica que \lstinline!v3! es el ˙ltimo vagÛn de nuestra estructura.
+lo que indica que \lstinline!v3! es el √∫ltimo vag√≥n de nuestra estructura.
 
 Hemos creado una lista en forma manual. Si nos interesa recorrerla, podemos
 hacer lo siguiente:
 
 \begin{codigo-python-sn}
 def verLista(nodo):
-    """ Recorre todos los nodos a travÈs de sus enlaces,
+    """ Recorre todos los nodos a trav√©s de sus enlaces,
         mostrando sus contenidos. """
 
     # cicla mientras nodo no es None
@@ -93,13 +93,13 @@ Es interesante notar que la estructura del recorrido de la lista es el
 siguiente:
 
 \begin{itemize}
-\item Se le pasa a la funciÛn sÛlo la referencia al primer nodo.
+\item Se le pasa a la funci√≥n s√≥lo la referencia al primer nodo.
 
 \item El resto del recorrido se consigue siguiendo las cadena de
 referencias dentro de los nodos.
 \end{itemize}
 
-Si se desea {\it desenganchar} un vagÛn del medio de la lista, alcanza con
+Si se desea {\it desenganchar} un vag√≥n del medio de la lista, alcanza con
 cambiar el enganche:
 
 \begin{codigo-python-sn}
@@ -112,15 +112,15 @@ Bananas
 Manzanas
 \end{codigo-python-sn}
 
-De esta manera tambiÈn se pueden generar estructuras impensables.
+De esta manera tambi√©n se pueden generar estructuras impensables.
 
-øQuÈ sucede si escribimos \lstinline!v1.prox = v1!? La representaciÛn es finita
-y sin embargo en este caso \lstinline!verLista(v1)!  no termina m·s. Hemos
-creado una {\it lista infinita}, tambiÈn llamada {\it lista circular}.
+¬øQu√© sucede si escribimos \lstinline!v1.prox = v1!? La representaci√≥n es finita
+y sin embargo en este caso \lstinline!verLista(v1)!  no termina m√°s. Hemos
+creado una {\it lista infinita}, tambi√©n llamada {\it lista circular}.
 
-% Este ejercicio no se entiende 
-%\ejercicioc{øCu·l es la mejor manera
-%de tener siempre manzanas y peras a disposiciÛn de uno?}
+% Este ejercicio no se entiende
+%\ejercicioc{¬øCu√°l es la mejor manera
+%de tener siempre manzanas y peras a disposici√≥n de uno?}
 
 \subsection{Caminos}
 
@@ -128,35 +128,35 @@ En una lista cualquiera, como las vistas antes, si seguimos las flechas
 dadas por las referencias, obtenemos un {\it camino} en la lista.
 
 Los caminos cerrados se denominan {\it ciclos}. Son ciclos, por ejemplo, la
-autorreferencia de \lstinline|v1| a \lstinline|v1|, como asÌ tambiÈn una
+autorreferencia de \lstinline|v1| a \lstinline|v1|, como as√≠ tambi√©n una
 flecha de \lstinline|v1| a \lstinline|v2| seguida de una flecha de
 \lstinline|v2| a \lstinline|v1|.
 
 \begin{atencion}
-Las listas circulares no tienen nada de malo en sÌ mismas,
-mientras su representaciÛn sea finita. El problema, en cambio, es que debemos tener
+Las listas circulares no tienen nada de malo en s√≠ mismas,
+mientras su representaci√≥n sea finita. El problema, en cambio, es que debemos tener
 mucho cuidado al escribir programas para recorrerlas, ya que el recorrido
-debe ser acotado (por ejemplo no habrÌa problema en ejecutar un programa
+debe ser acotado (por ejemplo no habr√≠a problema en ejecutar un programa
 que liste los 20 primeros nodos de una lista circular).
 
-Cuando una funciÛn recibe una lista y el recorrido no est· acotado
-por programa, se debe aclarar en su precondiciÛn que la ejecuciÛn de la misma terminar·
-sÛlo si la lista no contiene ciclos. …se es el caso de la funciÛn
+Cuando una funci√≥n recibe una lista y el recorrido no est√° acotado
+por programa, se debe aclarar en su precondici√≥n que la ejecuci√≥n de la misma terminar√°
+s√≥lo si la lista no contiene ciclos. √âse es el caso de la funci√≥n
 \lstinline|verLista(v1)|.
 \end{atencion}
 
 \subsection{Referenciando el principio de la lista}
 
-Una cuestiÛn no contemplada hasta el momento es la de mantener una referencia
-a la lista completa. Por ahora para nosotros la lista es la colecciÛn de nodos
+Una cuesti√≥n no contemplada hasta el momento es la de mantener una referencia
+a la lista completa. Por ahora para nosotros la lista es la colecci√≥n de nodos
 que se enlazan a partir de \lstinline|v1|. Sin embargo puede suceder que queramos
-borrar a \lstinline|v1| y continuar con el resto de la lista como la colecciÛn de
+borrar a \lstinline|v1| y continuar con el resto de la lista como la colecci√≥n de
 nodos a tratar (en las listas de Python, \lstinline|del lista[0]| no nos hace perder
 la referencia a \lstinline|lista|).
 
 Para ello lo que haremos es asociar una referencia al principio de la lista,
-que llamaremos \lstinline|lista|, y que mantendremos independientemente de cu·l sea
-el nodo que est· al principio de la lista:
+que llamaremos \lstinline|lista|, y que mantendremos independientemente de cu√°l sea
+el nodo que est√° al principio de la lista:
 
 \begin{codigo-python-sn}
 >>> v3=Nodo("Bananas")
@@ -169,7 +169,7 @@ Peras
 Bananas
 \end{codigo-python-sn}
 
-Ahora sÌ estamos en condiciones de borrar el primer elemento de la lista
+Ahora s√≠ estamos en condiciones de borrar el primer elemento de la lista
 sin perder la identidad de la misma:
 
 \begin{codigo-python-sn}
@@ -181,58 +181,58 @@ Bananas
 
 \section{Tipos abstractos de datos}
 
-Los tipos nuevos que habÌamos definido en unidades anteriores fueron tipos de
-datos concretos: un punto se definÌa como un par ordenado de n˙meros, un hotel
-se definÌa por dos cadenas de caracteres (nombre y unicaciÛn) y dos n˙meros
+Los tipos nuevos que hab√≠amos definido en unidades anteriores fueron tipos de
+datos concretos: un punto se defin√≠a como un par ordenado de n√∫meros, un hotel
+se defin√≠a por dos cadenas de caracteres (nombre y unicaci√≥n) y dos n√∫meros
 (calidad y precio), etc.
 
 Vamos a ver ahora una nueva manera de definir datos: por las
 operaciones que tienen y por lo que tienen que hacer esas
-operaciones (cu·l es el resultado esperado de esas operaciones).
+operaciones (cu√°l es el resultado esperado de esas operaciones).
 
 Esa manera de definir datos se conoce como {\it tipos abstractos de datos} o
 {\it TADs}.
 
 Lo novedoso de este enfoque respecto del anterior es que en general se puede
-encontrar m·s de una representaciÛn mediante tipos concretos para representar
-el mismo TAD, y que se puede elegir la representaciÛn m·s conveniente en cada
-caso, seg˙n el contexto de uso.
+encontrar m√°s de una representaci√≥n mediante tipos concretos para representar
+el mismo TAD, y que se puede elegir la representaci√≥n m√°s conveniente en cada
+caso, seg√∫n el contexto de uso.
 
 Los programas que los usan hacen referencia a las operaciones que tienen, no a
-la representaciÛn, y por lo tanto ese programa sigue funcionando si se cambia
-la representaciÛn.
+la representaci√≥n, y por lo tanto ese programa sigue funcionando si se cambia
+la representaci√≥n.
 
-Dentro del ciclo de vida de un TAD hay dos fases: la programaciÛn del TAD y
-la construcciÛn de los programas que lo usan.
+Dentro del ciclo de vida de un TAD hay dos fases: la programaci√≥n del TAD y
+la construcci√≥n de los programas que lo usan.
 
-Durante la fase de programaciÛn del TAD, habr· que elegir una
-representaciÛn, y luego programar cada uno de los mÈtodos sobre esa
-representaciÛn.
+Durante la fase de programaci√≥n del TAD, habr√° que elegir una
+representaci√≥n, y luego programar cada uno de los m√©todos sobre esa
+representaci√≥n.
 
-Durante la fase de construcciÛn de los programas, no ser· relevante para el
-programador que utiliza el TAD cÛmo est· implementado, sino ˙nicamente los
-mÈtodos que posee.
+Durante la fase de construcci√≥n de los programas, no ser√° relevante para el
+programador que utiliza el TAD c√≥mo est√° implementado, sino √∫nicamente los
+m√©todos que posee.
 
 \begin{observacion}
 Utilizando el concepto de \emph{interfaz} visto en la unidad anterior, podemos
-decir que a quien utilice el TAD sÛlo le interesar· la interfaz que Èste
+decir que a quien utilice el TAD s√≥lo le interesar√° la interfaz que √©ste
 posea.
 \end{observacion}
 
 \section{La clase {\tt ListaEnlazada}}
 
-Bas·ndonos en los nodos implementados anteriormente, pero buscando
+Bas√°ndonos en los nodos implementados anteriormente, pero buscando
 deslindar al programador que desea usar la lista de la responsabilidad de
 manipular las referencias, definiremos ahora la clase
 \lstinline!ListaEnlazada!, de modo tal que no haya que operar mediante las
-referencias internas de los nodos, sino que se lo pueda hacer a travÈs de
+referencias internas de los nodos, sino que se lo pueda hacer a trav√©s de
 operaciones de lista.
 
-M·s all· de la implementaciÛn en particular, se podr· notar que implementaremos
-los mismos mÈtodos de las listas de Python, de modo que m·s all· del
-funcionamiento interno, ambas ser·n {\bf listas}. 
+M√°s all√° de la implementaci√≥n en particular, se podr√° notar que implementaremos
+los mismos m√©todos de las listas de Python, de modo que m√°s all√° del
+funcionamiento interno, ambas ser√°n {\bf listas}.
 
-Definimos a continuaciÛn las operaciones que inicialmente deber· cumplir la
+Definimos a continuaci√≥n las operaciones que inicialmente deber√° cumplir la
 clase \lstinline!ListaEnlazada!.
 
 \begin{itemize}
@@ -243,62 +243,62 @@ clase \lstinline!ListaEnlazada!.
 \item \lstinline|append(x)|, para agregar un elemento al final de la lista.
 
 \item \lstinline|insert(i, x)|, para agregar el elemento \lstinline!x! en la
-posiciÛn \lstinline!i! (levanta una excepciÛn si la posiciÛn \lstinline!i! es
-inv·lida).
+posici√≥n \lstinline!i! (levanta una excepci√≥n si la posici√≥n \lstinline!i! es
+inv√°lida).
 
-\item \lstinline|remove(x)|, para eliminar la primera apariciÛn de
-\lstinline!x! en la lista (levanta una excepciÛn si \lstinline!x! no est·).
+\item \lstinline|remove(x)|, para eliminar la primera aparici√≥n de
+\lstinline!x! en la lista (levanta una excepci√≥n si \lstinline!x! no est√°).
 
-\item \lstinline|pop([i])|, para borrar el elemento que est· en la posiciÛn
+\item \lstinline|pop([i])|, para borrar el elemento que est√° en la posici√≥n
 \lstinline!i! y devolver su valor. Si no se especifica el valor de
-\lstinline!i!, \lstinline|pop()| elimina y devuelve el elemento que est· en
-el ˙ltimo lugar de la lista (levanta una excepciÛn si se hace referencia a
-una posiciÛn no v·lida de la lista).
+\lstinline!i!, \lstinline|pop()| elimina y devuelve el elemento que est√° en
+el √∫ltimo lugar de la lista (levanta una excepci√≥n si se hace referencia a
+una posici√≥n no v√°lida de la lista).
 
-\item \lstinline|index(x)|, devuelve la posiciÛn de la primera apariciÛn de
-\lstinline!x! en la lista (levanta una excepciÛn si \lstinline!x! no est·).
+\item \lstinline|index(x)|, devuelve la posici√≥n de la primera aparici√≥n de
+\lstinline!x! en la lista (levanta una excepci√≥n si \lstinline!x! no est√°).
 \end{itemize}
 
-M·s adelante podr·n agregarse a la lista otros mÈtodos que tambiÈn est·n
+M√°s adelante podr√°n agregarse a la lista otros m√©todos que tambi√©n est√°n
 implementados por las listas de Python.
 
-Valen ahora algunas consideraciones m·s antes de empezar a implementar la clase:
+Valen ahora algunas consideraciones m√°s antes de empezar a implementar la clase:
 
 \begin{itemize}
 
-\item Por lo dicho anteriormente, es claro que la lista deber· tener como
+\item Por lo dicho anteriormente, es claro que la lista deber√° tener como
 atributo la referencia al primer nodo que la compone.
 
-\item Como vamos a incluir un mÈtodo \lstinline|__len__|, consideramos que no
+\item Como vamos a incluir un m√©todo \lstinline|__len__|, consideramos que no
 tiene sentido recorrer la lista cada vez que se lo llame, para contar
-cu·ntos elementos tiene, alcanza con agregar un atributo m·s (la longitud
-de la lista), que se inicializa en $0$ cuando se crea la lista vacÌa, se
+cu√°ntos elementos tiene, alcanza con agregar un atributo m√°s (la longitud
+de la lista), que se inicializa en $0$ cuando se crea la lista vac√≠a, se
 incrementa en $1$ cada vez que se agrega un elemento y se decrementa en $1$
 cada vez que se borra un elemento.
 
 \item Por otro lado, como vamos a incluir todas las operaciones de listas
 que sean necesarias para operar con ellas, no es necesario que la clase
-\lstinline!Nodo! estÈ disponible para que otros programadores puedan
+\lstinline!Nodo! est√© disponible para que otros programadores puedan
 modificar (y romper) las listas a voluntad usando operaciones de nodos. Para eso
 incluiremos la clase \lstinline!Nodo! de manera {\it privada} (es
-decir oculta), de modo que la podamos usar nosotros como dueÒos
+decir oculta), de modo que la podamos usar nosotros como due√±os
 (fabricantes) de la clase, pero no cualquier programador que utilice la
 lista.
 \end{itemize}
 
-Python tiene una convenciÛn para hacer que atributos, mÈtodos o clases
-dentro de una clase dada no puedan ser usados por los usuarios, y sÛlo
+Python tiene una convenci√≥n para hacer que atributos, m√©todos o clases
+dentro de una clase dada no puedan ser usados por los usuarios, y s√≥lo
 tengan acceso a ellos quienes programan la clase: su nombre tiene que
-empezar con un guiÛn bajo y terminar sin guiÛn bajo. AsÌ que para hacer que
+empezar con un gui√≥n bajo y terminar sin gui√≥n bajo. As√≠ que para hacer que
 los nodos sean privados, nombraremos a esa clase como \lstinline|_Nodo|, y
 la dejaremos tal como hasta ahora.
 
 \begin{observacion}
-Se trata sÛlo de una convenciÛn, a˙n con el nombre \lstinline!_Nodo! la
-clase est· disponible, pero respetaremos esa convenciÛn de aquÌ en adelnte.
+Se trata s√≥lo de una convenci√≥n, a√∫n con el nombre \lstinline!_Nodo! la
+clase est√° disponible, pero respetaremos esa convenci√≥n de aqu√≠ en adelnte.
 \end{observacion}
 
-\subsection{ConstrucciÛn de la lista}
+\subsection{Construcci√≥n de la lista}
 
 Empezamos escribiendo la clase con su constructor.
 
@@ -307,14 +307,14 @@ class ListaEnlazada(object):
     " Modela una lista enlazada, compuesta de Nodos. "
 
     def __init__(self):
-        """ Crea una lista enlazada vacÌa. """
-        # prim: apuntar· al primer nodo - None con la lista vacÌa
+        """ Crea una lista enlazada vac√≠a. """
+        # prim: apuntar√° al primer nodo - None con la lista vac√≠a
         self.prim = None
-        # len: longitud de la lista - 0 con la lista vacÌa 
+        # len: longitud de la lista - 0 con la lista vac√≠a
         self.len = 0
 \end{codigo-python-sn}
 
-Nuestra estructura ahora ser· como la representada por la Figura
+Nuestra estructura ahora ser√° como la representada por la Figura
 \ref{lista_enlazada}.
 
 \begin{figure}[htb]
@@ -323,68 +323,68 @@ Nuestra estructura ahora ser· como la representada por la Figura
 \caption{Una lista enlazada}
 \end{figure}
 
-\ejercicioc{Escribir los mÈtodos \lstinline!__str__! y \lstinline!__len__!
+\ejercicioc{Escribir los m√©todos \lstinline!__str__! y \lstinline!__len__!
 para la lista}.
 
 \begin{sabias_que}
-Una caracterÌstica importante de la implementaciÛn de lista enlazadas es que
-borrar el primer elemento es una operaciÛn de {\it tiempo constante}, es
+Una caracter√≠stica importante de la implementaci√≥n de lista enlazadas es que
+borrar el primer elemento es una operaci√≥n de {\it tiempo constante}, es
 decir que no depende del largo de la lista, a diferencia de las listas de
-Python, en las que esta operaciÛn requiere un {\it tiempo proporcional a la
-longitud de la lista}). 
+Python, en las que esta operaci√≥n requiere un {\it tiempo proporcional a la
+longitud de la lista}).
 
-Sin embargo no todo es tan positivo: el acceso a la posiciÛn {\tt p} se realiza
+Sin embargo no todo es tan positivo: el acceso a la posici√≥n {\tt p} se realiza
 en {\it tiempo proporcional a p}, mientras que en las listas de Python esta
-operaciÛn se realiza en {\it tiempo constante}.
+operaci√≥n se realiza en {\it tiempo constante}.
 
 Conociendo las ventajas y desventajas podremos elegir el tipo de lista que
-necesitemos seg˙n los requerimientos de cada problema.
+necesitemos seg√∫n los requerimientos de cada problema.
 \end{sabias_que}
 
-\subsection{Eliminar un elemento de una posiciÛn}
+\subsection{Eliminar un elemento de una posici√≥n}
 
-Analizaremos a continuaciÛn \lstinline|pop([i])|, que borra el elemento que
-est· en la posiciÛn \lstinline!i! y devuelve su valor. Si no se especifica
+Analizaremos a continuaci√≥n \lstinline|pop([i])|, que borra el elemento que
+est√° en la posici√≥n \lstinline!i! y devuelve su valor. Si no se especifica
 el valor de \lstinline!i!, \lstinline|pop()| elimina y devuelve el elemento
-que est· en el ˙ltimo lugar de la lista.  Por otro lado, levanta una
-excepciÛn si se hace referencia a una posiciÛn no v·lida de la lista.
+que est√° en el √∫ltimo lugar de la lista.  Por otro lado, levanta una
+excepci√≥n si se hace referencia a una posici√≥n no v√°lida de la lista.
 
-Dado que se trata de una funciÛn con cierta complejidad, separaremos el
-cÛdigo en las diversas consideraciones a tener en cuenta.
+Dado que se trata de una funci√≥n con cierta complejidad, separaremos el
+c√≥digo en las diversas consideraciones a tener en cuenta.
 
 \begin{itemize}
 
-\item Si la posiciÛn es inv·lida (\lstinline!i! menor que $0$ o mayor o
+\item Si la posici√≥n es inv√°lida (\lstinline!i! menor que $0$ o mayor o
 igual a la longitud de la lista), se considera error y se levanta la
-excepciÛn ValueError.
+excepci√≥n ValueError.
 
-Esto se resuelve con este fragmento de cÛdigo:
+Esto se resuelve con este fragmento de c√≥digo:
 
 \begin{codigo-python-sn}
-        # VerificaciÛn de los lÌmites
+        # Verificaci√≥n de los l√≠mites
         if (i < 0) or (i >= self.len):
-            raise IndexError("Õndice fuera de rango")
+            raise IndexError("√çndice fuera de rango")
 \end{codigo-python-sn}
 
-\item Si no se indica posiciÛn, \lstinline!i! toma la ˙ltima posiciÛn de la lista.
+\item Si no se indica posici√≥n, \lstinline!i! toma la √∫ltima posici√≥n de la lista.
 
-Esto se resuelve con este fragmento de cÛdigo:
+Esto se resuelve con este fragmento de c√≥digo:
 \begin{codigo-python-sn}
-        # Si no se recibiÛ i, se devuelve el ˙ltimo.
+        # Si no se recibi√≥ i, se devuelve el √∫ltimo.
         if i == None:
             i = self.len - 1
 \end{codigo-python-sn}
 
-\item Cuando la posiciÛn es $0$ se trata de un caso particular, ya que en ese
-caso, adem·s de borrar el nodo, hay que cambiar la referencia de
+\item Cuando la posici√≥n es $0$ se trata de un caso particular, ya que en ese
+caso, adem√°s de borrar el nodo, hay que cambiar la referencia de
 \lstinline!self.prim! para que apunte al nodo siguiente.  Es decir, pasar de
 \lstinline!self.prim! $\rightarrow$ nodo0 $\rightarrow$ nodo1 a
 \lstinline!self.prim! $\rightarrow$ nodo1).
 
-Esto se resuelve con este fragmento de cÛdigo:
+Esto se resuelve con este fragmento de c√≥digo:
 
 \begin{codigo-python-sn}
-        # Caso particular, si es el primero, 
+        # Caso particular, si es el primero,
         # hay que saltear la cabecera de la lista
         if i == 0:
             dato = self.prim.dato
@@ -394,34 +394,34 @@ Esto se resuelve con este fragmento de cÛdigo:
 \item Vemos ahora el caso general:
 
 Mediante un ciclo, se deben ubicar los nodos {\it npi - 1} y {\it npi} que
-est·n en las posiciones $i-1$ e $i$ de la lista, respectivamente, de modo de
-poder ubicar no sÛlo el nodo que se borrar·, sino tambiÈn estar en condiciones
+est√°n en las posiciones $i-1$ e $i$ de la lista, respectivamente, de modo de
+poder ubicar no s√≥lo el nodo que se borrar√°, sino tambi√©n estar en condiciones
 de saltear el nodo borrado en los enlaces de la lista.  La lista debe pasar de
 contener el camino {\it npi - 1} $\rightarrow$ {\it npi} $\rightarrow$ {\it
 npi.prox} a contener el camino {\it npi-1} $\rightarrow$ {\it npi.prox}.
 
-Nos basaremos un esquema muy simple (y ˙til) que se denomina {\it m·quina de parejas}:
+Nos basaremos un esquema muy simple (y √∫til) que se denomina {\it m√°quina de parejas}:
 
 Si nuestra secuencia tiene la forma ABCDE, se itera sobre ella de modo de
 tener las parejas AB, BC, CD, DE. En la pareja XY, llamaremos a X el {\it elemento anterior}
 y a Y el {\it elemento actual}. En general estos ciclos terminan o bien cuando
-no hay m·s parejas que formar, o bien cuando el elemento actual cumple con una determinada
-condiciÛn.
+no hay m√°s parejas que formar, o bien cuando el elemento actual cumple con una determinada
+condici√≥n.
 
-En nuestro problema, tenemos la siguiente situaciÛn:
+En nuestro problema, tenemos la siguiente situaci√≥n:
 
 \begin{itemize}
 \item Las parejas son parejas de nodos.
 
-\item Para avanzar en la secuencia se usa la referencia al prÛximo nodo de la lista.
+\item Para avanzar en la secuencia se usa la referencia al pr√≥ximo nodo de la lista.
 
-\item La condiciÛn de terminaciÛn es siempre que la posiciÛn del nodo en la
+\item La condici√≥n de terminaci√≥n es siempre que la posici√≥n del nodo en la
 lista sea igual al valor buscado.  En este caso particular no debemos
-preocuparnos por la terminaciÛn de la lista porque la validez del Ìndice
-buscado ya fue verificada m·s arriba.
+preocuparnos por la terminaci√≥n de la lista porque la validez del √≠ndice
+buscado ya fue verificada m√°s arriba.
 \end{itemize}
 
-Esta es la porciÛn de cÛdigo correspondiente a la b˙squeda:
+Esta es la porci√≥n de c√≥digo correspondiente a la b√∫squeda:
 
 \begin{codigo-python-sn}
             n_ant = self.prim
@@ -431,11 +431,11 @@ Esta es la porciÛn de cÛdigo correspondiente a la b˙squeda:
                 n_act = n_ant.prox
 \end{codigo-python-sn}
 
-Al finalizar el ciclo, \lstinline!n_ant! ser· una referencia al nodo $i-1$ y
+Al finalizar el ciclo, \lstinline!n_ant! ser√° una referencia al nodo $i-1$ y
 \lstinline!n_act! una referencia al nodo $i$.
 
 Una vez obtenidas las referencias, se obtiene el dato y se cambia el camino
-seg˙n era necesario:
+seg√∫n era necesario:
 
 \begin{codigo-python-sn}
             # Guarda el dato y elimina el nodo a borrar
@@ -444,11 +444,11 @@ seg˙n era necesario:
 \end{codigo-python-sn}
 
 
-\item Finalmente, en todos los casos de Èxito, se debe devolver el dato que contenÌa
+\item Finalmente, en todos los casos de √©xito, se debe devolver el dato que conten√≠a
 el nodo eliminado y decrementar la longitud en 1:
 
 \begin{codigo-python-sn}
-        # hay que restar 1 de len  
+        # hay que restar 1 de len
         self.len -= 1
         # y devolver el valor borrado
         return dato
@@ -456,32 +456,32 @@ el nodo eliminado y decrementar la longitud en 1:
 
 \end{itemize}
 
-Finalmente, en el CÛdigo \ref{lista_enlazada_pop} se incluye el cÛdigo completo
-del mÈtodo \lstinline!pop!.
+Finalmente, en el C√≥digo \ref{lista_enlazada_pop} se incluye el c√≥digo completo
+del m√©todo \lstinline!pop!.
 
-\begin{codigo}{pop}{MÈtodo pop de la lista enlazada}
+\begin{codigo}{pop}{M√©todo pop de la lista enlazada}
 \label{lista_enlazada_pop}
 \begin{codigo-python}
    def pop(self, i = None):
-        """ Elimina el nodo de la posiciÛn i, y devuelve el dato contenido.
-            Si i est· fuera de rango, se levanta la excepciÛn IndexError.
-            Si no se recibe la posiciÛn, devuelve el ˙ltimo elemento. """
+        """ Elimina el nodo de la posici√≥n i, y devuelve el dato contenido.
+            Si i est√° fuera de rango, se levanta la excepci√≥n IndexError.
+            Si no se recibe la posici√≥n, devuelve el √∫ltimo elemento. """
 
-        # Si no se recibiÛ i, se devuelve el ˙ltimo.
+        # Si no se recibi√≥ i, se devuelve el √∫ltimo.
         if i is None:
             i = self.len - 1
 
-        # VerificaciÛn de los lÌmites
+        # Verificaci√≥n de los l√≠mites
         if not (0 <= i < self.len):
-            raise IndexError("Õndice fuera de rango")
+            raise IndexError("√çndice fuera de rango")
 
-        # Caso particular, si es el primero, 
+        # Caso particular, si es el primero,
         # hay que saltear la cabecera de la lista
         if i == 0:
             dato = self.prim.dato
             self.prim = self.prim.prox
 
-        # Para todos los dem·s elementos, busca la posiciÛn
+        # Para todos los dem√°s elementos, busca la posici√≥n
         else:
             n_ant = self.prim
             n_act = n_ant.prox
@@ -493,7 +493,7 @@ del mÈtodo \lstinline!pop!.
             dato = n_act.dato
             n_ant.prox = n_act.prox
 
-        # hay que restar 1 de len  
+        # hay que restar 1 de len
         self.len -= 1
         # y devolver el valor borrado
         return dato
@@ -502,26 +502,26 @@ del mÈtodo \lstinline!pop!.
 
 \subsection{Eliminar un elemento por su valor}
 
-An·logamente se resuelve \lstinline|remove(self,x)|, que debe eliminar la
-primera apariciÛn de \lstinline!x! en la lista, o bien levantar una excepciÛn
+An√°logamente se resuelve \lstinline|remove(self,x)|, que debe eliminar la
+primera aparici√≥n de \lstinline!x! en la lista, o bien levantar una excepci√≥n
 si \lstinline!x! no se encuentra en la lista.
 
-Nuevamente, dado que se trata de un mÈtodo de cierta complejidad, lo
+Nuevamente, dado que se trata de un m√©todo de cierta complejidad, lo
 resolveremos por partes, teniendo en cuenta los casos particulares y el caso
 general.
 
 \begin{itemize}
 
-\item Los casos particulares son: la lista vacÌa, que es un error y hay que
-levantar una excepciÛn; y el caso en el que x est· en el primer nodo, en este
+\item Los casos particulares son: la lista vac√≠a, que es un error y hay que
+levantar una excepci√≥n; y el caso en el que x est√° en el primer nodo, en este
 caso hay que saltear el primer nodo desde la cabecera de la lista.
 
-El fragmento de cÛdigo que resuelve estos casos es:
+El fragmento de c√≥digo que resuelve estos casos es:
 
 \begin{codigo-python-sn}
         if self.len == 0:
-            # Si la lista est· vacÌa, no hay nada que borrar.
-            raise ValueError("Lista vacÌa")
+            # Si la lista est√° vac√≠a, no hay nada que borrar.
+            raise ValueError("Lista vac√≠a")
 
         # Caso particular, x esta en el primer nodo
         elif self.prim.dato == x:
@@ -529,8 +529,8 @@ El fragmento de cÛdigo que resuelve estos casos es:
             self.prim = self.prim.prox
 \end{codigo-python-sn}
 
-\item El caso general tambiÈn implica un recorrido con m·quina de parejas, sÛlo
-que esta vez la condiciÛn de terminaciÛn es: o bien la lista se terminÛ o bien
+\item El caso general tambi√©n implica un recorrido con m√°quina de parejas, s√≥lo
+que esta vez la condici√≥n de terminaci√≥n es: o bien la lista se termin√≥ o bien
 encontramos un nodo con el valor (\lstinline!x!) buscado.
 
 \begin{codigo-python-sn}
@@ -542,39 +542,39 @@ encontramos un nodo con el valor (\lstinline!x!) buscado.
                 n_act = n_ant.prox
 \end{codigo-python-sn}
 
-En este caso, al terminarse el ciclo ser· necesario corroborar si se terminÛ
-porque llegÛ al final de la lista, y de ser asÌ levantar una excepciÛn; o si se
-terminÛ porque encontrÛ el dato, y de ser asÌ eliminarlo.
+En este caso, al terminarse el ciclo ser√° necesario corroborar si se termin√≥
+porque lleg√≥ al final de la lista, y de ser as√≠ levantar una excepci√≥n; o si se
+termin√≥ porque encontr√≥ el dato, y de ser as√≠ eliminarlo.
 
 \begin{codigo-python-sn}
-            # Si no se encontrÛ a x en la lista, levanta la excepciÛn
+            # Si no se encontr√≥ a x en la lista, levanta la excepci√≥n
             if n_act == None:
-                raise ValueError("El valor no est· en la lista.")
+                raise ValueError("El valor no est√° en la lista.")
 
-            # Si encontrÛ a x, debe pasar de n_ant -> n_x -> n_x.prox
+            # Si encontr√≥ a x, debe pasar de n_ant -> n_x -> n_x.prox
             # a n_ant -> n_x.prox
             else:
                 n_ant.prox = n_act.prox
 \end{codigo-python-sn}
 
-\item Finalmente, en todos los casos de Èxito debemos decrementar en 1 el valor
+\item Finalmente, en todos los casos de √©xito debemos decrementar en 1 el valor
 de \lstinline|self.len|.
 
 \end{itemize}
 
-En el CÛdigo \ref{lista_enlazada_remove} se incluye el cÛdigo completo
-del mÈtodo \lstinline!remove!.
+En el C√≥digo \ref{lista_enlazada_remove} se incluye el c√≥digo completo
+del m√©todo \lstinline!remove!.
 
-\begin{codigo}{remove}{MÈtodo remove de la lista enlazada}
+\begin{codigo}{remove}{M√©todo remove de la lista enlazada}
 \label{lista_enlazada_remove}
 \begin{codigo-python}
     def remove(self, x):
-        """ Borra la primera apariciÛn del valor x en la lista.
-            Si x no est· en la lista, levanta ValueError """
+        """ Borra la primera aparici√≥n del valor x en la lista.
+            Si x no est√° en la lista, levanta ValueError """
 
         if self.len == 0:
-            # Si la lista est· vacÌa, no hay nada que borrar.
-            raise ValueError("Lista vacÌa")
+            # Si la lista est√° vac√≠a, no hay nada que borrar.
+            raise ValueError("Lista vac√≠a")
 
         # Caso particular, x esta en el primer nodo
         elif self.prim.dato == x:
@@ -590,16 +590,16 @@ del mÈtodo \lstinline!remove!.
                 n_ant = n_act
                 n_act = n_ant.prox
 
-            # Si no se encontrÛ a x en la lista, levanta la excepciÛn
+            # Si no se encontr√≥ a x en la lista, levanta la excepci√≥n
             if n_act == None:
-                raise ValueError("El valor no est· en la lista.")
+                raise ValueError("El valor no est√° en la lista.")
 
-            # Si encontrÛ a x, debe pasar de n_ant -> n_x -> n_x.prox
+            # Si encontr√≥ a x, debe pasar de n_ant -> n_x -> n_x.prox
             # a n_ant -> n_x.prox
             else:
                 n_ant.prox = n_act.prox
 
-        # Si no levantÛ excepciÛn, hay que restar 1 del largo
+        # Si no levant√≥ excepci√≥n, hay que restar 1 del largo
         self.len -= 1
 \end{codigo-python}
 \end{codigo}
@@ -607,24 +607,24 @@ del mÈtodo \lstinline!remove!.
 \subsection{Insertar nodos}
 
 Debemos programar ahora \lstinline|insert(i, x)|, que debe agregar el elemento
-\lstinline!x! en la posiciÛn \lstinline!i!  (y levantar una excepciÛn si la
-posiciÛn \lstinline!i! es inv·lida).
+\lstinline!x! en la posici√≥n \lstinline!i!  (y levantar una excepci√≥n si la
+posici√≥n \lstinline!i! es inv√°lida).
 
-Veamos quÈ debemos tener en cuenta para programar esta funciÛn.
+Veamos qu√© debemos tener en cuenta para programar esta funci√≥n.
 
 \begin{itemize}
 
-\item Si se intenta insertar en una posiciÛn menor que cero o mayor que la
-longitud de la lista debe levantarse una excepciÛn.
+\item Si se intenta insertar en una posici√≥n menor que cero o mayor que la
+longitud de la lista debe levantarse una excepci√≥n.
 
 \begin{codigo-python-sn}
         if (i > self.len) or (i < 0):
             # error
-            raise IndexError("PosiciÛn inv·lida")
+            raise IndexError("Posici√≥n inv√°lida")
 \end{codigo-python-sn}
 
-\item Para los dem·s casos, hay que crear un nodo, que ser· el que se insertar·
-en la posiciÛn que corresponda. Construimos un nodo \lstinline|nuevo| cuyo
+\item Para los dem√°s casos, hay que crear un nodo, que ser√° el que se insertar√°
+en la posici√≥n que corresponda. Construimos un nodo \lstinline|nuevo| cuyo
 \lstinline|dato| sea \lstinline|x|.
 
 \begin{codigo-python-sn}
@@ -632,7 +632,7 @@ en la posiciÛn que corresponda. Construimos un nodo \lstinline|nuevo| cuyo
         nuevo = _Nodo(x)
 \end{codigo-python-sn}
 
-\item Si se quiere insertar en la posiciÛn 0, hay que cambiar la referencia de
+\item Si se quiere insertar en la posici√≥n 0, hay que cambiar la referencia de
 \lstinline|self.prim|.
 
 \begin{codigo-python-sn}
@@ -644,13 +644,13 @@ en la posiciÛn que corresponda. Construimos un nodo \lstinline|nuevo| cuyo
             self.prim = nuevo
 \end{codigo-python-sn}
 
-\item Para los dem·s casos, nuevamente ser· necesaria la m·quina de parejas.
-Obtenemos el nodo anterior a la posiciÛn en la que queremos insertar.
+\item Para los dem√°s casos, nuevamente ser√° necesaria la m√°quina de parejas.
+Obtenemos el nodo anterior a la posici√≥n en la que queremos insertar.
 
 \begin{codigo-python-sn}
         # Insertar en cualquier lugar > 0
         else:
-            # Recorre la lista hasta llegar a la posiciÛn deseada
+            # Recorre la lista hasta llegar a la posici√≥n deseada
             n_ant = self.prim
             for pos in xrange(1,i):
                 n_ant = n_ant.prox
@@ -660,7 +660,7 @@ Obtenemos el nodo anterior a la posiciÛn en la que queremos insertar.
             n_ant.prox = nuevo
 \end{codigo-python-sn}
 
-\item En todos los casos de Èxito se debe incrementar en 1 la longitud de la lista.
+\item En todos los casos de √©xito se debe incrementar en 1 la longitud de la lista.
 \begin{codigo-python-sn}
         # En cualquier caso, incrementar en 1 la longitud
         self.len += 1
@@ -668,19 +668,19 @@ Obtenemos el nodo anterior a la posiciÛn en la que queremos insertar.
 
 \end{itemize}
 
-En el CÛdigo \ref{lista_enlazada_insert} se incluye el cÛdigo resultante
-del mÈtodo \lstinline!insert!.
+En el C√≥digo \ref{lista_enlazada_insert} se incluye el c√≥digo resultante
+del m√©todo \lstinline!insert!.
 
-\begin{codigo}{insert}{MÈtodo insert de la lista enlazada}
+\begin{codigo}{insert}{M√©todo insert de la lista enlazada}
 \label{lista_enlazada_insert}
 \begin{codigo-python}
     def insert(self, i, x):
-        """ Inserta el elemento x en la posiciÛn i.
-            Si la posiciÛn es inv·lida, levanta IndexError """
+        """ Inserta el elemento x en la posici√≥n i.
+            Si la posici√≥n es inv√°lida, levanta IndexError """
 
         if (i > self.len) or (i < 0):
             # error
-            raise IndexError("PosiciÛn inv·lida")
+            raise IndexError("Posici√≥n inv√°lida")
 
         # Crea nuevo nodo, con x como dato:
         nuevo = _Nodo(x)
@@ -694,7 +694,7 @@ del mÈtodo \lstinline!insert!.
 
         # Insertar en cualquier lugar > 0
         else:
-            # Recorre la lista hasta llegar a la posiciÛn deseada
+            # Recorre la lista hasta llegar a la posici√≥n deseada
             n_ant = self.prim
             for pos in xrange(1,i):
                 n_ant = n_ant.prox
@@ -708,33 +708,33 @@ del mÈtodo \lstinline!insert!.
 \end{codigo-python}
 \end{codigo}
 
-\ejercicioc{Completar la clase \lstinline|ListaEnlazada| con los mÈtodos que
+\ejercicioc{Completar la clase \lstinline|ListaEnlazada| con los m√©todos que
 faltan: \lstinline|append| e \lstinline|index|}.
 
-\ejercicioc{En los bucles de {\it m·quina de parejas} mostrados
+\ejercicioc{En los bucles de {\it m√°quina de parejas} mostrados
 anteriormente, no siempre es necesario tener la referencia al nodo actual,
 puede alcanzar con la referencia al nodo anterior.  Donde sea posible,
 eliminar la referencia al nodo actual.  Una vez hecho esto, analizar el
-cÛdigo resultante, øEs m·s elegante?}
+c√≥digo resultante, ¬øEs m√°s elegante?}
 
-\ejercicioc{\label{append_constante} {\bf Mantenimiento:} Con esta representaciÛn conseguimos que la
-inserciÛn en la posiciÛn 0 se realice en tiempo constante, sin embargo ahora
+\ejercicioc{\label{append_constante} {\bf Mantenimiento:} Con esta representaci√≥n conseguimos que la
+inserci√≥n en la posici√≥n 0 se realice en tiempo constante, sin embargo ahora
 \lstinline|append| es lineal en la longitud de la lista. Como nuestro cliente
-no est· satisfecho con esto debemos agregar un atributo m·s a los objetos de la
-clase, la referencia al ˙ltimo nodo, y modificar \lstinline|append| para que se
-pueda ejecutar en tiempo constante. Por supuesto que adem·s hay que modificar
-todos los mÈtodos de la clase para que se mantenga la propiedad de que ese
-atributo siempre es una referencia al ˙timo nodo.}
+no est√° satisfecho con esto debemos agregar un atributo m√°s a los objetos de la
+clase, la referencia al √∫ltimo nodo, y modificar \lstinline|append| para que se
+pueda ejecutar en tiempo constante. Por supuesto que adem√°s hay que modificar
+todos los m√©todos de la clase para que se mantenga la propiedad de que ese
+atributo siempre es una referencia al √∫timo nodo.}
 
 \section{Invariantes de objetos}
 
 Los invariantes son condiciones que deben ser siempre ciertas.  Hemos visto
 anteriormente los invariantes de ciclos, que son condiciones que deben
-permanecer ciertas durante la ejecuciÛn de un ciclo.  Existen tambiÈn los
+permanecer ciertas durante la ejecuci√≥n de un ciclo.  Existen tambi√©n los
 invariantes de objetos, que son condiciones que deben ser ciertas a lo
 largo de toda la existencia de un objeto.
 
-La clase \lstinline!ListaEnlazada! presentada en la secciÛn anterior,
+La clase \lstinline!ListaEnlazada! presentada en la secci√≥n anterior,
 cuenta con dos invariantes que siempre debemos mantener.  Por un lado, el
 atributo \lstinline!len! debe contener siempre la cantidad de nodos de la
 lista.  Es decir, siempre que se modifique la lista, agregando o quitando
@@ -745,22 +745,22 @@ nodo de la lista, si se agrega o elimina este primer nodo, es necesario
 actualizar esta referencia.
 
 Cuando se desarrolla una estructura de datos, como la lista enlazada, es
-importante destacar cu·les ser·n sus invariantes, ya que en cada mÈtodo
-habr· que tener especial cuidado de que los invariantes permanezcan siempre
+importante destacar cu√°les ser√°n sus invariantes, ya que en cada m√©todo
+habr√° que tener especial cuidado de que los invariantes permanezcan siempre
 ciertos.
 
-AsÌ, si como se pidiÛ en el ejercicio \ref{append_constante}, se modifica
-la lista para que la inserciÛn al final pueda hacerse en tiempo constante,
-se est· agregando a la lista un nuevo invariante (un atributo de la lista
-que apunte siempre al ˙ltimo elemento) y no es sÛlo el mÈtodo
-\lstinline!append! el que hay que modificar, sino todos los mÈtodos que
-puedan de una u otra forma cambiar la referencia al ˙ltimo elemento de la
+As√≠, si como se pidi√≥ en el ejercicio \ref{append_constante}, se modifica
+la lista para que la inserci√≥n al final pueda hacerse en tiempo constante,
+se est√° agregando a la lista un nuevo invariante (un atributo de la lista
+que apunte siempre al √∫ltimo elemento) y no es s√≥lo el m√©todo
+\lstinline!append! el que hay que modificar, sino todos los m√©todos que
+puedan de una u otra forma cambiar la referencia al √∫ltimo elemento de la
 lista.
 
 \section{Otras listas enlazadas}
 
-Las listas presentadas hasta aquÌ son las {\it listas simplemente
-enlazadas}, que son sencillas y ˙tiles cuando se quiere poder insertar o
+Las listas presentadas hasta aqu√≠ son las {\it listas simplemente
+enlazadas}, que son sencillas y √∫tiles cuando se quiere poder insertar o
 eliminar nodos de una lista en tiempo constante.
 
 Existen otros tipos de listas enlazadas, cada uno con sus ventajas y
@@ -769,48 +769,48 @@ desventajas.
 \subsection*{Listas doblemente enlazadas}
 
 Las listas doblemente enlazadas son aquellas en que los nodos cuentan no
-sÛlo con una referencia al siguiente, sino tambiÈn con una referencia al
+s√≥lo con una referencia al siguiente, sino tambi√©n con una referencia al
 anterior.  Esto permite que la lista pueda ser recorrida en ambas
 direcciones.
 
 En una lista doblemente enlazada, es posible, por ejemplo, eliminar un
-nodo, teniendo ˙nicamente ese nodo, sin necesidad de saber tambiÈn cu·l es
+nodo, teniendo √∫nicamente ese nodo, sin necesidad de saber tambi√©n cu√°l es
 el anterior.
 
 Entre las desventajas podemos mencionar que al tener que mantener dos
-referencias el cÛdigo se vuelve m·s complejo, y tambiÈn que ocupa m·s
+referencias el c√≥digo se vuelve m√°s complejo, y tambi√©n que ocupa m√°s
 espacio en memoria.
 
 \subsection*{Listas circulares}
 
 Las listas circulares, que ya fueron mencionadas al comienzo de esta
-unidad, son aquellas en las que el ˙ltimo nodo contiene una referencia al
+unidad, son aquellas en las que el √∫ltimo nodo contiene una referencia al
 primero.  Pueden ser tanto simplemente como doblemente enlazadas.
 
 Se las utiliza para modelar situaciones en las cuales los elementos no
-tienen un primero o un ˙ltimo, sino que forman una cadena infinita, que se
+tienen un primero o un √∫ltimo, sino que forman una cadena infinita, que se
 recorre una y otra vez.
 
 \begin{sabias_que}
 Un ejemplo de uso de las listas circulares es dentro del kernel Linux.  La
-mayorÌa de las listas utilizadas por este kernel son circulares, ya que la
-mayorÌa de los datos a los que se quiere acceder son datos que no tienen un
+mayor√≠a de las listas utilizadas por este kernel son circulares, ya que la
+mayor√≠a de los datos a los que se quiere acceder son datos que no tienen un
 orden en particular.
 
-Por ejemplo, la lista de tareas que se est·n ejecutando es una lista
+Por ejemplo, la lista de tareas que se est√°n ejecutando es una lista
 circular.  El {\it scheduler} del kernel permite que cada tarea utilice el
-procesador durante una porciÛn de tiempo y luego pasa a la siguiente; y al
-llegar a la {\it ˙ltima} vuelve a la {\it primera}, ya que la ejecuciÛn de
+procesador durante una porci√≥n de tiempo y luego pasa a la siguiente; y al
+llegar a la {\it √∫ltima} vuelve a la {\it primera}, ya que la ejecuci√≥n de
 tareas no se termina.
 \end{sabias_que}
 
-% TODO: esto se da en la pr·ctica... CÛmo lo indicamos?
+% TODO: esto se da en la pr√°ctica... C√≥mo lo indicamos?
 \section{Iteradores}
 
 En la unidad anterior se hizo referencia a que todas las secuencias
 pueden ser recorridas mediante una misma estructura (
-\lstinline!for variable in secuencia!), ya que todas implementan el mÈtodo
-especial \lstinline!__iter__!.  Este mÈtodo debe devolver un {\it iterador}
+\lstinline!for variable in secuencia!), ya que todas implementan el m√©todo
+especial \lstinline!__iter__!.  Este m√©todo debe devolver un {\it iterador}
 capaz de recorrer la secuencia como corresponda.
 
 \begin{observacion}
@@ -818,10 +818,10 @@ Un iterador es un objeto que permite recorrer uno a uno los elementos
 almacenados en una estructura de datos, y operar con ellos.
 \end{observacion}
 
-En particular, en Python, los iteradores tienen que implementar un mÈtodo
+En particular, en Python, los iteradores tienen que implementar un m√©todo
 \lstinline!next! que debe devolver los elementos, de a uno por vez,
 comenzando por el primero.  Y al llegar al final de la estructura, debe
-levantar una excepciÛn de tipo \lstinline!StopIteration!.
+levantar una excepci√≥n de tipo \lstinline!StopIteration!.
 
 Es decir que las siguientes estructuras son equivalentes
 \begin{codigo-python-sn}
@@ -840,41 +840,41 @@ while True:
 \end{codigo-python-sn}
 
 En particular, si queremos implementar un iterador para la lista enlazada,
-la mejor soluciÛn implica crear una nueva clase,
-\lstinline!_IteradorListaEnlazada!, que implemente el mÈtodo
+la mejor soluci√≥n implica crear una nueva clase,
+\lstinline!_IteradorListaEnlazada!, que implemente el m√©todo
 \lstinline!next()! de la forma apropiada.
 
 \begin{atencion}
-Utilizamos la notaciÛn de clase privada, utilizada tambiÈn para la clase
-\lstinline!_Nodo!, ya que si bien se devolver· el iterador cuando sea
-necesario, un programador externo no deberÌa construir el iterador sin
-pasar a travÈs de la lista enlazada.
+Utilizamos la notaci√≥n de clase privada, utilizada tambi√©n para la clase
+\lstinline!_Nodo!, ya que si bien se devolver√° el iterador cuando sea
+necesario, un programador externo no deber√≠a construir el iterador sin
+pasar a trav√©s de la lista enlazada.
 \end{atencion}
 
-Para inicializar la clase, lo ˙nico que se necesita es una referencia al
-primer elemento de la lista.  
+Para inicializar la clase, lo √∫nico que se necesita es una referencia al
+primer elemento de la lista.
 
 \begin{codigo-python-sn}
 class _IteradorListaEnlazada(object):
     " Iterador para la clase ListaEnlazada "
     def __init__(self, prim):
-        """ Constructor del iterador.  
+        """ Constructor del iterador.
             prim es el primer elemento de la lista. """
         self.actual = prim
 \end{codigo-python-sn}
 
-A partir de allÌ, el iterador ir· avanzando a travÈs de los elementos de la
-lista mediante el mÈtodo \lstinline!next!.  Para verificar que no se haya
-llegado al final de la lista, se corroborar· que la referencia
+A partir de all√≠, el iterador ir√° avanzando a trav√©s de los elementos de la
+lista mediante el m√©todo \lstinline!next!.  Para verificar que no se haya
+llegado al final de la lista, se corroborar√° que la referencia
 \lstinline!self.actual! sea distinta de \lstinline!None!.
 
 \begin{codigo-python-sn}
         if self.actual == None:
-            raise StopIteration("No hay m·s elementos en la lista")
+            raise StopIteration("No hay m√°s elementos en la lista")
 \end{codigo-python-sn}
 
-Una vez que se pasÛ la verificaciÛn, la primera llamada a \lstinline!next!
-debe devolver el primer elemento, pero tambiÈn debe avanzar, para que la
+Una vez que se pas√≥ la verificaci√≥n, la primera llamada a \lstinline!next!
+debe devolver el primer elemento, pero tambi√©n debe avanzar, para que la
 siguiente llamada devuelva el siguiente elemento.  Por ello, se utiliza la
 estructura {\it guardar, avanzar, devolver}.
 
@@ -887,7 +887,7 @@ estructura {\it guardar, avanzar, devolver}.
         return dato
 \end{codigo-python-sn}
 
-En el CÛdigo \ref{iterador_enlazada} se puede ver el cÛdigo completo del
+En el C√≥digo \ref{iterador_enlazada} se puede ver el c√≥digo completo del
 iterador.
 
 \begin{codigo}{\_IteradorListaEnlazada}{Un iterador para la lista enlazada}
@@ -896,14 +896,14 @@ iterador.
 class _IteradorListaEnlazada(object):
     " Iterador para la clase ListaEnlazada "
     def __init__(self, prim):
-        """ Constructor del iterador.  
+        """ Constructor del iterador.
             prim es el primer elemento de la lista. """
         self.actual = prim
 
     def next(self):
         """ Devuelve uno a uno los elementos de la lista. """
         if self.actual == None:
-            raise StopIteration("No hay m·s elementos en la lista")
+            raise StopIteration("No hay m√°s elementos en la lista")
 
         # Guarda el dato
         dato = self.actual.dato
@@ -916,7 +916,7 @@ class _IteradorListaEnlazada(object):
 
 Finalmente, una vez que se tiene el iterador implementado, es necesario
 modificar la clase \lstinline!ListaEnlazada! para que devuelva el iterador
-cuando se llama al mÈtodo \lstinline!__iter__!.
+cuando se llama al m√©todo \lstinline!__iter__!.
 
 \begin{codigo-python-sn}
     def __iter__(self):
@@ -924,7 +924,7 @@ cuando se llama al mÈtodo \lstinline!__iter__!.
         return _IteradorListaEnlazada(self.prim)
 \end{codigo-python-sn}
 
-Con todo esto ser· posible recorrer nuestra lista con la estructura a la
+Con todo esto ser√° posible recorrer nuestra lista con la estructura a la
 que estamos acostumbrados.
 
 \begin{codigo-python-sn}
@@ -934,7 +934,7 @@ que estamos acostumbrados.
 >>> l.append(5)
 >>> for valor in l:
 ...     print valor
-... 
+...
 1
 3
 5
@@ -944,29 +944,29 @@ que estamos acostumbrados.
 
 \begin{itemize}
 
-\item Un {\bf tipo abstracto de datos} (TAD) es un tipo de datos que est·
-definido por las operaciones que contiene y cÛmo se comportan (su {\it
-interfaz}), no por la forma en la que esas operaciones est·n implementadas.
+\item Un {\bf tipo abstracto de datos} (TAD) es un tipo de datos que est√°
+definido por las operaciones que contiene y c√≥mo se comportan (su {\it
+interfaz}), no por la forma en la que esas operaciones est√°n implementadas.
 
-\item Una {\bf lista enlazada} es una implementaciÛn del TAD {\it lista}.
+\item Una {\bf lista enlazada} es una implementaci√≥n del TAD {\it lista}.
 Se trata de una lista compuesta por nodos, en la que
 cada nodo contiene un dato y una referencia al nodo que le sigue.
 
 \item En las listas enlazadas, es {\it barato} insertar o eliminar
 elementos, ya que simplemente se deben alterar un par de referencias; pero
 es {\it caro} acceder a un elemento en particular, ya que es necesario
-pasar por todos los anteriores para llegar a Èl.
+pasar por todos los anteriores para llegar a √©l.
 
 \item Tanto al insertar como al remover elementos de una lista enlazada, se
-utiliza la tÈcnica de {\it m·quina de parejas}, mediante la cual se va
+utiliza la t√©cnica de {\it m√°quina de parejas}, mediante la cual se va
 recorriendo la lista hasta encontrar el lugar apropiado donde operar con
 las referencias.
 
-\item Una {\bf lista doblemente enlazada} es aquella cuyos nodos adem·s del
+\item Una {\bf lista doblemente enlazada} es aquella cuyos nodos adem√°s del
 dato contienen una referencia al nodo anterior y otra al nodo siguiente, de
 modo que se la puede recorrer en ambos sentidos.
 
-\item Una {\bf lista circular} es aquella en la que el ˙ltimo nodo contiene
+\item Una {\bf lista circular} es aquella en la que el √∫ltimo nodo contiene
 una referencia al primero, y puede ser recorrida infinitamente.
 
 \item Un {\bf iterador} es un objeto que permite recorrer uno a uno los
@@ -979,56 +979,56 @@ elementos de una secuencia.
 \section{Ejercicios}
 
 \ejercicio{
-Agregar a la clase {\it ListaEnlazada} un mÈtodo \verb!next! que vaya
+Agregar a la clase {\it ListaEnlazada} un m√©todo \verb!next! que vaya
 devolviendo uno a uno cada elemento de la lista, desde el primero hasta el
-˙ltimo.  Al llegar al final de la lista debe levantar una excepciÛn de la
-clase {\it StopIteration}.  Para el correcto funcionamiento de este mÈtodo, øes
+√∫ltimo.  Al llegar al final de la lista debe levantar una excepci√≥n de la
+clase {\it StopIteration}.  Para el correcto funcionamiento de este m√©todo, ¬øes
 necesario agregar un atributo adicional a la clase?
 }
 
 \ejercicio{
-Utilizando el mÈtodo \verb!next! del ejercicio anterior, redefinir el
-mÈtodo \verb!__str__! de {\it ListaEnlazada}, para que se genere una salida
+Utilizando el m√©todo \verb!next! del ejercicio anterior, redefinir el
+m√©todo \verb!__str__! de {\it ListaEnlazada}, para que se genere una salida
 legible de lo que contiene la lista, similar a las listas de python. \\
-{\bf Nota}: este mÈtodo debe devolver una cadena, no imprimirla por
+{\bf Nota}: este m√©todo debe devolver una cadena, no imprimirla por
 pantalla.
 }
 
 \ejercicio{
-Agregar a {\it ListaEnlazada} un mÈtodo \verb!extend! que reciba una {\it
+Agregar a {\it ListaEnlazada} un m√©todo \verb!extend! que reciba una {\it
 ListaEnlazada} y agregue a la lista actual los elementos que se encuentran
 en la lista recibida.
 }
 
-% No es un buen ejemplo que LE Ordenada herede de LE ya que se tiene que bloquear 
-% o redefinir el significado del mÈtodo append.
-% 
+% No es un buen ejemplo que LE Ordenada herede de LE ya que se tiene que bloquear
+% o redefinir el significado del m√©todo append.
+%
 %\ejercicioc{
 %Escribir una clase {\it ListaEnlazadaOrdenada} que herede de {\it
-%ListaEnlazada}, redefiniendo el mÈtodo \verb!insert! para que inserte los
-%elementos de forma ordenada, y el mÈtodo \verb!append! para que no permita
-%la inserciÛn al final.
+%ListaEnlazada}, redefiniendo el m√©todo \verb!insert! para que inserte los
+%elementos de forma ordenada, y el m√©todo \verb!append! para que no permita
+%la inserci√≥n al final.
 %}
 
 \ejercicio{
-Una {\bf lista circular} es una lista cuyo ˙ltimo nodo est· ligado al primero,
+Una {\bf lista circular} es una lista cuyo √∫ltimo nodo est√° ligado al primero,
 de modo que es posible recorrerla infinitamente.  \\
-Escribir la clase {\it ListaCircular}, incluyendo los mÈtodos \verb!insert!,
+Escribir la clase {\it ListaCircular}, incluyendo los m√©todos \verb!insert!,
 \verb!append!, \verb!remove! y \verb!pop!.
 }
 
 \ejercicio{
 Una {\bf lista doblemente enlazada} es una lista en la cual cada nodo tiene
-una referencia al anterior adem·s de al prÛximo de modo que es posible
-recorrerla en ambas direcciones. \\ 
-Escribir la clase {\it ListaDobleEnlazada}, incluyendo los mÈtodos
+una referencia al anterior adem√°s de al pr√≥ximo de modo que es posible
+recorrerla en ambas direcciones. \\
+Escribir la clase {\it ListaDobleEnlazada}, incluyendo los m√©todos
 \verb!insert!, \verb!append!, \verb!remove! y \verb!pop!.
 }
 
 \ejercicio{
-Escribir un mÈtodo de la clase {\it ListaEnlazada} que invierta el orden
-de la lista (es decir, el primer elemento queda como ˙ltimo y
-viceversa, y se invierte la direcciÛn de todos los enlaces). \\
+Escribir un m√©todo de la clase {\it ListaEnlazada} que invierta el orden
+de la lista (es decir, el primer elemento queda como √∫ltimo y
+viceversa, y se invierte la direcci√≥n de todos los enlaces). \\
 {\bf Nota}: operar directamente sobre los elementos de la lista.
 }
 

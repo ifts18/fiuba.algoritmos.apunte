@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#encoding: latin1
+# encoding: utf-8
 
 def quick_sort(lista):
     """ Ordena la lista de forma recursiva.

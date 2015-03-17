@@ -1,10 +1,10 @@
 #!/usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
 def busqueda_con_index(xs, x):
     """Busca un elemento x en una lista xs
 
-    si x est· en xs devuelve xs.index(x)
+    si x est√° en xs devuelve xs.index(x)
     de lo contrario devuelve -1
     """
 

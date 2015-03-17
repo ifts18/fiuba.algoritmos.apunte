@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 import csv
 
 def leer_datos(datos):
-	""" Obtiene el siguiente registro, o devuelve None si llegó al fin
+	""" Obtiene el siguiente registro, o devuelve None si llegÃ³ al fin
 	    del archivo. """
 	try:
 		return datos.next()

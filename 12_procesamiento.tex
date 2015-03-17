@@ -1,11 +1,11 @@
 % Copyright (C) 2009-2010 Maximiliano Curia <maxy@gnuservers.com.ar>,
 %               Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -15,25 +15,25 @@
 
 \chapter{Procesamiento de archivos}
 
-En la unidad \ref{uni:archivos} se explicÛ como abrir, leer y escribir datos en
-los archivos.  En general se quiere poder procesar la informaciÛn que contienen
-estos archivos, para hacer algo ˙til con ella.
+En la unidad \ref{uni:archivos} se explic√≥ como abrir, leer y escribir datos en
+los archivos.  En general se quiere poder procesar la informaci√≥n que contienen
+estos archivos, para hacer algo √∫til con ella.
 
-Dentro de las operaciones a realizar m·s sencillas se encuentran los
-denominados {\it filtros}, programas que procesan la entrada lÌnea por
-lÌnea, pudiendo seleccionar quÈ lÌneas formar·n parte de la salida y
-pudiendo aplicar una operaciÛn determinada a cada una de estas lÌneas antes
+Dentro de las operaciones a realizar m√°s sencillas se encuentran los
+denominados {\it filtros}, programas que procesan la entrada l√≠nea por
+l√≠nea, pudiendo seleccionar qu√© l√≠neas formar√°n parte de la salida y
+pudiendo aplicar una operaci√≥n determinada a cada una de estas l√≠neas antes
 de pasarla a la salida.
 
-En esta unidad se indican algunas formas m·s complejas de procesar la
-informaciÛn leÌda.  En particular, dos algoritmos bastante comunes, llamados
+En esta unidad se indican algunas formas m√°s complejas de procesar la
+informaci√≥n le√≠da.  En particular, dos algoritmos bastante comunes, llamados
 \textit {corte de control} y \textit{apareo de archivos}.
 
 \section{Corte de control}
 
-La idea b·sica de este algoritmo es poder analizar informaciÛn, generalmente
-provista mediante \textit{registros}, agrup·ndolos seg˙n diversos criterios.
-Como precondiciÛn se incluye que la informaciÛn debe estar ordenada seg˙n
+La idea b√°sica de este algoritmo es poder analizar informaci√≥n, generalmente
+provista mediante \textit{registros}, agrup√°ndolos seg√∫n diversos criterios.
+Como precondici√≥n se incluye que la informaci√≥n debe estar ordenada seg√∫n
 los mismos criterios por los que se la quiera agrupar. De modo que si
 varios registros tienen el mismo valor en uno de sus \textit{campos}, se
 encuentren juntos, formando un grupo.
@@ -41,24 +41,24 @@ encuentren juntos, formando un grupo.
 Se lo utiliza principalmente para realizar reportes que requieren
 subtotales, cantidades o promedios parciales u otros valores similares.
 
-El algoritmo consiste en ir recorriendo la informaciÛn, de modo que cada vez
+El algoritmo consiste en ir recorriendo la informaci√≥n, de modo que cada vez
 que se produzca un cambio en alguno de los campos correspondiente a uno de los
-criterios, se ejecutan los pasos correspondientes a la finalizaciÛn de un
+criterios, se ejecutan los pasos correspondientes a la finalizaci√≥n de un
 criterio y el comienzo del siguiente.
 
 \subsection*{Ejemplo}
 
 Supongamos que en un archivo \textbf{csv} tenemos los datos de las ventas de
 una empresa a sus clientes y se necesita obtener las ventas por cliente,
-mes por mes, con un total por aÒo, otro por cliente y uno de las ventas 
-totales. El formato est· especificado de la siguiente forma:
+mes por mes, con un total por a√±o, otro por cliente y uno de las ventas
+totales. El formato est√° especificado de la siguiente forma:
 
 \begin{verbatim}
-cliente,aÒo,mes,dÌa,venta
+cliente,a√±o,mes,d√≠a,venta
 \end{verbatim}
 
 Para poder hacer el reporte como se solicita, el archivo debe estar ordenado en
-primer lugar por \verb!cliente!, luego por \verb!aÒo!, y luego por \verb!mes!.
+primer lugar por \verb!cliente!, luego por \verb!a√±o!, y luego por \verb!mes!.
 
 Teniendo el archivo ordenado de esta manera, es posible recorrerlo e ir
 realizando los subtotales correspondientes, a medida que se los va
@@ -75,27 +75,27 @@ verificar.
 \begin{observacion}
 Las soluciones de corte de control son siempre de estar forma: una serie de
 bucles anidados, que incluyen las condiciones del bucle padre y agregan su
-propia condiciÛn, y el movimiento hacia el siguiente registro se realiza en
-el bucle con mayor nivel de anidaciÛn.
+propia condici√≥n, y el movimiento hacia el siguiente registro se realiza en
+el bucle con mayor nivel de anidaci√≥n.
 \end{observacion}
 
 \section{Apareo}
 
-AsÌ como el corte de control nos sirve para generar un reporte, el apareo nos
+As√≠ como el corte de control nos sirve para generar un reporte, el apareo nos
 sirve para asociar/relacionar datos que se encuentran en distintos archivos.
 
-La idea b·sica es: a partir de dos archivos (uno principal y otro
-relacionado) que tienen alguna informaciÛn que los enlace, generar un
+La idea b√°sica es: a partir de dos archivos (uno principal y otro
+relacionado) que tienen alguna informaci√≥n que los enlace, generar un
 tercero (o una salida por pantalla), como una mezcla de los dos.
 
-Para hacer esto es conveniente que ambos archivos estÈn ordenados por el valor
-que los relaciona. 
+Para hacer esto es conveniente que ambos archivos est√©n ordenados por el valor
+que los relaciona.
 
 \subsection*{Ejemplo}
 
-Por ejemplo, si se tiene un archivo con un listado de alumnos (padrÛn,
+Por ejemplo, si se tiene un archivo con un listado de alumnos (padr√≥n,
 apellido, nombre, carrera), y otro archivo que contiene las notas de esos
-alumnos (padrÛn, materia, nota), y se quieren listar todas las notas que
+alumnos (padr√≥n, materia, nota), y se quieren listar todas las notas que
 corresponden a cada uno de los alumnos, se lo puede hacer de la siguiente
 manera.
 
@@ -105,24 +105,24 @@ imprime las notas que corresponden a cada
 alumno]{src/12_procesamiento/notas.py}
 
 En el ejemplo anterior usamos apareo de datos para combinar y mostrar
-informaciÛn, de forma similar se puede utilizar para agregar informaciÛn nueva,
-borrar informaciÛn o modificar datos de la tabla principal. Gran parte de las
+informaci√≥n, de forma similar se puede utilizar para agregar informaci√≥n nueva,
+borrar informaci√≥n o modificar datos de la tabla principal. Gran parte de las
 bases de datos relacionales basan su funcionamiento en estas funcionalidades.
 
 \section{Resumen}
 
 \begin{itemize}
 
-\item Existen diversas formas de procesar archivos de informaciÛn.  Se
+\item Existen diversas formas de procesar archivos de informaci√≥n.  Se
 puede simplemente filtrar la entrada para obtener una salida, o se pueden
-realizar operaciones m·s complejas como el {\bf corte de control} o el {\bf
+realizar operaciones m√°s complejas como el {\bf corte de control} o el {\bf
 apareo}
 
-\item El corte de control es una tÈcnica de procesamiento de datos
+\item El corte de control es una t√©cnica de procesamiento de datos
 ordenados por diversos criterios, que permite agruparlos para obtener
 subtotales.
 
-\item El apareo es una tÈcnica de procesamiento que involucra dos archivos
+\item El apareo es una t√©cnica de procesamiento que involucra dos archivos
 con datos ordenados, y permite generar una salida combinada a partir de
 estos dos archivos.
 

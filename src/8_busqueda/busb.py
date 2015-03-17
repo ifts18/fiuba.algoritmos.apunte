@@ -1,21 +1,21 @@
 #!/usr/bin/env python
-# encoding: latin1
+# encoding: utf-8
 
 def busqueda_binaria(lista, x):
-    """Búsqueda binaria
-    Precondición: lista está ordenada
-    Devuelve -1 si x no está en lista;
-    Devuelve p tal que lista[p] == x, si x está en lista
+    """BÃºsqueda binaria
+    PrecondiciÃ³n: lista estÃ¡ ordenada
+    Devuelve -1 si x no estÃ¡ en lista;
+    Devuelve p tal que lista[p] == x, si x estÃ¡ en lista
     """
 
-    # Busca en toda la lista dividiéndola en segmentos y considerando
+    # Busca en toda la lista dividiÃ©ndola en segmentos y considerando
     # a la lista completa como el segmento que empieza en 0 y termina
     # en len(lista) - 1.
 
-    izq = 0              # izq guarda el índice inicio del segmento
-    der = len(lista) - 1 # der guarda el índice fin del segmento
+    izq = 0              # izq guarda el Ã­ndice inicio del segmento
+    der = len(lista) - 1 # der guarda el Ã­ndice fin del segmento
 
-    # un segmento es vacío cuando izq > der:
+    # un segmento es vacÃ­o cuando izq > der:
     while izq <= der:
         # el punto medio del segmento
         medio = (izq+der)/2
@@ -34,16 +34,16 @@ def busqueda_binaria(lista, x):
         # [medio+1, der], descartando la izquierda
         else:
             izq = medio+1
-        # si no salió del ciclo, vuelve a iterar con el nuevo segmento
+        # si no saliÃ³ del ciclo, vuelve a iterar con el nuevo segmento
 
-    # salió del ciclo de manera no exitosa: el valor no fue encontrado
+    # saliÃ³ del ciclo de manera no exitosa: el valor no fue encontrado
     return -1
 
-# Código para probar la búsqueda binaria
+# CÃ³digo para probar la bÃºsqueda binaria
 def main():
     lista = input ("Dame una lista ordenada ([[]] para terminar): ")
     while lista != [[]]:
-        x = input("¿Valor buscado?: ")
+        x = input("Â¿Valor buscado?: ")
         resultado = busqueda_binaria(lista, x)
         print "Resultado:", resultado
         lista = input ("Dame una lista ordenada ([[]] para terminar): ")

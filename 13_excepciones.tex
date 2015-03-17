@@ -1,12 +1,12 @@
 % Copyright (C) 2009-2010 Maximiliano Curia <maxy@gnuservers.com.ar>,
 %               Margarita Manterola <margamanterola@gmail.com>
-%               Nicol·s Paez <nicopaez@gmail.com>
+%               Nicol√°s Paez <nicopaez@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -20,73 +20,73 @@
 
 En un programa podemos encontrarnos con distintos tipos de errores pero a
 grandes rasgos podemos decir que todos los errores pertenecen a una de las
-siguientes categorÌas.
+siguientes categor√≠as.
 
 \begin{itemize}
 
-\item Errores de sintaxis: estos errores son seguramente los m·s simples de
-resolver, pues son detectados por el intÈrprete (o por el compilador, seg˙n el
-tipo de lenguaje que estemos utilizando) al procesar el cÛdigo fuente y
+\item Errores de sintaxis: estos errores son seguramente los m√°s simples de
+resolver, pues son detectados por el int√©rprete (o por el compilador, seg√∫n el
+tipo de lenguaje que estemos utilizando) al procesar el c√≥digo fuente y
 generalmente son consecuencia de equivocaciones al escribir el programa. En el
 caso de Python estos errores son indicados con un mensaje {\it SyntaxError}.
-Por ejemplo, si trabajando con Python intentamos definir una funciÛn y en
+Por ejemplo, si trabajando con Python intentamos definir una funci√≥n y en
 lugar de {\it def} escribimos {\it dev}.
 
-\item Errores sem·nticos: se dan cuando un programa, a pesar de no generar
+\item Errores sem√°nticos: se dan cuando un programa, a pesar de no generar
 mensajes de error, no produce el resultado esperado. Esto puede deberse, por
-ejemplo, a un algoritmo incorrecto o a la omisiÛn de una sentencia.
+ejemplo, a un algoritmo incorrecto o a la omisi√≥n de una sentencia.
 
-\item Errores de ejecuciÛn: estos errores aparecen durante la ejecuciÛn del
+\item Errores de ejecuci√≥n: estos errores aparecen durante la ejecuci√≥n del
 programa y su origen puede ser diverso. En ocasiones pueden producirse por un
 uso incorrecto del programa por parte del usuario, por ejemplo si el usuario
-ingresa una cadena cuando se espera un n˙mero. En otras ocasiones pueden
-deberse a errores de programaciÛn, por ejemplo si una funciÛn intenta acceder
-a la quinta posiciÛn de una lista de 3 elementos o realizar una divisiÛn por
-cero. Una causa com˙n de errores de ejecuciÛn que generalmente excede al
+ingresa una cadena cuando se espera un n√∫mero. En otras ocasiones pueden
+deberse a errores de programaci√≥n, por ejemplo si una funci√≥n intenta acceder
+a la quinta posici√≥n de una lista de 3 elementos o realizar una divisi√≥n por
+cero. Una causa com√∫n de errores de ejecuci√≥n que generalmente excede al
 programador y al usuario, son los recursos externos al programa, por ejemplo
-si el programa intenta leer un archivo y el mismo se encuentra daÒado.
+si el programa intenta leer un archivo y el mismo se encuentra da√±ado.
 
 \end{itemize}
 
-Tanto a los errores de sintaxis como a los sem·nticos se los puede detectar y
-corregir durante la construcciÛn del programa ayudados por el intÈrprete y
-la ejecuciÛn de pruebas. Pero no ocurre esto con los errores de ejecuciÛn ya
-que no siempre es posible saber cuando ocurrir·n y puede resultar muy complejo
+Tanto a los errores de sintaxis como a los sem√°nticos se los puede detectar y
+corregir durante la construcci√≥n del programa ayudados por el int√©rprete y
+la ejecuci√≥n de pruebas. Pero no ocurre esto con los errores de ejecuci√≥n ya
+que no siempre es posible saber cuando ocurrir√°n y puede resultar muy complejo
 (o incluso casi imposible) reproducirlos. Es por ello que el resto de la
-unidad nos centraremos en cÛmo preparar nuestros programas para lidiar con
+unidad nos centraremos en c√≥mo preparar nuestros programas para lidiar con
 este tipo de errores.
 
 \section{Excepciones}
 
-Los errores de ejecuciÛn son llamados com˙nmente {\it excepciones} y por eso
-de ahora en m·s utilizaremos ese nombre. Durante la ejecuciÛn de un programa,
-si dentro de una funciÛn surge una excepciÛn y la funciÛn no la maneja, la
-excepciÛn se propaga hacia la funciÛn que la invocÛ, si esta otra tampoco la
-maneja, la excepciÛn continua propag·ndose hasta llegar a la funciÛn inicial
-del programa y si esta tampoco la maneja se interrumpe la ejecuciÛn del
+Los errores de ejecuci√≥n son llamados com√∫nmente {\it excepciones} y por eso
+de ahora en m√°s utilizaremos ese nombre. Durante la ejecuci√≥n de un programa,
+si dentro de una funci√≥n surge una excepci√≥n y la funci√≥n no la maneja, la
+excepci√≥n se propaga hacia la funci√≥n que la invoc√≥, si esta otra tampoco la
+maneja, la excepci√≥n continua propag√°ndose hasta llegar a la funci√≥n inicial
+del programa y si esta tampoco la maneja se interrumpe la ejecuci√≥n del
 programa. Veamos entonces como manejar excepciones.
 
-\subsection{Manejo de excepciones} 
+\subsection{Manejo de excepciones}
 
 Para el manejo de excepciones los lenguajes proveen ciertas palabras
 reservadas, que nos permiten manejar las excepciones que puedan surgir y
-tomar acciones de recuperaciÛn para evitar la interrupciÛn del programa o,
+tomar acciones de recuperaci√≥n para evitar la interrupci√≥n del programa o,
 al menos, para realizar algunas acciones adicionales antes de interrumpir
 el programa.
 
 En el caso de Python, el manejo de excepciones se hace mediante los
 bloques que utilizan las sentencias \lstinline!try!, \lstinline!except! y
-\lstinline!finally!. 
+\lstinline!finally!.
 
-Dentro del bloque \lstinline!try! se ubica todo el cÛdigo que pueda llegar
-a {\it levantar} una excepciÛn, se utiliza el tÈrmino {\it levantar} para
-referirse a la acciÛn de generar una excepciÛn.
+Dentro del bloque \lstinline!try! se ubica todo el c√≥digo que pueda llegar
+a {\it levantar} una excepci√≥n, se utiliza el t√©rmino {\it levantar} para
+referirse a la acci√≥n de generar una excepci√≥n.
 
-A continuaciÛn se ubica el bloque \lstinline!except!, que se encarga de
-capturar la excepciÛn y nos da la oportunidad de procesarla mostrando por
-ejemplo un mensaje adecuado al usuario. 
+A continuaci√≥n se ubica el bloque \lstinline!except!, que se encarga de
+capturar la excepci√≥n y nos da la oportunidad de procesarla mostrando por
+ejemplo un mensaje adecuado al usuario.
 
-Veamos quÈ sucede si se quiere realizar una divisiÛn por cero:
+Veamos qu√© sucede si se quiere realizar una divisi√≥n por cero:
 
 \begin{codigo-python-sn}
 >>> dividendo = 5
@@ -97,103 +97,103 @@ Traceback (most recent call last):
 ZeroDivisionError: integer division or modulo by zero
 \end{codigo-python-sn}
 
-En este caso, se levantÛ la excepciÛn \lstinline!ZeroDivisionError! cuando se
-quiso hacer la divisiÛn.  Para evitar que se levante la excepciÛn y se detenga
-la ejecuciÛn del programa, se utiliza el bloque
+En este caso, se levant√≥ la excepci√≥n \lstinline!ZeroDivisionError! cuando se
+quiso hacer la divisi√≥n.  Para evitar que se levante la excepci√≥n y se detenga
+la ejecuci√≥n del programa, se utiliza el bloque
 \lstinline!try!-\lstinline!except!.
 
 \begin{codigo-python-sn}
 >>> try:
 ...     cociente = dividendo / divisor
 ... except:
-...     print "No se permite la divisiÛn por cero"
-... 
-No se permite la divisiÛn por cero
+...     print "No se permite la divisi√≥n por cero"
+...
+No se permite la divisi√≥n por cero
 \end{codigo-python-sn}
 
 Dado que dentro de un mismo bloque \lstinline!try! pueden producirse
 excepciones de distinto tipo, es posible utilizar varios bloques
-\lstinline!except!, cada uno para capturar un tipo distinto de excepciÛn. 
+\lstinline!except!, cada uno para capturar un tipo distinto de excepci√≥n.
 
-Esto se hace especificando a continuaciÛn de la sentencia
-\lstinline!except! el nombre de la excepciÛn que se pretende capturar. Un
+Esto se hace especificando a continuaci√≥n de la sentencia
+\lstinline!except! el nombre de la excepci√≥n que se pretende capturar. Un
 mismo bloque \lstinline!except! puede atrapar varios tipos de excepciones,
 lo cual se hace especificando los nombres de la excepciones separados por
-comas a continuaciÛn de la palabra \lstinline!except!. Es importante
+comas a continuaci√≥n de la palabra \lstinline!except!. Es importante
 destacar que si bien luego de un bloque \lstinline!try! puede haber varios
-bloques \lstinline!except!, se ejecutar·, a lo sumo, uno de ellos.
+bloques \lstinline!except!, se ejecutar√°, a lo sumo, uno de ellos.
 
 \begin{codigo-python-sn}
 try:
-	# aquÌ ponemos el cÛdigo que puede lanzar excepciones
+	# aqu√≠ ponemos el c√≥digo que puede lanzar excepciones
 except IOError:
-	# entrar· aquÌ en caso que se haya producido
-	# una excepciÛn IOError
+	# entrar√° aqu√≠ en caso que se haya producido
+	# una excepci√≥n IOError
 except ZeroDivisionError:
-	# entrar· aquÌ en caso que se haya producido
-	# una excepciÛn ZeroDivisionError
+	# entrar√° aqu√≠ en caso que se haya producido
+	# una excepci√≥n ZeroDivisionError
 except:
-	# entrar· aquÌ en caso que se haya producido
-	# una excepciÛn que no corresponda a ninguno
+	# entrar√° aqu√≠ en caso que se haya producido
+	# una excepci√≥n que no corresponda a ninguno
 	# de los tipos especificados en los except previos
 \end{codigo-python-sn}
 
-Como se muestra en el ejemplo precedente tambiÈn es posible utilizar una
-sentencia \lstinline!except! sin especificar el tipo de excepciÛn a
-capturar, en cuyo caso se captura cualquier excepciÛn, sin importar su
-tipo. Cabe destacar, tambiÈn, que en caso de utilizar una sentencia
+Como se muestra en el ejemplo precedente tambi√©n es posible utilizar una
+sentencia \lstinline!except! sin especificar el tipo de excepci√≥n a
+capturar, en cuyo caso se captura cualquier excepci√≥n, sin importar su
+tipo. Cabe destacar, tambi√©n, que en caso de utilizar una sentencia
 \lstinline!except! sin especificar el tipo, la misma debe ser siempre la
-˙ltima de las sentencias \lstinline!except!, es decir que el siguiente
-fragmento de cÛdigo es incorrecto.
+√∫ltima de las sentencias \lstinline!except!, es decir que el siguiente
+fragmento de c√≥digo es incorrecto.
 
 \begin{codigo-python-sn}[numbers=none]
 try:
-	# aquÌ ponemos el cÛdigo que puede lanzar excepciones
+	# aqu√≠ ponemos el c√≥digo que puede lanzar excepciones
 except:
-	# ERROR de sintaxis, esta sentencia no puede estar aquÌ,
-	# sino que deberÌa estar luego del except IOError.
+	# ERROR de sintaxis, esta sentencia no puede estar aqu√≠,
+	# sino que deber√≠a estar luego del except IOError.
 except IOError:
-	# Manejo de la excepciÛn de entrada/salida
+	# Manejo de la excepci√≥n de entrada/salida
 \end{codigo-python-sn}
 
 Finalmente, puede ubicarse un bloque \lstinline!finally! donde se escriben
-las sentencias de finalizaciÛn, que son tÌpicamente acciones de limpieza.
+las sentencias de finalizaci√≥n, que son t√≠picamente acciones de limpieza.
 La particularidad del bloque \lstinline!finally! es que se ejecuta siempre,
-haya surgido una excepciÛn o no. Si hay un bloque \lstinline!except!, no es
-necesario que estÈ presente el \lstinline!finally!, y es posible tener un
-bloque \lstinline!try! sÛlo con \lstinline!finally!, sin
+haya surgido una excepci√≥n o no. Si hay un bloque \lstinline!except!, no es
+necesario que est√© presente el \lstinline!finally!, y es posible tener un
+bloque \lstinline!try! s√≥lo con \lstinline!finally!, sin
 \lstinline!except!. \\
 
-Veamos ahora como es que act˙a Python al encontrarse con estos bloques. Python
+Veamos ahora como es que act√∫a Python al encontrarse con estos bloques. Python
 comienza a ejecutar las instrucciones que se encuentran dentro de un bloque
-\lstinline!try! normalmente. Si durante la ejecuciÛn de esas instrucciones
-se levanta una excepciÛn, Python interrumpe la ejecuciÛn en el
-punto exacto en que surgiÛ la excepciÛn y pasa a la ejecuciÛn del bloque
+\lstinline!try! normalmente. Si durante la ejecuci√≥n de esas instrucciones
+se levanta una excepci√≥n, Python interrumpe la ejecuci√≥n en el
+punto exacto en que surgi√≥ la excepci√≥n y pasa a la ejecuci√≥n del bloque
 \lstinline!except! correspondiente.
 
 Para ello, Python verifica uno a uno los bloques \lstinline!except! y si
-encuentra alguno cuyo tipo haga referencia al tipo de excepciÛn levantada,
-comienza a ejecutarlo. Sino encuentra ning˙n bloque del tipo
+encuentra alguno cuyo tipo haga referencia al tipo de excepci√≥n levantada,
+comienza a ejecutarlo. Sino encuentra ning√∫n bloque del tipo
 correspondiente pero hay un bloque \lstinline!except! sin tipo, lo
 ejecuta. Al terminar de ejecutar el bloque correspondiente, se pasa a la
-ejecuciÛn del bloque \lstinline!finally!, si se encuentra definido.
+ejecuci√≥n del bloque \lstinline!finally!, si se encuentra definido.
 
-Si, por otra parte, no hay problemas durante la ejecuciÛn del bloque
-\lstinline!try!, se completa la ejecuciÛn del bloque, y luego se pasa
-directamente a la ejecuciÛn del bloque \lstinline!finally! (si es que est·
-definido). 
+Si, por otra parte, no hay problemas durante la ejecuci√≥n del bloque
+\lstinline!try!, se completa la ejecuci√≥n del bloque, y luego se pasa
+directamente a la ejecuci√≥n del bloque \lstinline!finally! (si es que est√°
+definido).
 
 Bajemos todo esto a un ejemplo concreto, supongamos que nuestro programa
-tiene que procesar cierta informaciÛn ingresada por el usuario y guardarla
+tiene que procesar cierta informaci√≥n ingresada por el usuario y guardarla
 en un archivo. Dado que el acceso a archivos puede levantar
-excepciones, siempre deberÌamos colocar el cÛdigo de manipulaciÛn de
-archivos dentro de un bloque \lstinline!try!. Luego deberÌamos
-colocar un bloque \lstinline!except! que atrape una excepciÛn del tipo
+excepciones, siempre deber√≠amos colocar el c√≥digo de manipulaci√≥n de
+archivos dentro de un bloque \lstinline!try!. Luego deber√≠amos
+colocar un bloque \lstinline!except! que atrape una excepci√≥n del tipo
 \lstinline!IOError!, que es el tipo de excepciones que lanzan la funciones
-de manipulaciÛn de archivos. Adicionalmente podrÌamos agregar un bloque
-\lstinline!except! sin tipo por si surge alguna otra excepciÛn.  Finalmente
-deberÌamos agregar un bloque \lstinline!finally! para cerrar el archivo,
-haya surgido o no una excepciÛn.
+de manipulaci√≥n de archivos. Adicionalmente podr√≠amos agregar un bloque
+\lstinline!except! sin tipo por si surge alguna otra excepci√≥n.  Finalmente
+deber√≠amos agregar un bloque \lstinline!finally! para cerrar el archivo,
+haya surgido o no una excepci√≥n.
 
 \begin{codigo-python-sn}
 try:
@@ -203,49 +203,49 @@ except IOError:
 	print "Error de entrada/salida."
 	# realizar procesamiento adicional
 except:
-	# procesar la excepciÛn
+	# procesar la excepci√≥n
 finally:
-	# si el archivo no est· cerrado hay que cerrarlo
+	# si el archivo no est√° cerrado hay que cerrarlo
 	if not(archivo.closed):
 		archivo.close()
 \end{codigo-python-sn}
 
-\subsection{Procesamiento y propagaciÛn de excepciones}
+\subsection{Procesamiento y propagaci√≥n de excepciones}
 
-Hemos visto cÛmo atrapar excepciones, es necesario ahora que veamos quÈ se
-supone que hagamos al atrapar una excepciÛn. En primer lugar podrÌamos
-ejecutar alguna lÛgica particular del caso como: cerrar un archivo,
+Hemos visto c√≥mo atrapar excepciones, es necesario ahora que veamos qu√© se
+supone que hagamos al atrapar una excepci√≥n. En primer lugar podr√≠amos
+ejecutar alguna l√≥gica particular del caso como: cerrar un archivo,
 realizar una procesamiento alternativo al del bloque \lstinline!try!, etc.
-Pero m·s all· de esto tenemos algunas opciones genÈricas que consisten en:
-dejar constancia de la ocurrencia de la excepciÛn, propagar la excepciÛn o,
+Pero m√°s all√° de esto tenemos algunas opciones gen√©ricas que consisten en:
+dejar constancia de la ocurrencia de la excepci√≥n, propagar la excepci√≥n o,
 incluso, hacer ambas cosas.
 
-Para dejar constancia de la ocurrencia de la excepciÛn, se puede escribir
+Para dejar constancia de la ocurrencia de la excepci√≥n, se puede escribir
 en un archivo de log o simplemente mostrar un mensaje en pantalla.
-Generalmente cuando se deja constancia de la ocurrencia de una excepciÛn se
-suele brindar alguna informaciÛn del contexto en que ocurriÛ la excepciÛn,
-por ejemplo: tipo de excepciÛn ocurrida, momento en que ocurriÛ la
-excepciÛn y cu·les fueron las llamadas previas a la excepciÛn. El objetivo
-de esta informaciÛn es facilitar el diagnÛstico en caso de que alguien deba
-corregir el programa para evitar que la excepciÛn siga apareciendo.
+Generalmente cuando se deja constancia de la ocurrencia de una excepci√≥n se
+suele brindar alguna informaci√≥n del contexto en que ocurri√≥ la excepci√≥n,
+por ejemplo: tipo de excepci√≥n ocurrida, momento en que ocurri√≥ la
+excepci√≥n y cu√°les fueron las llamadas previas a la excepci√≥n. El objetivo
+de esta informaci√≥n es facilitar el diagn√≥stico en caso de que alguien deba
+corregir el programa para evitar que la excepci√≥n siga apareciendo.
 
-Es posible, por otra parte, que luego de realizar alg˙n procesamiento
-particular del caso se quiera que la excepciÛn se propague hacia la funciÛn
-que habÌa invocado a la funciÛn actual. Para hacer esto Python nos brinda
-la instrucciÛn \lstinline!raise!.
+Es posible, por otra parte, que luego de realizar alg√∫n procesamiento
+particular del caso se quiera que la excepci√≥n se propague hacia la funci√≥n
+que hab√≠a invocado a la funci√≥n actual. Para hacer esto Python nos brinda
+la instrucci√≥n \lstinline!raise!.
 
-Si se invoca esta instrucciÛn dentro de un bloque \lstinline!except!, sin
-pasarle par·metros, Python levantar· la excepciÛn atrapada por ese bloque.
+Si se invoca esta instrucci√≥n dentro de un bloque \lstinline!except!, sin
+pasarle par√°metros, Python levantar√° la excepci√≥n atrapada por ese bloque.
 
-TambiÈn podrÌa ocurrir que en lugar de propagar la excepciÛn tal cual fue
-atrapada, quisiÈramos lanzar una excepciÛn distinta, m·s significativa para
-quien invocÛ a la funciÛn actual y que posiblemente contenga cierta
-informaciÛn de contexto. Para levantar una excepciÛn de cualquier tipo,
-utilizamos tambiÈn la sentencia \lstinline!raise!, pero indic·ndole el tipo
-de excepciÛn que deseamos lanzar y pasando a la excepciÛn los par·metros
-con informaciÛn adicional que queramos brindar. 
+Tambi√©n podr√≠a ocurrir que en lugar de propagar la excepci√≥n tal cual fue
+atrapada, quisi√©ramos lanzar una excepci√≥n distinta, m√°s significativa para
+quien invoc√≥ a la funci√≥n actual y que posiblemente contenga cierta
+informaci√≥n de contexto. Para levantar una excepci√≥n de cualquier tipo,
+utilizamos tambi√©n la sentencia \lstinline!raise!, pero indic√°ndole el tipo
+de excepci√≥n que deseamos lanzar y pasando a la excepci√≥n los par√°metros
+con informaci√≥n adicional que queramos brindar.
 
-El siguiente fragmento de cÛdigo muestra este uso de \lstinline!raise!.
+El siguiente fragmento de c√≥digo muestra este uso de \lstinline!raise!.
 
 \begin{codigo-python-sn}
 def dividir(dividendo, divisor):
@@ -256,94 +256,94 @@ def dividir(dividendo, divisor):
 		raise ZeroDivisionError("El divisor no puede ser cero")
 \end{codigo-python-sn}
 
-\subsection{Acceso a informaciÛn de contexto}
+\subsection{Acceso a informaci√≥n de contexto}
 
-Para acceder a la informaciÛn de contexto estando dentro de un bloque
-\lstinline!except!  existen dos alternativas. Se puede utilizar la funciÛn
-\lstinline!exc_info!  del mÛdulo \lstinline!sys!. Esta funciÛn devuelve una
-tupla con informaciÛn sobre la ˙ltima excepciÛn atrapada en un bloque
+Para acceder a la informaci√≥n de contexto estando dentro de un bloque
+\lstinline!except!  existen dos alternativas. Se puede utilizar la funci√≥n
+\lstinline!exc_info!  del m√≥dulo \lstinline!sys!. Esta funci√≥n devuelve una
+tupla con informaci√≥n sobre la √∫ltima excepci√≥n atrapada en un bloque
 \lstinline!except!. Dicha tupla contiene tres elementos: el tipo de
-excepciÛn, el valor de la excepciÛn y las llamadas realizadas.
+excepci√≥n, el valor de la excepci√≥n y las llamadas realizadas.
 
-Otra forma de obtener informaciÛn sobre la excepciÛn es utilizando la
-misma sentencia \lstinline!except!, pas·ndole un identificador para que
-almacene una referencia a la excepciÛn atrapada.
+Otra forma de obtener informaci√≥n sobre la excepci√≥n es utilizando la
+misma sentencia \lstinline!except!, pas√°ndole un identificador para que
+almacene una referencia a la excepci√≥n atrapada.
 
 \begin{codigo-python-sn}
 try:
-	# cÛdigo que puede lanzar una excepciÛn
+	# c√≥digo que puede lanzar una excepci√≥n
 except Exception, ex:
-	# procesamiento de la excepciÛn cuya informaciÛn
-	# es accesible a travÈs del identificador ex
+	# procesamiento de la excepci√≥n cuya informaci√≥n
+	# es accesible a trav√©s del identificador ex
 \end{codigo-python-sn}
 
-% TODO: 
+% TODO:
 % abuso de excepciones
-% La idea serÌa hablar de uso de excepciones para manejar casos excepcionales
+% La idea ser√≠a hablar de uso de excepciones para manejar casos excepcionales
 % y no para todo.
 
 \begin{sabias_que}
-En otros lenguajes, como el lenguaje Java, si una funciÛn puede lanzar una
-excepciÛn en alguna situaciÛn, la o las excepciones que lance deben formar
-parte de la declaraciÛn de la funciÛn y quien invoque dicha funciÛn est·
+En otros lenguajes, como el lenguaje Java, si una funci√≥n puede lanzar una
+excepci√≥n en alguna situaci√≥n, la o las excepciones que lance deben formar
+parte de la declaraci√≥n de la funci√≥n y quien invoque dicha funci√≥n est√°
 obligado a hacerlo dentro de un bloque \lstinline!try! que la atrape.
 
-En Python, al no tener esta obligaciÛn por parte del lenguaje debemos tener
-cuidado de atrapar las excepciones probables, ya que de no ser asÌ los
-programas se terminar·n inesperadamente.
+En Python, al no tener esta obligaci√≥n por parte del lenguaje debemos tener
+cuidado de atrapar las excepciones probables, ya que de no ser as√≠ los
+programas se terminar√°n inesperadamente.
 \end{sabias_que}
 
 \section{Validaciones}
 
-Las validaciones son tÈcnicas que permiten asegurar que los valores con los
-que se vaya a operar estÈn dentro de determinado dominio.
+Las validaciones son t√©cnicas que permiten asegurar que los valores con los
+que se vaya a operar est√©n dentro de determinado dominio.
 
-Estas tÈcnicas son particularmente importantes al momento de utilizar entradas
+Estas t√©cnicas son particularmente importantes al momento de utilizar entradas
 del usuario o de un archivo (o entradas externas en general) en nuestro
-cÛdigo, y tambiÈn se las utiliza para comprobar precondiciones. Al
-uso intensivo de estas tÈcnicas se lo suele llamar {\it programaciÛn
+c√≥digo, y tambi√©n se las utiliza para comprobar precondiciones. Al
+uso intensivo de estas t√©cnicas se lo suele llamar {\it programaci√≥n
 defensiva}.
 
-Si bien quien invoca una funciÛn debe preocuparse de cumplir con las
-precondiciones de Èsta, si las validaciones est·n hechas correctamente pueden
-devolver informaciÛn valiosa para que el invocante pueda actuar en
+Si bien quien invoca una funci√≥n debe preocuparse de cumplir con las
+precondiciones de √©sta, si las validaciones est√°n hechas correctamente pueden
+devolver informaci√≥n valiosa para que el invocante pueda actuar en
 consecuencia.
 
 Hay distintas formas de comprobar el dominio de un dato. Se puede comprobar
 el contenido; que una variable sea de un tipo en particular; o que el dato
-tenga determinada caracterÌstica, como que deba ser ``comparable'', o
+tenga determinada caracter√≠stica, como que deba ser ``comparable'', o
 ``iterable''.
 
-TambiÈn se debe tener en cuenta quÈ har· nuestro cÛdigo cuando una
-validaciÛn falle, ya que queremos darle informaciÛn al invocante que le sirva
-para procesar el error. El error producido tiene que ser f·cilmente
+Tambi√©n se debe tener en cuenta qu√© har√° nuestro c√≥digo cuando una
+validaci√≥n falle, ya que queremos darle informaci√≥n al invocante que le sirva
+para procesar el error. El error producido tiene que ser f√°cilmente
 reconocible.  En algunos casos, como por ejemplo cuando se quiere devolver
-una posiciÛn, devolver \lstinline!-1! nos puede asegurar que el invocante
-lo vaya a reconocer. En otros casos, levantar una excepciÛn es una soluciÛn
-m·s elegante.
+una posici√≥n, devolver \lstinline!-1! nos puede asegurar que el invocante
+lo vaya a reconocer. En otros casos, levantar una excepci√≥n es una soluci√≥n
+m√°s elegante.
 
 En cualquier caso, lo importante es que el resultado generado por nuestro
-cÛdigo cuando funciona correctamente y el resultado generado cuando falla
-debe ser claramente distinto. Por ejemplo, si el cÛdigo debe devolver un
+c√≥digo cuando funciona correctamente y el resultado generado cuando falla
+debe ser claramente distinto. Por ejemplo, si el c√≥digo debe devolver un
 elemento de una secuencia, no es una buena idea que devuelva
-\lstinline!None! en el caso de que la secuencia estÈ vacÌa, ya que
-\lstinline!None! es un elemento v·lido dentro de una secuencia.
+\lstinline!None! en el caso de que la secuencia est√© vac√≠a, ya que
+\lstinline!None! es un elemento v√°lido dentro de una secuencia.
 
 \subsection{Comprobaciones por contenido}
 
-Cuando queremos validar que los datos provistos a una porciÛn de cÛdigo
-contengan la informaciÛn apropiada, ya sea porque esa informaciÛn la ingresÛ
-un usuario, fue leÌda de un archivo, o porque por cualquier motivo es posible
+Cuando queremos validar que los datos provistos a una porci√≥n de c√≥digo
+contengan la informaci√≥n apropiada, ya sea porque esa informaci√≥n la ingres√≥
+un usuario, fue le√≠da de un archivo, o porque por cualquier motivo es posible
 que sea incorrecta, es deseable comprobar que el contenido de las variables a
-utilizar estÈn dentro de los valores con los que se puede operar.
+utilizar est√©n dentro de los valores con los que se puede operar.
 
 Estas comprobaciones no siempre son posibles, ya que en ciertas situaciones
-puede ser muy costoso corroborar las precondiciones de una funciÛn. Es por
-ello que este tipo de comprobaciones se realizan sÛlo cuando sea posible.
+puede ser muy costoso corroborar las precondiciones de una funci√≥n. Es por
+ello que este tipo de comprobaciones se realizan s√≥lo cuando sea posible.
 
-Por ejemplo, la funciÛn factorial est· definida para los n˙meros naturales
+Por ejemplo, la funci√≥n factorial est√° definida para los n√∫meros naturales
 incluyendo el 0. Es posible utilizar \lstinline!assert! (que es otra forma de
-levantar una excepciÛn) para comprobar las precondiciones de factorial.
+levantar una excepci√≥n) para comprobar las precondiciones de factorial.
 
 \begin{codigo-python}
 def factorial(n):
@@ -360,28 +360,28 @@ def factorial(n):
 
 \subsection{Entrada del usuario}
 
-En el caso particular de una porciÛn de cÛdigo que trate con entrada del
+En el caso particular de una porci√≥n de c√≥digo que trate con entrada del
 usuario, no se debe asumir que el usuario vaya a ingresar los datos
 correctamente, ya que los seres humanos tienden a cometer errores al ingresar
-informaciÛn.
+informaci√≥n.
 
-Por ejemplo, si se desea que un usuario ingrese un n˙mero, no se debe asumir
+Por ejemplo, si se desea que un usuario ingrese un n√∫mero, no se debe asumir
 que vaya a ingresarlo correctamente. Se lo debe guardar en una cadena y luego
-convertir a un n˙mero, es por eso que es recomendable el uso de la
-funciÛn \lstinline!raw_input! ya que devuelve una cadena que puede ser
+convertir a un n√∫mero, es por eso que es recomendable el uso de la
+funci√≥n \lstinline!raw_input! ya que devuelve una cadena que puede ser
 procesada posteriormente.
 
 \begin{codigo-python-sn}
 def lee_entero():
     """ Solicita un valor entero y lo devuelve.
-        Si el valor ingresado no es entero, lanza una excepciÛn. """
-    valor = raw_input("Ingrese un n˙mero entero: ")
+        Si el valor ingresado no es entero, lanza una excepci√≥n. """
+    valor = raw_input("Ingrese un n√∫mero entero: ")
     return int(valor)
 \end{codigo-python-sn}
 
-Esta funciÛn devuelve un valor entero, o lanza una excepciÛn si la conversiÛn
+Esta funci√≥n devuelve un valor entero, o lanza una excepci√≥n si la conversi√≥n
 no fue posible.  Sin embargo, esto no es suficiente.  En el caso en el que el
-usuario no haya ingresado la informaciÛn correctamente, es necesario volver a
+usuario no haya ingresado la informaci√≥n correctamente, es necesario volver a
 solicitarla.
 
 \begin{codigo-python-sn}
@@ -389,27 +389,27 @@ def lee_entero():
     """ Solicita un valor entero y lo devuelve.
         Mientras el valor ingresado no sea entero, vuelve a solicitarlo. """
     while True:
-        valor = raw_input("Ingrese un n˙mero entero: ")
+        valor = raw_input("Ingrese un n√∫mero entero: ")
 		try:
 			valor = int(valor)
             return valor
         except ValueError:
-            print "ATENCI”N: Debe ingresar un n˙mero entero."
+            print "ATENCI√ìN: Debe ingresar un n√∫mero entero."
 \end{codigo-python-sn}
 
-PodrÌa ser deseable, adem·s, poner un lÌmite a la cantidad m·xima de intentos
-que el usuario tiene para ingresar la informaciÛn correctamente y, superada
-esa cantidad m·xima de intentos, levantar una excepciÛn para que sea manejada
-por el cÛdigo invocante.
+Podr√≠a ser deseable, adem√°s, poner un l√≠mite a la cantidad m√°xima de intentos
+que el usuario tiene para ingresar la informaci√≥n correctamente y, superada
+esa cantidad m√°xima de intentos, levantar una excepci√≥n para que sea manejada
+por el c√≥digo invocante.
 
 \begin{codigo-python-sn}
 def lee_entero():
     """ Solicita un valor entero y lo devuelve.
         Si el valor ingresado no es entero, da 5 intentos para ingresarlo
-        correctamente, y de no ser asÌ, lanza una excepciÛn. """
+        correctamente, y de no ser as√≠, lanza una excepci√≥n. """
     intentos = 0
     while intentos < 5:
-        valor = raw_input("Ingrese un n˙mero entero: ")
+        valor = raw_input("Ingrese un n√∫mero entero: ")
         try:
             valor = int(valor)
             return valor
@@ -419,12 +419,12 @@ def lee_entero():
 \end{codigo-python-sn}
 
 Por otro lado, cuando la entrada ingresada sea una cadena, no es esperable que
-el usuario la vaya a ingresar en may˙sculas o min˙sculas, ambos casos deben
-ser considerados. 
+el usuario la vaya a ingresar en may√∫sculas o min√∫sculas, ambos casos deben
+ser considerados.
 
 \begin{codigo-python-sn}
 def lee_opcion():
-    """ Solicita una opciÛn de men˙ y la devuelve. """
+    """ Solicita una opci√≥n de men√∫ y la devuelve. """
     while True:
         print "Ingrese A (Altas) - B (Bajas) - M (Modificaciones): ",
         opcion = raw_input().upper()
@@ -436,7 +436,7 @@ def lee_opcion():
 
 En esta clase de comprobaciones nos interesa el tipo del dato que vamos a
 tratar de validar, Python nos indica el tipo de una variable usando la
-funciÛn \lstinline!type(variable)!. Por ejemplo, para comprobar que una
+funci√≥n \lstinline!type(variable)!. Por ejemplo, para comprobar que una
 variable contenga un tipo entero podemos hacer:
 
 \begin{codigo-python-sn}
@@ -446,67 +446,67 @@ if type(i) != int:
 
 Sin embargo, ya hemos visto que tanto las listas como las tuplas y las
 cadenas son secuencias, y muchas de las funciones utilizadas puede utilizar
-cualquiera de estas secuencias. De la misma manera, una funciÛn puede
-utilizar un valor numÈrico, y que opere correctamente ya sea entero,
-flotante, o complejo. 
+cualquiera de estas secuencias. De la misma manera, una funci√≥n puede
+utilizar un valor num√©rico, y que opere correctamente ya sea entero,
+flotante, o complejo.
 
 Es posible comprobar el tipo de nuestra variable contra una secuencia de
 tipos posibles.
 
 \begin{codigo-python-sn}
 if type(i) not in (int, float, long, complex):
-	raise TypeError, "i debe ser numÈrico"
+	raise TypeError, "i debe ser num√©rico"
 \end{codigo-python-sn}
 
-Si bien esto es bastante m·s flexible que el ejemplo anterior, tambiÈn puede
-ser restrictivo ya que -como se ver· m·s adelante- cada programador puede
-definir sus propios tipos utilizando como base los que ya est·n definidos.
-Con este cÛdigo se est·n descartando todos los tipos que se basen en
+Si bien esto es bastante m√°s flexible que el ejemplo anterior, tambi√©n puede
+ser restrictivo ya que -como se ver√° m√°s adelante- cada programador puede
+definir sus propios tipos utilizando como base los que ya est√°n definidos.
+Con este c√≥digo se est√°n descartando todos los tipos que se basen en
 \lstinline!int!, \lstinline!float!,
-\lstinline!long! o \lstinline!complex!. 
+\lstinline!long! o \lstinline!complex!.
 
-Para poder incluir estos tipos en la comprobaciÛn a realizar, Python nos
-provee de la funciÛn \lstinline!isinstance(variable, tipos)!.
+Para poder incluir estos tipos en la comprobaci√≥n a realizar, Python nos
+provee de la funci√≥n \lstinline!isinstance(variable, tipos)!.
 
 \begin{codigo-python-sn}
 if not isinstance(i, (int, float, long, complex) ):
-	raise TypeError, "i debe ser numÈrico"
+	raise TypeError, "i debe ser num√©rico"
 \end{codigo-python-sn}
 
 Con esto comprobamos si una variable es de determinado tipo o subtipo de
-Èste. Esta opciÛn es bastante flexible, pero existen a˙n m·s opciones.
+√©ste. Esta opci√≥n es bastante flexible, pero existen a√∫n m√°s opciones.
 
 \begin{atencion}
 Hacer comprobaciones sobre los tipos de las variables suele resultar
-demasiado restrictivo, ya que es muy posible que una porciÛn de cÛdigo que
+demasiado restrictivo, ya que es muy posible que una porci√≥n de c√≥digo que
 opere con un tipo en particular funcione correctamente con otros tipos de
 variables que se comporten de forma similar.
 
 Es por eso que hay que tener mucho cuidado al limitar el uso de una
 variable por su tipo, y en muchos casos es preferible limitarlas por sus
-propiedades, como el ejemplo anterior, en que se requerÌa que se pudiera
+propiedades, como el ejemplo anterior, en que se requer√≠a que se pudiera
 convertir a un entero.
 \end{atencion}
 
-Para la mayorÌa de los tipos b·sicos de Python existe una funciÛn que se
+Para la mayor√≠a de los tipos b√°sicos de Python existe una funci√≥n que se
 llama de la misma manera que el tipo que devuelve un elemento de ese tipo,
 por ejemplo, \lstinline!int()! devuelve 0, \lstinline!dict()! devuelve
-\lstinline!{}! y asÌ. Adem·s, estas funciones suelen poder recibir un
+\lstinline!{}! y as√≠. Adem√°s, estas funciones suelen poder recibir un
 elemento de otro tipo para tratar de convertirlo, por ejemplo,
 \lstinline!int(3.0)! devuelve 3, \lstinline!list("Hola")! devuelve
 \lstinline!['H', 'o', 'l', 'a']!.
 
-Usando est· conversiÛn conseguimos dos cosas: podemos convertir un tipo
+Usando est√° conversi√≥n conseguimos dos cosas: podemos convertir un tipo
 recibido al que realmente necesitamos, a la vez que tenemos una copia de
 este, dejando el original intacto, que es importante cuando estamos
 tratando con tipos mutables.
 
-Por ejemplo, si se quiere contar con una funciÛn de divisiÛn entera que
-pueda recibir diversos par·metros, podrÌa hacerse de la siguiente manera.
+Por ejemplo, si se quiere contar con una funci√≥n de divisi√≥n entera que
+pueda recibir diversos par√°metros, podr√≠a hacerse de la siguiente manera.
 
 \begin{codigo-python-sn}
 def division_entera(x,y):
-    """ Calcula la divisiÛn entera despuÈs de convertir los par·metros a
+    """ Calcula la divisi√≥n entera despu√©s de convertir los par√°metros a
     enteros. """
     try:
         dividendo = int(x)
@@ -518,39 +518,39 @@ def division_entera(x,y):
         raise ZeroDivisionError, "y no puede ser cero"
 \end{codigo-python-sn}
 
-De esta manera, la funciÛn \lstinline!division_entera! puede ser llamada
+De esta manera, la funci√≥n \lstinline!division_entera! puede ser llamada
 incluso con cadenas que contengan expresiones enteras. Que este
 comportamiento sea deseable o no, depende siempre de cada caso.
 
-\subsection{Comprobaciones por caracterÌsticas}
+\subsection{Comprobaciones por caracter√≠sticas}
 
-Otra posible comprobaciÛn, dejando de lado los tipos, consiste en verificar
-si una variable tiene determinada caracterÌstica o no. Python promueve este
-tipo de programaciÛn, ya que el mismo intÈrprete utiliza este tipo de
+Otra posible comprobaci√≥n, dejando de lado los tipos, consiste en verificar
+si una variable tiene determinada caracter√≠stica o no. Python promueve este
+tipo de programaci√≥n, ya que el mismo int√©rprete utiliza este tipo de
 comprobaciones. Por ejemplo, para imprimir una variable, Python convierte
-esa variable a una cadena, no hay en el interprete una verificaciÛn para
-cada tipo, sino que busca una funciÛn especial, llamada
+esa variable a una cadena, no hay en el interprete una verificaci√≥n para
+cada tipo, sino que busca una funci√≥n especial, llamada
 \lstinline!__str__!, en la variable a imprimir, y si existe, la utiliza
 para convertir la variable a una cadena.
 
 \begin{sabias_que}
 Python utiliza la idea de {\it duck typing}, que viene del concepto de que
 si algo parece un pato, camina como un pato y grazna como un pato,
-entonces, se lo puede considerar un pato. 
+entonces, se lo puede considerar un pato.
 
 Esto se refiere a no diferenciar las variables por los tipos a los que
 pertenecen, sino por las funciones que tienen.
 \end{sabias_que}
 
-Para comprobar si una variable tiene o no una funciÛn Python provee la
-funciÛn \lstinline!hasattr(variable, atributo)!, donde \lstinline!atributo!
-puede ser el nombre de la funciÛn o de la variable que se quiera verificar.
-Se ver· m·s sobre atributos en la unidad de ProgramaciÛn Orientada a
+Para comprobar si una variable tiene o no una funci√≥n Python provee la
+funci√≥n \lstinline!hasattr(variable, atributo)!, donde \lstinline!atributo!
+puede ser el nombre de la funci√≥n o de la variable que se quiera verificar.
+Se ver√° m√°s sobre atributos en la unidad de Programaci√≥n Orientada a
 Objetos.
 
-Por ejemplo, existe la funciÛn \lstinline!__add__! para realizar
+Por ejemplo, existe la funci√≥n \lstinline!__add__! para realizar
 operaciones de suma entre elementos.  Si se quiere corroborar si un
-elemento es sumable, se lo harÌa de la siguiente forma.
+elemento es sumable, se lo har√≠a de la siguiente forma.
 
 \begin{codigo-python-sn}
 if not hasattr(i,"__add__"):
@@ -559,41 +559,41 @@ if not hasattr(i,"__add__"):
 
 Sin embargo, que el atributo exista no quiere decir que vaya a funcionar
 correctamente en todos los casos. Por ejemplo, tanto las cadenas como los
-n˙meros definen su propia ``suma'', pero no es posible sumar cadenas y
-n˙meros, de modo que en este caso serÌa necesario tener en cuenta una
-posible excepciÛn.
+n√∫meros definen su propia ``suma'', pero no es posible sumar cadenas y
+n√∫meros, de modo que en este caso ser√≠a necesario tener en cuenta una
+posible excepci√≥n.
 
-Por otro lado, en la mayorÌa de los casos se puede aplicar la frase: {\it
-es m·s f·cil pedir perdÛn que permiso}, atribuÌda a la programadora Grace
-Hopper. Es decir, en este caso es m·s sencillo hacer la suma dentro de un
-bloque \lstinline!try! y manejar la excepciÛn en caso de error, que saber
-cu·les son los detalles de la implementaciÛn de \lstinline!__add__! de cada
+Por otro lado, en la mayor√≠a de los casos se puede aplicar la frase: {\it
+es m√°s f√°cil pedir perd√≥n que permiso}, atribu√≠da a la programadora Grace
+Hopper. Es decir, en este caso es m√°s sencillo hacer la suma dentro de un
+bloque \lstinline!try! y manejar la excepci√≥n en caso de error, que saber
+cu√°les son los detalles de la implementaci√≥n de \lstinline!__add__! de cada
 tipo interactuante.
 
 \section{Resumen}
 
 \begin{itemize}
 \item Los errores que se pueden presentar en un programa son: de sintaxis
-(detectados por el intÈrprete), de sem·ntica (el programa no funciona
-correctamente), o de ejecuciÛn ({\it excepciones}).
-\item Cuando el cÛdigo a ejecutar pueda producir una excepciÛn es deseable
+(detectados por el int√©rprete), de sem√°ntica (el programa no funciona
+correctamente), o de ejecuci√≥n ({\it excepciones}).
+\item Cuando el c√≥digo a ejecutar pueda producir una excepci√≥n es deseable
 encerrarlo en los bloques correspondientes para actuar en consecuencia.
-\item Si una funciÛn no contempla la excepciÛn, Èsta es levantada a la
-funciÛn invocante, si Èsta no la contempla, la excepciÛn se pasa a la
-invocante, hasta que se llega a una porciÛn de cÛdigo que contemple la
-excepciÛn, o bien se interrumpe la ejecuciÛn del programa.
-\item Cuando una porciÛn de cÛdigo puede levantar diversos tipos de
+\item Si una funci√≥n no contempla la excepci√≥n, √©sta es levantada a la
+funci√≥n invocante, si √©sta no la contempla, la excepci√≥n se pasa a la
+invocante, hasta que se llega a una porci√≥n de c√≥digo que contemple la
+excepci√≥n, o bien se interrumpe la ejecuci√≥n del programa.
+\item Cuando una porci√≥n de c√≥digo puede levantar diversos tipos de
 excepciones, es deseable tratarlas por separado, si bien es posible
 tratarlas todas juntas.
-\item Cuando se genera una excepciÛn es importante actuar en consecuencia,
-ya sea mostrando un mensaje de error, guard·ndolo en un archivo, o
-modificando el resultado final de la funciÛn.
-\item Antes de actuar sobre un dato en una porciÛn de cÛdigo, es deseable
+\item Cuando se genera una excepci√≥n es importante actuar en consecuencia,
+ya sea mostrando un mensaje de error, guard√°ndolo en un archivo, o
+modificando el resultado final de la funci√≥n.
+\item Antes de actuar sobre un dato en una porci√≥n de c√≥digo, es deseable
 corroborar que se lo pueda utilizar, se puede validar su contenido, su tipo
 o sus atributos.
-\item Cuando no es posible utilizar un dato dentro de una porciÛn de
-cÛdigo, es importante informar el problema al cÛdigo invocante, ya sea
-mediante una excepciÛn o mediante un valor de retorno especial.
+\item Cuando no es posible utilizar un dato dentro de una porci√≥n de
+c√≥digo, es importante informar el problema al c√≥digo invocante, ya sea
+mediante una excepci√≥n o mediante un valor de retorno especial.
 \end{itemize}
 
 \begin{referencia_python}
@@ -601,71 +601,71 @@ mediante una excepciÛn o mediante un valor de retorno especial.
 \begin{sintaxis}{\lstinline{try: ... except:}}
 \begin{codigo-python-sn}
 try:
-	# cÛdigo
-except [tipo_de_excepciÛn [, variable]]:
-	# manejo de excepciÛn
+	# c√≥digo
+except [tipo_de_excepci√≥n [, variable]]:
+	# manejo de excepci√≥n
 \end{codigo-python-sn}
 
-Puede tener tantos \lstinline!except! como sea necesario, el ˙ltimo puede
-no tener un tipo de excepciÛn asociado.
+Puede tener tantos \lstinline!except! como sea necesario, el √∫ltimo puede
+no tener un tipo de excepci√≥n asociado.
 
-Si el cÛdigo dentro del bloque \lstinline!try! levanta una excepciÛn, se
-ejecuta el cÛdigo dentro del bloque \lstinline!except! correspondiente.
+Si el c√≥digo dentro del bloque \lstinline!try! levanta una excepci√≥n, se
+ejecuta el c√≥digo dentro del bloque \lstinline!except! correspondiente.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{try: ... finally:}}
 \begin{lstlisting}[numbers=none]
 try:
-	# cÛdigo
+	# c√≥digo
 finally:
-	# cÛdigo de limpieza
+	# c√≥digo de limpieza
 \end{lstlisting}
 
-El cÛdigo que se encuentra en el bloque \lstinline!finally! se ejecuta al
-finalizar el cÛdigo que se encuentra en el bloque \lstinline!try!, sin
-importar si se levantÛ o no una excepciÛn.
+El c√≥digo que se encuentra en el bloque \lstinline!finally! se ejecuta al
+finalizar el c√≥digo que se encuentra en el bloque \lstinline!try!, sin
+importar si se levant√≥ o no una excepci√≥n.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{try: ... except: ... finally:}}
 \begin{codigo-python-sn}
 try:
-	# cÛdigo
-except [tipo_de_excepciÛn [, variable]]:
-	# manejo de excepciÛn
+	# c√≥digo
+except [tipo_de_excepci√≥n [, variable]]:
+	# manejo de excepci√≥n
 finally:
-	# cÛdigo de limpieza
+	# c√≥digo de limpieza
 \end{codigo-python-sn}
 
-Es una combinaciÛn de los otros dos casos.  Si el cÛdigo del bloque
-\lstinline!try! levanta una excepciÛn, se ejecutar· el manejador
-correspondiente y, sin importar lo que haya sucedido, se ejecutar· el
+Es una combinaci√≥n de los otros dos casos.  Si el c√≥digo del bloque
+\lstinline!try! levanta una excepci√≥n, se ejecutar√° el manejador
+correspondiente y, sin importar lo que haya sucedido, se ejecutar√° el
 bloque \lstinline!finally! al concluir los otros bloques.
 \end{sintaxis}
 
 
-\begin{sintaxis}{\lstinline{raise [excepciÛn[, mensaje]]}}
-Levanta una excepciÛn, para interrumpir el cÛdigo de la funciÛn invocante.
+\begin{sintaxis}{\lstinline{raise [excepci√≥n[, mensaje]]}}
+Levanta una excepci√≥n, para interrumpir el c√≥digo de la funci√≥n invocante.
 
-Puede usarse sin par·metros, para levantar la ˙ltima excepciÛn atrapada.
-El primer par·metro corresponde al tipo de excepciÛn a levantar.
-El mensaje es opcional, se utiliza para dar m·s informaciÛn sobre el error
+Puede usarse sin par√°metros, para levantar la √∫ltima excepci√≥n atrapada.
+El primer par√°metro corresponde al tipo de excepci√≥n a levantar.
+El mensaje es opcional, se utiliza para dar m√°s informaci√≥n sobre el error
 acontecido.
 \end{sintaxis}
 
 \end{referencia_python}
 
-\section{ApÈndice}
-A continuaciÛn se muestran dos ejemplos de implementaciÛn de un programa que
-calcula la serie de Fibonacci para n˙meros menores a 20. 
+\section{Ap√©ndice}
+A continuaci√≥n se muestran dos ejemplos de implementaci√≥n de un programa que
+calcula la serie de Fibonacci para n√∫meros menores a 20.
 
-En primer lugar se muestra una implementaciÛn sin uso de excepciones, con
+En primer lugar se muestra una implementaci√≥n sin uso de excepciones, con
 las herramientas vistas antes de esta unidad.
 
 \begin{codigo-python}
 def calcularFibonacciSinExcepciones(n):
 	if (n>=20) or (n<=0):
 		print ''' Ha ingresado un valor incorrecto.
-El valor debe ser n˙mero entero mayor a cero y menor a 20'''
+El valor debe ser n√∫mero entero mayor a cero y menor a 20'''
 		return
 	salida=[]
 	a,b = 0,1
@@ -680,7 +680,7 @@ def mainSinExcepciones():
 	print calcularFibonacciSinExcepciones(n)
 \end{codigo-python}
 
-A continuaciÛn un cÛdigo que utiliza excepciones para manejar la entrada de
+A continuaci√≥n un c√≥digo que utiliza excepciones para manejar la entrada de
 mejor manera.
 
 \begin{codigo-python}
@@ -691,7 +691,7 @@ def calcularFibonacciConExcepciones(n):
 	except AssertionError:
 		raise ValueError
 	a=0
-	b=1           
+	b=1
 	salida = []
 	for x in range(n):
 		salida.append(b)
@@ -705,5 +705,5 @@ def mainConExcepciones():
 		print calcularFibonacci2(n)
 	except ValueError:
 		print '''Ha ingresado un valor incorrecto.
-El valor debe ser un n˙mero entero mayor a cero y menor a 20'''
+El valor debe ser un n√∫mero entero mayor a cero y menor a 20'''
 \end{codigo-python}

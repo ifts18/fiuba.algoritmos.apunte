@@ -1,11 +1,11 @@
 % Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
 % Copyright (C) Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -17,7 +17,7 @@
 
 En la primera unidad vimos que el programador puede definir nuevas
 instrucciones, que llamamos funciones. En particular lo aplicamos a la
-construcciÛn de una funciÛn llamada \lstinline+hola+ que salude a todos a
+construcci√≥n de una funci√≥n llamada \lstinline+hola+ que salude a todos a
 quienes queramos saludar:
 
 \begin{codigo-python-sn}
@@ -26,9 +26,9 @@ def hola(alguien):
     print "Estoy programando en Python."
 \end{codigo-python-sn}
 
-Dijimos en esa ocasiÛn que las funciones tienen partes variables, llamadas
-par·metros, que se asocian a un valor distinto en cada invocaciÛn.  El valor
-con el que se asocia un par·metro se llama {\it argumento}.  En nuestro caso la
+Dijimos en esa ocasi√≥n que las funciones tienen partes variables, llamadas
+par√°metros, que se asocian a un valor distinto en cada invocaci√≥n.  El valor
+con el que se asocia un par√°metro se llama {\it argumento}.  En nuestro caso la
 invocamos dos veces, para saludar a Ana y a Juan, haciendo que
 \lstinline+alguien+ se asocie al valor \lstinline!"Ana"! en la primera llamada
 y al valor \lstinline!"Juan"! en la segunda:
@@ -43,9 +43,9 @@ Estoy programando en Python.
 >>>
 \end{codigo-python-sn}
 
-Una funciÛn puede tener ninguno, uno o m·s par·metros. La funciÛn
-\lstinline+hola+ tiene un par·metro. Ya vimos tambiÈn ejemplos de funciones sin
-par·metros:
+Una funci√≥n puede tener ninguno, uno o m√°s par√°metros. La funci√≥n
+\lstinline+hola+ tiene un par√°metro. Ya vimos tambi√©n ejemplos de funciones sin
+par√°metros:
 
 \begin{codigo-python-sn}
 def holaPab():
@@ -53,32 +53,32 @@ def holaPab():
     print "Estoy programando en Python."
 \end{codigo-python-sn}
 
-En el caso de tener m·s de un par·metro, Èstos se separan entre sÌ por comas,
-y en la invocaciÛn tambiÈn se separan por comas los argumentos.
+En el caso de tener m√°s de un par√°metro, √©stos se separan entre s√≠ por comas,
+y en la invocaci√≥n tambi√©n se separan por comas los argumentos.
 
-\section{DocumentaciÛn de funciones}
+\section{Documentaci√≥n de funciones}
 
-Cada funciÛn escrita por un programador realiza una tarea especÌfica.  Cuando
+Cada funci√≥n escrita por un programador realiza una tarea espec√≠fica.  Cuando
 la cantidad de funciones disponibles para ser utilizadas es grande, puede ser
-difÌcil saber exactamente quÈ hace una funciÛn.  Es por eso que es
-extremadamente importante documentar en cada funciÛn cu·l es la tarea que
-realiza, cu·les son los par·metros que recibe y quÈ es lo que devuelve, para
+dif√≠cil saber exactamente qu√© hace una funci√≥n.  Es por eso que es
+extremadamente importante documentar en cada funci√≥n cu√°l es la tarea que
+realiza, cu√°les son los par√°metros que recibe y qu√© es lo que devuelve, para
 que a la hora de utilizarla sea lo pueda hacer correctamente.
 
-La documentaciÛn de una funciÛn se coloca luego del encabezado de la funciÛn,
-en un p·rrafo encerrado entre \lstinline!"""!.  AsÌ, para la funciÛn vista en
+La documentaci√≥n de una funci√≥n se coloca luego del encabezado de la funci√≥n,
+en un p√°rrafo encerrado entre \lstinline!"""!.  As√≠, para la funci√≥n vista en
 el ejemplo anterior:
 
 \begin{codigo-python-sn}
 def hola(alguien):
-    """ Imprime por pantalla un saludo, dirigido a la persona que 
-        se indica por par·metro. """
+    """ Imprime por pantalla un saludo, dirigido a la persona que
+        se indica por par√°metro. """
     print "Hola ", alguien, "!"
     print "Estoy programando en Python."
 \end{codigo-python-sn}
 
-Cuando una funciÛn definida est· correctamente documentada, es posible acceder
-a su documentaciÛn mediante la funciÛn \lstinline!help! provista por Python:
+Cuando una funci√≥n definida est√° correctamente documentada, es posible acceder
+a su documentaci√≥n mediante la funci√≥n \lstinline!help! provista por Python:
 
 \begin{codigo-python-sn}
 >>> help(hola)
@@ -86,30 +86,30 @@ Help on function hola in module __main__:
 
 hola(alguien)
     Imprime por pantalla un saludo, dirigido a la persona que
-    se indica por par·metro.
+    se indica por par√°metro.
 \end{codigo-python-sn}
 
-De esta forma no es necesario mirar el cÛdigo de una funciÛn para saber lo que
+De esta forma no es necesario mirar el c√≥digo de una funci√≥n para saber lo que
 hace, simplemente llamando a \lstinline!help! es posible obtener esta
-informaciÛn.
+informaci√≥n.
 
 \section{Imprimir versus Devolver}
 
-A continuaciÛn se define una funciÛn 
-\lstinline+print_asegundos (horas, minutos, segundos)+ 
-con tres par·metros (\lstinline+horas+, \lstinline+minutos+
-y \lstinline+segundos+) que imprime por pantalla la transformaciÛn a segundos
+A continuaci√≥n se define una funci√≥n
+\lstinline+print_asegundos (horas, minutos, segundos)+
+con tres par√°metros (\lstinline+horas+, \lstinline+minutos+
+y \lstinline+segundos+) que imprime por pantalla la transformaci√≥n a segundos
 de una medida de tiempo expresada en horas, minutos y segundos:
 
 \begin{codigo-python}
 def print_asegundos (horas, minutos, segundos):
     """ Transforma en segundos una medida de tiempo expresada en
         horas, minutos y segundos """
-    segsal = 3600 * horas + 60 * minutos + segundos  # regla de transformaciÛn
+    segsal = 3600 * horas + 60 * minutos + segundos  # regla de transformaci√≥n
     print "Son", segsal, "segundos"
 \end{codigo-python}
 
-Para ver si realmente funciona, podemos ejecutar la funciÛn de la siguiente
+Para ver si realmente funciona, podemos ejecutar la funci√≥n de la siguiente
 forma:
 
 \begin{codigo-python-sn}
@@ -119,15 +119,15 @@ Son 4210 segundos
 
 Contar con funciones es de gran utilidad, ya que nos permite ir armando una
 biblioteca de instrucciones con problemas que vamos resolviendo, y que se
-pueden reutilizar en la resoluciÛn de nuevos problemas (como partes de un
-problema m·s grande, por ejemplo) tal como lo sugiere Thompson en ``How to
+pueden reutilizar en la resoluci√≥n de nuevos problemas (como partes de un
+problema m√°s grande, por ejemplo) tal como lo sugiere Thompson en ``How to
 program it''.
- 
-Sin embargo, m·s ˙til que tener una biblioteca donde los resultados
+
+Sin embargo, m√°s √∫til que tener una biblioteca donde los resultados
 se imprimen por pantalla, es contar con una biblioteca donde los
 resultados se devuelven, para que la gente que usa esas funciones manipule
-esos resultados a voluntad: los imprima, los use para realizar c·lculos
-m·s complejos, etc.
+esos resultados a voluntad: los imprima, los use para realizar c√°lculos
+m√°s complejos, etc.
 
 \begin{codigo-python}
 def calc_asegundos (horas, minutos, segundos):
@@ -151,52 +151,52 @@ Son 4210 segundos
 12630
 \end{codigo-python-sn}
 
-\ejercicioc{Escribir una funciÛn \lstinline+repite_hola+ que reciba como
-par·metro un n˙mero entero \lstinline+n+ y escriba por pantalla el mensaje
+\ejercicioc{Escribir una funci√≥n \lstinline+repite_hola+ que reciba como
+par√°metro un n√∫mero entero \lstinline+n+ y escriba por pantalla el mensaje
 \lstinline!"Hola"!  \lstinline+n+ veces.  Invocarla con distintos valores de
 \lstinline+n+.}
 
-\ejercicioc{Escribir otra funciÛn \lstinline+repite_hola+ que reciba como
-par·metro un n˙mero entero \lstinline+n+ y retorne la cadena formada por
+\ejercicioc{Escribir otra funci√≥n \lstinline+repite_hola+ que reciba como
+par√°metro un n√∫mero entero \lstinline+n+ y retorne la cadena formada por
 \lstinline+n+ concatenaciones de  \lstinline!"Hola"!. Invocarla con distintos
 valores de \lstinline+n+.}
 
-\ejercicioc{Escribir una funciÛn \lstinline+repite_saludo+ que reciba como
-par·metro un n˙mero entero \lstinline+n+ y una cadena \lstinline+saludo+ y
+\ejercicioc{Escribir una funci√≥n \lstinline+repite_saludo+ que reciba como
+par√°metro un n√∫mero entero \lstinline+n+ y una cadena \lstinline+saludo+ y
 escriba por pantalla el valor de \lstinline+saludo+ \lstinline+n+ veces.
 Invocarla con distintos valores de \lstinline+n+ y de \lstinline+saludo+.}
 
-\ejercicioc{Escribir otra funciÛn \lstinline+repite_saludo+ que reciba como
-par·metro un n˙mero entero \lstinline+n+ y una cadena \lstinline+saludo+
+\ejercicioc{Escribir otra funci√≥n \lstinline+repite_saludo+ que reciba como
+par√°metro un n√∫mero entero \lstinline+n+ y una cadena \lstinline+saludo+
 retorne el valor de \lstinline+n+ concatenaciones de \lstinline+saludo+.
 Invocarla con distintos valores de \lstinline+n+ y de \lstinline+saludo+.}
 
-\section{CÛmo usar una funciÛn en un programa}
+\section{C√≥mo usar una funci√≥n en un programa}
 
-Una funciÛn es ˙til porque nos permite repetir la misma
-instrucciÛn (puede que con argumentos distintos) todas las veces
+Una funci√≥n es √∫til porque nos permite repetir la misma
+instrucci√≥n (puede que con argumentos distintos) todas las veces
 que las necesitemos en un programa.
 
 Para utilizar las funciones definidas anteriormente, escribiremos un programa
 que pida tres duraciones, y en los tres casos las transforme a segundos y las
-muestra por pantalla. 
+muestra por pantalla.
 
 \begin{enumerate}
 
-\item {\bf An·lisis: } El programa debe pedir tres duraciones expresadas en
+\item {\bf An√°lisis: } El programa debe pedir tres duraciones expresadas en
 horas, minutos y segundos, y las tiene que mostrar en pantalla expresadas en
 segundos.
 
-\item {\bf EspecificaciÛn: }
+\item {\bf Especificaci√≥n: }
 \begin{itemize}
-\item {\bf Entradas: } Tres duraciones leÌdas de teclado y expresadas en horas,
+\item {\bf Entradas: } Tres duraciones le√≠das de teclado y expresadas en horas,
 minutos y segundos.
 \item {\bf Salidas: } Mostrar por pantalla cada una de las duraciones
 ingresadas, convertidas a segundos.  Para cada juego de datos de entrada (h, m,
 s) se obtiene entonces 3600 * h + 60 * m + s, y se muestra ese resultado por
 pantalla.
 \end{itemize}
-\item {\bf DiseÒo:}
+\item {\bf Dise√±o:}
 \begin{itemize}
 \item Se tienen que leer tres conjuntos de datos y para cada conjunto hacer lo
 mismo, se trata entonces de un programa con estructura de ciclo definido de
@@ -208,57 +208,57 @@ repetir 3 veces:
 \end{verbatim}
 
 \item El cuerpo del ciclo ( \verb+<hacer cosas>+)  tiene la estructura {\it
-Entrada-C·lculo-Salida}.  En pseudocÛdigo:
+Entrada-C√°lculo-Salida}.  En pseudoc√≥digo:
 
 \begin{verbatim}
-Leer cu·ntas horas tiene el tiempo dado
+Leer cu√°ntas horas tiene el tiempo dado
  (y referenciarlo con la variable hs)
 
-Leer cu·ntos minutos tiene tiene el tiempo dado
+Leer cu√°ntos minutos tiene tiene el tiempo dado
  (y referenciarlo con la variable min)
 
-Leer cu·ntos segundos tiene el tiempo dado
+Leer cu√°ntos segundos tiene el tiempo dado
  (y referenciarlo con la variable seg)
 
 Mostrar por pantalla 3600 * hs + 60 * min + seg
 \end{verbatim}
 
 Pero convertir y mostrar por pantalla es exactamente lo que
-hace nuestra funciÛn \verb+print_asegundos+, por lo que podemos
-hacer que el cuerpo del ciclo se diseÒe como:
+hace nuestra funci√≥n \verb+print_asegundos+, por lo que podemos
+hacer que el cuerpo del ciclo se dise√±e como:
 
 \begin{verbatim}
-Leer cu·ntas horas tiene la duraciÛn dada
+Leer cu√°ntas horas tiene la duraci√≥n dada
  (y referenciarlo con la variable hs)
 
-Leer cu·ntos minutos tiene tiene la duraciÛn dada
+Leer cu√°ntos minutos tiene tiene la duraci√≥n dada
  (y referenciarlo con la variable min)
 
-Leer cu·ntas segundos tiene la duraciÛn dada
+Leer cu√°ntas segundos tiene la duraci√≥n dada
  (y referenciarlo con la variable seg)
 
-Invocar la funciÛn print_asegundos(hs, min, seg)
+Invocar la funci√≥n print_asegundos(hs, min, seg)
 \end{verbatim}
 
-\item El pseudocÛdigo final queda:
+\item El pseudoc√≥digo final queda:
 
 \begin{verbatim}
 repetir 3 veces:
-        Leer cu·ntas horas tiene la duraciÛn dada
+        Leer cu√°ntas horas tiene la duraci√≥n dada
         (y referenciarlo con la variable hs)
 
-        Leer cu·ntos minutos tiene la duraciÛn dada
+        Leer cu√°ntos minutos tiene la duraci√≥n dada
         (y referenciarlo con la variable min)
 
-        Leer cu·ntos segundos tiene la duraciÛn dada
+        Leer cu√°ntos segundos tiene la duraci√≥n dada
         (y referenciarlo con la variable seg)
 
-        Invocar la funciÛn print_asegundos(hs, min, seg)
+        Invocar la funci√≥n print_asegundos(hs, min, seg)
 \end{verbatim}
 
 \end{itemize}
-\item {\bf ImplementaciÛn:} A partir del diseÒo, se escribe el programa
-Python que se muestra en el CÛdigo \ref{trestiempos}, que se guardar·
+\item {\bf Implementaci√≥n:} A partir del dise√±o, se escribe el programa
+Python que se muestra en el C√≥digo \ref{trestiempos}, que se guardar√°
 en el archivo \verb!tres_tiempos.py!.
 
 \begin{codigo}{\label{trestiempos} tres\_tiempos.py}{Lee tres tiempos y los imprime en segundos}
@@ -271,7 +271,7 @@ def print_asegundos (horas, minutos, segundos):
 
 def main():
 	""" Lee tres tiempos expresados en hs, min y seg, y usa
-		print_asegundos para mostrar en pantalla la conversiÛn a
+		print_asegundos para mostrar en pantalla la conversi√≥n a
         segundos """
     for x in range(3):
         hs = input("Cuantas horas?: ")
@@ -304,17 +304,17 @@ Son 1 segundos
 \end{codigo-python-sn}
 \end{enumerate}
 
-\ejercicioc{Resolver el problema anterior usando ahora la funciÛn
+\ejercicioc{Resolver el problema anterior usando ahora la funci√≥n
 \verb+calc_asegundos+.}
 
-\section{M·s sobre los resultados de las funciones}
+\section{M√°s sobre los resultados de las funciones}
 
-Ya hemos visto cÛmo hacer para que las funciones que se comporten como las
-funciones que conocemos, las de la matem·tica, que
+Ya hemos visto c√≥mo hacer para que las funciones que se comporten como las
+funciones que conocemos, las de la matem√°tica, que
 se usan para calcular resultados.
 
 Veremos ahora varias cuestiones a tener en cuenta al escribir
-funciones. Para ello volvemos a escribir una funciÛn que eleva al cuadrado un n˙mero.
+funciones. Para ello volvemos a escribir una funci√≥n que eleva al cuadrado un n√∫mero.
 
 \begin{codigo-python-sn}
 >>> def cuadrado (x):
@@ -327,8 +327,8 @@ funciones. Para ello volvemos a escribir una funciÛn que eleva al cuadrado un n˙
 >>>
 \end{codigo-python-sn}
 
-øPor quÈ no usamos dentro del programa el valor \verb+cua+ calculado dentro de
-la funciÛn?
+¬øPor qu√© no usamos dentro del programa el valor \verb+cua+ calculado dentro de
+la funci√≥n?
 
 \begin{codigo-python-sn}
 >>> def cuadrado (x):
@@ -343,17 +343,17 @@ NameError: name 'cua' is not defined
 \end{codigo-python-sn}
 
 \begin{observacion}
-Las variables y los par·metros que se declaran
-dentro de una funciÛn no existen fuera de ella, no se los conoce.
-Fuera de la funciÛn se puede ver sÛlo el valor que retorna 
-y es por eso que es necesario introducir la instrucciÛn \lstinline!return!.
+Las variables y los par√°metros que se declaran
+dentro de una funci√≥n no existen fuera de ella, no se los conoce.
+Fuera de la funci√≥n se puede ver s√≥lo el valor que retorna
+y es por eso que es necesario introducir la instrucci√≥n \lstinline!return!.
 \end{observacion}
 
-øPara quÈ hay que introducir un \lstinline+return+ en la funciÛn?
-øNo alcanza con el valor que se calcula dentro de la misma
-para que se considere que la funciÛn retorna un valor? En
+¬øPara qu√© hay que introducir un \lstinline+return+ en la funci√≥n?
+¬øNo alcanza con el valor que se calcula dentro de la misma
+para que se considere que la funci√≥n retorna un valor? En
 Python no alcanza (hay otros lenguajes en los que se considera que el
-˙ltimo valor calculado en una funciÛn es el valor de retorno de la misma).
+√∫ltimo valor calculado en una funci√≥n es el valor de retorno de la misma).
 
 \begin{codigo-python-sn}
 >>> def cuadrado (x):
@@ -364,25 +364,25 @@ Python no alcanza (hay otros lenguajes en los que se considera que el
 >>>
 \end{codigo-python-sn}
 
-Cuando se invoca la funciÛn \lstinline!cuadrado! mediante la instrucciÛn
+Cuando se invoca la funci√≥n \lstinline!cuadrado! mediante la instrucci√≥n
 \verb+y = cuadrado (5)+ lo que sucede es lo siguiente:
 
 \begin{itemize}
 \item Se invoca a \lstinline!cuadrado! con el argumento \lstinline!5!, y se ejecuta
-el cuerpo de la funciÛn.
-\item El valor que devuelve la funciÛn se asocia con la variable \lstinline!y!.
+el cuerpo de la funci√≥n.
+\item El valor que devuelve la funci√≥n se asocia con la variable \lstinline!y!.
 \end{itemize}
 
-Es por eso que si la funciÛn no devuelve ning˙n valor, no queda ning˙n valor
+Es por eso que si la funci√≥n no devuelve ning√∫n valor, no queda ning√∫n valor
 asociado a la variable \lstinline!y!.
 
 \section{Un ejemplo completo}
 
 \begin{problemac}
-Un usuario nos plantea su problema: necesita que se facture el uso de un telÈfono.
-Nos informar· la tarifa por segundo, cu·ntas comunicaciones se realizaron,
-la duraciÛn de cada comunicaciÛn expresada en horas, minutos y segundos.
-Como resultado deberemos informar la duraciÛn en segundos de cada comunicaciÛn y
+Un usuario nos plantea su problema: necesita que se facture el uso de un tel√©fono.
+Nos informar√° la tarifa por segundo, cu√°ntas comunicaciones se realizaron,
+la duraci√≥n de cada comunicaci√≥n expresada en horas, minutos y segundos.
+Como resultado deberemos informar la duraci√≥n en segundos de cada comunicaci√≥n y
 su costo.
 \end{problemac}
 
@@ -391,24 +391,24 @@ Aplicaremos los pasos aprendidos:
 
 \begin{enumerate}
 
-\item {\bf An·lisis: }
+\item {\bf An√°lisis: }
 \begin{itemize}
-\item øCu·ntas tarifas distintas se usan? Una sola (la llamaremos \lstinline!f!).
-\item øCu·ntas comunicaciones se realizaron? La cantidad de comunicaciones (a
+\item ¬øCu√°ntas tarifas distintas se usan? Una sola (la llamaremos \lstinline!f!).
+\item ¬øCu√°ntas comunicaciones se realizaron? La cantidad de comunicaciones (a
 la que llamaremos \lstinline!n!) se informa cuando se inicia el programa.
-\item øEn quÈ formato vienen las duraciones de las comunicaciones? Vienen como ternas (h, m, s).
-\item øQuÈ se hace con esas ternas? Se convierten a segundos y se calcula el costo de cada
-comunicaciÛn multiplicando el tiempo por la tarifa.
+\item ¬øEn qu√© formato vienen las duraciones de las comunicaciones? Vienen como ternas (h, m, s).
+\item ¬øQu√© se hace con esas ternas? Se convierten a segundos y se calcula el costo de cada
+comunicaci√≥n multiplicando el tiempo por la tarifa.
 \end{itemize}
 
-\item {\bf EspecificaciÛn: }
+\item {\bf Especificaci√≥n: }
 \begin{itemize}
 
 \item {\bf Entradas: }
 \begin{itemize}
 \item Una tarifa \lstinline+f+ expresada en pesos/segundo.
-\item Una cantidad \lstinline+n+ de llamadas telefÛnicas.
-\item \lstinline+n+ duraciones de llamadas leÌdas de teclado y expresadas en horas, minutos y segundos.
+\item Una cantidad \lstinline+n+ de llamadas telef√≥nicas.
+\item \lstinline+n+ duraciones de llamadas le√≠das de teclado y expresadas en horas, minutos y segundos.
 \end{itemize}
 
 \item {\bf Salidas: } Mostrar por pantalla las \lstinline+n+ duraciones ingresadas, convertidas a segundos,
@@ -419,9 +419,9 @@ Para cada juego de datos de entrada (h, m, s) se imprime:
 \end{displaymath}
 \end{itemize}
 
-\item {\bf DiseÒo:}
+\item {\bf Dise√±o:}
 
-Siguiendo a Thompson, buscamos un programa que haga algo an·logo, y vemos si se
+Siguiendo a Thompson, buscamos un programa que haga algo an√°logo, y vemos si se
 lo puede modificar para resolver nuestro problema.  El programa
 \lstinline+tres_tiempos+ que hicimos anteriormente,  se parece bastante a lo
 que necesitamos. Veamos las diferencias entre sus especificaciones.
@@ -432,14 +432,14 @@ que necesitamos. Veamos las diferencias entre sus especificaciones.
 \begin{verbatim}
 repetir 3 veces:
     <hacer cosas>
-\end{verbatim} 
+\end{verbatim}
 &
 \begin{verbatim}
 leer el valor de f
 leer el valor de n
 repetir n veces:
     <hacer cosas>
-\end{verbatim} 
+\end{verbatim}
 \\
 \hline
 El cuerpo del ciclo:
@@ -451,7 +451,7 @@ Leer el valor de seg
 Invocar print_asegundos(hs, min, seg)
 
 
-\end{verbatim} 
+\end{verbatim}
 } &
 El cuerpo del ciclo:
 {\footnotesize
@@ -462,7 +462,7 @@ Leer el valor de seg
 Asignar segcalc = asegundos(hs, min, seg)
 Calcular costo = segcalc * f
 Mostrar por pantalla segcalc y costo
-\end{verbatim} 
+\end{verbatim}
 } \\
 \hline
 {\footnotesize
@@ -470,7 +470,7 @@ Mostrar por pantalla segcalc y costo
 print_asegundos (hs, min, seg):
 	segsal = 3600*hs+60*min+seg
 	print segsal
-\end{verbatim} 
+\end{verbatim}
 } &
 {\footnotesize
 \begin{verbatim}
@@ -488,33 +488,33 @@ la tarifa (\lstinline!f!) y que en \lstinline!tres_tiempos! se conoce la
 cantidad de ternas (3), mientras que en \lstinline!tarifador! la cantidad
 de ternas es un dato a ingresar.
 
-Adem·s, se puede ver que en el cuerpo del ciclo de
+Adem√°s, se puede ver que en el cuerpo del ciclo de
 \lstinline!tres_tiempos!, se lee una terna y se llama a
-\lstinline!print_asegundos! que calcula, imprime y no devuelve ning˙n
-valor.  Si hiciÈramos lo mismo en \lstinline!tarifador!, no podrÌamos
-calcular el costo de la comunicaciÛn.  Es por ello que en lugar de usar
-\lstinline!print_asegundos! se utiliza la funciÛn \lstinline!asegundos!,
+\lstinline!print_asegundos! que calcula, imprime y no devuelve ning√∫n
+valor.  Si hici√©ramos lo mismo en \lstinline!tarifador!, no podr√≠amos
+calcular el costo de la comunicaci√≥n.  Es por ello que en lugar de usar
+\lstinline!print_asegundos! se utiliza la funci√≥n \lstinline!asegundos!,
 que calcula el valor transformado y lo devuelve en lugar de imprimirlo y en
 el cuerpo principal del programa se imprime el tiempo junto con el costo
 asociado.
 
-\item {\bf ImplementaciÛn:} El siguiente es el programa resultante:
+\item {\bf Implementaci√≥n:} El siguiente es el programa resultante:
 
-\begin{codigo}{tarifador.py}{Factura el tiempo de uso de un telÈfono}
+\begin{codigo}{tarifador.py}{Factura el tiempo de uso de un tel√©fono}
 \begin{codigo-python}
 def main():
-	""" El usuario ingresa la tarifa por segundo, cu·ntas
+	""" El usuario ingresa la tarifa por segundo, cu√°ntas
 		comunicaciones se realizaron, y la duracion de cada
-		comunicaciÛn expresada en horas, minutos y segundos. Como
-		resultado se informa la duraciÛn en segundos de cada
-        comunicaciÛn y su costo. """
+		comunicaci√≥n expresada en horas, minutos y segundos. Como
+		resultado se informa la duraci√≥n en segundos de cada
+        comunicaci√≥n y su costo. """
 
-    f = input("øCu·nto cuesta 1 segundo de comunicacion?: ")
-    n = input("øCu·ntas comunicaciones hubo?: ")
+    f = input("¬øCu√°nto cuesta 1 segundo de comunicacion?: ")
+    n = input("¬øCu√°ntas comunicaciones hubo?: ")
     for x in range(n):
-        hs = input("øCu·ntas horas?: ")
-        min = input("øCu·ntos minutos?: ")
-        seg = input("øCu·ntos segundos?: ")
+        hs = input("¬øCu√°ntas horas?: ")
+        min = input("¬øCu√°ntos minutos?: ")
+        seg = input("¬øCu√°ntos segundos?: ")
         segcalc = asegundos(hs, min, seg)
         costo = segcalc * f
         print "Duracion: ", segcalc, "segundos. Costo: ",costo, "$."
@@ -528,7 +528,7 @@ main()
 \end{codigo}
 
 \item {\bf Prueba:} Lo probamos con una tarifa de \$ 0,40 el segundo y tres
-ternas de \lstinline!(1,0,0)!, \lstinline!(0,1,0)! y \lstinline!(0,0,1)!. …sta
+ternas de \lstinline!(1,0,0)!, \lstinline!(0,1,0)! y \lstinline!(0,0,1)!. √âsta
 es la corrida:
 \begin{codigo-python-sn}
 >>> import tarifador
@@ -553,39 +553,39 @@ Duracion:  1 segundos. Costo:  0.4 $.
 
 \ejercicioc {Corregir el programa para que:
 \begin{itemize}
-\item Imprima el costo en pesos y centavos, en lugar de un n˙mero decimal.
-\item Informe adem·s cu·l fue el total facturado en la corrida.
+\item Imprima el costo en pesos y centavos, en lugar de un n√∫mero decimal.
+\item Informe adem√°s cu√°l fue el total facturado en la corrida.
 \end{itemize}
 }
 \end{enumerate}
 \end{solucion}
 
-\section{Devolver m˙ltiples resultados}
+\section{Devolver m√∫ltiples resultados}
 \label{fun:multiple_return}
-Ahora nos piden que escribamos una funciÛn que dada una duraciÛn
-en segundos sin fracciones (representada por un n˙mero entero) calcule
-la misma duraciÛn en horas, minutos y segundos.
+Ahora nos piden que escribamos una funci√≥n que dada una duraci√≥n
+en segundos sin fracciones (representada por un n√∫mero entero) calcule
+la misma duraci√≥n en horas, minutos y segundos.
 
-La especificaciÛn es sencilla:
+La especificaci√≥n es sencilla:
 \begin{itemize}
-\item La cantidad de horas es la duraciÛn informada en segundos dividida
-por 3600 (divisiÛn entera).
-\item La cantidad de minutos es el resto de la divisiÛn del paso 1,
-dividido por 60 (divisiÛn entera).
-\item La cantidad de segundos es el resto de la divisiÛn del paso 2.
-\item Es importante notar que si la duraciÛn no se informa como un n˙mero
-entero, todas las operaciones que se indican m·s arriba carecen de sentido.
+\item La cantidad de horas es la duraci√≥n informada en segundos dividida
+por 3600 (divisi√≥n entera).
+\item La cantidad de minutos es el resto de la divisi√≥n del paso 1,
+dividido por 60 (divisi√≥n entera).
+\item La cantidad de segundos es el resto de la divisi√≥n del paso 2.
+\item Es importante notar que si la duraci√≥n no se informa como un n√∫mero
+entero, todas las operaciones que se indican m√°s arriba carecen de sentido.
 \end{itemize}
 
-øCÛmo hacemos para devolver m·s de un valor? En realidad lo que se espera
-de esta funciÛn es que devuelva una terna de valores: si ya calculamos
+¬øC√≥mo hacemos para devolver m√°s de un valor? En realidad lo que se espera
+de esta funci√≥n es que devuelva una terna de valores: si ya calculamos
 \lstinline!hs!, \lstinline!min! y \lstinline!seg!, lo que debemos retornar
 es la terna \lstinline+(hs, min, seg)+:
 
 \begin{codigo-python}
 def aHsMinSeg (x):
-   """ Dada una duraciÛn en segundos sin fracciones
-      (la funciÛn debe invocarse con n˙meros enteros)
+   """ Dada una duraci√≥n en segundos sin fracciones
+      (la funci√≥n debe invocarse con n√∫meros enteros)
       se la convierte a horas, minutos y segundos """
    hs = x / 3600
    min = (x % 3600) / 60
@@ -593,7 +593,7 @@ def aHsMinSeg (x):
    return (hs, min, seg)
 \end{codigo-python}
 
-Esto es lo que sucede al invocar esta funciÛn:
+Esto es lo que sucede al invocar esta funci√≥n:
 
 \begin{codigo-python-sn}
 >>> (h, m, s) = aHsMinSeg(3661)
@@ -606,19 +606,19 @@ Son 1.0169444444444444 horas 1.0166666666666666 minutos 1.0 segundos
 \end{codigo-python-sn}
 
 \begin{sabias_que}
-Cuando la funciÛn debe retornar m˙ltiples resultados se empaquetan todos juntos
-en una n-upla del tamaÒo adecuado.
+Cuando la funci√≥n debe retornar m√∫ltiples resultados se empaquetan todos juntos
+en una n-upla del tama√±o adecuado.
 
-Esta caracterÌstica est· presente en Python, Haskell, y algunos otros pocos
-lenguajes.  En los lenguajes en los que esta caracterÌstica no est·
+Esta caracter√≠stica est√° presente en Python, Haskell, y algunos otros pocos
+lenguajes.  En los lenguajes en los que esta caracter√≠stica no est√°
 presente, como C, Pascal, Java o PHP, es necesario recurrir a otras
-tÈcnicas m·s complejas para poder obtener un comportamiento similar.
+t√©cnicas m√°s complejas para poder obtener un comportamiento similar.
 \end{sabias_que}
 
-Respecto de la variable que har· referencia al resultado de la invocaciÛn,
-se podr· usar tanto una n-upla de variables como en el ejemplo anterior,
+Respecto de la variable que har√° referencia al resultado de la invocaci√≥n,
+se podr√° usar tanto una n-upla de variables como en el ejemplo anterior,
 en cuyo caso podremos nombrar en forma separada cada uno de los resultados,
-o bien se podr· usar una sola variable, en cuyo caso se considerar· que
+o bien se podr√° usar una sola variable, en cuyo caso se considerar√° que
 el resultado tiene un solo nombre y la forma de una n-upla:
 
 \begin{codigo-python-sn}
@@ -649,30 +649,30 @@ ValueError: need more than 3 values to unpack
 \section{Resumen}
 
 \begin{itemize}
-\item Una funciÛn puede tener ninguno, uno o m·s par·metros.  En el
-caso de tener m·s de uno, se separan por comas tanto en la declaraciÛn
-de la funciÛn como en la invocaciÛn.
-\item Es altamente recomendable documentar cada funciÛn que se
-escribe, para poder saber quÈ par·metros recibe, quÈ devuelve y quÈ
-hace sin necesidad de leer el cÛdigo.
+\item Una funci√≥n puede tener ninguno, uno o m√°s par√°metros.  En el
+caso de tener m√°s de uno, se separan por comas tanto en la declaraci√≥n
+de la funci√≥n como en la invocaci√≥n.
+\item Es altamente recomendable documentar cada funci√≥n que se
+escribe, para poder saber qu√© par√°metros recibe, qu√© devuelve y qu√©
+hace sin necesidad de leer el c√≥digo.
 \item Las funciones pueden imprimir mensajes para comunicarlos al
-usuario, y/o devolver valores.  Cuando una funciÛn realice un c·lculo
-o una operaciÛn con sus par·metros, es recomendable que devuelva el
+usuario, y/o devolver valores.  Cuando una funci√≥n realice un c√°lculo
+o una operaci√≥n con sus par√°metros, es recomendable que devuelva el
 resultado en lugar de imprimirlo, permitiendo realizar otras
-operaciones con Èl.
+operaciones con √©l.
 \item No es posible acceder a las variables definidas dentro de una
-funciÛn desde el programa principal, si se quiere utilizar alg˙n
-valor calculado en la funciÛn, ser· necesario devolverlo.
-\item Si una funciÛn no devuelve nada, por m·s que se la asigne a una
-variable, no quedar· ning˙n valor asociado a esa variable.
+funci√≥n desde el programa principal, si se quiere utilizar alg√∫n
+valor calculado en la funci√≥n, ser√° necesario devolverlo.
+\item Si una funci√≥n no devuelve nada, por m√°s que se la asigne a una
+variable, no quedar√° ning√∫n valor asociado a esa variable.
 \end{itemize}
 
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!def funcion(param1, param2, param3):!}
-Permite definir funciones, que pueden tener ninguno, uno o m·s
-par·metros.  El cuerpo de la funciÛn debe estar un nivel de indentaciÛn
-m·s adentro que la declaraciÛn de la funciÛn.
+Permite definir funciones, que pueden tener ninguno, uno o m√°s
+par√°metros.  El cuerpo de la funci√≥n debe estar un nivel de indentaci√≥n
+m√°s adentro que la declaraci√≥n de la funci√≥n.
 
 \begin{codigo-python-sn}
 def funcion(param1, param2, param3):
@@ -680,32 +680,32 @@ def funcion(param1, param2, param3):
 \end{codigo-python-sn}
 \end{sintaxis}
 
-\begin{sintaxis}{DocumentaciÛn de funciones}
-Si en la primera lÌnea de la funciÛn se ingresa un comentario
-encerrado entre comillas, este comentario pasa a ser la documentaciÛn
-de la funciÛn, que puede ser accedida mendiante el comando
+\begin{sintaxis}{Documentaci√≥n de funciones}
+Si en la primera l√≠nea de la funci√≥n se ingresa un comentario
+encerrado entre comillas, este comentario pasa a ser la documentaci√≥n
+de la funci√≥n, que puede ser accedida mendiante el comando
 \lstinline!help(funcion)!.
 \begin{codigo-python-sn}
 def funcion():
-	""" Esta es la documentaciÛn de la funciÛn """
+	""" Esta es la documentaci√≥n de la funci√≥n """
 	# hacer algo
 \end{codigo-python-sn}
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!return valor!}
-Dentro de una funciÛn se utiliza la instrucciÛn \lstinline!return!
-para indicar el valor que la funciÛn debe devolver. \\
+Dentro de una funci√≥n se utiliza la instrucci√≥n \lstinline!return!
+para indicar el valor que la funci√≥n debe devolver. \\
 
-Una vez que se ejecuta esta instrucciÛn, se termina la ejecuciÛn de la
-funciÛn, sin importar si es la ˙ltima lÌnea o no. \\
+Una vez que se ejecuta esta instrucci√≥n, se termina la ejecuci√≥n de la
+funci√≥n, sin importar si es la √∫ltima l√≠nea o no. \\
 
-Si la funciÛn no contiene esta instrucciÛn, no devuelve nada.
+Si la funci√≥n no contiene esta instrucci√≥n, no devuelve nada.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!return (valor1, valor2, valor3)!}
-Si se desea devolver m·s de un valor, se los {\textit empaqueta} en
+Si se desea devolver m√°s de un valor, se los {\textit empaqueta} en
 una tupla de valores.  Esta tupla puede o no ser desempaquetada al
-invocar la funciÛn:
+invocar la funci√≥n:
 \begin{codigo-python-sn}
 def f(valor):
 	# operar
@@ -726,61 +726,61 @@ v = f(y)
 \ejercicio{Escribir dos funciones que permitan calcular:}
 \begin{partes}
     \item La cantidad de segundos en un tiempo dado en horas, minutos y segundos.
-    \item La cantidad de horas, minutos y segundos de un tiempo dado en segundos. 
+    \item La cantidad de horas, minutos y segundos de un tiempo dado en segundos.
 \end{partes}
 
 \ejercicio{Usando las funciones del ejercicio anterior, escribir un programa que lea
 de teclado dos tiempos expresados en horas, minutos y segundos; las sume y
 muestre el resultado en horas, minutos y segundos por pantalla.}
 
-\ejercicio{Escribir una funciÛn que dados cuatro n˙meros, devuelva el mayor
-producto de dos de ellos. Por ejemplo, si recibe los n˙meros 1, 5, -2,
--4 debe devolver 8, que es el producto m·s grande que se puede obtener
+\ejercicio{Escribir una funci√≥n que dados cuatro n√∫meros, devuelva el mayor
+producto de dos de ellos. Por ejemplo, si recibe los n√∫meros 1, 5, -2,
+-4 debe devolver 8, que es el producto m√°s grande que se puede obtener
 entre ellos}
 
-\ejercicio{\bf ¡rea de un tri·ngulo en base a sus puntos}
+\ejercicio{\bf √Årea de un tri√°ngulo en base a sus puntos}
 \begin{partes}
-    \item Escribir una funciÛn que dado un vector al origen (definido por sus
- puntos \verb!x,y!), devuelva la norma del vector, dada por 
+    \item Escribir una funci√≥n que dado un vector al origen (definido por sus
+ puntos \verb!x,y!), devuelva la norma del vector, dada por
  $||\vec{(x,y)}||=\sqrt{x^2+y^2}$
- 
-    \item Escribir una funciÛn que dados dos puntos en el plano (\verb!x1,y1! y 
+
+    \item Escribir una funci√≥n que dados dos puntos en el plano (\verb!x1,y1! y
  \verb!x2,y2!), devuelva la resta de ambos (debe devolver un par de
  valores).
- 
-    \item Utilizando las funciones anteriores, escribir una funciÛn que dados dos
+
+    \item Utilizando las funciones anteriores, escribir una funci√≥n que dados dos
  puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva la distancia
  entre ambos.
 
-    \item Escribir una funciÛn que reciba un vector al origen (definido por sus
+    \item Escribir una funci√≥n que reciba un vector al origen (definido por sus
  puntos \verb!x,y!) y devuelva un vector equivalente, normalizado (debe
- devolver un par de valores). 
+ devolver un par de valores).
 
-    \item Utilizando las funciones anteriores (b y d), escribir una funciÛn que
+    \item Utilizando las funciones anteriores (b y d), escribir una funci√≥n que
  dados dos puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva el
- vector direcciÛn unitario correspondiente a la recta que los une.
+ vector direcci√≥n unitario correspondiente a la recta que los une.
 
-    \item Escribir una funciÛn que reciba un punto (\verb!x,y!), una direcciÛn
+    \item Escribir una funci√≥n que reciba un punto (\verb!x,y!), una direcci√≥n
  unitaria de una recta (\verb!dx,dy!) y un punto perteneciente a esa recta
- (\verb!cx,cy!) y devuelva la proyecciÛn del punto sobre la recta. \\
- {\bf DiseÒo del algoritmo}:
+ (\verb!cx,cy!) y devuelva la proyecci√≥n del punto sobre la recta. \\
+ {\bf Dise√±o del algoritmo}:
  \begin{enumerate}
      \setlength{\itemsep}{0pt}
      \setlength{\parsep}{0pt}
      \item Al punto a proyectar (\verb!x,y!) restarle el punto de la recta
- (\verb!cx,cy!) 
-     \item Obtener la matriz de proyecciÛn $P$, dada por:  \\
- $p_{11} = d_x^2$,  $p_{12} = p_{21} = d_x*d_y$, $p_{22} = d_y^2$. 
+ (\verb!cx,cy!)
+     \item Obtener la matriz de proyecci√≥n $P$, dada por:  \\
+ $p_{11} = d_x^2$,  $p_{12} = p_{21} = d_x*d_y$, $p_{22} = d_y^2$.
      \item Multiplicar la matriz $P$ por el punto obtenido en el paso 1: \\
- $r_x = p_{11} * x + p_12 * y$, $r_y = p_{21} * x + p_{22} * y$. 
+ $r_x = p_{11} * x + p_12 * y$, $r_y = p_{21} * x + p_{22} * y$.
      \item Al resultado obtenido sumar el punto restado en el paso 1, y
  devolverlo.
  \end{enumerate}
 
-    \item Escribir una funciÛn que calcule el ·rea de un tri·ngulo a partir de
- su base y su altura. 
+    \item Escribir una funci√≥n que calcule el √°rea de un tri√°ngulo a partir de
+ su base y su altura.
 
-    \item Utilizando las funciones anteriores escribir una funciÛn que reciba
+    \item Utilizando las funciones anteriores escribir una funci√≥n que reciba
  tres puntos en el plano (\verb!x1,y1!, \verb!x2,y2! y \verb!x3,y3!) y
- devuelva el ·rea del tri·ngulo correspondiente.
+ devuelva el √°rea del tri√°ngulo correspondiente.
 \end{partes}

@@ -1,11 +1,11 @@
 % Copyright (C) 2009 Marcos Medrano <marcosmedrano0@gmail.com>
 % Copyright (C) 2009-2010 Margarita Manterola <margamanterola@gmail.com>
 
-% Esta obra est· licenciada de forma dual, bajo las licencias Creative
+% Esta obra est√° licenciada de forma dual, bajo las licencias Creative
 % Commons:
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 2.5 Argentina
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 2.5 Argentina
 %    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * AtribuciÛn-Compartir Obras Derivadas Igual 3.0 Unported
+%  * Atribuci√≥n-Compartir Obras Derivadas Igual 3.0 Unported
 %    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
 %
 % A su criterio, puede utilizar una u otra licencia, o las dos.
@@ -16,42 +16,42 @@
 \chapter{Diccionarios}
 
 En esta unidad analizaremos otro tipo de dato importante: los diccionarios.
-Su importancia, radica no sÛlo en las grandes posibilidades que presentan
-como estructuras para almacenar informaciÛn, sino tambiÈn en que, en
+Su importancia, radica no s√≥lo en las grandes posibilidades que presentan
+como estructuras para almacenar informaci√≥n, sino tambi√©n en que, en
 Python, son utilizados por el propio lenguaje para realizar diversas
-operaciones y para almacenar informaciÛn de otras estructuras.
+operaciones y para almacenar informaci√≥n de otras estructuras.
 
-\section{QuÈ es un diccionario}
+\section{Qu√© es un diccionario}
 
-Seg˙n Wikipedia, ``[u]n diccionario es una obra de consulta de
-palabras y/o tÈrminos que se encuentran generalmente ordenados
-alfabÈticamente. De dicha compilaciÛn de palabras o tÈrminos se
-proporciona su significado, etimologÌa, ortografÌa y, en el caso
-de ciertas lenguas fija su pronunciaciÛn y separaciÛn sil·bica.''
+Seg√∫n Wikipedia, ``[u]n diccionario es una obra de consulta de
+palabras y/o t√©rminos que se encuentran generalmente ordenados
+alfab√©ticamente. De dicha compilaci√≥n de palabras o t√©rminos se
+proporciona su significado, etimolog√≠a, ortograf√≠a y, en el caso
+de ciertas lenguas fija su pronunciaci√≥n y separaci√≥n sil√°bica.''
 
 
 Al igual que los diccionarios a los que se refiere Wikipedia, y
 que usamos habitualmente en la vida diaria, los diccionarios de
-Python son una lista de consulta de tÈrminos de los cuales se
+Python son una lista de consulta de t√©rminos de los cuales se
 proporcionan valores asociados. A diferencia de los diccionarios a
-los que se refiere Wikipedia, los diccionarios de Python no est·n
+los que se refiere Wikipedia, los diccionarios de Python no est√°n
 ordenados.
 
 
-En Python, un diccionario es una colecciÛn no-ordenada de valores
+En Python, un diccionario es una colecci√≥n no-ordenada de valores
 que son accedidos a traves de una clave.  Es decir, en lugar de
-acceder a la informaciÛn mediante el Ìndice numÈrico, como es el
+acceder a la informaci√≥n mediante el √≠ndice num√©rico, como es el
 caso de las listas y tuplas, es posible acceder a los valores a
-travÈs de sus claves, que pueden ser de diversos tipo.
+trav√©s de sus claves, que pueden ser de diversos tipo.
 
 %En algunos casos usaremos key,value (o
 %simplemente k,v) para referirnos a los conceptos de clave, valor. *
 
-Las claves son ˙nicas dentro de un diccionario, es decir que no puede haber
+Las claves son √∫nicas dentro de un diccionario, es decir que no puede haber
 un diccionario que tenga dos veces la misma clave, si se asigna un valor a
 una clave ya existente, se reemplaza el valor anterior.
 
-No hay una forma directa de acceder a una clave a travÈs de su valor, y
+No hay una forma directa de acceder a una clave a trav√©s de su valor, y
 nada impide que un mismo valor se encuentre asignado a distintas claves
 
 La informacion almacenada en los diccionarios, no tiene un orden
@@ -66,48 +66,48 @@ etc.
 
 \begin{sabias_que}
 En otros lenguajes, a los diccionarios se los llama {\it arreglos
-asociativos}, {\it matrices asociativas}, o tambiÈn {\it tablas de hash}.
+asociativos}, {\it matrices asociativas}, o tambi√©n {\it tablas de hash}.
 \end{sabias_que}
 
 \section{Utilizando diccionarios en Python}
 
 De la misma forma que con listas, es posible definir un diccionario
 directamente con los miembros que va a contener, o bien inicializar el
-diccionario vacÌo y luego agregar los valores de a uno o de a muchos.
+diccionario vac√≠o y luego agregar los valores de a uno o de a muchos.
 
 Para definirlo junto con los miembros que va a contener, se encierra el
 listado de valores entre llaves, las parejas de clave y valor se separan
 con comas, y la clave y el valor se separan con ':'.
 
 \begin{codigo-python-sn}
-punto = {'x':†2,†'y':†1,†'z':†4}
+punto = {'x': 2, 'y': 1, 'z': 4}
 \end{codigo-python-sn}
 
-Para declararlo vacÌo y luego ingresar los valores, se lo declara como un
+Para declararlo vac√≠o y luego ingresar los valores, se lo declara como un
 par de llaves sin nada en medio, y luego se asignan valores directamente a
-los Ìndices.
+los √≠ndices.
 
 \begin{codigo-python-sn}
 materias = {}
 materias["lunes"] = [6103, 7540]
 materias["martes"] = [6201]
-materias["miÈrcoles"] = [6103, 7540]
+materias["mi√©rcoles"] = [6103, 7540]
 materias["jueves"] = []
 materias["viernes"] = [6201]
 \end{codigo-python-sn}
 
 Para acceder al valor asociado a una determinada clave, se lo hace
 de la misma forma que con las listas, pero utilizando la clave
-elegida en lugar del Ìndice.
+elegida en lugar del √≠ndice.
 
 \begin{codigo-python-sn}
 print materias["lunes"]
 \end{codigo-python-sn}
 
-Sin embargo, esto falla si se provee una clave que no est· en el diccionario.
-Es posible, por otro lado, utilizar la funciÛn \lstinline{get}, que devuelve el
-valor \lstinline{None} si la clave no est· en el diccionario, o un valor por
-omisiÛn que se establece opcionalmente.
+Sin embargo, esto falla si se provee una clave que no est√° en el diccionario.
+Es posible, por otro lado, utilizar la funci√≥n \lstinline{get}, que devuelve el
+valor \lstinline{None} si la clave no est√° en el diccionario, o un valor por
+omisi√≥n que se establece opcionalmente.
 
 \begin{codigo-python-sn}
 >>> print materias["domingo"]
@@ -128,7 +128,7 @@ for dia in materias:
     print dia, ":", materias[dia]
 \end{codigo-python-sn}
 
-Es posible, tambiÈn, obtener los valores como tuplas donde el primer
+Es posible, tambi√©n, obtener los valores como tuplas donde el primer
 elemento es la clave y el segundo el valor.
 
 \begin{codigo-python-sn}
@@ -137,68 +137,68 @@ for dia, codigos in materias.items():
 \end{codigo-python-sn}
 
 Para verificar si una clave se encuentra en el diccionario, es posible
-utilizar la funciÛn \lstinline{has_key} o la palabra reservada
+utilizar la funci√≥n \lstinline{has_key} o la palabra reservada
 \lstinline{in}.
 
 \begin{codigo-python-sn}
-d†=†{'x':†12,†'y':†7}
+d = {'x': 12, 'y': 7}
 if d.has_key('x'):
-    print d['x']  †#†Imprime 12
-if d.has_key('z'):†
-    print d['z']  †#†No se ejecuta
+    print d['x']   # Imprime 12
+if d.has_key('z'):
+    print d['z']   # No se ejecuta
 if 'y' in d:
     print d['y']   # Imprime 7
 \end{codigo-python-sn}
 
-M·s all· de la creaciÛn y el acceso, hay muchas otras operaciones que se
-pueden realizar sobre los diccionarios, para poder manipular la informaciÛn
-seg˙n sean nuestras necesidades, algunos de estos mÈtodos pueden verse en
+M√°s all√° de la creaci√≥n y el acceso, hay muchas otras operaciones que se
+pueden realizar sobre los diccionarios, para poder manipular la informaci√≥n
+seg√∫n sean nuestras necesidades, algunos de estos m√©todos pueden verse en
 la referencia al final de la unidad.
 
 \begin{sabias_que}
 El algoritmo que usa Python internamente para buscar un elemento en un
 diccionario es muy distinto que el que utiliza para buscar en listas.
 
-Para buscar en las listas, se utiliza un algoritmos de comparaciÛn que
-tarda cada vez m·s a medida que la lista se hace m·s larga.  En cambio,
+Para buscar en las listas, se utiliza un algoritmos de comparaci√≥n que
+tarda cada vez m√°s a medida que la lista se hace m√°s larga.  En cambio,
 para buscar en diccionarios se utiliza un algoritmo llamado {\it hash},
-que se basa en realizar un c·lculo numÈrico sobre la clave del elemento, 
-y tiene una propiedad muy interesante: sin importar cu·ntos elementos
-tenga el diccionario, el tiempo de b˙squeda es siempre aproximadamente
+que se basa en realizar un c√°lculo num√©rico sobre la clave del elemento,
+y tiene una propiedad muy interesante: sin importar cu√°ntos elementos
+tenga el diccionario, el tiempo de b√∫squeda es siempre aproximadamente
 igual.
 
-Este algoritmo de {\it hash} es tambiÈn la razÛn por la cual las claves de
-los diccionarios deben ser inmutables, ya que la operaciÛn hecha sobre las
+Este algoritmo de {\it hash} es tambi√©n la raz√≥n por la cual las claves de
+los diccionarios deben ser inmutables, ya que la operaci√≥n hecha sobre las
 claves debe dar siempre el mismo resultado, y si se utilizara una variable
-mutable esto no serÌa posible.
+mutable esto no ser√≠a posible.
 \end{sabias_que}
 
 No es posible obtener porciones de un diccionario usando \lstinline![:]!,
-ya que al no tener un orden determinado para los elementos, no serÌa
+ya que al no tener un orden determinado para los elementos, no ser√≠a
 posible tomarlos en orden.
 
 \section{Algunos usos de diccionarios}
 
-Los diccionarios son una herramienta muy vers·til.  Se puede utilizar un
-diccionario, por ejemplo, para contar cu·ntas apariciones de cada palabra
-hay en un texto, o cu·ntas apariciones de cada letra.  
+Los diccionarios son una herramienta muy vers√°til.  Se puede utilizar un
+diccionario, por ejemplo, para contar cu√°ntas apariciones de cada palabra
+hay en un texto, o cu√°ntas apariciones de cada letra.
 
-Es posible utilizar un diccionario, tambiÈn, para tener una agenda donde la
+Es posible utilizar un diccionario, tambi√©n, para tener una agenda donde la
 clave es el nombre de la persona, y el valor es una lista con los datos
 correspondientes a esa persona.
 
-TambiÈn podrÌa utilizarse un diccionario para mantener los datos de los
-alumnos inscriptos en una materia.  Siendo la clave el n˙mero de padrÛn, y
+Tambi√©n podr√≠a utilizarse un diccionario para mantener los datos de los
+alumnos inscriptos en una materia.  Siendo la clave el n√∫mero de padr√≥n, y
 el valor una lista con todas las notas asociadas a ese alumno.
 
 En general, los diccionarios sirven para crear bases de datos muy simples,
 en las que la clave es el identificador del elemento, y el valor son todos
 los datos del elemento a considerar.
 
-Otro posible uso de un diccionario serÌa utilizarlo para realizar
-traducciones, donde la clave serÌa la palabra en el idioma original y el
+Otro posible uso de un diccionario ser√≠a utilizarlo para realizar
+traducciones, donde la clave ser√≠a la palabra en el idioma original y el
 valor la palabra en el idioma al que se quiere traducir.  Sin embargo esta
-aplicaciÛn es poco destacable, ya que esta forma de traducir es muy mala.
+aplicaci√≥n es poco destacable, ya que esta forma de traducir es muy mala.
 
 \section{Resumen}
 
@@ -208,15 +208,15 @@ de hash} en otros lenguajes), son una estructura de datos muy poderosa, que perm
 asociar un valor a una clave.
 \item Las claves deben ser de tipo inmutable, los valores
 pueden ser de cualquier tipo.
-\item Los diccionarios no est·n ordenados.  Si bien se los puede recorrer,
-el orden en el que se tomar·n los elementos no est· determinado.
+\item Los diccionarios no est√°n ordenados.  Si bien se los puede recorrer,
+el orden en el que se tomar√°n los elementos no est√° determinado.
 \end{itemize}
 
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!\{clave1:valor1, clave2:valor2\}!}
 Se crea un nuevo diccionario con los valores asociados a las claves.  Si no
-se ingresa ninguna pareja de clave y valor, se crea un diccionario vacÌo.
+se ingresa ninguna pareja de clave y valor, se crea un diccionario vac√≠o.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario[clave]}}
@@ -262,7 +262,7 @@ asociado del diccionario.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario.popitem()}}
-Devuelve un elemento al azar del diccionario, represent·ndolo como una
+Devuelve un elemento al azar del diccionario, represent√°ndolo como una
 tupla \lstinline{(clave, valor)} y elimina esta pareja del diccionario.
 \end{sintaxis}
 
@@ -273,10 +273,10 @@ Elimina todos los elementos del diccionario
 % Lo saco porque se va de la hoja, y aporta poco
 %\begin{sintaxis}{\lstinline{diccionario.update(otro_diccionario)}}
 %
-%Actualiza los valores del diccionario con los recibidos por par·metro.  Si
-%una clave est· en ambos, se modifica el valor asociado en
+%Actualiza los valores del diccionario con los recibidos por par√°metro.  Si
+%una clave est√° en ambos, se modifica el valor asociado en
 %\lstinline{diccionario}, para que tenga el mismo valor que en
-%\lstinline{otro_diccionario}.  Si una clave no est· en
+%\lstinline{otro_diccionario}.  Si una clave no est√° en
 %\lstinline{diccionario}, se agrega con el valor que tenga en
 %\lstinline{otro_diccionario}.
 %
@@ -289,45 +289,45 @@ Elimina todos los elementos del diccionario
 \section{Ejercicios}
 
 \ejercicio{
-Escribir una funciÛn que reciba una lista de tuplas, y que devuelva
+Escribir una funci√≥n que reciba una lista de tuplas, y que devuelva
 un diccionario en donde las claves sean los primeros elementos de las
 tuplas, y los valores una lista con los segundos.}
 
-Por ejemplo: 
+Por ejemplo:
 \begin{lstlisting}[numbers=none]
-l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'), ('Buenos', 'dÌas') ]
+l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'), ('Buenos', 'd√≠as') ]
 print tuplas_a_diccionario(l)
 \end{lstlisting}
 
-Deber· mostrar: \lstinline!{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['dÌas'] }!
+Deber√° mostrar: \lstinline!{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['d√≠as'] }!
 
 \ejercicio{\bf Diccionarios usados para contar.}
 \begin{partes}
-  \item Escribir una funciÛn que reciba una cadena y devuelva un diccionario con
+  \item Escribir una funci√≥n que reciba una cadena y devuelva un diccionario con
 la cantidad de apariciones de cada palabra en la cadena.  Por ejemplo, si
-recibe "QuÈ lindo dÌa que hace hoy" debe devolver: { 'que': 2, 'lindo': 1,
-'dÌa': 1, 'hace': 1, 'hoy': 1}
-  \item Escribir una funciÛn que cuente la cantidad de apariciones de cada
+recibe "Qu√© lindo d√≠a que hace hoy" debe devolver: { 'que': 2, 'lindo': 1,
+'d√≠a': 1, 'hace': 1, 'hoy': 1}
+  \item Escribir una funci√≥n que cuente la cantidad de apariciones de cada
 caracter en una cadena de texto, y los devuelva en un diccionario.
-  \item Escribir una funciÛn que reciba una cantidad de iteraciones de una tirada
+  \item Escribir una funci√≥n que reciba una cantidad de iteraciones de una tirada
 de 2 dados a realizar y devuelva la cantidad de veces que se observa cada valor
 de la suma de los dos dados. \\
-{\bf Nota}: utilizar el mÛdulo \verb!random! para obtener tiradas aleatorias.
+{\bf Nota}: utilizar el m√≥dulo \verb!random! para obtener tiradas aleatorias.
 \end{partes}
 
-\ejercicio{{\bf ContinuaciÛn de la agenda}. \\
+\ejercicio{{\bf Continuaci√≥n de la agenda}. \\
 Escribir un programa que vaya solicitando al usuario que ingrese nombres.}
 \begin{partes}
   \item Si el nombre se encuentra en la agenda ({\it implementada con un
-diccionario}), debe mostrar el telÈfono y, opcionalmente, permitir
+diccionario}), debe mostrar el tel√©fono y, opcionalmente, permitir
 modificarlo si no es correcto.
-  \item Si el nombre no se encuentra, debe permitir ingresar el telÈfono
+  \item Si el nombre no se encuentra, debe permitir ingresar el tel√©fono
 correspondiente.
 \end{partes}
 El usuario puede utilizar la cadena "*", para salir del programa.
 
 \ejercicio{
-Escribir una funciÛn que reciba un texto y para cada caracter presente en el
-texto devuelva la cadena m·s larga en la que se encuentra ese caracter.
+Escribir una funci√≥n que reciba un texto y para cada caracter presente en el
+texto devuelva la cadena m√°s larga en la que se encuentra ese caracter.
 }
 
