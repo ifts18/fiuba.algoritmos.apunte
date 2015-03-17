@@ -124,7 +124,7 @@ veryclean	: clean
 	$(getbibs) ; echo $$bibs ; \
 	$(geteps) ; echo $$epses ; \
 	$(manconf) ; echo  $$mandeps  ;\
-	echo "$*.dvi $@ : $< $$deps $$bibs $$epses $$mandeps" > $@ 
+	echo "$*.pdf $@ : $< $$deps $$bibs $$epses $$mandeps" > $@
 
 include $(SRC:.tex=.d)
 
