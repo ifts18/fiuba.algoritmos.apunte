@@ -439,6 +439,41 @@ en minúscula.}
 
 \end{enumerate}
 
+\section{Darle formato a las cadenas}
+
+Una de las tareas más habituales con cadenas es, darles un formato determinado,
+o mejor dicho, procesarlas para que se vean de una manera en
+particular. Y para poder modificar el formato sin estar preocupandonos de los
+datos puntuales que queremos imprimir es muy útil separar el formato y los
+datos. Por ejemplo, usando sólamente la marca \verb!%s! que significa que la
+marca se va a reemplazar por una cadena\footnote{Que es la cadena que
+  obtendríamos si hicieramos \lstinline!str! del valor.}:
+\begin{codigo-python-sn}
+cadena = '{"artista": "%s", "disco": "%s",}' % (artista, disco)
+\end{codigo-python-sn}
+
+Sería lo mismo a:
+\begin{codigo-python-sn}
+cadena = '{"artista": "' + artista + '", "disco": "' + disco + '",}'
+\end{codigo-python-sn}
+
+Pero, al menos, el segundo fue notoriamente más difícil de escribir.
+
+También, es necesario al convertir algún dato en cadena. Como, por ejemplo,
+un número que representa un monto monetario, como en un ticket en la cuenta de
+un bar, vamos a querer que este tenga a lo sumo con dos decimales, mientras
+que un número en un estudio médico, como la cantidad de glóbulos rojos en
+un {\mu}L de sangre lo queramos mostrar en notación científica.
+
+A continuación algunos ejemplos de formatos numéricos:
+\begin{codigo-python-sn}
+suma = 205.50
+ticket += 'Total: %6.2f\n' % (suma * 1.21)
+# Agrega 'Total: 248.66\n' a ticket
+rojos = 4600000
+sangre += 'Glóbulos rojos: %e/uL\n' % rojos
+# Agrega 'Glóbulos rojos: 4.6e+06/uL\n' a sangre
+\end{codigo-python-sn}
 
 \section{Nuestro primer juego}
 Con todo esto ya estamos en condiciones de escribir un programa para jugar con
