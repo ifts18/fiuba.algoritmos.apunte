@@ -27,7 +27,7 @@ while propuesta != codigo:
     aciertos = 0
     coincidencias = 0
 
-        # recorremos la propuesta y verificamos en el codigo
+    # recorremos la propuesta y verificamos en el codigo
     for i in range(4):
         if propuesta[i] == codigo[i]:
             aciertos = aciertos + 1
