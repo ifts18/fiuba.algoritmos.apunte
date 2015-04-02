@@ -98,6 +98,8 @@ veryclean	: clean
 
 include $(SRC:.tex=.d)
 
+# Dependencia adicional para ejercicios.tex.
+ejercicios.tex	: principal.pdf
 
 $(TRG) : %.pdf : %.tex
 	@$(run-pdflatex)
