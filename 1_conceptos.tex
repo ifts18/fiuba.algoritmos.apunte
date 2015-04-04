@@ -423,13 +423,15 @@ Permitir que el usuario ingrese el valor a elevar al cuadrado.
 \end{problema}
 
 \begin{solucion}
-Para esto utilizaremos una nueva función \lstinline+input+ que permite leer valores
-ingresados por el usuario.
+Para esto utilizaremos una nueva función \lstinline+input+ que permite leer
+valores ingresados por el usuario. Como el valor ingresado por el usuario debe
+de ser un entero, se lo indicamos a Python empleando la notación de conversión
+\lstinline+int+.
 
 \begin{codigo}{cuad2}{Pide un número al usuario e imprime su cuadrado}
 \begin{lstlisting}[numbers=none]
 def cuad2():
-        n = input("Ingrese un número: ")
+        n = int(input("Ingrese un número: "))
         cuad1(n)
 \end{lstlisting}
 \end{codigo}
@@ -673,8 +675,8 @@ de números """
 def main():
     print "Se calcularán cuadrados de números"
 
-    n1 = input("Ingrese un número entero: ")
-    n2 = input("Ingrese otro número entero: ")
+    n1 = int(input("Ingrese un número entero: "))
+    n2 = int(input("Ingrese otro número entero: "))
 
     for x in range(n1, n2):
         print x*x
@@ -745,8 +747,8 @@ que lo que hace es mostrar un mensaje por pantalla.
 
 Las instrucciones segunda y tercera
 \begin{lstlisting}[firstnumber=8]
-    n1 = input("Ingrese un número entero: ")
-    n2 = input("Ingrese otro número entero: ")
+    n1 = int(input("Ingrese un número entero: "))
+    n2 = int(input("Ingrese otro número entero: "))
 \end{lstlisting}
 son instrucciones de entrada: se despliega el texto que está entre
 comillas y se espera que el usuario ingrese un valor numérico y
@@ -756,14 +758,13 @@ oprima la tecla <ENTER>.
 En los programas Python que escribimos, podemos operar con cadenas de texto
 o con números.  Las representaciones dentro de la computadora de un número y
 una cadena son muy distintas, el número \lstinline!12345678! se almacena en
-forma binaria y utiliza unos pocos bytes, mientras que la cadena
-\lstinline!"12345678"!, es una sucesión de caracteres, en la que cada
-número es un caracter que ocupa un byte.
+forma binaria y típicamente ocupa 4 bytes, mientras que la cadena
+\lstinline!"12345678"! es una sucesión de caracteres en la que cada dígito se
+almacena de forma separada y ocupa (cada uno) un byte.
 
-La función \lstinline!input! toma valores numéricos, y si se desea
-ingresar una cadena, debe hacérselo entre comillas: \lstinline!"hola"!.
-Existe, por otro lado, la función \lstinline!raw_input!, para la cual los
-valores ingresados son siempre cadenas de caracteres.
+La función \lstinline!input! interpreta cualquier valor ingresado como cadena:
+\lstinline!"12345678"!, por lo que si lo que deseamos obtener es un entero para
+operar con él, debemos utilizar la función de conversión \lstinline!int!.
 \end{sabias_que}
 
 ¿Cómo hacer para que los valores que provee el usuario se recuerden
@@ -837,7 +838,7 @@ ejecuta el programa \lstinline!cuad!:
 números'' en la pantalla. & \\
 
 \hline
-\lstinline!n1 = input("Ingrese ! \lstinline!un número entero: ")!
+\lstinline!n1 = int(input("Ingrese ! \lstinline!un número entero: "))!
 & Se despliega el texto ``Ingrese un número entero: '' en la pantalla y el
 programa se queda esperando que el usuario ingrese un número. & \\
 
@@ -849,7 +850,7 @@ Se asocia el número 3 con la variable \lstinline!n1!. &
 \lstinline!n1! $\ra$ 3\\
 
 \hline
-\lstinline!n2 = input("Ingrese ! \lstinline!otro número entero: ")!
+\lstinline!n2 = int(input("Ingrese ! \lstinline!otro número entero: "))!
 & Se despliega el texto ``Ingrese otro número entero:'' en la
 pantalla y el programa se queda esperando que el
 usuario ingrese un número. & \lstinline!n1! $\ra$ 3\\
