@@ -218,6 +218,7 @@ diferentes algoritmos para la actualización y la consulta.
 \section{Cómo darle instrucciones a la máquina usando Python}
 
 \begin{sabias_que}
+% TODO: reescribir este cuadro para Python 3.
 Python fue creado a finales de los años 80, por un programador holandés
 llamado Guido van Rossum, quien sigue siendo aún hoy el líder del
 desarrollo del lenguaje.
@@ -242,6 +243,8 @@ son las órdenes) que identifica al comienzo con los símbolos
 llamaremos {\it prompt}. En esta línea, a continuación del {\it prompt}
 podemos escribir diferentes órdenes.
 
+% TODO: no se dice cómo invocar el intérprete; en nuestro caso, “python3”.
+
 Algunas órdenes sencillas, por ejemplo, permiten utilizar la línea de comandos
 como una calculadora simple con números enteros. Para esto escribimos la
 expresión que queremos resolver en el {\it prompt} y presionamos la tecla
@@ -255,11 +258,11 @@ cursor para escribir la siguiente orden.
 >>>
 \end{lstlisting}
 
-Python permite utilizar las operaciones \lstinline!+, -, *, / !(división
-entera), y \lstinline!**! (potenciación).  La sintaxis es la convencional
-(valores intercalados con operaciones), y se pueden usar paréntesis para
-modificar el orden de asociación natural de las operaciones (potenciación,
-producto/división, suma/resta).
+Python permite utilizar las operaciones \lstinline!+, -, *, /! y \lstinline!**!
+(suma, resta, multiplicación, división y potenciación). La sintaxis es la
+convencional (valores intercalados con operaciones), y se pueden usar
+paréntesis para modificar el orden de asociación natural de las operaciones
+(potenciación, producto/división, suma/resta).
 
 \begin{lstlisting}[numbers=none]
 >>> 5*7
@@ -268,8 +271,8 @@ producto/división, suma/resta).
 23
 >>> (2+3)*7
 35
->>> 10/5
-2
+>>> 10/4
+2.5
 >>> 5**2
 25
 >>>
@@ -571,7 +574,8 @@ importante que sea la misma para todas las instrucciones del ciclo.
 El intérprete de python nos provee una ayuda en línea, es decir, nos puede dar
 la documentación de una función, intrucción, etc, para
 obtenerla llamamos a \lstinline!help()!. Por ejemplo podemos pedir
-\lstinline!help(input)! y nos dara la documentación de esa función.
+\lstinline!help(print)! o \lstinline!help(input)! y nos dará la documentación
+de esa función.
 
 Para obtener la documentación de las instrucciones las debemos poner entre
 comillas, es decir \lstinline!help('return')!, de la misma forma se puede
@@ -581,25 +585,23 @@ Otra forma de obtener ayuda es mediante \lstinline!dir(variable)!, que nos va a
 listar todas las funciones que tiene asociadas esa variable. Por ejemplo,
 mostramos las funciones asociadas a una cadena.
 
+% TODO: ¿es útil dir() tan temprano?
 \begin{lstlisting}[numbers=none]
 >>> dir("hola")
-['__add__', '__class__', '__contains__',
-'__delattr__', '__doc__', '__eq__',
-'__ge__', '__getattribute__', '__getitem__',
-'__getnewargs__', '__getslice__', '__gt__',
-'__hash__', '__init__', '__le__', '__len__',
-'__lt__', '__mod__', '__mul__', '__ne__',
-'__new__', '__reduce__', '__reduce_ex__',
-'__repr__', '__rmod__', '__rmul__', '__setattr__',
-'__str__', 'capitalize', 'center', 'count',
-'decode', 'encode', 'endswith', 'expandtabs',
-'find', 'index', 'isalnum', 'isalpha',
-'isdigit', 'islower', 'isspace', 'istitle',
-'isupper', 'join', 'ljust', 'lower', 'lstrip',
-'partition', 'replace', 'rfind', 'rindex',
-'rjust', 'rpartition', 'rsplit', 'rstrip',
-'split', 'splitlines', 'startswith', 'strip',
-'swapcase', 'title', 'translate', 'upper', 'zfill']
+['__add__', '__class__', '__contains__', '__delattr__', '__dir__',
+'__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+'__getitem__', '__getnewargs__', '__gt__', '__hash__', '__init__',
+'__iter__', '__le__','__len__', '__lt__', '__mod__', '__mul__',
+'__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__',
+'__rmod__', '__rmul__', '__setattr__', '__sizeof__', '__str__',
+'__subclasshook__', 'capitalize', 'casefold', 'center', 'count',
+'encode', 'endswith', 'expandtabs', 'find', 'format','format_map',
+'index', 'isalnum', 'isalpha', 'isdecimal', 'isdigit', 'isidentifier',
+'islower', 'isnumeric', 'isprintable', 'isspace', 'istitle',
+'isupper', 'join', 'ljust', 'lower', 'lstrip', 'maketrans',
+'partition', 'replace', 'rfind', 'rindex', 'rjust', 'rpartition',
+'rsplit', 'rstrip', 'split', 'splitlines', 'startswith', 'strip',
+'swapcase', 'title', 'translate','upper', 'zfill']
 \end{lstlisting}
 
 Como se puede ver son muchas las funciones asociadas a las cadenas, pero no
@@ -615,9 +617,17 @@ escribiendo, debemos usar algún editor de texto, y guardar el archivo con
 la extensión \verb+.py+.
 
 Por convención, la primer línea del archivo deberá contener:
+
+% NOTA: yo quitaría esta mención (temprana) al hash-bang, y que ejecutaran
+% siempre como “python3 script.py”. -- Dato.
 \begin{verbatim}
-#!/usr/bin/env python
+#!/usr/bin/env python3
 \end{verbatim}
+
+% NOTA: tras quitar la mención al hash-bang, indicaría que los scripts deben
+% comenzar por:
+%    # coding: latin-1
+% (o utf-8 si ese falla).
 
 Estas dos convenciones indican que se trata de un {\it módulo} o {\it programa}
 Python, es decir un archivo separado que deberá ser ejecutado por Python.
@@ -656,7 +666,7 @@ programa se encuentra en el Código \ref{cuad.py}.
 \begin{codigo}{cuad.py}{Imprime los cuadrados solicitados}
 \label{cuad.py}
 \begin{codigo-python}
-#!/usr/bin/env python
+#!/usr/bin/env python3
 """ Un programa sencillo, para calcular cuadrados
 de números """
 
