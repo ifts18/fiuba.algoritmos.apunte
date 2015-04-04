@@ -283,12 +283,12 @@ Otra orden sencilla de Python permite indicarle al intérprete que escriba o
 texto}.
 
 \begin{lstlisting}[numbers=none]
->>> print 'Hola'
+>>> print('Hola')
 Hola
->>> print 'Como estan?'
-Como estan?
->>> print "Bienvenidos y bienvenidas a este curso!"
-Bienvenidos y bienvenidas  a este curso!
+>>> print('¿Cómo están?')
+¿Cómo están?
+>>> print("¡Bienvenidos y bienvenidas a este curso!")
+¡Bienvenidos y bienvenidas  a este curso!
 >>>
 \end{lstlisting}
 
@@ -316,8 +316,8 @@ Python:
 \begin{codigo}{holaMar}{Saluda a Marta}
 \begin{lstlisting}[numbers=none]
 >>> def holaMar():
-        print "Hola Marta!"
-        print "Estoy programando en Python."
+        print("Hola Marta!")
+        print("Estoy programando en Python.")
 
 >>>
 \end{lstlisting}
@@ -356,8 +356,8 @@ función que lo salude a él. Y así procederemos entonces:
 \begin{codigo}{holaPab}{Saluda a Pablo}
 \begin{lstlisting}[numbers=none]
 >>> def holaPab():
-        print "Hola Pablo!"
-        print "Estoy programando en Python."
+        print("Hola Pablo!")
+        print("Estoy programando en Python.")
 \end{lstlisting}
 \end{codigo}
 
@@ -376,8 +376,8 @@ cualquiera, de la siguiente manera:
 \begin{codigo}{hola}{Saluda a quien sea necesario}
 \begin{lstlisting}[numbers=none]
 >>> def hola(alguien):
-        print "Hola", alguien, "!"
-        print "Estoy programando en Python."
+        print("Hola", alguien, "!")
+        print("Estoy programando en Python.")
 \end{lstlisting}
 \end{codigo}
 
@@ -406,7 +406,7 @@ Para resolver este problema, se combinan los recursos utilizados hasta ahora.
 \begin{codigo}{cuad1}{Eleva un número al cuadrado y lo imprime}
 \begin{lstlisting}[numbers=none]
 def cuad1(num):
-        print num*num
+        print(num*num)
 \end{lstlisting}
 \end{codigo}
 
@@ -484,13 +484,13 @@ nos piden que imprimamos los cuadrados de los números del 2 al 8.
 Por supuesto que podemos hacer:
 \begin{lstlisting}[numbers=none]
 >>> def cuad3():
-        print cuadrado(2)
-        print cuadrado(3)
-        print cuadrado(4)
-        print cuadrado(5)
-        print cuadrado(6)
-        print cuadrado(7)
-        print cuadrado(8)
+        print(cuadrado(2))
+        print(cuadrado(3))
+        print(cuadrado(4))
+        print(cuadrado(5))
+        print(cuadrado(6))
+        print(cuadrado(7))
+        print(cuadrado(8))
 
 >>> cuad3()
 4
@@ -527,7 +527,7 @@ Vemos cómo, usando esta construcción, el problema anterior se puede resolver
 de manera más compacta:
 
 \begin{solucion} En nuestro caso lo que hay que hacer es invocar a la
-instrucción \lstinline!print cuadrado(x)!  que usa la función definida en
+instrucción \lstinline!print(cuadrado(x))! que usa la función definida en
 \ref{cuadrado} para calcular el cuadrado de \lstinline!x!, y luego imprime el
 resultado, cuando \lstinline!x! toma los valores $2, 3, \ldots, 8$.
 
@@ -541,7 +541,7 @@ enteros entre 2 y 8, por lo tanto:
 
 \begin{itemize}
 \item \lstinline+for x in range(2, 9):+ será el encabezado del ciclo y
-\item \lstinline+print cuadrado(x)+ será el cuerpo del ciclo.
+\item \lstinline+print(cuadrado(x))+ será el cuerpo del ciclo.
 \end{itemize}
 
 Vemos entonces cómo resulta el ciclo completo (con su ejecución):
@@ -549,7 +549,7 @@ Vemos entonces cómo resulta el ciclo completo (con su ejecución):
 \begin{codigo}{cuadrados}{Imprime los cuadrados del 2 al 8}
 \begin{lstlisting}[numbers=none]
 >>> for x in range(2, 9):
-        print cuadrado(x)
+        print(cuadrado(x))
 
 4
 9
@@ -673,15 +673,15 @@ programa se encuentra en el Código \ref{cuad.py}.
 de números """
 
 def main():
-    print "Se calcularán cuadrados de números"
+    print("Se calcularán cuadrados de números")
 
     n1 = int(input("Ingrese un número entero: "))
     n2 = int(input("Ingrese otro número entero: "))
 
     for x in range(n1, n2):
-        print x*x
+        print(x*x)
 
-    print "Es todo por ahora"
+    print("Es todo por ahora")
 
 main()
 \end{codigo-python}
@@ -741,7 +741,7 @@ procese y ejecute.
 
 La primera instrucción de \verb+cuad.main+ es
 \begin{lstlisting}[firstnumber=6]
-    print "Se calcularán cuadrados de números"
+    print("Se calcularán cuadrados de números")
 \end{lstlisting}
 que lo que hace es mostrar un mensaje por pantalla.
 
@@ -786,7 +786,7 @@ Luego de leer esos valores, se procede a ejecutar el ciclo
 
 \begin{lstlisting}[firstnumber=11]
     for x in range(n1, n2):
-        print x*x
+        print(x*x)
 \end{lstlisting}
 
 Si el valor asociado con \lstinline!n1! es 3, y el valor asociado con
@@ -798,7 +798,7 @@ Finalmente, cuando se terminan las repeticiones indicadas en el ciclo, se
 ejecuta la instrucción
 
 \begin{lstlisting}[firstnumber=14]
-	print "Es todo por ahora"
+print("Es todo por ahora")
 \end{lstlisting}
 
 que, como ya se ha visto, muestra el mensaje \lstinline!Es todo por ahora! por
@@ -833,7 +833,7 @@ ejecuta el programa \lstinline!cuad!:
 {\bf Instrucción} & {\bf Qué sucede} & {\bf Estado}\\
 
 \hline
-\lstinline!print "Se calcularán! \lstinline!cuadrados de números"!
+\lstinline!print("Se calcularán! \lstinline!cuadrados de números")!
 & Se despliega el texto ``Se calcularán cuadrados de
 números'' en la pantalla. & \\
 
@@ -878,7 +878,7 @@ Se asocia el número 5 con la variable \lstinline!n2!.
 %\hline
 
 \hline
-\lstinline+   print x*x+
+\lstinline+   print(x*x)+
 & Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (9)
 &\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 3 } \\
@@ -891,7 +891,7 @@ Se asocia el número 5 con la variable \lstinline!n2!.
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
 
 \hline
-\lstinline+   print x*x+
+\lstinline+   print(x*x)+
 & Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (16)
 &\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4} \\
@@ -904,7 +904,7 @@ se sale del ciclo.
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
 
 \hline
-\lstinline+print "Es todo por ahora"+
+\lstinline+print("Es todo por ahora")+
 & Se despliega por pantalla el mensaje ``Es todo por ahora''
 &\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
 \lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
