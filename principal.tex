@@ -15,8 +15,26 @@
 
 \documentclass[11pt,spanish,a4paper,twoside,openany]{book}
 %\documentclass[11pt,spanish,a4paper,twoside]{book}
-\tolerance=5000
 %\renewcommand{\baselinestretch}{1.3}
+
+\usepackage[
+  active=true,
+  header=true,
+  generate=ejercicios.tex,
+  copydocumentclass=false,
+  extract-env=ejercicio,
+  extract-cmd=chapter,
+  chapter-nrs={1-11,14-20},
+]{extract}
+
+% Document class para ejercicios.tex.
+\begin{extract}
+\documentclass[11pt,a4paper]{article}
+\end{extract}
+
+% Preámbulo compartido entre apunte y ejercicios.
+\begin{extract*}
+\tolerance=5000
 
 % Entrada de texto
 \usepackage[spanish]{babel}   % Traduce los textos a castellano
@@ -24,10 +42,85 @@
 \usepackage{t1enc}            % Agrega caracteres extendidos al font
 
 % Cuestiones de estilo
-\usepackage{palatino}         % Cambia el font por omision a Palatino
-\usepackage{graphicx}         % Permite insertar imagenes.
 \usepackage{listings}         % Permite mostrar codigo de forma mas linda
 \usepackage{verbatim}         % Permite incluir archivos de texto verbatim
+
+\usepackage{amsmath, amsthm, amssymb} % Se usan para theoremstyle
+
+% Parámetros para los listings de python
+\lstset{language=Python,
+    numbers=left,
+    numberstyle=\tiny,
+    numbersep=5pt,
+    showstringspaces=false,
+    basicstyle=\ttfamily,
+    % NOTA: esta sección se podría omitir usando XeTeX.
+    extendedchars=true,
+    inputencoding=utf8x,
+    literate={á}{{\'a}}1
+             {é}{{\'e}}1
+             {í}{{\'i}}1
+             {ó}{{\'o}}1
+             {ú}{{\'u}}1
+             {ü}{{\"u}}1
+             {ñ}{{\~n}}1
+             {Á}{{\'A}}1
+             {É}{{\'E}}1
+             {Í}{{\'I}}1
+             {Ó}{{\'O}}1
+             {Ú}{{\'U}}1
+             {Ü}{{\"U}}1
+             {Ñ}{{\~N}}1
+             {¿}{{?`}}1
+             {¡}{{!`}}1}
+%    basicstyle=\ttfamily\normalsize,
+%    keywordstyle=\ttfamily\bfseries,
+%    identifierstyle=\ttfamily,
+%    commentstyle=\ttfamily\itshape,
+%    stringstyle=\ttfamily,
+
+% Para poner partes dentro de los ejercicios
+\newcounter{partesi}
+\newenvironment{partes}
+{   \begin{list}{\alph{partesi})}{
+        \usecounter{partesi}
+        \setlength{\topsep}{0pt}
+        \setlength{\itemsep}{0pt}}}
+{   \end{list} }
+\end{extract*}
+
+% Resto del preámbulo de ejercicios.tex
+\begin{extract}
+
+\usepackage{times}
+\renewcommand{\baselinestretch}{1.3}
+
+\oddsidemargin 0.0cm \evensidemargin 0.0cm \topmargin 0in
+\headheight .3in \headsep .2in \footskip .2in
+\setlength{\textwidth}{16cm}
+\setlength{\textheight}{22cm}
+%\leftmargin 2.5cm
+%\rightmargin 2.5cm
+\topmargin 0.5 cm
+
+\theoremstyle{definition}
+\newtheorem{ejercicio}{Ejercicio}[section]
+
+% Para poder usar los nombres de capítulos como secciones.
+% TODO: al omitir capítuos en los ejercicios, las secciones en los ejercicios
+% se siguen numerando consecutivamente, y se desacoplan del número de capítulo.
+\newcommand{\chapter[2]}{\newpage\section{#2}}
+
+\title{75.40 Algoritmos y Programación I \\
+    \textbf{Guía de Ejercicios}}
+\date{1er Cuatrimestre 2011}
+
+\end{extract}
+
+%% Resto del preámbulo solo definido para el apunte. %%
+
+\usepackage{palatino}         % Cambia el font por omision a Palatino
+\usepackage{graphicx}         % Permite insertar imagenes.
 
 % Opcionales
 \usepackage{longtable}        % tablas largas y flexibles
@@ -51,9 +144,6 @@
 % ?? Este archivo no está en el svn.
 %\input{random.tex}        % From CTAN/macros/generic
 
-% Paquetes matematicos.  Hacen falta?
-%\usepackage{amsgen,amsmath,amstext,amsbsy,amsopn,amsfonts,amssymb}
-\usepackage{amsmath, amsthm, amssymb} % Se usan para theoremstyle
 % Agrega algunos simbolos poco usados.  Hace falta?
 %\usepackage{latexsym}
 % Permite hacer operaciones algebraicas en los comandos Latex.  Hace falta?
@@ -166,38 +256,6 @@
    \begin{minipage}{0.05\textwidth}\end{minipage}\hfill\begin{minipage}{0.90\textwidth}}
   {\end{minipage}\hfill\begin{minipage}{0.05\textwidth}\end{minipage}\\}
 
-% Parámetros para los listings de python
-\lstset{language=Python,
-    numbers=left,
-    numberstyle=\tiny,
-    numbersep=5pt,
-    showstringspaces=false,
-    basicstyle=\ttfamily,
-    % NOTA: esta sección se podría omitir usando XeTeX.
-    extendedchars=true,
-    inputencoding=utf8x,
-    literate={á}{{\'a}}1
-             {é}{{\'e}}1
-             {í}{{\'i}}1
-             {ó}{{\'o}}1
-             {ú}{{\'u}}1
-             {ü}{{\"u}}1
-             {ñ}{{\~n}}1
-             {Á}{{\'A}}1
-             {É}{{\'E}}1
-             {Í}{{\'I}}1
-             {Ó}{{\'O}}1
-             {Ú}{{\'U}}1
-             {Ü}{{\"U}}1
-             {Ñ}{{\~N}}1
-             {¿}{{?`}}1
-             {¡}{{!`}}1}
-%    basicstyle=\ttfamily\normalsize,
-%    keywordstyle=\ttfamily\bfseries,
-%    identifierstyle=\ttfamily,
-%    commentstyle=\ttfamily\itshape,
-%    stringstyle=\ttfamily,
-
 \usepackage{float}            % Agrega estilos a los floats
 
 \floatstyle{ruled}
@@ -230,16 +288,6 @@
 \theoremstyle{remark}
 %\newtheorem{observacion}{Observaci\'on}[section]
 \newtheorem{nota}{Nota}[section]
-
-% Para poner partes dentro de los ejercicios
-\newcounter{partesi}
-\newenvironment{partes}
-{   \begin{list}{\alph{partesi})}{
-        \usecounter{partesi}
-        \setlength{\topsep}{0pt}
-        \setlength{\itemsep}{0pt}}}
-{   \end{list} }
-
 
 % Traducciones propias
 \addto\captionsspanish{
@@ -359,6 +407,30 @@
 \usepackage{hypcap}
 
 \begin{document}
+
+\begin{extract} % La guía de estilo para los ejercicios
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+
+\section*{Recomendaciones al realizar las guías.}
+
+\textbf{Generales:}
+\begin{itemize}
+	\item Sea claro y prolijo. Es muy importante que el código sea lo más claro y legible posible.
+	\item Es muy importante que los identificadores de funciones y variables sean coherentes. El identificador debe ser suficientemente descriptivo.
+	\item Ponga una línea en blanco entre las definiciones de función para simplificar la lectura del programa.
+	\item Las expresiones matemáticas complejas pueden representarse en varios pasos.
+\end{itemize}
+
+\textbf{Documentación:}
+\begin{itemize}
+	\item Documente correctamente las funciones y módulos que desarrolle.
+	\item Documente partes del código cuyo significado pudiera no quedar del todo claro.
+	\item No documente en exceso, pero tampoco ahorre documentación necesaria. La documentación debe ser breve y concisa.
+\end{itemize}
+\end{extract}
 
 % Carat no esta.
 %\include{carat}

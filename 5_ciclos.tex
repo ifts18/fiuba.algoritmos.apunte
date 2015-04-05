@@ -469,14 +469,19 @@ definidos como indefinidos.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Escribir un programa que reciba una a una las notas del usuario,
+\begin{ejercicio}
+Escribir un programa que reciba una a una las notas del usuario,
 preguntando a cada paso si desea ingresar más notas, e imprimiendo el
-promedio correspondiente.}
+promedio correspondiente.
+\end{ejercicio}
 
-\ejercicio{Escribir una función que reciba un número entero $k$ e imprima su
-descomposición en factores primos.}
+\begin{ejercicio}
+Escribir una función que reciba un número entero $k$ e imprima su
+descomposición en factores primos.
+\end{ejercicio}
 
-\ejercicio{\bf Manejo de contraseñas}
+\begin{ejercicio}
+{\bf Manejo de contraseñas}
 \begin{partes}
     \item Escribir un programa que contenga una contraseña inventada, que le
 pregunte al usuario la contraseña, y no le permita continuar hasta que la
@@ -490,15 +495,19 @@ módulo \verb!time!.
 si el usuario ingresó o no la contraseña correctamente, mediante un valor
 booleano (True o False).
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Utilizando la función \verb!randrange! del módulo \verb!random!,
+\begin{ejercicio}
+Utilizando la función \verb!randrange! del módulo \verb!random!,
 escribir un programa que obtenga un número aleatorio secreto, y luego
 permita al usuario ingresar números y le indique sin son menores o mayores
-que el número a adivinar, hasta que el usuario ingrese el número correcto.}
+que el número a adivinar, hasta que el usuario ingrese el número correcto.
+\end{ejercicio}
 
 
-\ejercicio{\bf Algoritmo de Euclides}
+\begin{ejercicio}
+{\bf Algoritmo de Euclides}
 \begin{partes}
     \item Implementar en python el algoritmo de Euclides para calcular el máximo
 común divisor de dos números $n$ y $m$, dado por los siguientes pasos.
@@ -512,8 +521,10 @@ primer paso.
     \item Hacer un seguimiento del algoritmo implementado para los siguientes
 pares de números: (15,9); (9,15); (10,8); (12,6).
 \end{partes}
+\end{ejercicio}
 
-\ejercicio{Potencias de dos.}
+\begin{ejercicio}
+{\bf Potencias de dos.}
 \begin{partes}
     \item Escribir una función \verb!es_potencia_de_dos! que reciba como parámetro
 un número natural, y devuelva \verb!True! si el número es una potencia de 2,
@@ -524,9 +535,11 @@ rango formado por esos números (0 si no hay ninguna potencia de 2 entre los
 dos). Utilizar la función \verb!es_potencia_de_dos!, descripta en el
 punto anterior.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{\bf Números perfectos y números amigos}
+\begin{ejercicio}
+{\bf Números perfectos y números amigos}
 \begin{partes}
     \item Escribir una función que devuelva la suma de todos los divisores de
 un número $n$, sin incluirlo.
@@ -540,16 +553,20 @@ a $a$ (es decir las primeras $m$ parejas de números {\it amigos}).
     \item Proponer optimizaciones a las funciones anteriores para disminuir el
 tiempo de ejecución.
 \end{partes}
+\end{ejercicio}
 
-\ejercicio{Escribir un programa que le pida al usuario que ingrese una sucesión
+\begin{ejercicio}
+Escribir un programa que le pida al usuario que ingrese una sucesión
 de números naturales (primero uno, luego otro, y así hasta que el
 usuario ingrese '-1' como condición de salida). Al final, el programa
 debe imprimir cuántos números fueron ingresados, la suma total de los
-valores y el promedio.}
+valores y el promedio.
+\end{ejercicio}
 
-\ejercicio{Escribir una función que reciba dos números como parámetros, y
+\begin{ejercicio}
+Escribir una función que reciba dos números como parámetros, y
 devuelva cuántos múltiplos del primero hay, que sean menores que el
-segundo.}
+segundo.
 \begin{partes}
     \item Implementarla utilizando un ciclo \verb!for!, desde el primer número
 hasta el segundo.
@@ -558,18 +575,38 @@ número hasta que sea mayor que el segundo.
     \item Comparar ambas implementaciones: ¿Cuál es más clara? ¿Cuál realiza menos
 operaciones?
 \end{partes}
+\end{ejercicio}
 
-\ejercicio{Escribir una función que reciba un número natural e imprima todos
-los números primos que hay hasta ese número.}
+\begin{ejercicio}
+Escribir una función que reciba un número natural e imprima todos
+los números primos que hay hasta ese número.
+\end{ejercicio}
 
-\ejercicio{Escribir una función que reciba un dígito y un número natural, y
+\begin{ejercicio}
+Escribir una función que reciba un dígito y un número natural, y
 decida numéricamente si el dígito se encuentra en la notación decimal
-del segundo.}
+del segundo.
+\end{ejercicio}
 
-\ejercicio{Escribir una función que dada la cantidad de ejercicios de un examen,
+\begin{ejercicio}
+Escribir una función que dada la cantidad de ejercicios de un examen,
 y el porcentaje necesario de ejercicios bien resueltos necesario para aprobar
-dicho examen, revise un grupo de examenes. Para ello, en cada paso debe preguntar
-la cantidad de ejercicios resueltos por el alumno, indicando con un valor centinela
-que no hay más examenes a revisar. Debe mostrar por pantalla el porcentaje
-correspondiente a la cantidad de ejercicios resueltos respecto a la
-cantidad de ejercicios del examen y una leyenda que indique si aprobó o no.}
+dicho examen, revise un grupo de examenes. Para ello, en cada paso debe
+preguntar la cantidad de ejercicios resueltos por el alumno, indicando con un
+valor centinela que no hay más examenes a revisar. Debe mostrar por pantalla
+el porcentaje correspondiente a la cantidad de ejercicios resueltos respecto a
+la cantidad de ejercicios del examen y una leyenda que indique si aprobó o no.
+\end{ejercicio}
+
+% \begin{ejercicio} Resolver el siguiente problema: \\
+% Dada una lista de nombres de personas y sus fechas de nacimiento, debe
+% indicar que personas son compatibles según su signo zodiacal. En cada paso le
+% debe preguntar al usuario si quiere agregar una persona más a la lista, y
+% luego mostrar en forma agrupada, los nombres de las personas que son
+% compatibles entre sí, según el siguiente criterio: \\
+% Dos signos son compatibles si pertencen al mismo elemento: \\
+% FUEGO: Aries, Leo, Sagitario. \\
+% TIERRA: Tauro, Virgo, Capricornio. \\
+% AIRE: Geminis, Libra, Acuario. \\
+% AGUA: Cáncer, Escorpio, Piscis.\\
+% \end{ejercicio}
