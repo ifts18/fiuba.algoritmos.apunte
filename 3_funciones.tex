@@ -723,25 +723,32 @@ v = f(y)
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Escribir dos funciones que permitan calcular:}
+\begin{ejercicio} Escribir dos funciones que permitan calcular:
 \begin{partes}
-    \item La cantidad de segundos en un tiempo dado en horas, minutos y segundos.
-    \item La cantidad de horas, minutos y segundos de un tiempo dado en segundos.
+    \item La duración en segundos de un intervalo dado en horas, minutos y segundos.
+    \item La duración en horas, minutos y segundos de un intervalo dado en segundos.
 \end{partes}
+\end{ejercicio}
 
-\ejercicio{Usando las funciones del ejercicio anterior, escribir un programa que lea
-de teclado dos tiempos expresados en horas, minutos y segundos; las sume y
-muestre el resultado en horas, minutos y segundos por pantalla.}
+\begin{ejercicio}
+Usando las funciones del ejercicio anterior, escribir un programa que pida al
+usuario dos intervalos expresados en horas, minutos y segundos, sume sus
+duraciones, y muestre por pantalla la duración total en horas, minutos y segundos.
+\end{ejercicio}
 
-\ejercicio{Escribir una función que dados cuatro números, devuelva el mayor
+\begin{ejercicio}
+Escribir una función que, dados cuatro números, devuelva el mayor
 producto de dos de ellos. Por ejemplo, si recibe los números 1, 5, -2,
 -4 debe devolver 8, que es el producto más grande que se puede obtener
-entre ellos}
+entre ellos ($8 = -2 \times -4$).
+\end{ejercicio}
 
-\ejercicio{\bf Área de un triángulo en base a sus puntos}
+\begin{ejercicio}
+{\bf Área de un triángulo en base a sus puntos}
 \begin{partes}
+
     \item Escribir una función que dado un vector al origen (definido por sus
- puntos \verb!x,y!), devuelva la norma del vector, dada por
+ coordenadas \verb!x,y!), devuelva la norma del vector, dada por
  $||\vec{(x,y)}||=\sqrt{x^2+y^2}$
 
     \item Escribir una función que dados dos puntos en el plano (\verb!x1,y1! y
@@ -753,8 +760,8 @@ entre ellos}
  entre ambos.
 
     \item Escribir una función que reciba un vector al origen (definido por sus
- puntos \verb!x,y!) y devuelva un vector equivalente, normalizado (debe
- devolver un par de valores).
+ coordenadas \verb!x,y!), y devuelva el vector normalizado correspondiente (debe
+ devolver un par de valores \verb!x',y'!).
 
     \item Utilizando las funciones anteriores (b y d), escribir una función que
  dados dos puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva el
@@ -784,3 +791,4 @@ entre ellos}
  tres puntos en el plano (\verb!x1,y1!, \verb!x2,y2! y \verb!x3,y3!) y
  devuelva el área del triángulo correspondiente.
 \end{partes}
+\end{ejercicio}

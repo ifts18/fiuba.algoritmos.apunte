@@ -31,7 +31,7 @@ lleva adelante cada operación):
 \item \lstinline!desapilar!: Elimina el tope de la pila y lo devuelve.
 El elemento que se devuelve es siempre el último que se agregó.
 
-\item \lstinline!es_vacia!: Devuelve \lstinline!True! o \lstinline!False!
+\item \lstinline!esta_vacia!: Devuelve \lstinline!True! o \lstinline!False!
 según si la pila está vacía o no.
 
 \end{itemize}
@@ -119,7 +119,7 @@ cantidad de elementos contenidos.
 Finalmente, el método para indicar si se trata de una pila vacía.
 
 \begin{codigo-python-sn}
-    def es_vacia(self):
+    def esta_vacia(self):
         """ Devuelve True si la lista está vacía, False si no. """
         return self.items == []
 \end{codigo-python-sn}
@@ -129,10 +129,10 @@ Construimos algunas pilas y operamos con ellas:
 \begin{codigo-python-sn}
 >>> from clasePila import Pila
 >>> p = Pila()
->>> p.es_vacia()
+>>> p.esta_vacia()
 True
 >>> p.apilar(1)
->>> p.es_vacia()
+>>> p.esta_vacia()
 False
 >>> p.apilar(5)
 >>> p.apilar("+")
@@ -425,7 +425,7 @@ Sus operaciones son:
 
 \item \lstinline!desencolar!: Elimina el primero de la cola y lo devuelve.
 
-\item \lstinline!es_vacia!: Devuelve \lstinline!True! o
+\item \lstinline!esta_vacia!: Devuelve \lstinline!True! o
 \lstinline!False! según si la cola está vacía o no.
 
 \end{itemize}
@@ -481,11 +481,11 @@ está vacía se levantará una excepción.
           raise ValueError("La cola está vacía")
 \end{codigo-python-sn}
 
-Por último, el método \lstinline!es_vacia!, que indicará si la cola está
+Por último, el método \lstinline!esta_vacia!, que indicará si la cola está
 o no vacía.
 
 \begin{codigo-python-sn}
-    def es_vacia(self):
+    def esta_vacia(self):
         """ Devuelve True si la cola esta vacía, False si no."""
         return self.items == []
 \end{codigo-python-sn}
@@ -495,12 +495,12 @@ Veamos una ejecución de este código:
 \begin{codigo-python-sn}
 >>> from claseCola import Cola
 >>> q = Cola()
->>> q.es_vacia()
+>>> q.esta_vacia()
 True
 >>> q.encolar(1)
 >>> q.encolar(2)
 >>> q.encolar(5)
->>> q.es_vacia()
+>>> q.esta_vacia()
 False
 >>> q.desencolar()
 1
@@ -511,7 +511,7 @@ False
 5
 >>> q.desencolar()
 8
->>> q.es_vacia()
+>>> q.esta_vacia()
 True
 >>> q.desencolar()
 Traceback (most recent call last):
@@ -643,7 +643,7 @@ Finalmente, para saber si la cola está vacía, es posible verificar tanto si
 \lstinline!None!.
 
 \begin{codigo-python-sn}
-    def es_vacia(self):
+    def esta_vacia(self):
         """ Devuelve True si la cola esta vacía, False si no."""
         return self.items == []
 \end{codigo-python-sn}
@@ -654,12 +654,12 @@ resultante
 \begin{codigo-python-sn}
 >>> from claseColaEnlazada import Cola
 >>> q = Cola()
->>> q.es_vacia()
+>>> q.esta_vacia()
 True
 >>> q.encolar("Manzanas")
 >>> q.encolar("Peras")
 >>> q.encolar("Bananas")
->>> q.es_vacia()
+>>> q.esta_vacia()
 False
 >>> q.desencolar()
 'Manzanas'
@@ -714,11 +714,10 @@ caso de un cola de atención de clientes.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{
+\begin{ejercicio}
 Escribir una clase {\it TorreDeControl} que modele el trabajo de una torre
 de control de un aeropuerto, con una pista de aterrizaje.  La torre trabaja
 en dos etapas: {\it reconocimiento} y {\it acción}.
-}
 \begin{partes}
     \item Escribir un método \verb!reconocimiento!, que verifique si hay algún
 nuevo avión esperando para aterrizar y/o despegar, y de ser así los encole
@@ -733,9 +732,11 @@ ambas colas.
 continuamente a los métodos \verb!reconocimiento! y \verb!acción!,
 imprimiendo la acción tomada y el estado de la torre de control cada vez.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Atención a los pacientes de un consultorio médico, con varios doctores.}
+\begin{ejercicio}
+Atención a los pacientes de un consultorio médico, con varios doctores.
 \begin{partes}
     \item Escribir una clase {\it ColaDePacientes}, con los métodos {\it
 nuevo\_paciente}, que reciba el nombre del paciente y lo encole, y un
@@ -750,9 +751,11 @@ devuelva el próximo paciente en espera.
 o indicar que un consultorio se ha liberado y en ese caso imprima el
 próximo paciente en espera.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Juego de Cartas}
+\begin{ejercicio}
+Juego de Cartas
 \begin{partes}
     \item Crear una clase {\it Carta} que contenga un palo y un valor.
     \item Crear una clase {\it PilaDeCartas} que vaya apilando las cartas una
@@ -762,6 +765,7 @@ incorrecta, debe lanzar una excepción.
     \item Agregar el método {\it \_\_str\_\_} a la clase PilaDeCartas, para
 imprimir las cartas que se hayan apilado hasta el momento.
 \end{partes}
+\end{ejercicio}
 
 \newpage
 \section{Apéndice}

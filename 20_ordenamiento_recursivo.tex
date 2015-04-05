@@ -237,8 +237,8 @@ Una primera aproximación a este código se puede ver en el Código
 \ref{src:quicksort-copia}.
 
 \begin{codigo}{quicksort\_copia.py}{Una primera aproximación al {\it Quick sort}}
-\lstinputlisting{src/20_ordenamiento_recursivo/quicksort_copia.py}
 \label{src:quicksort-copia}
+\lstinputlisting{src/20_ordenamiento_recursivo/quicksort_copia.py}
 \end{codigo}
 
 \section{¿Cuánto cuesta el {\it Quick sort}?}
@@ -339,22 +339,22 @@ peor caso (según cuál sea el pivote elegido) puede llegar a tardar $N^2$.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{
+\begin{ejercicio}
 Escribir una función \verb!merge_sort_3! que funcione igual que el merge sort
 pero en lugar de dividir los valores en dos partes iguales, los divida en tres
 (asumir que se cuenta con la función \verb!merge(lista_1, lista_2, lista_3)!).
 ¿Cómo te parece que se va a comportar este método con respecto al merge sort
 original?
-}
+\end{ejercicio}
 
-\ejercicio{
+\begin{ejercicio}
 Mostrar los pasos del ordenamiento de la lista: 6,0,3,2,5,7,4,1 con
 los métodos de inserción y con merge sort. ¿Cuáles son las principales
 diferencias entre los métodos? ¿Cuál usarías en qué casos?
-}
+\end{ejercicio}
 
-\ejercicio{
+\begin{ejercicio}
 Ordenar la lista 6,0,3,2,5,7,4,1 usando el método quicksort. Mostrar
 el árbol de recursividad explicando las llamadas que se hacen en cada
 paso, y el orden en el que se realizan.
-}
+\end{ejercicio}

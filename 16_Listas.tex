@@ -978,27 +978,27 @@ elementos de una secuencia.
 \newpage
 \section{Ejercicios}
 
-\ejercicio{
+\begin{ejercicio}
 Agregar a la clase {\it ListaEnlazada} un método \verb!next! que vaya
 devolviendo uno a uno cada elemento de la lista, desde el primero hasta el
 último.  Al llegar al final de la lista debe levantar una excepción de la
 clase {\it StopIteration}.  Para el correcto funcionamiento de este método, ¿es
 necesario agregar un atributo adicional a la clase?
-}
+\end{ejercicio}
 
-\ejercicio{
+\begin{ejercicio}
 Utilizando el método \verb!next! del ejercicio anterior, redefinir el
 método \verb!__str__! de {\it ListaEnlazada}, para que se genere una salida
 legible de lo que contiene la lista, similar a las listas de python. \\
 {\bf Nota}: este método debe devolver una cadena, no imprimirla por
 pantalla.
-}
+\end{ejercicio}
 
-\ejercicio{
+\begin{ejercicio}
 Agregar a {\it ListaEnlazada} un método \verb!extend! que reciba una {\it
 ListaEnlazada} y agregue a la lista actual los elementos que se encuentran
 en la lista recibida.
-}
+\end{ejercicio}
 
 % No es un buen ejemplo que LE Ordenada herede de LE ya que se tiene que bloquear
 % o redefinir el significado del método append.
@@ -1010,25 +1010,25 @@ en la lista recibida.
 %la inserción al final.
 %}
 
-\ejercicio{
+\begin{ejercicio}
 Una {\bf lista circular} es una lista cuyo último nodo está ligado al primero,
 de modo que es posible recorrerla infinitamente.  \\
 Escribir la clase {\it ListaCircular}, incluyendo los métodos \verb!insert!,
 \verb!append!, \verb!remove! y \verb!pop!.
-}
+\end{ejercicio}
 
-\ejercicio{
+\begin{ejercicio}
 Una {\bf lista doblemente enlazada} es una lista en la cual cada nodo tiene
 una referencia al anterior además de al próximo de modo que es posible
 recorrerla en ambas direcciones. \\
 Escribir la clase {\it ListaDobleEnlazada}, incluyendo los métodos
 \verb!insert!, \verb!append!, \verb!remove! y \verb!pop!.
-}
+\end{ejercicio}
 
-\ejercicio{
+\begin{ejercicio}
 Escribir un método de la clase {\it ListaEnlazada} que invierta el orden
 de la lista (es decir, el primer elemento queda como último y
 viceversa, y se invierte la dirección de todos los enlaces). \\
 {\bf Nota}: operar directamente sobre los elementos de la lista.
-}
+\end{ejercicio}
 

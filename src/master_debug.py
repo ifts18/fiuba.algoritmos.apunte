@@ -35,9 +35,9 @@ while propuesta != codigo:
             aciertos = aciertos + 1
         elif propuesta[i] in codigo:
             coincidencias = coincidencias + 1
-    print "Tu propuesta (", propuesta, ") tiene", aciertos, \
-        "aciertos y ", coincidencias, "coincidencias."
+    print "Tu propuesta (%s) tiene %d aciertos y %d coincidencias." % \
+        (propuesta, aciertos, coincidencias)
     # pedimos siguiente propuesta
     propuesta = raw_input("Propone otro codigo: ")
 
-print "Felicitaciones! Adivinaste el codigo en", intentos, "intentos."
+print "Felicitaciones! Adivinaste el codigo en %d intentos." % intentos

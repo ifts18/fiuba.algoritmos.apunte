@@ -41,6 +41,6 @@ class Cola:
         else:
             raise ValueError("La cola está vacía")
 
-    def es_vacia(self):
+    def esta_vacia(self):
         """ Devuelve True si la cola esta vacía, False si no."""
         return self.primero == None

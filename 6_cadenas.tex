@@ -439,6 +439,70 @@ en minúscula.}
 
 \end{enumerate}
 
+\section{Darle formato a las cadenas}
+
+Muchas veces es necesario darle un formato determinado a las cadenas, o dicho de
+otro modo, procesar los datos de entrada para que las cadenas resultantes se
+vean de una manera en particular. Además, separar el formato del texto de los
+datos a mostrar nos permite enfocarnos en la presentación cuando eso es lo que
+queremos.
+
+Por ejemplo, para incluir un número en medio de un mensaje, podemos usar la
+siguiente cadena de formato:
+\begin{codigo-python-sn}
+mensaje = "Hay %d mensajes sin leer" % no_leidos
+\end{codigo-python-sn}
+
+Equivalente a:
+\begin{codigo-python-sn}
+mensaje = "Hay " + str(no_leidos) + " mensajes sin leer"
+\end{codigo-python-sn}
+
+La marca \lstinline!%d! indica que en ese lugar debe ir un número en base
+decimal, lo que siga al \lstinline!%! luego de la cadena será lo que se use para
+reemplazar las marcas que haya en el texto.
+
+Al usar la cadenas de formato de
+esta manera, podemos ver claramente cuál es el contenido del mensaje, evitando
+errores con respecto a espacios de más o de menos, interrupciones en el texto
+que complican su lectura, etc.
+
+Otro ejemplo, utilizando varios valores, en este caso cadenas:
+\begin{codigo-python-sn}
+info = "Artista: %s. Disco: %s." % (artista, disco)
+\end{codigo-python-sn}
+
+Equivalente a:
+\begin{codigo-python-sn}
+info = "Artista: " + artista + ". Disco: " + disco + "."
+\end{codigo-python-sn}
+
+En este caso la marca \lstinline!%s! indica que en ese lugar debe ir una cadena
+(en el caso de que el valor no sea ya una cadena, será el resultado de hacer
+\lstinline!str(variable)!).
+
+En el caso de los valores numéricos, es posible modificar la forma en la que el
+número es presentado. Por ejemplo, si se trata de un monto monetario, usualmente
+queremos mostrarlo con dos dígitos decimales, para ello utilizaremos la
+marca \lstinline!%f! para indicar un número {\it flotante}, precedida de
+\lstinline!.2! para indicar dos dígitos luego del separador decimal.
+
+\begin{codigo-python-sn}
+suma = 205.5
+totales = 'Sin IVA: %.2f. Con IVA: %.2f' % (suma, suma * 1.21)
+# totales contiene 'Sin IVA: 205.50. Con IVA: 248.66'
+\end{codigo-python-sn}
+
+En otras situaciones, como el caso de un valor en un estudio médico, podemos
+querer mostrar el número en notación científica. En este caso utilizaremos la
+marca \lstinline!%e!, precedida de la cantidad de dígitos luego del separador
+decimal que se consideren significativos.
+
+\begin{codigo-python-sn}
+rojos = 4640000
+sangre += 'Glóbulos rojos: %.1e/uL\n' % rojos
+# Agrega 'Glóbulos rojos: 4.6e+06/uL\n' a sangre
+\end{codigo-python-sn}
 
 \section{Nuestro primer juego}
 Con todo esto ya estamos en condiciones de escribir un programa para jugar con
@@ -561,17 +625,17 @@ jugador@casino:~$ python mastermind.py
 Bienvenido/a al Mastermind!
 Tenes que adivinar un numero de 4 cifras distintas
 Que codigo propones?: 1234
-Tu propuesta ( 1234 ) tiene 0 aciertos y  1 coincidencias.
+Tu propuesta (1234) tiene 0 aciertos y  1 coincidencias.
 Propone otro codigo: 5678
-Tu propuesta ( 5678 ) tiene 0 aciertos y  1 coincidencias.
+Tu propuesta (5678) tiene 0 aciertos y  1 coincidencias.
 Propone otro codigo: 1590
-Tu propuesta ( 1590 ) tiene 1 aciertos y  1 coincidencias.
+Tu propuesta (1590) tiene 1 aciertos y  1 coincidencias.
 Propone otro codigo: 2960
-Tu propuesta ( 2960 ) tiene 2 aciertos y  1 coincidencias.
+Tu propuesta (2960) tiene 2 aciertos y  1 coincidencias.
 Propone otro codigo: 0963
-Tu propuesta ( 0963 ) tiene 1 aciertos y  2 coincidencias.
+Tu propuesta (0963) tiene 1 aciertos y  2 coincidencias.
 Propone otro codigo: 9460
-Tu propuesta ( 9460 ) tiene 1 aciertos y  3 coincidencias.
+Tu propuesta (9460) tiene 1 aciertos y  3 coincidencias.
 Propone otro codigo: 6940
 Felicitaciones! Adivinaste el codigo en 7 intentos.
 \end{verbatim}
@@ -588,7 +652,7 @@ números que va eligiendo al azar y el código que queda al final. Así
 podremos verificar si las respuestas son correctas a medida que las hacemos
 y podremos elegir mejor las propuestas enlas pruebas.
 
-\lstinputlisting[firstline = 9, lastline = 18]{src/master_debug.py}
+\lstinputlisting[firstline=9, lastline=18, firstnumber=9]{src/master_debug.py}
 
 De esta manera podemos monitorear cómo se va formando el código que hay que
 adivinar, y los candidatos que van apareciendo pero se rechazan por estar
@@ -627,15 +691,15 @@ errores en el código.
 
 Una forma de evitar esto es fijar la cantidad de cifras en una variable y
 cambiarla sólo ahí:
-\lstinputlisting[firstline = 9, lastline = 14]{src/master_enh.py}
+\lstinputlisting[firstline=9, lastline=14, firstnumber=9]{src/master_enh.py}
 
 El mensaje al usuario queda entonces:
 
-\lstinputlisting[firstline = 19, lastline = 22]{src/master_enh.py}
+\lstinputlisting[firstline=19, lastline=22, firstnumber=19]{src/master_enh.py}
 
 Y el chequeo de aciertos y coincidencias:
 
-\lstinputlisting[firstline = 32, lastline = 34]{src/master_enh.py}
+\lstinputlisting[firstline=32, lastline=34, firstnumber=32]{src/master_enh.py}
 
 Con 5 dígitos, el juego se pone más difícil. Nos damos cuenta que si el jugador
 no logra adivinar el código, el programa no termina: se queda preguntando
@@ -647,21 +711,20 @@ Para esto agregamos en el ciclo \lstinline!while! principal una condición
 extra: para seguir preguntando, la propuesta tiene que ser distinta al
 código pero además tiene que ser distinta del texto \lstinline!"Me doy"!.
 
-\lstinputlisting[firstline = 25, lastline = 29]{src/master_enh.py}
+\lstinputlisting[firstline=25, lastline=29, firstnumber=25]{src/master_enh.py}
 
 Entonces, ahora no sólamente sale del \lstinline!while! si acierta el
 código, sino además si se rinde y quiere saber cuál era el código. Entonces
 afuera del while tenemos que separar las dos posibilidades, y dar distintos
 mensajes:
 
-\lstinputlisting[firstline = 42]{src/master_enh.py}
+\lstinputlisting[firstline=42, firstnumber=42]{src/master_enh.py}
 
 El código de todo el programa queda entonces así:
 
 \lstinputlisting{src/master_enh.py}
 \end{enumerate}
 
-\section{Ejercicios}
 \ejercicioc{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
 guardara el valor de la cantidad de dígitos para no tener que cambiarlo todas
 las veces. ¿Cómo harían para evitar esta variable usando la función
@@ -682,8 +745,6 @@ las veces. ¿Cómo harían para evitar esta variable usando la función
 \item Las cadenas de caracteres nos sirven para operar con todo tipo de
 textos.  Contamos con funciones para ver su longitud, sus elementos uno a
 uno, o por segmentos, comparar estos elementos con otros, etc.
-
-
 \end{itemize}
 
 \begin{referencia_python}
@@ -714,13 +775,60 @@ caso de que se omita \lstinline!j!, se asume \lstinline!len(cadena)!.  Si
 se omiten ambos, se obtiene la cadena completa.
 \end{sintaxis}
 
+\begin{sintaxis}{\lstinline!formato \% valores!}
+Genera otra cadena reemplazando las marcas de formato por el valor
+correspondiente, luego de convertirlo de acuerdo a lo especificado en la
+marca de formato.
+
+Las marcas de formato comienzan con \verb!%!, seguido de diversos parámetros
+conversión y por último el tipo de conversión que es el único que es realmente
+obligatorio.
+
+A continuación una referencia de los distintos tipos de conversiones:
+
+\begin{tabular}{l|p{6cm}|l}
+ Tipo & Significado & Ejemplo \\
+\hline
+\verb!d! & Valor entero en decimal & \lstinline!'%d' % 10.5 == '10'! \\
+\verb!o! & Valor entero en octal & \lstinline!'%o' % 8 == '10'! \\
+\verb!x! & Valor entero en hexadecimal & \lstinline!'%x' % 16 == '10'! \\
+\verb!f! & Valor de punto flotante, en decimal &
+\lstinline!'%f' % 0.1**5 == '0.000010'! \\
+\verb!e! & Valor de punto flotante, en notación exponencial &
+\lstinline!'%e' % 0.1**5 == '1.000000e-05'! \\
+\verb!g! & Valor de punto flotante, lo que sea más corto &
+\lstinline!'%g' % 0.1**5 == '0.00001'! \\
+\verb!c! & Caracter & \lstinline!'%c%c' % ('hola'[3], 65) == 'aA'! \\
+\verb!s! & Cadenas (como llamar a \lstinline!str(x)!) &
+\lstinline!'%s' % None == 'None'! \\
+\verb!%! & Un \verb!%! &
+\lstinline!'%%,%s' % '%' == '%,%'!
+\end{tabular}
+
+Uno de los diversos parámetros es la precisión, que al trabajar con distintos
+tipos de marcas significa distintas cosas, las de tipo entero la ignoran, para
+las cadenas es la cantidad máxima de caracteres a tomar de una cadena, para
+las de punto flotante, tiene un significado distinto para cada una de ellas y
+es más claro verlo en ejemplos:
+
+\begin{codigo-python-sn}
+cadena = '%.2s' % 'Python' # -> 'Py'
+cadena = '%.2f' % 3.14159265359 # -> '3.14'
+cadena = '%.2g' % 3.14159265359 # -> '3.1'
+cadena = '%.2e' % 314159265359 # -> '3.14e+11'
+cadena = '%.2g' % 314159265359 # -> '3.1e+11'
+\end{codigo-python-sn}
+
+\end{sintaxis}
+
 \end{referencia_python}
 
 
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Escribir funciones que dada una cadena de caracteres:}
+\begin{ejercicio}
+Escribir funciones que dada una cadena de caracteres:
 \begin{partes}
 \item Imprima los dos primeros caracteres.
 \item Imprima los tres últimos caracteres.
@@ -731,32 +839,40 @@ imprimir \texttt{'!odnum aloh'}
 \item Imprima la cadena en un sentido y en sentido inverso. Ej:
 \texttt{'reflejo'} imprime \texttt{'reflejoojelfer'}.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Escribir funciones que dada una cadena y un caracter:}
+\begin{ejercicio}
+Escribir funciones que dada una cadena y un caracter:
 \begin{partes}
 \item Inserte el caracter entre cada letra de la cadena. Ej: \texttt{'separar'}
 y \texttt{','} debería devolver \texttt{'s,e,p,a,r,a,r'}
 \item Reemplace todos los espacios por el caracter. Ej: \texttt{'mi archivo de
-texto.txt'} y \texttt{'\_'} debería devolver\\
+texto.txt'} y \texttt{'\_'} debería devolver
 \texttt{'mi\_archivo\_de\_texto.txt'}
 \item Reemplace todos los dígitos en la cadena por el caracter. Ej: \texttt{'su
 clave es: 1540'} y \texttt{'X'} debería devolver \texttt{'su clave es: XXXX'}
 \item Inserte el caracter cada 3 dígitos en la cadena. Ej.
 \texttt{'2552552550'} y \texttt{'.'} debería devolver \texttt{'255.255.255.0'}
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Modificar las funciones anteriores, para que reciban un parámetro que indique
-la cantidad máxima de reemplazos o inserciones a realizar.}
+\begin{ejercicio}
+Modificar las funciones anteriores, para que reciban un parámetro que indique
+la cantidad máxima de reemplazos o inserciones a realizar.
+\end{ejercicio}
 
 
-\ejercicio{Escribir una función que reciba una cadena que contiene un largo número entero y
+\begin{ejercicio}
+Escribir una función que reciba una cadena que contiene un largo número entero y
 devuelva una cadena con el número y las separaciones de miles. Por ejemplo, si
-recibe \texttt{'1234567890'}, debe devolver \texttt{'1.234.567.890'}}.
+recibe \texttt{'1234567890'}, debe devolver \texttt{'1.234.567.890'}.
+\end{ejercicio}
 
 
-\ejercicio{Escribir una función que dada una cadena de caracteres, devuelva:}
+\begin{ejercicio}
+Escribir una función que dada una cadena de caracteres, devuelva:
 \begin{partes}
 \item La primera letra de cada palabra. Por ejemplo, si recibe
 \texttt{'Universal Serial Bus'} debe devolver \texttt{'USB'}.
@@ -766,9 +882,11 @@ ejemplo, si recibe \texttt{'república argentina'} debe devolver
 \item Las palabras que comiencen con la letra 'A'. Por ejemplo, si recibe
 \texttt{'Antes de ayer'} debe devolver \texttt{'Antes ayer'}
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Escribir funciones que dada una cadena de caracteres:}
+\begin{ejercicio}
+Escribir funciones que dada una cadena de caracteres:
 \begin{partes}
 \item Devuelva solamente las letras consonantes. Por ejemplo, si recibe
 \texttt{'algoritmos'} o \texttt{'logaritmos'} debe devolver \texttt{'lgrtms'}.
@@ -780,18 +898,23 @@ consonantes'} debe devolver \texttt{'i ooae'}.
 lava la tina'} es un palíndromo (se lee igual de izquierda a derecha que de
 derecha a izquierda).
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Escribir funciones que dadas dos cadenas de caracteres:}
+\begin{ejercicio}
+Escribir funciones que dadas dos cadenas de caracteres:
 \begin{partes}
 \item Indique si la segunda cadena es una subcadena de la primera. Por ejemplo,
 \texttt{'cadena'} es una subcadena de \texttt{'subcadena'}.
 \item Devuelva la que sea anterior en orden alfábetico. Por ejemplo, si recibe
 \texttt{'kde'} y \texttt{'gnome'} debe devolver \texttt{'gnome'}.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Escribir una función que reciba una cadena de unos y ceros (es decir, un
+\begin{ejercicio}
+Escribir una función que reciba una cadena de unos y ceros (es decir, un
 número en representación binaria) y devuelva el valor decimal
-correspondiente.}
+correspondiente.
+\end{ejercicio}
 

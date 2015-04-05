@@ -1009,21 +1009,28 @@ desigualdad.  Reciben las dos instancias a comparar.  Devuelven
 \newpage
 \section{Ejercicios}
 
-\ejercicio{Modificar el método \lstinline!__cmp__! de \lstinline!Hotel!
+\begin{ejercicio}
+% NOTA: este ejercicio no está incluido en ejercicios.tex.
+Modificar el método \lstinline!__cmp__! de \lstinline!Hotel!
 para poder ordenar de menor a mayor las listas de hoteles según el criterio:
 primero por ubicación, en orden alfabético y dentro de cada ubicación por
-la relación calidad-precio.}
+la relación calidad-precio.
+\end{ejercicio}
 
-\ejercicio{Escribir una clase \lstinline!Caja! para representar cuánto
+\begin{ejercicio}
+% NOTA: este ejercicio no está incluido en ejercicios.tex.
+Escribir una clase \lstinline!Caja! para representar cuánto
 dinero hay en una caja de un negocio, desglosado por tipo de billete (por
 ejemplo, en el quiosco de la esquina hay 5 billetes de 10 pesos, 7 monedas
 de 25 centavos y 4 monedas de 10 centavos).
 
 Se tiene que poder comparar cajas por la cantidad de dinero que
 hay en cada una, y además ordenar una lista de cajas
-de menor a mayor según la cantidad de dinero disponible.}
+de menor a mayor según la cantidad de dinero disponible.
+\end{ejercicio}
 
-\ejercicio{Fracciones}
+\begin{ejercicio}
+Fracciones
 \begin{partes}
     \item Crear una clase \verb!Fraccion!, que cuente con dos atributos:
 \verb!dividendo! y \verb!divisor!, que se asignan en el constructor, y se
@@ -1036,9 +1043,11 @@ devuelve una nueva fracción con el producto de ambas.
 forma que los valores del \verb!dividendo! y \verb!divisor! sean los
 menores posibles.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Vectores}
+\begin{ejercicio}
+Vectores
 \begin{partes}
     \item Crear una clase \verb!Vector!, que en su constructor reciba una lista
 de elementos que serán sus coordenadas.  En el método \verb!__str__! se
@@ -1050,9 +1059,11 @@ tienen la misma cantidad de elementos y devuelve un nuevo vector con la
 suma de ambos.  Si no tienen la misma cantidad de elementos debe levantar
 una excepción.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Botella y Sacacorchos}
+\begin{ejercicio}
+Botella y Sacacorchos
 \begin{partes}
     \item Escribir una clase {\it Corcho}, que contenga un atributo {\it
 bodega} (cadena con el nombre de la bodega).
@@ -1066,10 +1077,12 @@ la botella ya esté destapada, o si el sacacorchos ya contiene un corcho.
     \item Agregar un método {\it limpiar}, que saque el corcho del sacacorchos,
 o lance una excepción en el caso en el que no haya un corcho.
 \end{partes}
+\end{ejercicio}
 
 
-\ejercicio{Modelar una clase {\it Mate} que describa el funcionamiento de la
-conocida bebida tradicional local. La clase debe contener como miembros:}
+\begin{ejercicio}
+Modelar una clase {\it Mate} que describa el funcionamiento de la
+conocida bebida tradicional local. La clase debe contener como miembros:
 \begin{partes}
     \item Un atributo para la cantidad de cebadas restantes hasta que se lava
 el mate (representada por un número).
@@ -1088,4 +1101,5 @@ en 0, y cada vez que se intente beber se debe imprimir un mensaje de
 aviso: "Advertencia: el mate está lavado.", pero no se debe lanzar una
 excepción.
 \end{partes}
+\end{ejercicio}
 
