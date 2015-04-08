@@ -483,7 +483,7 @@ En este caso la marca \lstinline!%s! indica que en ese lugar debe ir una cadena
 
 En el caso de los valores numéricos, es posible modificar la forma en la que el
 número es presentado. Por ejemplo, si se trata de un monto monetario, usualmente
-querremos mostrarlo con dos dígitos decimales, para ello utilizaremos la
+queremos mostrarlo con dos dígitos decimales, para ello utilizaremos la
 marca \lstinline!%f! para indicar un número {\it flotante}, precedida de
 \lstinline!.2! para indicar dos dígitos luego del separador decimal.
 
@@ -725,12 +725,12 @@ El código de todo el programa queda entonces así:
 \lstinputlisting{src/master_enh.py}
 \end{enumerate}
 
-\ejercicio{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
+\ejercicioc{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
 guardara el valor de la cantidad de dígitos para no tener que cambiarlo todas
 las veces. ¿Cómo harían para evitar esta variable usando la función
 \lstinline!len(cadena)!?}
 
-\ejercicio{Modificar el programa para permitir repeticiones de dígitos.
+\ejercicioc{Modificar el programa para permitir repeticiones de dígitos.
 ¡Cuidado con el cómputo de aciertos y coincidencias!}
 
 % Ejercicios que no tienen mucho que ver con la unidad:
@@ -745,8 +745,6 @@ las veces. ¿Cómo harían para evitar esta variable usando la función
 \item Las cadenas de caracteres nos sirven para operar con todo tipo de
 textos.  Contamos con funciones para ver su longitud, sus elementos uno a
 uno, o por segmentos, comparar estos elementos con otros, etc.
-
-
 \end{itemize}
 
 \begin{referencia_python}
@@ -775,6 +773,52 @@ inclusive, hasta la posición \lstinline!j! exclusive.
 En el caso de que se omita \lstinline!i!, se asume \lstinline!0!.  En el
 caso de que se omita \lstinline!j!, se asume \lstinline!len(cadena)!.  Si
 se omiten ambos, se obtiene la cadena completa.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!formato \% valores!}
+Genera otra cadena reemplazando las marcas de formato por el valor
+correspondiente, luego de convertirlo de acuerdo a lo especificado en la
+marca de formato.
+
+Las marcas de formato comienzan con \verb!%!, seguido de diversos parámetros
+conversión y por último el tipo de conversión que es el único que es realmente
+obligatorio.
+
+A continuación una referencia de los distintos tipos de conversiones:
+
+\begin{tabular}{l|p{6cm}|l}
+ Tipo & Significado & Ejemplo \\
+\hline
+\verb!d! & Valor entero en decimal & \lstinline!'%d' % 10.5 == '10'! \\
+\verb!o! & Valor entero en octal & \lstinline!'%o' % 8 == '10'! \\
+\verb!x! & Valor entero en hexadecimal & \lstinline!'%x' % 16 == '10'! \\
+\verb!f! & Valor de punto flotante, en decimal &
+\lstinline!'%f' % 0.1**5 == '0.000010'! \\
+\verb!e! & Valor de punto flotante, en notación exponencial &
+\lstinline!'%e' % 0.1**5 == '1.000000e-05'! \\
+\verb!g! & Valor de punto flotante, lo que sea más corto &
+\lstinline!'%g' % 0.1**5 == '0.00001'! \\
+\verb!c! & Caracter & \lstinline!'%c%c' % ('hola'[3], 65) == 'aA'! \\
+\verb!s! & Cadenas (como llamar a \lstinline!str(x)!) &
+\lstinline!'%s' % None == 'None'! \\
+\verb!%! & Un \verb!%! &
+\lstinline!'%%,%s' % '%' == '%,%'!
+\end{tabular}
+
+Uno de los diversos parámetros es la precisión, que al trabajar con distintos
+tipos de marcas significa distintas cosas, las de tipo entero la ignoran, para
+las cadenas es la cantidad máxima de caracteres a tomar de una cadena, para
+las de punto flotante, tiene un significado distinto para cada una de ellas y
+es más claro verlo en ejemplos:
+
+\begin{codigo-python-sn}
+cadena = '%.2s' % 'Python' # -> 'Py'
+cadena = '%.2f' % 3.14159265359 # -> '3.14'
+cadena = '%.2g' % 3.14159265359 # -> '3.1'
+cadena = '%.2e' % 314159265359 # -> '3.14e+11'
+cadena = '%.2g' % 314159265359 # -> '3.1e+11'
+\end{codigo-python-sn}
+
 \end{sintaxis}
 
 \end{referencia_python}
