@@ -16,6 +16,10 @@
 \setlength{\pdfpagewidth}{15.7cm}
 \setlength{\pdfpageheight}{23cm}
 
+\usepackage[
+  active=false,
+  generate=ejercicios.tex,
+]{extract}
 
 %\documentclass[11pt,spanish,a4paper,twoside,openany]{book}
 %\documentclass[11pt,spanish,a4paper,twoside]{book}
@@ -24,7 +28,7 @@
 
 % Entrada de texto
 \usepackage[spanish]{babel}   % Traduce los textos a castellano
-\usepackage[utf8]{inputenc}   % Permite escribir directamente áéíóúñ
+\usepackage[utf8x]{inputenc}  % Permite escribir directamente áéíóúñ
 \usepackage{t1enc}            % Agrega caracteres extendidos al font
 
 % Cuestiones de estilo
@@ -185,15 +189,26 @@
     numberstyle=\tiny,
     numbersep=5pt,
     showstringspaces=false,
-%    basicstyle=\small,
-%	stringstyle=\ttfamily % print whole listing small
-%}
-    basicstyle=\ttfamily}
-%    basicstyle=\ttfamily\normalsize,
-%    keywordstyle=\ttfamily\bfseries,
-%    identifierstyle=\ttfamily,
-%    commentstyle=\ttfamily\itshape,
-%    stringstyle=\ttfamily,
+    basicstyle=\ttfamily,
+    % NOTA: esta sección se podría omitir usando XeTeX.
+    extendedchars=true,
+    inputencoding=utf8x,
+    literate={á}{{\'a}}1
+             {é}{{\'e}}1
+             {í}{{\'i}}1
+             {ó}{{\'o}}1
+             {ú}{{\'u}}1
+             {ü}{{\"u}}1
+             {ñ}{{\~n}}1
+             {Á}{{\'A}}1
+             {É}{{\'E}}1
+             {Í}{{\'I}}1
+             {Ó}{{\'O}}1
+             {Ú}{{\'U}}1
+             {Ü}{{\"U}}1
+             {Ñ}{{\~N}}1
+             {¿}{{?`}}1
+             {¡}{{!`}}1}
 
 \usepackage{float}            % Agrega estilos a los floats
 
