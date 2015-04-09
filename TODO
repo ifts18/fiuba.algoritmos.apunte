@@ -1,4 +1,9 @@
 
+(maxy) El capítulo de diccionarios es un poco corto, tengo a medio armar un
+ejemplo para manejar colecciones de discos de música, esto sería teníendo los
+datos en el código, el siguiente capítulo (archivos) remarcaría la separación y
+las ventajas de separar responsabilidades.
+
 De acuerdo con el la lista de contenidos mínimos para cubrir los temas de
 95.14 (Algo 1 de Ingeniería a partír del 2do cuatrimestre 2015) habría que
 agregar Árboles a los temas de la materia.
