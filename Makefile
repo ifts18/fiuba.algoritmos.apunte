@@ -112,7 +112,7 @@ include $(SRC:.tex=.d)
 # Dependencia adicional para ejercicios.tex.
 ejercicios.tex : principal.pdf
 
-$(TRG) : %.pdf : %.tex | %.d
+%.pdf : %.tex | %.d
 	@$(run-pdflatex)
 
 pdf    : $(TRG)
