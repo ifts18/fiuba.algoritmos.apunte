@@ -23,6 +23,6 @@ class Pila:
         except IndexError:
             raise ValueError("La pila está vacía")
 
-    def es_vacia(self):
+    def esta_vacia(self):
         """ Devuelve True si la lista está vacía, False si no. """
         return self.items == []
