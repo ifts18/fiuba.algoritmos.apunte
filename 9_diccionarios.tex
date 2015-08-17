@@ -296,11 +296,11 @@ tuplas, y los valores una lista con los segundos.
 
 Por ejemplo:
 \begin{lstlisting}[numbers=none]
-l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'), ('Buenos', 'días') ]
-print tuplas_a_diccionario(l)
+>>> l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'),
+          ('Buenos', 'días') ]
+>>> print tuplas_a_diccionario(l)
+{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['días'] }
 \end{lstlisting}
-
-Deberá mostrar: \lstinline!{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['días'] }!
 \end{ejercicio}
 
 \extractionlabel{guia}
@@ -309,8 +309,8 @@ Deberá mostrar: \lstinline!{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['d�
 \begin{partes}
   \item Escribir una función que reciba una cadena y devuelva un diccionario con
 la cantidad de apariciones de cada palabra en la cadena.  Por ejemplo, si
-recibe "Qué lindo día que hace hoy" debe devolver: { 'que': 2, 'lindo': 1,
-'día': 1, 'hace': 1, 'hoy': 1}
+recibe "Qué lindo día que hace hoy" debe devolver:
+\lstinline!{ 'que': 2, 'lindo': 1, 'día': 1, 'hace': 1, 'hoy': 1}!.
 
   \item Escribir una función que cuente la cantidad de apariciones de cada
 caracter en una cadena de texto, y los devuelva en un diccionario.
