@@ -288,6 +288,7 @@ Elimina todos los elementos del diccionario
 \newpage
 \section{Ejercicios}
 
+\extractionlabel{guia}
 \begin{ejercicio}
 Escribir una función que reciba una lista de tuplas, y que devuelva
 un diccionario en donde las claves sean los primeros elementos de las
@@ -295,20 +296,21 @@ tuplas, y los valores una lista con los segundos.
 
 Por ejemplo:
 \begin{lstlisting}[numbers=none]
-l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'), ('Buenos', 'días') ]
-print tuplas_a_diccionario(l)
+>>> l = [ ('Hola', 'don Pepito'), ('Hola', 'don Jose'),
+          ('Buenos', 'días') ]
+>>> print tuplas_a_diccionario(l)
+{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['días'] }
 \end{lstlisting}
-
-Deberá mostrar: \lstinline!{ 'Hola': ['don Pepito', 'don Jose'], 'Buenos': ['días'] }!
 \end{ejercicio}
 
+\extractionlabel{guia}
 \begin{ejercicio}
 {\bf Diccionarios usados para contar.}
 \begin{partes}
   \item Escribir una función que reciba una cadena y devuelva un diccionario con
 la cantidad de apariciones de cada palabra en la cadena.  Por ejemplo, si
-recibe "Qué lindo día que hace hoy" debe devolver: { 'que': 2, 'lindo': 1,
-'día': 1, 'hace': 1, 'hoy': 1}
+recibe "Qué lindo día que hace hoy" debe devolver:
+\lstinline!{ 'que': 2, 'lindo': 1, 'día': 1, 'hace': 1, 'hoy': 1}!.
 
   \item Escribir una función que cuente la cantidad de apariciones de cada
 caracter en una cadena de texto, y los devuelva en un diccionario.
@@ -320,6 +322,7 @@ de la suma de los dos dados. \\
 \end{partes}
 \end{ejercicio}
 
+\extractionlabel{guia}
 \begin{ejercicio}
 {\bf Continuación de la agenda.} \\
 Escribir un programa que vaya solicitando al usuario que ingrese nombres.
@@ -333,6 +336,7 @@ correspondiente.
 El usuario puede utilizar la cadena "*", para salir del programa.
 \end{ejercicio}
 
+\extractionlabel{guia}
 \begin{ejercicio}
 Escribir una función que reciba un texto y para cada caracter presente en el
 texto devuelva la cadena más larga en la que se encuentra ese caracter.
