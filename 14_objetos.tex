@@ -1010,7 +1010,6 @@ desigualdad.  Reciben las dos instancias a comparar.  Devuelven
 \section{Ejercicios}
 
 \begin{ejercicio}
-% NOTA: este ejercicio no está incluido en ejercicios.tex.
 Modificar el método \lstinline!__cmp__! de \lstinline!Hotel!
 para poder ordenar de menor a mayor las listas de hoteles según el criterio:
 primero por ubicación, en orden alfabético y dentro de cada ubicación por
@@ -1018,7 +1017,6 @@ la relación calidad-precio.
 \end{ejercicio}
 
 \begin{ejercicio}
-% NOTA: este ejercicio no está incluido en ejercicios.tex.
 Escribir una clase \lstinline!Caja! para representar cuánto
 dinero hay en una caja de un negocio, desglosado por tipo de billete (por
 ejemplo, en el quiosco de la esquina hay 5 billetes de 10 pesos, 7 monedas
@@ -1029,6 +1027,7 @@ hay en cada una, y además ordenar una lista de cajas
 de menor a mayor según la cantidad de dinero disponible.
 \end{ejercicio}
 
+\extractionlabel{guia}
 \begin{ejercicio}
 Fracciones
 \begin{partes}
@@ -1046,6 +1045,7 @@ menores posibles.
 \end{ejercicio}
 
 
+\extractionlabel{guia}
 \begin{ejercicio}
 Vectores
 \begin{partes}
@@ -1062,6 +1062,7 @@ una excepción.
 \end{ejercicio}
 
 
+\extractionlabel{guia}
 \begin{ejercicio}
 Botella y Sacacorchos
 \begin{partes}
@@ -1080,6 +1081,7 @@ o lance una excepción en el caso en el que no haya un corcho.
 \end{ejercicio}
 
 
+\extractionlabel{guia}
 \begin{ejercicio}
 Modelar una clase {\it Mate} que describa el funcionamiento de la
 conocida bebida tradicional local. La clase debe contener como miembros:
@@ -1091,14 +1093,14 @@ el mate (representada por un número).
 máxima de cebadas en base a la cantidad de yerba vertida en el recipiente.
     \item Un método \verb!cebar!, que llena el mate con agua. Si se intenta
 cebar con el mate lleno, se debe lanzar una excepción que imprima el
-mensaje "Cuidado! Te quemaste!"
+mensaje \lstinline|'Cuidado! Te quemaste!'|
     \item Un método \verb!beber!, que vacía el mate y le resta una cebada
 disponible. Si se intenta beber un mate vacío, se debe lanzar una excepción
-que imprima el mensaje "El mate está vacío!"
+que imprima el mensaje \lstinline|'El mate está vacío!'|
     \item Es posible seguir cebando y bebiendo el mate aunque no haya cebadas
 disponibes. En ese caso la cantidad de cebadas restantes se mantendrá
 en 0, y cada vez que se intente beber se debe imprimir un mensaje de
-aviso: "Advertencia: el mate está lavado.", pero no se debe lanzar una
+aviso: \lstinline|'Advertencia: el mate está lavado.'|, pero no se debe lanzar una
 excepción.
 \end{partes}
 \end{ejercicio}

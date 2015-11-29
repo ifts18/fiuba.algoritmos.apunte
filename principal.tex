@@ -23,8 +23,9 @@
   generate=ejercicios.tex,
   copydocumentclass=false,
   extract-env=ejercicio,
+  ejercicio-labels={guia},
   extract-cmd=chapter,
-  chapter-nrs={1-11,14-20},
+  chapter-nrs={1-9,11,14-20},
 ]{extract}
 
 % Document class para ejercicios.tex.
@@ -109,11 +110,11 @@
 % Para poder usar los nombres de capítulos como secciones.
 % TODO: al omitir capítuos en los ejercicios, las secciones en los ejercicios
 % se siguen numerando consecutivamente, y se desacoplan del número de capítulo.
-\newcommand{\chapter[2]}{\newpage\section{#2}}
+\newcommand{\chapter[2]}{\section{#2}}
 
 \title{75.40 Algoritmos y Programación I \\
     \textbf{Guía de Ejercicios}}
-\date{1er Cuatrimestre 2011}
+\date{2.\textsuperscript{o} cuatrimestre 2015}
 
 \end{extract}
 
@@ -422,6 +423,7 @@
 	\item Es muy importante que los identificadores de funciones y variables sean coherentes. El identificador debe ser suficientemente descriptivo.
 	\item Ponga una línea en blanco entre las definiciones de función para simplificar la lectura del programa.
 	\item Las expresiones matemáticas complejas pueden representarse en varios pasos.
+	\item Los ejercicios marcados con el símbolo $\bigstar$ son más difíciles y no son de resolución obligatoria.
 \end{itemize}
 
 \textbf{Documentación:}

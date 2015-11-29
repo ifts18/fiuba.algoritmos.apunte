@@ -1,4 +1,9 @@
 *.d
 *.xtr
+*.aux
+*.log
+*.out
+*.toc
+*.pdf
 # Archivo generado
 ejercicios.tex
