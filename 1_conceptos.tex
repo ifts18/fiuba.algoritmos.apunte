@@ -731,15 +731,15 @@ La solución a este problema se encuentra en el Código \ref{cuadrados.py}.
 \label{cuadrados.py}
 \begin{codigo-python}
 def imprimir_cuadrados():
-	print("Se calcularán cuadrados de números")
+    print("Se calcularán cuadrados de números")
 
     n1 = int(input("Ingrese un número entero: "))
     n2 = int(input("Ingrese otro número entero: "))
 
     for x in range(n1, n2):
-    	print(x * x)
+        print(x * x)
 
-	print("Es todo por ahora")
+    print("Es todo por ahora")
 
 imprimir_cuadrados()
 \end{codigo-python}
@@ -954,12 +954,53 @@ Se despliega por pantalla el mensaje ``Es todo por ahora''
 \hline
 \end{longtable}
 
-\section{Depuración de programas}
+\subsection{Depuración de programas}
 
 Una manera de seguir la evolución del estado es insertar instrucciones de impresión
 en sitios críticos del programa. Esto nos será de utilidad para detectar errores
 y también para comprender cómo funcionan determinadas instrucciones.
 
+Por ejemplo, podemos insertar llamadas a la función |print| en el Código
+\ref{cuadrados.py} para inspeccionar el contenido de las variables:
+
+\begin{lstlisting}[numbers=none]
+def imprimir_cuadrados():
+    print("Se calcularán cuadrados de números")
+
+    n1 = int(input("Ingrese un número entero: "))
+    print("el valor de n1 es:", n1)
+    n2 = int(input("Ingrese otro número entero: "))
+    print("el valor de n2 es:", n2)
+
+    for x in range(n1, n2):
+        print("el valor de x es:", x)
+        print(x * x)
+
+    print("Es todo por ahora")
+
+imprimir_cuadrados()
+\end{lstlisting}
+
+En este caso, la salida del programa será:
+
+\begin{lstlisting}[numbers=none]
+$ python cuadrados.py
+Se calcularán cuadrados de números
+Ingrese un número entero: 5
+el valor de n1 es: 5
+Ingrese otro número entero: 8
+el valor de n2 es: 8
+el valor de x es: 5
+25
+el valor de x es: 6
+36
+el valor de x es: 7
+49
+Es todo por ahora
+\end{lstlisting}
+
+Si utilizamos este método para depurar el programa, tendremos que recordar
+eliminar las llamadas |print| una vez que terminemos.
 
 \newpage
 \section{Ejercicios}
