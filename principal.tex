@@ -55,6 +55,7 @@
 % Parámetros para los listings de python
 \lstset{language=Python,
     numbers=left,
+    tabsize=4,
     numberstyle=\tiny,
     numbersep=5pt,
     showstringspaces=false,
@@ -277,8 +278,10 @@
     \caption{{\small\texttt{#1}}\textbf{:}\ \small #2}
     }{\end{codigo-float}}
 
-\lstnewenvironment{codigo-python}{\lstset{xleftmargin=10pt,tabsize=4}}{}
-\lstnewenvironment{codigo-python-sn}{\lstset{xleftmargin=10pt,tabsize=4,numbers=none}}{}
+\lstnewenvironment{codigo-python}{\lstset{}}{}
+\lstnewenvironment{codigo-python-sn}{\lstset{numbers=none}}{}
+\lstnewenvironment{codigo-nohl}{\lstset{language={}}}{}
+\lstnewenvironment{codigo-nohl-sn}{\lstset{language={},numbers=none}}{}
 
 % Numeracion para secciones y subsecciones - Hace falta?
 \renewcommand{\thesection}{\thechapter.\arabic{section}}

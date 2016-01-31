@@ -13,6 +13,7 @@
 % 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 
 \chapter[Conceptos básicos]{Algunos conceptos básicos}
+\label{chapter:conceptos}
 
 En esta unidad hablaremos de lo que es un programa de
 computadora e introduciremos unos cuantos conceptos referidos a la
@@ -251,13 +252,13 @@ descargar Python, y en
 acerca de cómo ejecutar el intérprete en cada sistema operativo.
 \end{atencion}
 
-\begin{lstlisting}[language={},numbers=none]
+\begin{codigo-nohl-sn}
 $ python3
 Python 3.5.0 (default, Sep 20 2015, 11:28:25)
 [GCC 5.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
-\end{lstlisting}
+\end{codigo-nohl-sn}
 
 Para orientarnos, el intérprete muestra los símbolos |>>>| (llamaremos a esto
 el {\it prompt}), indicando que podemos escribir a continuación una {\it
@@ -269,11 +270,11 @@ expresión} que queremos resolver luego del {\it prompt} y presionamos la tecla
 \keys{Enter}. El intérprete de Python evalúa la expresión y muestra el
 resultado en la línea siguiente. Luego nos presenta nuevamente el {\it prompt}.
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> 2+3
 5
 >>>
-\end{lstlisting}
+\end{codigo-python-sn}
 
 Python permite utilizar las operaciones |+|, |-|, |*|, |!| y |**|
 (suma, resta, multiplicación, división y potenciación). La sintaxis es la
@@ -281,7 +282,7 @@ convencional (valores intercalados con operaciones), y se pueden usar
 paréntesis para modificar el orden de asociación natural de las operaciones
 (potenciación, producto/división, suma/resta).
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> 5*7
 35
 >>> 2+3*7
@@ -292,20 +293,20 @@ paréntesis para modificar el orden de asociación natural de las operaciones
 2.5
 >>> 5**2
 25
-\end{lstlisting}
+\end{codigo-python-sn}
 
 Ademas de efectuar operaciones matemáticas, Python nos permite trabajar con
 porciones de texto, que llamaremos {\it cadenas}, y que se introducen entre
 comillas simples (|'|) o dobles (|"|):
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> '¡Hola Mundo!'
 '¡Hola Mundo!'
 >>> 'abcd' + 'efgh'
 'abcdefgh'
 >>> 'abcd' * 3
 'abcdabcdabcd'
-\end{lstlisting}
+\end{codigo-python-sn}
 
 \section{Variables}
 
@@ -313,7 +314,7 @@ Python nos permite asignarle un nombre a un valor, de forma tal de
 ``recordarlo'' para usarlo posteriormente, mediante la sentencia
 |<nombre> = <expresión>|.
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> x = 8
 >>> x
 8
@@ -323,7 +324,7 @@ Python nos permite asignarle un nombre a un valor, de forma tal de
 >>> lenguaje = 'Python'
 >>> 'Estoy programando en ' + lenguaje
 'Estoy programando en Python'
-\end{lstlisting}
+\end{codigo-python-sn}
 
 En este ejemplo creamos tres {\it variables}, llamadas |x|, |y| y |lenguaje|, y
 las asociamos a los valores 8, 64 y |'Python'|, respectivamente. Luego podemos
@@ -335,7 +336,7 @@ evaluarla, Python reemplazará las variables por su valor asociado.
 Para efectuar algunas operaciones particulares necesitamos introducir el
 concepto de {\it función}:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> abs(10)
 10
 >>> abs(-10)
@@ -346,7 +347,7 @@ concepto de {\it función}:
 -3
 >>> len("abcd")
 4
-\end{lstlisting}
+\end{codigo-python-sn}
 
 Una función es un fragmento de programa que permite efectuar una operación
 determinada.  |abs|, |max|, |min| y |len| son ejemplos de funciones de Python:
@@ -378,12 +379,12 @@ Si queremos escribir una función (que llamaremos |holaMarta|) que devuelve la
 cadena de texto ``Hola Marta! Estoy programando en Python.'', lo que debemos
 hacer es ingresar el siguiente conjunto de líneas en Python:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def holaMarta():
-        return "Hola Marta! Estoy programando en Python."
-
+...     return "Hola Marta! Estoy programando en Python."
+...
 >>>
-\end{lstlisting}
+\end{codigo-python-sn}
 
 |def holaMarta():| le indica a Python que estamos escribiendo una función cuyo
 nombre es |holaMarta|, y los paréntesis indican que la función no recibe ningún
@@ -403,11 +404,11 @@ prompt}).
 Si ahora queremos que la máquina ejecute la función |holaMarta|, debemos
 escribir |holaMarta()| a continuación del cursor de Python:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> holaMarta()
 'Hola Marta! Estoy programando en Python.'
 >>>
-\end{lstlisting}
+\end{codigo-python-sn}
 
 Se dice que estamos {\it invocando} a la función |holaMarta|.  Al invocar una
 función, se ejecutan las instrucciones que habíamos escrito en su cuerpo.
@@ -416,10 +417,10 @@ Nuestro amigo Pablo seguramente se pondrá celoso porque escribimos
 una función que saluda a Marta, y nos pedirá que escribamos una
 función que lo salude a él. Y así procederemos entonces:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def holaPablo():
-        return "Hola Pablo! Estoy programando en Python."
-\end{lstlisting}
+...     return "Hola Pablo! Estoy programando en Python."
+\end{codigo-python-sn}
 
 Pero, si para cada amigo que quiere que lo saludemos debemos que
 escribir una función distinta, parecería que la computadora no es
@@ -431,22 +432,22 @@ precisamente los parámetros.
 Escribamos entonces una función |hola| que nos sirva para saludar a
 cualquiera, de la siguiente manera:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def hola(alguien):
-        return "Hola " + alguien + "! Estoy programando en Python."
-\end{lstlisting}
+...     return "Hola " + alguien + "! Estoy programando en Python."
+\end{codigo-python-sn}
 
 En este caso, además de indicar el nombre de la función (|hola|), debemos darle
 un nombre al parámetro (|alguien|), cuyo valor será reemplazado por una cadena
 de texto cuando se invoque a la función. Por ejemplo, podemos invocarla dos
 veces, para saludar a Ana y a Juan:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> hola("Ana")
 'Hola Ana! Estoy programando en Python.'
 >>> hola("Juan")
 'Hola Juan! Estoy programando en Python.'
-\end{lstlisting}
+\end{codigo-python-sn}
 
 \begin{problema}
 \label{cuadrado}
@@ -455,16 +456,16 @@ Escribir una función que calcule el cuadrado de un número dado.
 
 \begin{solucion}
 $ $\par
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 def cuadrado(n):
-        return n * n
-\end{lstlisting}
+    return n * n
+\end{codigo-python-sn}
 
 Para invocarla, deberemos hacer:
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> cuadrado(5)
 25
-\end{lstlisting}
+\begin{codigo-python-sn}
 \end{solucion}
 
 \begin{problema}
@@ -480,22 +481,22 @@ aprovechar nuestros conocimientos de programación y probarlo empíricamente.
 Para esto escribamos una función que reciba el número elegido y devuelva el
 número que queda luego de efectuar las operaciones:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 def f(elegido):
-        return ((elegido * 2) + 6) / 2 - elegido
-\end{lstlisting}
+    return ((elegido * 2) + 6) / 2 - elegido
+\end{codigo-python-sn}
 
 Tal vez el cuerpo de la función quedó poco entendible. Podemos mejorarlo
 dividiendo la secuencia de operaciones en varias sentencias más pequeñas:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 def f(elegido):
-        n = elegido * 2
-        n = n + 6
-        n = n / 2
-        n = n - elegido
-        return n
-\end{lstlisting}
+	n = elegido * 2
+	n = n + 6
+	n = n / 2
+	n = n - elegido
+	return n
+\end{codigo-python-sn}
 
 Aquí utilizamos una variable llamada |n| y luego en cada sentencia vamos
 reemplazando el valor de |n| por un valor nuevo.
@@ -503,7 +504,7 @@ reemplazando el valor de |n| por un valor nuevo.
 Las dos soluciones que presentamos son equivalentes. Veamos si al invocar a |f|
 con distintos números siempre devuelve 3 o no:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> f(9)
 3.0
 >>> f(4)
@@ -516,7 +517,7 @@ con distintos números siempre devuelve 3 o no:
 3.0
 >>> f(-15)
 3.0
-\end{lstlisting}
+\end{codigo-python-sn}
 \end{solucion}
 
 \section{Una instrucción un poco más compleja: el ciclo definido}
@@ -528,19 +529,19 @@ Supongamos que queremos calcular la suma de los primeros 5 números cuadrados.
 Dado que ya tenemos la función |cuadrado|, podemos aprovecharla y hacer algo
 como esto:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def suma5Cuadrados():
-        suma = 0
-        suma = suma + cuadrado(1)
-        suma = suma + cuadrado(2)
-        suma = suma + cuadrado(3)
-        suma = suma + cuadrado(4)
-        suma = suma + cuadrado(5)
-        return suma
+	suma = 0
+	suma = suma + cuadrado(1)
+	suma = suma + cuadrado(2)
+	suma = suma + cuadrado(3)
+	suma = suma + cuadrado(4)
+	suma = suma + cuadrado(5)
+	return suma
 
 >>> suma5Cuadrados()
 55
-\end{lstlisting}
+\end{codigo-python-sn}
 \end{solucion}
 
 Esto resuelve el problema, pero resulta poco satisfactorio. ¿Y si quisiéramos
@@ -552,10 +553,10 @@ Para resolver este tipo de problema (repetir un cálculo para los valores
 contenidos en un intervalo dado) de una manera más eficiente, introducimos el
 concepto de {\it ciclo definido}, que tiene la siguiente forma:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 for x in range(n1, n2):
-        <hacer algo con x>
-\end{lstlisting}
+    <hacer algo con x>
+\end{codigo-python-sn}
 
 Esta instrucción se lee como:
 
@@ -575,13 +576,13 @@ sangría mayor que el encabezado del ciclo.
 Usemos un ciclo definido para resolver el problema anterior de manera más
 compacta:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def suma5Cuadrados():
-        suma = 0
-        for x in range(1, 6):
-            suma = suma + cuadrado(x)
-        return suma
-\end{lstlisting}
+...     suma = 0
+...     for x in range(1, 6):
+...         suma = suma + cuadrado(x)
+...     return suma
+\end{codigo-python-sn}
 \end{solucion}
 \end{problema}
 
@@ -593,18 +594,18 @@ Por eso es que usamos |range(1, 6)|.
 Incluso podemos hacer una función más genérica que permita calcular la suma de
 los primeros |n| números cuadrados:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def sumaCuadrados(n):
-        suma = 0
-        for x in range(1, n + 1):
-            suma = suma + cuadrado(x)
-        return suma
+...     suma = 0
+...     for x in range(1, n + 1):
+...         suma = suma + cuadrado(x)
+...     return suma
 
 >>> sumaCuadrados(5)
 55
 >>> sumaCuadrados(100)
 338350
-\end{lstlisting}
+\end{codigo-python-sn}
 
 \section{Construir programas y módulos}
 
@@ -647,10 +648,10 @@ en la pantalla. ¿Por qué no habíamos utilizado |print| hasta ahora?
 En el modo interactivo, Python imprime el resultado de cada expresión luego de
 evaluarla:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> 2 + 2
 4
-\end{lstlisting}
+\end{codigo-python-sn}
 
 En cambio, cuando Python ejecuta un programa |.py| no imprime absolutamente
 nada en la pantalla, a menos que le indiquemos explícitamente que lo haga. Por
@@ -660,10 +661,10 @@ resultado.
 Para ejecutar el programa debemos abrir una consola del sistema y ejecutar
 |python cuad100.py|:
 
-\begin{lstlisting}[language={},numbers=none]
+\begin{codigo-nohl-sn}
 $ python cuad100.py
 La suma de los primeros 100 cuadrados es 338350
-\end{lstlisting}
+\end{codigo-nohl-sn}
 
 \section{Interacción con el usuario}
 
@@ -706,11 +707,11 @@ tecla \keys{Enter}, |input| devuelve la cadena ingresada. Luego llamamos a
 
 Para ejecutar el programa, nuevamente escribimos en la consola del sistema:
 
-\begin{lstlisting}[language={},numbers=none]
+\begin{codigo-nohl-sn}
 $ python saludar.py
 Por favor ingrese su nombre: Alan
 Hola Alan!
-\end{lstlisting}
+\end{codigo-nohl-sn}
 
 \begin{problema}
 Escribir en Python un programa que haga lo siguiente:
@@ -746,7 +747,7 @@ imprimir_cuadrados()
 
 Como siempre, podemos ejecutar el programa en la consola del sistema:
 
-\begin{lstlisting}[language={},numbers=none]
+\begin{codigo-nohl-sn}
 $ python cuadrados.py
 Se calcularán cuadrados de números
 Ingrese un número entero: 5
@@ -755,7 +756,7 @@ Ingrese otro número entero: 8
 36
 49
 Es todo por ahora
-\end{lstlisting}
+\end{codigo-nohl-sn}
 \end{solucion}
 
 En el Código \ref{cuadrados.py} aparece una función que no habíamos
@@ -776,12 +777,12 @@ una cadena, incluso aunque el usuario haya ingresado una secuencia de dígitos.
 Por eso es que introducimos la función |int|, que devuelve el parámetro que
 recibe {\it convertido} a un número entero:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> int("42")
 42
-\end{lstlisting}
+\end{codigo-python-sn}
 
-\begin{atencion}
+\begin{observacion}
 Cuando introdujimos el concepto de función dijimos que una función recibe 0 o
 más parámetros y devuelve un resultado. Pero en la función |saludar| que
 escribimos en el Código \ref{saludar.py} no hay ninguna instrucción
@@ -794,28 +795,10 @@ porque estamos utilizando la función |input| para obtener la entrada del
 usuario, y no necesitamos que la función devuelva nada, porque su único
 cometido es {\it imprimir} un mensaje en la pantalla.
 
-Cuando decimos que las funciones {\it reciben} datos a través de los parámetros
-y {\it devuelven} datos mediante la instrucción |return|, las funciones |input|
-y |print| son dos notables excepciones a esta regla. |input| permite que una
-función reciba información mediante la entrada del usuario, y |print| permite
-que una función muestre información al usuario.
-
-\begin{center}
-\includegraphics[width=0.5\textwidth]{graficos/funcion_input_print}
-\end{center}
-
-Si una función devuelve información mediante |return|, esa información la
-podemos reutilizar: por ejemplo, la podemos guardar en una variable, o pasarla
-a otra función en algunos de sus parámetros. En cambio, si una función
-usa |print|, no será posible reutilizar la información que se imprimió en la
-pantalla. De la misma manera, una función que recibe información mediante
-parámetros es mucho más reutilizable que una función que usa |input|.
-
-Por eso es buena práctica de programación limitar el uso de |input| y |print|
-al mínimo indispensable: utilizar |input| únicamente en los lugares donde
-necesitamos que el usuario ingrese datos, y |print| únicamente donde
-necesitamos mostrar información al usuario.
-\end{atencion}
+Sin embargo, las funciones que reciben parámetros y devuelven resultados suelen
+ser mucho más {\it reutilizables}. En la unidad \ref{chapter:funciones}
+exploramos un poco más este concepto.
+\end{observacion}
 
 %
 % Lenguajes optimistas vs controladores
@@ -962,7 +945,7 @@ y también para comprender cómo funcionan determinadas instrucciones.
 Por ejemplo, podemos insertar llamadas a la función |print| en el Código
 \ref{cuadrados.py} para inspeccionar el contenido de las variables:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 def imprimir_cuadrados():
     print("Se calcularán cuadrados de números")
 
@@ -978,11 +961,11 @@ def imprimir_cuadrados():
     print("Es todo por ahora")
 
 imprimir_cuadrados()
-\end{lstlisting}
+\end{codigo-python-sn}
 
 En este caso, la salida del programa será:
 
-\begin{lstlisting}[language={},numbers=none]
+\begin{codigo-nohl-sn}
 $ python cuadrados.py
 Se calcularán cuadrados de números
 Ingrese un número entero: 5
@@ -996,7 +979,7 @@ el valor de x es: 6
 el valor de x es: 7
 49
 Es todo por ahora
-\end{lstlisting}
+\end{codigo-nohl-sn}
 
 Si utilizamos este método para depurar el programa, tendremos que recordar
 eliminar las llamadas |print| una vez que terminemos.
@@ -1046,11 +1029,11 @@ intérprete de python:
 \begin{partes}
 \item \begin{verbatim}
 >>> for i in range(5):
-        print(i * i)
+...     print(i * i)
 \end{verbatim}
 \item \begin{verbatim}
 >>> for i in range(2, 6):
-        print(i, 2 ** i)
+...     print(i, 2 ** i)
 \end{verbatim}
 \end{partes}
 \end{ejercicio}
