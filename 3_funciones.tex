@@ -327,10 +327,10 @@ unidad \ref{chapter:conceptos}:
 
 \begin{codigo-python-sn}
 >>> def sumaCuadrados(n):
-...    suma = 0
-...    for x in range(1, n + 1):
-...        suma = suma + cuadrado(x)
-...    return suma
+...     suma = 0
+...     for x in range(1, n + 1):
+...         suma = suma + cuadrado(x)
+...     return suma
 \end{codigo-python-sn}
 
 ¿Qué pasa si intentamos utilizar la variable |suma| fuera de la función?
@@ -614,18 +614,17 @@ ValueError: need more than 3 values to unpack
 
 \begin{itemize}
 \item Una función puede recibir ninguno, uno o más parámetros.
-Adicionalmente puede leer datos de la entrada del teclado mediante la función
-|input|.
-\item Una función puede no devolver nada, o devolver uno o más valores mediante
-la instrucción |return|. Adicionalmente puede imprimir mensajes para
-comunicarlos al usuario mediante la función |print|.
+Adicionalmente puede leer datos de la entrada del teclado.
+\item Una función puede no devolver nada, o devolver uno o más valores.
+Adicionalmente puede imprimir mensajes para
+comunicarlos al usuario.
 \item No es posible acceder a las variables definidas dentro de una función
 desde el programa principal. Si se quiere utilizar algún valor calculado en
 la función, será necesario devolverlo.
 \item Cuando una función realice un cálculo o una operación,
 es preferible que reciba los datos necesarios mediante los parámetros de
-la función, y que devuelva el resultado con |return|. Las funciones que
-utilizan |input| y |print| son menos reutilizables.
+la función, y que devuelva el resultado. Las funciones que
+leen datos del teclado o imprimen mensajes son menos reutilizables.
 \item Es altamente recomendable documentar cada función que se
 escribe, para poder saber qué parámetros recibe, qué devuelve y qué
 hace sin necesidad de leer el código.
