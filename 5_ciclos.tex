@@ -36,8 +36,8 @@ ingresar para consultar. La solución propuesta resulta:
 
 \begin{codigo-python-sn}
 def muchos_pcn():
-    i = int(input("Cuantos numeros quiere procesar?: "))
-    for j in range(0, i):
+    (@i = int(input("Cuantos numeros quiere procesar?: "))@)
+    (@for j in range(0, i):@)
         x = int(input("Ingrese un numero: "))
         if x > 0:
             print("Numero positivo")
@@ -114,8 +114,8 @@ ser:
 
 \begin{codigo-python-sn}
 def muchos_pcn():
-    while hay_mas_datos == "Si":
-        x = int(input("Ingrese un numero: "))
+    (@while hay_mas_datos == "Si":@)
+        (@x = int(input("Ingrese un numero: "))@)
         if x > 0:
             print("Numero positivo")
         elif x == 0:
@@ -123,7 +123,7 @@ def muchos_pcn():
         else:
             print("Numero negativo")
 
-        hay_mas_datos = input("¿Quiere seguir? <Si-No>: ")
+        (@hay_mas_datos = input("¿Quiere seguir? <Si-No>: ")@)
 \end{codigo-python-sn}
 
 Veamos qué pasa si ejecutamos la función tal como fue presentada:
@@ -155,9 +155,9 @@ tenía algún dato para calcular, y darle el valor inicial ``Si'' a
 
 Encararemos la segunda opción:
 
-\begin{codigo-python}
+\begin{codigo-python-sn}
 def muchos_pcn():
-    hay_mas_datos = "Si"
+    (@hay_mas_datos = "Si"@)
     while hay_mas_datos == "Si":
         x = int(input("Ingrese un numero: "))
         if x > 0:
@@ -168,7 +168,7 @@ def muchos_pcn():
             print("Numero negativo")
 
         hay_mas_datos = input("Quiere seguir? <Si-No>: ")
-\end{codigo-python}
+\end{codigo-python-sn}
 
 El esquema del ciclo interactivo es el siguiente:
 
@@ -219,10 +219,10 @@ El programa resultante es el siguiente:
 
 \begin{codigo-python-sn}
 def muchos_pcn():
-    centinela = input("Ingrese un numero (* para terminar): ")
+    (@centinela = input("Ingrese un numero (* para terminar): ")@)
 
-    while centinela != "*":
-        x = int(centinela)
+    (@while centinela != "*":@)
+        (@x = int(centinela)@)
         if x > 0:
             print("Numero positivo")
         elif x == 0:
@@ -230,7 +230,7 @@ def muchos_pcn():
         else:
             print("Numero negativo")
 
-        centinela = input("Ingrese un numero (* para terminar): ")
+        (@centinela = input("Ingrese un numero (* para terminar): ")@)
 \end{codigo-python-sn}
 
 Notar que no podemos hacer |centinela = int(input(...))| porque cuando el
@@ -278,11 +278,11 @@ Lo ideal sería leer el dato |centinela| en un único punto del
 programa. Una opción es {\it extraer} el código duplicado en una función:
 
 \begin{codigo-python-sn}
-def leer_centinela():
-    return input("Ingrese un numero (* para terminar): ")
+(@def leer_centinela():@)
+    (@return input("Ingrese un numero (* para terminar): ")@)
 
 def muchos_pcn():
-    centinela = leer_centinela()
+    (@centinela = leer_centinela()@)
     while centinela != "*":
         x = int(centinela)
         if x > 0:
@@ -292,7 +292,7 @@ def muchos_pcn():
         else:
             print("Numero negativo")
 
-        centinela = leer_centinela()
+        (@centinela = leer_centinela()@)
 \end{codigo-python-sn}
 
 Esta implementación es mejor que la anterior: si tuviéramos que cambiar el
@@ -360,10 +360,10 @@ esquema:
 
 \begin{codigo-python-sn}
 def muchos_pcn():
-    while True:
-        centinela = input("Ingrese un numero ('*' para terminar): ")
-        if centinela == '*':
-            break
+    (@while True:@)
+        (@centinela = input("Ingrese un numero ('*' para terminar): ")@)
+        (@if centinela == '*':@)
+            (@break@)
 
         x = int(centinela)
         if x > 0:
@@ -388,9 +388,9 @@ def f():
     while ...:
         ...
         if ...:
-            break
+            (@break@)
         ...
-    ... # <-- luego del break, la ejecución continúa aquí
+    ... # (~$\leftarrow$~) luego del break, la ejecución continúa aquí
 \end{codigo-python-sn}
 \end{observacion}
 
@@ -405,10 +405,10 @@ pasa a la siguiente.
 \begin{codigo-python-sn}
 def f():
     ...
-    while ...: # <-- luego del continue, la ejecución continúa aquí
+    while ...: # (~$\leftarrow$~) luego del continue, la ejecución continúa aquí
         ...
         if ...:
-            continue
+            (@continue@)
         ...
     ...
 \end{codigo-python-sn}
@@ -421,11 +421,11 @@ Si la instrucción |continue| aparece dentro de un ciclo |for|, la variable de
 control del ciclo tomará el siguiente valor del rango de iteración.
 
 \begin{codigo-python-sn}
-for x in range(10): # <-- luego del continue, la ejecución continúa aquí,
+for x in range(10): # (~$\leftarrow$~) luego del continue, la ejecución continúa aquí,
                     # y x tomará el siguiente valor del rango
     print("x vale", x)
     if x % 2 == 0:
-        continue
+        (@continue@)
     print("x es impar")
 \end{codigo-python-sn}
 
@@ -442,12 +442,12 @@ def f():
     while ...:
         ...
         if ...:
-            return
+            (@return@)
         ...
     ...
 
 f()
-# <-- luego del return, la ejecución continúa aquí
+# (~$\leftarrow$~) luego del return, la ejecución continúa aquí
 \end{codigo-python-sn}
 \end{observacion}
 

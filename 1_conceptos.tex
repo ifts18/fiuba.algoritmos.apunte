@@ -465,7 +465,7 @@ Para invocarla, deberemos hacer:
 \begin{codigo-python-sn}
 >>> cuadrado(5)
 25
-\begin{codigo-python-sn}
+\end{codigo-python-sn}
 \end{solucion}
 
 \begin{problema}
@@ -595,9 +595,9 @@ Incluso podemos hacer una función más genérica que permita calcular la suma d
 los primeros |n| números cuadrados:
 
 \begin{codigo-python-sn}
->>> def sumaCuadrados(n):
+>>> def sumaCuadrados((@n@)):
 ...     suma = 0
-...     for x in range(1, n + 1):
+...     for x in range(1, (@n + 1@)):
 ...         suma = suma + cuadrado(x)
 ...     return suma
 
@@ -950,12 +950,12 @@ def imprimir_cuadrados():
     print("Se calcularán cuadrados de números")
 
     n1 = int(input("Ingrese un número entero: "))
-    print("el valor de n1 es:", n1)
+    (@print("el valor de n1 es:", n1)@)
     n2 = int(input("Ingrese otro número entero: "))
-    print("el valor de n2 es:", n2)
+    (@print("el valor de n2 es:", n2)@)
 
     for x in range(n1, n2):
-        print("el valor de x es:", x)
+        (@print("el valor de x es:", x)@)
         print(x * x)
 
     print("Es todo por ahora")

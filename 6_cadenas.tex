@@ -34,7 +34,6 @@ de todas las cadenas dadas):
 \begin{codigo-python-sn}
 >>> "Un divertido " + "programa " + "de " + "radio"
 'Un divertido programa de radio'
->>>
 \end{codigo-python-sn}
 
 \item Multiplicar una cadena \lstinline+s+ por un número \lstinline+k+ (y
@@ -46,7 +45,6 @@ el resultado es la concatenación de \lstinline+s+ consigo misma,
 'programas programas programas '
 >>> "programas " * 3
 'programas programas programas '
->>>
 \end{codigo-python-sn}
 \end{itemize}
 
@@ -54,12 +52,11 @@ A continuación, otras operaciones y particularidades de las cadenas.
 
 \subsection{Obtener el largo de una cadena}
 
-Además, se puede averiguar la longitud de una cadena utilizando
+Se puede averiguar la longitud de una cadena utilizando
 una función provista por Python: \lstinline+len{}+.
 \begin{codigo-python-sn}
 >>> len("programas ")
 10
->>>
 \end{codigo-python-sn}
 
 Existe una cadena especial, que llamaremos {\it cadena vacía}, que
@@ -68,12 +65,11 @@ un apóstrofe o comilla que abre, y un apóstrofe o comilla que cierra),
 y que por lo tanto tiene longitud cero:
 
 \begin{codigo-python-sn}
->>> s=""
+>>> s = ""
 >>> s
 ''
 >>> len(s)
 0
->>>
 \end{codigo-python-sn}
 
 \subsection[Recorrer una cadena]{Una operación para recorrer todos los caracteres de una cadena}
@@ -82,8 +78,8 @@ Python nos permite recorrer todos los caracteres de una cadena de
 manera muy sencilla, usando directamente un ciclo definido:
 
 \begin{codigo-python-sn}
->>> for x in "programas ":
-...     print x
+>>> for c in "programas ":
+...     print c
 ...
 p
 r
@@ -98,71 +94,89 @@ s
 >>>
 \end{codigo-python-sn}
 
+\subsection{Preguntar si una cadena contiene una subcadena}
+
+El operador |in| nos permite preguntar si una cadena contiene una
+subcadena. |a in b| es una expresión que se evalúa a |True| si la cadena |b|
+contiene la subcadena |a|.
+
+\begin{codigo-python-sn}
+>>> 'qué' in 'Hola, ¿qué tal?'
+True
+>>> '7' in '2468'
+False
+\end{codigo-python-sn}
+
+Al ser una expresión booleana, podemos utilizarlo como condición de un |if| o
+un |while|:
+
+\begin{codigo-python-sn}
+if "Hola" in s:
+    print "Al parecer la cadena s es un saludo"
+\end{codigo-python-sn}
+
 \subsection{Acceder a una posición de la cadena}
 
 Queremos averiguar cuál es el carácter que está en la posición i-ésima de
 una cadena.  Para ello Python nos provee de una notación con corchetes:
-escribiremos \lstinline+a[i]+ para hablar de la posición i-ésima de la cadena
-\lstinline!a!.
+escribiremos \lstinline+s[i]+ para hablar de la posición i-ésima de la cadena
+\lstinline!s!.
 
 Trataremos de averiguar con qué letra empieza una cadena.
 
 \begin{codigo-python-sn}
->>> a = "Veronica"
->>> a[1]
+>>> s = "Veronica"
+>>> s[1]
 'e'
->>>
 \end{codigo-python-sn}
 
-Algo falló: ¡\lstinline+a[1]+ nos muestra la segunda letra, no la
+Algo falló: ¡\lstinline+s[1]+ nos muestra la segunda letra, no la
 primera! Lo que sucede es que en Python las posiciones se cuentan
 desde 0.
 
 \begin{codigo-python-sn}
->>> a[0]
+>>> s[0]
 'V'
->>>
 \end{codigo-python-sn}
 
 Ahora sí hemos conseguido averiguar en Python cuál es el primer carácter de
-\lstinline!a!.
+\lstinline!s!.
 
 \begin{atencion}
-Las distintas posiciones de una cadena \lstinline!a! se llaman
+Las distintas posiciones de una cadena \lstinline!s! se llaman
 {\it índices}. Los índices son números enteros que pueden tomar
-valores entre \lstinline!-len(a)! y \lstinline!len(a) - 1!.
+valores entre \lstinline!-len(s)! y \lstinline!len(s) - 1!.
 
-Los índices entre \lstinline!0! y \lstinline!len(a) - 1! son lo que ya
+Los índices entre \lstinline!0! y \lstinline!len(s) - 1! son lo que ya
 vimos: los caracteres de la cadena del primero al útimo. Los índices
 negativos proveen una notación que hace más fácil indicar cuál es el último
-carácter de la cadena: \lstinline!a[-1]! es el último carácter de
-\lstinline!a!, \lstinline!a[-2]! es el penúltimo carácter de \lstinline!a!,
-\lstinline!a[-len(a)]! es el primer carácter de \lstinline!a!.
+carácter de la cadena: \lstinline!s[-1]! es el último carácter de
+\lstinline!s!, \lstinline!s[-2]! es el penúltimo carácter de \lstinline!s!,
+\lstinline!s[-len(s)]! es el primer carácter de \lstinline!s!.
 \end{atencion}
 
 Algunos ejemplos de acceso a distintas posiciones en una cadena.
 
 \begin{codigo-python-sn}
->>> a = "Veronica"
->>> len(a)
+>>> s = "Veronica"
+>>> len(s)
 8
->>> a[0]
+>>> s[0]
 'V'
->>> a[7]
+>>> s[7]
 'a'
->>> a[8]
+>>> s[8]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
->>> a[-1]
+>>> s[-1]
 'a'
->>> a[-8]
+>>> s[-8]
 'V'
->>> a[-9]
+>>> s[-9]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
->>>
 \end{codigo-python-sn}
 
 \ejercicioc{Escribir un ciclo que permita mostrar los caracteres de una
@@ -172,41 +186,38 @@ cadena del final al principio.}
 
 Python ofrece también una notación para identificar segmentos de una
 cadena. La notación es similar a la de los rangos que vimos en los ciclos
-definidos: \lstinline+a[0:2]+ se refiere a la subcadena formada por los
+definidos: \lstinline+s[0:2]+ se refiere a la subcadena formada por los
 caracteres cuyos índices están en el rango \lstinline+[0,2)+:
 
 \begin{codigo-python-sn}
->>> a[0:2]
+>>> s[0:2]
 'Ve'
->>> a[-4:-2]
+>>> s[-4:-2]
 'ni'
->>> a[0:8]
+>>> s[0:8]
 'Veronica'
->>>
 \end{codigo-python-sn}
 
 Si \lstinline!j! es un entero no negativo, se puede usar la notación
-\lstinline+a[:j]+ para representar al segmento \lstinline+a[0:j]+; también
-se puede usar la notación \lstinline+a[j:]+ para representar al segmento
-\lstinline+a[j:len(a)]+.
+\lstinline+s[:j]+ para representar al segmento \lstinline+s[0:j]+; también
+se puede usar la notación \lstinline+s[j:]+ para representar al segmento
+\lstinline+s[j:len(s)]+.
 
 \begin{codigo-python-sn}
->>> a[:3]
+>>> s[:3]
 'Ver'
->>> a[3:]
+>>> s[3:]
 'onica'
->>>
 \end{codigo-python-sn}
 
 Pero hay que tener cuidado con salirse del rango (en particular hay que
 tener cuidado con la cadena vacía):
 
 \begin{codigo-python-sn}
->>> a[10]
+>>> s[10]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 IndexError: string index out of range
->>>
 >>> s = ""
 >>> s
 ''
@@ -219,30 +230,29 @@ IndexError: string index out of range
 \end{codigo-python-sn}
 
 Sin embargo \lstinline+s[0:0]+ no da error. ¿Por qué?
+
 \begin{codigo-python-sn}
 >>> s[0:0]
 ''
->>>
 \end{codigo-python-sn}
 
-\ejercicioc{Investigar qué significa la notación \lstinline+a[:]+.}
+\ejercicioc{Investigar qué significa la notación \lstinline+s[:]+.}
 
 \ejercicioc{Investigar qué significan las notaciones
-\lstinline+a[:j]+ y  \lstinline+a[j:]+ si \lstinline!j! es un número negativo.}
+\lstinline+s[:j]+ y  \lstinline+s[j:]+ si \lstinline!j! es un número negativo.}
 
 \section{Las cadenas son inmutables}
 
-Nos dicen que la persona sobre la que estamos hablando en realidad se llama
-"Veronika" (sí, con "k").  Como conocemos la notación de corchetes,
+Resulta que la persona sobre la que estamos hablando en realidad se llama
+Veronika, con ``k''.  Como conocemos la notación de corchetes,
 tratamos de corregir sólo el carácter correspondiente de la variable
-\lstinline!a!:
+\lstinline!s!:
 
 \begin{codigo-python-sn}
->>> a[6] = "k"
+>>> s[6] = "k"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'str' object does not support item assignment
->>>
 \end{codigo-python-sn}
 
 El error que se despliega nos dice que la cadena no soporta
@@ -250,61 +260,60 @@ la modificación de un carácter. Decimos que {\it las cadenas
 son inmutables}.
 
 Si queremos corregir la ortografía de una cadena, debemos hacer
-que la cadena \lstinline!a! se refiera a otro valor:
+que la variable \lstinline!s! se refiera a una nueva cadena:
 
 \begin{codigo-python-sn}
->>> a = "Veronika"
->>> a
+>>> s = "Veronika"
+>>> s
 'Veronika'
->>>
 \end{codigo-python-sn}
 
 \section{Procesamiento sencillo de cadenas}
 
 \problemac{Nuestro primer problema es muy simple: Queremos contar
-cuántas letras ``A'' hay en una cadena \lstinline!x!.}
+cuántas letras ``A'' hay en una cadena \lstinline!s!.}
 
 \begin{enumerate}
 
-\item {\bf Especificación: } Dada una cadena \lstinline!x!, la función
+\item {\bf Especificación: } Dada una cadena \lstinline!s!, la función
 retorna un valor  \lstinline!contador! que representa cuántas letras ``A''
-tiene \lstinline!x!.
+tiene \lstinline!s!.
 
 \item {\bf Diseño: }
 
 ¿Se parece a algo que ya conocemos?
 
 Ante todo es claro que se trata de un ciclo definido, porque lo que hay que
-tratar es cada uno de los caracteres de la cadena \lstinline!x!, o sea que
+tratar es cada uno de los caracteres de la cadena \lstinline!s!, o sea que
 estamos frente a un esquema:
 
-\begin{tabbing}
-para \= cada letra de \lstinline+x+\\
-\> averiguar si la letra es ``A''\\
-\> y tratarla en consecuencia\\
-\end{tabbing}
+\begin{codigo-nohl-sn}
+para cada letra de s
+    averiguar si la letra es 'A'
+    y tratarla en consecuencia
+\end{codigo-nohl-sn}
 
 Nos dice la especificación que se necesita una variable
 \lstinline!contador! que cuenta la cantidad de letras ``A'' que contiene
-\lstinline!x!. Y por lo tanto sabemos que el tratamiento es: si la letra es
+\lstinline!s!. Y por lo tanto sabemos que el tratamiento es: si la letra es
 ``A'' se incrementa el contador en $1$, y si la letra no es ``A'' no se lo
 incrementa, o sea que nos quedamos con un esquema de la forma:
 
-\begin{tabbing}
-para \= cada letra de \lstinline+x+\\
-\> averiguar si la letra es ``A'' \\
-\> y si lo es, incrementar en $1$ el contador\\
-\end{tabbing}
+\begin{codigo-nohl-sn}
+para cada letra de s
+    averiguar si la letra es 'A'
+    (@y si lo es, incrementar en 1 el contador@)
+\end{codigo-nohl-sn}
 
 ¿Estará todo completo? Alicia Hacker nos hace notar que en el diseño no
 planteamos el retorno del valor del contador. Lo completamos entonces:
 
-\begin{tabbing}
-para \= cada letra de \verb+x+\\
-\> averiguar si la letra es ``A'' \\
-\> y si lo es, incrementar en $1$ el contador\\
-retornar el valor del contador\\
-\end{tabbing}
+\begin{codigo-nohl-sn}
+para cada letra de s
+    averiguar si la letra es 'A'
+    y si lo es, incrementar en 1 el contador
+(@retornar el valor del contador@)
+\end{codigo-nohl-sn}
 
 ¿Y ahora estará todo completo? E. Lapurado, nuestro alumno impaciente nos
 induce a poner manos a la obra y a programar esta solución, y el resto del
@@ -313,19 +322,19 @@ curso está de acuerdo.
 
 \item {\bf Implementación}
 
-Ya vimos que Python nos provee de un mecanismo muy poderoso para
+Ya vimos que Python nos provee de un mecanismo para
 recorrer una cadena: una instrucción \lstinline!for! que nos brinda un
 carácter por vez, del primero al último.
 
 Proponemos la siguiente solución:
 
-\begin{codigo-python}
-def contarA(x):
-    for letra in x:
+\begin{codigo-python-sn}
+def contarA(s):
+    for letra in s:
         if letra == "A":
             contador = contador + 1
-    return(contador)
-\end{codigo-python}
+    return contador
+\end{codigo-python-sn}
 
 Y la probamos
 
@@ -335,7 +344,6 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<stdin>", line 4, in contarA
 UnboundLocalError: local variable 'contador' referenced before assignment
->>>
 \end{codigo-python-sn}
 
 ¿Qué es lo que falló? ¡Falló el diseño! Evidentemente la variable
@@ -351,84 +359,100 @@ y además podemos estar dejando de tener en cuenta otras situaciones erróneas.
 \item {\bf Diseño (revisado)}
 Habíamos llegado a un esquema de la forma
 
-\begin{tabbing}
-para \= cada letra de \verb+x+\\
-\> averiguar si la letra es ``A'' \\
-\> y si lo es, incrementar en $1$ el contador\\
-retornar el valor del contador\\
-\end{tabbing}
+\begin{codigo-nohl-sn}
+para cada letra de s
+    averiguar si la letra es 'A'
+    y si lo es, incrementar en 1 el contador
+retornar el valor del contador
+\end{codigo-nohl-sn}
 
 ¿Cuál es el valor inicial que debe tomar \lstinline+contador+?  Como nos
 dice la especificación \lstinline+contador+ cuenta la cantidad de letras
-``A'' que tiene la cadena \lstinline+x+. Pero si nos detenemos en medio de
+``A'' que tiene la cadena \lstinline+s+. Pero si nos detenemos en medio de
 la computación, cuando aún no se recorrió toda la cadena sino sólo los
 primeros 10 caracteres, por ejemplo, el valor de \lstinline+contador+
 refleja la cantidad de ``A'' que hay en los primeros 10 caracteres de
-\lstinline+x+.
+\lstinline+s+.
 
-Si llamamos {\it parte izquierda de } \lstinline+x+ al segmento de
-\lstinline+x+ que ya se recorrió, diremos que cuando leímos los primeros 10
-caracteres de \lstinline+x+, su parte izquierda es el segmento
-\lstinline+x[0:10]+.
+Si llamamos {\it parte izquierda de } \lstinline+s+ al segmento de
+\lstinline+s+ que ya se recorrió, diremos que cuando leímos los primeros 10
+caracteres de \lstinline+s+, su parte izquierda es el segmento
+\lstinline+s[0:10]+.
 
 El valor inicial que debemos darle a \lstinline+contador+ debe reflejar la
-cantidad de ``A'' que contiene la parte izquierda de \lstinline+x+ cuando
+cantidad de ``A'' que contiene la parte izquierda de \lstinline+s+ cuando
 aún no iniciamos el recorrido, es decir cuando esta parte izquierda es
-\lstinline+x[0:0]+ (o sea la cadena vacía). Pero la cantidad de caracteres
+\lstinline+s[0:0]+ (o sea la cadena vacía). Pero la cantidad de caracteres
 iguales a ``A'' de la cadena vacía es $0$.
 
 Por lo tanto el diseño será:
 
-\begin{tabbing}
-inicializar el contador en $0$\\
-para \= cada letra de \lstinline+x+\\
-\> averiguar si la letra es ``A'' \\
-\> y si lo es, incrementar en $1$ el contador\\
-retornar el valor del contador\\
-\end{tabbing}
+\begin{codigo-nohl-sn}
+(@inicializar el contador en 0@)
+para cada letra de s
+    averiguar si la letra es 'A'
+    y si lo es, incrementar en 1 el contador
+retornar el valor del contador
+\end{codigo-nohl-sn}
 
-(lo identificaremos como el esquema {\it Inicialización - Ciclo de tratamiento - Retorno de valor}).
-
-Pasamos ahora a implementar este diseño:
+Lo identificaremos como el esquema {\it Inicialización - Ciclo de tratamiento -
+Retorno de valor}. Pasamos ahora a implementar este diseño:
 
 \item {\bf Implementación (del diseño revisado)}
 
 \begin{codigo-python}
-def contarA (x):
-    """ La funcion contarA(x) cuenta cuántas
-        letras "A" aparecen en la cadena x ."""
+def contarA(s):
+    """Devuelve cuántas letras "A" aparecen en la cadena s."""
     contador = 0
-    for letra in x:
+    for letra in s:
         if letra == "A":
             contador = contador + 1
-    return(contador)
+    return contador
 \end{codigo-python}
 
 \item Prueba
 \begin{codigo-python-sn}
->>> contarA ("banana")
+>>> contarA("banana")
 0
->>> contarA ("Ana")
+>>> contarA("Ana")
 1
->>> contarA ("lAn")
+>>> contarA("lAn")
 1
->>> contarA ("lAAn")
+>>> contarA("lAAn")
 2
->>> contarA ("lAnA")
+>>> contarA("lAnA")
 2
->>>
 \end{codigo-python-sn}
+
+\begin{sabias_que}
+La instrucción |contador = contador + 1| puede reemplazarse por
+|contador += 1|.
+
+En general, la mayoría de los operadores tienen versiones abreviadas para
+cuando la variable que queremos asignar es la misma que el primer operando:
+
+\begin{center}
+\begin{tabular}{c c}
+{\bf Asignación} & {\bf Asignación abreviada} \\
+\hline
+\lstinline|x = x + n| & \lstinline|x += n| \\
+\lstinline|x = x - n| & \lstinline|x -= n| \\
+\lstinline|x = x * n| & \lstinline|x *= n| \\
+\lstinline|x = x / n| & \lstinline|x /= n| \\
+\end{tabular}
+\end{center}
+\end{sabias_que}
 
 \item {\bf Mantenimiento:}
 
-Esta función resulta un poco limitada. Cuando nos pidan que contemos
+Esta función resulta un poco limitada. Cuando necesitemos contar
 cuántas letras ``E'' hay en una cadena tendremos que hacer otra función.
 Tiene sentido hacer una función más general que nos permita contar cuántas
 veces aparece un carácter dado en una cadena.
 
-\ejercicioc{Escribir una función \lstinline+contar(l, x)+ que cuente
-cuántas veces aparece un carácter \lstinline!l! dado en una cadena
-\lstinline!x!.}
+\ejercicioc{Escribir una función \lstinline+contar(c, s)+ que cuente
+cuántas veces aparece un carácter \lstinline!c! dado en una cadena
+\lstinline!s!.}
 
 \ejercicioc{¿Hay más letras ``A'' o más letras ``E'' en una cadena?
 Escribir un programa que lo decida.}
@@ -449,62 +473,75 @@ queremos.
 
 Por ejemplo, para incluir un número en medio de un mensaje, podemos usar la
 siguiente cadena de formato:
+
 \begin{codigo-python-sn}
-mensaje = "Hay %d mensajes sin leer" % no_leidos
+>>> no_leidos = 8
+>>> "Hay {} mensajes sin leer".format(no_leidos)
+'Hay 8 mensajes sin leer'
 \end{codigo-python-sn}
 
 Equivalente a:
+
 \begin{codigo-python-sn}
-mensaje = "Hay " + str(no_leidos) + " mensajes sin leer"
+>>> "Hay " + str(no_leidos) + " mensajes sin leer"
+'Hay 8 mensajes sin leer'
 \end{codigo-python-sn}
 
-La marca \lstinline!%d! indica que en ese lugar debe ir un número en base
-decimal, lo que siga al \lstinline!%! luego de la cadena será lo que se use para
-reemplazar las marcas que haya en el texto.
+La función |format| devuelve una cadena en donde se reemplazan todas las marcas
+|{}| por los valores indicados, que automáticamente se convierten a cadenas de
+texto.
 
 Al usar la cadenas de formato de
 esta manera, podemos ver claramente cuál es el contenido del mensaje, evitando
 errores con respecto a espacios de más o de menos, interrupciones en el texto
 que complican su lectura, etc.
 
+\begin{sabias_que}
+La función |format| se utiliza con una sintaxis que hasta ahora no habíamos
+visto: |cadena.format(valor)| en lugar de la notación usual
+|format(cadena, valor)|.
+
+Por ahora es suficiente con entender que en la llamada |cadena.format(valor)|,
+es como si la función |format| recibiera dos parámetros, |cadena| y |valor|.
+
+Esta notación es propia de la {\it orientación a objetos}. Aprenderemos más
+sobre objetos en la sección \ref{objetos}.
+\end{sabias_que}
+
 Otro ejemplo, utilizando varios valores, en este caso cadenas:
 \begin{codigo-python-sn}
-info = "Artista: %s. Disco: %s." % (artista, disco)
+>>> "Artista: {}. Disco: {}.".format(artista, disco)
 \end{codigo-python-sn}
 
 Equivalente a:
 \begin{codigo-python-sn}
-info = "Artista: " + artista + ". Disco: " + disco + "."
+>>> "Artista: " + artista + ". Disco: " + disco + "."
 \end{codigo-python-sn}
-
-En este caso la marca \lstinline!%s! indica que en ese lugar debe ir una cadena
-(en el caso de que el valor no sea ya una cadena, será el resultado de hacer
-\lstinline!str(variable)!).
 
 En el caso de los valores numéricos, es posible modificar la forma en la que el
 número es presentado. Por ejemplo, si se trata de un monto monetario, usualmente
 queremos mostrarlo con dos dígitos decimales, para ello utilizaremos la
-marca \lstinline!%f! para indicar un número {\it flotante}, precedida de
-\lstinline!.2! para indicar dos dígitos luego del separador decimal.
+marca |{:.2}| para indicar dos dígitos luego del separador decimal.
 
 \begin{codigo-python-sn}
-suma = 205.5
-totales = 'Sin IVA: %.2f. Con IVA: %.2f' % (suma, suma * 1.21)
-# totales contiene 'Sin IVA: 205.50. Con IVA: 248.66'
+>>> suma = 205.5
+>>> 'Sin IVA: {:.2}. Con IVA: {:.2}'.format(suma, suma * 1.21)
+'Sin IVA: 205.50. Con IVA: 248.66'
 \end{codigo-python-sn}
 
 En otras situaciones, como el caso de un valor en un estudio médico, podemos
 querer mostrar el número en notación científica. En este caso utilizaremos la
-marca \lstinline!%e!, precedida de la cantidad de dígitos luego del separador
-decimal que se consideren significativos.
+marca |{:.1e}|, indicando que queremos un dígito significativo luego del separador
+decimal.
 
 \begin{codigo-python-sn}
-rojos = 4640000
-sangre += 'Glóbulos rojos: %.1e/uL\n' % rojos
-# Agrega 'Glóbulos rojos: 4.6e+06/uL\n' a sangre
+>>> rojos = 4640000
+>>> 'Glóbulos rojos: {:.1e}/uL'
+'Glóbulos rojos: 4.6e+06/uL'
 \end{codigo-python-sn}
 
 \section{Nuestro primer juego}
+
 Con todo esto ya estamos en condiciones de escribir un programa para jugar con
 la computadora: el {\it Mastermind}. El Mastermind es un juego que consiste en
 deducir un código numérico de (por ejemplo) cuatro cifras.
@@ -558,14 +595,18 @@ elecciones {\it completamente} aleatorias. Por eso los números ``al azar''
 que puede elegir se llaman {\it pseudoaleatorios}.}.
 
 La función del módulo que vamos a usar se llama \lstinline!choice!. Esta función
-devuelve un elemento al azar de una n-upla, y toma como parámetro la n-upla de
-la que tiene que elegir. Vamos a usarla entonces para elegir cifras. Para eso
-tenemos que construir una n-upla que tenga todas las cifras, lo hacemos de la
-misma manera que en la parte \ref{fun:multiple_return}:
+recibe una secuencia de valores, y devuelve un valor de la secuencia elegido al
+azar. Una n-upla (ver sección \ref{fun:multiple_return}) es un ejemplo de una
+secuencia, por lo que podemos hacer algo como:
 
-\begin{verbatim}
-digitos = ('0','1','2','3','4','5','6','7','8','9')
-\end{verbatim}
+\begin{codigo-python-sn}
+>>> import random
+>>> digitos = ('0','1','2','3','4','5','6','7','8','9')
+>>> random.choice(digitos)
+'4'
+>>> random.choice(digitos)
+'1'
+\end{codigo-python-sn}
 
 Como están entre comillas, los dígitos son tratados como cadenas de caracteres
 de longitud uno. Sin las comillas, habrían sido considerados números enteros. En
@@ -578,15 +619,14 @@ problema.
 
 Ahora tenemos que generar el número al azar, asegurándonos de que no haya cifras
 repetidas. Esto lo podemos modelar así:
-\begin{enumerate}
-\item Tomar una cadena vacía
-\item Repetir cuatro veces:
-\begin{enumerate}
-\item Elegir un elemento al azar de la lista de dígitos \label{str:azar}
-\item Si el elemento no está en la cadena, agregarlo
-\item En caso contrario, volver al punto \ref{str:azar}
-\end{enumerate}
-\end{enumerate}
+
+\begin{codigo-nohl-sn}
+Tomar una cadena vacía
+Repetir cuatro veces:
+    1. Elegir un elemento al azar de la lista de dígitos
+    2. Si el elemento no está en la cadena, agregarlo
+    3. En caso contrario, volver al punto 1
+\end{codigo-nohl-sn}
 
 Una vez elegido el número, hay que interactuar con el usuario y pedirle su
 primera propuesta. Si el número no coincide con el código, hay que buscar la
@@ -604,24 +644,19 @@ Finalmente, cuando el jugador acierta el código elegido, hay que dejar de pedir
 propuestas, informar al usuario que ha ganado y terminar el programa.
 
 \item {\bf Implementación:}
-Entonces, de acuerdo a lo diseñado en \ref{str:disenno}, el programa quedaría
-más o menos así:
+Entonces, de acuerdo a lo diseñado en \ref{str:disenno}, se muestra una
+implementación en el Código \ref{cod:mastermind}.
 
+\begin{codigo}{\label{cod:mastermind} mastermind.py}{Juego Mastermind}
 \lstinputlisting{src/mastermind.py}
-
-\begin{observacion}
-Cuando lo que queremos escribir es demasiado largo como para una sola línea que
-entre cómodamente en el editor o en el campo visual, le indicamos al intérprete
-que queremos seguir en la siguiente línea por medio de la barra invertida (como
-al final de la línea 36).
-\end{observacion}
+\end{codigo}
 
 \item {\bf Pruebas:}
 La forma más directa de probar el programa es jugándolo, y verificando
 manualmente que las respuestas que da son correctas, por ejemplo:
 
-\begin{verbatim}
-jugador@casino:~$ python mastermind.py
+\begin{codigo-nohl-sn}
+$ python mastermind.py
 Bienvenido/a al Mastermind!
 Tenes que adivinar un numero de 4 cifras distintas
 Que codigo propones?: 1234
@@ -638,7 +673,7 @@ Propone otro codigo: 9460
 Tu propuesta (9460) tiene 1 aciertos y  3 coincidencias.
 Propone otro codigo: 6940
 Felicitaciones! Adivinaste el codigo en 7 intentos.
-\end{verbatim}
+\end{codigo-nohl-sn}
 
 Podemos ver que para este caso el programa parece haberse comportado bien.
 ¿Pero cómo podemos saber que el código final era realmente el que eligió
@@ -650,26 +685,45 @@ de hacerlo es simplemente agregar algunas líneas en el código que nos
 informen lo que está sucediendo que no podemos ver. Por ejemplo, los
 números que va eligiendo al azar y el código que queda al final. Así
 podremos verificar si las respuestas son correctas a medida que las hacemos
-y podremos elegir mejor las propuestas enlas pruebas.
+y podremos elegir mejor las propuestas en las pruebas.
 
-\lstinputlisting[firstline=9, lastline=18, firstnumber=9]{src/master_debug.py}
+\begin{codigo-python-sn}
+def elegir_codigo():
+    """Devuelve un codigo de 4 digitos elegido al azar"""
+    digitos = ('0','1','2','3','4','5','6','7','8','9')
+    codigo = ''
+    for i in range(4):
+        candidato = random.choice(digitos)
+        (@print('[DEBUG] candidato:', candidato)@)
+        # Debemos asegurarnos de no repetir digitos
+        while candidato in codigo:
+            candidato = random.choice(digitos)
+            (@print('[DEBUG] otro candidato:', candidato)@)
+        codigo = codigo + candidato
+        (@print('[DEBUG] el codigo va siendo:', codigo)@)
+    return codigo
+\end{codigo-python-sn}
 
 De esta manera podemos monitorear cómo se va formando el código que hay que
 adivinar, y los candidatos que van apareciendo pero se rechazan por estar
 repetidos:
 
-\begin{verbatim}
-jugador@casino:~$ python master_debug.py
-DEBUG: el codigo va siendo = 8
-DEBUG: candidato = 8
-DEBUG: el codigo va siendo = 81
-DEBUG: candidato = 1
-DEBUG: el codigo va siendo = 814
-DEBUG: el codigo va siendo = 8145
+\begin{codigo-nohl-sn}
+$ python master_debug.py
 Bienvenido/a al Mastermind!
-Tenes que adivinar un numero de 4 cifras distintas
+Tienes que adivinar un numero de cuatro cifras distintas
+[DEBUG] candidato: 8
+[DEBUG] el codigo va siendo: 8
+[DEBUG] candidato: 0
+[DEBUG] el codigo va siendo: 80
+[DEBUG] candidato: 2
+[DEBUG] el codigo va siendo: 802
+[DEBUG] candidato: 8
+[DEBUG] otro candidato: 2
+[DEBUG] otro candidato: 7
+[DEBUG] el codigo va siendo: 8027
 Que codigo propones?:
-\end{verbatim}
+\end{codigo-nohl-sn}
 
 \item {\bf Mantenimiento:}
 \label{str:mant}
@@ -677,11 +731,11 @@ Supongamos que queremos jugar el mismo juego, pero en lugar de hacerlo con un
 número de cuatro cifras, adivinar uno de cinco. ¿Qué tendríamos que hacer para
 cambiarlo?
 
-Para empezar, habría que reemplazar el 4 en la línea 11 del programa por un
+Para empezar, habría que reemplazar el 4 en la línea 28 del programa por un
 5, indicando que hay que elegir 5 dígitos al azar. Pero además, el ciclo en la
-línea 31 también necesita cambiar la cantidad de veces que se va a ejecutar, 5
+línea 40 también necesita cambiar la cantidad de veces que se va a ejecutar, 5
 en lugar de 4. Y hay un lugar más, adentro del mensaje al usuario que indica las
-instrucciones del juego en la línea 20.
+instrucciones del juego en la línea 6.
 
 El problema de ir cambiando estos números de a uno es que si quisiéramos volver
 al programa de los 4 dígitos o quisiéramos cambiarlo por uno que juegue con 3,
@@ -689,17 +743,41 @@ tenemos que volver a hacer los reemplazos en todos lados cada vez que lo
 queremos cambiar, y corremos el riesgo de olvidarnos de alguno e introducir
 errores en el código.
 
-Una forma de evitar esto es fijar la cantidad de cifras en una variable y
-cambiarla sólo ahí:
-\lstinputlisting[firstline=9, lastline=14, firstnumber=9]{src/master_enh.py}
+Una forma de evitar esto es fijar la cantidad de cifras en una variable:
 
-El mensaje al usuario queda entonces:
+\begin{codigo-python-sn}
+import random
 
-\lstinputlisting[firstline=19, lastline=22, firstnumber=19]{src/master_enh.py}
+(@CANT_DIGITOS = 5@)
+
+def mastermind():
+    """Funcion principal del juego Mastermind"""
+    print("Bienvenido/a al Mastermind!")
+    print("Tienes que adivinar un numero de (~\bfseries{\{\}}~) cifras distintas"(@.format(CANT_DIGITOS)@))
+\end{codigo-python-sn}
+
+Por convención, el nombre de la variable se escribe en mayúsculas, para indicar
+que el valor asignado es constante a lo largo de la ejecución del programa.
+
+En la función |elegir_codigo|:
+
+\begin{codigo-python-sn}
+def elegir_codigo():
+    """Devuelve un codigo de (~\bfseries{CANT\_DIGITOS}~) digitos elegido al azar"""
+    digitos = ('0','1','2','3','4','5','6','7','8','9')
+    codigo = ''
+    for i in range((@CANT_DIGITOS@)):
+\end{codigo-python-sn}
 
 Y el chequeo de aciertos y coincidencias:
 
-\lstinputlisting[firstline=32, lastline=34, firstnumber=32]{src/master_enh.py}
+\begin{codigo-python-sn}
+def analizar_propuesta(propuesta, codigo):
+    """Determina la cantidad de aciertos y coincidencias"""
+    aciertos = 0
+    coincidencias = 0
+    for i in range((@CANT_DIGITOS@)):
+\end{codigo-python-sn}
 
 Con 5 dígitos, el juego se pone más difícil. Nos damos cuenta que si el jugador
 no logra adivinar el código, el programa no termina: se queda preguntando
@@ -711,18 +789,34 @@ Para esto agregamos en el ciclo \lstinline!while! principal una condición
 extra: para seguir preguntando, la propuesta tiene que ser distinta al
 código pero además tiene que ser distinta del texto \lstinline!"Me doy"!.
 
-\lstinputlisting[firstline=25, lastline=29, firstnumber=25]{src/master_enh.py}
+\begin{codigo-python-sn}
+def mastermind():
+    ...
+    propuesta = input("Que codigo propones?: ")
+    (@ME_DOY = "Me doy"@)
+
+    while propuesta != codigo (@and propuesta != ME_DOY@):
+\end{codigo-python-sn}
 
 Entonces, ahora no sólamente sale del \lstinline!while! si acierta el
 código, sino además si se rinde y quiere saber cuál era el código. Entonces
 afuera del while tenemos que separar las dos posibilidades, y dar distintos
 mensajes:
 
-\lstinputlisting[firstline=42, firstnumber=42]{src/master_enh.py}
+\begin{codigo-python-sn}
+    (@if propuesta == ME_DOY:@)
+        (@print("Mala suerte! El código era: {}".format(codigo))@)
+    (@else:@)
+        print("Felicitaciones! Adivinaste el codigo en {} intentos.".format(intentos))
+\end{codigo-python-sn}
 
-El código de todo el programa queda entonces así:
+En el Código \ref{cod:mastermind_enh} se muestra el código completo luego de
+aplicar las mejoras.
 
+\begin{codigo}{\label{cod:mastermind_enh} mastermind.py}{Juego Mastermind de 5
+    dígitos y con posibilidad de rendirse}
 \lstinputlisting{src/master_enh.py}
+\end{codigo}
 \end{enumerate}
 
 \ejercicioc{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
@@ -747,14 +841,20 @@ textos.  Contamos con funciones para ver su longitud, sus elementos uno a
 uno, o por segmentos, comparar estos elementos con otros, etc.
 \end{itemize}
 
+\newpage
+
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!len(cadena)!}
 Devuelve el largo de una cadena, 0 si se trata de una cadena vacía.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline!for letra in cadena!}
+\begin{sintaxis}{\lstinline!for caracter in cadena!}
 Permite realizar una acción para cada una de las letras de una cadena.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!subcadena in cadena!}
+Evalúa a |True| si la |cadena| contiene a la |subcadena|.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!cadena[i]!}
@@ -775,49 +875,44 @@ caso de que se omita \lstinline!j!, se asume \lstinline!len(cadena)!.  Si
 se omiten ambos, se obtiene la cadena completa.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline!formato \% valores!}
+\begin{sintaxis}{\lstinline!cadena.format(valores)!}
 Genera otra cadena reemplazando las marcas de formato por el valor
 correspondiente, luego de convertirlo de acuerdo a lo especificado en la
 marca de formato.
 
-Las marcas de formato comienzan con \verb!%!, seguido de diversos parámetros
-conversión y por último el tipo de conversión que es el único que es realmente
-obligatorio.
+Las marcas de formato se indican con |{}|, incluyendo opcionalmente
+diversos parámetros de conversión.
 
-A continuación una referencia de los distintos tipos de conversiones:
+A continuación una referencia de algunos tipos de conversión utilizados
+frecuentemente:
 
-\begin{tabular}{l|p{6cm}|l}
+\begin{center}
+\begin{tabular}{l p{4cm} l}
  Tipo & Significado & Ejemplo \\
 \hline
-\verb!d! & Valor entero en decimal & \lstinline!'%d' % 10.5 == '10'! \\
-\verb!o! & Valor entero en octal & \lstinline!'%o' % 8 == '10'! \\
-\verb!x! & Valor entero en hexadecimal & \lstinline!'%x' % 16 == '10'! \\
-\verb!f! & Valor de punto flotante, en decimal &
-\lstinline!'%f' % 0.1**5 == '0.000010'! \\
-\verb!e! & Valor de punto flotante, en notación exponencial &
-\lstinline!'%e' % 0.1**5 == '1.000000e-05'! \\
-\verb!g! & Valor de punto flotante, lo que sea más corto &
-\lstinline!'%g' % 0.1**5 == '0.00001'! \\
-\verb!c! & Caracter & \lstinline!'%c%c' % ('hola'[3], 65) == 'aA'! \\
-\verb!s! & Cadenas (como llamar a \lstinline!str(x)!) &
-\lstinline!'%s' % None == 'None'! \\
-\verb!%! & Un \verb!%! &
-\lstinline!'%%,%s' % '%' == '%,%'!
+\verb!{:d}! & {\footnotesize Valor entero en decimal} & \lstinline!'{:d}'.format(10.5)! $\rightarrow$ \lstinline!'10'! \\
+\verb!{:o}! & {\footnotesize Valor entero en octal} & \lstinline!'{:o}'.format(8)! $\rightarrow$ \lstinline!'10'! \\
+\verb!{:x}! & {\footnotesize Valor entero en hexadecimal} & \lstinline!'{:x}'.format(16)! $\rightarrow$ \lstinline!'10'! \\
+\verb!{:f}! & {\footnotesize Valor de punto flotante, en decimal} &
+  \lstinline!'{:f}'.format(0.1**5)! $\rightarrow$ \lstinline!'0.000010'! \\
+\verb!{:.2f}! & {\footnotesize Punto flotante, con dos dígitos de precisión} &
+  \lstinline!'{:.2f}'.format(0.1**5)! $\rightarrow$ \lstinline!'0.00'! \\
+\verb!{:e}! & {\footnotesize Punto flotante, en notación exponencial} &
+  \lstinline!'{:e}'.format(0.1**5)! $\rightarrow$ \lstinline!'1.000000e-05'! \\
+\verb!{:g}! & {\footnotesize Punto flotante, lo que sea más corto} &
+  \lstinline!'{:g}'.format(0.1**5)! $\rightarrow$ \lstinline!'0.00001'! \\
+\verb!{:.2s}! & {\footnotesize Cadena recortada en 2 caracteres} &
+  \lstinline!'{:.2s}'.format('Python')! $\rightarrow$ \lstinline!'Py'! \\
+\verb!{:<6s}! & {\footnotesize Cadena alineada a la izquierda, ocupando 6 caracteres} &
+  \lstinline!'{:<6s}'.format('Py')! $\rightarrow$ \lstinline!'Py    '! \\
+\verb!{:^6s}! & {\footnotesize Cadena centrada} &
+  \lstinline!'{:^6s}'.format('Py')! $\rightarrow$ \lstinline!'  Py  '! \\
+\verb!{:>6s}! & {\footnotesize Cadena alineada a la derecha} &
+  \lstinline!'{:>6s}'.format('Py')! $\rightarrow$ \lstinline!'    Py'! \\
+\verb!{{! & {\footnotesize Un \verb!{!} \\
+\verb!}}! & {\footnotesize Un \verb!}!} \\
 \end{tabular}
-
-Uno de los diversos parámetros es la precisión, que al trabajar con distintos
-tipos de marcas significa distintas cosas, las de tipo entero la ignoran, para
-las cadenas es la cantidad máxima de caracteres a tomar de una cadena, para
-las de punto flotante, tiene un significado distinto para cada una de ellas y
-es más claro verlo en ejemplos:
-
-\begin{codigo-python-sn}
-cadena = '%.2s' % 'Python' # -> 'Py'
-cadena = '%.2f' % 3.14159265359 # -> '3.14'
-cadena = '%.2g' % 3.14159265359 # -> '3.1'
-cadena = '%.2e' % 314159265359 # -> '3.14e+11'
-cadena = '%.2g' % 314159265359 # -> '3.1e+11'
-\end{codigo-python-sn}
+\end{center}
 
 \end{sintaxis}
 

@@ -258,7 +258,7 @@ def positivo_o_no():
     x = int(input("Ingrese un número: "))
     if x > 0:
        print("Número positivo")
-    if not x > 0:
+    (@if not x > 0:@)
        print("Número no positivo")
 \end{codigo-python-sn}
 
@@ -314,7 +314,7 @@ def positivo_o_no():
     x = int(input("Ingrese un número: "))
     if x > 0:
        print("Número positivo")
-    else:
+    (@else:@)
        print("Número no positivo")
 \end{codigo-python-sn}
 
@@ -346,7 +346,7 @@ resultados?:
 ...   if x > 0:
 ...      print("Número positivo")
 ...      x = -x
-...   if x < 0:
+...   (@if x < 0:@)
 ...      print("Número no positivo")
 ...
 >>> pn1()
@@ -362,7 +362,7 @@ Número no positivo
 ...   if x > 0:
 ...      print("Número positivo")
 ...      x = -x
-...   else:
+...   (@else:@)
 ...      print("Número no positivo")
 ...
 >>> pn2()
@@ -449,7 +449,7 @@ def pos_cero_o_neg():
     x = int(input("Ingrese un número: "))
     if x > 0:
        print("Número positivo")
-    elif x == 0:
+    (@elif x == 0:@)
        print("Igual a 0")
     else:
        print("Número negativo")
@@ -473,7 +473,7 @@ def pos_cero_o_neg():
     x = int(input("Ingrese un número: "))
     if x > 0:
        print("Número positivo")
-    elif not x:
+    elif (@not x@):
        print("Igual a 0")
     else:
        print("Número negativo")

@@ -61,13 +61,14 @@
     showstringspaces=false,
     upquote=true,
     basicstyle=\small\ttfamily,
+    keywordstyle=\itshape,
     backgroundcolor=\color{light-gray},
     xleftmargin=\parindent,
     % NOTA: esta sección se podría omitir usando XeTeX.
     extendedchars=true,
     inputencoding=utf8x,
     breaklines=true,
-    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}},
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
     literate={á}{{\'a}}1
              {é}{{\'e}}1
              {í}{{\'i}}1
@@ -280,11 +281,11 @@
     \caption{{\small\texttt{#1}}\textbf{:}\ \small #2}
     }{\end{codigo-float}}
 
-\lstnewenvironment{codigo-python}{\lstset{}}{}
-\lstnewenvironment{codigo-python-sn}{\lstset{numbers=none}}{}
-\lstnewenvironment{codigo-python-sn-small}{\lstset{numbers=none,basicstyle=\footnotesize\ttfamily}}{}
-\lstnewenvironment{codigo-nohl}{\lstset{language={}}}{}
-\lstnewenvironment{codigo-nohl-sn}{\lstset{language={},numbers=none}}{}
+\lstnewenvironment{codigo-python}{\lstset{moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
+\lstnewenvironment{codigo-python-sn}{\lstset{numbers=none,moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
+\lstnewenvironment{codigo-python-sn-small}{\lstset{numbers=none,basicstyle=\footnotesize\ttfamily,moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
+\lstnewenvironment{codigo-nohl}{\lstset{language={},moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
+\lstnewenvironment{codigo-nohl-sn}{\lstset{language={},numbers=none,moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
 
 % Numeracion para secciones y subsecciones - Hace falta?
 \renewcommand{\thesection}{\thechapter.\arabic{section}}
