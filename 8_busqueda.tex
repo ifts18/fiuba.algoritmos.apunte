@@ -15,9 +15,9 @@ lista.
 Probamos esa solución para ver qué pasa:
 
 \begin{codigo-python-sn}
->>> [1,3,5,7].index(5)
+>>> [1, 3, 5, 7].index(5)
 2
->>> [1,3,5,7].index(20)
+>>> [1, 3, 5, 7].index(20)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ValueError: list.index(x): x not in list
@@ -32,7 +32,7 @@ estar seguros de que el valor está en la lista, y para averiguar eso Python
 nos provee del operador \lstinline+in+:
 
 \begin{codigo-python-sn}
->>> 5 in [1,3,5,7]
+>>> 5 in [1, 3, 5, 7]
 True
 >>> 20 in [1, 3, 5, 7]
 False
@@ -41,16 +41,25 @@ False
 O sea que si llamamos a la función \lstinline+index()+ sólo cuando el
 resultado de \lstinline+in+ es verdadero, y devolvemos $-1$ cuando el
 resultado de \lstinline+in+ es falso, estaremos resolviendo el problema
-planteado usando sólo funciones provistas por Python. La solución se
-muestra en el Código \ref{busquedaconindex}. \\
+planteado usando sólo funciones provistas por Python. La solución se plantea a
+continuación:
 
-\begin{codigo}{busqueda\_con\_index.py}{Busca utilizando index e in provistos por Python}
-\label{busquedaconindex}
-\lstinputlisting{src/8_busqueda/busConIndex.py}
-\end{codigo}
+\begin{codigo-python-sn}
+def busqueda_con_index(xs, x):
+    """Busca un elemento x en una lista xs.
+
+    Si x está en xs devuelve el índice,
+    de lo contrario devuelve -1.
+    """
+    if x in xs:
+        return xs.index(x)
+    else:
+        return -1
+\end{codigo-python-sn}
 
 Probamos la función \verb+busqueda_con_index()+:
-\begin{verbatim}
+
+\begin{codigo-python-sn}
 >>> busqueda_con_index([1, 4, 54, 3, 0, -1], 1)
 0
 >>> busqueda_con_index([1, 4, 54, 3, 0, -1], -1)
@@ -61,14 +70,14 @@ Probamos la función \verb+busqueda_con_index()+:
 -1
 >>> busqueda_con_index([], 0)
 -1
-\end{verbatim}
+\end{codigo-python-sn}
 
 \subsection*{¿Cuántas comparaciones hace este programa?}
 
-La pregunta del título se refiere a ¿cuánto esfuerzo computacional requiere
-este programa?, ¿cuántas veces compara el valor que buscamos con los datos de
+Es decir, ¿cuánto esfuerzo computacional requiere
+este programa? ¿Cuántas veces compara el valor que buscamos con los datos de
 la lista? No lo sabemos porque no sabemos cómo están implementadas las
-funciones \lstinline+in+ e \lstinline+index()+. La pregunta queda planteada
+operaciones \lstinline+in+ e \lstinline+index()+. La pregunta queda planteada
 por ahora pero daremos un método para averiguarlo más adelante en esta unidad.
 
 
@@ -79,8 +88,7 @@ elementales, y no las grandes primitivas \lstinline+in+ e \lstinline+index()+.
 Esto nos permitirá estudiar una solución que puede portarse a otros lenguajes
 que no tienen instrucciones tan poderosas.
 
-
-Supongamos entonces que nuestra versión de Python no existen ni \lstinline+in+
+Supongamos entonces que en nuestra versión de Python no existen ni \lstinline+in+
 ni \lstinline+index()+. Podemos en cambio acceder a cada uno de los elementos
 de la lista a través de una construcción \lstinline+for+, y también, por
 supuesto, podemos acceder a un elemento de la lista mediante un índice.
@@ -100,26 +108,34 @@ momento en qué posición de la lista estamos parados. Esta variable se
 inicializa en $0$ antes de entrar en el ciclo y se incrementa en $1$ en
 cada paso.
 
-El programa nos queda entonces como se muestra en el Código
-\ref{busquedalineal}. \\
+El programa nos queda entonces como se muestra a continuación:
 
-\begin{codigo}{busqueda\_lineal.py}{Función de búsqueda lineal}
-\label{busquedalineal}
-\lstinputlisting{src/8_busqueda/busl.py}
-\end{codigo}
+\begin{codigo-python}
+def busqueda_lineal(lista, x):
+    """Si x está en lista devuelve su posición en lista, de lo
+    contrario devuelve -1.
+    """
+
+    i = 0
+    for z in lista:
+        if z == x:
+            return i
+        i += 1
+    return -1
+\end{codigo-python}
 
 Y ahora lo probamos:
-\begin{verbatim}
+
+\begin{codigo-python-sn}
 >>> busqueda_lineal([1, 4, 54, 3, 0, -1], 44)
 -1
 >>> busqueda_lineal([1, 4, 54, 3, 0, -1], 3)
 3
 >>> busqueda_lineal([1, 4, 54, 3, 0, -1], 0)
 4
->>> busqueda_lineal([], 0)
+>>> busqueda_lineal([], 42)
 -1
->>>
-\end{verbatim}
+\end{codigo-python-sn}
 
 \subsection*{¿Cuántas comparaciones hace este programa?}
 
@@ -129,13 +145,13 @@ veces compara el valor que buscamos con los datos de la lista? Ahora podemos
 analizar el texto de \lstinline!busqueda_lineal!:
 
 \begin{itemize}
-\item La {\bf línea 16} del código es un ciclo que recorre uno a uno los
-elementos de la lista, y en el cuerpo de ese ciclo, en la {\bf línea 20} se
+\item La {\bf línea 7} del código es un ciclo que recorre uno a uno los
+elementos de la lista, y en el cuerpo de ese ciclo, en la {\bf línea 8} se
 compara cada elemento con el valor buscado. En el caso de encontrarlo ({\bf
-línea 21}) se devuelve la posición.
+línea 9}) se devuelve la posición.
 
 \item Si el valor no está en la lista se recorrerá la lista entera, haciendo
-una comparación por elemento.
+una comparación por cada elemento.
 \end{itemize}
 
 O sea que si el valor está en la posición $p$ de la lista se hacen $p$
@@ -191,19 +207,22 @@ Para señalar la porción del segmento que se está analizando a cada paso,
 utilizaremos dos variables (\lstinline!izq! y \lstinline!der!) que
 contienen la posición de inicio y la posición de fin del segmento que se
 está considerando. De la misma manera usaremos la varible \lstinline!medio!
-para contener la posición del punto medio del segmento. \\
+para contener la posición del punto medio del segmento.
 
-En el gráfico que se incluye a continuación, vemos qué pasa cuando se busca
+En la Figura \ref{fig:busqbin} vemos qué pasa cuando se busca
 el valor 18 en la lista [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23].
 
-{\centering
-\includegraphics{graficos/uni8-seguimiento}
-}
-
-Como no se encontró al valor buscado, devuelve $-1$.
+\begin{figure}[h!t]
+\begin{center}
+\includegraphics[width=\linewidth]{graficos/uni8-seguimiento}
+\end{center}
+\caption{Ejemplo de una búsqueda usando el algoritmo de búsqueda binaria.
+Como no se encontró al valor buscado, devuelve $-1$.}
+\label{fig:busqbin}
+\end{figure}
 
 En el Código \ref{busquedabinaria} mostramos una posible implementación de
-este algoritmo. \\
+este algoritmo.
 
 \begin{codigo}{busqueda\_binaria.py}{Función de búsqueda binaria}
 \label{busquedabinaria}
@@ -212,55 +231,45 @@ este algoritmo. \\
 
 A continuación varias ejecuciones de prueba:
 
-\begin{verbatim}
-Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 0
-DEBUG: izq: 0 der: 2 medio: 1
-DEBUG: izq: 0 der: 0 medio: 0
-Resultado: -1
-Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 1
-DEBUG: izq: 0 der: 2 medio: 1
-DEBUG: izq: 0 der: 0 medio: 0
-Resultado: 0
-Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 2
-DEBUG: izq: 0 der: 2 medio: 1
-DEBUG: izq: 0 der: 0 medio: 0
-Resultado: -1
-Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 3
-DEBUG: izq: 0 der: 2 medio: 1
-Resultado: 1
-Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 5
-DEBUG: izq: 0 der: 2 medio: 1
-DEBUG: izq: 2 der: 2 medio: 2
-Resultado: 2
-Dame una lista ordenada ([[]] para terminar): [1, 3, 5]
-¿Valor buscado?: 6
-DEBUG: izq: 0 der: 2 medio: 1
-DEBUG: izq: 2 der: 2 medio: 2
-Resultado: -1
-Dame una lista ordenada ([[]] para terminar): []
-¿Valor buscado?: 0
-Resultado: -1
-Dame una lista ordenada ([[]] para terminar): [1]
-¿Valor buscado?: 1
-DEBUG: izq: 0 der: 0 medio: 0
-Resultado: 0
-Dame una lista ordenada ([[]] para terminar): [1]
-¿Valor buscado?: 3
-DEBUG: izq: 0 der: 0 medio: 0
-Resultado: -1
-Dame una lista ordenada ([[]] para terminar): [[]]
-\end{verbatim}
+\begin{codigo-python-sn}
+>>> busqueda_binaria([1, 3, 5], 0)
+[DEBUG] izq: 0 der: 2 medio: 1
+[DEBUG] izq: 0 der: 0 medio: 0
+-1
+>>> busqueda_binaria([1, 3, 5], 1)
+[DEBUG] izq: 0 der: 2 medio: 1
+[DEBUG] izq: 0 der: 0 medio: 0
+0
+>>> busqueda_binaria([1, 3, 5], 2)
+[DEBUG] izq: 0 der: 2 medio: 1
+[DEBUG] izq: 0 der: 0 medio: 0
+-1
+>>> busqueda_binaria([1, 3, 5], 3)
+[DEBUG] izq: 0 der: 2 medio: 1
+1
+>>> busqueda_binaria([1, 3, 5], 5)
+[DEBUG] izq: 0 der: 2 medio: 1
+[DEBUG] izq: 2 der: 2 medio: 2
+2
+>>> busqueda_binaria([1, 3, 5], 6)
+[DEBUG] izq: 0 der: 2 medio: 1
+[DEBUG] izq: 2 der: 2 medio: 2
+-1
+>>> busqueda_binaria([], 0)
+-1
+>>> busqueda_binaria([1], 1)
+[DEBUG] izq: 0 der: 0 medio: 0
+0
+>>> busqueda_binaria([1], 3)
+[DEBUG] izq: 0 der: 0 medio: 0
+-1
+\end{codigo-python-sn}
 
 \subsection*{¿Cuántas comparaciones hace este programa?}
 
 Para responder esto pensemos en el peor caso, es decir, que se descartaron
 varias veces partes del segmento para finalmente llegar a un segmento vacío y
-porque el valor buscado no se encontraba en la lista.
+el valor buscado no se encontraba en la lista.
 
 En cada paso el segmento se divide por la mitad y se desecha una de esas
 mitades, y en cada paso se hace una comparación con el valor buscado. Por lo
@@ -289,12 +298,21 @@ Cuando \lstinline+len(lista)+ no es una potencia de 2 el razonamiento es menos
 prolijo, pero también vale que este programa realiza aproximadamente
 $\log_2$(\lstinline+len(lista)+) comparaciones.
 
+\begin{observacion}
 Vemos entonces que si \lstinline!lista! es una lista ordenada, la búsqueda binaria es
-\underline{muchísimo} más eficiente que la búsqueda lineal (por ejemplo, dado
-que $2^{20}$ es aproximadamente 1.000.000, si \lstinline!lista! tiene 1.000.000 de
-elementos, la búsqueda lineal sobre \lstinline+lista+ será proporcional a 1.000.000, y
-en promedio hará unas 500.000 comparaciones, mientras que la búsqueda binaria
-hará como máximo 20 comparaciones).
+{\bf muchísimo} más eficiente que la búsqueda lineal.
+\end{observacion}
+
+Veamos un ejemplo para entender cuánto más eficiente es la búsqueda binaria.
+Supongamos que tenemos una lista de un millón de elementos.
+
+\begin{itemize}
+\item El algoritmo de búsqueda lineal hará una cantidad de operaciones proporcional
+a un millón; es decir que en el peor caso hará 1.000.000 de comparaciones, y en
+un caso promedio, 500.000 comparaciones.
+\item El algoritmo de búsqueda binaria hará como máximo $\log_2(1\,000\,000)$
+comparaciones, o sea ¡no más que 20 comparaciones!.
+\end{itemize}
 
 \section{Resumen}
 
