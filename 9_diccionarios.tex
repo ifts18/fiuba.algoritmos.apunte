@@ -1,7 +1,7 @@
 \chapter{Diccionarios}
 
-En esta unidad analizaremos otro tipo de dato importante: los diccionarios.
-Su importancia, radica no sólo en las grandes posibilidades que presentan
+En esta unidad analizaremos otra estructura de datos importante: los diccionarios.
+Su importancia radica no sólo en las grandes posibilidades que presentan
 como estructuras para almacenar información, sino también en que, en
 Python, son utilizados por el propio lenguaje para realizar diversas
 operaciones y para almacenar información de otras estructuras.
@@ -27,31 +27,32 @@ En Python, un diccionario es una colección no-ordenada de valores
 que son accedidos a traves de una clave.  Es decir, en lugar de
 acceder a la información mediante el índice numérico, como es el
 caso de las listas y tuplas, es posible acceder a los valores a
-través de sus claves, que pueden ser de diversos tipo.
-
-%En algunos casos usaremos key,value (o
-%simplemente k,v) para referirnos a los conceptos de clave, valor. *
+través de sus claves, que pueden ser de diversos tipos.
 
 Las claves son únicas dentro de un diccionario, es decir que no puede haber
 un diccionario que tenga dos veces la misma clave, si se asigna un valor a
 una clave ya existente, se reemplaza el valor anterior.
 
 No hay una forma directa de acceder a una clave a través de su valor, y
-nada impide que un mismo valor se encuentre asignado a distintas claves
+nada impide que un mismo valor se encuentre asignado a distintas claves.
 
-La informacion almacenada en los diccionarios, no tiene un orden
+La informacion almacenada en los diccionarios no tiene un orden
 particular.  Ni por clave ni por valor, ni tampoco por el orden en
 que han sido agregados al diccionario.
 
-Cualquier variable de tipo inmutable, puede ser clave de un diccionario:
+Al igual que las listas, los diccionarios son mutables. Esto significa que
+podemos agregar, quitar y modificar los elementos de un diccionario
+posteriormente a su creación.
+
+Cualquier valor de tipo inmutable puede ser clave de un diccionario:
 cadenas, enteros, tuplas (con valores inmutables en sus miembros), etc.  No hay
 restricciones para los valores que el diccionario puede contener, cualquier
-tipo puede ser el valor: listas, cadenas, tuplas, otros diccionarios, objetos,
+tipo puede ser el valor: listas, cadenas, tuplas, otros diccionarios,
 etc.
 
 \begin{sabias_que}
-En otros lenguajes, a los diccionarios se los llama {\it arreglos
-asociativos}, {\it matrices asociativas}, o también {\it tablas de hash}.
+En otros lenguajes, a los diccionarios se los llama {\it arreglos asociativos},
+{\it mapas}, {\it tablas} o también {\it tablas de hash}.
 \end{sabias_que}
 
 \section{Utilizando diccionarios en Python}
@@ -67,6 +68,15 @@ con comas, y la clave y el valor se separan con ':'.
 \begin{codigo-python-sn}
 punto = {'x': 2, 'y': 1, 'z': 4}
 \end{codigo-python-sn}
+
+\begin{observacion}
+En Python el tipo de dato asociado a los diccionarios se llama |dict|:
+
+\begin{codigo-python-sn}
+>>> type(punto)
+<class 'dict'>
+\end{codigo-python-sn}
+\end{observacion}
 
 Para declararlo vacío y luego ingresar los valores, se lo declara como un
 par de llaves sin nada en medio, y luego se asignan valores directamente a
@@ -86,22 +96,39 @@ de la misma forma que con las listas, pero utilizando la clave
 elegida en lugar del índice.
 
 \begin{codigo-python-sn}
-print materias["lunes"]
+>>> materias["lunes"]
+[6103, 7540]
 \end{codigo-python-sn}
 
-Sin embargo, esto falla si se provee una clave que no está en el diccionario.
-Es posible, por otro lado, utilizar la función \lstinline{get}, que devuelve el
-valor \lstinline{None} si la clave no está en el diccionario, o un valor por
-omisión que se establece opcionalmente.
+\begin{atencion}
+El acceso por clave falla si se provee una clave que no está en el diccionario:
 
 \begin{codigo-python-sn}
->>> print materias["domingo"]
+>>> materias["domingo"]
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 KeyError: 'domingo'
->>> print materias.get("domingo")
-None
->>> print materias.get("domingo", [])
+\end{codigo-python-sn}
+\end{atencion}
+
+El operador |in| nos permite preguntar si una clave se encuentra o no en el
+diccionario:
+
+\begin{codigo-python-sn}
+>>> "lunes" in materias
+True
+>>> "domingo" in materias
+False
+\end{codigo-python-sn}
+
+Además podemos utilizar la función \lstinline{get}, que recibe una
+clave $k$ y un valor por omisión $v$, y devuelve el valor asociado a la clave
+$k$, en caso de existir, o el valor $v$ en caso contrario.
+
+\begin{codigo-python-sn}
+>>> materias.get("lunes", [])
+[6103, 7540]
+>>> materias.get("domingo", [])
 []
 \end{codigo-python-sn}
 
@@ -110,7 +137,7 @@ sus claves y usar esas claves para acceder a los valores.
 
 \begin{codigo-python-sn}
 for dia in materias:
-    print dia, ":", materias[dia]
+    print("El {} tengo que cursar {}".format(dia, materias[dia])
 \end{codigo-python-sn}
 
 Es posible, también, obtener los valores como tuplas donde el primer
@@ -118,26 +145,12 @@ elemento es la clave y el segundo el valor.
 
 \begin{codigo-python-sn}
 for dia, codigos in materias.items():
-    print dia, ":", codigos
+    print("El {} tengo que cursar {}".format(dia, codigos)
 \end{codigo-python-sn}
 
-Para verificar si una clave se encuentra en el diccionario, es posible
-utilizar la función \lstinline{has_key} o la palabra reservada
-\lstinline{in}.
-
-\begin{codigo-python-sn}
-d = {'x': 12, 'y': 7}
-if d.has_key('x'):
-    print d['x']   # Imprime 12
-if d.has_key('z'):
-    print d['z']   # No se ejecuta
-if 'y' in d:
-    print d['y']   # Imprime 7
-\end{codigo-python-sn}
-
-Más allá de la creación y el acceso, hay muchas otras operaciones que se
-pueden realizar sobre los diccionarios, para poder manipular la información
-según sean nuestras necesidades, algunos de estos métodos pueden verse en
+Hay muchas otras operaciones que se
+pueden realizar sobre los diccionarios, que permiten manipular la información
+según sean nuestras necesidades. Algunos de estos métodos pueden verse en
 la referencia al final de la unidad.
 
 \begin{sabias_que}
@@ -173,24 +186,25 @@ clave es el nombre de la persona, y el valor es una lista con los datos
 correspondientes a esa persona.
 
 También podría utilizarse un diccionario para mantener los datos de los
-alumnos inscriptos en una materia.  Siendo la clave el número de padrón, y
+alumnos inscriptos en una materia, siendo la clave el número de padrón, y
 el valor una lista con todas las notas asociadas a ese alumno.
 
 En general, los diccionarios sirven para crear bases de datos muy simples,
 en las que la clave es el identificador del elemento, y el valor son todos
 los datos del elemento a considerar.
 
-Otro posible uso de un diccionario sería utilizarlo para realizar
+Otro posible uso de un diccionario sería para realizar
 traducciones, donde la clave sería la palabra en el idioma original y el
 valor la palabra en el idioma al que se quiere traducir.  Sin embargo esta
-aplicación es poco destacable, ya que esta forma de traducir es muy mala.
+aplicación es poco destacable, ya que esta forma de traducir suele dar
+resultados poco satisfactorios.
 
 \section{Resumen}
 
 \begin{itemize}
-\item Los diccionarios (llamados {\it arreglos asociativos} o {\it tablas
-de hash} en otros lenguajes), son una estructura de datos muy poderosa, que permite
-asociar un valor a una clave.
+\item Los diccionarios (también llamados {\it arreglos asociativos}, {\it
+mapas} o {\it tablas de hash} en otros lenguajes), son una estructura de datos
+muy poderosa, que permite asociar un valor a una clave.
 \item Las claves deben ser de tipo inmutable, los valores
 pueden ser de cualquier tipo.
 \item Los diccionarios no están ordenados.  Si bien se los puede recorrer,
@@ -205,24 +219,22 @@ se ingresa ninguna pareja de clave y valor, se crea un diccionario vacío.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario[clave]}}
-Accede al valor asociado con \lstinline!clave! en el diccionario.
+Accede al valor asociado con \lstinline!clave! en el diccionario. Falla si la
+clave no está en el diccionario.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline{diccionario.has_key(clave)}}
+\begin{sintaxis}{\lstinline{clave in diccionario}}
 Indica si un diccionario tiene o no una determinada clave.
-Es posible obtener el mismo resultado utilizando:
-\lstinline{if clave in diccionario:}.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline{diccionario.get(clave[, valor_predeterminado])}}
+\begin{sintaxis}{\lstinline{diccionario.get(clave, valor_predeterminado)}}
 Devuelve el valor asociado a la clave.  A diferencia del acceso directo
 utilizando \lstinline{[clave]}, en el caso en que el valor no se
-encuentre, no da un error, sino que devuelve el valor predeterminado o
-\lstinline{None} en el caso de que no se haya establecido.
+encuentre devuelve el |valor_predeterminado|.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{for clave in diccionario:}}
-Esta estructura permite recorrer una a una todas las claves almacenadas en
+Permite recorrer una a una todas las claves almacenadas en
 el diccionario.
 \end{sintaxis}
 
@@ -242,31 +254,8 @@ primer elemento es la clave y el segundo el valor.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario.pop(clave)}}
-Devuelve el valor asociado a la clave, y elimina la clave y el valor
-asociado del diccionario.
+Quita del diccionario la clave y su valor asociado, y devuelve el valor.
 \end{sintaxis}
-
-\begin{sintaxis}{\lstinline{diccionario.popitem()}}
-Devuelve un elemento al azar del diccionario, representándolo como una
-tupla \lstinline{(clave, valor)} y elimina esta pareja del diccionario.
-\end{sintaxis}
-
-\begin{sintaxis}{\lstinline{diccionario.clear()}}
-Elimina todos los elementos del diccionario
-\end{sintaxis}
-
-% Lo saco porque se va de la hoja, y aporta poco
-%\begin{sintaxis}{\lstinline{diccionario.update(otro_diccionario)}}
-%
-%Actualiza los valores del diccionario con los recibidos por parámetro.  Si
-%una clave está en ambos, se modifica el valor asociado en
-%\lstinline{diccionario}, para que tenga el mismo valor que en
-%\lstinline{otro_diccionario}.  Si una clave no está en
-%\lstinline{diccionario}, se agrega con el valor que tenga en
-%\lstinline{otro_diccionario}.
-%
-%\end{sintaxis}
-
 \end{referencia_python}
 
 

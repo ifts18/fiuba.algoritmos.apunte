@@ -30,6 +30,15 @@ como por ejemplo: \\
 \lstinline!(89766, "Alicia", "Hacker", (9, "Julio", 1988))!.
 \end{itemize}
 
+\begin{observacion}
+En Python el tipo de dato asociado a las tuplas se llama |tuple|:
+
+\begin{codigo-python-sn}
+>>> type((25, "Mayo", 1810))
+<class 'tuple'>
+\end{codigo-python-sn}
+\end{observacion}
+
 \subsection{Elementos y segmentos de tuplas}
 
 Las tuplas son {\it secuencias}, igual que las cadenas, y se puede utilizar la
@@ -254,6 +263,15 @@ inscriptos en la materia como la siguiente:
 \lstinline![78455, 89211, 66540, 45750]!.
 Al abrirse la inscripción, antes de que hubiera inscriptos, la lista de
 inscriptos se representará por una lista vacía: \lstinline![]!.
+
+\begin{observacion}
+En Python el tipo de dato asociado a las listas se llama |list|:
+
+\begin{codigo-python-sn}
+>>> type([78455, 89211, 66540, 45750])
+<class 'list'>
+\end{codigo-python-sn}
+\end{observacion}
 
 \subsection{Longitud de la lista. Elementos y segmentos de listas}
 
@@ -482,6 +500,7 @@ En Python, las listas, las tuplas y las cadenas son parte del conjunto
 de las {\it secuencias}.  Todas las secuencias cuentan con las siguientes
 operaciones:
 
+\vspace{\medskipamount}
 \begin{tabular}{l l}
 {\bf Operación} & {\bf Resultado} \\
 \hline
@@ -499,6 +518,19 @@ operaciones:
 \lstinline!max(s)! & Máximo elemento de la secuencia \lstinline!s! \\
 \lstinline!sum(s)! & Suma de los elementos de la secuencia \lstinline!s! \\
 \end{tabular}
+\vspace{\medskipamount}
+
+Además, es posible crear una lista o una tupla a partir de cualquier otra
+secuencia, utilizando las funciones |list| y |tuple|, respectivamente:
+
+\begin{codigo-python-sn}
+>>> list("Hola")
+['H', 'o', 'l', 'a']
+>>> tuple("Hola")
+('H', 'o', 'l', 'a')
+>>> list((1, 2, 3, 4))
+[1, 2, 3, 4]
+\end{codigo-python-sn}
 \end{sabias_que}
 
 \problemac{Queremos escribir un programa que nos permita armar la lista de
@@ -915,8 +947,18 @@ Agrega un elemento a la lista, en la posición \lstinline!posicion!.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!lista.remove(valor)!}
-Borra la primera aparción de elemento, si se encuentra en la lista.  De no
+Quita de la lista la primera aparción de elemento, si se encuentra.  De no
 encontrarse en la lista, se produce un error.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!lista.pop()!}
+Quita el elemento del final de la lista, y lo devuelve. Si la lista está
+vacía, se produce un error.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!lista.pop(posicion)!}
+Quita el elemento que está en la posición indicada, y lo devuelve. Si la
+lista tiene menos de |posicion + 1| elementos, se produce un error.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!lista.index(valor)!}
