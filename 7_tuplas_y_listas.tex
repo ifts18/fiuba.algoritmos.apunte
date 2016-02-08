@@ -493,6 +493,20 @@ El ciclo |for <variable> in <secuencia>:| se puede utilizar sobre cualquier
 secuencia, incluyendo tuplas y cadenas.
 \end{observacion}
 
+\item Muchas veces, dentro del cuerpo del ciclo |for| es necesario contar con la
+posición de cada elemento de la lista. Para esto es posible utilizar la función
+|enumerate|: \label{enumerate}
+
+\begin{codigo-python-sn}
+>>> for i, p in enumerate(padrones):
+...     print(i, p)
+...
+0 78455
+1 79211
+2 54988
+3 66540
+4 47890
+\end{codigo-python-sn}
 \end{itemize}
 
 \begin{sabias_que}
@@ -517,6 +531,7 @@ operaciones:
 \lstinline!min(s)! & Mínimo elemento de la secuencia \lstinline!s! \\
 \lstinline!max(s)! & Máximo elemento de la secuencia \lstinline!s! \\
 \lstinline!sum(s)! & Suma de los elementos de la secuencia \lstinline!s! \\
+\lstinline!enumerate(s)! & Enumerar los elementos de \lstinline!s! junto con sus posiciones \\
 \end{tabular}
 \vspace{\medskipamount}
 
