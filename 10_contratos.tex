@@ -1,13 +1,13 @@
 \chapter{Contratos y Mutabilidad}
 
-En esta unidad se le dará cierta formalización a algunos temas que se habían
-visto informalmente, como por ejemplo, la documentación de las funciones.
+En esta unidad se le dará cierta formalización a algunos temas que habían sido
+presentados informalmente, como por ejemplo la documentación de las funciones.
 
-Se formalizarán las condiciones que debe cumplir un algoritmo, al comenzar, en
+Se formalizarán las condiciones que debe cumplir un algoritmo al comenzar, en
 su transcurso, y al terminar, y algunas técnicas para tener en cuenta estas
 condiciones.
 
-También se verá una forma de modelizar el espacio donde \textit{viven} las
+También se verá una forma de modelar el espacio donde \textit{viven} las
 variables.
 
 \section{Pre y Postcondiciones}
@@ -57,18 +57,30 @@ puede asegurar que devolverá un número correspondiente al cociente solicitado.
 \subsection{Aseveraciones}
 
 Tanto las precondiciones como las postcondiciones son \textit{aseveraciones}
-(en inglés \textit{assert}). Es decir, afirmaciones realizadas en un momento
+(en inglés \textit{assertions}). Es decir, afirmaciones realizadas en un momento
 particular de la ejecución sobre el estado computacional. Si llegaran a ser
 falsas significaría que hay algún error en el diseño o utilización del algoritmo.
 
 Para comprobar estas afirmaciones desde el código en algunos casos podemos
-utilizar la instrucción \lstinline!assert!, está instrucción recibe una
-condición a verificar y, opcionalmente, un mensaje de error que devolverá en
-caso que la condición no se cumpla.
+utilizar la instrucción \lstinline!assert!. Esta instrucción recibe una
+condición a verificar (o sea, una expresión booleana)
+Si la condición es |True|, la instrucción no hace nada; en caso contrario se
+produce un error.
 
 \begin{codigo-python-sn}
->>> n=0
->>> assert n!=0, "El divisor no puede ser 0"
+>>> assert True
+>>> assert False
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AssertionError
+\end{codigo-python-sn}
+
+Opcionalmente, la instrucción |assert| puede recibir
+mensaje de error que mostrará en caso que la condición no se cumpla.
+
+\begin{codigo-python-sn}
+>>> n = 0
+>>> assert n != 0, "El divisor no puede ser 0"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 AssertionError: El divisor no puede ser 0
@@ -87,13 +99,13 @@ quedaría de la siguiente forma:
 
 \begin{codigo-python-sn}
 def division(dividendo, divisor):
-    """ Calculo de la división
+    """Cálculo de la división
 
     Pre: Recibe dos números, divisor debe ser distinto de 0.
     Post: Devuelve un número real, con el cociente de ambos.
     """
     assert divisor != 0, "El divisor no puede ser 0"
-    return dividendo  / ( divisor * 1.0 )
+    return dividendo / divisor
 \end{codigo-python-sn}
 
 Otro ejemplo, tal vez más interesante, puede ser una función que implemente
@@ -101,7 +113,7 @@ una sumatoria ($\sum_{i=inicial}^{final} f(i)$).  En este caso hay que
 analizar cuáles van a ser los parámetros que recibirá la función, y las
 precondiciones que estos parámetros deberán cumplir.
 
-La función sumatoria a escribir, necesita de un valor inicial, un valor
+La función |sumatoria| a escribir necesita de un valor inicial, un valor
 final, y una función a la cual llamar en cada paso. Es decir que recibe
 tres parámetros.
 
@@ -128,7 +140,7 @@ def sumatoria(inicial, final, f):
          recibe un entero y devuelve un número.
     Post: Se devuelve el valor de la sumatoria de aplicar f a cada
           número comprendido entre inicial y final.
-	"""
+    """
 \end{codigo-python-sn}
 
 \begin{ejercicio}
@@ -161,30 +173,30 @@ El invariante de ciclo permite conocer cómo llegar desde las precondiciones
 hasta las postcondiciones. El invariante de ciclo es, entonces, una
 aseveración que debe ser verdadera al comienzo de cada iteración.
 
-Por ejemplo, si el problema es ir desde el punto A al punto B, las
-precondiciones dicen que estamos parados en A y las postcondiciones que
-estamos parados en B, un invariante podría ser ``estamos en algún punto entre
-A y B, en el punto más cercano a B que estuvimos hasta ahora.''.
+Por ejemplo, si el problema es ir desde el punto $A$ al punto $B$, las
+precondiciones dicen que estamos parados en $A$ y las postcondiciones que
+estamos parados en $B$, un invariante podría ser ``estamos en algún punto entre
+$A$ y $B$, en el punto más cercano a $B$ que estuvimos hasta ahora.''.
 
 Más específicamente, si analizamos el ciclo para buscar el máximo en una lista
 desordenada, la precondición es que la lista contiene elementos que son
 comparables y la postcondición es que se devuelve el elemento máximo de la
 lista.
 
-\begin{codigo-python}
+\begin{codigo-python-sn}
 def maximo(lista):
     "Devuelve el elemento máximo de la lista o None si está vacía."
-    if not len(lista):
+    if not lista:
         return None
     max_elem = lista[0]
     for elemento in lista:
         if elemento > max_elem:
             max_elem = elemento
     return max_elem
-\end{codigo-python}
+\end{codigo-python-sn}
 
 En este caso, el invariante del ciclo es que \lstinline!max_elem! contiene el
-valor máximo de la porción de lista analizada. \\
+valor máximo de la porción de lista analizada.
 
 Los invariantes son de gran importancia al momento de demostrar que un
 algoritmo funciona, pero aún cuando no hagamos una demostración formal es muy
@@ -196,14 +208,14 @@ iniciales de un algoritmo, ya que también deben cumplirse para ese caso.  Por
 ejemplo, consideremos el algoritmo para obtener la potencia \lstinline!n! de
 un número.
 
-\begin{codigo-python}
+\begin{codigo-python-sn}
 def potencia(b, n):
     "Devuelve la potencia n del número b, con n entero mayor que 0."
     p = 1
     for i in range(n):
         p *= b
     return p
-\end{codigo-python}
+\end{codigo-python-sn}
 
 En este caso, el invariante del ciclo es que la variable \lstinline!p!
 contiene el valor de la potencia correspondiente a esa iteración. Teniendo en
@@ -215,14 +227,14 @@ elementos de una lista, el invariante será que una variable \lstinline!suma!
 contenga la suma de todos los elementos ya recorridos, por lo que es claro que
 este invariante debe ser 0 cuando aún no se haya recorrido ningún elemento.
 
-\begin{codigo-python}
+\begin{codigo-python-sn}
 def suma(lista):
     "Devuelve la suma de todos los elementos de la lista."
     suma = 0
     for elemento in lista:
         suma += elemento
     return suma
-\end{codigo-python}
+\end{codigo-python-sn}
 
 % TODO
 % \subsection{Invariantes como medida de cuánto falta}
@@ -249,24 +261,24 @@ vista anteriormente.
 
 \section{Mutabilidad e Inmutabilidad}
 
-Hasta ahora cada vez que estudiamos un tipo de variables indicamos si son
+Hasta ahora cada vez que estudiamos un tipo de datos indicamos si son
 mutables o inmutables.
 
-Cuando una variable es de un tipo inmutable, como por ejemplo una cadena, es
+Cuando un valor es de un tipo inmutable, como por ejemplo una cadena, es
 posible asignar un nuevo valor a esa variable, pero no es posible modificar su
 contenido.
 
 \begin{codigo-python-sn}
->>> a="ejemplo"
->>> a="otro"
->>> a[2]="c"
+>>> s = "ejemplo"
+>>> s = "otro"
+>>> s[2] = "c"
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: 'str' object does not support item assignment
 \end{codigo-python-sn}
 
 Esto se debe a que cuando se realiza una nueva asignación, no se modifica la
-cadena en sí, sino que la variable \lstinline!a! pasa a \emph{apuntar} a otra cadena.
+cadena en sí, sino que la variable \lstinline!s! pasa a \emph{referenciar} a otra cadena.
 En cambio, no es posible asignar un nuevo caracter en una posición, ya que
 esto implicaría modificar la cadena inmutable.
 
@@ -284,11 +296,11 @@ comportamiento, es decir que las variables pasan a apuntar a un nuevo valor.
 \end{codigo-python-sn}
 
 Algo importante a tener en cuenta en el caso de las variables de tipo
-mutable es que si hay dos o más variables que \textit{apuntan} a un mismo
-dato, y este dato se modifica, el cambio se ve reflejado en ambas variables.
+mutable es que si hay dos o más variables que \textit{referencian} a un mismo
+valor, y este valor se modifica, el cambio se verá reflejado en ambas variables.
 
 \begin{codigo-python-sn}
->>> lista1=[1, 2, 3]
+>>> lista1 = [1, 2, 3]
 >>> lista2 = lista1
 >>> lista2[1] = 5
 >>> lista1
@@ -297,7 +309,7 @@ dato, y este dato se modifica, el cambio se ve reflejado en ambas variables.
 
 \begin{sabias_que}
 En otros lenguajes, como C o C++, existe un tipo de variable especial
-llamado {\it puntero}, que se comporta como una referencia a una variable,
+llamado {\it puntero}, que se comporta como una referencia a un valor,
 como es el caso de las variables mutables del ejemplo anterior.
 
 En Python no hay punteros como los de C o C++, pero todas las variables son
@@ -314,9 +326,9 @@ todas las variables que apuntan a esa porción.
 Las funciones reciben parámetros que pueden ser mutables o inmutables.
 
 Si dentro del cuerpo de la función se modifica uno de estos parámetros para
-que \textbf{apunte} a otro valor, este cambio no se verá reflejado fuera de la
-función.  Si, en cambio, se modifica el \textbf{contenido} de alguno de los
-parámetros mutables, este cambio \textbf{sí} se verá reflejado fuera de la
+que \textit{referencie} a otro valor, este cambio no se verá reflejado fuera de la
+función.  Si, en cambio, se modifica el \textit{contenido} de alguno de los
+parámetros mutables, este cambio \textit{sí} se verá reflejado fuera de la
 función.
 
 A continuación un ejemplo en el cual se asigna la variable recibida, a un
@@ -325,11 +337,11 @@ nuevo valor.  Esa asignación sólo tiene efecto dentro de la función.
 \begin{codigo-python-sn}
 >>> def no_cambia_lista(lista):
 ...     lista = range(len(lista))
-...     print lista
+...     print("Dentro de la funcion lista =", lista)
 ...
 >>> lista = [10, 20, 30, 40]
 >>> no_cambia_lista(lista)
-[0, 1, 2, 3]
+Dentro de la funcion lista = [0, 1, 2, 3]
 >>> lista
 [10, 20, 30, 40]
 \end{codigo-python-sn}
@@ -341,7 +353,7 @@ función.
 \begin{codigo-python-sn}
 >>> def cambia_lista(lista):
 ...     for i in range(len(lista)):
-...             lista[i] = lista[i]**3
+...         lista[i] = lista[i] ** 3
 ...
 >>> lista = [1, 2, 3, 4]
 >>> cambia_lista(lista)
@@ -350,7 +362,7 @@ función.
 \end{codigo-python-sn}
 
 \begin{atencion}
-En general, se espera que una función que recibe parámetros mutables, no los
+En general, se espera que una función que recibe parámetros mutables no los
 modifique, ya que si se los modifica se podría perder información valiosa.
 
 En el caso en que por una decisión de diseño o especificación se modifiquen
@@ -377,9 +389,9 @@ función.
 
 \begin{referencia_python}
 
-\begin{sintaxis}{\lstinline!assert condicion[,mensaje]!}
-Verifica si la condición es verdadera.  En caso contrario, levanta una
-excepción con el mensaje recibido por parámetro.
+\begin{sintaxis}{\lstinline!assert condicion[, mensaje]!}
+Verifica si la condición es verdadera.  En caso contrario, provoca un error
+con el mensaje recibido por parámetro.
 \end{sintaxis}
 
 \end{referencia_python}
