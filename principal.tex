@@ -215,61 +215,63 @@
 % Caja temporal para guardar el texto - Que se usa en las cajas de texto
 \newsavebox{\temporalbox}
 
-\newenvironment{observacion}
- {\vspace{1ex}\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
-  \begin{small}}
- {\end{small}\end{minipage}\end{lrbox}
-  \fboxsep 0.5em
-  \fcolorbox{black}{celeste}{
-  \usebox{\temporalbox}}\vspace{0.5ex}}
+\usepackage[framemethod=tikz]{mdframed}
 
-% Cuadros de Sabias qué - Icono: lamparita
+\newmdenv[
+    font=\small,
+    linecolor=black,
+    backgroundcolor=celeste,
+    roundcorner=4pt,
+    nobreak=true
+]{observacion}
+
+\newlength{\currentparskip}
+\newlength{\currentparindent}
+
 \newenvironment{sabias_que}
- {\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
-  \begin{minipage}{0.05\textwidth}\includegraphics[height=4ex]{graficos/lamparita}\end{minipage}
-  \begin{minipage}{0.80\textwidth}\bf Sabías que\ldots\end{minipage}\\[0.5\baselineskip]
-  \begin{small}}
- {\end{small}\end{minipage}\end{lrbox}
-  \begin{figure*}[ht]
-  \centering
-  \fboxsep 0.5em
-  \fcolorbox{black}{verde}{
-  \usebox{\temporalbox}}
-  \end{figure*}}
+{\setlength{\currentparskip}{\parskip}%
+\setlength{\currentparindent}{\parindent}%
+\begin{figure*}[h!t]\begin{mdframed}[
+    font=\small,
+    linecolor=black,
+    backgroundcolor=verde,
+    roundcorner=4pt,
+    frametitlefont=\normalsize\bfseries,
+    frametitle={$\vcenter{\hbox{\includegraphics[height=4ex]{graficos/lamparita}}}$ Sabías que\ldots},
+    frametitlealignment={\hspace*{-\parindent}},
+    startinnercode={\setlength{\parskip}{\currentparskip}\setlength{\parindent}{\currentparindent}}
+]}{\end{mdframed}\end{figure*}}
 
-% Cuadros de Atención - Icono: Triángulo con !
-\newenvironment{atencion}
- {\begin{lrbox}{\temporalbox}\begin{minipage}{0.95\textwidth}
-  \begin{minipage}{0.05\textwidth}\includegraphics[height=3ex]{graficos/atencion}\end{minipage}
-  \begin{minipage}{0.80\textwidth}\bf Atención \end{minipage}\vspace{0.8ex}\\[0.5\baselineskip]
-  \begin{small}}
- {\end{small}\end{minipage}\end{lrbox}
-  \begin{figure*}[ht]
-  \centering
-  \fboxsep 0.5em
-  \fcolorbox{black}{amarillo}{
-  \usebox{\temporalbox}}
-  \end{figure*}}
+\newmdenv[
+    font=\small,
+    linecolor=black,
+    backgroundcolor=amarillo,
+    roundcorner=4pt,
+    frametitlefont=\normalsize\bfseries,
+    frametitle={$\vcenter{\hbox{\includegraphics[height=3ex]{graficos/atencion}}}$ Atención},
+    frametitlealignment={\hspace*{-\parindent}},
+    nobreak=true
+]{atencion}
 
-\usepackage{framed}           % Cuadros multihoja con color de fondo
-
-% Cuadros de referencia del lenguaje. - Icono: logo python
-\newenvironment{referencia_python}
- {\definecolor{shadecolor}{rgb}{0.85,1.00,0.85}%
-  \begin{shaded}%
-  \begin{minipage}{0.80\textwidth}\hspace{-1em}\bf Referencia del lenguaje Python\end{minipage}%
-  \hfill%
-  \begin{minipage}{0.05\textwidth}\includegraphics[height=4ex]{graficos/logo-python}\end{minipage}\\
-  \rule[1.00ex]{1.0\textwidth}{0.01ex}\\
-  \vspace{-2ex}%
-  \begin{small}}
- {\end{small}\end{shaded}}
+\newmdenv[
+    font=\small,
+    backgroundcolor=verde,
+    hidealllines=true,
+    frametitlerule=true,
+    frametitlefont=\normalsize\bfseries,
+    frametitle={Referencia Python\hfill$\vcenter{\hbox{\includegraphics[height=4ex]{graficos/logo-python}}}$},
+    frametitlealignment={\hspace*{-\parindent}}
+]{referencia_python}
 
 \newenvironment{sintaxis}[1]
-  {\hspace{-1em}\textbf{#1}%
-   \vspace{1ex}\\
-   \begin{minipage}{0.05\textwidth}\end{minipage}\hfill\begin{minipage}{0.90\textwidth}}
-  {\end{minipage}\hfill\begin{minipage}{0.05\textwidth}\end{minipage}\\}
+  {\mdfsubtitle[
+    subtitlebackgroundcolor=verde,
+    subtitleaboveskip=4pt,
+    subtitlebelowskip=8pt,
+    subtitleinneraboveskip=8pt,
+    subtitleinnerbelowskip=0pt
+  ]{#1}\parskip=0pt}
+  {}
 
 \usepackage{float}            % Agrega estilos a los floats
 
