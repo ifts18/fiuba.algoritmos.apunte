@@ -9,6 +9,7 @@ $ make
 ## Licencia y copyright
 
 Copyright (C) 2008-2016
+
 * Rosita Wachenchauzer <rositaw@gmail.com>
 * Margarita Manterola <margamanterola@gmail.com>
 * Maximiliano Curia <maxy@gnuservers.com.ar>

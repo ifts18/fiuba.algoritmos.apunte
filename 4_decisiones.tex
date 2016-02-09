@@ -450,18 +450,32 @@ No sólo mediante los operadores vistos (como \lstinline!>! o \lstinline!==!)
 es posible obtener expresiones booleanas.  En Python, se consideran
 \textit{verdaderos} los valores numéricos distintos de 0, las cadenas de
 caracteres que no son vacías, y en general cualquier valor que no sea 0 o
-vacío.  Mientras que los valores 0 o vacíos se consideran \textit{falsos}.
+vacío.  Mientras que los valores nulos o vacíos se consideran \textit{falsos}.
 
-Así, el ejemplo anterior también podría escribirse de la siguiente manera:
+Así, en el ejemplo anterior la línea
+
 \begin{codigo-python-sn}
-def pos_cero_o_neg():
-    x = int(input("Ingrese un número: "))
-    if x > 0:
-       print("Número positivo")
-    elif (@not x@):
-       print("Igual a 0")
-    else:
-       print("Número negativo")
+elif x == 0:
+\end{codigo-python-sn}
+
+también podría escribirse de la siguiente manera:
+
+\begin{codigo-python-sn}
+elif not x:
+\end{codigo-python-sn}
+
+Además, en Python existe un valor especial llamado |None| que se utiliza
+comunmente para representar la ausencia de un valor. Podemos preguntar si una
+variable |v| es |None| simplemente con:
+
+\begin{codigo-python-sn}
+if v is None:
+\end{codigo-python-sn}
+
+O, como |None| también es considerado un valor nulo,
+
+\begin{codigo-python-sn}
+if not v:
 \end{codigo-python-sn}
 \end{sabias_que}
 
