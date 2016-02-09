@@ -515,7 +515,7 @@ agenda, que almacena los datos del programa en archivos csv.
 \subsection{Persistencia en archivos binarios}
 
 En el caso de que decidiéramos grabar los datos en un archivo binario,
-Python incluye una herramienta llamada \textbf{pickle} que permite hacerlo
+Python incluye una herramienta llamada \textit{pickle} que permite hacerlo
 de forma muy sencilla.  Hay que tener en cuenta, sin embargo, que no es
 nada simple acceder a un archivo en este formato desde un programa que no
 esté escrito en Python.
@@ -523,7 +523,8 @@ esté escrito en Python.
 En el Código \ref{puntajes_pickle} se muestra el mismo ejemplo de
 almacenamiento de puntajes, utilizando el módulo \lstinline!pickle!.
 
-\begin{codigo}{puntajes\_pickle.py}{Módulo para guardar y recuperar puntajes en un archivo que usa pickle}
+\begin{codigo}{puntajes\_pickle.py}{Módulo para guardar y recuperar puntajes en
+    un archivo que usa {\it pickle}}
 \label{puntajes_pickle}
 \lstinputlisting{src/11_archivos/puntajes_pickle.py}
 \end{codigo}
@@ -541,7 +542,7 @@ X....8:42q..q.e.
 \end{codigo-nohl-sn}
 
 En el apéndice de esta unidad puede verse una aplicación completa de una
-agenda, que utiliza |pickle| para almacenar datos en archivos.
+agenda, que utiliza {\it pickle} para almacenar datos en archivos.
 
 \section{Directorios}
 
@@ -728,15 +729,29 @@ con el formato \lstinline!clave, valor!.
 \newpage
 \section{Apéndice}
 
-A continuación, el código para un programa de agenda que utiliza archivos
-csv. Luego, los cambios necesarios para que la agenda que utilice archivos
-en formato pickle, en lugar de csv.
+A continuación se muestra un programa de agenda que utiliza archivos
+CSV. Luego se muestran los cambios necesarios para que la agenda que utilice archivos
+en formato {\it pickle}, en lugar de CSV.
 
-\lstinputlisting[tabsize=4,basicstyle=\small\ttfamily,
-title=\texttt{agenda-csv.py} Agenda con los datos en csv,
-label=agenda_csv]{src/11_archivos/agenda-csv.py}
+\tituloCodigo{\lstinline|agenda-csv.py| Agenda con los datos en formato CSV}
+\lstinputlisting{src/11_archivos/agenda-csv.py}
 
-\lstinputlisting[tabsize=4,basicstyle=\small\ttfamily,linerange=4-19,
-title=\texttt{agenda-pickle.py} Diferencia de agenda con datos en pickle,
-label=agenda_pickle]{src/11_archivos/agenda-pickle.py}
+\tituloCodigo{\lstinline|agenda-pickle.py| Modificaciones a la agenda para
+guardar los datos en formato {\it pickle}}
+\begin{codigo-python}
+import pickle, os
 
+ARCHIVO = "agenda.dat"
+
+def cargar_agenda(archivo):
+    """Carga todos los datos del archivo en una lista y la devuelve."""
+    if not os.path.exists(archivo):
+        return []
+    with open(archivo) as f:
+        return pickle.load(f)
+
+def guardar_agenda(datos, archivo):
+    """Guarda la agenda en el archivo."""
+    with open(archivo, "wb") as f:
+        pickle.dump(archivo, datos)
+\end{codigo-python}
