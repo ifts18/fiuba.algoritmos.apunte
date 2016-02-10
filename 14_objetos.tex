@@ -12,12 +12,12 @@ paradigma de programación llamado {\it Programación Orientada a Objetos}.
 Nosotros ya usamos objetos en Python sin mencionarlo explícitamente. Es más,
 todos los tipos de datos que Python nos provee son, en realidad, objetos.
 
-De forma que, cuando utilizamos \lstinline!miarchivo.readline()!, le estamos
-diciendo a Python que llame a la función \lstinline!readline! del tipo
-\lstinline!file! para \lstinline!miarchivo! que es lo mismo que decir que
-llame al {\it método} \lstinline!readline! del objeto \lstinline!miarchivo!.
+De forma que, cuando utilizamos \lstinline!cadena.upper()!, le estamos
+diciendo a Python que llame a la función \lstinline!upper! del tipo
+\lstinline!str! para \lstinline!cadena! que es lo mismo que decir que
+llame al {\it método} \lstinline!upper! del objeto \lstinline!cadena!.
 
-A su vez, a las variables que un objeto contiene, se las llama {\it
+A su vez, a las variables que un objeto contiene se las llama {\it
 atributos}.
 
 \begin{sabias_que}
@@ -39,32 +39,38 @@ muy difícil realizar el salto al nuevo paradigma.
 En los temas que vimos hasta ahora nos hemos encontrado con numerosos tipos
 provistos por Python, los {\it números}, las {\it cadenas de caracteres},
 las {\it listas}, las {\it tuplas}, los {\it diccionarios}, los {\it
-archivos}, etc.  Cada uno de estos tipos tiene sus características, tienen
-operaciones propias de cada uno y nos proveen una gran cantidad de
+archivos}, etc.  Cada uno de estos tipos tiene sus características, tiene
+operaciones propias de cada uno y nos provee de una gran cantidad de
 funcionalidades que podemos utilizar para nuestros programas.
 
-Como ya se dijo en unidades anteriores, para saber de qué tipo es una
-variable, utilizamos la función \lstinline!type!, y para saber qué métodos
-y atributos tiene esa variable utilizamos la función \lstinline!dir!.
+Como ya se dijo en unidades anteriores, para saber de qué tipo es un
+valor, utilizamos la función \lstinline!type!. Para saber qué métodos
+y atributos tiene ese valor utilizamos la función \lstinline!dir!:
 
 \begin{codigo-python-sn}
->>> a = open("archivo.txt")
->>> type(a)
-<type 'file'>
->>> dir(a)
-['__class__', '__delattr__', '__doc__', '__enter__', '__exit__',
-'__getattribute__', '__hash__', '__init__', '__iter__', '__new__',
-'__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__str__',
-'close', 'closed', 'encoding', 'fileno', 'flush', 'isatty', 'mode', 'name',
-'newlines', 'next', 'read', 'readinto', 'readline', 'readlines', 'seek',
-'softspace', 'tell', 'truncate', 'write', 'writelines', 'xreadlines']
+>>> f = open("archivo.txt")
+>>> type(f)
+<class '_io.TextIOWrapper'>
+>>> dir(f)
+['_CHUNK_SIZE', '__class__', '__del__', '__delattr__', '__dict__',
+'__dir__', '__doc__', '__enter__', '__eq__', '__exit__', '__format__',
+'__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__',
+'__init__', '__iter__', '__le__', '__lt__', '__ne__', '__new__',
+'__next__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__',
+'__sizeof__', '__str__', '__subclasshook__', '_checkClosed',
+'_checkReadable', '_checkSeekable', '_checkWritable', '_finalizing',
+'buffer', 'close', 'closed', 'detach', 'encoding', 'errors', 'fileno',
+'flush', 'isatty', 'line_buffering', 'mode', 'name', 'newlines',
+'read', 'readable', 'readline', 'readlines', 'seek', 'seekable',
+'tell', 'truncate', 'writable', 'write', 'writelines']
 \end{codigo-python-sn}
 
 En este caso, la función \lstinline!dir! nos muestra los métodos que tiene
-un objeto del tipo \lstinline!file!.  Podemos ver en el listado los métodos
+un objeto del tipo \lstinline!_io.TextIOWrapper! (el tipo que Python le asigna
+internamente a un archivo).  Podemos ver en el listado los métodos
 que ya hemos visto al operar con archivos, junto con otros métodos con
-nombres {\it raros} como \lstinline!__str__!, o \lstinline!__doc__!, estos
-métodos son especiales en Python, más adelante veremos para qué sirven y
+nombres {\it raros} como \lstinline!__str__!, o \lstinline!__doc__!. Estos
+métodos son especiales en Python; más adelante veremos para qué sirven y
 cómo se usan.
 
 En el listado que nos da \lstinline!dir! están los atributos y métodos
@@ -72,13 +78,13 @@ mezclados.  Si necesitamos saber cuáles son atributos y cuáles son métodos,
 podemos hacerlo nuevamente mediante el uso de \lstinline!type!.
 
 \begin{codigo-python-sn}
->>> type (a.name)
+>>> type(f.name)
 <type 'str'>
->>> a.name
+>>> f.name
 'archivo.txt'
->>> type (a.tell)
+>>> type (f.tell)
 <type 'builtin_function_or_method'>
->>> a.tell()
+>>> f.tell()
 0L
 \end{codigo-python-sn}
 
@@ -87,16 +93,17 @@ archivo), mientras que \lstinline!tell! es un método, que para utilizarlo
 debemos llamarlo con paréntesis.
 
 \begin{observacion}
-Como ya sabemos, en Python, los métodos se invocan con la {\it notación punto}:
+Como ya sabemos, en Python los métodos se invocan con la {\it notación punto}:
 \lstinline+archivo.tell()+, \lstinline+cadena.split(":")+.
 
 Analicemos la segunda expresión.  El significado de ésta es: la variable
-\lstinline!cadena!, llama al método \lstinline+split+ (del cual es dueña
+\lstinline!cadena! llama al método \lstinline+split+ (del cual es dueña
 por tratarse de una variable de tipo \lstinline!str!) con el argumento
 \lstinline+":"+.
 
 Sería equivalente a llamar a la función \lstinline!split! pasándole como
-primer parámetro la variable, y como segundo parámetro el delimitador.
+primer parámetro la variable |cadena|, y como segundo parámetro el delimitador
+|":"|.
 Pero la diferencia de notación resalta que el método \lstinline!split! es
 un método {\bf de} cadenas, y que no se lo puede utilizar con variables de
 otros tipos.
@@ -119,8 +126,8 @@ Por un lado, la definición del tipo, donde se indican cuáles son los
 atributos y métodos que van a tener todas las variables que sean de ese
 tipo.  Esta definición se llama específicamente, la {\bf clase} del objeto.
 
-A partir de una clase es posible crear distintas variables que son de ese
-tipo. A las variables que son de una clase en particular, se las llama
+A partir de una clase es posible crear distintos valores que son de ese
+tipo. A cada uno de los valores generados a partir de una clase se los llama
 {\bf instancia} de esa clase.
 
 \begin{observacion}
@@ -129,13 +136,6 @@ los valores que tengan los atributos de una instancia determinan el estado
 actual de esa instancia, y los métodos definidos en una clase determinan
 cómo se va a comportar ese objeto.
 \end{observacion}
-
-% Este ejemplo no me gusta, no lo pienso poner (Marga)
-% ¿que es un objeto? -> una maquinita específica que puede hacer algunas
-% operaciones sobre lo que contiene. O se lo puede imaginar como una
-% computadorita que maneja un grupito de datos y para utilizarlos entiende
-% algunos mensajes.
-% Algún ejemplo gráfico que sirva?
 
 \section{Definiendo nuevos tipos}
 
@@ -171,23 +171,22 @@ que las vayamos necesitando.
 En primer lugar, creamos una clase \lstinline!Punto! que simplemente
 almacena las coordenadas.
 
-\begin{codigo-python}
-class Punto(object):
-    """ Representación de un punto en el plano, los atributos son x e y
-        que representan los valores de las coordenadas cartesianas."""
-    def __init__(self, x=0, y=0):
-        "Constructor de Punto, x e y deben ser numéricos"
+\begin{codigo-python-sn}
+class Punto:
+    """Representación de un punto en el plano en
+       coordenadas cartesianas (x, y)"""
+
+    def __init__(self, x, y):
+        "Constructor de Punto. x e y deben ser numéricos"
         self.x = x
         self.y = y
-\end{codigo-python}
+\end{codigo-python-sn}
 
 En la primera línea de código indicamos que vamos a crear una nueva clase,
-llamada \lstinline!Punto!  La palabra \lstinline!object! entre paréntesis
-indica que la clase que estamos creando es un objeto básico, no está basado en
-ningún objeto más complejo.
+llamada \lstinline!Punto!.
 
 \begin{observacion}
-Por convención, en los nombres de las clases definidas por el programador, se
+Por convención, en los nombres de las clases definidas por el programador se
 escribe cada palabra del nombre con la primera letra en mayúsculas.  Ejemplos:
 \lstinline!Punto!, \lstinline!ListaEnlazada!, \lstinline!Hotel!.
 \end{observacion}
@@ -202,33 +201,39 @@ convención a ese primer parámetro se lo suele llamar \lstinline!self! (que
 podríamos traducir como {\it yo mismo}), pero puede llamarse de cualquier
 forma.
 
-Para definir atributos, basta con definir una variable dentro de la
-instancia, es una buena idea definir todos los atributos de nuestras
-instancias en el constructor, de modo que se creen con algún valor válido.
-En nuestro ejemplo \lstinline!self.x! y \lstinline!self.y! y se usarán como
-\lstinline!punto.x! y \lstinline!punto.y!.
+En nuestro caso el constructor recibe dos parámetros más, |x| e |y|. De esta
+forma indicamos que para crear una instancia de |Punto| será necesario proveer
+el valor de ambas coordenadas.
+
+En el cuerpo del constructor se definen los atributos, utilizando la notación
+punto con la instancia |self|. En este caso los atributos se llamarán igual que
+los parámetros del constryuctor, |x| e |y|, y se inicializan con el valor de
+los parámetros.
 
 Para utilizar esta clase que acabamos de definir, lo haremos de la
 siguiente forma:
 
 \begin{codigo-python-sn}
->>> p = Punto(5,7)
->>> print p
-<__main__.Punto object at 0x8e4e24c>
->>> print p.x
+>>> p = Punto(5, 7)
+>>> type(p)
+<class '__main__.Punto'>
+>>> p.x
 5
->>> print p.y
+>>> p.y
 7
 \end{codigo-python-sn}
 
-Al realizar la llamada \lstinline!Punto(5,7)!, se creó un nuevo punto, y se
-almacenó una referencia a ese punto en la variable \lstinline!p!. 5 y 7 son
-los valores que se asignaron a \lstinline!x! e \lstinline!y!
-respectivamente.
+Al realizar la llamada \lstinline!Punto(5, 7)!:
 
-Si bien nosotros no lo invocamos explícitamente, internamente Python
-realizó la llamada al método \lstinline!__init__!, asignando así los
-valores de la forma que se indica en el constructor.
+\begin{itemize}
+\item Se crea una nueva instancia de la clase |Punto|.
+\item Se ejecuta el constructor |__init__|, con |self| $\rightarrow$ la
+    instancia nueva, |x| $\rightarrow$ 5, |y| $\rightarrow$ 7.
+\item El constructor asigna los atributos |self.x| $\rightarrow$ 5, |self.y|
+    $\rightarrow$ 7.
+\item Cuando finaliza la ejecución del constructor, se asigna |p| $\rightarrow$
+    la instancia de |Punto| recién creada.
+\end{itemize}
 
 \subsection{Agregando validaciones al constructor}
 
@@ -240,9 +245,9 @@ asigne un valor cualquiera, no numérico.
 
 \begin{codigo-python-sn}
 >>> q = Punto("A", True)
->>> print q.x
-A
->>> print q.y
+>>> q.x
+'A'
+>>> q.y
 True
 \end{codigo-python-sn}
 
@@ -250,64 +255,40 @@ Si queremos impedir que esto suceda, debemos agregar validaciones al
 constructor, como las vistas en unidades anteriores.
 
 Verificaremos que los valores pasados para \lstinline!x! e \lstinline!y!
-sean numéricos, utilizando la función \lstinline!es_numero!, que
-incluiremos en un módulo llamado \lstinline!validaciones!:
+sean numéricos, utilizando la función \lstinline!validar_numero!:
 
 \begin{codigo-python-sn}
-def es_numero(valor):
-    """ Indica si un valor es numérico o no. """
-    return isinstance(valor, (int, float, long, complex) )
+def validar_numero(valor):
+    """Si el valor es numérico, lo devuelve.
+       En caso contrario lanza TypeError."""
+    if not isinstance(valor, (int, float, complex)):
+        raise TypeError("{:r} no es un valor numérico".format(valor))
+    return valor
 \end{codigo-python-sn}
 
-Y en el caso de que alguno de los valores no sea numérico, lanzaremos una
-excepción del tipo \lstinline!TypeError!.  El nuevo constructor quedará
-así:
+El nuevo constructor quedará así:
 
 \begin{codigo-python-sn}
-    def __init__(self, x=0, y=0):
-        """ Constructor de Punto, x e y deben ser numéricos,
-            de no ser así, se levanta una excepción TypeError """
-        if es_numero(x) and es_numero(y):
-            self.x=x
-            self.y=y
-        else:
-            raise TypeError("x e y deben ser valores numéricos")
+    def __init__(self, x, y):
+        """Constructor de Punto. x e y deben ser numéricos,
+           de no ser así, se levanta una excepción TypeError"""
+        self.x = validar_numero(x)
+        self.y = validar_numero(y)
 \end{codigo-python-sn}
 
 Este constructor impide que se creen instancias con valores inválidos para
 \lstinline!x! e \lstinline!y!.
 
 \begin{codigo-python-sn}
->>> p = Punto("A", True)
+>>> Punto("A", True)
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "<stdin>", line 11, in __init__
-TypeError: x e y deben ser valores numéricos
+  File "punto.py", line 12, in __init__
+    self.x = validar_numero(x)
+  File "punto.py", line 5, in validar_numero
+    raise TypeError("{!r} no es un valor numérico".format(valor))
+TypeError: 'A' no es un valor numérico
 \end{codigo-python-sn}
-
-\begin{sabias_que}
-Python cuenta con un listado de excepciones que se pueden lanzar ante
-distintas situaciones, en este caso se utilizó \lstinline!TypeError! que es
-la excepción que se lanza cuando una operación o función interna se aplica
-a un objeto de tipo inadecuado. El valor asociado es una cadena con
-detalles de la incoherencia de tipos.
-
-Otra excepción que podríamos querer utilizar es \lstinline!ValueError!, que
-se lanza cuando una operación o función interna recibe un argumento del
-tipo correcto, pero con un valor inapropiado y no es posible describir la
-situación con una excepción más precisa.
-
-Si la situación excepcional que queremos indicar no está cubierta por
-ninguna de las excepciones del lenguaje, podremos crear nuestra propia
-excepción.
-
-El listado completo de las excepciones provistas por el lenguaje se
-encuentra en:
-\begin{itemize}
-\item \url{http://docs.python.org/library/exceptions.html}
-\item \url{http://pyspanishdoc.sourceforge.net/lib/module-exceptions.html}
-\end{itemize}
-\end{sabias_que}
 
 \subsection{Agregando operaciones}
 
@@ -324,19 +305,19 @@ distancia.
 
 \begin{codigo-python-sn}
     def distancia(self, otro):
-        """ Devuelve la distancia entre ambos puntos. """
+        """Devuelve la distancia entre ambos puntos."""
         dx = self.x - otro.x
         dy = self.y - otro.y
-        return (dx*dx + dy*dy)**0.5
+        return (dx * dx + dy * dy) ** 0.5
 \end{codigo-python-sn}
 
 Una vez agregado este método a la clase, será posible obtener la distancia
 entre dos puntos, de la siguiente manera:
 
 \begin{codigo-python-sn}
->>> p = Punto(5,7)
->>> q = Punto(2,3)
->>> print p.distancia(q)
+>>> p = Punto(5, 7)
+>>> q = Punto(2, 3)
+>>> p.distancia(q)
 5.0
 \end{codigo-python-sn}
 
@@ -349,21 +330,23 @@ Agregaremos, entonces, el método para restar dos puntos:
 
 \begin{codigo-python-sn}
     def restar(self, otro):
-        """ Devuelve un nuevo punto, con la resta entre dos puntos. """
+        """Devuelve el Punto que resulta de la resta
+           entre dos puntos."""
         return Punto(self.x - otro.x, self.y - otro.y)
 \end{codigo-python-sn}
 
 La resta entre dos puntos es un nuevo punto.  Es por ello que este método
-devuelve un nuevo punto, en lugar de modificar el punto actual.
+devuelve una nueva instancia de |Punto|, en lugar de modificar las instancias
+|self| u |otro|.
 
-A continuación, definimos el método para calcular la norma del vector que
+A continuación definimos el método para calcular la norma del vector que
 se forma uniendo un punto con el origen.
 
 \begin{codigo-python-sn}
     def norma(self):
-        """ Devuelve la norma del vector que va desde el origen
-            hasta el punto. """
-        return (self.x*self.x + self.y*self.y)**0.5
+        """Devuelve la norma del vector que va desde el origen
+           hasta el punto. """
+        return (self.x * self.x + self.y * self.y) ** 0.5
 \end{codigo-python-sn}
 
 En base a estos dos métodos podemos ahora volver a escribir el método
@@ -371,9 +354,8 @@ En base a estos dos métodos podemos ahora volver a escribir el método
 
 \begin{codigo-python-sn}
     def distancia(self, otro):
-        """ Devuelve la distancia entre ambos puntos. """
-        r = self.restar(otro)
-        return r.norma()
+        """Devuelve la distancia entre ambos puntos."""
+        return self.restar(otro).norma()
 \end{codigo-python-sn}
 
 En definitiva, hemos definido tres operaciones en la clase
@@ -381,14 +363,14 @@ En definitiva, hemos definido tres operaciones en la clase
 al origen, y distancias entre puntos.
 
 \begin{codigo-python-sn}
->>> p = Punto(5,7)
->>> q = Punto(2,3)
+>>> p = Punto(5, 7)
+>>> q = Punto(2, 3)
 >>> r = p.restar(q)
->>> print r.x, r.y
-3 4
->>> print r.norma()
+>>> (r.x, r.y)
+(3, 4)
+>>> r.norma()
 5.0
->>> print q.distancia(r)
+>>> q.distancia(r)
 1.41421356237
 \end{codigo-python-sn}
 
@@ -417,13 +399,31 @@ Así como el constructor, \lstinline!__init__!, existen diversos métodos
 especiales que, si están definidos en nuestra clase, Python los llamará por
 nosotros cuando se utilice una instancia en situaciones particulares.
 
-\subsection{Un método para mostrar objetos}
+\subsection{Conversión a cadena de texto}
 
-Para mostrar objetos, Python indica que hay que agregarle a la clase un
-método especial, llamado \lstinline+__str__+ que debe devolver una cadena
-de caracteres con lo que queremos mostrar. Ese método se invoca cada vez
-que se llama a la función \lstinline!str!.
+Veamos qué pasa cuando intentamos convertir la instancia de |Punto| a una
+cadena de texto:
 
+\begin{codigo-python-sn}
+>>> p = Punto(5, 7)
+>>> str(p)
+'<__main__.Punto object at 0x7fa6da7694a8>'
+\end{codigo-python-sn}
+
+Esto no resulta muy satisfactorio. Lo mismo sucede cuando intentamos imprimir
+el objeto con |print| (internamente la función |print| aplica la función |str|
+a todos los objetos que recibe antes de imprimirlos):
+
+\begin{codigo-python-sn}
+>>> print(p)
+<__main__.Punto object at 0x7fa6da7694a8>
+\end{codigo-python-sn}
+
+Para poder modificar el comportamiento del objeto al convertir a cadena, Python
+indica que hay que agregarle a la clase un método especial, llamado
+\lstinline+__str__+ que debe recibir un solo parámetro (|self|), y
+debe devolver la cadena de texto deseada.  Ese método
+se invocará cuando se llame a la función \lstinline!str!.
 El método \lstinline+__str__+ tiene un solo parámetro, \lstinline!self!.
 
 En nuestro caso decidimos mostrar el punto como un par ordenado, por lo que
@@ -431,24 +431,21 @@ escribimos el siguiente método dentro de la clase \lstinline!Punto!:
 
 \begin{codigo-python-sn}
     def __str__(self):
-        """ Muestra el punto como un par ordenado. """
-        return "(" + str(self.x) + ", " + str(self.y) + ")"
+        """Devuelve la representación del Punto como
+           cadena de texto."""
+        return "({}, {})".format(self.x, self.y)
 \end{codigo-python-sn}
 
 Una vez definido este método, nuestro punto se mostrará como un par
 ordenado cuando se necesite una representación de cadenas.
 
 \begin{codigo-python-sn}
->>> p = Punto(-6,18)
+>>> p = Punto(-6, 18)
 >>> str(p)
 '(-6, 18)'
->>> print p
+>>> print(p)
 (-6, 18)
 \end{codigo-python-sn}
-
-Vemos que con \lstinline!str(p)! se obtiene la cadena construida dentro de
-\lstinline!__str__!, y que internamente Python llama a \lstinline!__str__!
-cuando se le pide que imprima una variable de la clase \lstinline!Punto!.
 
 \begin{sabias_que}
 Muchas de las funciones provistas por Python, que ya hemos utilizado en
@@ -457,7 +454,7 @@ unidades anteriores, como \lstinline!str!, \lstinline!len! o
 objetos.
 
 Es decir que la función \lstinline!str!  internamente invoca al método
-\lstinline!__str__! del objeto que recibe como parámetro. Y de la misma
+\lstinline!__str__! del objeto que recibe como parámetro. De la misma
 manera \lstinline!len! invoca internamente al método \lstinline!__len__!,
 si es que está definido.
 
@@ -465,6 +462,54 @@ Cuando mediante \lstinline!dir! vemos que un objeto tiene alguno de estos
 métodos especiales, utilizamos la función de Python correspondiente
 a ese método especial.
 \end{sabias_que}
+
+La conversión a cadena con |__str__| funciona con |str| y con |print|, pero aun
+hay algunos casos en los que Python imprime la representación por omisión:
+
+\begin{codigo-python-sn}
+>>> p = Punto(-6, 18)
+>>> str(p)
+'(-6, 18)'
+>>> p
+<__main__.Punto object at 0x7fa6da7694a8>
+>>> str([p])
+'[<__main__.Punto object at 0x7fa6da7694a8>]'
+>>> [p]
+[<__main__.Punto object at 0x7fa6da7694a8>]
+\end{codigo-python-sn}
+
+En estos casos, en lugar de llamar a |str| Python llama a la función |repr|.
+Mientras que La función |str| se usa para obtener una representación
+``informal'' o ``legible'' del objeto, pensada tal vez para mostrar a un
+usuario, el objetivo de |repr| es obtener una representación ``formal'' y
+``desambiguada'', pensada para mostrar a un programador:
+
+\begin{codigo-python-sn}
+>>> str("hola")
+'hola'
+>>> repr("hola")
+"'hola'"
+\end{codigo-python-sn}
+
+Internamente, la función |repr| invoca al método |__repr__| del objeto, y
+podemos implementarlo para modificar el comportamiento por omisión:
+
+\begin{codigo-python-sn}
+    def __repr__(self):
+        """Devuelve la representación formal del Punto como
+           cadena de texto."""
+        return "Punto({}, {})".format(self.x, self.y)
+\end{codigo-python-sn}
+
+\begin{codigo-python-sn}
+>>> p = Punto(-6, 18)
+>>> str(p)
+'(-6, 18)'
+>>> repr(p)
+'Punto(-6, 18)'
+>>> p
+Punto(-6, 18)
+\end{codigo-python-sn}
 
 \subsection{Métodos para operar matemáticamente}
 
@@ -475,7 +520,7 @@ realizar una resta con el operador \lstinline!-!.
 \begin{codigo-python-sn}
 >>> p = Punto(3,4)
 >>> q = Punto(2,5)
->>> print p - q
+>>> p - q
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unsupported operand type(s) for -: 'Punto' and 'Punto'
@@ -486,16 +531,16 @@ será necesario implementar algunos métodos especiales.
 
 \begin{codigo-python-sn}
     def __add__(self, otro):
-        """ Devuelve la suma de ambos puntos. """
+        """Devuelve la suma de ambos puntos."""
         return Punto(self.x + otro.x, self.y + otro.y)
 
     def __sub__(self, otro):
-        """ Devuelve la resta de ambos puntos. """
+        """Devuelve la resta de ambos puntos."""
         return Punto(self.x - otro.x, self.y - otro.y)
 \end{codigo-python-sn}
 
 El método \lstinline!__add__! es el que se utiliza para el operador
-\lstinline!+!, el primer parámetro es el primer operando de la suma, y el
+\lstinline!+!; el primer parámetro es el primer operando de la suma, y el
 segundo parámetro el segundo operando.  Debe devolver una nueva instancia,
 nunca modificar la clase actual.  De la misma forma, el método
 \lstinline!__sub__! es el utilizado por el operador \lstinline!-!.
@@ -504,11 +549,11 @@ Ahora es posible operar con los puntos directamente mediante los
 operadores, en lugar de llamar a métodos:
 
 \begin{codigo-python-sn}
->>> p = Punto(3,4)
->>> q = Punto(2,5)
->>> print p - q
+>>> p = Punto(3, 4)
+>>> q = Punto(2, 5)
+>>> p - q
 (1, -1)
->>> print p + q
+>>> p + q
 (5, 9)
 \end{codigo-python-sn}
 
@@ -517,7 +562,7 @@ matemático, será necesario definir el método apropiado.
 
 \begin{sabias_que}
 La posibilidad de definir cuál será el comportamiento de los operadores
-básicos (como \lstinline!+, -, *, /!), se llama {\bf sobrecarga de
+básicos (como |+|, |-|, |*|, |/|), se llama {\bf sobrecarga de
 operadores}.
 
 No todos los lenguajes lo permiten, y si bien es cómodo y permite que el
@@ -526,7 +571,7 @@ Objetos.
 
 Entre los lenguajes más conocidos que no soportan sobrecarga de operadores
 están C, Java, Pascal, Objective C.  Entre los lenguajes más conocidos que
-sí soportan sobrecarga de operadores están Python, C++, C\#, Perl, Ruby.
+sí soportan sobrecarga de operadores están Python, C++, C\#, Ruby, PHP.
 \end{sabias_que}
 
 \section{Creando clases más complejas}
@@ -539,7 +584,7 @@ sus valores de relación calidad-precio, de modo tal que {\it x < y} signifique
 que el hotel $x$ es peor en cuanto a la relación calidad-precio que el hotel
 $y$, y que dos hoteles son iguales si tienen la misma relación calidad-precio.
 La relación calidad-precio de un hotel la definen nuestros clientes como
-$(puntaje^2)*10./precio$.
+$10 \cdot puntaje^2 / precio$.
 
 Además, y como resultado de todo esto, tendremos que ser capaces
 de ordenar de menor a mayor una lista de hoteles, usando el orden que nos
@@ -560,94 +605,78 @@ Empezamos diseñar a la clase:
 
 \begin{itemize}
 \item Creará objetos de la clase \lstinline!Hotel! con los atributos que se
-indicaron (nombre, ubicación, puntaje, precio).
+indicaron (|nombre|, |ubicacion|, |puntaje|, |precio|).
 
-\item Los valores por omisión para la construcción son: puntaje en 0,
-precio en \lstinline!float("inf")! (infinito), nombre y ubicación en '*'
-(el precio muy alto sirve para que si no se informa el precio de un hotel,
-se asuma el mayor valor posible.
-
-\item Necesitamos validar que puntaje y precio sean números (utilizaremos
-la función \lstinline!es_numero! que ya se usó en el caso de los puntos).
-Cuando un precio viene en cero se reemplaza su valor por
-\lstinline!float("inf")!  (de modo de asegurar que el precio nunca quede en
-cero).
+\item Necesitamos validar que |puntaje| y |precio| sean números positivos.
+Para esto utilizaremos una función |validar_numero_positivo| similar a la
+función |validar_numero| que usamos para la clase |Punto|.
 
 \item Necesitamos validar que nombre y ubicación sean cadenas no vacías
 (para lo cual tenemos que construir una función
-\lstinline!es_cadena_no_vacia!).
+\lstinline!validar_cadena_no_vacia!).
 
 \item Cuando los datos no satisfagan los requisitos se levantará una
 excepción \lstinline!TypeError!.
 \end{itemize}
 
 \item Contará con un método \lstinline+__str__+ para mostrar a los hoteles
-mediante una cadena del estilo: \\
-\lstinline+"Hotel City de Mercedes - Puntaje: 3.25 - Precio: 78 pesos"+.
+mediante una cadena del estilo:
+|"Hotel City de Mercedes - Puntaje: 3.25 - Precio: 78 pesos"|.
 
 \item Respecto a la relación de orden entre hoteles, la clase deberá poder
 contar con los métodos necesarios para realizar esas comparaciones y para
 ordenar una lista de hoteles.
 \end{itemize}
 
-Casi todas las tareas, podemos realizarlas con los temas vistos para la
+Podemos realizar casi todas las tareas con los temas vistos para la
 creación de la clase \lstinline!Punto!.  Para el último ítem deberemos
 introducir nuevos métodos especiales.
 
-\ejercicioc{Escribir la función \lstinline!es_cadena_no_vacia(valor)! que
-decide si un valor cualquiera es una cadena no vacía o no, e incluirla en
-el módulo \lstinline!validaciones!.} \\
+\ejercicioc{Escribir las funciones |validar_numero_positivo| y
+|validar_cadena_no_vacia|, que deben lanzar |TypeError| si la
+validación del valor falla, y en caso contrario simplemente devolver el valor.
+Incluir todas las funciones de validación en un módulo |validaciones.py|.}
 
 El fragmento inicial de la clase programada en Python queda así:
 
 \begin{codigo-python}
-class Hotel(object):
-    """ Hotel: sus atributos son: nombre, ubicacion, puntaje y precio. """
+class Hotel:
+    """Representa un hotel: sus atributos son:
+       nombre, ubicacion, puntaje y precio."""
 
-    def __init__(self, nombre = '*', ubicacion = '*',
-                 puntaje = 0, precio = float("inf")):
-        """ nombre y ubicacion deben ser cadenas no vacías,
-            puntaje y precio son números.
-            Si el precio es 0 se reemplaza por infinito. """
-
-        if es_cadena_no_vacia (nombre):
-            self.nombre = nombre
-        else:
-            raise TypeError ("El nombre debe ser una cadena no vacía")
-
-        if es_cadena_no_vacia (ubicacion):
-            self.ubicacion = ubicacion
-        else:
-            raise TypeError ("La ubicación debe ser una cadena no vacía")
-
-        if es_numero(puntaje):
-            self.puntaje = puntaje
-        else:
-            raise TypeError ("El puntaje debe ser un número")
-
-        if es_numero(precio):
-            if precio != 0:
-                self.precio = precio
-            else:
-                self.precio = float("inf")
-        else:
-            raise TypeError("El precio debe ser un número")
+    def __init__(self, nombre, ubicacion, puntaje, precio):
+        """Crea un Hotel.
+           nombre y ubicacion deben ser cadenas no vacías,
+           puntaje y precio son números."""
+        self.nombre = validar_cadena_no_vacia(nombre)
+        self.ubicacion = validar_cadena_no_vacia(ubicacion)
+        self.puntaje = validar_numero_positivo(puntaje)
+        self.precio = validar_numero_positivo(precio)
 
     def __str__(self):
-        """ Muestra el hotel según lo requerido. """
-        return self.nombre + " de "+ self.ubicacion+ \
-                " - Puntaje: " + str(self.puntaje) + " - Precio: "+ \
-                str(self.precio)+ " pesos."
+        """Conversión a cadena de texto."""
+        return "{} de {} - Puntaje: {} - Precio: {} pesos".format(
+            self.nombre,
+            self.ubicacion,
+            self.puntaje,
+            self.precio,
+        )
+
+    def ratio(self):
+        """Calcula la relación calidad-precio de un hotel"""
+        return ((self.puntaje ** 2) * 10) / self.precio
 \end{codigo-python}
 
-Con este código tenemos ya la posibilidad de construir hoteles, con los
-atributos de los tipos correspondientes, y de mostrar los hoteles según nos
-lo han solicitado.
+Con este código tenemos ya la posibilidad de construir un hotel, asegurando que
+los atributos de los tipos correspondientes, mostrarlo según nos lo
+han solicitado y calcular su relación calidad-precio:
 
 \begin{codigo-python-sn}
->>> h = Hotel("Hotel City", "Mercedes", 3.25, 78)
->>> print h
-Hotel City de Mercedes - Puntaje: 3.25 - Precio: 78 pesos.
+>>> h = Hotel("Hotel City", "Mercedes", 3.2, 20)
+>>> print(h)
+Hotel City de Mercedes - Puntaje: 3.2 - Precio: 20 pesos.
+>>> h.ratio()
+5.12
 \end{codigo-python-sn}
 
 \subsection{Métodos para comparar objetos}
@@ -655,59 +684,46 @@ Hotel City de Mercedes - Puntaje: 3.25 - Precio: 78 pesos.
 Para resolver las comparaciones entre hoteles, será necesario definir
 algunos métodos especiales que permiten comparar objetos.
 
-En particular, cuando se quiere que los objetos puedan ser ordenados, el
-método que se debe definir es \lstinline!__cmp__!, que debe devolver:
+En particular, cuando se quiere que los objetos puedan ser ordenados, es
+suficiente con definir el método |__lt__| ({\it less than}), que corresponde al
+operador matemático de comparación |<|. El método |__lt__| recibe dos
+parámetros, |self| y |otro| y debe devolver |True| si |self| es
+comparativamente ``menor'' a |otro|.
 
-\begin{itemize}
-\item {\bf Un valor entero menor a cero}, si el primer parámetro es menor al
-segundo.
-\item {\bf Un valor entero mayor a cero}, si el primer parámetro es mayor
-que el segundo.
-\item {\bf Cero}, si ambos parámetros son iguales.
-\end{itemize}
-
-Para crear el método \lstinline!__cmp__!, definiremos primero un método
-auxiliar \lstinline!ratio(self)! que calcula la relación calidad-precio de
-una instancia de Hotel según la fórmula indicada:
+En el caso de nuestra clase |Hotel|, podemos decir que un hotel es ``menor'' a
+otro si su relación calidad-precio es menor:
 
 \begin{codigo-python-sn}
-    def ratio(self):
-        """ Calcula la relación calidad-precio de un hotel de acuerdo
-            a la fórmula que nos dio el cliente. """
-        return ((self.puntaje**2)*10.)/self.precio
+    def __lt__(self, otro):
+        """Compara dos hoteles según sus ratios."""
+        return self.ratio() < otro.ratio()
 \end{codigo-python-sn}
 
-A partir de este método es muy fácil crear un método \lstinline!__cmp__!
-que cumpla con la especificación previa.
-
-\begin{codigo-python-sn}
-    def __cmp__(self, otro):
-        diferencia = self.ratio() - otro.ratio()
-        if diferencia < 0:
-            return -1
-        elif diferencia > 0:
-            return 1
-        else:
-            return 0
-\end{codigo-python-sn}
-
-Una vez que está definida esta función podremos realizar todo tipo de
-comparaciones entre los hoteles:
+Una vez que está definida esta función podremos realizar comparaciones
+entre los hoteles:
 
 \begin{codigo-python-sn}
 >>> h = Hotel("Hotel City", "Mercedes", 3.25, 78)
 >>> i = Hotel("Hotel Mascardi", "Bariloche", 6, 150)
 >>> i < h
 False
->>> i == h
-False
 >>> i > h
 True
 \end{codigo-python-sn}
 
+Al implementar el método |__lt__|, las instancias de la clase se pueden
+comparar con los operadores |<| y |>| (El operador |>| se fija primero si
+existe |__gt__|, y si no existe invoca a |__lt__|).
+
+Pero aún quedan sin definir las operaciones |==|, |!=|, |<=| y |>=|.  Si
+queremos tener la posibilidad de preguntar si dos instancias son ``iguales'' o
+``distintas`` con |==| y |!=|, tenemos que definir el método |__eq__|. Y si
+queremos tener la posibilidad de comparar con |<=| o |>=| tenemos que
+implementar el método |__le__|.
+
 \subsection{Ordenar de menor a mayor listas de hoteles}
 
-En una unidad anterior vimos que se puede ordenar una lista usando el
+En la sección \ref{ordenar} vimos que se puede ordenar una lista usando el
 método \lstinline!sort!:
 
 \begin{codigo-python-sn}
@@ -718,16 +734,16 @@ método \lstinline!sort!:
 \end{codigo-python-sn}
 
 De la misma forma, una vez que hemos definido el método
-\lstinline!__cmp__!, podemos ordenar listas de hoteles, ya que
+\lstinline!__lt__!, podemos ordenar listas de hoteles, ya que
 internamente el método \lstinline!sort! comparará los hoteles mediante
 el método de comparación que hemos definido:
 
 \begin{codigo-python-sn}
->>> h1=Hotel("Hotel 1* normal", "MDQ", 1, 10)
->>> h2=Hotel("Hotel 2* normal", "MDQ", 2, 40)
->>> h3=Hotel("Hotel 3* carisimo", "MDQ", 3, 130)
->>> h4=Hotel("Hotel vale la pena" ,"MDQ", 4, 130)
->>> lista = [ h1, h2, h3, h4 ]
+>>> h1 = Hotel("Hotel 1* normal", "MDQ", 1, 10)
+>>> h2 = Hotel("Hotel 2* normal", "MDQ", 2, 40)
+>>> h3 = Hotel("Hotel 3* carisimo", "MDQ", 3, 130)
+>>> h4 = Hotel("Hotel vale la pena" ,"MDQ", 4, 130)
+>>> lista = [h1, h2, h3, h4]
 >>> lista.sort()
 >>> for hotel in lista:
 ...     print hotel
@@ -768,128 +784,85 @@ aparece en cuarto lugar en la lista.
 
 Hemos por lo tanto ordenado la lista de acuerdo al criterio solicitado.
 
-% TODO: esto probablemente iría mejor dentro de la unidad de listas,
-% cuando se habla de sort.
-%
-%Veamos un ejemplo sencillo. Supongamos que queremos ordenar las lista de
-%números por su valor absoluto.
-%En ese caso definimos una función \lstinline!compAbs! como:
-%\begin{verbatim}
-%>>> def compAbs(x,y):
-%    if abs(x)==abs(y):
-%        return 0
-%    elif abs(x)<abs(y):
-%        return -1
-%    else:
-%        return 1
-%
-%>>>
-% \end{verbatim}
-%
-%y ordenamos la lista anterior según ese nuevo criterio:
-%
-%\begin{verbatim}
-%>>> l1.sort(cmp=compAbs)
-%>>> l1
-%[0, -5, 8, 10, 12]
-%>>>
-%\end{verbatim}
-%
-
 \subsection{Otras formas de comparación}
 
 Si además de querer listar los hoteles por su relación calidad-precio
 también se quiere poder listarlos según su puntaje, o según su precio, no
-se lo puede hacer mediante el método \lstinline!__cmp__!.
+se lo puede hacer mediante el método \lstinline!__lt__! (a menos que
+redefinamos el método, pero eso sería poco práctico).
 
 Para situaciones como esta, \lstinline!sort! puede recibir, opcionalmente,
-otro parámetro que es la función de comparación a utilizar.  Esta función
-deberá cumplir con el mismo formato que el método \lstinline!__cmp__!, pero
-puede ser una función cualquiera, ya sea un método de una clase o una
-función externa.
+otro parámetro |key| que es la función que calcula la {\it clave de comparación}
+de cada elemento.
 
-Además, para simplificar la escritura de este tipo de funciones, podemos
-utilizar la función de Python \lstinline!cmp!, que si le pasamos dos
-númeroes, devuelve los valores de la forma que necesitamos.
+La clave de comparación es simplemente el valor numérico que queremos asignar a
+cada elemento para comparar y ordenar. Cuando ordenamos los hoteles en el
+ejemplo anterior, podríamos decir que la clave de comparación era el ratio, y
+por lo tanto podríamos haber ordenado de la siguiente manera, sin necesidad de
+implementar |__lt__|:
 
 \begin{codigo-python-sn}
-    def cmpPrecio(self, otro):
-        """ Compara dos hoteles por su precio. """
-        return cmp(self.precio, otro.precio)
-
-    def cmpPuntaje(self, otro):
-        """ Compara dos hoteles por su puntaje. """
-        return cmp(self.puntaje, otro.puntaje)
+lista.sort(key=Hotel.ratio)
 \end{codigo-python-sn}
 
-Así, para ordenar según el precio, deberemos hacerlo de la siguiente forma:
+Así, para ordenar según el precio:
 
 \begin{codigo-python-sn}
->>> h1 = Hotel("Hotel Guadalajara", "Pinamar", 2, 55)
->>> h2 = Hotel("Hostería París", "Rosario", 1, 35)
->>> h3 = Hotel("Apart-Hotel Estocolmo", "Esquel", 3, 105)
->>> h4 = Hotel("Posada El Cairo", "Salta", 2.5, 15)
->>> lista = [ h1, h2, h3, h4 ]
->>> lista.sort(cmp=Hotel.cmpPrecio)
+>>> def precio(hotel):
+...     return hotel.precio
+>>> lista.sort(key=precio)
 >>> for hotel in lista:
 ...     print hotel
 ...
-Posada El Cairo de Salta - Puntaje: 2.5 - Precio: 15 pesos.
-Hostería París de Rosario - Puntaje: 1 - Precio: 35 pesos.
-Hotel Guadalajara de Pinamar - Puntaje: 2 - Precio: 55 pesos.
-Apart-Hotel Estocolmo de Esquel - Puntaje: 3 - Precio: 105 pesos.
+Hotel 1* normal de MDQ - Puntaje: 1 - Precio: 10 pesos.
+Hotel 2* normal de MDQ - Puntaje: 2 - Precio: 40 pesos.
+Hotel 3* carisimo de MDQ - Puntaje: 3 - Precio: 130 pesos.
+Hotel vale la pena de MDQ - Puntaje: 4 - Precio: 130 pesos.
 \end{codigo-python-sn}
 
 \subsection{Comparación sólo por igualdad o desigualdad}
 
 Existen clases, como la clase \lstinline!Punto! vista anteriormente, que no
 se pueden ordenar, ya que no se puede decir si dos puntos son menores o
-mayores, con lo cual no se puede implementar un método \lstinline!__cmp__!.
+mayores, con lo cual no se puede implementar un método \lstinline!__lt__!.
 
 Pero en estas clases, en general, será posible comparar si dos objetos son
 o no iguales, es decir si tienen o no el mismo valor, aún si se trata de
 objetos distintos.
 
 \begin{codigo-python-sn}
->>> p = Punto(3,4)
->>> q = Punto(3,4)
+>>> p = Punto(3, 4)
+>>> q = Punto(3, 4)
 >>> p == q
 False
 \end{codigo-python-sn}
 
 En este caso, por más que los puntos tengan el mismo valor, al no estar
 definido ningún método de comparación Python no sabe cómo comparar los
-valores, y lo que compara son las variables.  \lstinline!p! y \lstinline!q!
-son variables distintas, por más que tengan los mismos valores.
+valores, y lo que compara son las instancias.  \lstinline!p! y \lstinline!q!
+son instancias distintas, por más que tengan los mismos valores.
 
-Para obtener el comportamiento esperado en estos casos, se redefinen los
-métodos \lstinline!__eq__! (correspondiente al operador \lstinline!==!) y
-\lstinline!__ne__! (correspondiente a \lstinline+!=+).
-
-De forma que para poder comparar si dos puntos son o no iguales, deberemos
-agregar los siguientes dos métodos a la clase Punto:
+Para obtener el comportamiento esperado en estos casos, se redefine el
+método \lstinline!__eq__!. Por ejemplo, el método |__eq__| para la clase
+|Punto| sería:
 
 \begin{codigo-python-sn}
     def __eq__(self, otro):
-        """ Devuelve si dos puntos son iguales. """
+        """Devuelve si dos puntos son iguales."""
         return self.x == otro.x and self.y == otro.y
-
-    def __ne__(self, otro):
-        """ Devuelve si dos puntos son distintos. """
-        return not self == otro
 \end{codigo-python-sn}
 
 Una vez agregados estos métodos ya se puede comparar los puntos por su
 igualdad o desigualdad:
 
 \begin{codigo-python-sn}
->>> p = Punto(3,4)
->>> q = Punto(3,4)
+>>> p = Punto(3, 4)
+>>> q = Punto(3, 4)
 >>> p == q
 True
 >>> p != q
 False
->>> r = Punto(2,3)
+>>> r = Punto(2, 3)
 >>> p == r
 False
 >>> p != r
@@ -903,10 +876,10 @@ True
 atributos}) y operaciones sobre estos datos ({\it métodos}).
 
 \item Cada objeto es de una {\bf clase} o tipo, que define cuáles
-serán sus atributos y métodos. Y cuando se crea una variable de una
-clase en particular, se crea una {\bf instancia} de esa clase.
+serán sus atributos y métodos. Y cuando se crea un valor a partir de una
+clase en particular, decimos que se crea una {\bf instancia} de esa clase.
 
-\item Para nombrar una clase definida por el programador, se suele una letra
+\item Para nombrar una clase definida por el programador, se suele usar una letra
 mayúscula al comienzo de cada palabra.
 
 \item El {\bf constructor} de una clase es el método que se ejecuta cuando
@@ -919,12 +892,8 @@ mostrar, sumar, comparar u ordenar los objetos.
 
 \begin{referencia_python}
 
-\begin{sintaxis}{\lstinline!class una_clase(object):!}
-Indica que se comienza a definir una clase con el nombre
-\lstinline!una_clase!, que está basada en la clase \lstinline!object!.
-
-Dentro de la clase se definen sus métodos y atributos, todos con un
-nivel de indentación mayor.
+\begin{sintaxis}{\lstinline!class NombreClase:!}
+Indica que se comienza a definir una clase con el nombre indicado.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!def __init__(self, ...):!}
@@ -933,10 +902,14 @@ constructor se establecen los valores iniciales de todos los
 atributos.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline!variable = una_clase(...)!}
-Crea una nueva instancia de la clase \lstinline!una_clase!, los
+\begin{sintaxis}{\lstinline!variable = NombreClase(...)!}
+Crea una nueva instancia de la clase. Los
 parámetros que se ingresen serán pasados al constructor, luego del
 parámetro especial \lstinline!self!.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!variable.atributo!}
+Permite obtener o modificar el valor de un atributo de la instancia.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!def metodo(self, ...)!}
@@ -948,22 +921,19 @@ convención \lstinline!self!, pero puede tener cualquier nombre.
 \begin{sintaxis}{\lstinline!variable.metodo(...)!}
 Invoca al método \lstinline!metodo! de la clase de la cual
 \lstinline!variable! es una instancia.  El primer parámetro que se le
-pasa a \lstinline!metodo! será \lstinline!variable!.
-\end{sintaxis}
-
-\begin{sintaxis}{\lstinline!variable.atributo!}
-Permite acceder al valor de un atributo de la instancia.  Se lo puede
-mostrar, guardar o modificar.
-\begin{codigo-python-sn}
-print variable.atributo # Muestra el valor
-a = variable.atributo   # Guarda el valor en otra variable
-variable.atributo = b   # Modifica el valor del atributo.
-\end{codigo-python-sn}
+pasa a \lstinline!metodo! será |self| $\rightarrow$ \lstinline!variable!.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!def __str__(self):!}
 Método especial que debe devolver una cadena de caracteres, con
-la representación en texto de la instancia.
+la representación ``informal'' de la instancia. Se invoca al hacer
+|str(variable)| o |print(variable)|.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!def __repr__(self):!}
+Método especial que debe devolver una cadena de caracteres, con
+la representación ``formal'' de la instancia. Se invoca al hacer
+|repr(variable)|.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!def __add__(self, otro):, def __sub__(self, otro):!}
@@ -973,29 +943,32 @@ que se debe operar, debe devolver una nueva instancia con el
 resultado.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline!def __cmp__(self, otro):!}
-Método especial para permitir la comparación de objetos mediante un
-criterio de orden de menor a mayor.  Recibe las dos instancias a
-comparar.
-
-Debe devolver -1 si el primero es menor, 0 si son iguales y 1 si el
-segundo es menor.
+\begin{sintaxis}{\lstinline!def __lt__(self, otro):!}
+Método especial para permitir la comparación de objetos mediante los
+operadores |<| y |>|.  Recibe las dos instancias a
+comparar. Debe devolver |True| si |self| es comparativamente
+``menor'' a |otro|.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline!def __eq__(self, otro):, def __ne__(self, otro):!}
-Métodos especiales para comparar objetos sólamente por igualdad o
-desigualdad.  Reciben las dos instancias a comparar.  Devuelven
-\lstinline!True! o \lstinline!False! según corresponda.
+\begin{sintaxis}{\lstinline!def __le__(self, otro):!}
+Método especial para permitir la comparación de objetos mediante los
+operadores |<=| y |>=|. Devuelve |True| si |self| es comparativamente
+``menor o igual'' a |otro|.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!def __eq__(self, otro):!}
+Método especial para permitir la comparación de objetos mediante los operadores
+|==| y |!=|. Devuelve |True| si |self| y |otro| son comparativamente
+``iguales''.
 \end{sintaxis}
 
 \end{referencia_python}
-
 
 \newpage
 \section{Ejercicios}
 
 \begin{ejercicio}
-Modificar el método \lstinline!__cmp__! de \lstinline!Hotel!
+Modificar el método \lstinline!__lt__! de \lstinline!Hotel!
 para poder ordenar de menor a mayor las listas de hoteles según el criterio:
 primero por ubicación, en orden alfabético y dentro de cada ubicación por
 la relación calidad-precio.
