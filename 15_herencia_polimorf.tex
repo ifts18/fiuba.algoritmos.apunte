@@ -12,36 +12,52 @@ Esto se debe a que distintos objetos pueden tener un método con un mismo
 nombre, pero que realice distintas operaciones.
 
 En las unidades anteriores, varias veces utilizamos las posibilidades
-provistas por el polimorfismo, sin haberle puesto este nombre.
+provistas por el polimorfismo, sin haberle puesto este nombre. Algunos
+ejemplos:
 
-Se vio, por ejemplo, que es posible recorrer cualquier tipo de secuencia
+\begin{itemize}
+\item Es posible recorrer cualquier tipo de secuencia
 (ya sea una lista, una tupla, un diccionario, un archivo o cualquier otro tipo
-de secuencia) utilizando la misma estructura de código
-(\lstinline!for elemento in secuencia!).
+de secuencia) utilizando la misma estructura de código:
+|for elemento in secuencia|.
 
-De la misma forma, hemos utilizado funciones que podían trabajar con los
+\item Se puede obtener la cantidad de
+elementos de cualquier secuencia utilizando la misma función: |len(secuencia)|.
+
+\item Varias funciones y operaciones pueden trabajar con los
 distintos tipos numéricos sin hacer distinción sobre de qué tipo de número
-se trataba (entero, real, largo o complejo).
+se trataba (entero, real, largo o complejo); por ejemplo |abs(numero)|.
 
-Por otro lado, en la unidad anterior se vio también que al construir una
-clase, es posible incluir el método \lstinline!__str__! para que cuando se
-quiera imprimir el objeto se lo haga de la forma deseada; así como una
-gran variedad de otros métodos especiales, que permiten que operadores
-comunes sean utilizados sobre distintos tipos de objetos.
+\item La función |str| permite convertir cualquier objeto a una representación
+en cadena de texto, sin importar el tipo del objeto.
+\end{itemize}
+
+Todos los casos mencionados son ejemplos de polimorfismo: la misma operación
+produce resultados diferentes (o el mismo resultado, pero que se calcula de
+manera diferente) según el tipo de objeto al que se aplica la operación.
 
 \subsection{Interfaz}
 
 Llamamos {\bf interfaz} a un conjunto de funciones, métodos o atributos con
 nombres específicos.  Una interfaz es un {\it contrato} entre el
-programador que realiza una clase y el que la utiliza, puede consistir en
+programador que realiza una clase y el que la utiliza, y puede consistir en
 uno solo o varios métodos o atributos.
 
-Por ejemplo, para que un objeto se pueda comparar con otros, debe cumplir
-con la interfaz {\it comparable}, que en Python implica incluir el método
-\lstinline!__cmp__! visto en la unidad anterior.
+Por ejemplo, para que un objeto se pueda sumar con otro utilizando el
+operador |+|, debe cumplir con la interfaz {\it sumable}, que en Python
+implica incluir el método |__add__| visto en la unidad anterior.
 
-La idea de polimorfismo se basa, entonces, en utilizar distintos tipos de
-datos a través de una interfaz común.
+Una manera de implementar polimorfismo es utilizar distintos tipos de
+datos a través de una interfaz común. Por ejemplo, cuando sumamos dos
+objetos |a| y |b| con la expresión:
+
+\begin{codigo-python-sn}
+a + b
+\end{codigo-python-sn}
+
+\noindent no es necesario que sepamos de qué tipo son los objetos; si
+alguno de los dos cumple con la interfaz {\it sumable}, podemos decir
+que la operación será exitosa y producirá algún resultado.
 
 \subsection{Redefinición de métodos}
 
@@ -60,30 +76,30 @@ utiliza una secuencia en forma genérica es, entonces, un bloque
 polimórfico.
 
 \begin{sabias_que}
-En Python al no ser necesario especificar explícitamente el tipo de los
-parámetros que recibe una función, las funciones son naturalmente
+En Python, al no ser necesario especificar explícitamente el tipo de los
+parámetros que recibe una función, todas las funciones son naturalmente
 polimórficas.
 
-En otros lenguajes, puede darse que sólo algunas funciones específicas sean
+En otros lenguajes puede darse que sólo algunas funciones específicas sean
 polimórficas (como en C++, por ejemplo), o que sea extremadamente difícil
 obtener un comportamiento polimórfico (como es el caso de C).
 \end{sabias_que}
 
 En la vida real, cuando analizamos las funciones de respiración,
-reproducción o alimentación, de los seres vivos vemos que siempre se repite
+reproducción o alimentación de los seres vivos vemos que siempre se repite
 el mismo patrón: si bien la acción en todos los casos es la misma, puede
 suceder que haya diferencias en la {\it implementación} en cada tipo, ya
-que no es lo mismo la respiración de una mojarrita que la de un malvón, no
-es lo mismo la reproducción de una ameba que la de un elefante.
+que la respiración de una mojarrita que la de un malvón no funcionan de la
+misma manera, o tampoco así la reproducción de una ameba y la de un elefante.
 
-De la misma forma, al implementar nuestras clases, debemos proveer
-distintas implementaciones de los métodos que se llaman igual, para que
+Análogamente, al implementar nuestras clases podemos proveer
+distintas implementaciones para un método con el mismo nombre, para que
 puedan comportarse polimórficamente, como ser las redefiniciones de los
-métodos \lstinline!__str__! o \lstinline!__cmp__! vistas en la unidad
-anterior.
+métodos \lstinline!__str__! o \lstinline!__lt__!.
 
-En particular en Python, la {\it sobrecarga de operadores}, mencionada
-anteriormente,  es un proceso que se realiza mediante la redefinición de
+En particular en Python, la {\it sobrecarga de operadores} (mencionada
+en la sección \ref{sobrecarga}),  es un proceso que se realiza mediante la
+redefinición de
 algunos métodos especiales.  En otros lenguajes se utilizan técnicas distintas
 para obtener el mismo resultado.
 
@@ -103,7 +119,7 @@ distintos métodos según el tipo de las variables que se quiera sumar,
 restar, multiplicar, etc.
 \end{sabias_que}
 
-\subsection{Un ejemplo de polimorfismo}
+\subsection*{Ejemplos de polimorfismo}
 
 En la unidad anterior se vio la clase \lstinline!Punto! que representa a un
 punto en el plano.  Es posible definir también una clase
@@ -111,43 +127,39 @@ punto en el plano.  Es posible definir también una clase
 clase contendrá los mismos métodos que se vieron para \lstinline!Punto!,
 pero para tres coordenadas.
 
-Si a ambas clases le agregamos un método para multiplicar por un escalar
-(\lstinline!__mul__(self, escalar)!), podríamos tener la siguiente función
+Si a ambas clases le agregamos un método para dividir por un escalar
+(\lstinline!__div__(self, escalar)!), podríamos tener la siguiente función
 polimórfica:
 
 \begin{codigo-python-sn}
 def obtener_versor(punto):
-    norma = punto.norma()
-    return punto * (1.0 / norma)
+    return punto / punto.norma()
 \end{codigo-python-sn}
 
 Esta función devolverá un versor de dos dimensiones o de tres dimensiones,
 según a qué clase pertenezca la variable \lstinline!punto!.
 
 \begin{atencion}
-A veces puede suceder que una función polimórfica imponga alguna
-restricción sobre los tipos de los parámetros sobre los que opera. En el
-ejemplo anterior, el objeto \lstinline!punto! debe tener el método
-\lstinline!norma! y la posibilidad de multiplicarlo por un escalar.
+Que una función sea polimórfica no significa que pueda operar sobre parámetros
+de {\it cualquier} tipo de dato, sino que suele imponer restricciones.  En el
+ejemplo anterior, las restricciones son que el objeto |punto| tenga el método
+|norma| y la posibilidad de dividirlo por un escalar.
 \end{atencion}
 
-Otro ejemplo que ya hemos visto, utilizando secuencias, es usar un
-diccionario para contar la frecuencia de aparación de elementos dentro de
-una secuencia cualquiera.
+Veamos otro ejemplo: una función que cuenta la frecuencia de aparación de
+elementos dentro de una secuencia cualquiera.
 
-\begin{codigo-python}
+\begin{codigo-python-sn}
 def frecuencias(secuencia):
-    """ Calcula las frecuencias de aparición de los elementos de
-        la secuencia recibida.
-        Devuelve un diccionario con elementos: {valor: frecuencia}
+    """Calcula las frecuencias de aparición de los elementos de
+       la secuencia recibida.
+       Devuelve un diccionario con elementos: {valor: frecuencia}
     """
-    # crea un diccionario vacío
-    frec = dict()
-    # recorre la secuencia
+    frec = {}
     for elemento in secuencia:
         frec[elemento] = frec.get(elemento, 0) + 1
     return frec
-\end{codigo-python}
+\end{codigo-python-sn}
 
 Vemos que el parámetro \lstinline!secuencia! puede ser de cualquier tipo
 que se encuentre dentro de la ``familia'' de las secuencias. En cambio, si
@@ -156,78 +168,74 @@ llamamos a la función con un entero se levanta una excepción.
 \begin{codigo-python-sn}
 >>> frecuencias(["peras", "manzanas", "peras", "manzanas", "uvas"])
 {'uvas': 1, 'peras': 2, 'manzanas': 2}
->>> frecuencias((1,3,4,2,3,1))
+>>> frecuencias((1, 3, 4, 2, 3, 1))
 {1: 2, 2: 1, 3: 2, 4: 1}
 >>> frecuencias("Una frase")
 {'a': 2, ' ': 1, 'e': 1, 'f': 1, 'n': 1, 's': 1, 'r': 1, 'U': 1}
->>> ran = xrange(3, 10, 2)
->>> frecuencias(ran)
+>>> frecuencias(range(3, 10, 2))
 {9: 1, 3: 1, 5: 1, 7: 1}
 >>> frecuencias(4)
 Traceback (most recent call last):
   File "<pyshell#0>", line 1, in <module>
     frecuencias(4)
   File "frecuencias.py", line 12, in frecuencias
-    for v in seq:
+    for elemento in secuencia:
 TypeError: 'int' object is not iterable
 \end{codigo-python-sn}
 
 \section{Herencia}
 
-La {\it herencia} es un mecanismo de la programación orientada a objetos que
-sirve para crear clases nuevas a partir de clases preexistentes.  Se toman
-({\it heredan}) atributos y comportamientos de las clases viejas y se los
-modifica para modelar una nueva situación.
+Otro mecanismo de la programación orientada a objetos que permite implementar
+comportamientos polimórficos es la {\it herencia}, que permite crear clases
+nuevas a partir de clases preexistentes.  Mediante la herencia, una clase puede
+{\it extender} a otra y de esta manera {\it heredar} sus atributos y
+comportamientos, pudiendo modificarlos para implementar un comportamiento
+diferente.
 
 La clase vieja se llama {\it clase base} y la que se construye a partir de
 ella es una {\it clase derivada}.
 
-Por ejemplo, a partir de una clase \lstinline!Persona! (que contenga como
-atributos \lstinline!identificacion!, \lstinline!nombre!, \lstinline!apellido!)
+Por ejemplo, a partir de una clase \lstinline!Persona! con los atributos
+\lstinline!identificacion!, \lstinline!nombre! y \lstinline!apellido!,
 podemos construir la clase \lstinline!AlumnoFIUBA! que extiende a
 \lstinline!Persona! y agrega como atributo el \lstinline!padron!.
 
-Para indicar el nombre de la clase base, se la pone entre paréntesis a
-continuación del nombre de la clase (en lugar de la expresión
-\lstinline!object! que poníamos anteriormente --en realidad \lstinline!object!
-es el nombre de la clase base genérica--).
+Definamos primero la clase base, |Persona|:
 
-Definimos \lstinline!Persona!:
 \begin{codigo-python-sn}
-class Persona(object):
-    "Clase que representa una persona."
+class Persona:
     def __init__(self, identificacion, nombre, apellido):
-        "Constructor de Persona"
         self.identificacion = identificacion
         self.nombre = nombre
         self.apellido = apellido
+
     def __str__(self):
-        return "%s: %s, %s" % \
-            (str(self.identificacion), self.apellido, self.nombre)
+        return "{}: {}, {}".format(
+            self.identificacion, self.apellido, self.nombre
+        )
 \end{codigo-python-sn}
 
-A continuación definimos \lstinline!AlumnoFIUBA! como derivada de
-\lstinline!Persona!, de forma tal que inicialice el nuevo atributo, pero a su
-vez utilice la inicialización de \lstinline!Persona! para las atributos de la
-clase base:
+A continuación definimos |AlumnoFIUBA|, indicando entre paréntesis que la clase
+base es |Persona|:
 
 \begin{codigo-python-sn}
 class AlumnoFIUBA(Persona):
-    "Clase que representa a un alumno de FIUBA."
     def __init__(self, identificacion, nombre, apellido, padron):
-        "Constructor de AlumnoFIUBA"
-        # llamamos al constructor de Persona
-        Persona.__init__(self, identificacion, nombre, apellido)
-        # agregamos el nuevo atributo
+        super().__init__(identificacion, nombre, apellido)
         self.padron = padron
 \end{codigo-python-sn}
+
+En la primera línea del constructor invocamos al constructor de |Persona|,
+pasándole los parámetros necesarios (si no hiciéramos esto, las instancias de
+|AlumnoFIUBA| no tendrían los atributos |identificacion|, |nombre| o
+|apellido|). En la segunda línea asignamos el atributo |padron|.
 
 Probamos la nueva clase:
 
 \begin{codigo-python-sn}
 >>> a = AlumnoFIUBA("DNI 35123456", "Damien", "Thorn", "98765")
->>> print a
-DNI 35123456: Thorn, Damien
+>>> str(a)
+'DNI 35123456: Thorn, Damien'
 \end{codigo-python-sn}
 
 Vemos que se heredó el método \lstinline+__str__+ de la clase base. Si
@@ -235,29 +243,28 @@ queremos, podemos redefinirlo:
 
 \begin{codigo-python-sn}
     def __str__(self):
-        "Devuelve una cadena representativa del alumno"
-        return "%d: %s, %s" % \
-            (str(self.padron), self.apellido, self.nombre)
+        return "Padrón {}: {}, {}".format(
+            self.padron, self.apellido, self.nombre
+        )
 \end{codigo-python-sn}
-
-Volvemos a probar:
 
 \begin{codigo-python-sn}
 >>> a = AlumnoFIUBA("DNI 35123456", "Damien", "Thorn", "98765")
->>> print a
-98765: Thorn, Damien
+>>> str(a)
+'Padrón 98765: Thorn, Damien'
 \end{codigo-python-sn}
 
-De una clase base se pueden construir muchas clases derivadas, así como
+De una clase base se pueden construir muchas clases derivadas: así como
 hemos derivado alumnos, podríamos derivar docentes, empleados, clientes,
 proveedores, o lo que fuera necesario según la aplicación que estemos
-desarrollando.
+desarrollando. Incluso podríamos aplicar más de un nivel de herencia: |B|
+extiende |A|, |C| extiende |B|, \ldots
 
 \begin{sabias_que}
 En el diseño de jerarquias de herencia no siempre es del todo fácil decidir
 cuándo una clase debe extender a otra.
-La regla práctica para decidir si una clase (S) puede ser
-definida como heredera de otra (T) es que debe cumplirse que ``S es un T''.
+Una regla práctica para decidir si una clase |S| puede ser
+definida como heredera de otra |T| es que debe cumplirse que ``S es un T''.
 Por ejemplo, {\it Perro} es un {\it Animal}, pero {\it Vehículo} no es un {\it
 Motor}.
 
@@ -270,28 +277,34 @@ en las ciencias de la computación, creadora de varios lenguajes y actualmente
 es profesora e investigadora del MIT.
 \end{sabias_que}
 
-En el caso de Python, también se puede construir una clase derivada a partir de
-varias clases base (por ejemplo, un ayudante de segunda en la UBA es un alumno
-que también trabaja de docente).  Esta posbilidad se llama {\bf Herencia
-Múltiple}, pero no la detallaremos por ahora.
+En el caso de Python, también es posible construir una clase derivada a partir
+de varias clases base. Por ejemplo, un ayudante de segunda en la UBA es un
+alumno que también trabaja de docente.  Esta posbilidad se llama {\it herencia
+múltiple}.
 
-\subsection*{La clase de las figuras}
+\subsection*{Ejemplo de herencia}
 
-Un ejemplo clásico de herencia es el de las figuras cerradas en el plano, con un
-método para calcular el área. En este caso, la clase base no tiene comportamiento definido
-ni atributos, dado que cada figura tiene atributos muy distintos (radio en el caso
-del círculo, base y altura en el caso del triángulo, etc.), y en cuanto al cálculo
-del área, cada figura tiene una fórmula diferente:
+Un ejemplo clásico de herencia es el de las figuras geométricas: todas las
+figuras tienen un nombre y un color, pero cada figura diferente puede tener
+atributos diferentes como radio, base, altura, etc., y una fórmula diferente
+para calcular el área.
 
 \begin{itemize}
 \item La clase base:
 
 \begin{codigo-python-sn}
 class Figura(object):
-    """ Una figura en el plano. """
+    def __init__(self, nombre, color):
+        self.nombre = nombre
+        self.color = color
+
     def area(self):
-        " Este método debe ser redefinido. "
-        pass
+        raise NotImplementedError("Este método debe ser redefinido.")
+
+    def __str__(self):
+        return "<{} - color: {} - área: {:.2f}>".format(
+            self.nombre, self.color, self.area()
+        )
 \end{codigo-python-sn}
 
 \item Los círculos:
@@ -300,13 +313,11 @@ class Figura(object):
 from math import pi
 
 class Circulo(Figura):
-    """ Un círculo en el plano. """
-    def __init__(self, radio=0):
-        " Constructor de círculo. "
+    def __init__(self, radio, color):
+        super().init("Círculo", color)
         self.radio = radio
 
     def area(self):
-        " Devuelve el área del círculo. "
         return pi * self.radio * self.radio
 \end{codigo-python-sn}
 
@@ -314,28 +325,26 @@ class Circulo(Figura):
 
 \begin{codigo-python-sn}
 class Triangulo(Figura):
-    """ Un triángulo en el plano. """
-    def __init__(self, base=0, altura=0):
-        " Constructor de triángulo. "
+    def __init__(self, base, altura, color):
+        super().init("Triángulo", color)
         self.base = base
         self.altura = altura
 
     def area(self):
-        " Devuelve el área del triángulo. "
-        return self.base * self.altura / 2.
+        return self.base * self.altura / 2
 \end{codigo-python-sn}
 
 \end{itemize}
 
 Y ahora las pruebas:
+
 \begin{codigo-python-sn}
->>> c = Circulo(4)
->>> c.area()
-50.26548245743669
->>>
->>> t = Triangulo(3, 5)
->>> t.area()
-7.5
+>>> c = Circulo(4, "verde")
+>>> str(c)
+'<Círculo - color: verde - área: 50.27>'
+>>> t = Triangulo(3, 5, "azul")
+>>> str(c)
+'<Triángulo - color: azul - área: 7.5>'
 \end{codigo-python-sn}
 
 \section{Delegación}
@@ -346,10 +355,10 @@ parte de sus funcionalidades. Esta relación entre clases suele ser la más
 indicada cuando es necesaria una asociación entre las clases pero el
 principio de Liskov no se cumple. También puede verse como la relación
 entre clases ``S contiene a T''. Por ejemplo, Vehículo {\bf contiene} un
-Motor, pero Alumno no contiene a Persona, sino que {\bf es} una Persona. \\
+Motor, pero Alumno no contiene a Persona, sino que {\bf es} una Persona.
 
 Por ejemplo, la clase \lstinline!Hotel! vista en la unidad anterior, podría
-contener una clase \lstinline!Disponibilidad!, que almacene la
+contener una instancia de \lstinline!Disponibilidad!, que almacene la
 disponibilidad de las habitaciones del hotel para distintas fechas.  La
 clase \lstinline!Hotel! debería tener, entonces, los métodos
 \lstinline!consultar_disponibilidad!, \lstinline!reservar! y
@@ -393,22 +402,21 @@ para trasladar el rectángulo en el plano.
 
 La implementación básica puede verse en el Código \ref{Rectangulo}.  Se
 puede ver que el rectángulo realiza internamente la operación para calcular
-el área, pero para la operación del traslado, delega la suma de los puntos
-al operador \lstinline!__add__! de la clase \lstinline!Punto!.
-
-Recordamos que cuando se hace \lstinline!self.origen + Punto(dx,dy)!,
+el área, pero para la operación |trasladar|, delega la suma de los puntos
+al operador \lstinline!__add__! de la clase \lstinline!Punto!
+(recordamos que cuando se hace \lstinline!self.origen + Punto(dx,dy)!,
 Python llama al método \lstinline!__add__! de la clase \lstinline!Punto!,
-que recibe los dos puntos y devuelve un nuevo punto con la suma de ambos.
+que recibe los dos puntos y devuelve un nuevo punto con la suma de ambos).
 
 Para construir y utilizar el rectángulo, lo haremos de la siguiente forma:
 
 \begin{codigo-python-sn}
 >>> from Punto import Punto
 >>> from Rectangulo import Rectangulo
->>> r = Rectangulo(2, 3, Punto(1, 2))
->>> print r
-Base: 2, Altura: 3, Esquina inf. izq.: (1, 2)
->>> print r.area()
+>>> r = Rectangulo(Punto(1, 2), 2, 3)
+>>> str(r)
+Origen: (1, 2), Base: 2, Altura: 3
+>>> r.area()
 6
 \end{codigo-python-sn}
 
@@ -416,9 +424,9 @@ Lo que acabamos de crear es un objeto de acuerdo al siguiente diagrama que
 se muestra en la Figura \ref{rectangulo_punto}.
 
 \begin{figure}[htb]
-\label{rectangulo_punto}
 \includegraphics{graficos/15_Rectangulo_Punto}
 \caption{Estado de las variables, al momento de crear el rectángulo}
+\label{rectangulo_punto}
 \end{figure}
 
 El punto que describe la posición de la esquina inferior izquierda del
@@ -429,36 +437,36 @@ Utilizando el método \lstinline!trasladar!, podemos modificar el valor del
 punto contenido dentro del rectángulo.
 
 \begin{codigo-python-sn}
->>> r.trasladar(2,4)
->>> print r
-Base: 2, Altura: 3, Esquina inf. izq.: (3, 6)
+>>> r.trasladar(2, 4)
+>>> str(r)
+Origen: (3, 6), Base: 2, Altura: 3
 \end{codigo-python-sn}
 
 También es posible directamente reemplazar el punto contenido, por un nuevo
 punto.
 
 \begin{codigo-python-sn}
->>> q = Punto(7,2)
+>>> q = Punto(7, 2)
 >>> r.origen = q
->>> print r
-Base: 2, Altura: 3, Esquina inf. izq.: (7, 2)
+>>> str(r)
+Origen: (7, 2), Base: 2, Altura: 3
 \end{codigo-python-sn}
 
 Con lo cual el diagrama pasa a ser el de la Figura
 \ref{rectangulo_punto_b}.
 
 \begin{figure}[htb]
-\label{rectangulo_punto_b}
 \includegraphics{graficos/15_Rectangulo_Punto_b}
 \caption{Estado de las variables, luego de reemplazar el origen}
+\label{rectangulo_punto_b}
 \end{figure}
 
 \begin{observacion}
 El \lstinline!Punto(1, 2)! y \lstinline!Punto(3,6)! que habían sido creados
 previamente, están ahora fuera de uso, por lo que quedan a disposición de un
-mecanismo de {\it recolección de basura}, que no es tema de esta materia,
-que se encarga de juntar todos los pedazos de memoria que se descartan
-durante la ejecución de un programa.
+mecanismo de {\it recolección de basura} que se encarga de recuperar
+automáticamente las secciones de memoria que quedan fuera de uso durante la
+ejecución de un programa.
 \end{observacion}
 
 \section{Resumen}
@@ -472,9 +480,10 @@ clases distintas.
 clase base y otra es una clase derivada, que {\it hereda} los métodos y
 atributos de la clase base.
 
-\item Se llama {\bf delegación} a la relación entre clases en la cual una clase
-contiene como atributo a otra clase, y dentro de sus métodos realiza
-invocaciones a los métodos de la clase contenida.
+\item Se llama {\bf delegación} a la relación entre clases en la cual una
+instancia de una clase contiene como atributo una instancia de otra clase,
+y dentro de sus métodos realiza invocaciones a los métodos de la clase
+contenida.
 
 \item Se denomina {\bf referencia} a las variables que permiten acceder a
 un determinado objeto, ya sea un atributo dentro de un objeto, o una
