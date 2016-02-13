@@ -415,7 +415,7 @@ Para construir y utilizar el rectángulo, lo haremos de la siguiente forma:
 >>> from Rectangulo import Rectangulo
 >>> r = Rectangulo(Punto(1, 2), 2, 3)
 >>> str(r)
-Origen: (1, 2), Base: 2, Altura: 3
+'Origen: (1, 2), Base: 2, Altura: 3'
 >>> r.area()
 6
 \end{codigo-python-sn}
@@ -439,7 +439,7 @@ punto contenido dentro del rectángulo.
 \begin{codigo-python-sn}
 >>> r.trasladar(2, 4)
 >>> str(r)
-Origen: (3, 6), Base: 2, Altura: 3
+'Origen: (3, 6), Base: 2, Altura: 3'
 \end{codigo-python-sn}
 
 También es posible directamente reemplazar el punto contenido, por un nuevo
@@ -449,7 +449,7 @@ punto.
 >>> q = Punto(7, 2)
 >>> r.origen = q
 >>> str(r)
-Origen: (7, 2), Base: 2, Altura: 3
+'Origen: (7, 2), Base: 2, Altura: 3'
 \end{codigo-python-sn}
 
 Con lo cual el diagrama pasa a ser el de la Figura
