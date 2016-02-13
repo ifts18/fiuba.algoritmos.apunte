@@ -5,8 +5,7 @@ clásicos: {\it pilas} y {\it colas}.
 
 \section{Pilas}
 
-Una {\it pila} es un TAD que tiene las siguientes operaciones (se describe también la acción que
-lleva adelante cada operación):
+Una {\it pila} es un TAD que tiene las siguientes operaciones:
 
 \begin{itemize}
 \item \lstinline+__init__+: Inicializa una pila nueva, vacía.
@@ -38,18 +37,13 @@ siguiente llamado de atención:
 
 \begin{atencion}
 Al usar esa pila dentro de un programa, deberemos ignorar que se está
-trabajando sobre una lista: solamente podremos usar los métodos de pila.
-
-Si alguien viola este principio, y usa la representación dentro del
-programa usuario, termina por recibir el peor castigo imaginable para un/a
-programador/a: sus programas pueden dejar de funcionar el cualquier
-momento, tan pronto como quien produce del TAD decida cambiar, aunque sea
-sutilmente, dicha representación.
+trabajando sobre una lista: solamente podremos usar los métodos de la {\it
+interfaz pila}.
 \end{atencion}
 
 \subsection{Pilas representadas por listas}
 
-Definiremos una clase \lstinline!Pila! con un atributo, \lstinline!items!,
+Definiremos una clase \lstinline!Pila! con un atributo \lstinline!items!,
 de tipo lista, que contendrá los elementos de la pila. El tope de la pila
 se encontrará en la última posición de la lista, y cada vez que se apile un
 nuevo elemento, se lo agregará al final.
@@ -59,39 +53,43 @@ deberá crear una pila vacía (que representaremos por una lista vacía):
 
 \begin{codigo-python-sn}
 class Pila:
-    """ Representa una pila con operaciones de apilar, desapilar y
-        verificar si está vacía. """
+    """Representa una pila con operaciones de apilar, desapilar y
+       verificar si está vacía."""
 
     def __init__(self):
-        """ Crea una pila vacía. """
-        # La pila vacía se representa con una lista vacía
-        self.items=[]
+        """Crea una pila vacía."""
+        self.items = []
 \end{codigo-python-sn}
 
-El método \lstinline!apilar! se implementará agregando el nuevo elemento al
+El método |esta_vacia| simplemente se fija si la lista de Python está vacía:
+
+\begin{codigo-python-sn}
+    def esta_vacia(self):
+        """Devuelve True si la lista está vacía, False si no."""
+        return len(self.items) == 0
+\end{codigo-python-sn}
+
+El método \lstinline!apilar! agrega el nuevo elemento al
 final de la lista:
 
 \begin{codigo-python-sn}
     def apilar(self, x):
-        """ Agrega el elemento x a la pila. """
-        # Apilar es agregar al final de la lista.
+        """Apila el elemento x."""
         self.items.append(x)
 \end{codigo-python-sn}
 
-Para implementar \lstinline!desapilar!, se usará el método \lstinline!pop!
+Para implementar \lstinline!desapilar! se usamos el método \lstinline!pop!
 de lista que hace exactamente lo requerido: elimina el último elemento de
 la lista y devuelve el valor del elemento eliminado. Si la lista está vacía
-levanta una excepción, haremos lo mismo, pero cambiaremos el tipo de
-excepción, para no revelar la implementación.
+|desapilar| lanza una excepción.
 
 \begin{codigo-python-sn}
     def desapilar(self):
-        """ Devuelve el elemento tope y lo elimina de la pila.
-            Si la pila está vacía levanta una excepción. """
-        try:
-            return self.items.pop()
-        except IndexError:
-            raise ValueError("La pila está vacía")
+        """Devuelve el elemento tope y lo elimina de la pila.
+           Si la pila está vacía levanta una excepción."""
+        if self.esta_vacia():
+            raise IndexError("La pila está vacía")
+        return self.items.pop()
 \end{codigo-python-sn}
 
 \begin{observacion}
@@ -101,18 +99,9 @@ Queremos que el tiempo de apilar o desapilar de la pila no dependa de la
 cantidad de elementos contenidos.
 \end{observacion}
 
-Finalmente, el método para indicar si se trata de una pila vacía.
-
-\begin{codigo-python-sn}
-    def esta_vacia(self):
-        """ Devuelve True si la lista está vacía, False si no. """
-        return self.items == []
-\end{codigo-python-sn}
-
 Construimos algunas pilas y operamos con ellas:
 
 \begin{codigo-python-sn}
->>> from clasePila import Pila
 >>> p = Pila()
 >>> p.esta_vacia()
 True
@@ -124,15 +113,13 @@ False
 >>> p.apilar(22)
 >>> p.desapilar()
 22
->>> p
-<clasePila.Pila instance at 0xb7523f4c>
->>> q=Pila()
+>>> q = Pila()
 >>> q.desapilar()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "clasePila.py", line 24, in desapilar
-    raise ValueError("La pila está vacía")
-ValueError: La pila está vacía
+  File "Pila.py", line 24, in desapilar
+    raise IndexError:("La pila está vacía")
+IndexError: La pila está vacía
 \end{codigo-python-sn}
 
 \subsection{Uso de pila: calculadora científica}
@@ -152,8 +139,8 @@ por blancos:
 \begin{itemize}
 \item Mientras se lean números, se apilan.
 
-\item En el momento en el que se detecta una operación binaria \verb|+|,
-\verb|-|, \verb|*|, \verb|/| o \verb|%| se desapilan los dos últimos
+\item En el momento en el que se detecta una operación binaria |+|,
+|-|, |*| o |/| se desapilan los dos últimos
 números apilados, se ejecuta la operación indicada, y el resultado de esa
 operación se apila.
 
@@ -164,25 +151,24 @@ número en la pila (el resultado).
 
 \begin{itemize}
 \item Queda más de un número al final (por ejemplo si la cadena de entrada
-fue \verb|"5 3"|),
+fue |"5 3"|),
 
 \item Ingresa algún caracter que no se puede interpretar ni como número ni como
 una de las cinco operaciones válidas (por ejemplo si la cadena de entrada
-fue \verb|"5 3 &"|)
+fue |"5 3 &"|)
 
 \item No hay suficientes operandos para realizar la operación (por ejemplo
-si la cadena de entrada fue \verb|"5 3 - +"|).
+si la cadena de entrada fue |"5 3 - +"|).
 \end{itemize}
 \end{itemize}
 
 La siguiente es la estrategia de resolución:
 
 Dada una cadena con la expresión a evaluar, podemos separar sus componentes
-utilizando el método \lstinline!split()!.  Recorreremos luego la lista de
+utilizando el método \lstinline!split!.  Recorreremos luego la lista de
 componentes realizando las acciones indicadas en el párrafo anterior,
 utilizando una pila auxiliar para operar. Si la expresión está bien formada
-devolveremos el resultado, de lo contrario levantaremos una excepción
-(devolveremos \lstinline!None!).
+devolveremos el resultado, de lo contrario levantaremos una excepción.
 
 En el Código \ref{calculadora_polaca} está la implementación de la
 calculadora descripta.
@@ -213,12 +199,11 @@ DEBUG: 4
 DEBUG: apila  4.0
 DEBUG: 5
 DEBUG: apila  5.0
-DEBUG: error pila sobran operandos
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "calculadora_polaca.py", line 64, in main
-    print calculadora_polaca(elementos)
-  File "calculadora_polaca.py", line 59, in calculadora_polaca
+  File "calculadora_polaca.py", line 50, in main
+    print(calculadora_polaca(elementos))
+  File "calculadora_polaca.py", line 44, in calculadora_polaca
     raise ValueError("Sobran operandos")
 ValueError: Sobran operandos
 \end{codigo-python-sn}
@@ -227,17 +212,16 @@ ValueError: Sobran operandos
 
 \begin{codigo-python-sn}
 >>> calculadora_polaca.main()
-Ingrese la expresion a evaluar: 4 %
+Ingrese la expresion a evaluar: 4 /
 DEBUG: 4
 DEBUG: apila  4.0
-DEBUG: %
+DEBUG: /
 DEBUG: desapila  4.0
-DEBUG: error pila faltan operandos
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "calculadora_polaca.py", line 64, in main
-    print calculadora_polaca(elementos)
-  File "calculadora_polaca.py", line 37, in calculadora_polaca
+  File "calculadora_polaca.py", line 50, in main
+    print(calculadora_polaca(elementos))
+  File "calculadora_polaca.py", line 29, in calculadora_polaca
     raise ValueError("Faltan operandos")
 ValueError: Faltan operandos
 \end{codigo-python-sn}
@@ -254,29 +238,29 @@ DEBUG: apila  5.0
 DEBUG: &
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "calculadora_polaca.py", line 64, in main
-    print calculadora_polaca(elementos)
-  File "calculadora_polaca.py", line 26, in calculadora_polaca
+  File "calculadora_polaca.py", line 50, in main
+    print(calculadora_polaca(elementos))
+  File "calculadora_polaca.py", line 20, in calculadora_polaca
     raise ValueError("Operando inválido")
 ValueError: Operando inválido
 \end{codigo-python-sn}
 
-\item \verb|4 % 5|
+\item |4 + 5|
 \begin{codigo-python-sn}
 >>> calculadora_polaca.main()
-Ingrese la expresion a evaluar: 4 5 %
+Ingrese la expresion a evaluar: 4 5 +
 DEBUG: 4
 DEBUG: apila  4.0
 DEBUG: 5
 DEBUG: apila  5.0
-DEBUG: %
+DEBUG: +
 DEBUG: desapila  5.0
 DEBUG: desapila  4.0
-DEBUG: apila  4.0
-4.0
+DEBUG: apila  9.0
+9.0
 \end{codigo-python-sn}
 
-\item \verb|(4 + 5) * 6|:
+\item |(4 + 5) * 6|:
 
 \begin{codigo-python-sn}
 >>> calculadora_polaca.main()
@@ -298,70 +282,20 @@ DEBUG: apila  54.0
 54.0
 \end{codigo-python-sn}
 
-\item \verb|4 * (5 + 6)|:
-
-\begin{codigo-python-sn}
->>> calculadora_polaca.main()
-Ingrese la expresion a evaluar: 4 5 6 + *
-DEBUG: 4
-DEBUG: apila  4.0
-DEBUG: 5
-DEBUG: apila  5.0
-DEBUG: 6
-DEBUG: apila  6.0
-DEBUG: +
-DEBUG: desapila  6.0
-DEBUG: desapila  5.0
-DEBUG: apila  11.0
-DEBUG: *
-DEBUG: desapila  11.0
-DEBUG: desapila  4.0
-DEBUG: apila  44.0
-44.0
-\end{codigo-python-sn}
-
-\item \verb|(4 + 5) * (3 + 8)|:
-
-\begin{codigo-python-sn}
->>> calculadora_polaca.main()
-Ingrese la expresion a evaluar: 4 5 + 3 8 + *
-DEBUG: 4
-DEBUG: apila  4.0
-DEBUG: 5
-DEBUG: apila  5.0
-DEBUG: +
-DEBUG: desapila  5.0
-DEBUG: desapila  4.0
-DEBUG: apila  9.0
-DEBUG: 3
-DEBUG: apila  3.0
-DEBUG: 8
-DEBUG: apila  8.0
-DEBUG: +
-DEBUG: desapila  8.0
-DEBUG: desapila  3.0
-DEBUG: apila  11.0
-DEBUG: *
-DEBUG: desapila  11.0
-DEBUG: desapila  9.0
-DEBUG: apila  99.0
-99.0
-\end{codigo-python-sn}
-
 \end{itemize}
 
-\ejercicioc{Si se oprime la tecla <BACKSPACE> (o <$\leftarrow$>) del
+\ejercicioc{Si se oprime la tecla \keys{\backspace{}Backspace} del
 teclado, se borra el último caracter ingresado. Construir una función
 \lstinline!visualizar! para modelar el tipeo de una cadena de caracteres
 desde un teclado:
 
 La función recibe una cadena de caracteres con todo lo que el usuario
-ingresó por teclado (incluyendo <BACKSPACE>  que se reconoce como
+ingresó por teclado (incluyendo \keys{\backspace{}Backspace}, que se reconoce como
 \lstinline|\b|), y devuelve el texto tal como debe presentarse (por
 ejemplo, \lstinline|visualizar("Holas\b chau")| debe devolver 'Hola chau').
 
-Atención, que muchas veces la gente aprieta de más la tecla de <BACKSPACE>,
-y no por eso hay que cancelar la ejecución de toda la función.
+Atención, que muchas veces la gente aprieta de más la tecla \keys{\backspace{}Backspace},
+y no por eso la función tiene que lanzar una excepción.
 }
 
 \subsection{¿Cuánto cuestan los métodos?}
@@ -378,12 +312,12 @@ También el método \lstinline!desapilar!, que se implementa mediante
 
 Vemos que la alternativa que elegimos fue barata.
 
-Otra alternativa posible hubiera sido agregar el nuevo elemento en la
+Otra alternativa posible habría sido agregar el nuevo elemento en la
 posición $0$ de la lista, es decir implementar el método \lstinline!apilar!
-mediante \lstinline|self.items.insert(0,x)| y el método
-\lstinline!desapilar! mediante \lstinline|del self.items[0]|. Sin embargo,
+mediante \lstinline|self.items.insert(0, x)| y el método
+\lstinline!desapilar! mediante \lstinline|self.items.pop(0)|. Sin embargo,
 ésta no es una solución inteligente, ya que tanto insertar al comienzo de
-la lista como borrar al comienzo de la lista {\it consumen tiempo
+la lista como borrar al comienzo de la lista de Python {\it consumen tiempo
 proporcional a la longitud de la lista}.
 
 \ejercicioc{Diseñar un pequeño experimento para verificar que la
@@ -394,10 +328,9 @@ la cual el elemento nuevo se inserta al principio de la lista}.
 de los métodos a utilizar.}
 
 \section{Colas}
-Todos sabemos lo que es una cola. Más aún, ¡estamos hartos de hacer colas!
 
-El TAD {\it cola} modela precisamente ese comportamiento: el primero que llega
-es el primero en ser atendido, los demás se van {\it encolando} hasta que
+El TAD {\it cola} modela el comportamiento: ``el primero que llega
+es el primero en ser atendido''; los demás elementos se van {\it encolando} hasta que
 les toque su turno.
 
 Sus operaciones son:
@@ -421,7 +354,7 @@ Al momento de realizar una implementación de una Cola, deberemos
 preguntarnos ¿Cómo representamos a las colas? Veamos, en primer lugar, si
 podemos implementar colas usando listas de Python, como hicimos con la Pila.
 
-Definiremos una clase {\tt Cola} con un atributo, {\tt items}, de tipo
+Definiremos una clase |Cola| con un atributo, |items|, de tipo
 lista, que contendrá los elementos de la cola. El primero de la cola se
 encontrará en la primera posición de la lista, y cada vez que encole un
 nuevo elemento, se lo agregará al final.
@@ -431,14 +364,13 @@ deberá crear una cola vacía (que representaremos por una lista vacía):
 
 \begin{codigo-python-sn}
 class Cola:
-    """ Representa a una cola, con operaciones de encolar y
-        desencolar.  El primero en ser encolado es también el primero
-        en ser desencolado. """
+    """Representa a una cola, con operaciones de encolar y
+       desencolar. El primero en ser encolado es también el primero
+       en ser desencolado."""
 
     def __init__(self):
-        """ Crea una cola vacía. """
-        # La cola vacía se representa por una lista vacía
-        self.items=[]
+        """Crea una cola vacía."""
+        self.items = []
 \end{codigo-python-sn}
 
 El método \lstinline!encolar! se implementará agregando el nuevo elemento
@@ -446,7 +378,7 @@ al final de la lista:
 
 \begin{codigo-python-sn}
     def encolar(self, x):
-        """ Agrega el elemento x como último de la cola. """
+        """Encola el elemento x."""
         self.items.append(x)
 \end{codigo-python-sn}
 
@@ -458,12 +390,11 @@ está vacía se levantará una excepción.
 
 \begin{codigo-python-sn}
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su
-            valor. Si la cola está vacía, levanta ValueError. """
-        try:
-          return self.items.pop(0)
-        except:
-          raise ValueError("La cola está vacía")
+        """Elimina el primer elemento de la cola y devuelve su
+           valor. Si la cola está vacía, levanta ValueError."""
+        if self.esta_vacia():
+            raise ValueError("La cola está vacía")
+        return self.items.pop(0)
 \end{codigo-python-sn}
 
 Por último, el método \lstinline!esta_vacia!, que indicará si la cola está
@@ -471,8 +402,8 @@ o no vacía.
 
 \begin{codigo-python-sn}
     def esta_vacia(self):
-        """ Devuelve True si la cola esta vacía, False si no."""
-        return self.items == []
+        """Devuelve True si la cola esta vacía, False si no."""
+        return len(self.items) == 0
 \end{codigo-python-sn}
 
 Veamos una ejecución de este código:
@@ -501,7 +432,7 @@ True
 >>> q.desencolar()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "claseCola.py", line 24, in desencolar
+  File "Cola.py", line 24, in desencolar
     raise ValueError("La cola está vacía")
 ValueError: La cola está vacía
 \end{codigo-python-sn}
@@ -534,15 +465,12 @@ construyera una lista enlazada.
 
 \begin{codigo-python-sn}
 class Cola:
-    """ Cola implementada sobre lista enlazada"""
     def __init__(self):
-        """ Crea una cola vacía. """
-        # La cola se representa por una lista enlazada vacía.
-        self.items = claseListaEnlazadaConUlt.ListaEnlazada()
+        self.items = ListaEnlazadaMejorada()
 \end{codigo-python-sn}
 
 Sin embargo, una \lstinline!Cola! es bastante más sencilla que una
-\lstinline!ListaEnlazadaConUlt!, por lo que también podemos
+lista enlazada con referencia al último, por lo que también podemos
 implementar una clase \lstinline!Cola! utilizando las técnicas de referencias,
 que se vieron en las {\it listas enlazadas}.
 
@@ -558,9 +486,9 @@ En primer lugar los crearemos vacíos, ambos referenciando a
 \lstinline!None!.
 
 \begin{codigo-python-sn}
+class Cola:
     def __init__(self):
-        """ Crea una cola vacía. """
-        # En el primer momento, tanto el primero como el último son None
+        """Crea una cola vacía."""
         self.primero = None
         self.ultimo = None
 \end{codigo-python-sn}
@@ -583,13 +511,11 @@ El código resultante es el siguiente.
 
 \begin{codigo-python-sn}
     def encolar(self, x):
-        """ Agrega el elemento x como último de la cola. """
+        """Encola el elemento x."""
         nuevo = Nodo(x)
-        # Si ya hay un último, agrega el nuevo y cambia la referencia.
-        if self.ultimo:
+        if self.ultimo is not None:
             self.ultimo.prox = nuevo
             self.ultimo = nuevo
-        # Si la cola estaba vacía, el primero es también el último.
         else:
             self.primero = nuevo
             self.ultimo = nuevo
@@ -608,19 +534,15 @@ En este caso, además de actualizar la referencia de
 
 \begin{codigo-python-sn}
     def desencolar(self):
-        """ Elimina el primer elemento de la cola y devuelve su
-            valor. Si la cola está vacía, levanta ValueError. """
-        # Si hay un nodo para desencolar
-        if self.primero:
-            valor = self.primero.dato
-            self.primero = self.primero.prox
-            # Si después de avanzar no quedó nada, también hay que
-            # eliminar la referencia del último.
-            if not self.primero:
-                self.ultimo = None
-            return valor
-        else:
+        """Desencola el primer elemento y devuelve su valor.
+           Si la cola está vacía, levanta ValueError."""
+        if self.primero is None:
             raise ValueError("La cola está vacía")
+        valor = self.primero.dato
+        self.primero = self.primero.prox
+        if not self.primero:
+            self.ultimo = None
+        return valor
 \end{codigo-python-sn}
 
 Finalmente, para saber si la cola está vacía, es posible verificar tanto si
@@ -629,15 +551,14 @@ Finalmente, para saber si la cola está vacía, es posible verificar tanto si
 
 \begin{codigo-python-sn}
     def esta_vacia(self):
-        """ Devuelve True si la cola esta vacía, False si no."""
-        return self.items == []
+        """Devuelve True si la cola esta vacía, False si no."""
+        return self.primero is None
 \end{codigo-python-sn}
 
 Una vez implementada toda la interfaz de la cola, podemos probar el TAD
 resultante
 
 \begin{codigo-python-sn}
->>> from claseColaEnlazada import Cola
 >>> q = Cola()
 >>> q.esta_vacia()
 True
@@ -658,15 +579,12 @@ False
 >>> q.desencolar()
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-  File "claseColaEnlazada.py", line 42, in desencolar
+  File "ColaEnlazada.py", line 42, in desencolar
     raise ValueError("La cola está vacía")
 ValueError: La cola está vacía
 \end{codigo-python-sn}
 
-\ejercicioc{Este ejercicio surgió (y lo hicieron ya muchas generaciones de alumnos),
-haciendo cola:
-
-Hace un montón de años había una viejísma sucursal del correo en la vereda impar
+\ejercicioc{Hace un montón de años había una viejísma sucursal del correo en la vereda impar
 de Av. de Mayo al 800 que tenía un cartel que decía ``No se recibirán más de 5 cartas por persona''.
 O sea que la gente entregaba sus cartas (hasta la cantidad permitida) y luego tenía que volver
 a hacer la cola si tenía más cartas para despachar.
@@ -761,15 +679,15 @@ imprimir las cartas que se hayan apilado hasta el momento.
 A continuación el código completo de la pila y las colas implementadas en
 esta unidad.
 
-\begin{codigo}{clasePila.py}{Implementación básica de una pila}
-\lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/clasePila.py}
+\begin{codigo}{Pila.py}{Implementación básica de una pila}
+\lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/Pila.py}
 \end{codigo}
 
-\begin{codigo}{claseCola.py}{Implementación básica de una cola}
-\lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/claseCola.py}
+\begin{codigo}{Cola.py}{Implementación básica de una cola}
+\lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/Cola.py}
 \end{codigo}
 
-\begin{codigo}{claseColaEnlazada.py}{Implementación de una cola enlazada}
-\lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/claseColaEnlazada.py}
+\begin{codigo}{ColaEnlazada.py}{Implementación de una cola enlazada}
+\lstinputlisting[basicstyle=\small\ttfamily]{src/17_pilas_colas/ColaEnlazada.py}
 \end{codigo}
 
