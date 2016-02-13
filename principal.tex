@@ -31,7 +31,7 @@
 \usepackage{amsmath, amsthm, amssymb} % Se usan para theoremstyle
 
 \usepackage{xcolor}
-\definecolor{light-gray}{gray}{0.95}
+\definecolor{light-gray}{gray}{0.96}
 
 % para poder usar upquote=true (mostrar bien las comillas simples)
 \usepackage{textcomp}
@@ -49,7 +49,8 @@
     basicstyle=\small\ttfamily,
     keywordstyle=\itshape,
     backgroundcolor=\color{light-gray},
-    xleftmargin=\parindent,
+    commentstyle=\color{gray},
+    xleftmargin=\dimexpr\parindent+10pt,
     breaklines=true,
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
 }
@@ -229,7 +230,7 @@
 ]{referencia_python}
 
 \newenvironment{sintaxis}[1]
-  {\mdfsubtitle[
+  {\needspace{2\baselineskip}\mdfsubtitle[
     subtitlebackgroundcolor=verde,
     subtitleaboveskip=4pt,
     subtitlebelowskip=8pt,
@@ -244,15 +245,24 @@
 \newfloat{codigo-float}{htbp}{lop}[chapter]
 \floatname{codigo-float}{Código}
 
+\newcommand{\lsthighlight}{\lstset{
+    moredelim=**[is][\bfseries]{(@}{@)},
+    escapeinside={(~}{~)}
+}}
+\newcommand{\lstnonumbers}{\lstset{
+    numbers=none,
+    xleftmargin=\parindent
+}}
+
 \newenvironment{codigo}[2]{\begin{codigo-float}
     \caption{{\small\texttt{#1}}\textbf{:}\ \small #2}
     }{\end{codigo-float}}
 
-\lstnewenvironment{codigo-python}{\lstset{moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
-\lstnewenvironment{codigo-python-sn}{\lstset{numbers=none,moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
-\lstnewenvironment{codigo-python-sn-small}{\lstset{numbers=none,basicstyle=\footnotesize\ttfamily,moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
-\lstnewenvironment{codigo-nohl}{\lstset{language={},moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
-\lstnewenvironment{codigo-nohl-sn}{\lstset{language={},numbers=none,moredelim=**[is][\bfseries]{(@}{@)},escapeinside={(~}{~)}}}{}
+\lstnewenvironment{codigo-python}{\lsthighlight}{}
+\lstnewenvironment{codigo-python-sn}{\lsthighlight\lstnonumbers}{}
+\lstnewenvironment{codigo-python-sn-small}{\lsthighlight\lstnonumbers\lstset{basicstyle=\footnotesize\ttfamily}}{}
+\lstnewenvironment{codigo-nohl}{\lsthighlight\lstset{language={}}}{}
+\lstnewenvironment{codigo-nohl-sn}{\lsthighlight\lstnonumbers\lstset{language={}}}{}
 
 \newcommand{\tituloCodigo}[1]{
 \bigskip
