@@ -107,7 +107,7 @@ veryclean : clean
 	$(manconf) ; echo  $$mandeps  ;\
 	echo "$*.pdf $@ : $< $$deps $$bibs $$epses $$mandeps" > $@
 
-include $(SRC:.tex=.d)
+-include $(SRC:.tex=.d)
 
 # Dependencia adicional para ejercicios.tex.
 ejercicios.tex : principal.pdf
