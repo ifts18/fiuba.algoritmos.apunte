@@ -29,7 +29,7 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-PDFLATEX   = pdflatex -interaction=nonstopmode -halt-on-error
+PDFLATEX   = xelatex -interaction=nonstopmode -halt-on-error
 BIBTEX	   = bibtex
 MAKEINDEX  = makeindex
 
