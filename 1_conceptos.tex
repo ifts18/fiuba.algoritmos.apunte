@@ -69,18 +69,16 @@ empresariales, {\bf openerp}, {\bf tryton}; herramientas de desarrollo,
 bittorrent}, {\bf bittornado}, {\bf deluge}; montones de juegos de todo
 tipo, y muchísimas aplicaciones más.
 
-Todas estas aplicaciones son software libre, por lo que se puede obtener y
-estudiar el código con el que están hechas
+Estos programas mencionados son software libre, por lo que se puede obtener y
+estudiar el código con el que están hechos.
 \end{sabias_que}
 
 \section{El mito de la máquina todopoderosa}
 
 Muchas veces la gente se imagina que con la computadora se puede
-hacer cualquier cosa, que no hay tareas imposibles de realizar.
-Más aún, se imaginan que si bien hubo cosas que eran imposibles de
-realizar hace 50 años, ya no lo son más, o no lo serán dentro de
-algunos años, cuando las computadoras crezcan en poder (memoria,
-velocidad), y la computadora se vuelva una máquina todopoderosa.
+hacer cualquier cosa; o que si bien hubo tareas que no eran posibles de
+realizar hace 50 años, sí lo serán cuando las computadoras crezcan en poder 
+(memoria, velocidad), y se vuelvan máquinas todopoderosas.
 
 Sin embargo eso no es así: existen algunos problemas, llamados
 {\it no computables} que nunca podrán ser resueltos por una
@@ -168,7 +166,7 @@ influenciado por el término \textit{aritmética}.
 
 A su vez, el uso de la palabra \textit{algorismo} proviene del nombre de un
 matemático persa famoso, en su época y para los estudiosos de esa época,
-``Abu Abdallah Muhammad ibn Mûsâ al-Jwârizmî'', que literalmente significa:
+Abu Abdallah Muhammad ibn Mûsâ al-Jwârizmî, que literalmente significa:
 ``Padre de Ja'far Mohammed, hijo de Moises, nativo de Jiva''. Al-Juarismi,
 como se lo llama usualmente, escribió en el año 825 el libro ``Al-Kitâb
 al-mukhtasar fî hîsâb al-gabr wa'l-muqâbala'' (Compendio del cálculo por el
@@ -361,19 +359,19 @@ meteorológicas de los próximos días no son más que grandes programas
 implementados introduciendo nuevas funciones a la máquina, escritas por uno o
 muchos programadores.
 
-Si queremos escribir una función (que llamaremos |holaMarta|) que devuelve la
+Si queremos escribir una función (que llamaremos |hola_marta|) que devuelve la
 cadena de texto ``Hola Marta! Estoy programando en Python.'', lo que debemos
 hacer es ingresar el siguiente conjunto de líneas en Python:
 
 \begin{codigo-python-sn}
->>> def holaMarta():
+>>> def hola_marta():
 ...     return "Hola Marta! Estoy programando en Python."
 ...
 >>>
 \end{codigo-python-sn}
 
-|def holaMarta():| le indica a Python que estamos escribiendo una función cuyo
-nombre es |holaMarta|, y los paréntesis indican que la función no recibe ningún
+|def hola_marta():| le indica a Python que estamos escribiendo una función cuyo
+nombre es |hola_marta|, y los paréntesis indican que la función no recibe ningún
 parámetro.  La instrucción |return <expresion>| indica cuál será el resultado
 de la función.
 
@@ -387,16 +385,16 @@ blanco que dejamos luego de la instrucción |return| le indica a Python que
 terminamos de escribir la función (y por eso aparece nuevamente el {\it
 prompt}).
 
-Si ahora queremos que la máquina ejecute la función |holaMarta|, debemos
-escribir |holaMarta()| a continuación del cursor de Python:
+Si ahora queremos que la máquina ejecute la función |hola_marta|, debemos
+escribir |hola_marta()| a continuación del cursor de Python:
 
 \begin{codigo-python-sn}
->>> holaMarta()
+>>> hola_marta()
 'Hola Marta! Estoy programando en Python.'
 >>>
 \end{codigo-python-sn}
 
-Se dice que estamos {\it invocando} a la función |holaMarta|.  Al invocar una
+Se dice que estamos {\it invocando} a la función |hola_marta|.  Al invocar una
 función, se ejecutan las instrucciones que habíamos escrito en su cuerpo.
 
 Nuestro amigo Pablo seguramente se pondrá celoso porque escribimos
@@ -404,7 +402,7 @@ una función que saluda a Marta, y nos pedirá que escribamos una
 función que lo salude a él. Y así procederemos entonces:
 
 \begin{codigo-python-sn}
->>> def holaPablo():
+>>> def hola_pablo():
 ...     return "Hola Pablo! Estoy programando en Python."
 \end{codigo-python-sn}
 
@@ -516,7 +514,7 @@ Dado que ya tenemos la función |cuadrado|, podemos aprovecharla y hacer algo
 como esto:
 
 \begin{codigo-python-sn}
->>> def suma5Cuadrados():
+>>> def suma_5_cuadrados():
 	suma = 0
 	suma = suma + cuadrado(1)
 	suma = suma + cuadrado(2)
@@ -525,7 +523,7 @@ como esto:
 	suma = suma + cuadrado(5)
 	return suma
 
->>> suma5Cuadrados()
+>>> suma_5_cuadrados()
 55
 \end{codigo-python-sn}
 \end{solucion}
@@ -563,7 +561,7 @@ Usemos un ciclo definido para resolver el problema anterior de manera más
 compacta:
 
 \begin{codigo-python-sn}
->>> def suma5Cuadrados():
+>>> def suma_5_cuadrados():
 ...     suma = 0
 ...     for x in range(1, 6):
 ...         suma = suma + cuadrado(x)
@@ -581,15 +579,15 @@ Incluso podemos hacer una función más genérica que permita calcular la suma d
 los primeros |n| números cuadrados:
 
 \begin{codigo-python-sn}
->>> def sumaCuadrados((@n@)):
+>>> def suma_cuadrados((@n@)):
 ...     suma = 0
 ...     for x in range(1, (@n + 1@)):
 ...         suma = suma + cuadrado(x)
 ...     return suma
 
->>> sumaCuadrados(5)
+>>> suma_cuadrados(5)
 55
->>> sumaCuadrados(100)
+>>> suma_cuadrados(100)
 338350
 \end{codigo-python-sn}
 
@@ -617,13 +615,13 @@ que nos permite calcular la suma de los primeros 100 cuadrados.
     cuadrados}
 \label{cuad100.py}
 \begin{codigo-python}
-def sumaCuadrados(n):
+def suma_cuadrados(n):
     suma = 0
     for x in range(1, n + 1):
         suma = suma + cuadrado(x)
     return suma
 
-print("La suma de los primeros 100 cuadrados es", sumaCuadrados(100))
+print("La suma de los primeros 100 cuadrados es", suma_cuadrados(100))
 \end{codigo-python}
 \end{codigo}
 
@@ -784,7 +782,7 @@ cometido es {\it imprimir} un mensaje en la pantalla.
 
 Sin embargo, las funciones que reciben parámetros y devuelven resultados suelen
 ser mucho más {\it reutilizables}. En la unidad \ref{chapter:funciones}
-exploramos un poco más este concepto.
+exploraremos un poco más este concepto.
 
 %
 % Lenguajes optimistas vs controladores

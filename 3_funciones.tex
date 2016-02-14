@@ -74,7 +74,7 @@ hace, simplemente llamando a \lstinline!help! es posible obtener esta
 información.
 \end{sabias_que}
 
-\section{Imprimir versus Devolver}
+\section{Imprimir versus devolver}
 
 Supongamos que tenemos una medida de tiempo expresada en horas, minutos y
 segundos, y queremos calcular la cantidad total de segundos. Cuando nos
@@ -307,11 +307,11 @@ Son 1 segundos
 \section{Alcance de las variables}
 
 Ya hemos visto que podemos definir variables, ya sea dentro o fuera del cuerpo
-de una función. Veamos un ejemplo, utilizando la función |sumaCuadrados| de la
+de una función. Veamos un ejemplo, utilizando la función |suma_cuadrados| de la
 unidad \ref{chapter:conceptos}:
 
 \begin{codigo-python-sn}
->>> def sumaCuadrados(n):
+>>> def suma_cuadrados(n):
 ...     suma = 0
 ...     for x in range(1, n + 1):
 ...         suma = suma + cuadrado(x)
@@ -338,11 +338,11 @@ Veamos en detalle qué sucede cuando invocamos a la función mediante la
 instrucción:
 
 \begin{codigo-python-sn}
->>> y = sumaCuadrados(5)
+>>> y = suma_cuadrados(5)
 \end{codigo-python-sn}
 
 \begin{itemize}
-\item Se invoca a |sumaCuadrados| con el argumento 5, y se ejecuta
+\item Se invoca a |suma_cuadrados| con el argumento 5, y se ejecuta
     el cuerpo de la función con la variable local |n| $\ra$ 5.
 \item La función declara una variable local |suma| $\ra$ 0.
 \item Cuando la ejecución llega a la línea |return suma|, la variable |suma|
@@ -401,10 +401,10 @@ $$ p \cdot (3600 h + 60 m + s) $$
 
 \item {\bf Diseño:}
 
-Lo primero que hacemos es buscar un programa que haga algo análogo, y vemos si se
-lo puede modificar para resolver nuestro problema.  El programa
-\lstinline+tres_tiempos+ que hicimos anteriormente,  se parece bastante a lo
-que necesitamos. Veamos las diferencias entre sus especificaciones.
+Lo primero que hacemos es buscar un programa que haga algo análogo y ver si se
+lo puede modificar para resolver nuestro problema.  Hay similitudes entre el requerimiento
+y el programa \lstinline+tres_tiempos+ que desarrollamos anteriormente. 
+Veamos las diferencias entre sus especificaciones.
 
 \begin{center}
 \begin{tabular}{p{0.4\textwidth} p{0.4\textwidth}}

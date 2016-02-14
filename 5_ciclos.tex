@@ -384,7 +384,7 @@ ellas es la instrucción |continue|:
 
 \begin{observacion}
 Cuando la ejecución del cuerpo de un ciclo |while| llega a una
-instrucción |continue|, la ejecución``saltea'' la iteración actual del ciclo y
+instrucción |continue|, la ejecución ``saltea'' la iteración actual del ciclo y
 pasa a la siguiente.
 
 \begin{codigo-python-sn}
@@ -439,10 +439,10 @@ f()
 \begin{sabias_que}
 Desde hace mucho tiempo los ciclos infinitos vienen trayéndoles dolores de
 cabeza a los programadores.  Cuando un programa deja de responder y se
-queda utilizando todo el procesador de la computadora, suele deberse a que
-el programa entró en un ciclo del que no puede salir.
+utiliza todos los recursos de la computadora, suele deberse a que entró 
+en un ciclo del que no puede salir.
 
-Estos ciclos pueden aparecer por una gran variedad de causas.  A
+Estos bucles pueden aparecer por una gran variedad de causas.  A
 continuación algunos ejemplos de ciclos de los que no se puede salir,
 siempre o para ciertos parámetros.  Queda como ejercicio encontrar el error
 en cada uno.
@@ -467,17 +467,17 @@ def buscar_impar(x):
 
 \section{Ejercicios}
 
-\ejercicioc{Nuevamente, se desea facturar el uso de un telefono.  Para ello
-se informa la tarifa por segundo y la duracion de cada comunicacion
+\ejercicioc{Nuevamente, se desea facturar el uso de un teléfono.  Para ello
+se informa la tarifa por segundo y la duración de cada comunicación
 expresada en horas, minutos y segundos.  Como resultado se informa la
-duracion en segundos de cada comunicacion y su costo. Resolver este
-problema usando
+duración en segundos de cada llamado y su costo. Resolver este problema 
+usando
 
 \begin{enumerate}
-\item Ciclo definido.
-\item Ciclo interactivo.
-\item Ciclo con centinela.
-\item Ciclo ``infinito'' que se corta.
+\item Un ciclo definido.
+\item Un ciclo interactivo.
+\item Un ciclo con centinela.
+\item Un ciclo ``infinito'' que se corta.
 \end{enumerate}
 }
 
@@ -493,9 +493,9 @@ pedir el número.
 Resolver este problema usando
 
 \begin{enumerate}
-\item Ciclo interactivo.
-\item Ciclo con centinela.
-\item Ciclo ``infinito'' que se corta.
+\item Un ciclo interactivo.
+\item Un ciclo con centinela.
+\item Un ciclo ``infinito'' que se corta.
 \end{enumerate}
 
 ¿Tendría sentido hacerlo con ciclo definido? Justificar.
@@ -578,7 +578,7 @@ agregue una pausa cada vez mayor, utilizando la función \verb!sleep! del
 módulo \verb!time!.
     \item Modificar el programa anterior para que sea una función que devuelva
 si el usuario ingresó o no la contraseña correctamente, mediante un valor
-booleano (True o False).
+booleano (\verb!True! o \verb!False!).
 \end{partes}
 \end{ejercicio}
 
@@ -587,7 +587,7 @@ booleano (True o False).
 \begin{ejercicio}
 Utilizando la función \verb!randrange! del módulo \verb!random!,
 escribir un programa que obtenga un número aleatorio secreto, y luego
-permita al usuario ingresar números y le indique sin son menores o mayores
+permita al usuario ingresar números y le indique si son menores o mayores
 que el número a adivinar, hasta que el usuario ingrese el número correcto.
 \end{ejercicio}
 
@@ -596,7 +596,7 @@ que el número a adivinar, hasta que el usuario ingrese el número correcto.
 \begin{ejercicio}
 {\bf Algoritmo de Euclides}
 \begin{partes}
-    \item Implementar en python el algoritmo de Euclides para calcular el máximo
+    \item Implementar el algoritmo de Euclides para calcular el máximo
 común divisor de dos números $n$ y $m$, dado por los siguientes pasos.
     \begin{enumerate}
         \item Teniendo $n$ y $m$, se obtiene $r$, el resto de la
@@ -636,7 +636,7 @@ un número $n$, sin incluirlo.
 primeros $m$ números tales que la suma de sus divisores sea igual a sí
 mismo (es decir los primeros $m$ números {\it perfectos}).
     \item Usando la primera función, escribir una función que imprima las
-primeras $m$ parejas de números ($a$,$b$), tales que la suma de los
+primeras $m$ parejas de números ($a$, $b$), tales que la suma de los
 divisores de $a$ es igual a $b$ y la suma de los divisores de $b$ es igual
 a $a$ (es decir las primeras $m$ parejas de números {\it amigos}).
     \item Proponer optimizaciones a las funciones anteriores para disminuir el
