@@ -54,7 +54,7 @@
     morecomment=[s]{..}{.}, % y ...
     xleftmargin=\dimexpr\parindent+10pt,
     breaklines=true,
-    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
+    postbreak=\lst@ifdisplaystyle{\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}}}\fi,
 }
 
 \lstdefinestyle{inlinecode}{
