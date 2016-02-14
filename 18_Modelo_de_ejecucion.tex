@@ -522,11 +522,10 @@ se elimina de la pila.
 \newpage
 \section{La recursión y cómo puede ser que funcione}
 
-\begin{wrapfigure}[15]{R}{0.4\textwidth}
-  \vspace{-\baselineskip}
-  \centerline{\includegraphics[width=0.38\textwidth]{graficos/droste}}
+\begin{figure}[h!]
+  \centerline{\includegraphics[height=0.5\textheight]{graficos/droste}}
   \caption{\small Una imagen recursiva: la publicidad de Cacao Droste.}
-\end{wrapfigure}
+\end{figure}
 
 Estamos acostumbrados a escribir funciones que llaman a otras funciones.
 Pero lo cierto es que nada impide que en Python (y en muchos otros
@@ -551,7 +550,7 @@ Es muy común tener definiciones inductivas de operaciones, como por ejemplo:
 
 \begin{align*}
 0! &= 1 \\
-x! &= x * (x-1)! \quad \text{si}\; x>0
+x! &= x \, (x-1)! \quad \text{si}\; x>0
 \end{align*}
 
 Este tipo de definición se traduce naturalmente en una función en Python:

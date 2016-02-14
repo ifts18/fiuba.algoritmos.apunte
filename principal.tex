@@ -84,8 +84,6 @@
 \headheight .3in \headsep .2in \footskip .2in
 \setlength{\textwidth}{16cm}
 \setlength{\textheight}{22cm}
-%\leftmargin 2.5cm
-%\rightmargin 2.5cm
 \topmargin 0.5 cm
 
 \theoremstyle{definition}
@@ -107,32 +105,10 @@
 \setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
 \usepackage{graphicx}         % Permite insertar imagenes.
 
-% Opcionales
 \usepackage{longtable}        % tablas largas y flexibles
 \usepackage{nonfloat}         % Hace que las figuras no floten
 \usepackage{array}            % Permite alinear los párrafos en las celdas verticalmente
 \usepackage{url}              % Para incluir URLs
-
-\usepackage{wrapfig}          % Para poner texto junto a las imágenes.
-
-%\usepackage{fancyvrb}         % Agrega más entornos verbatim
-%\usepackage{stmaryrd}         % Agrega más símbolos matemáticos
-%\usepackage{enumerate}        % Agrega flexibilidad a las enumeraciones
-%\usepackage{ifthen}           % Permite usar condicionales en comandos
-%\usepackage{subfigure}        % Permite subfiguras dentro de las figuras
-
-% PSTricks - No hacen falta en el principal
-%\usepackage{pst-all}      % From PSTricks
-%\usepackage{pst-poly}     % From pstricks/contrib/pst-poly
-%\usepackage{multido}      % From PSTricks
-
-% ?? Este archivo no está en el svn.
-%\input{random.tex}        % From CTAN/macros/generic
-
-% Agrega algunos simbolos poco usados.  Hace falta?
-%\usepackage{latexsym}
-% Permite hacer operaciones algebraicas en los comandos Latex.  Hace falta?
-%\usepackage{calc}
 
 % Margenes y largo del texto
 %
@@ -152,24 +128,17 @@
 \setlength\footskip{0.8cm}
 \setlength\textwidth{16cm}  % ancho para apunte
 \setlength\textheight{23cm} % largo para apunte
-%\leftmargin 2.5cm
-%\rightmargin 2.5cm
 
 \usepackage{fancyhdr}         %
 \pagestyle{fancy}
 \fancyhf{} % clear all header and footer fields
 \fancyhead[RO]{\slshape \rightmark \hspace{1cm} \normalfont \bfseries \thepage}
 \fancyhead[LE]{\bfseries \thepage \hspace{1cm} \normalfont \leftmark}
-%\fancyfoot{} % clear all footer fields
-%\fancyfoot[RO]{\bfseries \thepage}
-%\fancyfoot[LE]{\bfseries \thepage}
 \renewcommand{\headrulewidth}{0.3pt}
 \renewcommand{\footrulewidth}{0pt}
 
 \fancypagestyle{plain}{%
 \fancyhf{} % clear all header and footer fields
-%\fancyfoot[RO]{\bfseries \thepage}
-%\fancyfoot[LE]{\bfseries \thepage}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}}
 
@@ -181,9 +150,6 @@
 \definecolor{celeste}{rgb}{0.90,0.90,0.95}
 \definecolor{verde}{rgb}{0.85,1.00,0.85}
 \definecolor{amarillo}{rgb}{1.00,1.00,0.75}
-
-% Caja temporal para guardar el texto - Que se usa en las cajas de texto
-\newsavebox{\temporalbox}
 
 \usepackage[framemethod=tikz]{mdframed}
 
@@ -293,115 +259,15 @@
 \newenvironment{solucion}[1][Solución]{\begin{proof}[#1]}{\end{proof}}
 
 \theoremstyle{remark}
-%\newtheorem{observacion}{Observaci\'on}[section]
 \newtheorem*{nota}{Nota}
 
 % Traducciones propias
 \addto\captionsspanish{
 \renewcommand{\chaptername}{Unidad}
-\renewcommand{\contentsname }{Contenidos }
+\renewcommand{\contentsname}{Contenidos}
 }
 
-% Definiciones varias - En uso
-\def\esp{\hspace{0.5ex}}
 \def\ra{\rightarrow}
-\def\qq{\textquoteright}
-
-% Para poner subfiguras - Fuera de uso
-%\newcommand{\ExampleSubFigure}[2][0.3333]{%
-%\subfigure[Example #2]{%
-%  \begin{minipage}[t]{#1\textwidth}
-%   \parbox[b]{\textwidth}{%
-%      \centering
-%      \input{lgc/#2.inl}}
-%  \end{minipage}}}
-
-%\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=6pt}
-
-% Teoremas - Fuera de uso
-%% \theoremstyle{plain} %% This is the default
-%\newtheorem{teorema}{Teorema}[section]
-%\newtheorem{proposicion}[teorema]{Proposici\'on}
-%\newtheorem{corolario}[teorema]{Corolario}
-%\newtheorem{lema}[teorema]{Lema}
-
-% Estas no hacen falta, ya están traducidos correctamente en babel
-%\renewcommand{\abstractname}{Resumen}
-%\renewcommand{\partname }{Parte }
-%\renewcommand{\indexname}{Indice }
-%\renewcommand{\figurename }{Figura }
-%\renewcommand{\tablename }{Tabla }
-%\renewcommand{\refname }{Referencias }
-%\renewcommand{\appendixname }{Ap\'endice }
-%\renewcommand{\chaptername }{Cap\'\i tulo }
-%\renewcommand{\bibname }{Bibliograf\'\i a }
-%\renewcommand{\proofname}{Demostraci\'on}
-
-% Definiciones varias - Fuera de uso.
-%\def\conc{+\hspace{-1.5ex}+\hspace{0.5ex}}
-%\def\con{{\rm con}}
-%\def\hn{\hspace{-0.2cm}}
-%\def\h4n{\hspace{-0.4cm}}
-%\def\impli{\Rightarrow}
-%\def\ssi{\equiv}
-%\def\disc{\not\ssi}
-%\def\cons{\Leftarrow}
-%\def\la{\leftarrow}
-%\def\lt{\triangleleft}
-%\def\lv{[\;\,]}
-%\def\Max{ {\rm Max} }
-%\def\Min{ {\rm Min} }
-%\def\N{I\hspace{-0.8ex} N}
-%\def\noi{\noindent}
-%\def\R{I\hspace{-0.8ex} R}
-%\def\Rn{\R^{n}}
-%\def\rt{\triangleright}
-%\def\tomar{\uparrow}
-%\def\tomar{\hspace{-0.6ex}\uparrow\hspace{-0.6ex}}
-%\def\tirar{\downarrow}
-%\def\tirar{\hspace{-0.6ex}\downarrow\hspace{-0.6ex}}
-%\def\udo{ {\rm\bf\underline{do}} }
-%\def\ufi{ {\rm\bf\underline{fi}} }
-%\def\uif{ {\rm\bf\underline{if}} }
-%\def\uod{ {\rm\bf\underline{od}} }
-%\def\v3{\vspace{0.3cm}}
-%\def\var{{\rm var}}
-%\def\[{|\hspace{-0.2ex} [}
-%\def\]{]\hspace{-0.2ex} |}
-%\def\true{\mbox{\it true\ }}
-%\def\false{\mbox{\it false\ }}
-
-% Comandos - fuera de uso
-%\newcommand{\bag}[1]{ [\hspace{-0.4ex}[ #1 ]\hspace{-0.4ex}] }
-%\newcommand{\abs}[1]{ [\hspace{-0.4ex}[ #1 ]\hspace{-0.4ex}] }
-%\newcommand{\binom}[2]{ \left(\hspace{-1.2ex}\begin{array}{c} #1 \\ #2 \end{array} \hspace{-1.2ex}\right) }
-%\newcommand{\cau}[2]{\noi #1 \hspace{0.5cm}\{{\sl #2}\} }
-%\newcommand{\causa}[2]{\vspace{0.15cm} \noi #1 \hspace{0.5cm} \{{\sl #2}\} \vspace{0.15cm}}
-%\newcommand \RR{{\Bbb R}}
-%\newcommand \ZZ{{\Bbb Z}}
-%\newcommand \NN{{\Bbb N}}
-%\newcommand \supr{\displaystyle{\ \,{\mbox{\footnotesize S}}\hspace{-1.7ex}\bigcirc\, }}
-%\newcommand \supr{\displaystyle{\ \,\vee \hspace{-1.9ex}\bigcirc\,}}
-%\newcommand \infi{\displaystyle{\ \,\wedge\hspace{-1.9ex}\bigcirc\,}}
-%\newcommand \infi{\displaystyle{\ \,{\mbox{\footnotesize I}}\hspace{-1.5ex}\bigcirc\, }}
-%\newcommand \mcd{\operatorname{mcd}}
-%\newcommand \mcm{\operatorname{mcm}}
-%\newcommand \sisolosi{\Leftrightarrow}
-%\newcommand{\E}{\,\%E$\!$\%}
-
-%\newcommand\flecha{\Rightarrow}
-
-%\newcommand{\programa}[1]{   \vskip .5cm
-%\noindent \begin{pspicture}[0](0,0)(1,1)
-%\pspolygon[linewidth=.5pt,linearc=1pt](0,0)(0,1)(1,1)(1,0)
-%\psline[linewidth=.5pt,linearc=2pt](.2,1)(.2,0.7)(.8,0.7)(.8,1)
-%\pscircle[linewidth=.5pt](0.5,0.5){0.16}
-%\psline[linewidth=.5pt,linearc=0pt](.3,.95)(.4,.95)(.4,.75)(.3,.75)(.3,.95)
-%\psline[linewidth=.3pt,linearc=0pt](0.47,0.47)(0.47,0.52)(0.52,0.52)(0.52,0.47)(0.47,0.47)
-%\end{pspicture} \quad {\it #1} }
-%\newcommand{\principio}[1]{\vskip .3 cm \begin{center}{\sc #1} \end{center} \vskip .3cm}
-
-%\newcommand{\bino}[2] {\ifm {{#1}\choose{#2}} {${#1}\choose{#2}$}}
 
 % Para tener hiperlinks, en el panel lateral y en la toc.
 \usepackage[xetex,unicode=false,setpagesize=false,colorlinks]{hyperref}
@@ -452,16 +318,11 @@
 \end{itemize}
 \end{extract}
 
-% Carat no esta.
-%\include{carat}
 \title{Algoritmos y Programación I \\ Aprendiendo a programar usando Python como herramienta}
 \date{}
 \maketitle
 
-\tableofcontents  %Comentar  para no imprimir la toc
-
-% Comando para configurar el número de capítulo
-% \setcounter{chapter}{17}
+\tableofcontents
 
 \include{0_prologo}
 \include{1_conceptos}
@@ -485,19 +346,6 @@
 \include{19_ordenamiento}
 \include{20_ordenamiento_recursivo}
 
-% Estos archivos faltan.
-%
-%\include{apendice}
-%\include{referenc}
-%
-
 \include{copyright}
-
-%\typeout{Bibliography}
-
-%\addcontentsline{toc}{chapter}{Referencias}
-
-%\bibliography{referenc}
-%\bibliographystyle{alpha}
 
 \end{document}
