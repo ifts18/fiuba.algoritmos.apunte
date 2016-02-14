@@ -1,9 +1,7 @@
 \chapter{Ordenar listas}
 
 Al estudiar las listas de Python, vimos que poseen un método \lstinline!sort!
-que las ordena de menor a mayor de acuerdo a una clave (e incluso de acuerdo a
-una relación de orden que se desee, dada a través del parámetro
-\lstinline!cmp!).
+que las ordena de menor a mayor de acuerdo a una clave arbitraria.
 
 Sin embargo, no todas las estructuras cuentan con un método
 \lstinline!sort! que las ordene.  Es por ello que en esta unidad nos
@@ -15,7 +13,20 @@ cuestan lo mismo. Vamos a empezar viendo las más sencillas de escribir
 (que en general suelen ser las más caras).
 
 \section{Ordenamiento por selección}
-Éste método de ordenamiento se basa en la siguiente idea:
+El método de {\it ordenamiento por selección} se basa en la siguiente idea:
+
+\tikzset{checkmark/.pic={
+	\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;
+}}
+\tikzset{pics/arraydone/.style n args={1}{code={
+    \pic at ($(#1)+(-0.2,-0.5)$) {checkmark};
+}}}
+\tikzset{pics/arrayswap/.style n args={2}{code={
+    \path ($(#1)+(-0.1,0.4)$) edge[thick, bend left,{latex}-{latex}] ($(#2)+(-0.1,0.4)$);
+}}}
+\tikzset{pics/arraymark/.style n args={1}{code={
+    \path ($(#1)+(-0.1, 0.7)$) edge[thick, -{latex}] ($(#1)+(-0.1,0.4)$);
+}}}
 
 \begin{itemize}
 
@@ -25,13 +36,21 @@ cuestan lo mismo. Vamos a empezar viendo las más sencillas de escribir
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
-3& 2&-1&5&0&2\\
+3\tikzmark{0} &
+2\tikzmark{1} &
+-1\tikzmark{2} &
+5\tikzmark{3} &
+0\tikzmark{4} &
+2\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Encuentra el valor $5$ en la posición $3$.
 \end{tabular}\\
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arraymark={3}};
+\end{tikzpicture}
 
 \item {\bf Paso 1.2}: Poner el mayor al final (intercambiar el que está en la última
 posición de la lista con el mayor encontrado).\\
@@ -39,7 +58,12 @@ posición de la lista con el mayor encontrado).\\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
-3& 2&-1&2&0&5\\
+3\tikzmark{0} &
+2\tikzmark{1} &
+-1\tikzmark{2} &
+2\tikzmark{3} &
+0\tikzmark{4} &
+5\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
@@ -47,6 +71,10 @@ posición de la lista con el mayor encontrado).\\
 Intercambia el elemento de la posición $3$ con el de la posición $5$. \\
 {\it En la última posición de la lista está el mayor de todos.}
 \end{tabular} \\
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arrayswap={3}{5}};
+    \pic {arraydone={5}};
+\end{tikzpicture}
 
 \item {\bf Paso 2.1}: Buscar el mayor de todos los elementos del segmento de la lista
 entre la primera y la anteúltima posición. \\
@@ -54,13 +82,22 @@ entre la primera y la anteúltima posición. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
-3& 2&-1&2&0&5\\
+3\tikzmark{0} &
+2\tikzmark{1} &
+-1\tikzmark{2} &
+2\tikzmark{3} &
+0\tikzmark{4} &
+5\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Encuentra el valor $3$ en la posición $0$.
 \end{tabular} \\
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arraymark={0}};
+    \pic {arraydone={5}};
+\end{tikzpicture}
 
 \item {\bf Paso 2.2}: Poner el mayor al final del segmento (intercambiar el que está en la última
 posición del segmento --o sea anteúltima posición de la lista-- con el mayor encontrado). \\
@@ -68,7 +105,12 @@ posición del segmento --o sea anteúltima posición de la lista-- con el mayor 
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
-0& 2&-1&2&3&5\\
+0\tikzmark{0} &
+2\tikzmark{1} &
+-1\tikzmark{2} &
+2\tikzmark{3} &
+3\tikzmark{4} &
+5\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
@@ -76,6 +118,11 @@ posición del segmento --o sea anteúltima posición de la lista-- con el mayor 
 Intercambia el elemento de la posición $0$ con el valor de la posición $4$. \\
 {\it En la anteúltima y última posición de la lista están los dos mayores en su posición definitiva.}
 \end{tabular} \\
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arrayswap={0}{4}};
+    \pic {arraydone={4}};
+    \pic {arraydone={5}};
+\end{tikzpicture}
 
 $\dots$\\
 
@@ -86,50 +133,61 @@ mayores fueron reubicados. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
--1& 0&2&2&3&5\\
+-1\tikzmark{0} &
+0\tikzmark{1} &
+2\tikzmark{2} &
+2\tikzmark{3} &
+3\tikzmark{4} &
+5\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 {\it La lista se encuentra ordenada}.
 \end{tabular}\\
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arraydone={0}};
+    \pic {arraydone={1}};
+    \pic {arraydone={2}};
+    \pic {arraydone={3}};
+    \pic {arraydone={4}};
+    \pic {arraydone={5}};
+\end{tikzpicture}
 \end{itemize}
+
+La implementación en Python puede verse en el Código \ref{ord_seleccion}.
 
 \begin{codigo}{seleccion.py}{Ordena una lista por selección}
 \label{ord_seleccion}
 \lstinputlisting{src/19_ordenamiento/seleccion.py}
 \end{codigo}
 
-La implementación en Python puede verse en el Código \ref{ord_seleccion}.
-
-
 La función principal, \lstinline!ord_seleccion! es la encargada de recorrer
 la lista, ubicando el mayor elemento al final del segmento y luego
 reduciendo el segmento a analizar.
 
-Mientras que \lstinline!buscar_max! es una función que ya se estudió
-previamente, que busca el mayor elemento de la lista y devuelve su
-posición.
+La función \lstinline!buscar_max! busca el mayor elemento de un segmento de
+la lista y devuelve su posición.
 
 A continuación, algunas una ejecuciones de prueba de ese código:
 
 \begin{codigo-python-sn}
->>> l=[3, 2, -1, 5, 0, 2]
+>>> l = [3, 2, -1, 5, 0, 2]
 >>> ord_seleccion(l)
 DEBUG:  3 5 [3, 2, -1, 2, 0, 5]
 DEBUG:  0 4 [0, 2, -1, 2, 3, 5]
 DEBUG:  1 3 [0, 2, -1, 2, 3, 5]
 DEBUG:  1 2 [0, -1, 2, 2, 3, 5]
 DEBUG:  0 1 [-1, 0, 2, 2, 3, 5]
->>> print l
+>>> l
 [-1, 0, 2, 2, 3, 5]
->>> l=[]
+>>> l = []
 >>> ord_seleccion(l)
->>> l=[1]
+>>> l = [1]
 >>> ord_seleccion(l)
->>> print l
+>>> l
 [1]
->>> l=[1,2,3,4,5]
+>>> l = [1, 2, 3, 4, 5]
 >>> ord_seleccion(l)
 DEBUG:  4 4 [1, 2, 3, 4, 5]
 DEBUG:  3 3 [1, 2, 3, 4, 5]
@@ -137,7 +195,7 @@ DEBUG:  2 2 [1, 2, 3, 4, 5]
 DEBUG:  1 1 [1, 2, 3, 4, 5]
 \end{codigo-python-sn}
 
-Puede verse que aún cuando la lista está ordenada, se la recorre buscando
+Puede verse que aun cuando la lista está ordenada, se la recorre buscando
 los mayores elementos y ubicándolos en la misma posición en la que se
 encuentran.
 
@@ -147,8 +205,8 @@ Todo ordenamiento tiene un invariante que permite asegurarse de que cada
 paso que se toma va en la dirección de obtener una lista ordenada.
 
 En el caso del ordenamiento por selección, el invariante es que los
-elementos desde \lstinline!n+1! hasta el final de la lista están ordenados y
-son mayores que los elementos de \lstinline!0! a \lstinline!n!, es decir
+elementos desde $n + 1$ hasta el final de la lista están ordenados y
+son mayores que los elementos de $0$ a $n$; es decir
 que ya están en su posición definitiva.
 
 \subsection{¿Cuánto cuesta ordenar por selección?}
@@ -160,9 +218,7 @@ elementos, en el segundo paso $N-1$ elementos, en el tercer paso $N-2$
 elementos, etc. Cada visita a un elemento implica una cantidad constante y
 pequeña de comparaciones (que no depende de $N$). Por lo tanto tenemos que
 
-\begin{equation}
-T(N) \approx c * (2 + 3 + \ldots + N) \approx c * N * (N+1)/2 \sim N^2
-\end{equation}
+$$ T(N) \approx c \cdot (2 + 3 + \ldots + N) \approx c \cdot N \cdot (N+1)/2 \sim N^2 $$
 
 O sea que ordenar por selección una lista de tamaño $N$ insume tiempo del
 orden de $N^2$.  Como ya se vio, este tiempo es independiente de si la
@@ -173,7 +229,7 @@ lista que se desea ordenar y algunas variables de tamaño 1.
 
 \section{Ordenamiento por inserción}
 
-Éste otro método de ordenamiento se basa en la siguiente idea:
+El método de {\it ordenamiento por inserción} se basa en la siguiente idea:
 
 \begin{itemize}
 
@@ -183,10 +239,19 @@ por selección. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
-3& 2&-1&5&0&2\\
+3\tikzmark{0} &
+2\tikzmark{1} &
+-1\tikzmark{2} &
+5\tikzmark{3} &
+0\tikzmark{4} &
+2\tikzmark{5} \\
 \hline
 \end{tabular}
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arraydone={0}};
+\end{tikzpicture}
 \hspace{0.75cm}
+\\
 
 \item {\bf Paso 1}: Considerar el segundo elemento de la lista,
 y ordenarlo respecto del primero, deplazándolo hasta la
@@ -195,13 +260,23 @@ posición correcta, si corresponde. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
-2& 3&-1&5&0&2\\
+2\tikzmark{0} &
+3\tikzmark{1} &
+-1\tikzmark{2} &
+5\tikzmark{3} &
+0\tikzmark{4} &
+2\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Se desplaza el valor $2$ antes de $3$.
 \end{tabular}
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arrayswap={0}{1}};
+    \pic {arraydone={0}};
+    \pic {arraydone={1}};
+\end{tikzpicture}
 
 \item {\bf Paso 2}: Considerar el tercer elemento de la lista,
 y ordenarlo respecto del primero y el segundo, deplazándolo hasta la
@@ -210,13 +285,25 @@ posición correcta, si corresponde. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
--1& 2&3&5&0&2\\
+-1\tikzmark{0} &
+2\tikzmark{1} &
+3\tikzmark{2} &
+5\tikzmark{3} &
+0\tikzmark{4} &
+2\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Se desplaza el valor $-1$ antes de $2$ y de $3$.
 \end{tabular}
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arrayswap={0}{1}};
+    \pic {arrayswap={1}{2}};
+    \pic {arraydone={0}};
+    \pic {arraydone={1}};
+    \pic {arraydone={2}};
+\end{tikzpicture}
 
 \item {\bf Paso 3}: Considerar el cuarto elemento de la lista,
 y ordenarlo respecto del primero, el segundo y el tercero, deplazándolo hasta la
@@ -225,7 +312,12 @@ posición correcta, si corresponde. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
--1& 2&3&5&0&2\\
+-1\tikzmark{0} &
+2\tikzmark{1} &
+3\tikzmark{2} &
+5\tikzmark{3} &
+0\tikzmark{4} &
+2\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
@@ -234,6 +326,12 @@ El $5$ está correctamente ubicado respecto de $-1$,$2$ y $3$ (como el segmento
 hasta la tercera posición está ordenado, basta con comparar con el tercer elemento del
 segmento para verificarlo).\\
 \end{tabular}
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arraydone={0}};
+    \pic {arraydone={1}};
+    \pic {arraydone={2}};
+    \pic {arraydone={3}};
+\end{tikzpicture}
 
 $\dots$\\
 
@@ -242,13 +340,25 @@ $\dots$\\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
--1& 0&2&3&5&2\\
+-1\tikzmark{0} &
+0\tikzmark{1} &
+2\tikzmark{2} &
+3\tikzmark{3} &
+5\tikzmark{4} &
+2\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Todos los elementos excepto el ante-último ya se encuentran ordenados.
 \end{tabular}
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arraydone={0}};
+    \pic {arraydone={1}};
+    \pic {arraydone={2}};
+    \pic {arraydone={3}};
+    \pic {arraydone={4}};
+\end{tikzpicture}
 
 \item {\bf Paso N}:
 Considerar el $N$--ésimo elemento de la lista, y ordenarlo respecto del
@@ -258,23 +368,38 @@ la posición correcta, si corresponde. \\
 \hspace{0.75cm}
 \begin{tabular}[c]{|c|c|c|c|c|c|}
 \hline
--1& 0&2&2&3&5\\
+-1\tikzmark{0} &
+0\tikzmark{1} &
+2\tikzmark{2} &
+2\tikzmark{3} &
+3\tikzmark{4} &
+5\tikzmark{5} \\
 \hline
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Se desplaza el valor $2$ antes de $3$ y de $5$.
 \end{tabular}
+\begin{tikzpicture}[overlay,remember picture]
+    \pic {arrayswap={3}{4}};
+    \pic {arrayswap={4}{5}};
+    \pic {arraydone={0}};
+    \pic {arraydone={1}};
+    \pic {arraydone={2}};
+    \pic {arraydone={3}};
+    \pic {arraydone={4}};
+    \pic {arraydone={5}};
+\end{tikzpicture}
 
 \end{itemize}
+
+Una posible implementación en Python de este algoritmo se incluye en el
+Código \ref{ord_insercion}.
 
 \begin{codigo}{insercion.py}{Ordena una lista por Inserción}
 \label{ord_insercion}
 \lstinputlisting{src/19_ordenamiento/insercion.py}
 \end{codigo}
-
-Una posible implementación en Python de este algoritmo se incluye en el
-Código \ref{ord_insercion}.
 
 La función principal, \lstinline!ord_insercion!, recorre la lista desde el
 segundo elemento hasta el último, y cuando uno de estos elementos no está
@@ -290,35 +415,35 @@ insertar reemplaza al valor que se encontraba allí anteriormente.
 En las siguientes ejecuciones puede verse que funciona correctamente.
 
 \begin{codigo-python-sn}
->>> l=[3, 2,-1,5, 0, 2]
+>>> l=[3, 2, -1, 5, 0, 2]
 >>> ord_insercion(l)
 DEBUG:  [2, 3, -1, 5, 0, 2]
 DEBUG:  [-1, 2, 3, 5, 0, 2]
 DEBUG:  [-1, 2, 3, 5, 0, 2]
 DEBUG:  [-1, 0, 2, 3, 5, 2]
 DEBUG:  [-1, 0, 2, 2, 3, 5]
->>> print l
+>>> l
 [-1, 0, 2, 2, 3, 5]
->>> l=[]
+>>> l = []
 >>> ord_insercion(l)
->>> l=[1]
+>>> l = [1]
 >>> ord_insercion(l)
->>> print l
+>>> l
 [1]
->>> l=[1,2,3,4,5,6]
+>>> l=[1, 2, 3, 4, 5, 6]
 >>> ord_insercion(l)
 DEBUG:  [1, 2, 3, 4, 5, 6]
 DEBUG:  [1, 2, 3, 4, 5, 6]
 DEBUG:  [1, 2, 3, 4, 5, 6]
 DEBUG:  [1, 2, 3, 4, 5, 6]
 DEBUG:  [1, 2, 3, 4, 5, 6]
->>> print l
+>>> l
 [1, 2, 3, 4, 5, 6]
 \end{codigo-python-sn}
 
 \subsection{Invariante del ordenamiento por inserción}
 
-En el ordenamiento por inserción, a cada paso se considera que los
+En el ordenamiento por inserción, en cada paso se considera que los
 elementos que se encuentran en el segmento de $0$ a $i$ están ordenados, de
 manera que agregar un nuevo elemento implica colocarlo en la posición
 correspondiente y el segmento seguirá ordenado.
@@ -340,11 +465,9 @@ En el primer paso, el segundo elemento se debe intercambiar con el primero;
 en el segundo paso, el tercer elemento se compara con el segundo y el
 primer elemento, y se ubica adelante de todo; en el tercer paso, el cuarto
 elemento se compara con el tercero, el segundo y el primer elemento, y se
-ubica adelante de todo; etc...
+ubica adelante de todo; etc\ldots
 
-\begin{equation}
-T(N) \approx c * (2 + 3 + \ldots + N) \approx c * N * (N+1)/2 \sim N^2
-\end{equation}
+$$ T(N) \approx c \cdot (2 + 3 + \ldots + N) \approx c \cdot N \cdot (N+1)/2 \sim N^2 $$
 
 Es decir que ordenar por inserción una lista de tamaño $N$ puede insumir
 (en el peor caso) tiempo del orden de $N^2$. En cuanto al espacio
@@ -365,22 +488,21 @@ ordenada, el tiempo que insume el algoritmo de inserción es:
 T(N) \sim N
 \end{equation}
 
-% TODO: burbujeo
-
 \section{Resumen}
 
 \begin{itemize}
 
-\item El ordenamiento por selección, es uno de los más sencillos, pero es
-bastante ineficiente, se basa en la idea de buscar el máximo en una secuencia,
+\item El {\bf ordenamiento por selección} es uno de los más sencillos, pero es
+bastante ineficiente: se basa en la idea de {\it buscar el máximo} en una secuencia,
 ubicarlo al final y seguir analizando la secuencia sin el último elemento.
-Tiene como ventaja que hace una baja cantidad de ``intercambios'' ($N$), pero
+
+Tiene como ventaja que hace una baja cantidad de intercambios ($N$), pero
 como desventaja que necesita una alta cantidad de comparaciones ($N^2$).
 Siempre tiene el mismo comportamiento.
 
-\item El ordenamiento por inserción, es un algoritmo bastante intuitivo y se
-suele usar para ordenar en la vida real. Se basa en la idea de ir insertando
-ordenadamente, en cada paso se considera la inserción de un elemento más de
+\item El {\bf ordenamiento por inserción} es un algoritmo bastante intuitivo y se
+suele usar para ordenar en la vida real. Se basa en la idea de ir {\it insertando
+ordenadamente}: en cada paso se considera la inserción de un elemento más de
 secuencia y la inserción se empieza a hacer desde el final de los datos ya
 ordenados.
 
@@ -388,9 +510,8 @@ Tiene como ventaja que en el caso de tener los datos ya ordenados no hace
 ningún intercambio (y hace sólo $N-1$ comparaciones). En el peor caso, cuando
 la secuencia está invertida, se hace una gran cantidad de intercambios y
 comparaciones ($N^2$). Si bien es un algoritmo ineficiente, para secuencias
-cortas, el tiempo de ejecución es bastante bueno.
+cortas el tiempo de ejecución es bastante bueno.
 
-%\item Burbujeo
 \end{itemize}
 
 \newpage
