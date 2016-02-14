@@ -203,7 +203,7 @@ diferentes algoritmos para la actualización y la consulta.
 \section{Cómo darle instrucciones a la máquina usando Python}
 
 \begin{sabias_que}
-Python fue creado a finales de los años 80, por un programador holandés
+Python fue creado a finales de los años 80 por un programador holandés
 llamado Guido van Rossum, quien sigue siendo aún hoy el líder del
 desarrollo del lenguaje.
 
@@ -279,7 +279,7 @@ paréntesis para modificar el orden de asociación natural de las operaciones
 25
 \end{codigo-python-sn}
 
-Ademas de efectuar operaciones matemáticas, Python nos permite trabajar con
+Además de efectuar operaciones matemáticas, Python nos permite trabajar con
 porciones de texto, que llamaremos {\it cadenas}, y que se introducen entre
 comillas simples (|'|) o dobles (|"|):
 
@@ -302,7 +302,7 @@ Python nos permite asignarle un nombre a un valor, de forma tal de
 >>> x = 8
 >>> x
 8
->>> y = cuadrado(x)
+>>> y = x * x
 >>> 2 * y
 128
 >>> lenguaje = 'Python'
@@ -386,7 +386,7 @@ terminamos de escribir la función (y por eso aparece nuevamente el {\it
 prompt}).
 
 Si ahora queremos que la máquina ejecute la función |hola_marta|, debemos
-escribir |hola_marta()| a continuación del cursor de Python:
+escribir |hola_marta()| a continuación del {\it prompt} de Python:
 
 \begin{codigo-python-sn}
 >>> hola_marta()
@@ -809,8 +809,7 @@ denomina {\it computación}.
 Para ejemplificar estos conceptos veamos qué sucede cuando se
 ejecuta el programa |cuadrados.py|:
 
-\begin{longtable}[c]{|p{5.5cm}|p{5.5cm}|p{1.5cm}|}
-\hline
+\begin{longtable}[c]{p{5.5cm} p{5.5cm} p{1.5cm}}
 {\bf Instrucción} & {\bf Qué sucede} & {\bf Estado}\\
 
 \hline
@@ -917,7 +916,6 @@ Se despliega por pantalla el mensaje ``Es todo por ahora''
 \lstinline!n2! $\ra$ 5 \newline
 \lstinline!x! $\ra$ 4 \\
 
-\hline
 \end{longtable}
 
 \subsection{Depuración de programas}
