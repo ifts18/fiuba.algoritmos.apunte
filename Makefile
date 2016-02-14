@@ -29,7 +29,7 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-PDFLATEX   = pdflatex
+PDFLATEX   = xelatex -interaction=nonstopmode -halt-on-error
 BIBTEX	   = bibtex
 MAKEINDEX  = makeindex
 
@@ -107,7 +107,7 @@ veryclean : clean
 	$(manconf) ; echo  $$mandeps  ;\
 	echo "$*.pdf $@ : $< $$deps $$bibs $$epses $$mandeps" > $@
 
-include $(SRC:.tex=.d)
+-include $(SRC:.tex=.d)
 
 # Dependencia adicional para ejercicios.tex.
 ejercicios.tex : principal.pdf

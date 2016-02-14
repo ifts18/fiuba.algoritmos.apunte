@@ -21,9 +21,8 @@
 \tolerance=5000
 
 % Entrada de texto
-\usepackage[spanish]{babel}   % Traduce los textos a castellano
-\usepackage[utf8x]{inputenc}  % Permite escribir directamente áéíóúñ
-\usepackage{t1enc}            % Agrega caracteres extendidos al font
+\usepackage{polyglossia}
+\setmainlanguage{spanish}
 
 % Cuestiones de estilo
 \usepackage{listings}         % Permite mostrar codigo de forma mas linda
@@ -51,27 +50,8 @@
     keywordstyle=\itshape,
     backgroundcolor=\color{light-gray},
     xleftmargin=\parindent,
-    % NOTA: esta sección se podría omitir usando XeTeX.
-    extendedchars=true,
-    inputencoding=utf8x,
     breaklines=true,
     postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookrightarrow\space}},
-    literate={á}{{\'a}}1
-             {é}{{\'e}}1
-             {í}{{\'i}}1
-             {ó}{{\'o}}1
-             {ú}{{\'u}}1
-             {ü}{{\"u}}1
-             {ñ}{{\~n}}1
-             {Á}{{\'A}}1
-             {É}{{\'E}}1
-             {Í}{{\'I}}1
-             {Ó}{{\'O}}1
-             {Ú}{{\'U}}1
-             {Ü}{{\"U}}1
-             {Ñ}{{\~N}}1
-             {¿}{{?`}}1
-             {¡}{{!`}}1
 }
 
 \lstdefinestyle{inlinecode}{
@@ -121,7 +101,7 @@
 
 %% Resto del preámbulo solo definido para el apunte. %%
 
-\usepackage{palatino}         % Cambia el font por omision a Palatino
+\setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
 \usepackage{graphicx}         % Permite insertar imagenes.
 
 % Opcionales
@@ -412,7 +392,7 @@
 %\newcommand{\bino}[2] {\ifm {{#1}\choose{#2}} {${#1}\choose{#2}$}}
 
 % Para tener hiperlinks, en el panel lateral y en la toc.
-\usepackage[pdftex,colorlinks]{hyperref}
+\usepackage[xetex,unicode=false,setpagesize=false,colorlinks]{hyperref}
 \hypersetup{%
 	linkcolor=black,
 	urlcolor=blue,
