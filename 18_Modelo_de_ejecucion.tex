@@ -1084,7 +1084,40 @@ total de 15 llamadas a la función \lstinline!fib!, sólo para devolver el
 valor $F_5$.
 
 \begin{figure}[htb]
-\includegraphics{graficos/18_fibonacci}
+\begin{tikzpicture}[
+    every node/.style={rectangle},
+    -latex,
+    level distance=1cm,
+    level 1/.style={sibling distance=6cm},
+    level 2/.style={sibling distance=3cm},
+    level 3/.style={sibling distance=1.5cm},
+]
+
+\node {fib(5)}
+child {
+    node {fib(4)}
+    child { node {fib(3)}
+        child { node {fib(2)}
+            child { node {fib(1)} }
+            child { node {fib(0)} }
+        }
+        child { node {fib(1)} }
+    }
+    child { node {fib(2)}
+        child { node {fib(1)} }
+        child { node {fib(0)} }
+    }
+}
+child {
+    node {fib(3)}
+    child { node {fib(2)}
+        child { node {fib(1)} }
+        child { node {fib(0)} }
+    }
+    child { node {fib(1)} }
+};
+
+\end{tikzpicture}
 \caption{Árbol de llamadas para \lstinline!fib(5)!}
 \label{fibonacci}
 \end{figure}
