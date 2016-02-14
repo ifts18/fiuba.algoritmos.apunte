@@ -359,19 +359,19 @@ meteorológicas de los próximos días no son más que grandes programas
 implementados introduciendo nuevas funciones a la máquina, escritas por uno o
 muchos programadores.
 
-Si queremos escribir una función (que llamaremos |holaMarta|) que devuelve la
+Si queremos escribir una función (que llamaremos |hola_marta|) que devuelve la
 cadena de texto ``Hola Marta! Estoy programando en Python.'', lo que debemos
 hacer es ingresar el siguiente conjunto de líneas en Python:
 
 \begin{codigo-python-sn}
->>> def holaMarta():
+>>> def hola_marta():
 ...     return "Hola Marta! Estoy programando en Python."
 ...
 >>>
 \end{codigo-python-sn}
 
-|def holaMarta():| le indica a Python que estamos escribiendo una función cuyo
-nombre es |holaMarta|, y los paréntesis indican que la función no recibe ningún
+|def hola_marta():| le indica a Python que estamos escribiendo una función cuyo
+nombre es |hola_marta|, y los paréntesis indican que la función no recibe ningún
 parámetro.  La instrucción |return <expresion>| indica cuál será el resultado
 de la función.
 
@@ -385,16 +385,16 @@ blanco que dejamos luego de la instrucción |return| le indica a Python que
 terminamos de escribir la función (y por eso aparece nuevamente el {\it
 prompt}).
 
-Si ahora queremos que la máquina ejecute la función |holaMarta|, debemos
-escribir |holaMarta()| a continuación del cursor de Python:
+Si ahora queremos que la máquina ejecute la función |hola_marta|, debemos
+escribir |hola_marta()| a continuación del cursor de Python:
 
 \begin{codigo-python-sn}
->>> holaMarta()
+>>> hola_marta()
 'Hola Marta! Estoy programando en Python.'
 >>>
 \end{codigo-python-sn}
 
-Se dice que estamos {\it invocando} a la función |holaMarta|.  Al invocar una
+Se dice que estamos {\it invocando} a la función |hola_marta|.  Al invocar una
 función, se ejecutan las instrucciones que habíamos escrito en su cuerpo.
 
 Nuestro amigo Pablo seguramente se pondrá celoso porque escribimos
@@ -402,7 +402,7 @@ una función que saluda a Marta, y nos pedirá que escribamos una
 función que lo salude a él. Y así procederemos entonces:
 
 \begin{codigo-python-sn}
->>> def holaPablo():
+>>> def hola_pablo():
 ...     return "Hola Pablo! Estoy programando en Python."
 \end{codigo-python-sn}
 
@@ -514,7 +514,7 @@ Dado que ya tenemos la función |cuadrado|, podemos aprovecharla y hacer algo
 como esto:
 
 \begin{codigo-python-sn}
->>> def suma5Cuadrados():
+>>> def suma_5_cuadrados():
 	suma = 0
 	suma = suma + cuadrado(1)
 	suma = suma + cuadrado(2)
@@ -523,7 +523,7 @@ como esto:
 	suma = suma + cuadrado(5)
 	return suma
 
->>> suma5Cuadrados()
+>>> suma_5_cuadrados()
 55
 \end{codigo-python-sn}
 \end{solucion}
@@ -561,7 +561,7 @@ Usemos un ciclo definido para resolver el problema anterior de manera más
 compacta:
 
 \begin{codigo-python-sn}
->>> def suma5Cuadrados():
+>>> def suma_5_cuadrados():
 ...     suma = 0
 ...     for x in range(1, 6):
 ...         suma = suma + cuadrado(x)
@@ -579,15 +579,15 @@ Incluso podemos hacer una función más genérica que permita calcular la suma d
 los primeros |n| números cuadrados:
 
 \begin{codigo-python-sn}
->>> def sumaCuadrados((@n@)):
+>>> def suma_cuadrados((@n@)):
 ...     suma = 0
 ...     for x in range(1, (@n + 1@)):
 ...         suma = suma + cuadrado(x)
 ...     return suma
 
->>> sumaCuadrados(5)
+>>> suma_cuadrados(5)
 55
->>> sumaCuadrados(100)
+>>> suma_cuadrados(100)
 338350
 \end{codigo-python-sn}
 
@@ -615,13 +615,13 @@ que nos permite calcular la suma de los primeros 100 cuadrados.
     cuadrados}
 \label{cuad100.py}
 \begin{codigo-python}
-def sumaCuadrados(n):
+def suma_cuadrados(n):
     suma = 0
     for x in range(1, n + 1):
         suma = suma + cuadrado(x)
     return suma
 
-print("La suma de los primeros 100 cuadrados es", sumaCuadrados(100))
+print("La suma de los primeros 100 cuadrados es", suma_cuadrados(100))
 \end{codigo-python}
 \end{codigo}
 
