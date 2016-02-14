@@ -227,7 +227,7 @@ Python y lo guarda en el archivo |saludo.py|:
 \begin{codigo-python-sn}
 with open("saludo.py", "w") as saludo:
     saludo.write("# Este programa fue generado por otro programa!\n")
-    saludo.write("print 'Hola Mundo'\n")
+    saludo.write("print('Hola Mundo'\n"))
 \end{codigo-python-sn}
 
 \begin{atencion}
@@ -433,7 +433,7 @@ es igual que lo que se recupera:
 >>> valores = [("Pepe", 108, "4:16"), ("Juana", 2315, "8:42")]
 >>> puntajes.guardar_puntajes("puntajes.txt", valores)
 >>> recuperado = puntajes.recuperar_puntajes("puntajes.txt")
->>> print recuperado
+>>> print(recuperado)
 [('Pepe', 108, '4:16'), ('Juana', 2315, '8:42')]
 \end{codigo-python-sn}
 

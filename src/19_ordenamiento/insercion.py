@@ -8,7 +8,7 @@ def ord_insercion(lista):
         # al de la posición i, reubicarlo dentro del segmento [0:i]
         if lista[i + 1] < lista[i]:
             reubicar(lista, i + 1)
-        print "DEBUG: ", lista
+        print("DEBUG: ", lista)
 
 def reubicar(lista, p):
     """Reubica al elemento que está en la posición p de la lista

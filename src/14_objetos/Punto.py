@@ -1,10 +1,7 @@
-#/usr/bin/env python
-# encoding: utf-8
-
 # Módulo para hacer validaciones de tipos
 from validaciones import es_numero
 
-class Punto(object):
+class Punto:
     """ Representación de un punto en el plano, los atributos son x e y que
         representan los valores de las coordenadas cartesianas."""
     def __init__(self, x=0, y=0):

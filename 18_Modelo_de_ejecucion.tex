@@ -522,11 +522,6 @@ se elimina de la pila.
 \newpage
 \section{La recursión y cómo puede ser que funcione}
 
-\begin{figure}[h!]
-  \centerline{\includegraphics[height=0.5\textheight]{graficos/droste}}
-  \caption{\small Una imagen recursiva: la publicidad de Cacao Droste.}
-\end{figure}
-
 Estamos acostumbrados a escribir funciones que llaman a otras funciones.
 Pero lo cierto es que nada impide que en Python (y en muchos otros
 lenguajes) una función se llame a sí misma. Y lo más interesante es que
@@ -537,6 +532,11 @@ En materias de matemática se estudian los razonamientos por inducción para
 probar propiedades de números enteros, la recursión no es más que una
 generalización de la inducción a más estructuras: las listas, las cadenas
 de caracteres, las funciones, etc.
+
+\begin{figure}[h!]
+  \centerline{\includegraphics[height=0.5\textheight]{graficos/droste}}
+  \caption{\small Una imagen recursiva: la publicidad de Cacao Droste.}
+\end{figure}
 
 A continuación estudiaremos diversas situaciones en las cuales aparece la
 recursión, veremos cómo es que esto puede funcionar, algunas situaciones en
@@ -1224,14 +1224,14 @@ Escribir una función que reciba 2 enteros {\it n} y {\it b} y devuelva
 \verb!True! si {\it n} es potencia de {\it b}.
 
 Ejemplos:
-\begin{codigo-python-sn}
->>> es_potencia(8,2)
+\begin{verbatim}
+>>> es_potencia(8, 2)
 True
->>> es_potencia(64,4)
+>>> es_potencia(64, 4)
 True
->>> es_potencia(70,10)
+>>> es_potencia(70, 10)
 False
-\end{codigo-python-sn}
+\end{verbatim}
 \end{ejercicio}
 
 \extractionlabel{guia}
@@ -1241,10 +1241,10 @@ Escribir una funcion recursiva que reciba como parámetros dos strings {\it a} y
 dentro de {\it a}.
 
 Ejemplo:
-\begin{codigo-python-sn}
+\begin{verbatim}
 >>> posiciones_de("Un tete a tete con Tete", "te")
 [3, 5, 10, 12, 21]
-\end{codigo-python-sn}
+\end{verbatim}
 \end{ejercicio}
 
 \extractionlabel{guia}

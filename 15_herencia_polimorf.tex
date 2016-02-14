@@ -293,7 +293,7 @@ para calcular el área.
 \item La clase base:
 
 \begin{codigo-python-sn}
-class Figura(object):
+class Figura:
     def __init__(self, nombre, color):
         self.nombre = nombre
         self.color = color
@@ -314,7 +314,7 @@ from math import pi
 
 class Circulo(Figura):
     def __init__(self, radio, color):
-        super().init("Círculo", color)
+        super().__init__("Círculo", color)
         self.radio = radio
 
     def area(self):
@@ -326,7 +326,7 @@ class Circulo(Figura):
 \begin{codigo-python-sn}
 class Triangulo(Figura):
     def __init__(self, base, altura, color):
-        super().init("Triángulo", color)
+        super().__init__("Triángulo", color)
         self.base = base
         self.altura = altura
 

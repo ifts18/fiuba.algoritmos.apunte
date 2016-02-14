@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# encoding: utf-8
 
 def factorial(n):
     """ Precondición: n entero >=0

@@ -1,7 +1,4 @@
-#! /usr/bin/env python
-# encoding: utf-8
-
-class Nodo(object):
+class Nodo:
     """ Un nodo para formar una lista enlazada. """
     def __init__(self, dato=None, prox = None):
         self.dato = dato
@@ -16,6 +13,6 @@ def verLista(nodo):
     # cicla mientras nodo no es None
     while nodo:
         # muestra el dato
-        print nodo
+        print(nodo)
         # ahora nodo apunta a nodo.prox
         nodo = nodo.prox

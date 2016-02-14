@@ -446,7 +446,7 @@ Esta es la porción de código correspondiente a la búsqueda. Llamamos |n_ant| 
 \begin{codigo-python-sn}
 n_ant = self.prim
 n_act = n_ant.prox
-for pos in xrange(1, i):
+for pos in range(1, i):
     n_ant = n_act
     n_act = n_ant.prox
 \end{codigo-python-sn}
@@ -497,7 +497,7 @@ def pop(self, i=None):
         # Buscar los nodos en las posiciones (i-1) e (i)
         n_ant = self.prim
         n_act = n_ant.prox
-        for pos in xrange(1, i):
+        for pos in range(1, i):
             n_ant = n_act
             n_act = n_ant.prox
 
@@ -640,7 +640,7 @@ Obtenemos el nodo anterior a la posición en la que queremos insertar.
 
 \begin{codigo-python-sn}
 n_ant = self.prim
-for pos in xrange(1, i):
+for pos in range(1, i):
     n_ant = n_ant.prox
 
 nuevo.prox = n_ant.prox
@@ -673,7 +673,7 @@ def insert(self, i, x):
     else:
         # Buscar el nodo anterior a la posición deseada
         n_ant = self.prim
-        for pos in xrange(1, i):
+        for pos in range(1, i):
             n_ant = n_ant.prox
 
         # Intercalar el nuevo nodo
@@ -706,7 +706,7 @@ atributo siempre es una referencia al útimo nodo.}
 
 \label{invariante-objetos}
 Los invariantes son condiciones que deben ser siempre ciertas.  En la sección
-\label{invariantes} mencionamos los invariantes de ciclos, que son condiciones que deben
+\ref{invariantes} mencionamos los invariantes de ciclos, que son condiciones que deben
 permanecer ciertas durante la ejecución de un ciclo.  Existen también los
 invariantes de objetos, que son condiciones que deben ser ciertas a lo
 largo de toda la existencia de un objeto.

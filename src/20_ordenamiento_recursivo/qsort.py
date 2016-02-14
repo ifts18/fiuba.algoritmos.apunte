@@ -1,8 +1,5 @@
-#/usr/bin/env python
-# encoding: utf-8
-
 def swap(l, i, j):
-    print "intercambiando %d, %d " % (i, j), l
+    print("intercambiando {}, {} ".format((i, j), l)
     l[j], l[i] = l[i], l[j]
 
 def quick_sort(lista, inicio, fin):
@@ -12,7 +9,7 @@ def quick_sort(lista, inicio, fin):
     menores = inicio
     pivote = lista[inicio]
 
-    for i in xrange(inicio+1, fin+1):
+    for i in range(inicio+1, fin+1):
         if lista[i] < pivote:
             menores += 1
             if i != menores:
