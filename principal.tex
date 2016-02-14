@@ -39,13 +39,15 @@
 \usepackage[labelfont=bf]{caption}
 
 % Parámetros para los listings de python
-\lstset{language=Python,
+\lstset{
+    language=Python,
+    columns=fixed,
+    keepspaces=true,
     numbers=left,
     tabsize=4,
     numberstyle=\color{gray}\tiny\ttfamily,
     numbersep=5pt,
     showstringspaces=false,
-    upquote=true,
     basicstyle=\small\ttfamily,
     keywordstyle=\itshape,
     backgroundcolor=\color{light-gray},
@@ -58,9 +60,6 @@
 }
 
 \lstdefinestyle{inlinecode}{
-    columns=fixed,
-    upquote=true,
-    basicstyle=\small\ttfamily,
     backgroundcolor=\color{light-gray}
 }
 
