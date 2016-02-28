@@ -2,7 +2,7 @@
 
 \section{El problema de la búsqueda}
 
-Presentamos ahora uno de los problemas más clásicos de la computación, {\it el
+Presentamos ahora uno de los problemas más clásicos de la computación, \emph{el
 problema de la búsqueda}, que se puede enunciar de la siguiente manera:
 
 {\bf Problema: } Dada una lista $xs$ y un valor $x$ devolver el índice de $x$
@@ -162,8 +162,8 @@ Nuestra hipótesis es: {\bf Si la lista crece, la cantidad de comparaciones
 para encontrar un valor arbitrario crecerá en forma proporcional al tamaño de
 la lista}.
 
-Diremos que este algoritmo tiene un comportamiento {\it proporcional a la
-longitud de la lista involucrada}, o que es un algoritmo {\it lineal}.
+Diremos que este algoritmo tiene un comportamiento \emph{proporcional a la
+longitud de la lista involucrada}, o que es un algoritmo \emph{lineal}.
 
 En la próxima sección veremos cómo probar esta hipótesis.
 
@@ -209,7 +209,7 @@ contienen la posición de inicio y la posición de fin del segmento que se
 está considerando. De la misma manera usaremos la varible \lstinline!medio!
 para contener la posición del punto medio del segmento.
 
-En la Figura \ref{fig:busqbin} vemos qué pasa cuando se busca
+En la Figura~\ref{fig:busqbin} vemos qué pasa cuando se busca
 el valor 18 en la lista [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23].
 
 \begin{figure}[h!t]
@@ -221,7 +221,7 @@ Como no se encontró al valor buscado, devuelve $-1$.}
 \label{fig:busqbin}
 \end{figure}
 
-En el Código \ref{busquedabinaria} mostramos una posible implementación de
+En el Código~\ref{busquedabinaria} mostramos una posible implementación de
 este algoritmo.
 
 \begin{codigo}{busqueda\_binaria.py}{Función de búsqueda binaria}
@@ -265,7 +265,7 @@ A continuación varias ejecuciones de prueba:
 -1
 \end{codigo-python-sn}
 
-\ejercicioc{ En la línea 13 de |busqueda_binaria.py| efectuamos la división usando el
+\ejercicioc{En la línea 13 de |busqueda_binaria.py| efectuamos la división usando el
 operador |//| en lugar de |/|. ¿Qué sucedería si utilizáramos |/|?  }
 
 \subsection*{¿Cuántas comparaciones hace este programa?}
@@ -280,7 +280,7 @@ tanto, la cantidad de comparaciones que hacen con el valor buscado es
 aproximadamente igual a la cantidad de pasos necesarios para llegar a un
 segmento de tamaño 1.
 Veamos el caso más sencillo para razonar, y supongamos que la longitud de la
-lista es una potencia de 2, es decir \lstinline+len(lista)+$= 2^k$:
+lista es una potencia de 2, es decir \lstinline+len(lista)+~$= 2^k$:
 
 \begin{itemize}
 \item Luego del primer paso, el segmento a tratar es de tamaño $2^k$.
@@ -293,13 +293,13 @@ $\ldots$
 \end{itemize}
 
 Por lo tanto este programa hace aproximadamente $k$ comparaciones con el valor
-buscado cuando \lstinline+len(lista)+$= 2^k$.
+buscado cuando \lstinline+len(lista)+~$= 2^k$.
 Pero si despejamos $k$ de la ecuación anterior, podemos ver que este programa
-realiza aproximadamente $\log_2$(\lstinline+len(lista)+) comparaciones.
+realiza aproximadamente $\log_2($\lstinline+len(lista)+$)$ comparaciones.
 
 Cuando \lstinline+len(lista)+ no es una potencia de 2 el razonamiento es menos
 prolijo, pero también vale que este programa realiza aproximadamente
-$\log_2$(\lstinline+len(lista)+) comparaciones.
+$\log_2$(\lstinline+len(lista)+$)$ comparaciones.
 
 \begin{observacion}
 Vemos entonces que si \lstinline!lista! es una lista ordenada, la búsqueda binaria es

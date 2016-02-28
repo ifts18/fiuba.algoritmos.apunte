@@ -1,11 +1,11 @@
 \chapter{Pilas y colas}
 
 En esta unidad veremos dos ejemplos de tipos abstractos de datos, de los más
-clásicos: {\it pilas} y {\it colas}.
+clásicos: \emph{pilas} y \emph{colas}.
 
 \section{Pilas}
 
-Una {\it pila} es un TAD que tiene las siguientes operaciones:
+Una \emph{pila} es un TAD que tiene las siguientes operaciones:
 
 \begin{itemize}
 \item \lstinline+__init__+: Inicializa una pila nueva, vacía.
@@ -37,8 +37,8 @@ siguiente llamado de atención:
 
 \begin{atencion}
 Al usar esa pila dentro de un programa, deberemos ignorar que se está
-trabajando sobre una lista: solamente podremos usar los métodos de la {\it
-interfaz pila}.
+trabajando sobre una lista: solamente podremos usar los métodos de la
+\emph{interfaz pila}.
 \end{atencion}
 
 \subsection{Pilas representadas por listas}
@@ -170,7 +170,7 @@ componentes realizando las acciones indicadas en el párrafo anterior,
 utilizando una pila auxiliar para operar. Si la expresión está bien formada
 devolveremos el resultado, de lo contrario levantaremos una excepción.
 
-En el Código \ref{calculadora_polaca} está la implementación de la
+En el Código~\ref{calculadora_polaca} está la implementación de la
 calculadora descripta.
 
 \begin{codigo}{\label{calculadora_polaca} calculadora\_polaca.py}{Una calculadora polaca inversa}
@@ -306,9 +306,9 @@ en la última posición de la lista, y cada vez que se apila un nuevo
 elemento, se lo agregará al final.
 
 Por lo tanto se puede implementar el método \lstinline!apilar! mediante un
-\lstinline!append!  de la lista, {\it que se ejecuta en tiempo constante}.
+\lstinline!append!  de la lista, \emph{que se ejecuta en tiempo constante}.
 También el método \lstinline!desapilar!, que se implementa mediante
-\lstinline!pop! de lista, {\it se ejecuta en tiempo constante}.
+\lstinline!pop! de lista, \emph{se ejecuta en tiempo constante}.
 
 Vemos que la alternativa que elegimos fue barata.
 
@@ -317,7 +317,7 @@ posición $0$ de la lista, es decir implementar el método \lstinline!apilar!
 mediante \lstinline|self.items.insert(0, x)| y el método
 \lstinline!desapilar! mediante \lstinline|self.items.pop(0)|. Sin embargo,
 ésta no es una solución inteligente, ya que tanto insertar al comienzo de
-la lista como borrar al comienzo de la lista de Python {\it consumen tiempo
+la lista como borrar al comienzo de la lista de Python \emph{consumen tiempo
 proporcional a la longitud de la lista}.
 
 \ejercicioc{Diseñar un pequeño experimento para verificar que la
@@ -329,8 +329,8 @@ de los métodos a utilizar.}
 
 \section{Colas}
 
-El TAD {\it cola} modela el comportamiento: ``el primero que llega
-es el primero en ser atendido''; los demás elementos se van {\it encolando} hasta que
+El TAD \emph{cola} modela el comportamiento: ``el primero que llega
+es el primero en ser atendido''; los demás elementos se van \emph{encolando} hasta que
 les toque su turno.
 
 Sus operaciones son:
@@ -472,7 +472,7 @@ class Cola:
 Sin embargo, una \lstinline!Cola! es bastante más sencilla que una
 lista enlazada con referencia al último, por lo que también podemos
 implementar una clase \lstinline!Cola! utilizando las técnicas de referencias,
-que se vieron en las {\it listas enlazadas}.
+que se vieron en las \emph{listas enlazadas}.
 
 Planteamos otra solución posible para obtener una cola que sea eficiente tanto al
 encolar como al desencolar, utilizando los nodos de las listas enlazadas,
@@ -619,9 +619,9 @@ caso de un cola de atención de clientes.
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Escribir una clase {\it TorreDeControl} que modele el trabajo de una torre
+Escribir una clase \emph{TorreDeControl} que modele el trabajo de una torre
 de control de un aeropuerto, con una pista de aterrizaje.  La torre trabaja
-en dos etapas: {\it reconocimiento} y {\it acción}.
+en dos etapas: \emph{reconocimiento} y \emph{acción}.
 \begin{partes}
     \item Escribir un método \verb!reconocimiento!, que verifique si hay algún
 nuevo avión esperando para aterrizar y/o despegar, y de ser así los encole
@@ -643,14 +643,14 @@ imprimiendo la acción tomada y el estado de la torre de control cada vez.
 \begin{ejercicio}
 Atención a los pacientes de un consultorio médico, con varios doctores.
 \begin{partes}
-    \item Escribir una clase {\it ColaDePacientes}, con los métodos {\it
-nuevo\_paciente}, que reciba el nombre del paciente y lo encole, y un
-método {\it proximo\_paciente} que devuelva el primer paciente en la cola y
+    \item Escribir una clase \verb|ColaDePacientes|, con los métodos
+\verb|nuevo_paciente|, que reciba el nombre del paciente y lo encole, y un
+método \verb|proximo_paciente| que devuelva el primer paciente en la cola y
 lo desencole.
-    \item Escribir una clase {\it Recepcion}, que contenga un diccionario con
-las colas correspondientes a cada doctor o doctora, y los métodos {\it
-nuevo\_paciente} que reciba el nombre del paciente y del especialista, y
-{\it proximo\_paciente} que reciba el nombre de la persona liberada y
+    \item Escribir una clase \verb|Recepcion|, que contenga un diccionario con
+las colas correspondientes a cada doctor o doctora, y los métodos
+\verb|nuevo_paciente| que reciba el nombre del paciente y del especialista, y
+\verb|proximo_paciente| que reciba el nombre de la persona liberada y
 devuelva el próximo paciente en espera.
     \item Escribir un programa que permita al usuario ingresar nuevos pacientes
 o indicar que un consultorio se ha liberado y en ese caso imprima el
@@ -663,12 +663,12 @@ próximo paciente en espera.
 \begin{ejercicio}
 Juego de Cartas
 \begin{partes}
-    \item Crear una clase {\it Carta} que contenga un palo y un valor.
-    \item Crear una clase {\it PilaDeCartas} que vaya apilando las cartas una
+    \item Crear una clase \verb|Carta| que contenga un palo y un valor.
+    \item Crear una clase \verb|PilaDeCartas| que vaya apilando las cartas una
 debajo de otra, pero sólo permita apilarlas si son de un número
 inmediatamente inferior y de distinto palo. Si se intenta apilar una carta
 incorrecta, debe lanzar una excepción.
-    \item Agregar el método {\it \_\_str\_\_} a la clase PilaDeCartas, para
+    \item Agregar el método \verb|__str__| a la clase PilaDeCartas, para
 imprimir las cartas que se hayan apilado hasta el momento.
 \end{partes}
 \end{ejercicio}

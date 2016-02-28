@@ -23,8 +23,8 @@ cambia de computadora cuando se cansa de chatear y quiere jugar al solitario.
 Muchos definen una computadora moderna como ``una máquina que
 almacena y manipula información bajo el control de un programa que
 puede cambiar''. Aparecen acá dos conceptos que son claves: por un
-lado se habla de una {\it máquina} que almacena información, y por
-el otro lado, esta máquina está controlada por {\it un programa
+lado se habla de una \emph{máquina} que almacena información, y por
+el otro lado, esta máquina está controlada por \emph{un programa
 que puede cambiar}.
 
 Una calculadora sencilla, de esas que sólo tienen 10 teclas para
@@ -34,8 +34,8 @@ almacena información y que está controlada por un programa. Pero
 lo que diferencia a esta calculadora de una computadora es que en
 la calculadora el programa no puede cambiar.
 
-Un {\it programa de computadora} es un conjunto de {\it
-instrucciones} paso a paso que le indican a una computadora cómo
+Un \emph{programa de computadora} es un conjunto de \emph{instrucciones}
+paso a paso que le indican a una computadora cómo
 realizar una tarea dada, y en cada momento uno puede elegir
 ejecutar un programa de acuerdo a la tarea que quiere realizar.
 
@@ -47,7 +47,7 @@ muy agradable poder darle las órdenes a la computadora en
 castellano, pero el problema del castellano, y de las lenguas
 habladas en general, es su ambigüedad:
 
-Si alguien nos dice {\it ``Comprá el collar sin monedas''}, no sabremos
+Si alguien nos dice \emph{``Comprá el collar sin monedas''}, no sabremos
 si nos pide que compremos el collar que no tiene monedas, o que compremos
 un collar y que no usemos monedas para la compra. Habrá que preguntarle
 a quien nos da la orden cuál es la interpretación correcta. Pero tales
@@ -81,7 +81,7 @@ realizar hace 50 años, sí lo serán cuando las computadoras crezcan en poder
 (memoria, velocidad), y se vuelvan máquinas todopoderosas.
 
 Sin embargo eso no es así: existen algunos problemas, llamados
-{\it no computables} que nunca podrán ser resueltos por una
+\emph{no computables} que nunca podrán ser resueltos por una
 computadora digital, por más poderosa que ésta sea. La
 computabilidad es la rama de la computación que se ocupa de
 estudiar qué tareas son computables y qué tareas no lo son.
@@ -103,7 +103,7 @@ capacidad de resolución.
 Los problemas no computables no son los únicos escollos que se le
 presentan a la computación. Hay otros problemas que si bien son
 computables demandan para su resolución un esfuerzo enorme en
-tiempo y en memoria. Estos problemas se llaman {\it intratables}.
+tiempo y en memoria. Estos problemas se llaman \emph{intratables}.
 El análisis de algoritmos se ocupa de separar los problemas
 tratables de los intratables, encontrar la solución más barata
 para resolver un problema dado, y en el caso de los intratables,
@@ -126,12 +126,12 @@ soluciones:
 Dado un número $N$ se quiere calcular $N^{33}$.
 \end{problemac}
 
-Una solución posible, por supuesto, es hacer el producto $N \times
-N \times \ldots \times N$, que involucra 32 multiplicaciones.
+Una solución posible, por supuesto, es hacer el producto $N \cdot
+N \cdots N$, que involucra 32 multiplicaciones.
 
 Otra solución, mucho más eficiente es:
 \begin{itemize}
-\item Calcular $N \times N$.
+\item Calcular $N \cdot N$.
 
 \item Al resultado anterior mutiplicarlo por sí mismo con lo cual
 ya disponemos de $N^{4}$.
@@ -150,7 +150,7 @@ conseguimos el resultado deseado con sólo 6 multiplicaciones.
 
 \end{itemize}
 
-Cada una de estas dos soluciones representa un {\it algoritmo}, es
+Cada una de estas dos soluciones representa un \emph{algoritmo}, es
 decir un método de cálculo, diferente. Para un mismo problema
 puede haber algoritmos diferentes que lo resuelven, cada uno con
 un costo distinto en términos de recursos computacionales
@@ -193,7 +193,7 @@ gran ciudad, la guía de la Argentina? Y en cada caso ¿de qué tipo
 de consulta estamos hablando: hay que imprimir un listado una vez
 por mes con la guía completa, se trata de una consulta en línea,
 etc.? Para cada contexto hay una solución diferente, con los datos
-guardados en una {\it estructura de datos} apropiada, y con
+guardados en una \emph{estructura de datos} apropiada, y con
 diferentes algoritmos para la actualización y la consulta.
 
 %
@@ -220,7 +220,7 @@ cambios introducidos son incompatibles con las versiones anteriores. Por esta
 razón, las ramas 2.x y 3.x coexisten con distintos grados de adopción.
 \end{sabias_que}
 
-El lenguaje Python nos provee de un {\it intérprete}, es decir un programa que
+El lenguaje Python nos provee de un \emph{intérprete}, es decir un programa que
 interpreta las órdenes que le damos a medida que las escribimos. La forma más
 típica de invocar al intérprete es ejecutar el comando |python3| en
 la terminal.
@@ -237,7 +237,7 @@ acerca de cómo ejecutar el intérprete en cada sistema operativo.
 \end{atencion}
 
 \begin{codigo-nohl-sn}
-$ python3
+(~\$~) python3
 Python 3.5.0 (default, Sep 20 2015, 11:28:25)
 [GCC 5.2.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
@@ -245,14 +245,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 \end{codigo-nohl-sn}
 
 Para orientarnos, el intérprete muestra los símbolos |>>>| (llamaremos a esto
-el {\it prompt}), indicando que podemos escribir a continuación una {\it
-sentencia} u orden que será evaluada.
+el \emph{prompt}), indicando que podemos escribir a continuación una
+\emph{sentencia} u orden que será evaluada.
 
 Algunas sentencias sencillas, por ejemplo, permiten utilizar el intérprete como
-una calculadora simple con números enteros. Para esto escribimos la {\it
-expresión} que queremos resolver luego del {\it prompt} y presionamos la tecla
+una calculadora simple con números enteros. Para esto escribimos la 
+\emph{presión} que queremos resolver luego del \emph{prompt} y presionamos la tecla
 \keys{Enter}. El intérprete de Python evalúa la expresión y muestra el
-resultado en la línea siguiente. Luego nos presenta nuevamente el {\it prompt}.
+resultado en la línea siguiente. Luego nos presenta nuevamente el \emph{prompt}.
 
 \begin{codigo-python-sn}
 >>> 2+3
@@ -262,7 +262,7 @@ resultado en la línea siguiente. Luego nos presenta nuevamente el {\it prompt}.
 
 Python permite utilizar las operaciones |+|, |-|, |*|, |!| y |**|
 (suma, resta, multiplicación, división y potenciación). La sintaxis es la
-convencional (valores intercalados con operaciones), y se pueden usar
+convencional (valores intercalados con operaciones), y se puede usar
 paréntesis para modificar el orden de asociación natural de las operaciones
 (potenciación, producto/división, suma/resta).
 
@@ -280,7 +280,7 @@ paréntesis para modificar el orden de asociación natural de las operaciones
 \end{codigo-python-sn}
 
 Además de efectuar operaciones matemáticas, Python nos permite trabajar con
-porciones de texto, que llamaremos {\it cadenas}, y que se introducen entre
+porciones de texto, que llamaremos \emph{cadenas}, y que se introducen entre
 comillas simples (|'|) o dobles (|"|):
 
 \begin{codigo-python-sn}
@@ -310,7 +310,7 @@ Python nos permite asignarle un nombre a un valor, de forma tal de
 'Estoy programando en Python'
 \end{codigo-python-sn}
 
-En este ejemplo creamos tres {\it variables}, llamadas |x|, |y| y |lenguaje|, y
+En este ejemplo creamos tres \emph{variables}, llamadas |x|, |y| y |lenguaje|, y
 las asociamos a los valores 8, 64 y |'Python'|, respectivamente. Luego podemos
 usar esas variables como parte de cualquier expresión, y en el momento de
 evaluarla, Python reemplazará las variables por su valor asociado.
@@ -318,7 +318,7 @@ evaluarla, Python reemplazará las variables por su valor asociado.
 \section{Funciones}
 
 Para efectuar algunas operaciones particulares necesitamos introducir el
-concepto de {\it función}:
+concepto de \emph{función}:
 
 \begin{codigo-python-sn}
 >>> abs(10)
@@ -339,9 +339,9 @@ la función |abs| permite calcular el valor absoluto de un número, |max| y |min
 permiten obtener el máximo y el mínimo entre un conjunto de números, y |len|
 permite obtener la longitud de una cadena de texto.
 
-Una función puede recibir 0 o más {\it parámetros} o {\it argumentos}
+Una función puede recibir 0 o más \emph{parámetros} o \emph{argumentos}
 (expresados entre entre paréntesis, y separados por comas), efectúa una
-operación y devuelve un {\it resultado}.  Por ejemplo, la función |abs| recibe
+operación y devuelve un \emph{resultado}.  Por ejemplo, la función |abs| recibe
 un parámetro (un número) y su resultado es el valor absoluto del número.
 
 \begin{figure}[ht]
@@ -379,14 +379,14 @@ La sangría\footnote{La sangría puede ingresarse utilizando dos o más espacios
 o presionando la tecla \keys{Tab}. Es importante prestar atención en no mezclar
 espacios con tabs, para evitar ``confundir'' al intérprete.} con la que se
 escribe la línea |return| es importante: le indica a Python que estamos
-escribiendo el {\it cuerpo} de la función (es decir, las instrucciones que la
+escribiendo el \emph{cuerpo} de la función (es decir, las instrucciones que la
 componen), que podría estar formado por más de una sentencia.  La línea en
 blanco que dejamos luego de la instrucción |return| le indica a Python que
-terminamos de escribir la función (y por eso aparece nuevamente el {\it
-prompt}).
+terminamos de escribir la función (y por eso aparece nuevamente el 
+\emph{ompt}).
 
 Si ahora queremos que la máquina ejecute la función |hola_marta|, debemos
-escribir |hola_marta()| a continuación del {\it prompt} de Python:
+escribir |hola_marta()| a continuación del \emph{prompt} de Python:
 
 \begin{codigo-python-sn}
 >>> hola_marta()
@@ -394,7 +394,7 @@ escribir |hola_marta()| a continuación del {\it prompt} de Python:
 >>>
 \end{codigo-python-sn}
 
-Se dice que estamos {\it invocando} a la función |hola_marta|.  Al invocar una
+Se dice que estamos \emph{invocando} a la función |hola_marta|.  Al invocar una
 función, se ejecutan las instrucciones que habíamos escrito en su cuerpo.
 
 Nuestro amigo Pablo seguramente se pondrá celoso porque escribimos
@@ -535,7 +535,7 @@ algo mejor que esto?
 
 Para resolver este tipo de problema (repetir un cálculo para los valores
 contenidos en un intervalo dado) de una manera más eficiente, introducimos el
-concepto de {\it ciclo definido}, que tiene la siguiente forma:
+concepto de \emph{ciclo definido}, que tiene la siguiente forma:
 
 \begin{codigo-python-sn}
 for x in range(n1, n2):
@@ -551,8 +551,8 @@ se debe hacer lo indicado por |<hacer algo con x>|.
 \end{itemize}
 
 La instrucción que describe el rango en el que va a realizar el ciclo
-(|for x in range(...)|) es el {\it encabezado del ciclo}, y las instrucciones
-que describen la acción que se repite componen el {\it cuerpo del ciclo}.
+(|for x in range(...)|) es el \emph{encabezado del ciclo}, y las instrucciones
+que describen la acción que se repite componen el \emph{cuerpo del ciclo}.
 Todas las instrucciones que describen el cuerpo del ciclo deben tener una
 sangría mayor que el encabezado del ciclo.
 
@@ -571,8 +571,8 @@ compacta:
 \end{problema}
 
 Notar que en nuestro ejemplo necesitamos recorrer todos los valores enteros
-entre 1 y 5, y el rango generado por |range(n1, n2)| es {\it abierto} en |n2|.
-Es decir, |x| tomará los valores |n1|, |n1 + 1|, |n1 + 2|, |...|, |n2 - 1|.
+entre 1 y 5, y el rango generado por |range(n1, n2)| es \emph{abierto} en |n2|.
+Es decir, |x| tomará los valores |n1|, |n1 + 1|, |n1 + 2|, \ldots, |n2 - 1|.
 Por eso es que usamos |range(1, 6)|.
 
 Incluso podemos hacer una función más genérica que permita calcular la suma de
@@ -608,7 +608,7 @@ documentación de esa función. Para obtener la documentación de una instrucci�
 la debemos poner entre comillas; por ejemplo: |help('for')|, |help('return')|.
 \end{sabias_que}
 
-En el código \ref{cuad100.py} se muestra nuestro primer programa, |cuad100.py|,
+En el código~\ref{cuad100.py} se muestra nuestro primer programa, |cuad100.py|,
 que nos permite calcular la suma de los primeros 100 cuadrados.
 
 \begin{codigo}{cuad100.py}{Imprime la suma de los primeros 100 números
@@ -646,7 +646,7 @@ Para ejecutar el programa debemos abrir una consola del sistema y ejecutar
 |python cuad100.py|:
 
 \begin{codigo-nohl-sn}
-$ python cuad100.py
+(~\$~) python cuad100.py
 La suma de los primeros 100 cuadrados es 338350
 \end{codigo-nohl-sn}
 
@@ -664,7 +664,7 @@ luego lo salude.
 Ya habíamos escrito la función |hola| que nos permitía saludar a una
 persona si sabíamos su nombre. Pero aún no sabemos cómo obtener el nombre del
 usuario. Para esto podemos usar la función |input|, como se muestra en el
-Código \ref{saludar.py}.
+Código~\ref{saludar.py}.
 
 \begin{codigo}{saludar.py}{Saluda al usuario posr su nombre}
 \label{saludar.py}
@@ -692,7 +692,7 @@ tecla \keys{Enter}, |input| devuelve la cadena ingresada. Luego llamamos a
 Para ejecutar el programa, nuevamente escribimos en la consola del sistema:
 
 \begin{codigo-nohl-sn}
-$ python saludar.py
+(~\$~) python saludar.py
 Por favor ingrese su nombre: Alan
 Hola Alan!
 \end{codigo-nohl-sn}
@@ -709,7 +709,7 @@ Escribir en Python un programa que haga lo siguiente:
 \end{problema}
 
 \begin{solucion}
-La solución a este problema se encuentra en el Código \ref{cuadrados.py}.
+La solución a este problema se encuentra en el Código~\ref{cuadrados.py}.
 
 \begin{codigo}{cuadrados.py}{Imprime los cuadrados solicitados}
 \label{cuadrados.py}
@@ -732,7 +732,7 @@ imprimir_cuadrados()
 Como siempre, podemos ejecutar el programa en la consola del sistema:
 
 \begin{codigo-nohl-sn}
-$ python cuadrados.py
+(~\$~) python cuadrados.py
 Se calcularán cuadrados de números
 Ingrese un número entero: 5
 Ingrese otro número entero: 8
@@ -743,7 +743,7 @@ Es todo por ahora
 \end{codigo-nohl-sn}
 \end{solucion}
 
-En el Código \ref{cuadrados.py} aparece una función que no habíamos
+En el Código~\ref{cuadrados.py} aparece una función que no habíamos
 utilizado hasta ahora: |int|. ¿Por qué es necesario utilizar |int| para
 resolver el problema?
 
@@ -759,7 +759,7 @@ el teclado como una cadena de caracteres. Es decir, |input| siempre devuelve
 una cadena, incluso aunque el usuario haya ingresado una secuencia de dígitos.
 
 Por eso es que introducimos la función |int|, que devuelve el parámetro que
-recibe {\it convertido} a un número entero:
+recibe \emph{convertido} a un número entero:
 
 \begin{codigo-python-sn}
 >>> int("42")
@@ -770,18 +770,18 @@ recibe {\it convertido} a un número entero:
 
 Cuando introdujimos el concepto de función dijimos que una función recibe 0 o
 más parámetros y devuelve un resultado. Pero en la función |saludar| que
-escribimos en el Código \ref{saludar.py} no hay ninguna instrucción
+escribimos en el Código~\ref{saludar.py} no hay ninguna instrucción
 |return|\ldots
-es decir, |saludar| es una función que no recibe parámetros {\it ¡y no devuelve
+es decir, |saludar| es una función que no recibe parámetros \emph{¡y no devuelve
 nada!}.
 
 Esto es perfectamente válido: no necesitamos que |saludar| reciba parámetros
 porque estamos utilizando la función |input| para obtener la entrada del
 usuario, y no necesitamos que la función devuelva nada, porque su único
-cometido es {\it imprimir} un mensaje en la pantalla.
+cometido es \emph{imprimir} un mensaje en la pantalla.
 
 Sin embargo, las funciones que reciben parámetros y devuelven resultados suelen
-ser mucho más {\it reutilizables}. En la unidad \ref{chapter:funciones}
+ser mucho más \emph{reutilizables}. En la unidad~\ref{chapter:funciones}
 exploraremos un poco más este concepto.
 
 %
@@ -796,7 +796,7 @@ cambiar el valor con el que están asociadas. En un momento dado
 uno puede detenerse a observar a qué valor se refiere cada una de
 las variables del programa. Esa ``foto'' que indica en un momento dado
 a qué valor hace referencia cada una de las variables se denomina
-{\it estado}. También hablaremos del {\it estado de una variable}
+\emph{estado}. También hablaremos del \emph{estado de una variable}
 para indicar a qué valor está asociada esa variable, y usaremos la
 notación |n| $\ra$ 13 para describir el estado de la variable |n| (e indicar
 que está asociada al número 13).
@@ -804,7 +804,7 @@ que está asociada al número 13).
 A medida que las variables cambian de valores a los que se
 refieren, el programa va cambiando de estado. La sucesión de todos
 los estados por los que pasa el programa en una ejecución dada se
-denomina {\it computación}.
+denomina \emph{computación}.
 
 Para ejemplificar estos conceptos veamos qué sucede cuando se
 ejecuta el programa |cuadrados.py|:
@@ -924,8 +924,8 @@ Una manera de seguir la evolución del estado es insertar instrucciones de impre
 en sitios críticos del programa. Esto nos será de utilidad para detectar errores
 y también para comprender cómo funcionan determinadas instrucciones.
 
-Por ejemplo, podemos insertar llamadas a la función |print| en el Código
-\ref{cuadrados.py} para inspeccionar el contenido de las variables:
+Por ejemplo, podemos insertar llamadas a la función |print| en el
+Código~\ref{cuadrados.py} para inspeccionar el contenido de las variables:
 
 \begin{codigo-python-sn}
 def imprimir_cuadrados():
@@ -948,7 +948,7 @@ imprimir_cuadrados()
 En este caso, la salida del programa será:
 
 \begin{codigo-nohl-sn}
-$ python cuadrados.py
+(~\$~) python cuadrados.py
 Se calcularán cuadrados de números
 Ingrese un número entero: 5
 el valor de n1 es: 5
@@ -1040,5 +1040,5 @@ problemas:
 Escribir un programa que le pida una palabra al usuario, para luego
 imprimirla 1000 veces, en una única línea, con espacios intermedios.
 
-{\it Ayuda:} Investigar acerca del parámetro |end| de la función |print|.
+\emph{Ayuda:} Investigar acerca del parámetro |end| de la función |print|.
 \end{ejercicio}

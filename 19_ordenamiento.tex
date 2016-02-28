@@ -13,7 +13,7 @@ cuestan lo mismo. Vamos a empezar viendo las más sencillas de escribir
 (que en general suelen ser las más caras).
 
 \section{Ordenamiento por selección}
-El método de {\it ordenamiento por selección} se basa en la siguiente idea:
+El método de \emph{ordenamiento por selección} se basa en la siguiente idea:
 
 \tikzset{checkmark/.pic={
 	\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;
@@ -69,7 +69,7 @@ posición de la lista con el mayor encontrado).\\
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Intercambia el elemento de la posición $3$ con el de la posición $5$. \\
-{\it En la última posición de la lista está el mayor de todos.}
+\emph{En la última posición de la lista está el mayor de todos.}
 \end{tabular} \\
 \begin{tikzpicture}[overlay,remember picture]
     \pic {arrayswap={3}{5}};
@@ -116,7 +116,7 @@ posición del segmento --o sea anteúltima posición de la lista-- con el mayor 
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
 Intercambia el elemento de la posición $0$ con el valor de la posición $4$. \\
-{\it En la anteúltima y última posición de la lista están los dos mayores en su posición definitiva.}
+\emph{En la anteúltima y última posición de la lista están los dos mayores en su posición definitiva.}
 \end{tabular} \\
 \begin{tikzpicture}[overlay,remember picture]
     \pic {arrayswap={0}{4}};
@@ -143,7 +143,7 @@ mayores fueron reubicados. \\
 \end{tabular}
 \hspace{0.75cm}
 \begin{tabular}{p{9cm}}
-{\it La lista se encuentra ordenada}.
+\emph{La lista se encuentra ordenada}.
 \end{tabular}\\
 \begin{tikzpicture}[overlay,remember picture]
     \pic {arraydone={0}};
@@ -155,7 +155,7 @@ mayores fueron reubicados. \\
 \end{tikzpicture}
 \end{itemize}
 
-La implementación en Python puede verse en el Código \ref{ord_seleccion}.
+La implementación en Python puede verse en el Código~\ref{ord_seleccion}.
 
 \begin{codigo}{seleccion.py}{Ordena una lista por selección}
 \label{ord_seleccion}
@@ -218,7 +218,7 @@ elementos, en el segundo paso $N-1$ elementos, en el tercer paso $N-2$
 elementos, etc. Cada visita a un elemento implica una cantidad constante y
 pequeña de comparaciones (que no depende de $N$). Por lo tanto tenemos que
 
-$$ T(N) \approx c \cdot (2 + 3 + \ldots + N) \approx c \cdot N \cdot (N+1)/2 \sim N^2 $$
+$$ T(N) \approx c \cdot (2 + 3 + \cdots + N) \approx c \cdot N \cdot (N+1)/2 \sim N^2 $$
 
 O sea que ordenar por selección una lista de tamaño $N$ insume tiempo del
 orden de $N^2$.  Como ya se vio, este tiempo es independiente de si la
@@ -229,7 +229,7 @@ lista que se desea ordenar y algunas variables de tamaño 1.
 
 \section{Ordenamiento por inserción}
 
-El método de {\it ordenamiento por inserción} se basa en la siguiente idea:
+El método de \emph{ordenamiento por inserción} se basa en la siguiente idea:
 
 \begin{itemize}
 
@@ -394,7 +394,7 @@ Se desplaza el valor $2$ antes de $3$ y de $5$.
 \end{itemize}
 
 Una posible implementación en Python de este algoritmo se incluye en el
-Código \ref{ord_insercion}.
+Código~\ref{ord_insercion}.
 
 \begin{codigo}{insercion.py}{Ordena una lista por Inserción}
 \label{ord_insercion}
@@ -450,7 +450,7 @@ correspondiente y el segmento seguirá ordenado.
 
 \subsection{¿Cuánto cuesta ordenar por inserción?}
 
-Del Código \ref{ord_insercion} se puede ver que la función principal avanza por la
+Del Código~\ref{ord_insercion} se puede ver que la función principal avanza por la
 lista de izquierda a derecha, mientras que la función \lstinline!reubicar!
 cambia los elementos de lugar de derecha a izquierda.
 
@@ -467,7 +467,7 @@ primer elemento, y se ubica adelante de todo; en el tercer paso, el cuarto
 elemento se compara con el tercero, el segundo y el primer elemento, y se
 ubica adelante de todo; etc\ldots
 
-$$ T(N) \approx c \cdot (2 + 3 + \ldots + N) \approx c \cdot N \cdot (N+1)/2 \sim N^2 $$
+$$ T(N) \approx c \cdot (2 + 3 + \cdots + N) \approx c \cdot N \cdot (N+1)/2 \sim N^2 $$
 
 Es decir que ordenar por inserción una lista de tamaño $N$ puede insumir
 (en el peor caso) tiempo del orden de $N^2$. En cuanto al espacio
@@ -493,7 +493,7 @@ T(N) \sim N
 \begin{itemize}
 
 \item El {\bf ordenamiento por selección} es uno de los más sencillos, pero es
-bastante ineficiente: se basa en la idea de {\it buscar el máximo} en una secuencia,
+bastante ineficiente: se basa en la idea de \emph{buscar el máximo} en una secuencia,
 ubicarlo al final y seguir analizando la secuencia sin el último elemento.
 
 Tiene como ventaja que hace una baja cantidad de intercambios ($N$), pero
@@ -501,7 +501,7 @@ como desventaja que necesita una alta cantidad de comparaciones ($N^2$).
 Siempre tiene el mismo comportamiento.
 
 \item El {\bf ordenamiento por inserción} es un algoritmo bastante intuitivo y se
-suele usar para ordenar en la vida real. Se basa en la idea de ir {\it insertando
+suele usar para ordenar en la vida real. Se basa en la idea de ir \emph{insertando
 ordenadamente}: en cada paso se considera la inserción de un elemento más de
 secuencia y la inserción se empieza a hacer desde el final de los datos ya
 ordenados.

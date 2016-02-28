@@ -2,7 +2,7 @@
 \label{chapter:funciones}
 
 En la primera unidad vimos que el programador puede definir nuevas
-instrucciones, que llamamos {\it funciones}. En particular lo aplicamos a la
+instrucciones, que llamamos \emph{funciones}. En particular lo aplicamos a la
 construcción de una función llamada \lstinline+hola+ que saluda a todos a
 quienes queramos saludar:
 
@@ -11,13 +11,13 @@ def hola(alguien):
 	return "Hola " + alguien + "! Estoy programando en Python."
 \end{codigo-python-sn}
 
-La función |hola| recibe un único {\it parámetro} (|alguien|). Para llamar a
+La función |hola| recibe un único \emph{parámetro} (|alguien|). Para llamar a
 una función debemos asociar cada uno de los parámetros con algún valor
-determinado (que se denomina {\it argumento}). Por ejemplo, podemos invocar a
+determinado (que se denomina \emph{argumento}). Por ejemplo, podemos invocar a
 la función |hola| dos veces, para saludar a Ana y a Juan, haciendo que
 \lstinline+alguien+ se asocie al valor \lstinline!"Ana"! en la primera llamada
 y al valor \lstinline!"Juan"! en la segunda. La función en cada caso devolverá
-un {\it resultado} que que se calcula a partir del argumento.
+un \emph{resultado} que que se calcula a partir del argumento.
 
 \begin{codigo-python-sn}
 >>> hola("Ana")
@@ -61,7 +61,7 @@ a su documentación mediante la función \lstinline!help! provista por Python.
 Suponiendo que la función |hola| está definida en el archivo |saludo.py|:
 
 \begin{codigo-python-sn}
-$ python -i saludo
+(~\$~) python -i saludo
 >>> help(hola)
 Help on function hola in module __main__:
 
@@ -82,8 +82,8 @@ disponemos a escribir una función en Python para resolver este problema nos
 enfrentamos con dos posibilidades:
 
 \begin{enumerate}
-\item {\it Devolver} el resultado con la instrucción |return|.
-\item {\it Imprimir} el resultado llamando a la función |print|.
+\item \emph{Devolver} el resultado con la instrucción |return|.
+\item \emph{Imprimir} el resultado llamando a la función |print|.
 \end{enumerate}
 
 A continuación mostramos ambas implementaciones:
@@ -122,8 +122,8 @@ esto:
 
 En cambio, la función |imprimir_segundos| nos impide utilizar el resultado de
 la llamada para hacer otras operaciones; lo único que podemos hacer es
-mostrarlo en pantalla. Por eso decimos que |devolver_segundos| es más {\it
-reutilizable}. Por ejemplo, podemos reutilizar |devolver_segundos| en la
+mostrarlo en pantalla. Por eso decimos que |devolver_segundos| es más
+\emph{reutilizable}. Por ejemplo, podemos reutilizar |devolver_segundos| en la
 implementación de |imprimir_segundos|, pero no a la inversa:
 
 \begin{codigo-python-sn}
@@ -208,8 +208,8 @@ repetir 3 veces:
     <hacer cosas>
 \end{codigo-nohl-sn}
 
-\item El cuerpo del ciclo (\verb+<hacer cosas>+) tiene la estructura {\it
-Entrada-Cálculo-Salida}.  En pseudocódigo:
+\item El cuerpo del ciclo (\verb+<hacer cosas>+) tiene la estructura
+\emph{Entrada-Cálculo-Salida}.  En pseudocódigo:
 
 \begin{codigo-nohl-sn}
 Leer cuántas horas tiene el tiempo dado
@@ -261,7 +261,7 @@ repetir 3 veces:
 
 \end{itemize}
 \item {\bf Implementación:} A partir del diseño, se escribe el programa
-Python que se muestra en el Código \ref{trestiempos}, que se guardará
+Python que se muestra en el Código~\ref{trestiempos}, que se guardará
 en el archivo \verb!tres_tiempos.py!.
 
 \begin{codigo}{\label{trestiempos} tres\_tiempos.py}{Lee tres tiempos y los imprime en segundos}
@@ -288,7 +288,7 @@ main()
 $(0,0,1)$:
 
 \begin{codigo-nohl-sn}
-$ python tres_tiempos.py
+(~\$~) python tres_tiempos.py
 Cuantas horas?: 1
 Cuantos minutos?: 0
 Cuantos segundos?: 0
@@ -308,7 +308,7 @@ Son 1 segundos
 
 Ya hemos visto que podemos definir variables, ya sea dentro o fuera del cuerpo
 de una función. Veamos un ejemplo, utilizando la función |suma_cuadrados| de la
-unidad \ref{chapter:conceptos}:
+unidad~\ref{chapter:conceptos}:
 
 \begin{codigo-python-sn}
 >>> def suma_cuadrados(n):
@@ -330,7 +330,7 @@ NameError: name 'suma' is not defined
 
 \begin{observacion}
 Las variables y los parámetros que se declaran dentro de una función no existen
-fuera de ella, y por eso se las denomina {\it variables locales}. Fuera de la
+fuera de ella, y por eso se las denomina \emph{variables locales}. Fuera de la
 función se puede acceder únicamente al valor que devuelve mediante |return|.
 \end{observacion}
 
@@ -447,8 +447,7 @@ Mostrar duracion y costo
 \end{tabular}
 \end{center}
 
-\item {\bf Implementación:} El programa resultante se muestra en el Código
-    \ref{tarifador}.
+\item {\bf Implementación:} El programa resultante se muestra en el Código~\ref{tarifador}.
 
 \begin{codigo}{\label{tarifador} tarifador.py}{Programa para calcular el costo
     de uso de un teléfono.}
@@ -468,7 +467,7 @@ def main():
         s = int(input("¿Cuántos segundos?: "))
         duracion = a_segundos(h, m, s)
         costo = duracion * p
-        print("Duracion:", duracion, "segundos. Costo: $", costo, ".")
+        print("Duracion:", duracion, "segundos. Costo: (~\$~)", costo)
 
 def a_segundos(horas, minutos, segundos):
     """Transforma en segundos una medida de tiempo expresada en
@@ -483,21 +482,21 @@ main()
 ternas de \lstinline!(1,0,0)!, \lstinline!(0,1,0)! y \lstinline!(0,0,1)!:
 
 \begin{codigo-nohl-sn}
-$ python tarifador.py
+(~\$~) python tarifador.py
 Cuanto cuesta 1 segundo de comunicacion?: 0.40
 Cuantas comunicaciones hubo?: 3
 Cuantas horas?: 1
 Cuantos minutos?: 0
 Cuantos segundos?: 0
-Duracion: 3600 segundos. Costo: $ 1440.0 .
+Duracion: 3600 segundos. Costo: (~\$~) 1440.0
 Cuantas horas?: 0
 Cuantos minutos?: 1
 Cuantos segundos?: 0
-Duracion: 60 segundos. Costo: $ 24.0 .
+Duracion: 60 segundos. Costo: (~\$~) 24.0
 Cuantas horas?: 0
 Cuantos minutos?: 0
 Cuantos segundos?: 1
-Duracion: 1 segundos. Costo: $ 0.4 .
+Duracion: 1 segundos. Costo: (~\$~) 0.4
 \end{codigo-nohl-sn}
 
 \item {\bf Mantenimiento:}
@@ -558,7 +557,7 @@ Son 1 horas 1 minutos 1 segundos
 
 \begin{sabias_que}
 Cuando la función debe devolver múltiples resultados, se empaquetan todos juntos
-en una {\it n-upla} (secuencia de valores separados por comas) del tamaño adecuado.
+en una \emph{n-upla} (secuencia de valores separados por comas) del tamaño adecuado.
 
 Esta característica está presente en Python, Ruby, Haskell y algunos otros pocos
 lenguajes.  En los lenguajes en los que esta característica no está

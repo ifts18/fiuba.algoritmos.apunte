@@ -7,7 +7,7 @@ vistas en la unidad anterior.
 Si bien Python ya cuenta con sus propias listas, las listas enlazadas que
 implementaremos en esta unidad nos resultarán también útiles.
 
-\section{Una clase sencilla de {\it vagones}}
+\section{Una clase sencilla de \emph{vagones}}
 
 En primer lugar, definiremos una clase muy simple, \lstinline!Nodo!, que se
 comportará como un vagón: tendrá sólo dos atributos: \lstinline!dato!, que
@@ -62,7 +62,7 @@ Ejecutamos este código:
 'Bananas'
 \end{codigo-python-sn}
 
-Con esto hemos generado la estructura de la Figura \ref{nodos}.
+Con esto hemos generado la estructura de la Figura~\ref{nodos}.
 
 \begin{figure}[htb]
 \includegraphics{graficos/16_Nodos}
@@ -103,7 +103,7 @@ siguiente:
 referencias dentro de los nodos.
 \end{itemize}
 
-Si se desea {\it desenganchar} un vagón del medio de la lista, alcanza con
+Si se desea \emph{desenganchar} un vagón del medio de la lista, alcanza con
 cambiar la referencia |prox|:
 
 \begin{codigo-python-sn}
@@ -119,7 +119,7 @@ Manzanas
 De esta manera también se pueden generar estructuras impensables:
 ¿qué sucede si escribimos \lstinline!n1.prox = n1!? La representación es finita
 y sin embargo en este caso \lstinline!ver_lista(n1)! no termina nunca. Hemos
-creado una {\it lista infinita}, también llamada {\it lista circular}.
+creado una \emph{lista infinita}, también llamada \emph{lista circular}.
 
 % Este ejercicio no se entiende
 %\ejercicioc{¿Cuál es la mejor manera
@@ -128,9 +128,9 @@ creado una {\it lista infinita}, también llamada {\it lista circular}.
 \subsection{Caminos}
 
 En una lista implementada con nodos, si seguimos las flechas
-dadas por las referencias, obtenemos un {\it camino} en la lista.
+dadas por las referencias, obtenemos un \emph{camino} en la lista.
 
-Los caminos cerrados se denominan {\it ciclos}. Son ciclos, por ejemplo, la
+Los caminos cerrados se denominan \emph{ciclos}. Son ciclos, por ejemplo, la
 autorreferencia de \lstinline|n1| a \lstinline|n1|, como así también una
 flecha de \lstinline|n1| a \lstinline|n2| seguida de una flecha de
 \lstinline|n2| a \lstinline|n1|.
@@ -192,8 +192,8 @@ Vamos a ver ahora una nueva manera de definir datos: por las
 operaciones que tienen y por lo que tienen que hacer esas
 operaciones (cuál es el resultado esperado de esas operaciones).
 
-Esa manera de definir datos se conoce como {\it tipos abstractos de datos} o
-{\it TADs}.
+Esa manera de definir datos se conoce como \emph{tipos abstractos de datos} o
+\emph{TADs}.
 
 Lo novedoso de este enfoque respecto del anterior es que en general se puede
 encontrar más de una representación mediante tipos concretos para representar
@@ -282,7 +282,7 @@ incrementará en $1$ cada vez que se agregue un elemento y se decrementará en $
 cada vez que se elimine un elemento.
 
 \begin{atencion}
-Al agregar el atributo |len| estamos {\it duplicando información}, ya que habrá
+Al agregar el atributo |len| estamos \emph{duplicando información}, ya que habrá
 dos formas de obtener la longitud de la lista:
 
 \begin{enumerate}
@@ -294,7 +294,7 @@ Como consecuencia, vamos a tener que prestar especial atención para que el
 atributo |len| siempre contenga un valor consistente; es decir que su valor sea
 siempre igual a la cantidad de nodos que contiene la lista.
 
-En la sección \ref{invariante-objetos} se explica más formalmente este
+En la sección~\ref{invariante-objetos} se explica más formalmente este
 concepto.
 \end{atencion}
 
@@ -302,7 +302,7 @@ concepto.
 que sean necesarias para operar con ellas, no es necesario que la clase
 \lstinline!Nodo! esté disponible para que otros programadores puedan
 modificar (y romper) las listas a voluntad usando operaciones de nodos. Para eso
-incluiremos la clase \lstinline!Nodo! de manera {\it privada} (es
+incluiremos la clase \lstinline!Nodo! de manera \emph{privada} (es
 decir oculta), de modo que la podamos usar nosotros como dueños
 (fabricantes) de la clase, pero no cualquier programador que utilice la
 lista.
@@ -335,8 +335,7 @@ class ListaEnlazada:
         self.len = 0
 \end{codigo-python-sn}
 
-Nuestra estructura ahora será como la representada por la Figura
-\ref{lista_enlazada}.
+Nuestra estructura ahora será como la representada por la Figura~\ref{lista_enlazada}.
 
 \begin{figure}[htb]
 \includegraphics{graficos/16_ListaEnlazada}
@@ -349,14 +348,14 @@ para la lista}.
 
 \begin{sabias_que}
 Una característica importante de la implementación de listas enlazadas es que
-eliminar el primer elemento es una operación de {\it tiempo constante}, es
+eliminar el primer elemento es una operación de \emph{tiempo constante}, es
 decir que no depende de la longitud de la lista. En las listas de
-Python, por contraste, esta operación requiere un {\it tiempo proporcional a la
+Python, por contraste, esta operación requiere un \emph{tiempo proporcional a la
 longitud de la lista}.
 
 Sin embargo no todo es tan positivo: el acceso a la posición $p$ se realiza
-en {\it tiempo proporcional a $p$}, mientras que en las listas de Python esta
-operación se realiza en {\it tiempo constante}.
+en \emph{tiempo proporcional a $p$}, mientras que en las listas de Python esta
+operación se realiza en \emph{tiempo constante}.
 
 Conociendo las ventajas y desventajas podremos elegir el tipo de lista que
 necesitemos según los requerimientos de cada problema.
@@ -418,12 +417,12 @@ de saltear el nodo descartado en los enlaces de la lista.  La lista debe pasar d
 contener el camino $n_{i-1} \rightarrow n_i \rightarrow n_{i+1}$
 a contener el camino $n_{i-1} \rightarrow n_{i+1}$.
 
-Nos basaremos un esquema muy simple y útil que se denomina {\it máquina de parejas}:
+Nos basaremos un esquema muy simple y útil que se denomina \emph{máquina de parejas}:
 
 Si nuestra secuencia tiene la forma $ABCDE$, se itera sobre ella de modo de
 tener las parejas $AB$, $BC$, $CD$, $DE$. En la pareja $XY$, llamaremos a $X$ el
-{\it elemento anterior}
-y a $Y$ el {\it elemento actual}. En general estos ciclos terminan o bien cuando
+\emph{elemento anterior}
+y a $Y$ el \emph{elemento actual}. En general estos ciclos terminan o bien cuando
 no hay más parejas que formar, o bien cuando el elemento actual cumple con una determinada
 condición.
 
@@ -472,7 +471,7 @@ return dato
 
 \end{itemize}
 
-Finalmente, en el Código \ref{lista_enlazada_pop} se incluye el código completo
+Finalmente, en el Código~\ref{lista_enlazada_pop} se incluye el código completo
 del método \lstinline!pop!.
 
 \begin{codigo}{pop}{Método pop de la lista enlazada}
@@ -566,7 +565,7 @@ de \lstinline|self.len|.
 
 \end{itemize}
 
-En el Código \ref{lista_enlazada_remove} se incluye el código completo
+En el Código~\ref{lista_enlazada_remove} se incluye el código completo
 del método \lstinline!remove!.
 
 \begin{codigo}{remove}{Método remove de la lista enlazada}
@@ -651,7 +650,7 @@ n_ant.prox = nuevo
 
 \end{itemize}
 
-En el Código \ref{lista_enlazada_insert} se incluye el código resultante
+En el Código~\ref{lista_enlazada_insert} se incluye el código resultante
 del método \lstinline!insert!.
 
 \begin{codigo}{insert}{Método insert de la lista enlazada}
@@ -687,7 +686,7 @@ def insert(self, i, x):
 \ejercicioc{Completar la clase \lstinline|ListaEnlazada| con los métodos que
 faltan: \lstinline|append| e \lstinline|index|}.
 
-\ejercicioc{En los bucles de {\it máquina de parejas} mostrados
+\ejercicioc{En los bucles de \emph{máquina de parejas} mostrados
 anteriormente, no siempre es necesario tener la referencia al nodo actual,
 puede alcanzar con la referencia al nodo anterior.  Donde sea posible,
 eliminar la referencia al nodo actual.  Una vez hecho esto, analizar el
@@ -705,8 +704,8 @@ atributo siempre es una referencia al útimo nodo.}
 \section{Invariantes de objetos}
 
 \label{invariante-objetos}
-Los invariantes son condiciones que deben ser siempre ciertas.  En la sección
-\ref{invariantes} mencionamos los invariantes de ciclos, que son condiciones que deben
+Los invariantes son condiciones que deben ser siempre ciertas.  En la
+sección~\ref{invariantes} mencionamos los invariantes de ciclos, que son condiciones que deben
 permanecer ciertas durante la ejecución de un ciclo.  Existen también los
 invariantes de objetos, que son condiciones que deben ser ciertas a lo
 largo de toda la existencia de un objeto.
@@ -727,7 +726,7 @@ habrá que tener especial cuidado de que los invariantes permanezcan siempre
 ciertos.
 
 Así, si se modifica la lista para que la inserción al final pueda hacerse en
-tiempo constante (como se pide en el ejercicio \ref{append_constante}),
+tiempo constante (como se pide en el ejercicio~\ref{append_constante}),
 se está agregando a la lista un nuevo invariante (un atributo de la lista
 que apunte siempre al último elemento) y no es sólo el método
 \lstinline!append! el que hay que modificar, sino todos los métodos que
@@ -736,7 +735,7 @@ lista.
 
 \section{Otras listas enlazadas}
 
-Las listas presentadas hasta aquí son las {\it listas simplemente
+Las listas presentadas hasta aquí son las \emph{listas simplemente
 enlazadas}, que son sencillas y útiles cuando se quiere poder insertar o
 eliminar nodos de una lista en tiempo constante.
 
@@ -773,7 +772,7 @@ implementación de lista enlazada circular utilizada en la mayoría de los
 subsistemas.
 
 Por ejemplo, la lista de tareas que se están ejecutando es una lista
-circular.  El {\it scheduler} (planificador) del kernel permite que cada tarea
+circular.  El \emph{scheduler} (planificador) del kernel permite que cada tarea
 utilice el procesador durante una porción de tiempo y luego pasa a la
 siguiente, aplicando así una ``ronda de turnos'' sin que haya una primera o una
 última tarea.
@@ -784,7 +783,7 @@ siguiente, aplicando así una ``ronda de turnos'' sin que haya una primera o una
 En la unidad anterior se hizo referencia a que todas las secuencias
 pueden ser recorridas mediante una misma estructura
 (\lstinline!for variable in secuencia!), ya que todas implementan el método
-especial \lstinline!__iter__!.  Este método debe devolver un {\it iterador}
+especial \lstinline!__iter__!.  Este método debe devolver un \emph{iterador}
 capaz de recorrer la secuencia como corresponda.
 
 \begin{observacion}
@@ -889,7 +888,7 @@ if self.actual is None:
 Una vez que se pasó la verificación, la primera llamada a \lstinline!__next__!
 debe devolver el primer elemento, pero también debe avanzar, para que la
 siguiente llamada devuelva el siguiente elemento.  Por ello, se utiliza la
-estructura {\it guardar, avanzar, devolver}.
+estructura \emph{guardar, avanzar, devolver}.
 
 \begin{codigo-python-sn}
 dato = self.actual.dato
@@ -897,7 +896,7 @@ self.actual = self.actual.prox
 return dato
 \end{codigo-python-sn}
 
-En el Código \ref{iterador_enlazada} se puede ver el código completo del
+En el Código~\ref{iterador_enlazada} se puede ver el código completo del
 iterador.
 
 \begin{codigo}{\_IteradorListaEnlazada}{Un iterador para la lista enlazada}
@@ -944,7 +943,7 @@ que estamos acostumbrados.
 \end{codigo-python-sn}
 
 No solo eso, sino que además podremos utilizar la lista enlazada en cualquier
-operación que requiera una secuencia {\it iterable}:
+operación que requiera una secuencia \emph{iterable}:
 
 \begin{codigo-python-sn}
 >>> list(l) # convertir a una lista de Python
@@ -960,20 +959,20 @@ operación que requiera una secuencia {\it iterable}:
 \begin{itemize}
 
 \item Un {\bf tipo abstracto de datos} (TAD) es un tipo de datos que está
-definido por las operaciones que contiene y cómo se comportan (su {\it
-interfaz}), no por la forma en la que esas operaciones están implementadas.
+definido por las operaciones que contiene y cómo se comportan (su
+\emph{interfaz}), no por la forma en la que esas operaciones están implementadas.
 
-\item Una {\bf lista enlazada} es una implementación del TAD {\it lista}.
+\item Una {\bf lista enlazada} es una implementación del TAD \emph{lista}.
 Se trata de una lista compuesta por nodos, en la que
 cada nodo contiene un dato y una referencia al nodo que le sigue.
 
-\item En las listas enlazadas, es {\it barato} insertar o eliminar
+\item En las listas enlazadas, es \emph{barato} insertar o eliminar
 elementos, ya que simplemente se deben alterar un par de referencias; pero
-es {\it caro} acceder a un elemento en particular, ya que es necesario
+es \emph{caro} acceder a un elemento en particular, ya que es necesario
 pasar por todos los anteriores para llegar a él.
 
 \item Tanto al insertar como al remover elementos de una lista enlazada, se
-utiliza la técnica de {\it máquina de parejas}, mediante la cual se va
+utiliza la técnica de \emph{máquina de parejas}, mediante la cual se va
 recorriendo la lista hasta encontrar el lugar apropiado donde operar con
 las referencias.
 
@@ -1017,17 +1016,17 @@ lugar de lanzar |StopIteration|.
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Agregar a la clase {\it ListaEnlazada} un método \verb!next! que vaya
+Agregar a la clase \emph{ListaEnlazada} un método \verb!next! que vaya
 devolviendo uno a uno cada elemento de la lista, desde el primero hasta el
 último.  Al llegar al final de la lista debe levantar una excepción de la
-clase {\it StopIteration}.  Para el correcto funcionamiento de este método, ¿es
+clase \emph{StopIteration}.  Para el correcto funcionamiento de este método, ¿es
 necesario agregar un atributo adicional a la clase?
 \end{ejercicio}
 
 \extractionlabel{guia}
 \begin{ejercicio}
 Utilizando el método \verb!next! del ejercicio anterior, redefinir el
-método \verb!__str__! de {\it ListaEnlazada}, para que se genere una salida
+método \verb!__str__! de \emph{ListaEnlazada}, para que se genere una salida
 legible de lo que contiene la lista, similar a las listas de python. \\
 {\bf Nota}: este método debe devolver una cadena, no imprimirla por
 pantalla.
@@ -1035,26 +1034,16 @@ pantalla.
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Agregar a {\it ListaEnlazada} un método \verb!extend! que reciba una {\it
-ListaEnlazada} y agregue a la lista actual los elementos que se encuentran
+Agregar a \emph{ListaEnlazada} un método \verb!extend! que reciba una
+\emph{ListaEnlazada} y agregue a la lista actual los elementos que se encuentran
 en la lista recibida.
 \end{ejercicio}
-
-% No es un buen ejemplo que LE Ordenada herede de LE ya que se tiene que bloquear
-% o redefinir el significado del método append.
-%
-%\ejercicioc{
-%Escribir una clase {\it ListaEnlazadaOrdenada} que herede de {\it
-%ListaEnlazada}, redefiniendo el método \verb!insert! para que inserte los
-%elementos de forma ordenada, y el método \verb!append! para que no permita
-%la inserción al final.
-%}
 
 \extractionlabel{guia}
 \begin{ejercicio}
 Una {\bf lista circular} es una lista cuyo último nodo está ligado al primero,
 de modo que es posible recorrerla infinitamente.  \\
-Escribir la clase {\it ListaCircular}, incluyendo los métodos \verb!insert!,
+Escribir la clase \emph{ListaCircular}, incluyendo los métodos \verb!insert!,
 \verb!append!, \verb!remove! y \verb!pop!.
 \end{ejercicio}
 
@@ -1063,13 +1052,13 @@ Escribir la clase {\it ListaCircular}, incluyendo los métodos \verb!insert!,
 Una {\bf lista doblemente enlazada} es una lista en la cual cada nodo tiene
 una referencia al anterior además de al próximo de modo que es posible
 recorrerla en ambas direcciones. \\
-Escribir la clase {\it ListaDobleEnlazada}, incluyendo los métodos
+Escribir la clase \emph{ListaDobleEnlazada}, incluyendo los métodos
 \verb!insert!, \verb!append!, \verb!remove! y \verb!pop!.
 \end{ejercicio}
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Escribir un método de la clase {\it ListaEnlazada} que invierta el orden
+Escribir un método de la clase \emph{ListaEnlazada} que invierta el orden
 de la lista (es decir, el primer elemento queda como último y
 viceversa, y se invierte la dirección de todos los enlaces). \\
 {\bf Nota}: operar directamente sobre los elementos de la lista.

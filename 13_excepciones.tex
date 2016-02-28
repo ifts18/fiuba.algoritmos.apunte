@@ -12,7 +12,7 @@ siguientes categorías.
 resolver, pues son detectados por el intérprete (o por el compilador, según el
 tipo de lenguaje que estemos utilizando) al procesar el código fuente y
 generalmente son consecuencia de equivocaciones al escribir el programa. En el
-caso de Python estos errores son indicados con un mensaje {\it SyntaxError}.
+caso de Python estos errores son indicados con un mensaje \emph{SyntaxError}.
 Por ejemplo, si trabajando con Python intentamos definir una función y en
 lugar de |def| escribimos |dev|.
 
@@ -42,10 +42,10 @@ este tipo de errores.
 
 \section{Excepciones}
 
-Los errores de ejecución son llamados comúnmente {\it excepciones} y por eso
+Los errores de ejecución son llamados comúnmente \emph{excepciones} y por eso
 de ahora en más utilizaremos ese nombre. Durante la ejecución de un programa,
 cualquier línea de código puede generar una excepción. Se dice también que la
-línea {\it levanta} o {\it lanza} una excepción:
+línea \emph{levanta} o \emph{lanza} una excepción:
 
 \begin{codigo-python-sn}
 >>> 1 / 0
@@ -94,8 +94,8 @@ Traceback (most recent call last):
 Exception: Algo salió mal :(
 \end{codigo-python-sn}
 
-Si dentro de una función se lanza una excepción y la función no la {\it
-maneja}, la excepción se propaga hacia la función que la invocó; si esta otra
+Si dentro de una función se lanza una excepción y la función no la
+\emph{maneja}, la excepción se propaga hacia la función que la invocó; si esta otra
 tampoco la maneja, la excepción continúa propagándose hasta llegar a la función
 inicial del programa, y si ésta tampoco la maneja se interrumpe la ejecución
 del programa.
@@ -115,8 +115,8 @@ bloques que utilizan las sentencias \lstinline!try!, \lstinline!except! y
 Dentro del bloque \lstinline!try! se ubica todo el código que pueda llegar
 a levantar una excepción.
 
-A continuación se ubica el bloque \lstinline!except!, que se encarga de {\it
-capturar} la excepción y nos da la oportunidad de procesarla mostrando por
+A continuación se ubica el bloque \lstinline!except!, que se encarga de
+\emph{capturar} la excepción y nos da la oportunidad de procesarla mostrando por
 ejemplo un mensaje adecuado al usuario.
 
 Veamos qué sucede si se quiere realizar una división por cero:
@@ -311,7 +311,7 @@ dejar constancia de la ocurrencia de la excepción, propagar la excepción o,
 incluso, hacer ambas cosas.
 
 Para dejar constancia de la ocurrencia de la excepción, se puede escribir
-en un archivo de {\it log} o simplemente mostrar un mensaje en pantalla.
+en un archivo de \emph{log} o simplemente mostrar un mensaje en pantalla.
 Generalmente cuando se deja constancia de la ocurrencia de una excepción se
 suele brindar alguna información del contexto en que ocurrió la excepción,
 por ejemplo: tipo de excepción ocurrida, momento en que ocurrió la
@@ -374,7 +374,7 @@ que se vaya a operar estén dentro de determinado dominio.
 Estas técnicas son particularmente importantes al momento de utilizar entradas
 del usuario o de un archivo (o entradas externas en general) en nuestro
 código, y también se las utiliza para comprobar precondiciones. Al
-uso intensivo de estas técnicas se lo suele llamar {\it programación
+uso intensivo de estas técnicas se lo suele llamar \emph{programación
 defensiva}.
 
 Si bien quien invoca una función debe preocuparse de cumplir con las
@@ -452,7 +452,7 @@ no fue posible (la excepción la lanza la función |int|, y al no atraparla, se
 propaga automáticamente).
 
 Sin embargo, esto no es satisfactorio: si el usuario no ingresa la información
-correctamente, ¡el programa se interrumpe!. Podemos hacerlo más {\it amigable}
+correctamente, ¡el programa se interrumpe!. Podemos hacerlo más \emph{amigable}
 atrapando la excepción y haciendo que se vuelva a pedir al usuario que ingrese
 la información:
 
@@ -605,7 +605,7 @@ cada tipo, sino que busca una función especial, llamada
 para convertir la variable a una cadena.
 
 \begin{sabias_que}
-Python promueve la idea de {\it duck typing}:
+Python promueve la idea de \emph{duck typing}:
 
 \begin{quote}
 \it Si algo parece un pato, camina como un pato y grazna como un pato,
@@ -619,7 +619,7 @@ pertenecen, sino por las funciones que tienen.
 Para comprobar si una variable tiene o no una función Python provee la
 función \lstinline!hasattr(variable, atributo)!, donde \lstinline!atributo!
 puede ser el nombre de la función o de la variable que se quiera verificar.
-Se verá más sobre atributos en la Unidad \ref{objetos}.
+Se verá más sobre atributos en la Unidad~\ref{objetos}.
 
 Por ejemplo, existe la función \lstinline!__add__! para realizar
 operaciones de suma entre elementos.  Si se quiere corroborar si un
@@ -641,8 +641,8 @@ números definen su propia ``suma'', pero no es posible sumar cadenas y
 números, de modo que en este caso sería necesario tener en cuenta una
 posible excepción.
 
-Por otro lado, en la mayoría de los casos se puede aplicar la frase: {\it
-es más fácil pedir perdón que permiso}, atribuída a la programadora Grace
+Por otro lado, en la mayoría de los casos se puede aplicar la frase:
+\emph{es más fácil pedir perdón que permiso}, atribuída a la programadora Grace
 Hopper. Es decir, en este caso es más sencillo hacer la suma directamente; y
 Python se encargará de lanzar la excepción apropiada en caso de que algo salga
 mal:
@@ -658,9 +658,9 @@ def hacer_algo_con(x, y):
 \begin{itemize}
 \item Los errores que se pueden presentar en un programa son: de sintaxis
 (detectados por el intérprete), de semántica (el programa no funciona
-correctamente), o de ejecución ({\it excepciones}).
+correctamente), o de ejecución (\emph{excepciones}).
 \item Cuando el código a ejecutar pueda producir una excepción, es posible
-encerrarlo en los bloques correspondientes para {\it atrapar} la excepción y
+encerrarlo en los bloques correspondientes para \emph{atrapar} la excepción y
 actuar en consecuencia.
 \item Si una función no atrapa una excepción, ésta se propaga a la
 función invocante; si ésta no la atrapa, la excepción se pasa a la

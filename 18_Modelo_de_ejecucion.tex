@@ -48,13 +48,13 @@ confunden entre sí pese a tener el mismo nombre. No debería llamarnos la
 atención, ya que después de todo conocemos a muchas personas que tienen el
 mismo nombre.
 
-Estos nombres asociados a una función los va {\it descubriendo} el intérprete de
+Estos nombres asociados a una función los va \emph{descubriendo} el intérprete de
 Python a medida que va ejecutando el programa (hay otros lenguajes en los
 que los nombres se descubren todos juntos antes de iniciar la ejecución).
 
 La ejecución del programa se puede modelar por el siguiente diagrama, en el
-cual los nombres asociados a cada función se encerrarán en una caja o {\it
-marco}:
+cual los nombres asociados a cada función se encerrarán en una caja o
+\emph{marco}:
 
 \newcommand{\currentframe}{\raisebox{1pt}{\tiny$\blacktriangleright$\normalsize} }
 
@@ -171,13 +171,13 @@ marco}:
 Se puede observar que:
 \begin{itemize}
 
-\item Cuando se invoca a \lstinline|g|, se arma un {\it marco} vacío para
+\item Cuando se invoca a \lstinline|g|, se arma un \emph{marco} vacío para
 contener las referencias a las variables asociadas con \lstinline|g|. Ese
-marco se apila sobre una {\it pila vacía}. El marco que está en el tope de la
-pila es el {\it marco actual} y se marca con \currentframe en el diagrama.
+marco se apila sobre una \emph{pila vacía}. El marco que está en el tope de la
+pila es el \emph{marco actual} y se marca con \currentframe en el diagrama.
 
 \item Cuando se ejecuta dentro de \lstinline|g| la invocación
-\lstinline|f()| (en el paso 5) se {\it apila} un marco vacío que va a alojar
+\lstinline|f()| (en el paso 5) se \emph{apila} un marco vacío que va a alojar
 las variables asociadas con \lstinline|f|, que pasa a ser el marco actual,
 y se transfiere el control del
 programa a la primera instrucción de \lstinline|f|.  El marco de
@@ -201,7 +201,7 @@ partir de donde se suspendió por la invocación a \lstinline|f|.
 \end{itemize}
 
 El {\bf ámbito de definición} de una variable está constituido por todas las
-partes del programa desde donde esa variable {\it es visible}.
+partes del programa desde donde esa variable \emph{es visible}.
 
 \section{Pasaje de parámetros}
 
@@ -285,7 +285,7 @@ En este caso, la ejecución se puede representar de la siguiente manera:
 
 \end{enumerate}
 
-Cuando se pasan objetos como parámetros, las dos variables hacen referencia al {\it mismo}
+Cuando se pasan objetos como parámetros, las dos variables hacen referencia al \emph{mismo}
 objeto. Eso significa que si el objeto pasado es mutable, cualquier modificación que
 la función invocada realice sobre su parámetro se reflejará en el argumento de la función llamadora,
 como se puede ver en el siguiente ejemplo:
@@ -409,7 +409,7 @@ seguirá apuntando a la lista \lstinline|[1, 2, 3, 4]|.
 \section{Devolución de resultados}
 
 Finalmente, para completar los distintos seguimientos, debemos tener en
-cuenta que los resultados que devuelve la función invocada, se {\it reciben}
+cuenta que los resultados que devuelve la función invocada, se \emph{reciben}
 en la expresión correspondiente de la función invocante.
 
 \begin{codigo-python-sn}
@@ -525,7 +525,7 @@ se elimina de la pila.
 Estamos acostumbrados a escribir funciones que llaman a otras funciones.
 Pero lo cierto es que nada impide que en Python (y en muchos otros
 lenguajes) una función se llame a sí misma. Y lo más interesante es que
-esta propiedad, que se llama {\it recursión}, permite en muchos casos
+esta propiedad, que se llama \emph{recursión}, permite en muchos casos
 encontrar soluciones muy elegantes para determinados problemas.
 
 En materias de matemática se estudian los razonamientos por inducción para
@@ -583,7 +583,7 @@ Dos piezas fundamentales para garantizar el funcionamiento de este programa
 son:
 
 \begin{itemize}
-\item Que se defina un {\it caso base} (en este caso la indicación {\it no
+\item Que se defina un \emph{caso base} (en este caso la indicación \emph{no
 recursiva} de cómo calcular \lstinline|factorial(0)|).
 
 \item Que el argumento de la función respete la precondición
@@ -880,8 +880,8 @@ evaluación:
 
 \section{Algoritmos recursivos y algoritmos iterativos}
 
-Llamaremos {\it algoritmos recursivos} a aquellos que realizan llamadas
-recursivas para llegar al resultado, y {\it algoritmos iterativos} a
+Llamaremos \emph{algoritmos recursivos} a aquellos que realizan llamadas
+recursivas para llegar al resultado, y \emph{algoritmos iterativos} a
 aquellos que llegan a un resultado a través de una iteración mediante un
 ciclo definido o indefinido.
 
@@ -930,7 +930,7 @@ b^n &= b^{(n-1)/2} \cdot b^{(n-1)/2} \cdot b &&\text{si}\;n\;\text{es impar.} \\
 \end{align*}
 
 Antes de programar cualquier función recursiva es necesario decidir cuál
-será el {\it caso base} y cuál el {\it caso recursivo}.  Para esta función,
+será el \emph{caso base} y cuál el \emph{caso recursivo}.  Para esta función,
 tomaremos $n=0$ como el caso base, en el que devolveremos $1$; y el caso
 recursivo tendrá dos partes, correspondientes a los dos posibles grupos de
 valores de $n$.
@@ -1006,7 +1006,7 @@ realizarán 8 llamadas recursivas, y para $n = 1000$ 11 llamadas.
 % Esto no es para darlo, es sólo para que esté
 
 Para transformar este algoritmo recursivo en un algoritmo iterativo, es
-necesario {\it simular} la pila de llamadas a funciones mediante una pila que
+necesario \emph{simular} la pila de llamadas a funciones mediante una pila que
 almacene los valores que sean necesarios.  En este caso, lo que apilaremos será
 si el valor de \lstinline!n! es par o no.
 
@@ -1078,7 +1078,7 @@ poco eficiente: para calcular \lstinline!fib(n - 1)! es necesario calcular
 \lstinline!fib(n)!.
 
 Por ejemplo, una simple llamada a \lstinline!fib(5)!, generaría
-recursivamente todas las llamadas ilustradas en la Figura \ref{fibonacci}.
+recursivamente todas las llamadas ilustradas en la Figura~\ref{fibonacci}.
 Puede verse que muchas de estas llamadas están repetidas, generando un
 total de 15 llamadas a la función \lstinline!fib!, sólo para devolver el
 valor $F_5$.
@@ -1154,7 +1154,7 @@ algoritmo provee la solución al problema de forma más clara y eficiente.
 
 \section{Limitaciones}
 
-Si creamos una función sin {\it caso base}, obtendremos el equivalente
+Si creamos una función sin \emph{caso base}, obtendremos el equivalente
 recursivo de un bucle infinito.  Sin embargo, como cada llamada recursiva
 agrega un elemento a la pila de llamadas a funciones y la memoria de
 nuestras computadoras no es infinita, el ciclo deberá terminarse cuando se
@@ -1187,19 +1187,19 @@ este límite suele ser una buena idea pensar si realmente el algoritmo
 recursivo es el que mejor resuelve el problema.
 
 \begin{sabias_que}
-Existen algunos lenguajes {\it funcionales}, como Haskell, ML, o Scheme, en
+Existen algunos lenguajes \emph{funcionales}, como Haskell, ML, o Scheme, en
 los cuales la recursión es la única forma de realizar un ciclo.  Es
 decir, no existen construcciones |while| ni |for|.
 
-Estos lenguajes cuentan con una optimización especial, llamada {\it
-optimización de recursión por cola} ({\it tail recursion optimization}),
-que permite que cuando una función realiza su llamada recursiva como {\it
-última} acción antes de terminar, no se apile el estado de la función
+Estos lenguajes cuentan con una optimización especial, llamada
+\emph{optimización de recursión por cola} (\emph{tail recursion optimization}),
+que permite que cuando una función realiza su llamada recursiva como
+\emph{última} acción antes de terminar, no se apile el estado de la función
 innecesariamente, evitando el consumo adicional de memoria mencionado
 anteriormente.
 
-La función \lstinline!factorial! vista en esta unidad es un ejemplo de {\it
-recursión por cola} cuya ejecución podría ser optimizada por el compilador o
+La función \lstinline!factorial! vista en esta unidad es un ejemplo de
+\emph{recursión por cola} cuya ejecución podría ser optimizada por el compilador o
 intérprete del lenguaje.
 \end{sabias_que}
 
@@ -1208,7 +1208,7 @@ intérprete del lenguaje.
 \begin{itemize}
 
 \item A medida que se realizan llamadas a funciones, el estado cada
-función se almacena en la {\it pila de ejecución}.
+función se almacena en la \emph{pila de ejecución}.
 
 \item Esto permite que sea posible que una función se llame a sí misma,
 pero que las variables dentro de la función tomen distintos valores.
@@ -1242,9 +1242,9 @@ la cantidad de dígitos que tiene.
 \begin{ejercicio}
 Escribir una función que simule el siguiente experimento:
 Se tiene una rata en una jaula con 3 caminos, entre los cuales elige
-al azar (cada uno tiene la misma probabilidad), si elige el {\it 1} luego
-de 3 minutos vuelve a la jaula, si elige el {\it 2} luego de 5 minutos vuelve a
-la jaula, en el caso de elegir el {\it 3} luego de 7 minutos sale de la jaula.
+al azar (cada uno tiene la misma probabilidad), si elige el \emph{1} luego
+de 3 minutos vuelve a la jaula, si elige el \emph{2} luego de 5 minutos vuelve a
+la jaula, en el caso de elegir el \emph{3} luego de 7 minutos sale de la jaula.
 La rata no aprende, siempre elige entre los 3 caminos con la misma probabilidad,
 pero quiere su libertad, por lo que recorrerá los caminos hasta salir de la jaula.
 
@@ -1253,8 +1253,8 @@ La función debe devolver el tiempo que tarda la rata en salir de la jaula.
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Escribir una función que reciba 2 enteros {\it n} y {\it b} y devuelva
-\verb!True! si {\it n} es potencia de {\it b}.
+Escribir una función que reciba 2 enteros \emph{n} y \emph{b} y devuelva
+\verb!True! si \emph{n} es potencia de \emph{b}.
 
 Ejemplos:
 \begin{verbatim}
@@ -1269,9 +1269,9 @@ False
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Escribir una funcion recursiva que reciba como parámetros dos strings {\it a} y
-{\it b}, y devuelva una lista con las posiciones en donde se encuentra {\it b}
-dentro de {\it a}.
+Escribir una funcion recursiva que reciba como parámetros dos strings \emph{a} y
+\emph{b}, y devuelva una lista con las posiciones en donde se encuentra \emph{b}
+dentro de \emph{a}.
 
 Ejemplo:
 \begin{verbatim}
@@ -1293,7 +1293,7 @@ determinen la paridad del numero natural dado, conociendo solo que:
 \extractionlabel{guia}
 \begin{ejercicio}
 Escribir una función que calcule recursivamente el n-ésimo número
-triangular (el número 1 + 2 + 3 + ... + n).
+triangular (el número $1 + 2 + 3 + \cdots + n$).
 \end{ejercicio}
 
 \extractionlabel{guia}

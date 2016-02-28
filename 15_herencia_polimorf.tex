@@ -5,7 +5,7 @@ orientada a objetos: polimorfismo, herencia y delegación.
 
 \section{Polimorfismo}
 
-El concepto de {\it polimorfismo} (del griego {\it muchas formas}) implica
+El concepto de \emph{polimorfismo} (del griego \emph{muchas formas}) implica
 que si en una porción de código se invoca un determinado método de un
 objeto, podrán obtenerse distintos resultados según la clase del objeto.
 Esto se debe a que distintos objetos pueden tener un método con un mismo
@@ -39,12 +39,12 @@ manera diferente) según el tipo de objeto al que se aplica la operación.
 \subsection{Interfaz}
 
 Llamamos {\bf interfaz} a un conjunto de funciones, métodos o atributos con
-nombres específicos.  Una interfaz es un {\it contrato} entre el
+nombres específicos.  Una interfaz es un \emph{contrato} entre el
 programador que realiza una clase y el que la utiliza, y puede consistir en
 uno solo o varios métodos o atributos.
 
 Por ejemplo, para que un objeto se pueda sumar con otro utilizando el
-operador |+|, debe cumplir con la interfaz {\it sumable}, que en Python
+operador |+|, debe cumplir con la interfaz \emph{sumable}, que en Python
 implica incluir el método |__add__| visto en la unidad anterior.
 
 Una manera de implementar polimorfismo es utilizar distintos tipos de
@@ -56,7 +56,7 @@ a + b
 \end{codigo-python-sn}
 
 \noindent no es necesario que sepamos de qué tipo son los objetos; si
-alguno de los dos cumple con la interfaz {\it sumable}, podemos decir
+alguno de los dos cumple con la interfaz \emph{sumable}, podemos decir
 que la operación será exitosa y producirá algún resultado.
 
 \subsection{Redefinición de métodos}
@@ -64,14 +64,14 @@ que la operación será exitosa y producirá algún resultado.
 Llamamos {\bf redefinición} a la acción de definir un método con el mismo
 nombre en distintas clases, de forma tal que provea una interfaz.
 
-Un bloque de código será {\it polimórfico} cuando dentro de ese código se
+Un bloque de código será \emph{polimórfico} cuando dentro de ese código se
 realicen llamadas a métodos que puedan estar redefinidos en distintas
 clases.
 
 Tomemos por ejemplo el caso ya mencionado en el que se recorre una
 secuencia (lista, tupla, archivo, etc) mediante una misma estructura de
 código.  Esto es posible gracias a la redefinición del método especial
-\lstinline!__iter__!, que devuelve un {\it iterador}.  Un bloque que
+\lstinline!__iter__!, que devuelve un \emph{iterador}.  Un bloque que
 utiliza una secuencia en forma genérica es, entonces, un bloque
 polimórfico.
 
@@ -88,7 +88,7 @@ obtener un comportamiento polimórfico (como es el caso de C).
 En la vida real, cuando analizamos las funciones de respiración,
 reproducción o alimentación de los seres vivos vemos que siempre se repite
 el mismo patrón: si bien la acción en todos los casos es la misma, puede
-suceder que haya diferencias en la {\it implementación} en cada tipo, ya
+suceder que haya diferencias en la \emph{implementación} en cada tipo, ya
 que la respiración de una mojarrita que la de un malvón no funcionan de la
 misma manera, o tampoco así la reproducción de una ameba y la de un elefante.
 
@@ -97,14 +97,14 @@ distintas implementaciones para un método con el mismo nombre, para que
 puedan comportarse polimórficamente, como ser las redefiniciones de los
 métodos \lstinline!__str__! o \lstinline!__lt__!.
 
-En particular en Python, la {\it sobrecarga de operadores} (mencionada
+En particular en Python, la \emph{sobrecarga de operadores} (mencionada
 en la sección \ref{sobrecarga}),  es un proceso que se realiza mediante la
 redefinición de
 algunos métodos especiales.  En otros lenguajes se utilizan técnicas distintas
 para obtener el mismo resultado.
 
 \begin{sabias_que}
-El término {\it sobrecarga} viene de un posible uso de polimorfismo que
+El término \emph{sobrecarga} viene de un posible uso de polimorfismo que
 está presente en algunos lenguajes orientados a objetos: la posibilidad de
 tener, dentro de una misma clase, dos métodos que se llamen igual pero
 reciban parámetros de distintos tipos.  Es decir, que el método al que hay
@@ -141,7 +141,7 @@ según a qué clase pertenezca la variable \lstinline!punto!.
 
 \begin{atencion}
 Que una función sea polimórfica no significa que pueda operar sobre parámetros
-de {\it cualquier} tipo de dato, sino que suele imponer restricciones.  En el
+de \emph{cualquier} tipo de dato, sino que suele imponer restricciones.  En el
 ejemplo anterior, las restricciones son que el objeto |punto| tenga el método
 |norma| y la posibilidad de dividirlo por un escalar.
 \end{atencion}
@@ -186,14 +186,14 @@ TypeError: 'int' object is not iterable
 \section{Herencia}
 
 Otro mecanismo de la programación orientada a objetos que permite implementar
-comportamientos polimórficos es la {\it herencia}, que permite crear clases
+comportamientos polimórficos es la \emph{herencia}, que permite crear clases
 nuevas a partir de clases preexistentes.  Mediante la herencia, una clase puede
-{\it extender} a otra y de esta manera {\it heredar} sus atributos y
+\emph{extender} a otra y de esta manera \emph{heredar} sus atributos y
 comportamientos, pudiendo modificarlos para implementar un comportamiento
 diferente.
 
-La clase vieja se llama {\it clase base} y la que se construye a partir de
-ella es una {\it clase derivada}.
+La clase vieja se llama \emph{clase base} y la que se construye a partir de
+ella es una \emph{clase derivada}.
 
 Por ejemplo, a partir de una clase \lstinline!Persona! con los atributos
 \lstinline!identificacion!, \lstinline!nombre! y \lstinline!apellido!,
@@ -265,8 +265,8 @@ En el diseño de jerarquias de herencia no siempre es del todo fácil decidir
 cuándo una clase debe extender a otra.
 Una regla práctica para decidir si una clase |S| puede ser
 definida como heredera de otra |T| es que debe cumplirse que ``S es un T''.
-Por ejemplo, {\it Perro} es un {\it Animal}, pero {\it Vehículo} no es un {\it
-Motor}.
+Por ejemplo, \emph{Perro} es un \emph{Animal}, pero \emph{Vehículo} no es un
+\emph{Motor}.
 
 Esta regla se desprende del principio de sustitución de Liskov (formulado por
 Barbara Liskov y Jeannette Wing).
@@ -279,7 +279,7 @@ es profesora e investigadora del MIT.
 
 En el caso de Python, también es posible construir una clase derivada a partir
 de varias clases base. Por ejemplo, un ayudante de segunda en la UBA es un
-alumno que también trabaja de docente.  Esta posbilidad se llama {\it herencia
+alumno que también trabaja de docente.  Esta posbilidad se llama \emph{herencia
 múltiple}.
 
 \subsection*{Ejemplo de herencia}
@@ -350,7 +350,7 @@ Y ahora las pruebas:
 \section{Delegación}
 
 Llamamos delegación a la situación en la que una clase contiene (como
-atributos) una o más instancias de otra clase, a las que {\it delegará}
+atributos) una o más instancias de otra clase, a las que \emph{delegará}
 parte de sus funcionalidades. Esta relación entre clases suele ser la más
 indicada cuando es necesaria una asociación entre las clases pero el
 principio de Liskov no se cumple. También puede verse como la relación
@@ -431,7 +431,7 @@ se muestra en la Figura \ref{rectangulo_punto}.
 
 El punto que describe la posición de la esquina inferior izquierda del
 rectángulo es un objeto \lstinline!Punto!. El atributo \lstinline!origen!
-contiene una {\it referencia} a dicho objeto.
+contiene una \emph{referencia} a dicho objeto.
 
 Utilizando el método \lstinline!trasladar!, podemos modificar el valor del
 punto contenido dentro del rectángulo.
@@ -464,7 +464,7 @@ Con lo cual el diagrama pasa a ser el de la Figura
 \begin{observacion}
 El \lstinline!Punto(1, 2)! y \lstinline!Punto(3,6)! que habían sido creados
 previamente, están ahora fuera de uso, por lo que quedan a disposición de un
-mecanismo de {\it recolección de basura} que se encarga de recuperar
+mecanismo de \emph{recolección de basura} que se encarga de recuperar
 automáticamente las secciones de memoria que quedan fuera de uso durante la
 ejecución de un programa.
 \end{observacion}
@@ -477,7 +477,7 @@ comportamientos mediante la invocación a métodos de un mismo nombre, pero de
 clases distintas.
 
 \item Se llama {\bf herencia} a la relación entre clases en la cual una es una
-clase base y otra es una clase derivada, que {\it hereda} los métodos y
+clase base y otra es una clase derivada, que \emph{hereda} los métodos y
 atributos de la clase base.
 
 \item Se llama {\bf delegación} a la relación entre clases en la cual una
@@ -498,15 +498,15 @@ variable en una porción de código cualquiera.
 \begin{ejercicio}
 {\bf Papel, Birome, Marcador}
 \begin{partes}
-    \item Escribir una clase {\it Papel} que contenga un texto, un método {\it
-escribir}, que reciba una cadena para agregar al texto, y el método {\it
-\_\_str\_\_} que imprima el contenido del texto.
-    \item Escribir una clase {\it Birome} que contenga una cantidad de tinta, y
-un método {\it escribir}, que reciba un texto y un papel sobre el cual
+    \item Escribir una clase \verb|Papel| que contenga un texto, un método
+\verb|escribir|, que reciba una cadena para agregar al texto, y el método
+\verb|__str__| que imprima el contenido del texto.
+    \item Escribir una clase \verb|Birome| que contenga una cantidad de tinta, y
+un método \verb|escribir|, que reciba un texto y un papel sobre el cual
 escribir. Cada letra escrita debe reducir la cantidad de tinta contenida.
 Cuando la tinta se acabe, debe lanzar una excepción.
-    \item Escribir una clase {\it Marcador} que herede de Birome, y agregue el
-método {\it recargar}, que reciba la cantidad de tinta a agregar.
+    \item Escribir una clase \verb|Marcador| que herede de \verb|Birome|, y agregue el
+método \verb|recargar|, que reciba la cantidad de tinta a agregar.
 \end{partes}
 \end{ejercicio}
 
@@ -515,17 +515,17 @@ método {\it recargar}, que reciba la cantidad de tinta a agregar.
 \begin{ejercicio}
 {\bf Juego de Rol}
 \begin{partes}
-    \item Escribir una clase {\it Personaje} que contenga los atributos {\it
-vida}, {\it posicion} y {\it velocidad}, y los métodos {\it
-recibir\_ataque}, que reduzca la vida según una cantidad recibida y lance
-una excepción si la vida pasa a ser menor o igual que cero, y {\it
-mover} que reciba una dirección y se mueva en esa dirección la cantidad
+    \item Escribir una clase \verb|Personaje| que contenga los atributos
+\verb|vida|, \verb|posicion| y \verb|velocidad|, y los métodos
+\verb|recibir_ataque|, que reduzca la vida según una cantidad recibida y lance
+una excepción si la vida pasa a ser menor o igual que cero, y
+\verb|mover| que reciba una dirección y se mueva en esa dirección la cantidad
 indicada por velocidad.
-    \item Escribir una clase {\it Soldado} que herede de Personaje, y agregue
-el atributo {\it ataque} y el método {\it atacar}, que reciba otro
+    \item Escribir una clase \verb|Soldado| que herede de \verb|Personaje|, y agregue
+el atributo \verb|ataque| y el método \verb|atacar|, que reciba otro
 personaje, al que le debe hacer el daño indicado por el atributo ataque.
-    \item Escribir una clase {\it Campesino} que herede de Personaje, y agregue
-el atributo {\it cosecha} y el método {\it cosechar}, que devuelva la
+    \item Escribir una clase \verb|Campesino| que herede de \verb|Personaje|, y agregue
+el atributo \verb|cosecha| y el método \verb|cosechar|, que devuelva la
 cantidad cosechada.
 \end{partes}
 \end{ejercicio}

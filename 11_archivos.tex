@@ -118,7 +118,7 @@ archivo.close()
 \end{codigo-python-sn}
 
 La llamada a \lstinline!rstrip! es necesaria ya que cada línea que se lee del
-archivo contiene un caracter especial llamado {\it fin de línea} y con la llamada a
+archivo contiene un caracter especial llamado \emph{fin de línea} y con la llamada a
 \lstinline!rstrip("\n")! se remueve.
 
 Notar que sería equivalente usar el bloque |with| para ahorrarnos la llamada a
@@ -136,20 +136,20 @@ Notar que sería equivalente usar el bloque |with| para ahorrarnos la llamada a
 \begin{sabias_que}
 Los archivos de texto son sencillos de manejar, pero existen por lo menos 3
 formas distintas de marcar un fin de línea. En Unix tradicionalmente se usa
-el caracter '\verb!\n!' (valor de ASCII 10, definido como nueva línea) para
+el caracter '\verb!\n!' (valor de ASCII~10, definido como nueva línea) para
 el fin de línea, mientras que en OSX el fin de línea se solía
-representar como un '\verb!\r!' (valor ASCII 13, definido como retorno de
+representar como un '\verb!\r!' (valor ASCII~13, definido como retorno de
 carro) y en Windows se usan ambos caracteres '\verb!\r\n!'.
 
-Si bien esto es algo que hay que tener en cuenta en una diversidad de
-casos, en particular en Python por omisión se maneja cualquier tipo de fin
-de línea como si fuese un '\verb!\n!', salvo que se le pida lo contrario.
-Para manejar los caracteres de fin de línea \textit{a mano} se puede poner
-una 'U' en el parámetro modo que le pasamos a \lstinline!open!.
+Al leer archivos en modo texto, Python acepta cualquier tipo de fin
+de línea como si fuese un |\n|. Al escribir archivos, Python elegirá
+automáticamente el modo más apropiado. Si queremos modificar este
+comportamiento podemos especificar el modo utilizando la opción |newline| de la
+función |open|.
 \end{sabias_que}
 
-También podemos utilizar la función |enumerate| (explicada en la sección
-\ref{enumerate}) para no tener que mantener el
+También podemos utilizar la función |enumerate| (explicada en la
+sección~\ref{enumerate}) para no tener que mantener el
 contador |i| a mano:
 
 \begin{codigo-python-sn}
@@ -242,7 +242,7 @@ caracteres especiales.
 
 \section{Agregar información a un archivo}
 
-Abrir un archivo en modo {\it agregar al final} puede parece raro,
+Abrir un archivo en modo \emph{agregar al final} puede parece raro,
 pero es bastante útil.
 
 Uno de sus usos es para escribir un archivo de bitácora (o archivo de
@@ -254,7 +254,7 @@ Esta es una forma muy habitual de buscar problemas o hacer un seguimiento
 de los sucesos. Para los administradores de sistemas es una herramienta
 esencial de trabajo.
 
-En el Código \ref{modulo_log} se muestra un módulo para manejo de logs, que
+En el Código~\ref{modulo_log} se muestra un módulo para manejo de logs, que
 se encarga de la apertura del archivo, del guardado de las líneas una por
 una y del cerrado final del archivo.
 
@@ -370,7 +370,7 @@ b'\xff\xd8\xff'
 
 \begin{atencion}
 Al trabajar con archivos binarios, la función |read| no devuelve cadenas de
-caracteres (|str|), sino que devuelve una {\it secuencia de bytes} (|bytes|).
+caracteres (|str|), sino que devuelve una \emph{secuencia de bytes} (|bytes|).
 Análogamente, la función |write| recibe una secuencia de bytes.
 \end{atencion}
 
@@ -378,12 +378,12 @@ Análogamente, la función |write| recibe una secuencia de bytes.
 
 Se llama {\bf persistencia} a la capacidad de guardar la
 información de un programa para poder volver a utilizarla en otro
-momento. Es lo que los usuarios conocen como {\it Guardar el archivo}
-y después {\it Abrir el archivo}. Pero para un programador puede
-significar más cosas y suele involucrar un proceso de {\it
-serialización} de los datos a un archivo o a una base de datos o a
+momento. Es lo que los usuarios conocen como \emph{Guardar el archivo}
+y después \emph{Abrir el archivo}. Pero para un programador puede
+significar más cosas y suele involucrar un proceso de
+\emph{serialización} de los datos a un archivo o a una base de datos o a
 algún otro medio similar, y el proceso inverso de recuperar los
-datos a partir de la información {\it serializada}.
+datos a partir de la información \emph{serializada}.
 
 % Ejemplo Highscores
 
@@ -403,7 +403,7 @@ humanos, se decide guardarlos en un archivo de texto, donde cada tupla
 ocupará una línea y los valores de las tuplas estarán separados por
 comas.
 
-En el Código \ref{puntajes} se muestra un módulo capaz de guardar y
+En el Código~\ref{puntajes} se muestra un módulo capaz de guardar y
 recuperar los puntajes en el formato especificado.
 
 \begin{codigo}{puntajes.py}{Módulo para guardar y recuperar puntajes en un archivo}
@@ -460,7 +460,7 @@ preciado en un programador.
 \subsection{Persistencia en archivos CSV}
 
 Un formato que suele usarse para transferir datos entre programas es
-\textbf{csv} (del inglés {\it comma separated values}: valores separados
+\textbf{csv} (del inglés \emph{comma separated values}: valores separados
 por comas) es un formato bastante sencillo, tanto para leerlo como para
 procesarlo desde el código, se parece al formato visto en el ejemplo
 anteriormente.
@@ -485,7 +485,7 @@ En Python es bastante sencillo procesar de este tipo de archivos, tanto
 para la lectura como para la escritura, mediante el módulo |csv|.
 
 La funciones del ejemplo anterior podrían programarse mediante el módulo
-|csv|.  En el Código \ref{puntajes_csv} se muestra una posible implementación
+|csv|.  En el Código~\ref{puntajes_csv} se muestra una posible implementación
 que utiliza este módulo.
 
 \begin{codigo}{puntajes\_csv.py}{Módulo para guardar y recuperar puntajes en un archivo que usa csv}
@@ -520,11 +520,11 @@ de forma muy sencilla.  Hay que tener en cuenta, sin embargo, que no es
 nada simple acceder a un archivo en este formato desde un programa que no
 esté escrito en Python.
 
-En el Código \ref{puntajes_pickle} se muestra el mismo ejemplo de
+En el Código~\ref{puntajes_pickle} se muestra el mismo ejemplo de
 almacenamiento de puntajes, utilizando el módulo \lstinline!pickle!.
 
 \begin{codigo}{puntajes\_pickle.py}{Módulo para guardar y recuperar puntajes en
-    un archivo que usa {\it pickle}}
+    un archivo que usa \emph{pickle}}
 \label{puntajes_pickle}
 \lstinputlisting{src/11_archivos/puntajes_pickle.py}
 \end{codigo}
@@ -542,7 +542,7 @@ X....8:42q..q.e.
 \end{codigo-nohl-sn}
 
 En el apéndice de esta unidad puede verse una aplicación completa de una
-agenda, que utiliza {\it pickle} para almacenar datos en archivos.
+agenda, que utiliza \emph{pickle} para almacenar datos en archivos.
 
 \section{Directorios}
 
@@ -709,7 +709,7 @@ archivo e imprima las líneas del archivo que contienen la expresión recibida.
 \begin{ejercicio}
 Escribir un programa, llamado {\bf rot13.py} que reciba un archivo de texto de
 origen y uno de destino, de modo que para cada línea del archivo origen, se
-guarde una línea {\it cifrada} en el archivo destino.  El algoritmo de cifrado
+guarde una línea \emph{cifrada} en el archivo destino.  El algoritmo de cifrado
 a utilizar será muy sencillo: a cada caracter comprendido entre la a y la z, se
 le suma 13 y luego se aplica el módulo 26, para obtener un nuevo caracter.
 \end{ejercicio}
@@ -730,14 +730,14 @@ con el formato \lstinline!clave, valor!.
 \section{Apéndice}
 
 A continuación se muestra un programa de agenda que utiliza archivos
-CSV. Luego se muestran los cambios necesarios para que la agenda que utilice archivos
-en formato {\it pickle}, en lugar de CSV.
+CSV\@. Luego se muestran los cambios necesarios para que la agenda que utilice archivos
+en formato \emph{pickle}, en lugar de CSV.
 
 \tituloCodigo{\lstinline|agenda-csv.py| Agenda con los datos en formato CSV}
 \lstinputlisting{src/11_archivos/agenda-csv.py}
 
 \tituloCodigo{\lstinline|agenda-pickle.py| Modificaciones a la agenda para
-guardar los datos en formato {\it pickle}}
+guardar los datos en formato \emph{pickle}}
 \begin{codigo-python}
 import pickle, os
 

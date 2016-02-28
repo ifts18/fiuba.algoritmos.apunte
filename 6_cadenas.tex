@@ -9,7 +9,7 @@ tipo de aplicaciones debemos aprender a manipularlas. Comenzaremos a ver
 ahora cómo hacer cálculos con cadenas.
 
 \begin{sabias_que}
-En Python todos los valores tienen asignado un {\it tipo}. 	La función |type|
+En Python todos los valores tienen asignado un \emph{tipo}. 	La función |type|
 de Python nos permite averiguar de qué tipo es un valor. Las cadenas son de
 tipo |str|:
 
@@ -27,7 +27,7 @@ tipo |str|:
 
 \section{Operaciones con cadenas}
 
-Ya vimos en la sección \ref{nosolo} que es posible:
+Ya vimos en la sección~\ref{nosolo} que es posible:
 
 \begin{itemize}
 \item Sumar cadenas entre sí (y el resultado es la concatenación
@@ -61,7 +61,7 @@ una función provista por Python: \lstinline+len{}+.
 10
 \end{codigo-python-sn}
 
-Existe una cadena especial, que llamaremos {\it cadena vacía}, que
+Existe una cadena especial, que llamaremos \emph{cadena vacía}, que
 es la cadena que no contiene ningún carácter (se la indica sólo con
 un apóstrofe o comilla que abre, y un apóstrofe o comilla que cierra),
 y que por lo tanto tiene longitud cero:
@@ -146,7 +146,7 @@ Ahora sí hemos conseguido averiguar en Python cuál es el primer carácter de
 
 \begin{atencion}
 Las distintas posiciones de una cadena \lstinline!s! se llaman
-{\it índices}. Los índices son números enteros que pueden tomar
+\emph{índices}. Los índices son números enteros que pueden tomar
 valores entre \lstinline!-len(s)! y \lstinline!len(s) - 1!.
 
 Los índices entre \lstinline!0! y \lstinline!len(s) - 1! son lo que ya
@@ -258,7 +258,7 @@ TypeError: 'str' object does not support item assignment
 \end{codigo-python-sn}
 
 El error que se despliega nos dice que la cadena no soporta
-la modificación de un carácter. Decimos que {\it las cadenas
+la modificación de un carácter. Decimos que \emph{las cadenas
 son inmutables}.
 
 Si queremos corregir la ortografía de una cadena, debemos hacer
@@ -376,7 +376,7 @@ primeros 10 caracteres, por ejemplo, el valor de \lstinline+contador+
 refleja la cantidad de ``A'' que hay en los primeros 10 caracteres de
 \lstinline+s+.
 
-Si llamamos {\it parte izquierda de } \lstinline+s+ al segmento de
+Si llamamos \emph{parte izquierda de } \lstinline+s+ al segmento de
 \lstinline+s+ que ya se recorrió, diremos que cuando leímos los primeros 10
 caracteres de \lstinline+s+, su parte izquierda es el segmento
 \lstinline+s[0:10]+.
@@ -397,7 +397,7 @@ para cada letra de s
 retornar el valor del contador
 \end{codigo-nohl-sn}
 
-Lo identificaremos como el esquema {\it Inicialización - Ciclo de tratamiento -
+Lo identificaremos como el esquema \emph{Inicialización - Ciclo de tratamiento -
 Retorno de valor}. Pasamos ahora a implementar este diseño:
 
 \item {\bf Implementación (del diseño revisado)}
@@ -506,8 +506,8 @@ visto: |cadena.format(valor)| en lugar de la notación usual
 Por ahora es suficiente con entender que en la llamada |cadena.format(valor)|,
 es como si la función |format| recibiera dos parámetros, |cadena| y |valor|.
 
-Esta notación es propia de la {\it orientación a objetos}. Aprenderemos más
-sobre objetos en la sección \ref{objetos}.
+Esta notación es propia de la \emph{orientación a objetos}. Aprenderemos más
+sobre objetos en la sección~\ref{objetos}.
 \end{sabias_que}
 
 Otro ejemplo, utilizando varios valores, en este caso cadenas:
@@ -545,7 +545,7 @@ decimal.
 \section{Nuestro primer juego}
 
 Con todo esto ya estamos en condiciones de escribir un programa para jugar con
-la computadora: el {\it Mastermind}. El Mastermind es un juego que consiste en
+la computadora: el \emph{Mastermind}. El Mastermind es un juego que consiste en
 deducir un código numérico de (por ejemplo) cuatro cifras.
 
 \begin{enumerate}
@@ -560,10 +560,10 @@ programa. Las respuestas le darán pistas al jugador para que pueda deducir el
 código.
 
 Estas pistas indican cuán cerca estuvo el número propuesto de la solución a
-través de dos valores: la cantidad de {\it aciertos} es la cantidad de
-dígitos que propuso el jugador que también están en el código {\it en la
-misma posición}. La cantidad de {\it coincidencias} es la cantidad de
-digitos que propuso el jugador que también están en el código pero {\it en
+través de dos valores: la cantidad de \emph{aciertos} es la cantidad de
+dígitos que propuso el jugador que también están en el código \emph{en la
+misma posición}. La cantidad de \emph{coincidencias} es la cantidad de
+digitos que propuso el jugador que también están en el código pero \emph{en
 una posición distinta}.
 
 Por ejemplo, si el código que eligió el programa es el \lstinline!2607!, y el
@@ -593,12 +593,12 @@ Lo primero que tenemos que hacer es indicarle al programa que tiene que
 ``elegir'' un número de cuatro cifras al azar. Esto lo hacemos a través del
 módulo \lstinline!random!. Este módulo provee funciones para hacer elecciones
 aleatorias\footnote{En realidad, la computadora nunca puede hacer
-elecciones {\it completamente} aleatorias. Por eso los números ``al azar''
-que puede elegir se llaman {\it pseudoaleatorios}.}.
+elecciones \emph{completamente} aleatorias. Por eso los números ``al azar''
+que puede elegir se llaman \emph{pseudoaleatorios}.}.
 
 La función del módulo que vamos a usar se llama \lstinline!choice!. Esta función
 recibe una secuencia de valores, y devuelve un valor de la secuencia elegido al
-azar. Una n-upla (ver sección \ref{fun:multiple_return}) es un ejemplo de una
+azar. Una n-upla (ver sección~\ref{fun:multiple_return}) es un ejemplo de una
 secuencia, por lo que podemos hacer algo como:
 
 \begin{codigo-python-sn}
@@ -647,7 +647,7 @@ propuestas, informar al usuario que ha ganado y terminar el programa.
 
 \item {\bf Implementación:}
 Entonces, de acuerdo a lo diseñado en \ref{str:disenno}, se muestra una
-implementación en el Código \ref{cod:mastermind}.
+implementación en el Código~\ref{cod:mastermind}.
 
 \begin{codigo}{\label{cod:mastermind} mastermind.py}{Juego Mastermind}
 \lstinputlisting{src/mastermind.py}
@@ -658,7 +658,7 @@ La forma más directa de probar el programa es jugándolo, y verificando
 manualmente que las respuestas que da son correctas, por ejemplo:
 
 \begin{codigo-nohl-sn}
-$ python mastermind.py
+(~\$~) python mastermind.py
 Bienvenido/a al Mastermind!
 Tenes que adivinar un numero de 4 cifras distintas
 Que codigo propones?: 1234
@@ -711,7 +711,7 @@ adivinar, y los candidatos que van apareciendo pero se rechazan por estar
 repetidos:
 
 \begin{codigo-nohl-sn}
-$ python master_debug.py
+(~\$~) python master_debug.py
 Bienvenido/a al Mastermind!
 Tienes que adivinar un numero de cuatro cifras distintas
 [DEBUG] candidato: 8
@@ -812,7 +812,7 @@ mensajes:
         print("Felicitaciones! Adivinaste el codigo en {} intentos.".format(intentos))
 \end{codigo-python-sn}
 
-En el Código \ref{cod:mastermind_enh} se muestra el código completo luego de
+En el Código~\ref{cod:mastermind_enh} se muestra el código completo luego de
 aplicar las mejoras.
 
 \begin{codigo}{\label{cod:mastermind_enh} mastermind.py}{Juego Mastermind de 5
@@ -821,7 +821,7 @@ aplicar las mejoras.
 \end{codigo}
 \end{enumerate}
 
-\ejercicioc{En el punto \ref{str:mant} (Mantenimiento) usamos una variable que
+\ejercicioc{En el punto~\ref{str:mant} (Mantenimiento) usamos una variable que
 guardara el valor de la cantidad de dígitos para no tener que cambiarlo todas
 las veces. ¿Cómo harían para evitar esta variable usando la función
 \lstinline!len(cadena)!?}
@@ -979,7 +979,7 @@ Escribir una función que dada una cadena de caracteres, devuelva:
 \item Dicha cadena con la primera letra de cada palabra en mayúsculas. Por
 ejemplo, si recibe \texttt{'república argentina'} debe devolver
 \texttt{'República Argentina'}.
-\item Las palabras que comiencen con la letra 'A'. Por ejemplo, si recibe
+\item Las palabras que comiencen con la letra `A'. Por ejemplo, si recibe
 \texttt{'Antes de ayer'} debe devolver \texttt{'Antes ayer'}
 \end{partes}
 \end{ejercicio}

@@ -7,8 +7,8 @@ se quiere agrupar elementos.
 
 \section{Tuplas}
 
-En la conversión de un tiempo a horas, minutos y segundos, en la sección
-\ref{fun:multiple_return}, usamos n-uplas (o {\it tuplas}) como una
+En la conversión de un tiempo a horas, minutos y segundos, en la
+sección~\ref{fun:multiple_return}, usamos n-uplas (o \emph{tuplas}) como una
 construcción que nos permitía que una función devolviera múltiples valores.
 
 En programación, en general, al querer modelar objetos de la vida real, es
@@ -41,7 +41,7 @@ En Python el tipo de dato asociado a las tuplas se llama |tuple|:
 
 \subsection{Elementos y segmentos de tuplas}
 
-Las tuplas son {\it secuencias}, igual que las cadenas, y se puede utilizar la
+Las tuplas son \emph{secuencias}, igual que las cadenas, y se puede utilizar la
 misma notación de índices que en las cadenas para obtener cada una de sus
 componentes.
 
@@ -114,7 +114,7 @@ una tupla nos indica cuántas componentes tiene esa tupla.
 \lstinline!(89766, "Alicia", "Hacker", (9, "Julio", 1988))!?}
 
 \begin{itemize}
-\item Una {\it tupla vacía} es una tupla con $0$ componentes, y se la
+\item Una \emph{tupla vacía} es una tupla con $0$ componentes, y se la
 indica como \lstinline+()+.
 
 \begin{codigo-python-sn}
@@ -127,7 +127,7 @@ Traceback (most recent call last):
 IndexError: tuple index out of range
 \end{codigo-python-sn}
 
-\item Una {\it tupla unitaria} es una tupla con una componente. Para
+\item Una \emph{tupla unitaria} es una tupla con una componente. Para
 distinguir la tupla unitaria de la componente que contiene, Python exige
 que a la componente no sólo se la encierre entre paréntesis sino que se le
 ponga una coma a continuación del valor de la componente (así
@@ -151,7 +151,7 @@ TypeError: object of type 'int' has no len()
 \subsection{Empaquetado y desempaquetado de tuplas}
 Si a una variable se le asigna una secuencia de valores separados por comas,
 el valor de esa variable será la tupla formada por todos los valores asignados.
-A esta operación se la denomina {\it empaquetado de tuplas}.
+A esta operación se la denomina \emph{empaquetado de tuplas}.
 
 \begin{codigo-python-sn}
 >>> a = 125
@@ -167,7 +167,7 @@ A esta operación se la denomina {\it empaquetado de tuplas}.
 Si se tiene una tupla de longitud \lstinline+k+, se puede asignar
 la tupla a \lstinline+k+ variables distintas y en cada variable quedará
 una de las componentes de la tupla. A esta operación se la denomina
-{\it desempaquetado de tuplas}.
+\emph{desempaquetado de tuplas}.
 
 \begin{codigo-python-sn}
 >>> x, y, z = d
@@ -226,7 +226,7 @@ francesa.
 
 \item Escribir una función \lstinline!poker! que reciba cinco cartas de la
 baraja francesa e informe (devuelva el valor lógico correspondiente) si esas
-cartas forman o no un {\it poker} (es decir que hay 4 cartas con el mismo
+cartas forman o no un \emph{poker} (es decir que hay 4 cartas con el mismo
 número).
 \end{partes}
 }
@@ -251,9 +251,9 @@ el mismo formato.}
 
 \section{Listas}
 
-Presentaremos ahora una nueva estructura de datos: la {\it lista}.
+Presentaremos ahora una nueva estructura de datos: la \emph{lista}.
 Usaremos listas para poder modelar datos compuestos, pero cuya cantidad y
-valor varían a lo largo del tiempo. Son secuencias {\it mutables} y vienen
+valor varían a lo largo del tiempo. Son secuencias \emph{mutables} y vienen
 dotadas de una variedad de operaciones muy útiles.
 
 La notación para lista es una secuencia de valores encerrados entre
@@ -511,14 +511,14 @@ posición de cada elemento de la lista. Para esto es posible utilizar la funció
 
 \begin{sabias_que}
 En Python, las listas, las tuplas y las cadenas son parte del conjunto
-de las {\it secuencias}.  Todas las secuencias cuentan con las siguientes
+de las \emph{secuencias}.  Todas las secuencias cuentan con las siguientes
 operaciones:
 
 \vspace{\medskipamount}
 \begin{tabular}{l l}
 {\bf Operación} & {\bf Resultado} \\
 \hline
-\lstinline!x in s! & Indica si la variable \lstinline!x! se encuentra en
+\lstinline!x in s! & Indica si el valor \lstinline!x! se encuentra en
     \lstinline!s! \\
 \lstinline!s + t! & Concantena las secuencias \lstinline!s! y \lstinline!t! \\
 \lstinline!s * n! & Concatena \lstinline!n! copias de \lstinline!s! \\
@@ -577,7 +577,7 @@ parece muy útil.
 
 Estamos frente a una situación parecida al problema de la lectura de los
 números, en el sentido de que no sabemos cuántos elementos queremos cargar
-de antemano. Para ese problema, en la sección \ref{centinela}, vimos una solución muy
+de antemano. Para ese problema, en la sección~\ref{centinela}, vimos una solución muy
 sencilla y cómoda: se le piden datos al usuario y, cuando se cargaron todos
 los datos se ingresa un valor arbitrario (que se usa sólo para indicar que
 no hay más información). A ese diseño lo hemos llamado ciclo con centinela
@@ -612,12 +612,12 @@ Devolver la lista de inscriptos
 
 \item {\bf Implementación:}
 De acuerdo a lo diseñado, el programa quedaría como
-se muestra en el Código \ref{ins0}.
+se muestra en el Código~\ref{ins0}.
 
 \begin{observacion}
 Para entender mejor la implementación propuesta, es una buena idea repasar los
 conceptos de ciclos, en especial las instrucciones |break| y |continue|,
-explicadas en la sección \ref{ciclos:resumen}.
+explicadas en la sección~\ref{ciclos:resumen}.
 \end{observacion}
 
 \begin{codigo}{inscripcion.py}{Permite ingresar padrones de alumnos
@@ -680,7 +680,7 @@ Devolver la lista de inscriptos
 
 \item {\bf Nueva implementación:}
 De acuerdo a lo diseñado en el párrafo anterior, el programa ahora quedaría
-como se muestra en el Código \ref{ins1}.
+como se muestra en el Código~\ref{ins1}.
 
 \begin{codigo}{inscripcion.py}{Permite ingresar padrones, sin repetir}
 \label{ins1}
@@ -807,7 +807,7 @@ que tiene la siguiente sintaxis:
 \end{codigo-python-sn}
 
 y que devuelve la cadena que resulta de unir todas las componentes
-separadas entre sí por medio del {\it separador}:
+separadas entre sí por medio del \emph{separador}:
 
 \begin{codigo-python-sn}
 >>> xs = ['aaa', 'bbb', 'cccc']
@@ -913,7 +913,7 @@ lista_vacia = []
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!x, y, z = secuencia!}
-Es posible {\it desempaquetar} una secuencia, asignando a la izquierda
+Es posible \emph{desempaquetar} una secuencia, asignando a la izquierda
 tantas variables como elementos tenga la secuencia. Cada variable
 tomará el valor del elemento que se encuentra en la misma posición.
 \end{sintaxis}
@@ -1020,11 +1020,11 @@ encuentran ordenados de menor a mayor o no.
 \begin{ejercicio}
 {\bf Dominó.}
 \begin{partes}
-\item Escribir una función que indique si dos fichas de dominó {\it
-encajan} o no. Las fichas son recibidas en dos tuplas, por ejemplo:
+\item Escribir una función que indique si dos fichas de dominó
+\emph{encajan} o no. Las fichas son recibidas en dos tuplas, por ejemplo:
 \verb!(3,4)! y \verb!(5,4)!
-\item Escribir una función que indique si dos fichas de dominó {\it
-encajan} o no. Las fichas son recibidas en una cadena, por ejemplo:
+\item Escribir una función que indique si dos fichas de dominó
+\emph{encajan} o no. Las fichas son recibidas en una cadena, por ejemplo:
 \verb!3-4 2-5!. {\bf Nota:} utilizar la función \verb!split! de las cadenas.
 \end{partes}
 \end{ejercicio}
@@ -1034,7 +1034,7 @@ encajan} o no. Las fichas son recibidas en una cadena, por ejemplo:
 \begin{ejercicio}{\bf Campaña electoral}
 \begin{partes}
 \item Escribir una función que reciba una tupla con nombres, y para cada
-nombre imprima el mensaje {\it Estimado <nombre>, vote por mí.}
+nombre imprima el mensaje \emph{Estimado <nombre>, vote por mí.}
 \item Escribir una función que reciba una tupla con nombres, una posición
 de origen \verb!p! y una cantidad \verb!n!, e imprima el mensaje anterior
 para los \verb!n! nombres que se encuentran a partir de la posición
@@ -1093,7 +1093,7 @@ apellido.
 
 
 \extractionlabel{guia}
-\begin{ejercicio}{ \bf Inversión de listas}
+\begin{ejercicio}{\bf Inversión de listas}
 \begin{partes}
 \item Realizar una función que, dada una lista, devuelva una nueva lista cuyo
 contenido sea igual a la original pero invertida. Así, dada la lista
@@ -1123,8 +1123,8 @@ mediante una tupla (valor, cantidad de repeticiones). Por ejemplo,
 \begin{partes}
 \item Escribir una función que reciba dos matrices y devuelva la suma.
 \item Escribir una función que reciba dos matrices y devuelva el producto.
-\item $\bigstar$ Escribir una función que opere sobre una matriz y mediante {\it
-eliminación gaussiana} devuelva una matriz triangular superior.
+\item $\bigstar$ Escribir una función que opere sobre una matriz y mediante
+\emph{eliminación gaussiana} devuelva una matriz triangular superior.
 \item $\bigstar$ Escribir una función que indique si un grupo de vectores, recibidos
 mediante una lista, son linealmente independientes o no.
 \end{partes}

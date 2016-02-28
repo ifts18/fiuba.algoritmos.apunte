@@ -25,7 +25,7 @@ diseño.
 \end{solucion}
 
 Para resolver este problema introducimos una nueva instrucción que
-llamaremos {\it condicional} y tiene la siguiente forma:
+llamaremos \emph{condicional} y tiene la siguiente forma:
 
 \begin{codigo-python-sn}
 if <condición>:
@@ -38,13 +38,13 @@ Donde \lstinline+if+ es una palabra reservada.
 Antes de seguir adelante con la construcción debemos introducir
 un nuevo tipo de expresión que nos indicará si se da una cierta situación o no.
 Hasta ahora las expresiones con las que trabajamos fueron de tipo numérica y de tipo texto.
-Pero ahora la respuesta que buscamos es de tipo {\it sí} o {\it no}.
+Pero ahora la respuesta que buscamos es de tipo \emph{sí} o \emph{no}.
 
 \section{Expresiones booleanas}
 
 Además de los tipos numéricos (|int|, |float|), y las cadenas de texto (|str|),
-Python introduce un tipo de dato llamado {\it booleano} (|bool|). Una {\it
-expresión booleana} o {\it expresión lógica} puede tomar dos valores posibles:
+Python introduce un tipo de dato llamado \emph{booleano} (|bool|). Una
+\emph{expresión booleana} o \emph{expresión lógica} puede tomar dos valores posibles:
 |True| (sí) o |False| (no).
 
 \begin{codigo-python-sn}
@@ -56,7 +56,7 @@ expresión booleana} o {\it expresión lógica} puede tomar dos valores posibles
 
 En el ejemplo que queremos resolver, la condición que queremos ver si se
 cumple o no es que \lstinline!x! sea mayor que cero. Python provee las
-llamadas {\it expresiones de comparación} que sirven para comparar valores
+llamadas \emph{expresiones de comparación} que sirven para comparar valores
 entre sí, y que por lo tanto permiten codificar ese tipo de pregunta.  En
 particular la pregunta de si \lstinline!x! es mayor que cero, se codifica
 en Python como \lstinline!x > 0!.
@@ -197,7 +197,7 @@ if <condición>:
 
 cuyo significado es el siguiente:
 se evalúa \lstinline+<condición>+ (que debe ser una expresión lógica), y si el resultado es \lstinline!True! (verdadero) se
-ejecutan las acciones indicadas como {\it $<$hacer algo si se da la condición$>$}.
+ejecutan las acciones indicadas como \emph{$<$hacer algo si se da la condición$>$}.
 
 Como ahora ya sabemos también cómo construir condiciones de comparación,
 estamos en condiciones de implementar nuestra solución. Escribimos la
@@ -222,7 +222,7 @@ Ingrese un número: -25
 Ingrese un número: 0
 \end{codigo-python-sn}
 
-\problemac{
+\problemac{%
 Necesitamos además un mensaje \lstinline!"Número no positivo"! cuando no se cumple
 la condición.}
 
@@ -280,9 +280,9 @@ Donde \lstinline!if! y \lstinline!else! son palabras reservadas.
 
 Su significado es el siguiente: se evalúa \lstinline+<condición>+, si el
 resultado es \lstinline!True! se ejecutan las acciones
-indicadas como {\it $<$hacer algo si se da la condición$>$}, y si el
+indicadas como \emph{$<$hacer algo si se da la condición$>$}, y si el
 resultado es \lstinline!False! se ejecutan las acciones indicadas
-como {\it $<$hacer otra cosa si no se da la condición$>$}.
+como \emph{$<$hacer otra cosa si no se da la condición$>$}.
 
 Volvemos a nuestro diseño:
 
@@ -371,7 +371,7 @@ Si el número es positivo escribir un mensaje
 
 Veamos qué se puede hacer cuando se presentan tres o más alternativas:
 
-\problemac{
+\problemac{%
 Si el número es positivo escribir un mensaje
 \lstinline!"Número positivo"!, si el número es igual a 0 un mensaje
 \lstinline!"Igual a 0"!, y si el número es negativo escribir un mensaje
@@ -404,13 +404,13 @@ def pos_cero_o_neg():
             print("Número negativo")
 \end{codigo-python-sn}
 
-Esta estructura se conoce como de {\it alternativas anidadas} ya que dentro
+Esta estructura se conoce como de \emph{alternativas anidadas} ya que dentro
 de una de las ramas de la alternativa (en este caso la rama del
 \lstinline!else!) se anida otra alternativa.
 
 Pero ésta no es la única forma de implementarlo. Existe otra construcción,
 equivalente a la anterior pero que no exige sangrías cada vez mayores en el texto.
-Se trata de la estructura de {\it alternativas encadenadas}, que tiene la forma
+Se trata de la estructura de \emph{alternativas encadenadas}, que tiene la forma
 
 \begin{codigo-python-sn}
 if <condición_1>:
@@ -660,15 +660,15 @@ cuando sea posible.
 \begin{ejercicio}
 Suponiendo que el primer día del año fue lunes, escribir una función
 que reciba un número con el día del año (de 1 a 366) y devuelva el día
-de la semana que le toca. Por ejemplo: si recibe '3' debe devolver
-'miércoles', si recibe '9' debe devolver 'martes'.
+de la semana que le toca. Por ejemplo: si recibe \verb|'3'| debe devolver
+\verb|'miércoles'|, si recibe \verb|'9'| debe devolver \verb|'martes'|.
 \end{ejercicio}
 
 
 \extractionlabel{guia}
 \begin{ejercicio}
 $\bigstar$ Escribir un programa que reciba como entrada un entero representando un año
-(p. ej. 751, 1999, o 2158), y muestre por pantalla el mismo año escrito en
+(por ejemplo 751, 1999, o 2158), y muestre por pantalla el mismo año escrito en
 números romanos.
 \end{ejercicio}
 

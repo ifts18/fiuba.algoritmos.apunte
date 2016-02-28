@@ -5,9 +5,9 @@
 %línea de los otros capítulos habría que dividirlo en partes de modo que sea
 %una por clase.
 
-Los {\it objetos} son una manera de organizar datos y de relacionar esos datos
+Los \emph{objetos} son una manera de organizar datos y de relacionar esos datos
 con el código apropiado para manejarlo.  Son los protagonistas de un
-paradigma de programación llamado {\it Programación Orientada a Objetos}.
+paradigma de programación llamado \emph{Programación Orientada a Objetos}.
 
 Nosotros ya usamos objetos en Python sin mencionarlo explícitamente. Es más,
 todos los tipos de datos que Python nos provee son, en realidad, objetos.
@@ -15,10 +15,10 @@ todos los tipos de datos que Python nos provee son, en realidad, objetos.
 De forma que, cuando utilizamos \lstinline!cadena.upper()!, le estamos
 diciendo a Python que llame a la función \lstinline!upper! del tipo
 \lstinline!str! para \lstinline!cadena! que es lo mismo que decir que
-llame al {\it método} \lstinline!upper! del objeto \lstinline!cadena!.
+llame al \emph{método} \lstinline!upper! del objeto \lstinline!cadena!.
 
-A su vez, a las variables que un objeto contiene se las llama {\it
-atributos}.
+A su vez, a las variables que un objeto contiene se las llama
+\emph{atributos}.
 
 \begin{sabias_que}
 La Programación Orientada a Objetos introduce bastante terminología, y una
@@ -28,8 +28,8 @@ humano.
 
 Para poder pensar abstractamente, los humanos necesitamos asignarle
 distintos nombres a cada cosa o proceso. De la misma manera, para poder
-hacer un cambio en una forma de ver algo ya establecido (realizar un {\it
-cambio de paradigma}), suele ser necesario cambiar la forma de nombrar a
+hacer un cambio en una forma de ver algo ya establecido (realizar un
+\emph{cambio de paradigma}), suele ser necesario cambiar la forma de nombrar a
 los elementos que se comparten con el paradigma anterior, ya que sino es
 muy difícil realizar el salto al nuevo paradigma.
 \end{sabias_que}
@@ -37,9 +37,9 @@ muy difícil realizar el salto al nuevo paradigma.
 \section{Tipos}
 
 En los temas que vimos hasta ahora nos hemos encontrado con numerosos tipos
-provistos por Python, los {\it números}, las {\it cadenas de caracteres},
-las {\it listas}, las {\it tuplas}, los {\it diccionarios}, los {\it
-archivos}, etc.  Cada uno de estos tipos tiene sus características, tiene
+provistos por Python, los \emph{números}, las \emph{cadenas de caracteres},
+las \emph{listas}, las \emph{tuplas}, los \emph{diccionarios}, los
+\emph{archivos}, etc.  Cada uno de estos tipos tiene sus características, tiene
 operaciones propias de cada uno y nos provee de una gran cantidad de
 funcionalidades que podemos utilizar para nuestros programas.
 
@@ -69,7 +69,7 @@ En este caso, la función \lstinline!dir! nos muestra los métodos que tiene
 un objeto del tipo \lstinline!_io.TextIOWrapper! (el tipo que Python le asigna
 internamente a un archivo).  Podemos ver en el listado los métodos
 que ya hemos visto al operar con archivos, junto con otros métodos con
-nombres {\it raros} como \lstinline!__str__!, o \lstinline!__doc__!. Estos
+nombres \emph{raros} como \lstinline!__str__!, o \lstinline!__doc__!. Estos
 métodos son especiales en Python; más adelante veremos para qué sirven y
 cómo se usan.
 
@@ -93,7 +93,7 @@ archivo), mientras que \lstinline!tell! es un método, que para utilizarlo
 debemos llamarlo con paréntesis.
 
 \begin{observacion}
-Como ya sabemos, en Python los métodos se invocan con la {\it notación punto}:
+Como ya sabemos, en Python los métodos se invocan con la \emph{notación punto}:
 \lstinline+archivo.tell()+, \lstinline+cadena.split(":")+.
 
 Analicemos la segunda expresión.  El significado de ésta es: la variable
@@ -109,17 +109,17 @@ un método {\bf de} cadenas, y que no se lo puede utilizar con variables de
 otros tipos.
 
 Esta notación provocó un cambio de paradigma en la programación, y es uno de
-los ejes de la {\it Programación Orientada a Objetos}
+los ejes de la \emph{Programación Orientada a Objetos}
 \end{observacion}.
 
 \section{Qué es un objeto}
 
 En Python, todos los tipos son objetos.  Pero no en todos los lenguajes de
 programación es así.  En general, podemos decir que un objeto es una forma
-ordenada de agrupar datos (los {\it atributos}) y operaciones a utilizar
-sobre esos datos (los {\it métodos}).
+ordenada de agrupar datos (los \emph{atributos}) y operaciones a utilizar
+sobre esos datos (los \emph{métodos}).
 
-Es importante notar que cuando decimos {\it objetos} podemos estar haciendo
+Es importante notar que cuando decimos \emph{objetos} podemos estar haciendo
 referencia a dos cosas parecidas, pero distintas.
 
 Por un lado, la definición del tipo, donde se indican cuáles son los
@@ -149,7 +149,7 @@ Por ejemplo, si se quiere representar un punto en el plano, es posible
 hacerlo mediante una tupla de dos elementos, pero esta implementación es
 limitada, ya que si se quiere poder operar con distintos puntos (sumarlos,
 restarlos o calcular la distancia entre ellos) se deberán tener funciones
-{\it sueltas} para realizar las diversas operaciones.
+\emph{sueltas} para realizar las diversas operaciones.
 
 Podemos hacer algo mejor definiendo un nuevo tipo \lstinline!Punto!, que almacene
 la información relacionada con el punto, y contenga las operaciones nos
@@ -198,7 +198,7 @@ una nueva instancia de la clase.
 Este método, al igual que todos los métodos de cualquier clase, recibe como
 primer parámetro a la instancia sobre la que está trabajando.  Por
 convención a ese primer parámetro se lo suele llamar \lstinline!self! (que
-podríamos traducir como {\it yo mismo}), pero puede llamarse de cualquier
+podríamos traducir como \emph{yo mismo}), pero puede llamarse de cualquier
 forma.
 
 En nuestro caso el constructor recibe dos parámetros más, |x| e |y|. De esta
@@ -389,8 +389,8 @@ al tiempo de ejecución de la operación.
 Este concepto se llama {\bf ortogonalidad} de los métodos, basado en la
 idea de que cada método debe realizar una operación independiente de los
 otros.  Entre las motivaciones que puede haber para agregar métodos que no
-sean ortogonales, se encuentran la {\it simplicidad de uso} y la {\it
-eficiencia}.
+sean ortogonales, se encuentran la \emph{simplicidad de uso} y la
+\emph{eficiencia}.
 \end{atencion}
 
 \section{Métodos especiales}
@@ -581,7 +581,7 @@ Nos contratan para diseñar una clase para evaluar la relación calidad-precio d
 diversos hoteles.  Nos dicen que los atributos que se cargarán de los hoteles
 son: nombre, ubicación, puntaje obtenido por votación, y precio, y que además
 de guardar hoteles y mostrarlos, debemos poder compararlos en términos de
-sus valores de relación calidad-precio, de modo tal que {\it x < y} signifique
+sus valores de relación calidad-precio, de modo tal que \emph{x < y} signifique
 que el hotel $x$ es peor en cuanto a la relación calidad-precio que el hotel
 $y$, y que dos hoteles son iguales si tienen la misma relación calidad-precio.
 La relación calidad-precio de un hotel la definen nuestros clientes como
@@ -686,7 +686,7 @@ Para resolver las comparaciones entre hoteles, será necesario definir
 algunos métodos especiales que permiten comparar objetos.
 
 En particular, cuando se quiere que los objetos puedan ser ordenados, es
-suficiente con definir el método |__lt__| ({\it less than}), que corresponde al
+suficiente con definir el método |__lt__| (\emph{less than}), que corresponde al
 operador matemático de comparación |<|. El método |__lt__| recibe dos
 parámetros, |self| y |otro| y debe devolver |True| si |self| es
 comparativamente ``menor'' a |otro|.
@@ -718,13 +718,13 @@ existe |__gt__|, y si no existe invoca a |__lt__|).
 
 Pero aún quedan sin definir las operaciones |==|, |!=|, |<=| y |>=|.  Si
 queremos tener la posibilidad de preguntar si dos instancias son ``iguales'' o
-``distintas`` con |==| y |!=|, tenemos que definir el método |__eq__|. Y si
+``distintas'' con |==| y |!=|, tenemos que definir el método |__eq__|. Y si
 queremos tener la posibilidad de comparar con |<=| o |>=| tenemos que
 implementar el método |__le__|.
 
 \subsection{Ordenar de menor a mayor listas de hoteles}
 
-En la sección \ref{ordenar} vimos que se puede ordenar una lista usando el
+En la sección~\ref{ordenar} vimos que se puede ordenar una lista usando el
 método \lstinline!sort!:
 
 \begin{codigo-python-sn}
@@ -793,7 +793,7 @@ se lo puede hacer mediante el método \lstinline!__lt__! (a menos que
 redefinamos el método, pero eso sería poco práctico).
 
 Para situaciones como esta, \lstinline!sort! puede recibir, opcionalmente,
-otro parámetro |key| que es la función que calcula la {\it clave de comparación}
+otro parámetro |key| que es la función que calcula la \emph{clave de comparación}
 de cada elemento.
 
 La clave de comparación es simplemente el valor numérico que queremos asignar a
@@ -873,8 +873,8 @@ True
 \section{Resumen}
 
 \begin{itemize}
-\item Los {\bf objetos} son formas ordenadas de agrupar datos ({\it
-atributos}) y operaciones sobre estos datos ({\it métodos}).
+\item Los {\bf objetos} son formas ordenadas de agrupar datos
+(\emph{atributos}) y operaciones sobre estos datos (\emph{métodos}).
 
 \item Cada objeto es de una {\bf clase} o tipo, que define cuáles
 serán sus atributos y métodos. Y cuando se crea un valor a partir de una
@@ -898,7 +898,7 @@ Indica que se comienza a definir una clase con el nombre indicado.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!def __init__(self, ...):!}
-Define el {\it constructor} de la clase.  En general, dentro del
+Define el \emph{constructor} de la clase.  En general, dentro del
 constructor se establecen los valores iniciales de todos los
 atributos.
 \end{sintaxis}
@@ -1025,16 +1025,16 @@ una excepción.
 \begin{ejercicio}
 Botella y Sacacorchos
 \begin{partes}
-    \item Escribir una clase {\it Corcho}, que contenga un atributo {\it
-bodega} (cadena con el nombre de la bodega).
-    \item Escribir una clase {\it Botella} que contenga un atributo {\it
-corcho} con una referencia al corcho que la tapa, o \verb!None! si está
+    \item Escribir una clase \emph{Corcho}, que contenga un atributo
+\emph{bodega} (cadena con el nombre de la bodega).
+    \item Escribir una clase \emph{Botella} que contenga un atributo
+\emph{corcho} con una referencia al corcho que la tapa, o \verb!None! si está
 destapada.
-    \item Escribir una clase {\it Sacacorchos} que tenga un método {\it
-destapar} que le reciba una botella, le saque el corcho y se guarde una
+    \item Escribir una clase \emph{Sacacorchos} que tenga un método
+\emph{destapar} que le reciba una botella, le saque el corcho y se guarde una
 referencia al corcho sacado.  Debe lanzar una excepción en el caso en que
 la botella ya esté destapada, o si el sacacorchos ya contiene un corcho.
-    \item Agregar un método {\it limpiar}, que saque el corcho del sacacorchos,
+    \item Agregar un método \emph{limpiar}, que saque el corcho del sacacorchos,
 o lance una excepción en el caso en el que no haya un corcho.
 \end{partes}
 \end{ejercicio}
@@ -1042,7 +1042,7 @@ o lance una excepción en el caso en el que no haya un corcho.
 
 \extractionlabel{guia}
 \begin{ejercicio}
-Modelar una clase {\it Mate} que describa el funcionamiento de la
+Modelar una clase \emph{Mate} que describa el funcionamiento de la
 conocida bebida tradicional local. La clase debe contener como miembros:
 \begin{partes}
     \item Un atributo para la cantidad de cebadas restantes hasta que se lava
