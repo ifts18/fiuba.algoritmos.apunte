@@ -212,9 +212,42 @@ para contener la posición del punto medio del segmento.
 En la Figura \ref{fig:busqbin} vemos qué pasa cuando se busca
 el valor 18 en la lista [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23].
 
+\def\elements{1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23}
+
+\tikzset{pics/arrayrow/.style n args={3}{code={
+    \node[anchor=east] at (-1, 0) {#1};
+    \foreach \x [count=\i] in \elements {
+        \ifthenelse{\x>#2 \AND \x<#3}
+            {\node[draw,fill=med-gray,minimum width=0.75cm,node font=\ttfamily] at (0.75*\i,0) (\x) {\x};}
+            {\node[draw,fill=none,minimum width=0.75cm,node font=\ttfamily] at (0.75*\i,0) (\x) {\x};}
+    }
+}}}
+\tikzset{pics/arraymark/.style n args={3}{code={
+    \node[below=#3 of #1.south,anchor=north,node font=\ttfamily] (label) {#2};
+    \draw[flecha] (label) -- (#1.south);
+}}}
+
 \begin{figure}[h!t]
 \begin{center}
-\includegraphics[width=\linewidth]{graficos/uni8-seguimiento}
+\begin{tikzpicture}
+\pic {arrayrow={El arreglo inicial:}{0}{24}};
+\pic {arraymark={1}{izq\,=\,0}{0.25cm}};
+\pic {arraymark={11}{medio\,=\,5}{0.25cm}};
+\pic {arraymark={23}{der\,=\,11}{0.25cm}};
+
+\pic at (0, -2) {arrayrow={Paso 2 ({\texttt lista[5] < 18}):}{12}{24}};
+\pic {arraymark={13}{izq\,=\,6}{0.25cm}};
+\pic {arraymark={17}{medio\,=\,8}{0.25cm}};
+\pic {arraymark={23}{der\,=\,11}{0.25cm}};
+
+\pic at (0, -4) {arrayrow={Paso 3 ({\texttt lista[8] < 18}):}{18}{24}};
+\pic {arraymark={19}{izq\,=\,9}{0.25cm}};
+\pic {arraymark={21}{medio\,=\,10}{0.75cm}};
+\pic {arraymark={23}{der\,=\,11}{0.25cm}};
+
+\pic at (0, -6) {arrayrow={Paso 4 ({\texttt lista[9] >= 18}):}{18}{20}};
+\pic {arraymark={19}{izq\,=\,der\,=\,medio\,=\,9}{0.25cm}};
+\end{tikzpicture}
 \end{center}
 \caption{Ejemplo de una búsqueda usando el algoritmo de búsqueda binaria.
 Como no se encontró al valor buscado, devuelve $-1$.}
