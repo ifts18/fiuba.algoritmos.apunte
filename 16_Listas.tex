@@ -74,7 +74,7 @@ Con esto hemos generado la estructura de la Figura \ref{nodos}.
 \draw[-] (titulo.south-|n1.west)--(titulo.south-|n1.east);
 
 \node[umlattr,above=0.5cm of n1] (v1) {v1};
-\draw[myarrow] (v1.south)--(n1.north);
+\draw[flecha] (v1.south)--(n1.north);
 
 \node[umlattr,anchor=west,right=1cm of dato.east]           (dato) {dato: "Peras"};
 \node[umlattr,below=of dato.south west,anchor=north west]   (prox2) {prox:};
@@ -84,8 +84,8 @@ Con esto hemos generado la estructura de la Figura \ref{nodos}.
 \draw[-] (titulo.south-|n2.west)--(titulo.south-|n2.east);
 
 \node[umlattr,above=0.5cm of n2] (v2) {v2};
-\draw[myarrow] (v2.south)--(n2.north);
-\draw[myarrow] (prox1.east)--(prox1-|n2.west);
+\draw[flecha] (v2.south)--(n2.north);
+\draw[flecha] (prox1.east)--(prox1-|n2.west);
 
 \node[umlattr,anchor=west,right=1cm of dato.east]           (dato) {dato: "Bananas"};
 \node[umlattr,below=of dato.south west,anchor=north west]   (prox3) {prox:};
@@ -95,12 +95,12 @@ Con esto hemos generado la estructura de la Figura \ref{nodos}.
 \draw[-] (titulo.south-|n3.west)--(titulo.south-|n3.east);
 
 \node[umlattr,above=0.5cm of n3] (v3) {v3};
-\draw[myarrow] (v3.south)--(n3.north);
-\draw[myarrow] (prox2.east)--(prox2-|n3.west);
+\draw[flecha] (v3.south)--(n3.north);
+\draw[flecha] (prox2.east)--(prox2-|n3.west);
 
 \node[draw,inner sep=0pt,minimum height=0pt,minimum width=0.5cm,line width=1.5pt,right=0.5cm of n3.south east] (none) {};
 
-\path[myarrow] (prox3.east) -| (none);
+\path[flecha] (prox3.east) -| (none);
 \end{tikzpicture}
 \caption{Nodos enlazados}
 \label{nodos}
@@ -390,7 +390,7 @@ Nuestra estructura ahora será como la representada por la Figura
 \node[umlclass,fit=(titulo) (attrs)]         (n2)   {};
 \draw[-] (titulo.south-|n2.west)--(titulo.south-|n2.east);
 
-\draw[myarrow] (prim.east)--(prim-|n2.west);
+\draw[flecha] (prim.east)--(prim-|n2.west);
 
 \node[umlattr,anchor=west,right=1cm of dato.east]           (dato) {dato: "Bananas"};
 \node[umlattr,below=of dato.south west,anchor=north west]   (prox3) {prox:};
@@ -399,10 +399,10 @@ Nuestra estructura ahora será como la representada por la Figura
 \node[umlclass,fit=(titulo) (attrs)]         (n3)   {};
 \draw[-] (titulo.south-|n3.west)--(titulo.south-|n3.east);
 
-\draw[myarrow] (prox2.east)--(prox2-|n3.west);
+\draw[flecha] (prox2.east)--(prox2-|n3.west);
 \node[draw,inner sep=0pt,minimum height=0pt,minimum width=0.5cm,line width=1.5pt,right=0.5cm of n3.south east] (none) {};
 
-\path[myarrow] (prox3.east) -| (none);
+\path[flecha] (prox3.east) -| (none);
 \end{tikzpicture}
 \caption{Una lista enlazada}
 \label{lista_enlazada}

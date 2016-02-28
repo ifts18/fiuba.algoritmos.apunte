@@ -442,8 +442,8 @@ se muestra en la Figura \ref{rectangulo_punto}.
 \node[umlclass,fit=(titulo) (attrs)] (punto)  {};
 \draw[-] (titulo.south west)--(titulo.south east);
 
-\draw[myarrow] (r.east)--(rect.west);
-\draw[myarrow] (origen.east)--(origen-|punto.west);
+\draw[flecha] (r.east)--(rect.west);
+\draw[flecha] (origen.east)--(origen-|punto.west);
 \end{tikzpicture}
 \caption{Estado de las variables, al momento de crear el rectángulo}
 \label{rectangulo_punto}
@@ -496,9 +496,9 @@ Con lo cual el diagrama pasa a ser el de la Figura
 
 \node[umlattr,right=1cm of punto] (q) {q};
 
-\draw[myarrow] (r.east)--(rect.west);
-\draw[myarrow] (q.west)--(punto.east);
-\draw[myarrow] (origen.east)--(origen-|punto.west);
+\draw[flecha] (r.east)--(rect.west);
+\draw[flecha] (q.west)--(punto.east);
+\draw[flecha] (origen.east)--(origen-|punto.west);
 \end{tikzpicture}
 \caption{Estado de las variables, luego de reemplazar el origen}
 \label{rectangulo_punto_b}
