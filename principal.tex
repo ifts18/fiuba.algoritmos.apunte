@@ -32,6 +32,7 @@
 
 \usepackage{xcolor}
 \definecolor{light-gray}{gray}{0.96}
+\definecolor{med-gray}{gray}{0.8}
 
 \definecolor{keyword}{rgb}{0,0,0.5}
 \definecolor{string}{rgb}{0.5,0,0.5}
@@ -290,8 +291,16 @@
 \usepackage{menukeys}
 
 \usepackage{tikz}
-\usetikzlibrary{calc,arrows,babel,trees}
+\usetikzlibrary{calc,arrows,babel,trees,fit,positioning}
 \newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \node (#1) {};}
+
+\tikzset{
+    umlattr/.style={right,node font=\ttfamily,draw=none,fill=none,node distance=0pt},
+    umltitle/.style={node font=\ttfamily,draw=none,fill=none,node distance=0pt},
+    umlattrs/.style={draw=none,fill=none,inner sep=0pt},
+    umlclass/.style={draw,fill=none,inner sep=0pt},
+    flecha/.style={draw,->,>=latex},
+}
 
 \usepackage{multirow}
 

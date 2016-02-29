@@ -424,7 +424,27 @@ Lo que acabamos de crear es un objeto de acuerdo al siguiente diagrama que
 se muestra en la Figura \ref{rectangulo_punto}.
 
 \begin{figure}[htb]
-\includegraphics{graficos/15_Rectangulo_Punto}
+\begin{tikzpicture}
+\node[umlattr,anchor=west]                                  (base) {base: 2};
+\node[umlattr,below=of base.south west,anchor=north west]   (altura) {altura: 3};
+\node[umlattr,below=of altura.south west,anchor=north west] (origen) {origen:};
+\node[umlattrs,fit=(base) (altura) (origen)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Rectangulo};
+\node[umlclass,fit=(titulo) (attrs)]         (rect)   {};
+\draw[-] (titulo.south west)--(titulo.south east);
+
+\node[umlattr,left=1cm of rect] (r) {r};
+
+\node[umlattr,anchor=west,right=1cm of altura.east]      (x) {x: 1};
+\node[umlattr,below=of x.south west,anchor=north west] (y) {y: 2};
+\node[umlattrs,fit=(x) (y)]          (attrs)  {};
+\node[umltitle,above=of attrs]       (titulo) {Punto};
+\node[umlclass,fit=(titulo) (attrs)] (punto)  {};
+\draw[-] (titulo.south west)--(titulo.south east);
+
+\draw[flecha] (r.east)--(rect.west);
+\draw[flecha] (origen.east)--(origen-|punto.west);
+\end{tikzpicture}
 \caption{Estado de las variables, al momento de crear el rectángulo}
 \label{rectangulo_punto}
 \end{figure}
@@ -456,7 +476,30 @@ Con lo cual el diagrama pasa a ser el de la Figura
 \ref{rectangulo_punto_b}.
 
 \begin{figure}[htb]
-\includegraphics{graficos/15_Rectangulo_Punto_b}
+\begin{tikzpicture}
+\node[umlattr,anchor=west]                                  (base) {base: 2};
+\node[umlattr,below=of base.south west,anchor=north west]   (altura) {altura: 3};
+\node[umlattr,below=of altura.south west,anchor=north west] (origen) {origen:};
+\node[umlattrs,fit=(base) (altura) (origen)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Rectangulo};
+\node[umlclass,fit=(titulo) (attrs)]         (rect)   {};
+\draw[-] (titulo.south west)--(titulo.south east);
+
+\node[umlattr,left=1cm of rect] (r) {r};
+
+\node[umlattr,anchor=west,right=1cm of altura.east]      (x) {x: 7};
+\node[umlattr,below=of x.south west,anchor=north west] (y) {y: 2};
+\node[umlattrs,fit=(x) (y)]          (attrs)  {};
+\node[umltitle,above=of attrs]       (titulo) {Punto};
+\node[umlclass,fit=(titulo) (attrs)] (punto)  {};
+\draw[-] (titulo.south west)--(titulo.south east);
+
+\node[umlattr,right=1cm of punto] (q) {q};
+
+\draw[flecha] (r.east)--(rect.west);
+\draw[flecha] (q.west)--(punto.east);
+\draw[flecha] (origen.east)--(origen-|punto.west);
+\end{tikzpicture}
 \caption{Estado de las variables, luego de reemplazar el origen}
 \label{rectangulo_punto_b}
 \end{figure}

@@ -65,7 +65,43 @@ Ejecutamos este código:
 Con esto hemos generado la estructura de la Figura~\ref{nodos}.
 
 \begin{figure}[htb]
-\includegraphics{graficos/16_Nodos}
+\begin{tikzpicture}
+\node[umlattr,anchor=west]                                  (dato) {dato: "Manzanas"};
+\node[umlattr,below=of dato.south west,anchor=north west]   (prox1) {prox:};
+\node[umlattrs,fit=(prox1) (dato)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Nodo};
+\node[umlclass,fit=(titulo) (attrs)]         (n1)   {};
+\draw[-] (titulo.south-|n1.west)--(titulo.south-|n1.east);
+
+\node[umlattr,above=0.5cm of n1] (v1) {v1};
+\draw[flecha] (v1.south)--(n1.north);
+
+\node[umlattr,anchor=west,right=1cm of dato.east]           (dato) {dato: "Peras"};
+\node[umlattr,below=of dato.south west,anchor=north west]   (prox2) {prox:};
+\node[umlattrs,fit=(prox2) (dato)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Nodo};
+\node[umlclass,fit=(titulo) (attrs)]         (n2)   {};
+\draw[-] (titulo.south-|n2.west)--(titulo.south-|n2.east);
+
+\node[umlattr,above=0.5cm of n2] (v2) {v2};
+\draw[flecha] (v2.south)--(n2.north);
+\draw[flecha] (prox1.east)--(prox1-|n2.west);
+
+\node[umlattr,anchor=west,right=1cm of dato.east]           (dato) {dato: "Bananas"};
+\node[umlattr,below=of dato.south west,anchor=north west]   (prox3) {prox:};
+\node[umlattrs,fit=(prox3) (dato)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Nodo};
+\node[umlclass,fit=(titulo) (attrs)]         (n3)   {};
+\draw[-] (titulo.south-|n3.west)--(titulo.south-|n3.east);
+
+\node[umlattr,above=0.5cm of n3] (v3) {v3};
+\draw[flecha] (v3.south)--(n3.north);
+\draw[flecha] (prox2.east)--(prox2-|n3.west);
+
+\node[draw,inner sep=0pt,minimum height=0pt,minimum width=0.5cm,line width=1.5pt,right=0.5cm of n3.south east] (none) {};
+
+\path[flecha] (prox3.east) -| (none);
+\end{tikzpicture}
 \caption{Nodos enlazados}
 \label{nodos}
 \end{figure}
@@ -338,7 +374,35 @@ class ListaEnlazada:
 Nuestra estructura ahora será como la representada por la Figura~\ref{lista_enlazada}.
 
 \begin{figure}[htb]
-\includegraphics{graficos/16_ListaEnlazada}
+\begin{tikzpicture}
+\node[umlattr,anchor=west]                                  (len) {len: 2};
+\node[umlattr,below=of len.south west,anchor=north west]   (prim) {prim:};
+\node[umlattrs,fit=(prim) (len)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {ListaEnlazada};
+\node[umlclass,fit=(titulo) (attrs)]         (n1)   {};
+\draw[-] (titulo.south-|n1.west)--(titulo.south-|n1.east);
+
+\node[umlattr,anchor=west,right=2cm of len.east]           (dato) {dato: "Peras"};
+\node[umlattr,below=of dato.south west,anchor=north west]   (prox2) {prox:};
+\node[umlattrs,fit=(prox2) (dato)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Nodo};
+\node[umlclass,fit=(titulo) (attrs)]         (n2)   {};
+\draw[-] (titulo.south-|n2.west)--(titulo.south-|n2.east);
+
+\draw[flecha] (prim.east)--(prim-|n2.west);
+
+\node[umlattr,anchor=west,right=1cm of dato.east]           (dato) {dato: "Bananas"};
+\node[umlattr,below=of dato.south west,anchor=north west]   (prox3) {prox:};
+\node[umlattrs,fit=(prox3) (dato)] (attrs)  {};
+\node[umltitle,above=of attrs]               (titulo) {Nodo};
+\node[umlclass,fit=(titulo) (attrs)]         (n3)   {};
+\draw[-] (titulo.south-|n3.west)--(titulo.south-|n3.east);
+
+\draw[flecha] (prox2.east)--(prox2-|n3.west);
+\node[draw,inner sep=0pt,minimum height=0pt,minimum width=0.5cm,line width=1.5pt,right=0.5cm of n3.south east] (none) {};
+
+\path[flecha] (prox3.east) -| (none);
+\end{tikzpicture}
 \caption{Una lista enlazada}
 \label{lista_enlazada}
 \end{figure}

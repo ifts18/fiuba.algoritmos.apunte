@@ -4,6 +4,7 @@
 *.log
 *.out
 *.toc
-*.pdf
+/ejercicios.pdf
+/principal.pdf
 # Archivo generado
 ejercicios.tex
