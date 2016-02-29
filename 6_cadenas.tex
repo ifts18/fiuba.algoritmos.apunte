@@ -168,17 +168,17 @@ Algunos ejemplos de acceso a distintas posiciones en una cadena.
 >>> s[7]
 'a'
 >>> s[8]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: string index out of range
+IndexError: string index out of range^)
 >>> s[-1]
 'a'
 >>> s[-8]
 'V'
 >>> s[-9]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: string index out of range
+IndexError: string index out of range^)
 \end{codigo-python-sn}
 
 \ejercicioc{Escribir un ciclo que permita mostrar los caracteres de una
@@ -217,18 +217,18 @@ tener cuidado con la cadena vacía):
 
 \begin{codigo-python-sn}
 >>> s[10]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: string index out of range
+IndexError: string index out of range^)
 >>> s = ""
 >>> s
 ''
 >>> len(s)
 0
 >>> s[0]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: string index out of range
+IndexError: string index out of range^)
 \end{codigo-python-sn}
 
 Sin embargo \lstinline+s[0:0]+ no da error. ¿Por qué?
@@ -252,9 +252,9 @@ tratamos de corregir sólo el carácter correspondiente de la variable
 
 \begin{codigo-python-sn}
 >>> s[6] = "k"
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: 'str' object does not support item assignment
+TypeError: 'str' object does not support item assignment^)
 \end{codigo-python-sn}
 
 El error que se despliega nos dice que la cadena no soporta
@@ -342,10 +342,10 @@ Y la probamos
 
 \begin{codigo-python-sn}
 >>> contarA("Ana")
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<stdin>", line 4, in contarA
-UnboundLocalError: local variable 'contador' referenced before assignment
+UnboundLocalError: local variable 'contador' referenced before assignment^)
 \end{codigo-python-sn}
 
 ¿Qué es lo que falló? ¡Falló el diseño! Evidentemente la variable

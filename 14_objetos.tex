@@ -281,13 +281,13 @@ Este constructor impide que se creen instancias con valores inválidos para
 
 \begin{codigo-python-sn}
 >>> Punto("A", True)
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "punto.py", line 12, in __init__
     self.x = validar_numero(x)
   File "punto.py", line 5, in validar_numero
     raise TypeError("{!r} no es un valor numérico".format(valor))
-TypeError: 'A' no es un valor numérico
+TypeError: 'A' no es un valor numérico^)
 \end{codigo-python-sn}
 
 \subsection{Agregando operaciones}
@@ -521,9 +521,9 @@ realizar una resta con el operador \lstinline!-!.
 >>> p = Punto(3,4)
 >>> q = Punto(2,5)
 >>> p - q
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: unsupported operand type(s) for -: 'Punto' and 'Punto'
+TypeError: unsupported operand type(s) for -: 'Punto' and 'Punto'^)
 \end{codigo-python-sn}
 
 Si queremos que este operador (o el equivalente para la suma) funcione,

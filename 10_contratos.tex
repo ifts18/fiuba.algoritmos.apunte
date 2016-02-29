@@ -70,9 +70,9 @@ produce un error.
 \begin{codigo-python-sn}
 >>> assert True
 >>> assert False
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-AssertionError
+AssertionError^)
 \end{codigo-python-sn}
 
 Opcionalmente, la instrucción |assert| puede recibir
@@ -81,9 +81,9 @@ mensaje de error que mostrará en caso que la condición no se cumpla.
 \begin{codigo-python-sn}
 >>> n = 0
 >>> assert n != 0, "El divisor no puede ser 0"
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-AssertionError: El divisor no puede ser 0
+AssertionError: El divisor no puede ser 0^)
 \end{codigo-python-sn}
 
 \begin{atencion}
@@ -273,9 +273,9 @@ contenido.
 >>> s = "ejemplo"
 >>> s = "otro"
 >>> s[2] = "c"
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: 'str' object does not support item assignment
+TypeError: 'str' object does not support item assignment^)
 \end{codigo-python-sn}
 
 Esto se debe a que cuando se realiza una nueva asignación, no se modifica la

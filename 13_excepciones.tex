@@ -49,9 +49,9 @@ línea \emph{levanta} o \emph{lanza} una excepción:
 
 \begin{codigo-python-sn}
 >>> 1 / 0
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ZeroDivisionError: integer division or modulo by zero
+ZeroDivisionError: integer division or modulo by zero^)
 \end{codigo-python-sn}
 
 En este caso la línea |1 / 0| lanzó una excepción de tipo |ZeroDivisionError|.
@@ -79,9 +79,9 @@ Podemos lanzar una excepción de un tipo arbitrario utilizando la instrucción
 
 \begin{codigo-python-sn}
 >>> raise Exception()
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-Exception
+Exception^)
 \end{codigo-python-sn}
 
 También podemos agregarle un mensaje a la excepción, para darle más información
@@ -89,9 +89,9 @@ acerca de cuál fue la causa del error:
 
 \begin{codigo-python-sn}
 >>> raise Exception("Algo salió mal :(")
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-Exception: Algo salió mal :(
+Exception: Algo salió mal :(^)
 \end{codigo-python-sn}
 
 Si dentro de una función se lanza una excepción y la función no la
@@ -125,9 +125,9 @@ Veamos qué sucede si se quiere realizar una división por cero:
 >>> dividendo = 5
 >>> divisor = 0
 >>> dividendo / divisor
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ZeroDivisionError: integer division or modulo by zero
+ZeroDivisionError: integer division or modulo by zero^)
 \end{codigo-python-sn}
 
 En este caso, se levantó la excepción \lstinline!ZeroDivisionError! cuando se
@@ -587,10 +587,11 @@ comportamiento sea deseable o no, depende siempre de cada caso.
 >>> division_entera("5", 4.3)
 1
 >>> division_entera(5, None)
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "<stdin>", line 1, in division_entera
-TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+TypeError: int() argument must be a string, a bytes-like object or a number,
+not 'NoneType'^)
 \end{codigo-python-sn}
 
 \subsection{Comprobaciones por características}

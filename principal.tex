@@ -33,6 +33,10 @@
 \usepackage{xcolor}
 \definecolor{light-gray}{gray}{0.96}
 
+\definecolor{keyword}{rgb}{0,0,0.5}
+\definecolor{string}{rgb}{0.5,0,0.5}
+\definecolor{error}{rgb}{0.5,0,0}
+
 % para poder usar upquote=true (mostrar bien las comillas simples)
 \usepackage{textcomp}
 
@@ -49,9 +53,10 @@
     numbersep=5pt,
     showstringspaces=false,
     basicstyle=\small\ttfamily,
-    keywordstyle=\itshape,
+    keywordstyle=\color{keyword},
     backgroundcolor=\color{light-gray},
     commentstyle=\color{gray},
+    stringstyle=\color{string},
     morecomment=[s]{>>}{>}, % hack para pintar los prompts >>>
     morecomment=[s]{..}{.}, % y ...
     xleftmargin=\dimexpr\parindent+10pt,
@@ -217,6 +222,7 @@
 
 \newcommand{\lsthighlight}{\lstset{
     moredelim=**[is][\bfseries]{(@}{@)},
+    moredelim=[is][\color{error}]{(^}{^)},
     escapeinside={(~}{~)}
 }}
 \newcommand{\lstnonumbers}{\lstset{

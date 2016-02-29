@@ -115,11 +115,11 @@ False
 22
 >>> q = Pila()
 >>> q.desapilar()
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "Pila.py", line 24, in desapilar
     raise IndexError:("La pila está vacía")
-IndexError: La pila está vacía
+IndexError: La pila está vacía^)
 \end{codigo-python-sn}
 
 \subsection{Uso de pila: calculadora científica}
@@ -199,13 +199,13 @@ DEBUG: 4
 DEBUG: apila  4.0
 DEBUG: 5
 DEBUG: apila  5.0
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "calculadora_polaca.py", line 50, in main
     print(calculadora_polaca(elementos))
   File "calculadora_polaca.py", line 44, in calculadora_polaca
     raise ValueError("Sobran operandos")
-ValueError: Sobran operandos
+ValueError: Sobran operandos^)
 \end{codigo-python-sn}
 
 \item El caso en el que faltan operandos:
@@ -217,13 +217,13 @@ DEBUG: 4
 DEBUG: apila  4.0
 DEBUG: /
 DEBUG: desapila  4.0
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "calculadora_polaca.py", line 50, in main
     print(calculadora_polaca(elementos))
   File "calculadora_polaca.py", line 29, in calculadora_polaca
     raise ValueError("Faltan operandos")
-ValueError: Faltan operandos
+ValueError: Faltan operandos^)
 \end{codigo-python-sn}
 
 \item El caso de un operador inválido:
@@ -236,13 +236,13 @@ DEBUG: apila  4.0
 DEBUG: 5
 DEBUG: apila  5.0
 DEBUG: &
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "calculadora_polaca.py", line 50, in main
     print(calculadora_polaca(elementos))
   File "calculadora_polaca.py", line 20, in calculadora_polaca
     raise ValueError("Operando inválido")
-ValueError: Operando inválido
+ValueError: Operando inválido^)
 \end{codigo-python-sn}
 
 \item |4 + 5|
@@ -430,11 +430,11 @@ False
 >>> q.esta_vacia()
 True
 >>> q.desencolar()
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "Cola.py", line 24, in desencolar
     raise ValueError("La cola está vacía")
-ValueError: La cola está vacía
+ValueError: La cola está vacía^)
 \end{codigo-python-sn}
 
 ¿Cuánto cuesta esta implementación?  Dijimos en la sección anterior que
@@ -577,11 +577,11 @@ False
 >>> q.desencolar()
 'Guaraná'
 >>> q.desencolar()
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
   File "ColaEnlazada.py", line 42, in desencolar
     raise ValueError("La cola está vacía")
-ValueError: La cola está vacía
+ValueError: La cola está vacía^)
 \end{codigo-python-sn}
 
 \ejercicioc{Hace un montón de años había una viejísma sucursal del correo en la vereda impar

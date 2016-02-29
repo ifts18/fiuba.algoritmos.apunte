@@ -68,9 +68,9 @@ tupla:
 
 \begin{codigo-python-sn}
 >>> t[3]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: tuple index out of range
+IndexError: tuple index out of range^)
 \end{codigo-python-sn}
 \end{atencion}
 
@@ -94,9 +94,9 @@ modificadas:
 
 \begin{codigo-python-sn}
 >>> t[2] = 2008
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: 'tuple' object does not support item assignment
+TypeError: 'tuple' object does not support item assignment^)
 \end{codigo-python-sn}
 
 \subsection{Longitud de tuplas}
@@ -122,9 +122,9 @@ indica como \lstinline+()+.
 >>> len(z)
 0
 >>> z[0]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: tuple index out of range
+IndexError: tuple index out of range^)
 \end{codigo-python-sn}
 
 \item Una \emph{tupla unitaria} es una tupla con una componente. Para
@@ -137,9 +137,9 @@ unitaria cuya única componente vale 1810).
 \begin{codigo-python-sn}
 >>> u = (1810)
 >>> len(u)
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: object of type 'int' has no len()
+TypeError: object of type 'int' has no len()^)
 >>> u = (1810,)
 >>> len(u)
 1
@@ -188,13 +188,13 @@ no son exactamente \lstinline+k+ se produce un error.
 >>> p
 'Ana'
 >>> m, n = d
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ValueError: too many values to unpack
+ValueError: too many values to unpack^)
 >>> m, n, o, p = d
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ValueError: need more than 3 values to unpack
+ValueError: need more than 3 values to unpack^)
 \end{codigo-python-sn}
 \end{atencion}
 
@@ -291,9 +291,9 @@ longitud de la lista $- 1$.
 >>> len(padrones)
 4
 >>> padrones[4]
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-IndexError: list index out of range
+IndexError: list index out of range^)
 >>> padrones[3]
 45750
 \end{codigo-python-sn}
@@ -403,9 +403,9 @@ Si el valor a borrar no existe, se produce un error:
 
 \begin{codigo-python-sn}
 >>> padrones.remove(78)
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ValueError: list.remove(x): x not in list
+ValueError: list.remove(x): x not in list^)
 \end{codigo-python-sn}
 \end{atencion}
 \end{itemize}
@@ -457,9 +457,9 @@ Si el valor no se encuentra en la lista, se producirá un error:
 
 \begin{codigo-python-sn}
 >>> padrones.index(78)
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ValueError: list.index(x): x not in list
+ValueError: list.index(x): x not in list^)
 \end{codigo-python-sn}
 \end{atencion}
 
