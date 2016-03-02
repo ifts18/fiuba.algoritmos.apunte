@@ -117,6 +117,7 @@
 \usepackage{nonfloat}         % Hace que las figuras no floten
 \usepackage{array}            % Permite alinear los párrafos en las celdas verticalmente
 \usepackage{url}              % Para incluir URLs
+\usepackage{eso-pic}
 
 % Margenes y largo del texto
 %
@@ -305,6 +306,12 @@
 \usepackage{multirow}
 
 \begin{document}
+
+\AddToShipoutPictureBG*{%
+  \AtPageLowerLeft{%
+    \hspace{\baselineskip}%
+    \raisebox{\baselineskip}{%
+      \makebox[0pt][l]{Fecha: \today}}}}
 
 \begin{extract*}
 \lstMakeShortInline[style=inlinecode]|
