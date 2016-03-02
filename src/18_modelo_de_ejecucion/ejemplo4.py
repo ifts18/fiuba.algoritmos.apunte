@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-# encoding: utf-8
 
 def cambia_ref(lista):
     lista=[5,1,2,3,4]

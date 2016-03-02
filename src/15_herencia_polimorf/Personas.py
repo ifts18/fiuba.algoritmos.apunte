@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# encoding: utf-8
-
-class Persona(object):
+class Persona:
     "Clase que representa a una persona."
     def __init__(self, identificacion, nombre, apellido):
         "Constructor de Persona"

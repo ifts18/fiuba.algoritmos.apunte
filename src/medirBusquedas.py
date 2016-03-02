@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-# encoding: utf-8
 
 """ Mide el tiempo de las funciones de busquedas especificadas en el
     diccionario_funciones, todas las funciones de busquedas a medir deben

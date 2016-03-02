@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-# encoding: utf-8
 
 def fun1(a):
     print a+1

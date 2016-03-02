@@ -1,10 +1,7 @@
-#! /usr/bin/env python
-# encoding: utf-8
-
 #validaciones de condiciones generales de los datos
 from validaciones import es_numero, es_cadena_no_vacia
 
-class Hotel(object):
+class Hotel:
     """ Hotel: sus atributos son: nombre, ubicacion, puntaje y precio. """
 
     def __init__(self, nombre = '*', ubicacion = '*',

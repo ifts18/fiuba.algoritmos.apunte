@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# encoding: utf-8
 
 def quick_sort(lista):
 	""" Una posible implementación de quick sort. """

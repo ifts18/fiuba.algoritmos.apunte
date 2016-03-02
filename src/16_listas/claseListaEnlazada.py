@@ -1,8 +1,4 @@
-#! /usr/bin/env python
-# encoding: utf-8
-
-
-class _Nodo(object):
+class _Nodo:
     """ Modela a un nodo de la lista.
         Contiene una referencia al dato y al siguiente nodo. """
     def __init__(self, dato=None, prox=None):
@@ -12,8 +8,7 @@ class _Nodo(object):
     def __str__(self):
         return str(self.dato)
 
-
-class ListaEnlazada(object):
+class ListaEnlazada:
     " Modela una lista enlazada, compuesta de Nodos. "
 
     def __init__(self):
@@ -168,8 +163,7 @@ class ListaEnlazada(object):
         " Devuelve el iterador de la lista. "
         return _IteradorListaEnlazada(self.prim)
 
-
-class _IteradorListaEnlazada(object):
+class _IteradorListaEnlazada:
     " Iterador para la clase ListaEnlazada "
     def __init__(self, prim):
         """ Constructor del iterador.

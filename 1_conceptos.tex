@@ -1,18 +1,5 @@
-% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
-
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
-% Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
-%    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
-%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
-%
-% A su criterio, puede utilizar una u otra licencia, o las dos.
-% Para ver una copia de las licencias, puede visitar los sitios
-% mencionados, o enviar una carta a Creative Commons,
-% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
-
 \chapter[Conceptos básicos]{Algunos conceptos básicos}
+\label{chapter:conceptos}
 
 En esta unidad hablaremos de lo que es un programa de
 computadora e introduciremos unos cuantos conceptos referidos a la
@@ -36,8 +23,8 @@ cambia de computadora cuando se cansa de chatear y quiere jugar al solitario.
 Muchos definen una computadora moderna como ``una máquina que
 almacena y manipula información bajo el control de un programa que
 puede cambiar''. Aparecen acá dos conceptos que son claves: por un
-lado se habla de una {\it máquina} que almacena información, y por
-el otro lado, esta máquina está controlada por {\it un programa
+lado se habla de una \emph{máquina} que almacena información, y por
+el otro lado, esta máquina está controlada por \emph{un programa
 que puede cambiar}.
 
 Una calculadora sencilla, de esas que sólo tienen 10 teclas para
@@ -47,8 +34,8 @@ almacena información y que está controlada por un programa. Pero
 lo que diferencia a esta calculadora de una computadora es que en
 la calculadora el programa no puede cambiar.
 
-Un {\it programa de computadora} es un conjunto de {\it
-instrucciones} paso a paso que le indican a una computadora cómo
+Un \emph{programa de computadora} es un conjunto de \emph{instrucciones}
+paso a paso que le indican a una computadora cómo
 realizar una tarea dada, y en cada momento uno puede elegir
 ejecutar un programa de acuerdo a la tarea que quiere realizar.
 
@@ -60,7 +47,7 @@ muy agradable poder darle las órdenes a la computadora en
 castellano, pero el problema del castellano, y de las lenguas
 habladas en general, es su ambigüedad:
 
-Si alguien nos dice {\it ``Comprá el collar sin monedas''}, no sabremos
+Si alguien nos dice \emph{``Comprá el collar sin monedas''}, no sabremos
 si nos pide que compremos el collar que no tiene monedas, o que compremos
 un collar y que no usemos monedas para la compra. Habrá que preguntarle
 a quien nos da la orden cuál es la interpretación correcta. Pero tales
@@ -73,7 +60,7 @@ elegante, pero éste no será un curso de Python sino un curso de
 programación.
 
 \begin{sabias_que}
-Existen una gran cantidad de programas desarrollados en Python, desde
+Existe una gran cantidad de programas desarrollados en Python, desde
 herramientas para servidores, como {\bf mailman}, hasta programas amigables
 para usuarios finales, como {\bf emesene}, pasando por aplicaciones
 empresariales, {\bf openerp}, {\bf tryton}; herramientas de desarrollo,
@@ -82,21 +69,19 @@ empresariales, {\bf openerp}, {\bf tryton}; herramientas de desarrollo,
 bittorrent}, {\bf bittornado}, {\bf deluge}; montones de juegos de todo
 tipo, y muchísimas aplicaciones más.
 
-Todas estas aplicaciones son software libre, por lo que se puede obtener y
-estudiar el código con el que están hechas
+Estos programas mencionados son software libre, por lo que se puede obtener y
+estudiar el código con el que están hechos.
 \end{sabias_que}
 
 \section{El mito de la máquina todopoderosa}
 
 Muchas veces la gente se imagina que con la computadora se puede
-hacer cualquier cosa, que no hay tareas imposibles de realizar.
-Más aún, se imaginan que si bien hubo cosas que eran imposibles de
-realizar hace 50 años, ya no lo son más, o no lo serán dentro de
-algunos años, cuando las computadoras crezcan en poder (memoria,
-velocidad), y la computadora se vuelva una máquina todopoderosa.
+hacer cualquier cosa; o que si bien hubo tareas que no eran posibles de
+realizar hace 50 años, sí lo serán cuando las computadoras crezcan en poder 
+(memoria, velocidad), y se vuelvan máquinas todopoderosas.
 
 Sin embargo eso no es así: existen algunos problemas, llamados
-{\it no computables} que nunca podrán ser resueltos por una
+\emph{no computables} que nunca podrán ser resueltos por una
 computadora digital, por más poderosa que ésta sea. La
 computabilidad es la rama de la computación que se ocupa de
 estudiar qué tareas son computables y qué tareas no lo son.
@@ -118,7 +103,7 @@ capacidad de resolución.
 Los problemas no computables no son los únicos escollos que se le
 presentan a la computación. Hay otros problemas que si bien son
 computables demandan para su resolución un esfuerzo enorme en
-tiempo y en memoria. Estos problemas se llaman {\it intratables}.
+tiempo y en memoria. Estos problemas se llaman \emph{intratables}.
 El análisis de algoritmos se ocupa de separar los problemas
 tratables de los intratables, encontrar la solución más barata
 para resolver un problema dado, y en el caso de los intratables,
@@ -141,12 +126,12 @@ soluciones:
 Dado un número $N$ se quiere calcular $N^{33}$.
 \end{problemac}
 
-Una solución posible, por supuesto, es hacer el producto $N \times
-N \times \ldots \times N$, que involucra 32 multiplicaciones.
+Una solución posible, por supuesto, es hacer el producto $N \cdot
+N \cdots N$, que involucra 32 multiplicaciones.
 
 Otra solución, mucho más eficiente es:
 \begin{itemize}
-\item Calcular $N \times N$.
+\item Calcular $N \cdot N$.
 
 \item Al resultado anterior mutiplicarlo por sí mismo con lo cual
 ya disponemos de $N^{4}$.
@@ -165,7 +150,7 @@ conseguimos el resultado deseado con sólo 6 multiplicaciones.
 
 \end{itemize}
 
-Cada una de estas dos soluciones representa un {\it algoritmo}, es
+Cada una de estas dos soluciones representa un \emph{algoritmo}, es
 decir un método de cálculo, diferente. Para un mismo problema
 puede haber algoritmos diferentes que lo resuelven, cada uno con
 un costo distinto en términos de recursos computacionales
@@ -179,9 +164,9 @@ mientras que los \textit{abacistas} eran los que calculaban usando ábacos.
 Con el tiempo el \textit{algorismo} se deformó en \textit{algoritmo},
 influenciado por el término \textit{aritmética}.
 
-A su vez el uso de la palabra \textit{algorismo} proviene del nombre de un
+A su vez, el uso de la palabra \textit{algorismo} proviene del nombre de un
 matemático persa famoso, en su época y para los estudiosos de esa época,
-``Abu Abdallah Muhammad ibn Mûsâ al-Jwârizmî'', que literalmente significa:
+Abu Abdallah Muhammad ibn Mûsâ al-Jwârizmî, que literalmente significa:
 ``Padre de Ja'far Mohammed, hijo de Moises, nativo de Jiva''. Al-Juarismi,
 como se lo llama usualmente, escribió en el año 825 el libro ``Al-Kitâb
 al-mukhtasar fî hîsâb al-gabr wa'l-muqâbala'' (Compendio del cálculo por el
@@ -208,7 +193,7 @@ gran ciudad, la guía de la Argentina? Y en cada caso ¿de qué tipo
 de consulta estamos hablando: hay que imprimir un listado una vez
 por mes con la guía completa, se trata de una consulta en línea,
 etc.? Para cada contexto hay una solución diferente, con los datos
-guardados en una {\it estructura de datos} apropiada, y con
+guardados en una \emph{estructura de datos} apropiada, y con
 diferentes algoritmos para la actualización y la consulta.
 
 %
@@ -218,7 +203,7 @@ diferentes algoritmos para la actualización y la consulta.
 \section{Cómo darle instrucciones a la máquina usando Python}
 
 \begin{sabias_que}
-Python fue creado a finales de los años 80, por un programador holandés
+Python fue creado a finales de los años 80 por un programador holandés
 llamado Guido van Rossum, quien sigue siendo aún hoy el líder del
 desarrollo del lenguaje.
 
@@ -228,458 +213,526 @@ basura}.  La versión 2.2, lanzada en diciembre de 2001, fue también un hito
 importante ya que mejoró la orientación a objetos.  La última versión de
 esta línea es la 2.7 que fue lanzada en noviembre de 2010 y aún está vigente.
 
-En diciembre de 2008, se lanzó la rama 3.0, cuya versión actual es la
-3.4, de marzo de 2014. Sin embargo, debido a que estas versiones
-introducen importantes cambios y no son totalmente compatibles
-con las versiones anteriores, todavía no se la utiliza extensamente.
+En diciembre de 2008 se lanzó la rama 3.0, cuya versión actual es la 3.5, de
+septiembre de 2015, y es la que utilizamos en este libro. Python 3 fue diseñado
+para corregir algunos defectos de diseño en el lenguaje, y muchos de los
+cambios introducidos son incompatibles con las versiones anteriores. Por esta
+razón, las ramas 2.x y 3.x coexisten con distintos grados de adopción.
 \end{sabias_que}
 
-El lenguaje Python nos provee de un {\it intérprete}, es decir un programa que
-interpreta las órdenes que le damos a medida que las escribimos. Para
-orientarnos, el intérprete presenta una {\it línea de comandos} (los comandos
-son las órdenes) que identifica al comienzo con los símbolos
-\lstinline!>>>!, y que
-llamaremos {\it prompt}. En esta línea, a continuación del {\it prompt}
-podemos escribir diferentes órdenes.
+El lenguaje Python nos provee de un \emph{intérprete}, es decir un programa que
+interpreta las órdenes que le damos a medida que las escribimos. La forma más
+típica de invocar al intérprete es ejecutar el comando |python3| en
+la terminal.
 
-Algunas órdenes sencillas, por ejemplo, permiten utilizar la línea de comandos
-como una calculadora simple con números enteros. Para esto escribimos la
-expresión que queremos resolver en el {\it prompt} y presionamos la tecla
-<ENTER>. El intérprete de Python ``responde'' el resultado de la operación en
-la línea siguiente, sin {\it prompt}, y luego nos presenta nuevamente el
-cursor para escribir la siguiente orden.
+\begin{atencion}
+De forma tal de aprovechar al máximo este libro, recomendamos instalar Python 3
+en una computadora, y acompañar la lectura probando todos los ejemplos de
+código y haciendo los ejercicios.
 
-\begin{lstlisting}[numbers=none]
+En \url{https://www.python.org/downloads/} se encuentran los enlaces para
+descargar Python, y en
+\url{http://docs.python.org.ar/tutorial/3/interpreter.html} hay más información
+acerca de cómo ejecutar el intérprete en cada sistema operativo.
+\end{atencion}
+
+\begin{codigo-nohl-sn}
+(~\$~) python3
+Python 3.5.0 (default, Sep 20 2015, 11:28:25)
+[GCC 5.2.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+\end{codigo-nohl-sn}
+
+Para orientarnos, el intérprete muestra los símbolos |>>>| (llamaremos a esto
+el \emph{prompt}), indicando que podemos escribir a continuación una
+\emph{sentencia} u orden que será evaluada.
+
+Algunas sentencias sencillas, por ejemplo, permiten utilizar el intérprete como
+una calculadora simple con números enteros. Para esto escribimos la 
+\emph{presión} que queremos resolver luego del \emph{prompt} y presionamos la tecla
+\keys{Enter}. El intérprete de Python evalúa la expresión y muestra el
+resultado en la línea siguiente. Luego nos presenta nuevamente el \emph{prompt}.
+
+\begin{codigo-python-sn}
 >>> 2+3
 5
 >>>
-\end{lstlisting}
+\end{codigo-python-sn}
 
-Python permite utilizar las operaciones \lstinline!+, -, *, / !(división
-entera), y \lstinline!**! (potenciación).  La sintaxis es la convencional
-(valores intercalados con operaciones), y se pueden usar paréntesis para
-modificar el orden de asociación natural de las operaciones (potenciación,
-producto/división, suma/resta).
+Python permite utilizar las operaciones |+|, |-|, |*|, |!| y |**|
+(suma, resta, multiplicación, división y potenciación). La sintaxis es la
+convencional (valores intercalados con operaciones), y se puede usar
+paréntesis para modificar el orden de asociación natural de las operaciones
+(potenciación, producto/división, suma/resta).
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> 5*7
 35
 >>> 2+3*7
 23
 >>> (2+3)*7
 35
->>> 10/5
-2
+>>> 10/4
+2.5
 >>> 5**2
 25
+\end{codigo-python-sn}
+
+Además de efectuar operaciones matemáticas, Python nos permite trabajar con
+porciones de texto, que llamaremos \emph{cadenas}, y que se introducen entre
+comillas simples (|'|) o dobles (|"|):
+
+\begin{codigo-python-sn}
+>>> '¡Hola Mundo!'
+'¡Hola Mundo!'
+>>> 'abcd' + 'efgh'
+'abcdefgh'
+>>> 'abcd' * 3
+'abcdabcdabcd'
+\end{codigo-python-sn}
+
+\section{Variables}
+
+Python nos permite asignarle un nombre a un valor, de forma tal de
+``recordarlo'' para usarlo posteriormente, mediante la sentencia
+|<nombre> = <expresión>|.
+
+\begin{codigo-python-sn}
+>>> x = 8
+>>> x
+8
+>>> y = x * x
+>>> 2 * y
+128
+>>> lenguaje = 'Python'
+>>> 'Estoy programando en ' + lenguaje
+'Estoy programando en Python'
+\end{codigo-python-sn}
+
+En este ejemplo creamos tres \emph{variables}, llamadas |x|, |y| y |lenguaje|, y
+las asociamos a los valores 8, 64 y |'Python'|, respectivamente. Luego podemos
+usar esas variables como parte de cualquier expresión, y en el momento de
+evaluarla, Python reemplazará las variables por su valor asociado.
+
+\section{Funciones}
+
+Para efectuar algunas operaciones particulares necesitamos introducir el
+concepto de \emph{función}:
+
+\begin{codigo-python-sn}
+>>> abs(10)
+10
+>>> abs(-10)
+10
+>>> max(5, 9, -3)
+9
+>>> min(5, 9, -3)
+-3
+>>> len("abcd")
+4
+\end{codigo-python-sn}
+
+Una función es un fragmento de programa que permite efectuar una operación
+determinada.  |abs|, |max|, |min| y |len| son ejemplos de funciones de Python:
+la función |abs| permite calcular el valor absoluto de un número, |max| y |min|
+permiten obtener el máximo y el mínimo entre un conjunto de números, y |len|
+permite obtener la longitud de una cadena de texto.
+
+Una función puede recibir 0 o más \emph{parámetros} o \emph{argumentos}
+(expresados entre entre paréntesis, y separados por comas), efectúa una
+operación y devuelve un \emph{resultado}.  Por ejemplo, la función |abs| recibe
+un parámetro (un número) y su resultado es el valor absoluto del número.
+
+\begin{figure}[ht]
+\caption{Una función recibe parámetros y devuelve un resultado.}
+\begin{center}
+\input{graficos/funcion}
+\end{center}
+\end{figure}
+
+Python viene equipado con muchas funciones, pero ya hemos dicho que, como
+programadores, debíamos ser capaces de escribir nuevas instrucciones para la
+computadora. Los programas de correo electrónico, navegación por Internet,
+chat, juegos, escritura de textos o predicción de las condiciones
+meteorológicas de los próximos días no son más que grandes programas
+implementados introduciendo nuevas funciones a la máquina, escritas por uno o
+muchos programadores.
+
+Si queremos escribir una función (que llamaremos |hola_marta|) que devuelve la
+cadena de texto ``Hola Marta! Estoy programando en Python.'', lo que debemos
+hacer es ingresar el siguiente conjunto de líneas en Python:
+
+\begin{codigo-python-sn}
+>>> def hola_marta():
+...     return "Hola Marta! Estoy programando en Python."
+...
 >>>
-\end{lstlisting}
+\end{codigo-python-sn}
 
-Otra orden sencilla de Python permite indicarle al intérprete que escriba o
-``imprima'' por pantalla una palabra o frase, que llamaremos {\it cadena de
-texto}.
+|def hola_marta():| le indica a Python que estamos escribiendo una función cuyo
+nombre es |hola_marta|, y los paréntesis indican que la función no recibe ningún
+parámetro.  La instrucción |return <expresion>| indica cuál será el resultado
+de la función.
 
-\begin{lstlisting}[numbers=none]
->>> print 'Hola'
-Hola
->>> print 'Como estan?'
-Como estan?
->>> print "Bienvenidos y bienvenidas a este curso!"
-Bienvenidos y bienvenidas  a este curso!
+La sangría\footnote{La sangría puede ingresarse utilizando dos o más espacios,
+o presionando la tecla \keys{Tab}. Es importante prestar atención en no mezclar
+espacios con tabs, para evitar ``confundir'' al intérprete.} con la que se
+escribe la línea |return| es importante: le indica a Python que estamos
+escribiendo el \emph{cuerpo} de la función (es decir, las instrucciones que la
+componen), que podría estar formado por más de una sentencia.  La línea en
+blanco que dejamos luego de la instrucción |return| le indica a Python que
+terminamos de escribir la función (y por eso aparece nuevamente el 
+\emph{ompt}).
+
+Si ahora queremos que la máquina ejecute la función |hola_marta|, debemos
+escribir |hola_marta()| a continuación del \emph{prompt} de Python:
+
+\begin{codigo-python-sn}
+>>> hola_marta()
+'Hola Marta! Estoy programando en Python.'
 >>>
-\end{lstlisting}
+\end{codigo-python-sn}
 
-\lstinline+print+ es una instrucción de Python: aquélla que le indica a la
-máquina que debe imprimir un texto en pantalla, que deberá ser ingresado entre
-comillas simples \lstinline!'! o dobles \lstinline!"! indistintamente. Ya
-veremos con qué otras instrucciones viene equipado Python.
-
-Pero ya dijimos que como programadores debíamos ser capaces de
-escribir nuevas instrucciones para la computadora. Los programas
-de correo electrónico, navegación por Internet, chat, juegos,
-escritura de textos o predicción de las condiciones meteorológicas de los
-próximos días no son más que grandes instrucciones que se le dan a la
-máquina, escritas por uno o muchos programadores.
-
-Llamaremos {\it función} a una instrucción escrita por un
-programador.
-
-Si queremos escribir una función (que llamaremos \lstinline!holaMar!)
-que escribe en una línea el texto ``Hola Marta!'' y en la línea
-siguiente el texto ``Estoy programando en Python.'', lo que
-debemos hacer es ingresar el siguiente conjunto de líneas en
-Python:
-
-\begin{codigo}{holaMar}{Saluda a Marta}
-\begin{lstlisting}[numbers=none]
->>> def holaMar():
-        print "Hola Marta!"
-        print "Estoy programando en Python."
-
->>>
-\end{lstlisting}
-\end{codigo}
-
-\lstinline!def holaMar():! le indica a Python que estamos escribiendo
-una función cuyo nombre es \lstinline!holaMar!. ¿Por qué se ponen
-esos dos paréntesis? Lo veremos dentro de unos párrafos. La
-sangría con la que se escriben las dos instrucciones \lstinline+print+
-le indican a Python que estamos escribiendo el {\it cuerpo} (es
-decir las instrucciones que la componen) de la función en
-cuestión. Las dos teclas <ENTER> \esp que tecleamos después de
-ingresar el texto \lstinline+"Estoy programando en Python."+ le indican
-a Python que se acabó el cuerpo de la función (y por eso aparece
-nuevamente el cursor).
-
-Si ahora queremos que la máquina ejecute la función
-\lstinline!holaMar!, debemos escribir \lstinline!holaMar()! a continuación
-del cursor de Python:
-
-\begin{lstlisting}[numbers=none]
->>> holaMar()
-Hola Marta!
-Estoy programando en Python.
->>>
-\end{lstlisting}
-
-Se dice que estamos {\it invocando} a la función \lstinline!holaMar!.
-Al invocar una función, se ejecutan las instrucciones que habíamos
-escrito en su cuerpo, una a continuación de la otra.
+Se dice que estamos \emph{invocando} a la función |hola_marta|.  Al invocar una
+función, se ejecutan las instrucciones que habíamos escrito en su cuerpo.
 
 Nuestro amigo Pablo seguramente se pondrá celoso porque escribimos
-una función que la saluda a Marta, y nos pedirá que escribamos una
+una función que saluda a Marta, y nos pedirá que escribamos una
 función que lo salude a él. Y así procederemos entonces:
 
-\begin{codigo}{holaPab}{Saluda a Pablo}
-\begin{lstlisting}[numbers=none]
->>> def holaPab():
-        print "Hola Pablo!"
-        print "Estoy programando en Python."
-\end{lstlisting}
-\end{codigo}
+\begin{codigo-python-sn}
+>>> def hola_pablo():
+...     return "Hola Pablo! Estoy programando en Python."
+\end{codigo-python-sn}
 
 Pero, si para cada amigo que quiere que lo saludemos debemos que
 escribir una función distinta, parecería que la computadora no es
 una gran solución. A continuación veremos, sin embargo, que
 podemos llegar a escribir una única función que se personalice en
 cada invocación, para saludar a quien queramos. Para eso están
-precisamente los paréntesis.
+precisamente los parámetros.
 
-Las funciones tienen partes variables, llamadas {\it parámetros},
-que se ponen dentro de los paréntesis. Escribimos por ejemplo una
-función \lstinline!hola! general que nos sirva para saludar a
+Escribamos entonces una función |hola| que nos sirva para saludar a
 cualquiera, de la siguiente manera:
 
-\begin{codigo}{hola}{Saluda a quien sea necesario}
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> def hola(alguien):
-        print "Hola", alguien, "!"
-        print "Estoy programando en Python."
-\end{lstlisting}
-\end{codigo}
+...     return "Hola " + alguien + "! Estoy programando en Python."
+\end{codigo-python-sn}
 
-En este caso, \lstinline!alguien! es un parámetro cuyo valor será reemplazado
-por un texto (nombre en este caso) en cada invocación.  Por ejemplo, podemos
-invocarla dos veces, para saludar a Ana y a Juan:
+En este caso, además de indicar el nombre de la función (|hola|), debemos darle
+un nombre al parámetro (|alguien|), cuyo valor será reemplazado por una cadena
+de texto cuando se invoque a la función. Por ejemplo, podemos invocarla dos
+veces, para saludar a Ana y a Juan:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 >>> hola("Ana")
-Hola Ana !
-Estoy programando en Python.
+'Hola Ana! Estoy programando en Python.'
 >>> hola("Juan")
-Hola Juan !
-Estoy programando en Python.
->>>
-\end{lstlisting}
+'Hola Juan! Estoy programando en Python.'
+\end{codigo-python-sn}
 
 \begin{problema}
-\label{cuad1}
-Escribir un programa que calcule el cuadrado de un número dado.
-\end{problema}
-
-\begin{solucion}
-Para resolver este problema, se combinan los recursos utilizados hasta ahora.
-
-\begin{codigo}{cuad1}{Eleva un número al cuadrado y lo imprime}
-\begin{lstlisting}[numbers=none]
-def cuad1(num):
-        print num*num
-\end{lstlisting}
-\end{codigo}
-
-Para invocarlo, deberemos hacer:
-\begin{lstlisting}[numbers=none]
->>> cuad1(5)
-25
->>>
-\end{lstlisting}
-\end{solucion}
-
-\begin{problema}
-Permitir que el usuario ingrese el valor a elevar al cuadrado.
-\end{problema}
-
-\begin{solucion}
-Para esto utilizaremos una nueva función \lstinline+input+ que permite leer valores
-ingresados por el usuario.
-
-\begin{codigo}{cuad2}{Pide un número al usuario e imprime su cuadrado}
-\begin{lstlisting}[numbers=none]
-def cuad2():
-        n = input("Ingrese un número: ")
-        cuad1(n)
-\end{lstlisting}
-\end{codigo}
-
-La ejecución del programa será la siguiente:
-
-\begin{lstlisting}[numbers=none]
->>> cuad2()
-Ingrese un numero: 5
-25
->>>
-\end{lstlisting}
-\end{solucion}
-
-\section{Devolver un resultado}
-
-Las funciones que vimos hasta ahora muestran mensajes,
-pero no hemos visto funciones que se comporten como las
-funciones que conocemos, las de la matemática, que
-se usan para calcular resultados.
-
-Queremos también poder hacer cosas del estilo $y=f(x)$
-en nuestros programas.
-Para ello introduciremos la instrucción \lstinline!return <expresion>!
-que indica cuál es el valor que tiene que devolver nuestra función.
-
-En este ejemplo escribimos una función que eleva al cuadrado un número.
-
-\begin{codigo}{cuadrado}{Eleva un número al cuadrado y lo devuelve}
 \label{cuadrado}
-\begin{lstlisting}[numbers=none]
->>> def cuadrado (x):
-...         cua = x * x
-...         return cua
-...
->>> y = cuadrado (5)
->>> y
+Escribir una función que calcule el cuadrado de un número dado.
+\end{problema}
+
+\begin{solucion}
+$ $\par
+\begin{codigo-python-sn}
+def cuadrado(n):
+    return n * n
+\end{codigo-python-sn}
+
+Para invocarla, deberemos hacer:
+\begin{codigo-python-sn}
+>>> cuadrado(5)
 25
->>>
-\end{lstlisting}
-\end{codigo}
+\end{codigo-python-sn}
+\end{solucion}
+
+\begin{problema}
+Piensa un número, duplícalo, súmale 6, divídelo por 2 y resta el número
+que elegiste al comienzo. El número que queda es siempre 3.
+\end{problema}
+
+\begin{solucion}
+Si bien es muy sencillo probar matemáticamente que el resultado de la secuencia
+de operaciones será siempre 3 sin importar cuál sea el número elegido, podemos
+aprovechar nuestros conocimientos de programación y probarlo empíricamente.
+
+Para esto escribamos una función que reciba el número elegido y devuelva el
+número que queda luego de efectuar las operaciones:
+
+\begin{codigo-python-sn}
+def f(elegido):
+    return ((elegido * 2) + 6) / 2 - elegido
+\end{codigo-python-sn}
+
+Tal vez el cuerpo de la función quedó poco entendible. Podemos mejorarlo
+dividiendo la secuencia de operaciones en varias sentencias más pequeñas:
+
+\begin{codigo-python-sn}
+def f(elegido):
+	n = elegido * 2
+	n = n + 6
+	n = n / 2
+	n = n - elegido
+	return n
+\end{codigo-python-sn}
+
+Aquí utilizamos una variable llamada |n| y luego en cada sentencia vamos
+reemplazando el valor de |n| por un valor nuevo.
+
+Las dos soluciones que presentamos son equivalentes. Veamos si al invocar a |f|
+con distintos números siempre devuelve 3 o no:
+
+\begin{codigo-python-sn}
+>>> f(9)
+3.0
+>>> f(4)
+3.0
+>>> f(118)
+3.0
+>>> f(165414606)
+3.0
+>>> f(0)
+3.0
+>>> f(-15)
+3.0
+\end{codigo-python-sn}
+\end{solucion}
 
 \section{Una instrucción un poco más compleja: el ciclo definido}
 
-\begin{problema}Ahora que sabemos construir una función que calcula el cuadrado de un número,
-nos piden que imprimamos los cuadrados de los números del 2 al 8.
-\end{problema}
+\begin{problema}
+Supongamos que queremos calcular la suma de los primeros 5 números cuadrados.
 
 \begin{solucion}
-Por supuesto que podemos hacer:
-\begin{lstlisting}[numbers=none]
->>> def cuad3():
-        print cuadrado(2)
-        print cuadrado(3)
-        print cuadrado(4)
-        print cuadrado(5)
-        print cuadrado(6)
-        print cuadrado(7)
-        print cuadrado(8)
+Dado que ya tenemos la función |cuadrado|, podemos aprovecharla y hacer algo
+como esto:
 
->>> cuad3()
-4
-9
-16
-25
-36
-49
-64
->>>
-\end{lstlisting}
+\begin{codigo-python-sn}
+>>> def suma_5_cuadrados():
+	suma = 0
+	suma = suma + cuadrado(1)
+	suma = suma + cuadrado(2)
+	suma = suma + cuadrado(3)
+	suma = suma + cuadrado(4)
+	suma = suma + cuadrado(5)
+	return suma
+
+>>> suma_5_cuadrados()
+55
+\end{codigo-python-sn}
 \end{solucion}
 
-¿Se puede hacer algo mejor que esto? Con lo que sabemos de Python hasta el momento, no.
+Esto resuelve el problema, pero resulta poco satisfactorio. ¿Y si quisiéramos
+encontrar la suma de los primeros 100 números cuadrados? En ese caso tendríamos
+que repetir la línea |suma = suma + cuadrado(...)| 100 veces. ¿Se puede hacer
+algo mejor que esto?
 
 Para resolver este tipo de problema (repetir un cálculo para los valores
-contenidos en un intervalo dado) de manera eficiente, introducimos el concepto
-de {\it ciclo definido}, que tiene la siguiente forma:
+contenidos en un intervalo dado) de una manera más eficiente, introducimos el
+concepto de \emph{ciclo definido}, que tiene la siguiente forma:
 
-\begin{lstlisting}[numbers=none]
+\begin{codigo-python-sn}
 for x in range(n1, n2):
-	<hacer algo con x>
-\end{lstlisting}
+    <hacer algo con x>
+\end{codigo-python-sn}
 
 Esta instrucción se lee como:
 
 \begin{itemize}
-\item Generar la secuencia de valores enteros del intervalo $[n_1, n_2)$, y
-\item Para cada uno de los valores enteros que toma \verb+x+ en el intervalo generado,
-se debe hacer lo indicado por {\it $<$hacer algo con x$>$}.
+\item Generar la secuencia de valores enteros del intervalo $[n1, n2)$, y
+\item Para cada uno de los valores enteros que toma |x| en el intervalo generado,
+se debe hacer lo indicado por |<hacer algo con x>|.
 \end{itemize}
 
-Vemos cómo, usando esta construcción, el problema anterior se puede resolver
-de manera más compacta:
-
-\begin{solucion} En nuestro caso lo que hay que hacer es invocar a la
-instrucción \lstinline!print cuadrado(x)!  que usa la función definida en
-\ref{cuadrado} para calcular el cuadrado de \lstinline!x!, y luego imprime el
-resultado, cuando \lstinline!x! toma los valores $2, 3, \ldots, 8$.
-
-La instrucción que describe qué tipo de repeticiones se deben
-realizar es el {\it encabezado del ciclo}, y las instrucciones que
-describen la acción que se repite se llaman {\it cuerpo del
-ciclo}.
-
-No nos olvidemos que en nuestro ejemplo el ciclo debe recorrer todos los valores
-enteros entre 2 y 8, por lo tanto:
-
-\begin{itemize}
-\item \lstinline+for x in range(2, 9):+ será el encabezado del ciclo y
-\item \lstinline+print cuadrado(x)+ será el cuerpo del ciclo.
-\end{itemize}
-
-Vemos entonces cómo resulta el ciclo completo (con su ejecución):
-
-\begin{codigo}{cuadrados}{Imprime los cuadrados del 2 al 8}
-\begin{lstlisting}[numbers=none]
->>> for x in range(2, 9):
-        print cuadrado(x)
-
-4
-9
-16
-25
-36
-49
-64
->>>
-\end{lstlisting}
-\end{codigo}
-\end{solucion}
-
-\begin{atencion}
+La instrucción que describe el rango en el que va a realizar el ciclo
+(|for x in range(...)|) es el \emph{encabezado del ciclo}, y las instrucciones
+que describen la acción que se repite componen el \emph{cuerpo del ciclo}.
 Todas las instrucciones que describen el cuerpo del ciclo deben tener una
 sangría mayor que el encabezado del ciclo.
 
-Esta sangría puede ingresarse mediante espacios o tabuladores, pero es
-importante que sea la misma para todas las instrucciones del ciclo.
-\end{atencion}
+\begin{solucion}
+Usemos un ciclo definido para resolver el problema anterior de manera más
+compacta:
 
-\subsection{Ayuda desde el intérprete}
+\begin{codigo-python-sn}
+>>> def suma_5_cuadrados():
+...     suma = 0
+...     for x in range(1, 6):
+...         suma = suma + cuadrado(x)
+...     return suma
+\end{codigo-python-sn}
+\end{solucion}
+\end{problema}
 
-El intérprete de python nos provee una ayuda en línea, es decir, nos puede dar
-la documentación de una función, intrucción, etc, para
-obtenerla llamamos a \lstinline!help()!. Por ejemplo podemos pedir
-\lstinline!help(input)! y nos dara la documentación de esa función.
+Notar que en nuestro ejemplo necesitamos recorrer todos los valores enteros
+entre 1 y 5, y el rango generado por |range(n1, n2)| es \emph{abierto} en |n2|.
+Es decir, |x| tomará los valores |n1|, |n1 + 1|, |n1 + 2|, \ldots, |n2 - 1|.
+Por eso es que usamos |range(1, 6)|.
 
-Para obtener la documentación de las instrucciones las debemos poner entre
-comillas, es decir \lstinline!help('return')!, de la misma forma se puede
-pedir ayuda sobre variables o valores.
+Incluso podemos hacer una función más genérica que permita calcular la suma de
+los primeros |n| números cuadrados:
 
-Otra forma de obtener ayuda es mediante \lstinline!dir(variable)!, que nos va a
-listar todas las funciones que tiene asociadas esa variable. Por ejemplo,
-mostramos las funciones asociadas a una cadena.
+\begin{codigo-python-sn}
+>>> def suma_cuadrados((@n@)):
+...     suma = 0
+...     for x in range(1, (@n + 1@)):
+...         suma = suma + cuadrado(x)
+...     return suma
 
-\begin{lstlisting}[numbers=none]
->>> dir("hola")
-['__add__', '__class__', '__contains__',
-'__delattr__', '__doc__', '__eq__',
-'__ge__', '__getattribute__', '__getitem__',
-'__getnewargs__', '__getslice__', '__gt__',
-'__hash__', '__init__', '__le__', '__len__',
-'__lt__', '__mod__', '__mul__', '__ne__',
-'__new__', '__reduce__', '__reduce_ex__',
-'__repr__', '__rmod__', '__rmul__', '__setattr__',
-'__str__', 'capitalize', 'center', 'count',
-'decode', 'encode', 'endswith', 'expandtabs',
-'find', 'index', 'isalnum', 'isalpha',
-'isdigit', 'islower', 'isspace', 'istitle',
-'isupper', 'join', 'ljust', 'lower', 'lstrip',
-'partition', 'replace', 'rfind', 'rindex',
-'rjust', 'rpartition', 'rsplit', 'rstrip',
-'split', 'splitlines', 'startswith', 'strip',
-'swapcase', 'title', 'translate', 'upper', 'zfill']
-\end{lstlisting}
-
-Como se puede ver son muchas las funciones asociadas a las cadenas, pero no
-necesitamos conocerlas todas, a medida que avancemos veremos algunas.
+>>> suma_cuadrados(5)
+55
+>>> suma_cuadrados(100)
+338350
+\end{codigo-python-sn}
 
 \section{Construir programas y módulos}
 
-El intérprete es muy útil para probar cosas, acceder a la ayuda,
-inspeccionar el lenguaje, etc, pero si escribimos nuestras funciones frente
-al cursor de Python como hasta ahora, perdemos todas las definiciones
-cuando salimos de Python. Para conservar los programas que vamos
-escribiendo, debemos usar algún editor de texto, y guardar el archivo con
-la extensión \verb+.py+.
-
-Por convención, la primer línea del archivo deberá contener:
-\begin{verbatim}
-#!/usr/bin/env python
-\end{verbatim}
-
-Estas dos convenciones indican que se trata de un {\it módulo} o {\it programa}
-Python, es decir un archivo separado que deberá ser ejecutado por Python.
+El intérprete interactivo es muy útil para probar cosas, acceder a la ayuda,
+inspeccionar el lenguaje, etc, pero tiene una gran limitación: ¡cuando cerramos
+el intérprete perdemos todas las definiciones! Para conservar los programas que
+vamos escribiendo, debemos escribir el código utilizando algún editor de texto,
+y guardar el archivo con la extensión |.py|.
 
 \begin{sabias_que}
-Python es un lenguaje multiplataforma, esto quiere decir, que está pensado
-para que pueda utilizarse en una gran variedad de sistemas operativos
-(Windows, Mac, Linux, etc).
-
-Las dos convenciones mencionadas le permiten a distintos sistemas ``darse
-cuenta'' que este archivo en particular lo tiene que procesar con Python.
-En particular, Windows, tradicionalmente, sólo se fija en la extensión del
-archivo para saber cómo procesarlo (por eso el \verb!.py!), mientras que
-todos los sistemas derivados de Unix (OS X, Linux, Solaris, etc) analizan
-los permisos del archivo (en particular, el permiso de ejecución) y los
-primeros caracteres, para saber como procesarlos (por ello es necesario
-incluir esa primera línea mágica).
+El intérprete interactivo de python nos provee una ayuda en línea; es decir,
+nos puede dar la documentación de cualquier función o instrucción. Para
+obtenerla llamamos a la función |help()|. Si le pasamos por parámetro el nombre
+de una función (por ejemplo |help(abs)| o |help(range)|) nos dará la
+documentación de esa función. Para obtener la documentación de una instrucción
+la debemos poner entre comillas; por ejemplo: |help('for')|, |help('return')|.
 \end{sabias_que}
+
+En el código~\ref{cuad100.py} se muestra nuestro primer programa, |cuad100.py|,
+que nos permite calcular la suma de los primeros 100 cuadrados.
+
+\begin{codigo}{cuad100.py}{Imprime la suma de los primeros 100 números
+    cuadrados}
+\label{cuad100.py}
+\begin{codigo-python}
+def suma_cuadrados(n):
+    suma = 0
+    for x in range(1, n + 1):
+        suma = suma + cuadrado(x)
+    return suma
+
+print("La suma de los primeros 100 cuadrados es", suma_cuadrados(100))
+\end{codigo-python}
+\end{codigo}
+
+En la última línea del programa introducimos una función nueva: |print()|.
+La función |print| recibe uno o más parámetros de cualquier tipo y los imprime
+en la pantalla. ¿Por qué no habíamos utilizado |print| hasta ahora?
+
+En el modo interactivo, Python imprime el resultado de cada expresión luego de
+evaluarla:
+
+\begin{codigo-python-sn}
+>>> 2 + 2
+4
+\end{codigo-python-sn}
+
+En cambio, cuando Python ejecuta un programa |.py| no imprime absolutamente
+nada en la pantalla, a menos que le indiquemos explícitamente que lo haga. Por
+eso es que en |cuad100.py| debemos llamar a la función |print| para mostrar el
+resultado.
+
+Para ejecutar el programa debemos abrir una consola del sistema y ejecutar
+|python cuad100.py|:
+
+\begin{codigo-nohl-sn}
+(~\$~) python cuad100.py
+La suma de los primeros 100 cuadrados es 338350
+\end{codigo-nohl-sn}
+
+\section{Interacción con el usuario}
+
+Ya vimos que la función |print| nos permite mostrar información al usuario del
+programa. En algunos casos también necesitaremos que el usuario ingrese datos
+al programa. Por ejemplo:
+
+\begin{problema}
+Escribir en Python un programa que pida al usuario que escriba su nombre, y
+luego lo salude.
+
+\begin{solucion}
+Ya habíamos escrito la función |hola| que nos permitía saludar a una
+persona si sabíamos su nombre. Pero aún no sabemos cómo obtener el nombre del
+usuario. Para esto podemos usar la función |input|, como se muestra en el
+Código~\ref{saludar.py}.
+
+\begin{codigo}{saludar.py}{Saluda al usuario posr su nombre}
+\label{saludar.py}
+\begin{codigo-python}
+def hola(nombre):
+    return "Hola " + nombre + "!"
+
+def saludar():
+    nombre = input("Por favor ingrese su nombre: ")
+    saludo = hola(nombre)
+    print(saludo)
+
+saludar()
+\end{codigo-python}
+\end{codigo}
+\end{solucion}
+\end{problema}
+
+En la función |saludar| usamos la función |input| para pedirle al usuario su
+nombre. |input| presenta al usuario el mensaje que le pasamos por parámetro,
+y luego le permite ingresar una cadena de texto. Cuando el usuario presiona la
+tecla \keys{Enter}, |input| devuelve la cadena ingresada. Luego llamamos a
+|hola| para generar el saludo, y a |print| para mostrarlo al usuario.
+
+Para ejecutar el programa, nuevamente escribimos en la consola del sistema:
+
+\begin{codigo-nohl-sn}
+(~\$~) python saludar.py
+Por favor ingrese su nombre: Alan
+Hola Alan!
+\end{codigo-nohl-sn}
 
 \begin{problema}
 Escribir en Python un programa que haga lo siguiente:
 
-\begin{itemize}
+\begin{enumerate}
 \item Muestra un mensaje de bienvenida por pantalla.
-\item Le pide al usuario que introduzca dos números enteros n1 y n2.
+\item Le pide al usuario que introduzca dos números enteros $n1$ y $n2$.
 \item Imprime el cuadrado de todos los números enteros del intervalo $[n1, n2)$.
 \item Muestra un mensaje de despedida por pantalla.
-\end{itemize}
+\end{enumerate}
 \end{problema}
 
 \begin{solucion}
-Para la resolución del problema, escribiremos nuestro primer módulo de
-Python, que guardaremos en el archivo \verb!cuad.py!, el código de este
-programa se encuentra en el Código \ref{cuad.py}.
+La solución a este problema se encuentra en el Código~\ref{cuadrados.py}.
 
-\begin{codigo}{cuad.py}{Imprime los cuadrados solicitados}
-\label{cuad.py}
+\begin{codigo}{cuadrados.py}{Imprime los cuadrados solicitados}
+\label{cuadrados.py}
 \begin{codigo-python}
-#!/usr/bin/env python
-""" Un programa sencillo, para calcular cuadrados
-de números """
+def imprimir_cuadrados():
+    print("Se calcularán cuadrados de números")
 
-def main():
-    print "Se calcularán cuadrados de números"
-
-    n1 = input("Ingrese un número entero: ")
-    n2 = input("Ingrese otro número entero: ")
+    n1 = int(input("Ingrese un número entero: "))
+    n2 = int(input("Ingrese otro número entero: "))
 
     for x in range(n1, n2):
-        print x*x
+        print(x * x)
 
-    print "Es todo por ahora"
+    print("Es todo por ahora")
 
-main()
+imprimir_cuadrados()
 \end{codigo-python}
 \end{codigo}
 
-Para ejecutar este módulo, podemos iniciar Python y luego
-importarlo. Lo ejecutaremos con valores 5 y 8 de la siguiente
-manera:
-\begin{lstlisting}[numbers=none]
->>> import cuad
+Como siempre, podemos ejecutar el programa en la consola del sistema:
+
+\begin{codigo-nohl-sn}
+(~\$~) python cuadrados.py
 Se calcularán cuadrados de números
 Ingrese un número entero: 5
 Ingrese otro número entero: 8
@@ -687,253 +740,245 @@ Ingrese otro número entero: 8
 36
 49
 Es todo por ahora
->>>
-\end{lstlisting}
-
-La orden \lstinline+import cuad+ le indica a Python que debe traer a la
-memoria el módulo \verb+cuad.py+, tal como lo habíamos guardado, y
-ejecutar su contenido. Al hacer esto, sucenden las siguientes operaciones:
-
-\begin{itemize}
-\item Se carga en memoria la función \lstinline+main+ del módulo
-\lstinline+cuad+ (a la que se le asigna el nombre \lstinline+cuad.main+),
-según la definición que está en el archivo, y
-
-\item se inicia su ejecución inmediatamente, dado que luego de la
-definición se encuentra la invocación \lstinline+main()+.
-\end{itemize}
-
-Una vez importado el módulo, \lstinline+cuad.main+ queda en memoria, y
-se puede volver a invocar sin necesidad de importar nuevamente:
-
-\begin{lstlisting}[numbers=none]
->>> cuad.main()
-Se calcularán cuadrados de números
-Ingrese un número entero: 3
-Ingrese otro número entero: 5
-9
-16
-Es todo por ahora
->>>
-\end{lstlisting}
+\end{codigo-nohl-sn}
 \end{solucion}
 
-\begin{observacion}
-Por otro lado, habiendo cumplido con las convenciones nombradas
-anteriormente, es posible ejecutar el archivo como un programa normal, y el
-sistema se encargará de llamar a Python y darle nuestro archivo para que lo
-procese y ejecute.
-\end{observacion}
+En el Código~\ref{cuadrados.py} aparece una función que no habíamos
+utilizado hasta ahora: |int|. ¿Por qué es necesario utilizar |int| para
+resolver el problema?
 
-\section{La forma de un programa Python}
+En un programa Python podemos operar con cadenas de texto o con números.  Las
+representaciones dentro de la computadora de un número y una cadena son muy
+distintas. Por ejemplo, el número |12345678| se almacena en forma binaria y
+típicamente ocupa 4 bytes, mientras que la cadena |"12345678"| es una sucesión
+de caracteres en la que cada dígito se almacena de forma separada y ocupa (cada
+uno) un byte.
 
-La primera instrucción de \verb+cuad.main+ es
-\begin{lstlisting}[firstnumber=6]
-    print "Se calcularán cuadrados de números"
-\end{lstlisting}
-que lo que hace es mostrar un mensaje por pantalla.
+La función |input| interpreta cualquier valor que el usuario ingresa mediante
+el teclado como una cadena de caracteres. Es decir, |input| siempre devuelve
+una cadena, incluso aunque el usuario haya ingresado una secuencia de dígitos.
 
-Las instrucciones segunda y tercera
-\begin{lstlisting}[firstnumber=8]
-    n1 = input("Ingrese un número entero: ")
-    n2 = input("Ingrese otro número entero: ")
-\end{lstlisting}
-son instrucciones de entrada: se despliega el texto que está entre
-comillas y se espera que el usuario ingrese un valor numérico y
-oprima la tecla <ENTER>.
+Por eso es que introducimos la función |int|, que devuelve el parámetro que
+recibe \emph{convertido} a un número entero:
 
-\begin{sabias_que}
-En los programas Python que escribimos, podemos operar con cadenas de texto
-o con números.  Las representaciones dentro de la computadora de un número y
-una cadena son muy distintas, el número \lstinline!12345678! se almacena en
-forma binaria y utiliza unos pocos bytes, mientras que la cadena
-\lstinline!"12345678"!, es una sucesión de caracteres, en la que cada
-número es un caracter que ocupa un byte.
+\begin{codigo-python-sn}
+>>> int("42")
+42
+\end{codigo-python-sn}
 
-La función \lstinline!input! toma valores numéricos, y si se desea
-ingresar una cadena, debe hacérselo entre comillas: \lstinline!"hola"!.
-Existe, por otro lado, la función \lstinline!raw_input!, para la cual los
-valores ingresados son siempre cadenas de caracteres.
-\end{sabias_que}
+\subsection*{¿\ldots y \verb|return|?}
 
-¿Cómo hacer para que los valores que provee el usuario se recuerden
-a lo largo de todo el programa? Al valor ingresado se le dará un
-nombre, de la misma manera que a otros valores calculados durante
-la ejecución. Aparece el concepto de {\it variables} de un
-programa: una variable se usa para darle un nombre a un valor dado
-y poder de esa manera referirnos al mismo a lo largo del
-programa.
+Cuando introdujimos el concepto de función dijimos que una función recibe 0 o
+más parámetros y devuelve un resultado. Pero en la función |saludar| que
+escribimos en el Código~\ref{saludar.py} no hay ninguna instrucción
+|return|\ldots
+es decir, |saludar| es una función que no recibe parámetros \emph{¡y no devuelve
+nada!}.
 
-En estas dos instrucciones, \lstinline+n1+ y \lstinline+n2+ son los
-nombres con los que se mencionarán el primer y el segundo entero
-tipeados por el usuario.
+Esto es perfectamente válido: no necesitamos que |saludar| reciba parámetros
+porque estamos utilizando la función |input| para obtener la entrada del
+usuario, y no necesitamos que la función devuelva nada, porque su único
+cometido es \emph{imprimir} un mensaje en la pantalla.
 
-En el ejemplo de la última corrida, se asociará el valor 3 con la
-variable \lstinline+n1+ y el valor 5 con la variable \lstinline+n2+.
-
-Luego de leer esos valores, se procede a ejecutar el ciclo
-
-\begin{lstlisting}[firstnumber=11]
-    for x in range(n1, n2):
-        print x*x
-\end{lstlisting}
-
-Si el valor asociado con \lstinline!n1! es 3, y el valor asociado con
-\lstinline!n2! es 5, se asociará a \lstinline!x! sucesivamente con los valores
-3 y 4, y en cada caso se ejecutará el cuerpo del ciclo indicado (mostrará en
-pantalla los valores de los cuadrados de 3 y 4).
-
-Finalmente, cuando se terminan las repeticiones indicadas en el ciclo, se
-ejecuta la instrucción
-
-\begin{lstlisting}[firstnumber=14]
-	print "Es todo por ahora"
-\end{lstlisting}
-
-que, como ya se ha visto, muestra el mensaje \lstinline!Es todo por ahora! por
-pantalla.
+Sin embargo, las funciones que reciben parámetros y devuelven resultados suelen
+ser mucho más \emph{reutilizables}. En la unidad~\ref{chapter:funciones}
+exploraremos un poco más este concepto.
 
 %
 % Lenguajes optimistas vs controladores
 %
+\clearpage
 
 \section{Estado y computación}
 
 A lo largo de la ejecución de un programa las variables pueden
 cambiar el valor con el que están asociadas. En un momento dado
 uno puede detenerse a observar a qué valor se refiere cada una de
-las variables del programa. Esa foto que indica en un momento dado
+las variables del programa. Esa ``foto'' que indica en un momento dado
 a qué valor hace referencia cada una de las variables se denomina
-{\it estado}. También hablaremos del {\it estado de una variable}
+\emph{estado}. También hablaremos del \emph{estado de una variable}
 para indicar a qué valor está asociada esa variable, y usaremos la
-notación \lstinline!n! $\ra$ 13 para describir el estado de la variable
-\lstinline!n! (e indicar que está asociada al número 13).
+notación |n| $\ra$ 13 para describir el estado de la variable |n| (e indicar
+que está asociada al número 13).
 
 A medida que las variables cambian de valores a los que se
 refieren, el programa va cambiando de estado. La sucesión de todos
 los estados por los que pasa el programa en una ejecución dada se
-denomina {\it computación}.
+denomina \emph{computación}.
 
 Para ejemplificar estos conceptos veamos qué sucede cuando se
-ejecuta el programa \lstinline!cuad!:
+ejecuta el programa |cuadrados.py|:
 
-\begin{longtable}[c]{|p{5.5cm}|p{3.5cm}|b{1.5cm}|}
-\hline
+\begin{longtable}[c]{p{5.5cm} p{5.5cm} p{1.5cm}}
 {\bf Instrucción} & {\bf Qué sucede} & {\bf Estado}\\
 
 \hline
-\lstinline!print "Se calcularán! \lstinline!cuadrados de números"!
-& Se despliega el texto ``Se calcularán cuadrados de
-números'' en la pantalla. & \\
+\lstinline!print("Se calcularán!
+\lstinline!cuadrados de números")!
+&
+Se despliega el texto ``Se calcularán cuadrados de
+números'' en la pantalla.
+&
+\\
 
 \hline
-\lstinline!n1 = input("Ingrese ! \lstinline!un número entero: ")!
-& Se despliega el texto ``Ingrese un número entero: '' en la pantalla y el
-programa se queda esperando que el usuario ingrese un número. & \\
+\lstinline!n1 = int(input("Ingrese !
+\lstinline!un número entero: "))!
+&
+Se despliega el texto ``Ingrese un número entero: '' en la pantalla y el
+programa se queda esperando que el usuario ingrese un número.
+&
+\\
 
 \hline
-& Supondremos que el usuario ingresa el número 3
-y luego oprime la tecla <ENTER>.
+&
+Supondremos que el usuario ingresa el número 3
+y luego oprime la tecla \keys{Enter}.
 
-Se asocia el número 3 con la variable \lstinline!n1!. &
+Se asocia el número 3 con la variable \lstinline!n1!.
+&
 \lstinline!n1! $\ra$ 3\\
 
 \hline
-\lstinline!n2 = input("Ingrese ! \lstinline!otro número entero: ")!
-& Se despliega el texto ``Ingrese otro número entero:'' en la
+\lstinline!n2 = int(input("Ingrese !
+\lstinline!otro número entero: "))!
+&
+Se despliega el texto ``Ingrese otro número entero:'' en la
 pantalla y el programa se queda esperando que el
-usuario ingrese un número. & \lstinline!n1! $\ra$ 3\\
+usuario ingrese un número.
+&
+\lstinline!n1! $\ra$ 3\\
 
 \hline
-& Supondremos que el usuario ingresa el número 5
-y luego oprime la tecla <ENTER>.
+&
+Supondremos que el usuario ingresa el número 5
+y luego oprime la tecla \keys{Enter}.
 
 Se asocia el número 5 con la variable \lstinline!n2!.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\ \lstinline!n2! $\ra$ 5 } \\
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \\
 
 \hline
-\lstinline+ for x in range(n1, n2):+
-&Se asocia el primer número de \lstinline![n1,n2)! con la variable
+\lstinline+for x in range(n1, n2):+
+&
+Se asocia el primer número de \lstinline![n1,n2)! con la variable
 \lstinline!x! y se ejecuta el cuerpo del ciclo.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
-\lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 3 } \\
-
-
-% \end{tabular%}
-% \pagebreak
-
-% \begin{tabular}[c]{|l|l|l|}
-%\hline {\bf Instrucción} & {\bf Qué sucede} & {\bf Estado}\\
-%\hline
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \newline
+\lstinline!x! $\ra$ 3 \\
 
 \hline
-\lstinline+   print x*x+
-& Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (9)
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
-\lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 3 } \\
+\lstinline+    print(x * x)+
+&
+Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (9)
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \newline
+\lstinline!x! $\ra$ 3 \\
 
 \hline
-\lstinline+ for x in range(n1, n2):+
-&Se asocia el segundo número de \lstinline![n1,n2)! con la variable
+\lstinline+for x in range(n1, n2):+
+&
+Se asocia el segundo número de \lstinline![n1,n2)! con la variable
 \lstinline!x! y se ejecuta el cuerpo del ciclo.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
-\lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \newline
+\lstinline!x! $\ra$ 4 \\
 
 \hline
-\lstinline+   print x*x+
-& Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (16)
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
-\lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4} \\
+\lstinline+    print(x*x)+
+&
+Se imprime por pantalla el valor de \lstinline!x! * \lstinline!x! (16)
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \newline
+\lstinline!x! $\ra$ 4 \\
 
 \hline
-\lstinline+ for x in range(n1, n2):+
-&Como no quedan más valores por tratar en \lstinline![n1,n2)!,
+\lstinline+for x in range(n1, n2):+
+&
+Como no quedan más valores por tratar en \lstinline![n1, n2)!,
 se sale del ciclo.
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
-\lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \newline
+\lstinline!x! $\ra$ 4 \\
 
 \hline
-\lstinline+print "Es todo por ahora"+
-& Se despliega por pantalla el mensaje ``Es todo por ahora''
-&\parbox{1.5cm}{\lstinline!n1! $\ra$ 3 \\
-\lstinline!n2! $\ra$ 5 \\ \lstinline!x! $\ra$ 4 } \\
+\lstinline+print("Es todo por ahora")+
+&
+Se despliega por pantalla el mensaje ``Es todo por ahora''
+&
+\lstinline!n1! $\ra$ 3 \newline
+\lstinline!n2! $\ra$ 5 \newline
+\lstinline!x! $\ra$ 4 \\
 
-\hline
 \end{longtable}
 
-\section{Depuración de programas}
+\subsection{Depuración de programas}
 
 Una manera de seguir la evolución del estado es insertar instrucciones de impresión
 en sitios críticos del programa. Esto nos será de utilidad para detectar errores
 y también para comprender cómo funcionan determinadas instrucciones.
 
+Por ejemplo, podemos insertar llamadas a la función |print| en el
+Código~\ref{cuadrados.py} para inspeccionar el contenido de las variables:
+
+\begin{codigo-python-sn}
+def imprimir_cuadrados():
+    print("Se calcularán cuadrados de números")
+
+    n1 = int(input("Ingrese un número entero: "))
+    (@print("el valor de n1 es:", n1)@)
+    n2 = int(input("Ingrese otro número entero: "))
+    (@print("el valor de n2 es:", n2)@)
+
+    for x in range(n1, n2):
+        (@print("el valor de x es:", x)@)
+        print(x * x)
+
+    print("Es todo por ahora")
+
+imprimir_cuadrados()
+\end{codigo-python-sn}
+
+En este caso, la salida del programa será:
+
+\begin{codigo-nohl-sn}
+(~\$~) python cuadrados.py
+Se calcularán cuadrados de números
+Ingrese un número entero: 5
+el valor de n1 es: 5
+Ingrese otro número entero: 8
+el valor de n2 es: 8
+el valor de x es: 5
+25
+el valor de x es: 6
+36
+el valor de x es: 7
+49
+Es todo por ahora
+\end{codigo-nohl-sn}
+
+Si utilizamos este método para depurar el programa, tendremos que recordar
+eliminar las llamadas |print| una vez que terminemos.
 
 \newpage
 \section{Ejercicios}
 
 \begin{ejercicio}
-Correr tres veces el programa \lstinline!cuad! con valores
+Correr tres veces el programa \lstinline!cuadrados.py! con valores
 de entrada (3,5), (3,3) y (5,3) respectivamente. ¿Qué sucede en
 cada caso?
 \end{ejercicio}
 
 \begin{ejercicio}
-Insertar instrucciones de depuración que permitan ver el valor
-asociado con la variable \lstinline!x! en el cuerpo del ciclo \lstinline!for! y
-después que se sale de tal ciclo.  Volver a correr tres veces el programa
-\lstinline!cuad! con valores de entrada (3,5), (3,3) y (5,3) respectivamente, y
-explicar lo que sucede.
-\end{ejercicio}
-
-\begin{ejercicio}
-La salida del programa \lstinline!cuad! es poco
-informativa. Escribir un programa \lstinline!nom_cuad! que ponga el
-número junto a su cuadrado. Ejecutar el programa nuevo.
-\end{ejercicio}
-
-\begin{ejercicio}
-Si la salida sigue siendo poco informativa seguir mejorándola hasta
-que sea lo suficientemente clara.
+La salida del programa \lstinline!cuadrados.py! es poco
+informativa. Modificar el programa para que ponga el
+número junto a su cuadrado.
 \end{ejercicio}
 
 \extractionlabel{guia}
@@ -948,16 +993,16 @@ Escribir un programa que pregunte al usuario:
 \extractionlabel{guia}
 \begin{ejercicio} Implementar algoritmos que permitan:
 \begin{partes}
- \item Calcular el perímetro y área de un rectángulo dada su base y su altura.
- \item Calcular el perímetro y área de un círculo dado su radio.
+ \item Calcular el perímetro de un rectángulo dada su base y su altura.
+ \item Calcular el área de un rectángulo dada su base y su altura.
+ \item Calcular el área de un rectángulo (alineado con los ejes $x$ e $y$)
+     dadas sus coordenadas $x1$, $x2$, $y1$, $y2$.
+ \item Calcular el perímetro de un círculo dado su radio.
+ \item Calcular el área de un círculo dado su radio.
  \item Calcular el volumen de una esfera dado su radio.
- \item Calcular el área de un rectángulo (alineado con los ejes x e y) dadas sus coordenadas x1,x2,y1,y2.
  \item Dados los catetos de un triángulo rectángulo, calcular su hipotenusa.
 \end{partes}
 \end{ejercicio}
-
-%\begin{ejercicio} Mostrar una ejecución y el estado en memoria de las variables utilizadas en cada uno de los algoritmos del ejercicio anterior
-%\end{ejercicio}
 
 \extractionlabel{guia}
 \begin{ejercicio}
@@ -966,32 +1011,34 @@ intérprete de python:
 \begin{partes}
 \item \begin{verbatim}
 >>> for i in range(5):
-        print i * i
+...     print(i * i)
 \end{verbatim}
 \item \begin{verbatim}
->>> for i in range(2,6):
-        print i, 2**i
-\end{verbatim}
-\item \begin{verbatim}
->>> for d in [3, 1, 4, 1, 5]:
-        print d,
+>>> for i in range(2, 6):
+...     print(i, 2 ** i)
 \end{verbatim}
 \end{partes}
+\end{ejercicio}
+
+\extractionlabel{guia}
+\begin{ejercicio} Implementar un algoritmo que, dado un número entero $n$,
+    permita calcular su factorial.
 \end{ejercicio}
 
 \extractionlabel{guia}
 \begin{ejercicio} Implementar algoritmos que resuelvan los siguientes
 problemas:
 \begin{partes}
-  \item Dados dos números, indicar la suma, resta, división y multiplicación
+  \item Dados dos números, imprimir la suma, resta, división y multiplicación
   de ambos.
-  \item Dado un número entero N, imprimir su tabla de multiplicar.
-  \item Dado un número entero N, imprimir su factorial.
+  \item Dado un número entero $n$, imprimir su tabla de multiplicar.
 \end{partes}
 \end{ejercicio}
 
 \extractionlabel{guia}
 \begin{ejercicio}
 Escribir un programa que le pida una palabra al usuario, para luego
-imprimirla 1000 veces, con espacios intermedios.
+imprimirla 1000 veces, en una única línea, con espacios intermedios.
+
+\emph{Ayuda:} Investigar acerca del parámetro |end| de la función |print|.
 \end{ejercicio}
