@@ -85,7 +85,7 @@ endef
 
 .PHONY	: default all pdf clean veryclean
 
-default : principal.pdf ejercicios.pdf
+default : apunte.pdf ejercicios.pdf
 
 all	: $(TRG)
 
@@ -110,7 +110,7 @@ veryclean : clean
 -include $(SRC:.tex=.d)
 
 # Dependencia adicional para ejercicios.tex.
-ejercicios.tex : principal.pdf
+ejercicios.tex : apunte.pdf
 
 %.pdf : %.tex | %.d
 	@$(run-pdflatex)
