@@ -1,0 +1,16 @@
+\begin{tikzpicture}
+\node[draw=none,fill=none] (1) {};
+\node[draw=none,fill=none,below=0.2cm of 1] (2) {};
+\node[draw=none,fill=none,below=0.2cm of 2] (3) {};
+\node[draw,fit=(1) (2) (3), minimum width=3cm] (f) {};
+\node[draw=none,fill=none,above=0cm of f.center,anchor=center] (label) {función};
+
+\node[draw=none,fill=none,left=4cm of 1] (11) {};
+\node[draw=none,fill=none,left=4cm of 2] (22) {};
+\node[draw=none,fill=none,left=4cm of 3] (33) {};
+\draw[flecha] (11) -- node[above] {parámetros} (1-|f.west);
+\draw[flecha] (22) -- (2-|f.west);
+\draw[flecha] (33) -- (3-|f.west);
+
+\draw[flecha] (f.east) -- node[above] {resultado} +(3cm,0);
+\end{tikzpicture}

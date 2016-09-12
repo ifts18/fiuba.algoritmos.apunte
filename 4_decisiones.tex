@@ -1,38 +1,22 @@
-% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
-% Copyright (C) Margarita Manterola <margamanterola@gmail.com>
-
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
-% Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
-%    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
-%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
-%
-% A su criterio, puede utilizar una u otra licencia, o las dos.
-% Para ver una copia de las licencias, puede visitar los sitios
-% mencionados, o enviar una carta a Creative Commons,
-% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
-
 \chapter{Decisiones}
 
-Nos plantean el siguiente problema:
 \problemac{Debemos leer un número y, si el número es positivo, debemos escribir
-en pantalla el cartel ``Numero positivo''.}
+en pantalla el cartel ``Número positivo''.}
 
 \begin{solucion}
-Especificamos nuestra solución: se deberá leer un número \lstinline!x!.
-Si \lstinline!x > 0! se escribe el mensaje \lstinline!"Número positivo"!.
+Especificamos nuestra solución: se deberá leer un número $x$.
+Si $x > 0$ se escribe el mensaje \lstinline!"Número positivo"!.
 
 Diseñamos nuestra solución:
 
 \begin{enumerate}
-\item Solicitar al usuario un número, guardarlo en \lstinline!x!.
-\item Si $x>0$, imprimir \lstinline!"Numero positivo"!
+\item Solicitar al usuario un número, guardarlo en $x$.
+\item Si $x > 0$, imprimir \lstinline!"Número positivo"!
 \end{enumerate}
 
 Es claro que la primera línea se puede traducir como
 \begin{codigo-python-sn}
-       x = input("Ingrese un numero: ")
+    x = int(input("Ingrese un número: "))
 \end{codigo-python-sn}
 
 Sin embargo, con las instrucciones que vimos hasta ahora no podemos tomar
@@ -41,7 +25,7 @@ diseño.
 \end{solucion}
 
 Para resolver este problema introducimos una nueva instrucción que
-llamaremos {\it condicional} que tiene la siguiente forma:
+llamaremos \emph{condicional} y tiene la siguiente forma:
 
 \begin{codigo-python-sn}
 if <condición>:
@@ -54,23 +38,25 @@ Donde \lstinline+if+ es una palabra reservada.
 Antes de seguir adelante con la construcción debemos introducir
 un nuevo tipo de expresión que nos indicará si se da una cierta situación o no.
 Hasta ahora las expresiones con las que trabajamos fueron de tipo numérica y de tipo texto.
-Pero ahora la respuesta que buscamos es de tipo {\it sí} o {\it no}.
+Pero ahora la respuesta que buscamos es de tipo \emph{sí} o \emph{no}.
 
 \section{Expresiones booleanas}
 
-Además de los números y los textos que vimos hasta ahora, Python introduce
-las constantes \lstinline!True! y \lstinline!False! para representar los
-valores de verdad {\it verdadero} y {\it falso} respectivamente.
+Además de los tipos numéricos (|int|, |float|), y las cadenas de texto (|str|),
+Python introduce un tipo de dato llamado \emph{booleano} (|bool|). Una
+\emph{expresión booleana} o \emph{expresión lógica} puede tomar dos valores posibles:
+|True| (sí) o |False| (no).
 
-Vimos que una expresión es un trozo de código Python que produce o calcula
-un valor (resultado). Una {\it expresión booleana} o {\it expresión lógica}
-es una expresión que vale o bien \lstinline!True! o bien \lstinline!False!.
+\begin{codigo-python-sn}
+>>> n = 3    # n es de tipo 'int' y toma el valor 3
+>>> b = True # b es de tipo 'bool' y toma el valor True
+\end{codigo-python-sn}
 
 \subsection{Expresiones de comparación}
 
 En el ejemplo que queremos resolver, la condición que queremos ver si se
 cumple o no es que \lstinline!x! sea mayor que cero. Python provee las
-llamadas {\it expresiones de comparación} que sirven para comparar valores
+llamadas \emph{expresiones de comparación} que sirven para comparar valores
 entre sí, y que por lo tanto permiten codificar ese tipo de pregunta.  En
 particular la pregunta de si \lstinline!x! es mayor que cero, se codifica
 en Python como \lstinline!x > 0!.
@@ -84,43 +70,46 @@ valor es \lstinline!False!.
 True
 >>> 3 > 5
 False
->>>
 \end{codigo-python-sn}
 
-Los expresiones
+Las expresiones
 booleanas de comparación que provee Python son las siguientes:
 
-\begin{tabular}[c]{|l|l|}
-\hline {\bf Expresión} & {\bf Significado}\\
-\hline \hline
-\lstinline!a == b!& \lstinline!a! es igual a \lstinline!b! \\\hline
-\lstinline+a != b+& \lstinline!a! es distinto de \lstinline!b! \\\hline
-\lstinline!a < b!& \lstinline!a! es menor que \lstinline!b! \\\hline
-\lstinline!a <= b!& \lstinline!a! es menor o igual que \lstinline!b! \\\hline
-\lstinline!a > b!& \lstinline!a! es mayor que \lstinline!b! \\\hline
-\lstinline!a >= b!& \lstinline!a! es mayor o igual que \lstinline!b! \\\hline
+\newcommand{\tablaComparacion}{
+\begin{center}
+\begin{tabular}[c]{l l}
+{\bf Expresión} & {\bf Significado}\\
+\hline
+\lstinline!a == b!& \lstinline!a! es igual a \lstinline!b! \\
+\lstinline+a != b+& \lstinline!a! es distinto de \lstinline!b! \\
+\lstinline!a < b!& \lstinline!a! es menor que \lstinline!b! \\
+\lstinline!a <= b!& \lstinline!a! es menor o igual que \lstinline!b! \\
+\lstinline!a > b!& \lstinline!a! es mayor que \lstinline!b! \\
+\lstinline!a >= b!& \lstinline!a! es mayor o igual que \lstinline!b! \\
 \end{tabular}
+\end{center}
+}
+\tablaComparacion
 
 A continuación, algunos ejemplos de uso de estos operadores:
 
 \begin{codigo-python-sn}
->>> 6==6
+>>> 6 == 6
 True
->>> 6!=6
+>>> 6 != 6
 False
->>> 6>6
+>>> 6 > 6
 False
->>> 6>=6
+>>> 6 >= 6
 True
->>> 6>4
+>>> 6 > 4
 True
->>> 6<4
+>>> 6 < 4
 False
->>> 6<=4
+>>> 6 <= 4
 False
->>> 4<6
+>>> 4 < 6
 True
->>>
 \end{codigo-python-sn}
 
 \subsection{Operadores lógicos}
@@ -132,58 +121,62 @@ para combinar expresiones booleanas: \lstinline!and! (y), \lstinline!or!
 
 El significado de estos operadores es igual al del castellano, pero vale la pena recordarlo:
 
-\begin{tabular}[c]{|l|l|}
-\hline {\bf Expresión} & {\bf Significado}\\
-\hline \hline
+\newcommand{\tablaOperadoresLogicos}{
+\begin{center}
+\begin{tabular}[c]{l l}
+{\bf Expresión} & {\bf Significado}\\
+\hline
 \lstinline!a and b!& El resultado es \lstinline!True! solamente si
 \lstinline!a! es \lstinline!True! y  \lstinline!b! es \lstinline!True! \\
-& de lo contrario el resultado es \lstinline!False!\\\hline
+& de lo contrario el resultado es \lstinline!False!\\
 \lstinline!a or b!& El resultado es \lstinline!True! si \lstinline!a! es
-\lstinline!True! o  \lstinline!b! es \lstinline!True! \\
-& de lo contrario el resultado es \lstinline!False!\\\hline
+\lstinline!True! o  \lstinline!b! es \lstinline!True! (o ambos) \\
+& de lo contrario el resultado es \lstinline!False!\\
 \lstinline!not a!& El resultado es \lstinline!True! si \lstinline!a! es
 \lstinline!False!\\
-& de lo contrario el resultado es \lstinline!False!\\\hline
+& de lo contrario el resultado es \lstinline!False!\\
 \end{tabular}
+\end{center}
+}
+\tablaOperadoresLogicos
+
+Algunos ejemplos:
 
 \begin{itemize}
 \item \lstinline!a > b and a > c! es verdadero si \lstinline!a! es
 simultáneamente mayor que \lstinline!b! y que \lstinline!c!.
 
 \begin{codigo-python-sn}
->>> 5>2 and 5>3
+>>> 5 > 2 and 5 > 3
 True
->>> 5>2 and 5>6
+>>> 5 > 2 and 5 > 6
 False
->>>
 \end{codigo-python-sn}
 
 \item \lstinline!a > b or a > c! es verdadero si \lstinline!a! es mayor que
 \lstinline!b! o \lstinline!a! es mayor que \lstinline!c!.
 
 \begin{codigo-python-sn}
->>> 5>2 or 5>3
+>>> 5 > 2 or 5 > 3
 True
->>> 5>2 or 5>6
+>>> 5 > 2 or 5 > 6
 True
->>> 5>8 or 5>6
+>>> 5 > 8 or 5 > 6
 False
->>>
 \end{codigo-python-sn}
 
-\item \lstinline!not (a > b)! es verdadero si \lstinline!a > b! es falso (o
+\item \lstinline!not a > b! es verdadero si \lstinline!a > b! es falso (o
 sea si \lstinline!a <= b! es verdadero).
 
 \begin{codigo-python-sn}
->>> 5>8
+>>> 5 > 8
 False
->>> not (5>8)
+>>> not 5 > 8
 True
->>> 5>2
+>>> 5 > 2
 True
->>> not (5>2)
+>>> not 5 > 2
 False
->>>
 \end{codigo-python-sn}
 
 \end{itemize}
@@ -192,9 +185,9 @@ False
 
 Volvemos al problema que nos plantearon: Debemos leer un número y, si el
 número es positivo, debemos escribir en pantalla el mensaje
- \lstinline!"Numero positivo"!.
+ \lstinline!"Número positivo"!.
 
-Utilizando la instrucción \lstinline!if! que acabamos de introducir y que sirve
+Recordemos la instrucción \lstinline!if! que acabamos de introducir y que sirve
 para tomar decisiones simples. Dijimos que su formato más sencillo es:
 
 \begin{codigo-python-sn}
@@ -203,72 +196,69 @@ if <condición>:
 \end{codigo-python-sn}
 
 cuyo significado es el siguiente:
-se evalúa \lstinline+<condición>+ y si el resultado es \lstinline!True! (verdadero) se
-ejecutan las acciones indicadas como {\it $<$hacer algo si se da la condición$>$}.
+se evalúa \lstinline+<condición>+ (que debe ser una expresión lógica), y si el resultado es \lstinline!True! (verdadero) se
+ejecutan las acciones indicadas como \emph{$<$hacer algo si se da la condición$>$}.
 
 Como ahora ya sabemos también cómo construir condiciones de comparación,
 estamos en condiciones de implementar nuestra solución. Escribimos la
-función \lstinline+es_positivo()+ que hace lo pedido:
+función \lstinline+positivo()+ que hace lo pedido:
 
 \begin{codigo-python-sn}
-def es_positivo():
-    x = input("Ingrese un numero: ")
+def positivo():
+    x = int(input("Ingrese un número: "))
     if x > 0:
-        print "Numero positivo"
+        print("Número positivo")
 \end{codigo-python-sn}
 
 y la probamos:
 
 \begin{codigo-python-sn}
->>> es_positivo()
-Ingrese un numero: 4
-Numero positivo
->>> es_positivo()
-Ingrese un numero: -25
->>> es_positivo()
-Ingrese un numero: 0
->>>
+>>> positivo()
+Ingrese un número: 4
+Número positivo
+>>> positivo()
+Ingrese un número: -25
+>>> positivo()
+Ingrese un número: 0
 \end{codigo-python-sn}
 
-\problemac{
-En la etapa de mantenimiento nos dicen que, en realidad, también se
-necesitaría un mensaje \lstinline!"Numero no positivo"! cuando no se cumple
+\problemac{%
+Necesitamos además un mensaje \lstinline!"Número no positivo"! cuando no se cumple
 la condición.}
 
 Modificamos la especificación consistentemente y modificamos el diseño:
 
 \begin{enumerate}
-\item Solicitar al usuario un número, guardarlo en \lstinline!x!.
-\item Si $x>0$, imprimir \lstinline!"Numero positivo"!
-\item Si no se cumple $x>0$, imprimir \lstinline!"Numero no positivo"!
+\item Solicitar al usuario un número, guardarlo en $x$.
+\item Si $x > 0$, imprimir \lstinline!"Número positivo"!
+\item En caso contrario, imprimir \lstinline!"Número no positivo"!
 \end{enumerate}
 
-La negación de $x>0$ es $\neg(x>0)$ que se traduce en Python como
-\lstinline!not (x > 0)!, por lo que implementamos nuestra solución en
+La negación de $x> 0 $ es $\neg(x > 0)$ que se traduce en Python como
+|not x > 0|, por lo que implementamos nuestra solución en
 Python como:
 
 \begin{codigo-python-sn}
 def positivo_o_no():
-    x = input("Ingrese un numero: ")
+    x = int(input("Ingrese un número: "))
     if x > 0:
-       print "Numero positivo"
-    if not (x > 0):
-       print "Numero no positivo"
+       print("Número positivo")
+    (@if not x > 0:@)
+       print("Número no positivo")
 \end{codigo-python-sn}
 
 Probamos la nueva solución y obtenemos el resultado buscado:
 
 \begin{codigo-python-sn}
 >>> positivo_o_no()
-Ingrese un numero: 4
-Numero positivo
+Ingrese un número: 4
+Número positivo
 >>> positivo_o_no()
-Ingrese un numero: -25
-Numero no positivo
+Ingrese un número: -25
+Número no positivo
 >>> positivo_o_no()
-Ingrese un numero: 0
-Numero no positivo
->>>
+Ingrese un número: 0
+Número no positivo
 \end{codigo-python-sn}
 
 Sin embargo hay algo que nos preocupa: si ya averiguamos una vez, en la segunda
@@ -283,161 +273,156 @@ Existe una construcción alternativa para la estructura de decisión:
 if <condición>:
     <hacer algo si se da la condición>
 else:
-	<hacer otra cosa si no se da la condición>
+    <hacer otra cosa si no se da la condición>
 \end{codigo-python-sn}
 
 Donde \lstinline!if! y \lstinline!else! son palabras reservadas.
 
 Su significado es el siguiente: se evalúa \lstinline+<condición>+, si el
-resultado es \lstinline!True! (verdadero) se ejecutan las acciones
-indicadas como {\it $<$hacer algo si se da la condición$>$}, y si el
-resultado es \lstinline!False! (falso) se ejecutan las acciones indicadas
-como {\it $<$hacer otra cosa si no se da la condición$>$}.
+resultado es \lstinline!True! se ejecutan las acciones
+indicadas como \emph{$<$hacer algo si se da la condición$>$}, y si el
+resultado es \lstinline!False! se ejecutan las acciones indicadas
+como \emph{$<$hacer otra cosa si no se da la condición$>$}.
 
 Volvemos a nuestro diseño:
 
 \begin{enumerate}
-\item Solicitar al usuario un número, guardarlo en \lstinline!x!.
-\item Si $x>0$, imprimir \lstinline!"Numero positivo"!
-\item De lo contrario, imprimir \lstinline!"Numero no positivo"!
+\item Solicitar al usuario un número, guardarlo en $x$.
+\item Si $x > 0$, imprimir \lstinline!"Número positivo"!
+\item En caso contrario, imprimir \lstinline!"Número no positivo"!
 \end{enumerate}
 
 Este diseño se implementa como:
 
 \begin{codigo-python-sn}
-def positivo_o_no_nue():
-    x = input("Ingrese un numero: ")
+def positivo_o_no():
+    x = int(input("Ingrese un número: "))
     if x > 0:
-       print "Numero positivo"
-    else:
-       print "Numero no positivo"
+       print("Número positivo")
+    (@else:@)
+       print("Número no positivo")
 \end{codigo-python-sn}
 
 y lo probamos:
 
 \begin{codigo-python-sn}
->>> positivo_o_no_nue()
-Ingrese un numero: 4
-Numero positivo
->>> positivo_o_no_nue()
-Ingrese un numero: -25
-Numero no positivo
->>> positivo_o_no_nue()
-Ingrese un numero: 0
-Numero no positivo
->>>
+>>> positivo_o_no()
+Ingrese un número: 4
+Número positivo
+>>> positivo_o_no()
+Ingrese un número: -25
+Número no positivo
+>>> positivo_o_no()
+Ingrese un número: 0
+Número no positivo
 \end{codigo-python-sn}
 
 Es importante destacar que, en general, negar la condición del
-\lstinline!if! y poner \lstinline!else! no son intercambiables, no
+\lstinline!if! y poner \lstinline!else! no son intercambiables, porque no
 necesariamente producen el mismo efecto en el programa. Notar qué sucede en
 los dos programas que se transcriben a continuación. ¿Por qué se dan estos
 resultados?:
 
 \noindent
 \begin{minipage}[t]{80mm}
-\footnotesize
-\begin{codigo-python-sn}
->>> def pn():
-...     x = input("Ingrese un numero: ")
-...     if x > 0:
-...        print "Numero positivo"
-...        x = -x
-...     if x < 0:
-...        print "Numero no positivo"
-...
->>> pn()
-Ingrese un numero: 25
-Numero positivo
-Numero no positivo
->>>
-\end{codigo-python-sn}
-\end{minipage}
-\begin{minipage}[t]{80mm}
-\footnotesize
-\begin{codigo-python-sn}
+\begin{codigo-python-sn-small}
 >>> def pn1():
-...     x = input("Ingrese un numero: ")
-...     if x > 0:
-...        print "Numero positivo"
-...        x = -x
-...     else:
-...        print "Numero no positivo"
+...   x = int(input("Ingrese un nro: "))
+...   if x > 0:
+...      print("Número positivo")
+...      x = -x
+...   (@if x < 0:@)
+...      print("Número no positivo")
 ...
 >>> pn1()
-Ingrese un numero: 25
-Numero positivo
->>>
-\end{codigo-python-sn}
+Ingrese un nro: 25
+Número positivo
+Número no positivo
+\end{codigo-python-sn-small}
+\end{minipage}
+\begin{minipage}[t]{80mm}
+\begin{codigo-python-sn-small}
+>>> def pn2():
+...   x = int(input("Ingrese un nro: "))
+...   if x > 0:
+...      print("Número positivo")
+...      x = -x
+...   (@else:@)
+...      print("Número no positivo")
+...
+>>> pn2()
+Ingrese un nro: 25
+Número positivo
+\end{codigo-python-sn-small}
 \end{minipage}
 \normalsize
 
 \section{Múltiples decisiones consecutivas}
 
-La decisión de incluir una alternativa en un programa, parte de una
+La decisión de incluir una decisión en un programa, parte de una
 lectura cuidadosa de la especificación. En nuestro caso la especificación
 nos decía:
+
 \begin{quote}
 Si el número es positivo escribir un mensaje
-\lstinline!"Numero positivo"!, de lo contrario escribir un mensaje
-\lstinline!"Numero no positivo"!.
+\lstinline!"Número positivo"!, de lo contrario escribir un mensaje
+\lstinline!"Número no positivo"!.
 \end{quote}
 
 Veamos qué se puede hacer cuando se presentan tres o más alternativas:
 
-\problemac{
+\problemac{%
 Si el número es positivo escribir un mensaje
-\lstinline!"Numero positivo"!, si el número es igual a 0 un mensaje
+\lstinline!"Número positivo"!, si el número es igual a 0 un mensaje
 \lstinline!"Igual a 0"!, y si el número es negativo escribir un mensaje
-\lstinline!"Numero negativo"!}.
+\lstinline!"Número negativo"!}.
 
 Una posibilidad es considerar que se trata de una estructura con dos
 casos como antes, sólo que el segundo caso es complejo (es nuevamente una alternativa):
 
 \begin{enumerate}
 \item Solicitar al usuario un número, guardarlo en \lstinline!x!.
-\item Si $x>0$, imprimir \lstinline!"Numero positivo"!
+\item Si $x > 0$, imprimir \lstinline!"Número positivo"!
 \item De lo contrario:
 \begin{enumerate}
-\item Si $x=0$, imprimir \lstinline!"Igual a 0"!
-\item De lo contrario, imprimir \lstinline!"Numero no positivo"!
+\item Si $x = 0$, imprimir \lstinline!"Igual a 0"!
+\item De lo contrario, imprimir \lstinline!"Número no positivo"!
 \end{enumerate}
 \end{enumerate}
 
 Este diseño se implementa como:
 
 \begin{codigo-python-sn}
-def pcn1():
-    x = input("Ingrese un numero: ")
+def pos_cero_o_neg():
+    x = int(input("Ingrese un número: "))
     if x > 0:
-       print "Numero positivo"
+        print("Número positivo")
     else:
-       if x == 0:
-          print "Igual a 0"
-       else:
-          print "Numero negativo"
+        if x == 0:
+            print("Igual a 0")
+        else:
+            print("Número negativo")
 \end{codigo-python-sn}
 
-Esta estructura se conoce como de {\it alternativas anidadas} ya que dentro
+Esta estructura se conoce como de \emph{alternativas anidadas} ya que dentro
 de una de las ramas de la alternativa (en este caso la rama del
 \lstinline!else!) se anida otra alternativa.
 
 Pero ésta no es la única forma de implementarlo. Existe otra construcción,
 equivalente a la anterior pero que no exige sangrías cada vez mayores en el texto.
-Se trata de la estructura de {\it alternativas encadenadas}, que tiene la forma
+Se trata de la estructura de \emph{alternativas encadenadas}, que tiene la forma
 
 \begin{codigo-python-sn}
 if <condición_1>:
     <hacer algo_1 si se da la condición_1>
 elif <condición_2>:
     <hacer algo_2 si se da la condición_2>
-
 ...
-
+...
 elif <condición_n>:
     <hacer algo_n si se da la condición_n>
 else:
-	<hacer otra cosa si no se da ninguna de las condiciones anteriores>
+    <hacer otra cosa si no se da ninguna de las condiciones anteriores>
 \end{codigo-python-sn}
 
 Donde \lstinline!if!, \lstinline!elif! y \lstinline!else! son palabras reservadas.
@@ -445,14 +430,14 @@ Donde \lstinline!if!, \lstinline!elif! y \lstinline!else! son palabras reservada
 En nuestro ejemplo:
 
 \begin{codigo-python-sn}
-def pcn2():
-    x = input("Ingrese un numero: ")
+def pos_cero_o_neg():
+    x = int(input("Ingrese un número: "))
     if x > 0:
-       print "Numero positivo"
-    elif x == 0:
-       print "Igual a 0"
+       print("Número positivo")
+    (@elif x == 0:@)
+       print("Igual a 0")
     else:
-       print "Numero negativo"
+       print("Número negativo")
 \end{codigo-python-sn}
 
 Se evalúa la primera alternativa, si es verdadera se ejecuta su cuerpo.  De
@@ -461,22 +446,36 @@ su cuerpo, etc.  Finalmente, si todas las alternativas anteriores fallaron,
 se ejecuta el cuerpo del \lstinline!else!.
 
 \begin{sabias_que}
-No sólo mediante los operadores vistos (como \lstinline!>! o \lstinline!=!)
+No sólo mediante los operadores vistos (como \lstinline!>! o \lstinline!==!)
 es posible obtener expresiones booleanas.  En Python, se consideran
 \textit{verdaderos} los valores numéricos distintos de 0, las cadenas de
 caracteres que no son vacías, y en general cualquier valor que no sea 0 o
-vacío.  Mientras que los valores 0 o vacíos se consideran \textit{falsos}.
+vacío.  Mientras que los valores nulos o vacíos se consideran \textit{falsos}.
 
-Así, el ejemplo anterior también podría escribirse de la siguiente manera:
+Así, en el ejemplo anterior la línea
+
 \begin{codigo-python-sn}
-def pcn2():
-    x = input("Ingrese un numero: ")
-    if x > 0:
-       print "Numero positivo"
-    elif not x:
-       print "Igual a 0"
-    else:
-       print "Numero negativo"
+elif x == 0:
+\end{codigo-python-sn}
+
+también podría escribirse de la siguiente manera:
+
+\begin{codigo-python-sn}
+elif not x:
+\end{codigo-python-sn}
+
+Además, en Python existe un valor especial llamado |None| que se utiliza
+comúnmente para representar la ausencia de un valor. Podemos preguntar si una
+variable |v| es |None| simplemente con:
+
+\begin{codigo-python-sn}
+if v is None:
+\end{codigo-python-sn}
+
+O, como |None| también es considerado un valor nulo,
+
+\begin{codigo-python-sn}
+if not v:
 \end{codigo-python-sn}
 \end{sabias_que}
 
@@ -508,8 +507,8 @@ cálculos en funciones aparte.
 \end{partes}
 }
 
-\ejercicioc{Dados tres puntos en el plano expresados como coordenadas (x,
-y) informar cuál es el que se encuentra más lejos del centro de
+\ejercicioc{Dados tres puntos en el plano expresados como coordenadas $(x, y)$
+informar cuál es el que se encuentra más lejos del centro de
 coordenadas.}
 
 \section{Resumen}
@@ -530,7 +529,6 @@ colocar una lista de posibles condiciones, de las cuales se ejecuta la
 primera que sea verdadera.
 \end{itemize}
 
-\newpage
 \begin{referencia_python}
 
 \begin{sintaxis}{\lstinline!if <condición>:!}
@@ -567,7 +565,7 @@ escribirse en un bloque de indentación mayor.  Puede haber tantos
 if <condición1>:
     # acciones a ejecutar si condición1 es verdadera
 elif <condición2>:
-	# acciones a ejecutar si condición2 es verdadera
+    # acciones a ejecutar si condición2 es verdadera
 else:
     # acciones a ejecutar si ninguna condición fue verdadera
 \end{codigo-python-sn}
@@ -576,34 +574,13 @@ else:
 \begin{sintaxis}{Operadores de comparación}
 Son los que forman las expresiones booleanas.
 
-\begin{tabular}[c]{|l|l|}
-\hline {\bf Expresión} & {\bf Significado}\\
-\hline \hline
-\lstinline!a == b!& \lstinline!a! es igual a \lstinline!b! \\\hline
-\lstinline+a != b+& \lstinline!a! es distinto de \lstinline!b! \\\hline
-\lstinline!a < b!& \lstinline!a! es menor que \lstinline!b! \\\hline
-\lstinline!a <= b!& \lstinline!a! es menor o igual que \lstinline!b! \\\hline
-\lstinline!a > b!& \lstinline!a! es mayor que \lstinline!b! \\\hline
-\lstinline!a >= b!& \lstinline!a! es mayor o igual que \lstinline!b! \\\hline
-\end{tabular}
+\tablaComparacion
 \end{sintaxis}
 
 \begin{sintaxis}{Operadores lógicos}
 Son los utilizados para concatenar o negar distintas expresiones booleanas.
 
-\begin{tabular}[c]{|l|l|}
-\hline {\bf Expresión} & {\bf Significado}\\
-\hline \hline
-\lstinline!a and b!& El resultado es \lstinline!True! solamente si
-\lstinline!a! es \lstinline!True! y  \lstinline!b! es \lstinline!True! \\
-& de lo contrario el resultado es \lstinline!False!\\\hline
-\lstinline!a or b!& El resultado es \lstinline!True! si \lstinline!a! es
-\lstinline!True! o  \lstinline!b! es \lstinline!True! \\
-& de lo contrario el resultado es \lstinline!False!\\\hline
-\lstinline!not a!& El resultado es \lstinline!True! si \lstinline!a! es
-\lstinline!False!\\
-& de lo contrario el resultado es \lstinline!False!\\\hline
-\end{tabular}
+\tablaOperadoresLogicos
 \end{sintaxis}
 
 \end{referencia_python}
@@ -683,15 +660,15 @@ cuando sea posible.
 \begin{ejercicio}
 Suponiendo que el primer día del año fue lunes, escribir una función
 que reciba un número con el día del año (de 1 a 366) y devuelva el día
-de la semana que le toca. Por ejemplo: si recibe '3' debe devolver
-'miércoles', si recibe '9' debe devolver 'martes'.
+de la semana que le toca. Por ejemplo: si recibe \verb|'3'| debe devolver
+\verb|'miércoles'|, si recibe \verb|'9'| debe devolver \verb|'martes'|.
 \end{ejercicio}
 
 
 \extractionlabel{guia}
 \begin{ejercicio}
 $\bigstar$ Escribir un programa que reciba como entrada un entero representando un año
-(p. ej. 751, 1999, o 2158), y muestre por pantalla el mismo año escrito en
+(por ejemplo 751, 1999, o 2158), y muestre por pantalla el mismo año escrito en
 números romanos.
 \end{ejercicio}
 
@@ -699,18 +676,18 @@ números romanos.
 \extractionlabel{guia}
 \begin{ejercicio}
 Programa de astrología: el usuario debe ingresar el día y mes de su cumpleaños
-y el programa le debe decir a qué signo corresponde. \\
-{\bf Nota}: \\
-Aries: 21 de marzo al 20 de abril. \\
-Tauro: 21 de abril al 20 de mayo. \\
-Geminis: 21 de mayo al 21 de junio. \\
-Cancer: 22 de junio al 23 de julio. \\
-Leo: 24 de julio al 23 de agosto. \\
-Virgo: 24 de agosto al 23 de septiembre. \\
-Libra: 24 de septiembre al 22 de octubre. \\
-Escorpio: 23 de octubre al 22 de noviembre. \\
-Sagitario: 23 de noviembre al 21 de diciembre. \\
-Capricornio: 22 de diciembre al 20 de enero. \\
-Acuario: 21 de enero al 19 de febrero. \\
-Piscis: 20 de febrero al 20 de marzo. \\
+y el programa le debe decir a qué signo corresponde.
+
+{\footnotesize
+\begin{center}
+\begin{tabular}[c]{l l}
+Aries: 21 de marzo al 20 de abril. & Tauro: 21 de abril al 20 de mayo. \\
+Geminis: 21 de mayo al 21 de junio. & Cancer: 22 de junio al 23 de julio. \\
+Leo: 24 de julio al 23 de agosto. & Virgo: 24 de agosto al 23 de septiembre. \\
+Libra: 24 de septiembre al 22 de octubre. & Escorpio: 23 de octubre al 22 de noviembre. \\
+Sagitario: 23 de noviembre al 21 de diciembre. & Capricornio: 22 de diciembre al 20 de enero. \\
+Acuario: 21 de enero al 19 de febrero. & Piscis: 20 de febrero al 20 de marzo. \\
+\end{tabular}
+\end{center}
+}
 \end{ejercicio}

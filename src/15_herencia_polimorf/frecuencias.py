@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# encoding: utf-8
 
 def frecuencias(secuencia):
     """ Calcula las frecuencias de aparición de los elementos de

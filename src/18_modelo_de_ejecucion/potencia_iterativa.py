@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# encoding: utf-8
 
 def potencia(b,n):
 	""" Precondición: n debe ser mayor o igual que cero.

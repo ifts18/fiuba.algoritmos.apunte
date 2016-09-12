@@ -1,5 +1,3 @@
-#! /usr/bin/env python
-# encoding: utf-8
 """Requiere el modulo pylab
    http://matplotlib.sourceforge.net"""
 

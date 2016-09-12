@@ -1,17 +1,3 @@
-% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
-
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
-% Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
-%    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
-%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
-%
-% A su criterio, puede utilizar una u otra licencia, o las dos.
-% Para ver una copia de las licencias, puede visitar los sitios
-% mencionados, o enviar una carta a Creative Commons,
-% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
-
 \chapter[Programas sencillos]{Programas sencillos}
 
 En esta unidad empezaremos a resolver problemas sencillos, y a
@@ -19,21 +5,20 @@ programarlos en Python.
 
 \section{Construcción de programas}
 
-Cuando nos piden que hagamos un programa debemos seguir una cierta
-cantidad de pasos para asegurarnos de que tendremos éxito en la
-tarea. La acción irreflexiva (me piden algo, me siento frente a la
-computadora y escribo rápidamente y sin pensarlo lo que me parece
-que es la solución) no constituye una actitud profesional (e
-ingenieril) de resolución de problemas. Toda construcción tiene
-que seguir una metodología, un protocolo de desarrollo, dado.
+Cuando nos disponemos a escribir un programa debemos seguir una cierta cantidad
+de pasos para asegurarnos de que tendremos éxito en la tarea. La acción
+irreflexiva (me siento frente a la computadora y escribo rápidamente y sin
+pensar lo que me parece que es la solución) no constituye una actitud
+profesional (e ingenieril) de resolución de problemas. Toda construcción tiene
+que seguir una metodología, un protocolo de desarrollo.
 
 Existen muchas metodologías para construir programas, pero en este
-curso aplicaremos una metodología sencilla, que es adecuada para
+curso aplicaremos una sencilla, que es adecuada para
 la construcción de programas pequeños, y que se puede resumir en
 los siguientes pasos:
 
 \begin{enumerate}
-\item {\bf Analizar el problema.} Entender profundamente {\it cuál} es
+\item {\bf Analizar el problema.} Entender profundamente \emph{cuál} es
 el problema que se trata de resolver, incluyendo el contexto en el
 cual se usará.
 
@@ -42,7 +27,7 @@ Una vez analizado el problema, asentar el análisis por escrito.
 \end{observacion}
 
 \item {\bf Especificar la solución.} Éste es el punto en el cual
-se describe {\it qué} debe hacer el programa, sin importar
+se describe \emph{qué} debe hacer el programa, sin importar
 el cómo. En el caso de los problemas sencillos que abordaremos,
 deberemos decidir cuáles son los datos de entrada que se nos
 proveen, cuáles son las salidas que debemos producir, y cuál es la
@@ -54,7 +39,7 @@ escrito.
 \end{observacion}
 
 \item {\bf Diseñar la solución.} Éste es el punto en el cuál
-atacamos el {\it cómo} vamos a resolver el problema, cuáles son
+atacamos el \emph{cómo} vamos a resolver el problema, cuáles son
 los algoritmos y las estructuras de datos que usaremos. Analizamos
 posibles variantes, y las decisiones las tomamos usando como dato
 de la realidad el contexto en el que se aplicará la solución, y
@@ -77,7 +62,7 @@ por qué lo hace de esa forma.
 
 \item {\bf Probar el programa.} Diseñar un conjunto de pruebas
 para probar cada una de sus partes por separado, y también la
-correcta integración entre ellas. Utilizar el {\it depurador} como
+correcta integración entre ellas. Utilizar la \emph{depuración} como
 instrumento para descubir dónde se producen ciertos errores.
 
 \begin{observacion}
@@ -141,20 +126,23 @@ llevar todo a metros:
 \end{itemize}
 
 Si una longitud se expresa como $L$ millas, $F$ pies y $P$ pulgadas, su
-conversión a metros se calculará como
-$M = 1609.344 * L + 0.3048 * F + 0.0254 * P.$
+conversión a metros se calculará como:
+
+$$
+M = 1609.344 * L + 0.3048 * F + 0.0254 * P
+$$
 
 Hemos especificado el problema. Pasamos entonces a la próxima etapa.
 
 \item {\bf Diseño.} La estructura de este programa es sencilla:
 leer los datos de entrada, calcular la solución, mostrar el
-resultado, o {\it Entrada-Cálculo-Salida}.
+resultado, o \emph{Entrada-Cálculo-Salida}.
 
-Antes de escribir el programa, escribiremos en {\it pseudocódigo}
+Antes de escribir el programa, escribiremos en \emph{pseudocódigo}
 (un castellano preciso que se usa para describir lo que hace un
 programa) una descripción del mismo:
 
-\begin{verbatim}
+\begin{codigo-nohl-sn}
 Leer cuántas millas tiene la longitud dada
  (y referenciarlo con la variable millas)
 
@@ -168,7 +156,7 @@ Calcular metros = 1609.344 * millas +
     0.3048 * pies + 0.0254 * pulgadas
 
 Mostrar por pantalla la variable metros
-\end{verbatim}
+\end{codigo-nohl-sn}
 
 \item {\bf Implementación.} Ahora estamos en condiciones de
 traducir este pseudocódigo a un programa en lenguaje Python:
@@ -176,16 +164,24 @@ traducir este pseudocódigo a un programa en lenguaje Python:
 \begin{codigo}{ametrico.py}{Convierte medidas inglesas a sistema metrico}
 \begin{codigo-python}
 def main():
-      print "Convierte medidas inglesas a sistema metrico"
-      millas = input("Cuántas millas?: ")
-      pies = input("Y cuántos pies?: ")
-      pulgadas = input("Y cuántas pulgadas?: ")
+    print("Convierte medidas inglesas a sistema metrico")
 
-      metros = 1609.344 * millas + 0.3048 * pies + 0.0254 * pulgadas
-      print "La longitud es de ", metros, " metros"
+    millas = int(input("Cuántas millas?: "))
+    pies = int(input("Y cuántos pies?: "))
+    pulgadas = int(input("Y cuántas pulgadas?: "))
+
+    metros = 1609.344 * millas + 0.3048 * pies + 0.0254 * pulgadas
+    print("La longitud es de ", metros, " metros")
+
 main()
 \end{codigo-python}
 \end{codigo}
+
+\begin{nota}
+En nuestra implementación decidimos dar el nombre |main| a la función principal
+del programa. Esto no es más que una convención: ``main'' significa
+``principal'' en inglés.
+\end{nota}
 
 \item {\bf Prueba.} Probaremos el programa para valores para los que conocemos
 la solución:
@@ -205,14 +201,8 @@ documentar todo el proceso de desarrollo. En este ejemplo la
 documentación completa del proceso lo constituye todo lo escrito
 en esta sección.
 
-\begin{atencion}
-Al entregar un ejercicio, se deberá presentar el desarrollo completo con
-todas las etapas, desde el análisis hasta las pruebas (y el mantenimiento, si
-hubo cambios).
-\end{atencion}
-
 \section {Piezas de un programa Python}
-Para poder empezar a programar en Python es necesario que conocer los elementos
+Para poder empezar a programar en Python es necesario conocer los elementos
 que constituyen un programa en dicho lenguaje y las reglas para construirlos.
 
 \begin{observacion}
@@ -227,7 +217,7 @@ Ya hemos visto que se usan nombres para denominar a los programas
 (\lstinline!ametrico!) y para denominar a las funciones dentro de un
 módulo (\lstinline!main!). Cuando queremos dar nombres a valores usamos
 variables (\lstinline!millas!, \lstinline!pies!, \lstinline!pulgadas!,
-\lstinline!metros!). Todos esos nombres se llaman {\it identificadores}
+\lstinline!metros!). Todos esos nombres se llaman \emph{identificadores}
 y Python tiene reglas sobre qué es un identificador válido y qué
 no lo es.
 
@@ -264,40 +254,33 @@ Python reserva 31 palabras para describir la estructura del
 programa, y no permite que se usen como identificadores. Cuando en
 un programa nos encontramos con que un nombre no es admitido pese
 a que su formato es válido, seguramente se trata de una de las
-palabras de esta lista, a la que llamaremos de {\it palabras
-reservadas}. La lista completa de las palabras reservadas de
-Python aparecen en el cuadro \ref{kw}.
+palabras de esta lista, a la que llamaremos de \emph{palabras
+reservadas}. Esta es la lista completa de las palabras reservadas de
+Python:
 
-\begin{table}[h]
-\begin{tabular}[l]{l l l l l}
-
-\lstinline!and! & \lstinline!del! & \lstinline!from! & \lstinline!not! & \lstinline!while! \\
-\lstinline!as! & \lstinline!elif! & \lstinline!global! & \lstinline!or! & \lstinline!with! \\
-\lstinline!assert! & \lstinline!else! & \lstinline!if! & \lstinline!pass! & \lstinline!yield! \\
- \lstinline!break! & \lstinline!except! & \lstinline!import! & \lstinline!print! \\
-\lstinline!class! & \lstinline!exec! & \lstinline!in! & \lstinline!raise! \\
-\lstinline!continue! & \lstinline!finally! & \lstinline!is! & \lstinline!return! \\
- \lstinline!def! & \lstinline!for! & \lstinline!lambda! & \lstinline!try! \\
-\end{tabular}
-
-\vspace{.5cm} \caption{Las palabras reservadas de Python. Estas
-palabras no pueden ser usadas como identificadores.}\label{kw}
-\end{table}
+\begin{codigo-nohl-sn}
+False      class      finally    is         return
+None       continue   for        lambda     try
+True       def        from       nonlocal   while
+and        del        global     not        with
+as         elif       if         or         yield
+assert     else       import     pass
+break      except     in         raise
+\end{codigo-nohl-sn}
 
 \subsection{Expresiones}
-Una {\it expresión} es una porción de código Python que produce o
+Una \emph{expresión} es una porción de código Python que produce o
 calcula un valor (resultado).
 
 \begin{itemize}
-\item Un valor es una expresión (de hecho es la expresión más
-sencilla). Por ejemplo el resultado de la expresión \lstinline!111! es
-precisamente el número \lstinline!111!.
+\item La expresión más sencilla es un \emph{valor}.  Por ejemplo el
+    resultado de la expresión |111| es el valor |111|.
 
-\item Una variable es una expresión, y el valor que produce es el
-que tiene asociado en el estado (si \lstinline!x! $\ra$ 5 en el estado,
-entonces el resultado de la expresión \lstinline!x!  es el número 5).
+\item Una expresión puede ser una \emph{variable}, y el valor que produce es el
+    que tiene asociado la variable en el estado. Por ejemplo, si |x| $\ra$ 5 en
+    el estado, entonces el resultado de la expresión |x|  es el valor 5.
 
-\item Usamos operaciones para combinar expresiones y construir
+\item Usamos \emph{operaciones} para combinar expresiones y construir
 expresiones más complejas:
 
 \begin{itemize}
@@ -306,77 +289,76 @@ resultado es 6.
 
 \item Si en el estado \lstinline!millas! $\ra$ 1, \lstinline!pies! $\ra$ 0 y
 \lstinline!pulgadas! $\ra$ 0, entonces
-\lstinline!1609.344 * millas + 0.3048 * pies + 0.0254 * pulgadas! es una
+\lstinline[breaklines=true]!1609.344 * millas + 0.3048 * pies + 0.0254 * pulgadas! es una
 expresión cuyo resultado es 1609.344.
 
 \item La exponenciación se representa con el símbolo \lstinline!**!. Por
 ejemplo, \lstinline!x**3! significa $x^3$.
 
 \item Se pueden usar paréntesis para indicar un orden de
-evaluación: \lstinline!((b * b) - (4 * a * c)) / (2 * a)!.
+evaluación: \lstinline[breaklines=true]!((b * b) - (4 * a * c)) / (2 * a)!.
 
-\item Igual que en la matemática, si no hay paréntesis en la
-expresión primero se agrupan las exponenciaciones, luego los
+\item Igual que en la notación matemática, si no hay paréntesis en la
+expresión, primero se agrupan las exponenciaciones, luego los
 productos y cocientes, y luego las sumas y restas.
 
-\item Sin embargo, hay que tener cuidado con lo que sucede con los
-cocientes, porque si \lstinline!x! e \lstinline!y! son números enteros,
-entonces \lstinline!x / y! se calcula como la {\it división entera}
-entre \lstinline!x! e \lstinline!y!:
+\item Hay que prestar atención con lo que sucede con los
+cocientes:
 
-Si \lstinline!x! se refiere al valor 12 e \lstinline!y! se refiere al valor 9
-entonces \lstinline!x / y! se refiere al valor 1.
-
-\item Si \lstinline!x! e \lstinline!y! son números enteros, entonces
-\lstinline!x % y!
-se calcula como el {\it resto de la división entera} entre \lstinline!x!
-e \lstinline!y!:
-
-Si \lstinline!x! se refiere al valor 12 e \lstinline!y! se refiere al valor 9
-entonces  \lstinline!x % y!  se refiere al valor 3.
+\begin{itemize}
+\item La expresión |6 / 4| produce el valor |1.5|.
+\item La expresión |6 // 4| produce el valor |1|, que es el resultado de la
+    \emph{división entera} entre 6 y 4.
+\item La expresión |6 % 4| produce el valor |2|, que es el
+    \emph{resto de la división entera} entre 6 y 4.
+\end{itemize}
 
 \begin{observacion}
 Los números pueden ser tanto enteros (\lstinline!111!, \lstinline!-24!), como
 reales (\lstinline!12.5!, \lstinline!12.0!, \lstinline!-12.5!). Dentro de la
 computadora se representan de manera diferente, y se comportan de manera
-diferente frente a las operaciones.
+diferente frente a las operaciones. En Python, los números enteros se denominan
+|int| (de \emph{integer}), y los números reales |float| (de \emph{floating
+point}).
 \end{observacion}
 
 \end{itemize}
 
-\item Conocemos también dos expresiones muy particulares:
+\item Una expresión puede ser una \emph{llamada a una función}: si |f| es una
+    función que recibe un parámetro, y |x| es una variable, la expresión |f(x)|
+    produce el valor que devuelve la función |f| al llamarla pasándole el valor
+    de |x| por parámetro.
+
+    Algunos ejemplos:
 
 \begin{itemize}
-\item \lstinline!input!, que devuelve el valor ingresado por teclado tal
-como se lo digita (en particular sirve para ingresar valores
-numéricos).
-\item \lstinline!raw_input!, que devuelve lo ingresado por
-teclado como si fuera un texto.
+\item |input()| produce el valor ingresado por teclado tal como se lo digita.
+\item |abs(x)| produce el valor absoluto del número pasado por parámetro.
 \end{itemize}
 
 \end{itemize}
 
-\ejercicioc{
-
+\ejercicioc{%
 Aplicando las reglas matemáticas de asociatividad, decidir
 cuáles de las siguientes expresiones son iguales entre sí:
 
 \begin{partes}
-\item \lstinline!((b * b) - (4 * a * c)) / (2 * a)!,
-\item \lstinline!(b * b - 4 * a * c) / (2 * a)!,
-\item \lstinline!b * b - 4 * a * c / 2 * a!,
+\item \lstinline!((b * b) - (4 * a * c)) / (2 * a)!
+\item \lstinline!((b * b) - (4 * a * c)) // (2 * a)!
+\item \lstinline!(b * b - 4 * a * c) / (2 * a)!
+\item \lstinline!b * b - 4 * a * c / 2 * a!
 \item \lstinline!(b * b) - (4 * a * c / 2 * a)!
 \item \lstinline!1 / 2 * b!
-\item \lstinline!b / 2!.
+\item \lstinline!b / 2!
 \end{partes}}
 
-\ejercicioc{En Python hagan lo siguiente: Denle a \lstinline!a!, \lstinline!b! y
-\lstinline!c!  los valores 10, 100 y 1000 respectivamente y evalúen las
+\ejercicioc{Escribir un programa que le asigne a \lstinline!a!, \lstinline!b! y
+\lstinline!c!  los valores 10, 100 y 1000 respectivamente y evalúe las
 expresiones del ejercicio anterior.}
 
-\ejercicioc{En Python hagan lo siguiente: Denle a \lstinline!a!, \lstinline!b! y
-\lstinline!c!  los valores 10.0, 100.0 y 1000.0 respectivamente y evalúen las
-expresiones del punto anterior.}
+\ejercicioc{Escribir un programa que le asigne a \lstinline!a!, \lstinline!b! y
+\lstinline!c!  los valores 10.0, 100.0 y 1000.0 respectivamente y evalúe las
+expresiones del ejercicio anterior.}
 
 \section{No sólo de números viven los programas} \label{nosolo}
 
@@ -384,60 +366,58 @@ No sólo tendremos expresiones numéricas en un programa Python.
 Recuerden el programa que se usó para saludar a muchos amigos:
 
 \begin{codigo-python-sn}
-def hola(alguien):
-    print "Hola", alguien, "!"
-    print "Estoy programando en Python."
+>>> def hola(alguien):
+...     return "Hola " + alguien + "! Estoy programando en Python."
 \end{codigo-python-sn}
 
 Para invocar a ese programa y hacer que saludara a Ana había que
 escribir \lstinline!hola("Ana")!.
 
 La variable \lstinline!alguien! en dicha invocación queda ligada a un
-valor que es una cadena de caracteres (letras, dígitos, símbolos,
+valor que es una \emph{cadena de caracteres} (letras, dígitos, símbolos,
 etc.), en este caso, \lstinline!"Ana"!.
 
-Python usa también una notación con comillas simples para referirse a las
-cadenas de caracteres, y habla de \lstinline!'Ana'!.
+En Python se puede usar también una notación con comillas simples para
+referirse a las cadenas de caracteres: \lstinline!'Ana'!.
 
 Como en la sección anterior, veremos las reglas de qué constituyen
 expresiones con caracteres:
 
 \begin{itemize}
-\item Un valor también acá es una expresión. Por ejemplo el
-resultado de la expresión \lstinline!'Ana'! es precisamente
-\lstinline!'Ana'!.
+\item Una expresión puede ser simplemente una cadena de texto.  El resultado de
+    la expresión \lstinline!'Ana'! es precisamente el valor \lstinline!'Ana'!.
 
-\item Una variable es una expresión, y el valor que produce es el
-que tiene asociado en el estado (si \lstinline!amiga! $\ra$
-\lstinline!'Ana'! en el estado, entonces el resultado de la
-expresión \lstinline!amiga! es la cadena \lstinline!'Ana'!).
+\item Una variable puede estar asociada a una cadena de texto: si
+    \lstinline!amiga! $\ra$ \lstinline!'Ana'! en el estado, entonces el
+    resultado de la expresión \lstinline!amiga! es el valor \lstinline!'Ana'!.
 
 \item Usamos operaciones para combinar expresiones y construir
 expresiones más complejas, pero atención con qué operaciones están
 permitidas sobre cadenas:
 
 \begin{itemize}
-\item El signo \lstinline!+! no representa la suma sino la concatenación
-de cadenas: Si \lstinline!amiga! es como antes, \lstinline!amiga + 'Laura'!
-es una expresión cuyo valor es \lstinline!AnaLaura!.
+    \item El signo \lstinline!+! no representa la suma sino la
+        \emph{concatenación} de cadenas: Si \lstinline!amiga! es como antes,
+        \lstinline!amiga + 'Laura'!  es una expresión cuyo valor es
+        \lstinline!AnaLaura!.
 
 \begin{atencion}
-No se pueden sumar cadenas más números.
+No se puede sumar cadenas con números.
 \begin{codigo-python-sn}
 >>> amiga="Ana"
 >>> amiga+'Laura'
 'AnaLaura'
 >>> amiga+3
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: cannot concatenate 'str' and 'int' objects
+TypeError: cannot concatenate 'str' and 'int' objects^)
 >>>
 \end{codigo-python-sn}
 \end{atencion}
 
-\item El signo \lstinline!*! se usa para indicar cuántas veces se repite
-una cadena: \lstinline!amiga * 3! es una expresión cuyo valor es
-\lstinline!'AnaAnaAna'!.
+\item El signo \lstinline!*! permite repetir una cadena una cantidad de veces:
+    \lstinline!amiga * 3! es una expresión cuyo valor es
+    \lstinline!'AnaAnaAna'!.
 
 \begin{atencion}
 No se pueden multiplicar cadenas entre sí
@@ -446,9 +426,9 @@ No se pueden multiplicar cadenas entre sí
 >>> amiga * 3
 'AnaAnaAna'
 >>> amiga * amiga
-Traceback (most recent call last):
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-TypeError: can't multiply sequence by non-int of type 'str'
+TypeError: can't multiply sequence by non-int of type 'str'^)
 \end{codigo-python-sn}
 \end{atencion}
 
@@ -458,20 +438,16 @@ TypeError: can't multiply sequence by non-int of type 'str'
 
 \section{Instrucciones}
 
-Las {\it instrucciones} son las órdenes que entiende Python. Ya
+Las \emph{instrucciones} son las órdenes que entiende Python. Ya
 hemos usado varias instrucciones:
 
 \begin{itemize}
-
-\item hemos mostrado valores por pantalla mediante la instrucción
-\lstinline!print!,
-
 \item hemos retornado valores de una función mediante la
 instrucción \lstinline!return!,
 
-\item hemos asociado valores con variables y
+\item hemos asociado valores con variables
 
-\item hemos usado un ciclo para repetir un cálculo.
+\item hemos usado un ciclo |while| o |for| para repetir un cálculo.
 \end{itemize}
 
 \section{Ciclos definidos}
@@ -480,8 +456,8 @@ Hemos ya usado la instrucción \lstinline!for! en el programa que calcula
 cuadrados de enteros en un rango.
 
 \begin{codigo-python-sn}
-    for x in range(n1, n2):
-        print x*x
+for x in range(n1, n2):
+    print(x * x)
 \end{codigo-python-sn}
 
 Este ciclo se llama definido porque de entrada, y una vez leídos
@@ -511,7 +487,7 @@ La secuencia de valores se puede indicar como:
 
 \begin{codigo-python-sn}
 for x in [1, 3, 9, 27]:
-        print x*x
+    print(x * x)
 \end{codigo-python-sn}
 
 imprimirá los cuadrados de los números 1, 3, 9 y 27.
@@ -519,40 +495,41 @@ imprimirá los cuadrados de los números 1, 3, 9 y 27.
 \end{itemize}
 
 \section{Una guía para el diseño}
+
 En su artículo ``How to program it'', Simon Thompson plantea
 algunas preguntas a sus alumnos que son muy útiles para la etapa
 de diseño:
 
 \begin{itemize}
-\item ¿Han visto este problema antes, aunque sea de manera
+\item ¿Has visto este problema antes, aunque sea de manera
 ligeramente diferente?
 
-\item ¿Conocen un problema relacionado? ¿Conocen un programa que
-puede ser útil?
+\item ¿Conoces un problema relacionado? ¿Conoces un programa que
+pueda ser útil?
 
-\item Fíjense en la especificación. Traten de encontrar un
-problema que les resulte familiar y que tenga la misma
+\item Observa la especificación. Intenta encontrar un
+problema que te resulte familiar y que tenga la misma
 especificación o una parecida.
 
-\item Acá hay un problema relacionado con el que ustedes tienen y que ya fue
-resuelto. ¿Lo pueden usar? ¿Pueden usar sus resultados?  ¿Pueden usar sus
-métodos? ¿Pueden agregarle alguna parte auxiliar a ese programa del que ya
-disponen?
+\item Supongamos que hay un problema relacionado, y que ya fue
+resuelto. ¿Puedes usarlo? ¿Puedes usar sus resultados?  ¿Puedes usar sus
+métodos? ¿Puedes agregarle alguna parte auxiliar a ese programa del que ya
+dispones?
 
-\item Si no pueden resolver el problema propuesto, traten de
-resolver uno relacionado. ¿Pueden imaginarse uno relacionado que
+\item Si no puedes resolver el problema propuesto, intenta
+resolver uno relacionado. ¿Puedes imaginarte uno relacionado que
 sea más fácil de resolver? ¿Uno más general? ¿Uno más específico?
 ¿Un problema análogo?
 
-\item ¿Pueden resolver una parte del problema?  ¿Pueden sacar algo
-útil de los datos de entrada? ¿Pueden pensar qué información es
-útil para calcular las salidas? ¿De qué manera se pueden manipular
+\item ¿Puedes resolver una parte del problema?  ¿Puedes sacar algo
+útil de los datos de entrada? ¿Puedes pensar qué información es
+útil para calcular las salidas? ¿De qué manera se puede manipular
 las entradas y las salidas de modo tal que estén ``más cerca''
 unas de las otras?
 
-\item ¿Usaron todos los datos de entrada? ¿Usaron las condiciones
+\item ¿Utilizaste todos los datos de entrada? ¿Utilizaste las condiciones
 especiales sobre los datos de entrada que aparecen en el
-enunciado? ¿Han tenido en cuenta todos los requisitos que se
+enunciado? ¿Has tenido en cuenta todos los requisitos que se
 enuncian en la especificación?
 
 \end{itemize}
@@ -630,7 +607,7 @@ números triangulares, el programa debe imprimir:
 5 - 15
 \end{verbatim}
 
-{\bf Nota}: hacerlo usando y sin usar la ecuación $\sum_{i=1}^n i = n*(n+1)/2$.
+{\bf Nota}: hacerlo usando y sin usar la ecuación $\sum_{i=1}^n i = n\,(n+1)/2$.
 ¿Cuál realiza más operaciones?
 \end{ejercicio}
 

@@ -29,7 +29,7 @@
 # TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 # SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-PDFLATEX   = pdflatex
+PDFLATEX   = xelatex -interaction=nonstopmode -halt-on-error
 BIBTEX	   = bibtex
 MAKEINDEX  = makeindex
 
@@ -75,8 +75,8 @@ define getbibs
 	bibs=`perl -ne '($$_)=/^[^%]*\\\bibliography\{(.*?)\}/;@_=split /,/;foreach $$b (@_) {print "$$b.bib "}' $< $$deps`
 endef
 
-define geteps
-	epses=`perl -ne '@foo=/^[^%]*\\\(includegraphics|psfig)(\[.*?\])?\{(.*?)\}/g;if (defined($$foo[2])) { if ($$foo[2] =~ /.eps$$/) { print "$$foo[2] "; } else { print "$$foo[2].eps "; }}' $< $$deps`
+define getpdfs
+	pdfs=`perl -ne '@foo=/^[^%]*\\\(includegraphics|psfig)(\[.*?\])?\{(.*?)\}/g;if (defined($$foo[2])) { if ($$foo[2] =~ /.pdf$$/) { print "$$foo[2] "; } else { print "$$foo[2].pdf "; }}' $< $$deps`
 endef
 
 define manconf
@@ -85,7 +85,7 @@ endef
 
 .PHONY	: default all pdf clean veryclean
 
-default : principal.pdf ejercicios.pdf
+default : apunte.pdf ejercicios.pdf
 
 all	: $(TRG)
 
@@ -103,14 +103,14 @@ veryclean : clean
 %.d	: %.tex
 	$(get_dependencies) ; echo $$deps ; \
 	$(getbibs) ; echo $$bibs ; \
-	$(geteps) ; echo $$epses ; \
+	$(getpdfs) ; echo $$pdfs ; \
 	$(manconf) ; echo  $$mandeps  ;\
-	echo "$*.pdf $@ : $< $$deps $$bibs $$epses $$mandeps" > $@
+	echo "$*.pdf $@ : $< $$deps $$bibs $$pdfs $$mandeps" > $@
 
-include $(SRC:.tex=.d)
+-include $(SRC:.tex=.d)
 
 # Dependencia adicional para ejercicios.tex.
-ejercicios.tex : principal.pdf
+ejercicios.tex : apunte.pdf
 
 %.pdf : %.tex | %.d
 	@$(run-pdflatex)

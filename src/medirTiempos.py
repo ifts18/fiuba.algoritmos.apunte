@@ -1,4 +1,3 @@
-# encoding: utf-8
 
 """ Este modulo permite medir el tiempo que demora la ejecucion de una funcion
 Utiliza el modulo de python timeit """

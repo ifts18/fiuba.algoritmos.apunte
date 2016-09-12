@@ -1,5 +1,3 @@
-#/usr/bin/env python
-# encoding: utf-8
 
 def fib(n):
 	""" Precondición: n debe ser >= 0.

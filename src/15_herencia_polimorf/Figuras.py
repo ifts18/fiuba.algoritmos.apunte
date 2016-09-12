@@ -1,9 +1,6 @@
-#!/usr/bin/env python
-# encoding: utf-8
-
 from math import pi
 
-class Figura(object):
+class Figura:
     """ Una figura en el plano. """
     def area(self):
         " Este método debe ser redefinido. "

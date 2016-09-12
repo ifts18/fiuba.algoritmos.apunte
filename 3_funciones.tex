@@ -1,66 +1,46 @@
-% Copyright (C) Rosita Wachenchauzer <rositaw@gmail.com>
-% Copyright (C) Margarita Manterola <margamanterola@gmail.com>
-
-% Esta obra está licenciada de forma dual, bajo las licencias Creative
-% Commons:
-%  * Atribución-Compartir Obras Derivadas Igual 2.5 Argentina
-%    http://creativecommons.org/licenses/by-sa/2.5/ar/
-%  * Atribución-Compartir Obras Derivadas Igual 3.0 Unported
-%    http://creativecommons.org/licenses/by-sa/3.0/deed.es_AR.
-%
-% A su criterio, puede utilizar una u otra licencia, o las dos.
-% Para ver una copia de las licencias, puede visitar los sitios
-% mencionados, o enviar una carta a Creative Commons,
-% 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
-
 \chapter[Funciones]{Funciones}
+\label{chapter:funciones}
 
 En la primera unidad vimos que el programador puede definir nuevas
-instrucciones, que llamamos funciones. En particular lo aplicamos a la
-construcción de una función llamada \lstinline+hola+ que salude a todos a
+instrucciones, que llamamos \emph{funciones}. En particular lo aplicamos a la
+construcción de una función llamada \lstinline+hola+ que saluda a todos a
 quienes queramos saludar:
 
 \begin{codigo-python-sn}
 def hola(alguien):
-    print "Hola ", alguien, "!"
-    print "Estoy programando en Python."
+	return "Hola " + alguien + "! Estoy programando en Python."
 \end{codigo-python-sn}
 
-Dijimos en esa ocasión que las funciones tienen partes variables, llamadas
-parámetros, que se asocian a un valor distinto en cada invocación.  El valor
-con el que se asocia un parámetro se llama {\it argumento}.  En nuestro caso la
-invocamos dos veces, para saludar a Ana y a Juan, haciendo que
+La función |hola| recibe un único \emph{parámetro} (|alguien|). Para llamar a
+una función debemos asociar cada uno de los parámetros con algún valor
+determinado (que se denomina \emph{argumento}). Por ejemplo, podemos invocar a
+la función |hola| dos veces, para saludar a Ana y a Juan, haciendo que
 \lstinline+alguien+ se asocie al valor \lstinline!"Ana"! en la primera llamada
-y al valor \lstinline!"Juan"! en la segunda:
+y al valor \lstinline!"Juan"! en la segunda. La función en cada caso devolverá
+un \emph{resultado} que que se calcula a partir del argumento.
 
 \begin{codigo-python-sn}
 >>> hola("Ana")
-Hola Ana !
-Estoy programando en Python.
+'Hola Ana! Estoy programando en Python.'
 >>> hola("Juan")
-Hola Juan !
-Estoy programando en Python.
->>>
+'Hola Juan! Estoy programando en Python.'
 \end{codigo-python-sn}
 
-Una función puede tener ninguno, uno o más parámetros. La función
-\lstinline+hola+ tiene un parámetro. Ya vimos también ejemplos de funciones sin
-parámetros:
+En general, las funciones pueden recibir ninguno, uno o más parámetros
+(separados por comas), y pueden o no devolver un resultado.
 
-\begin{codigo-python-sn}
-def holaPab():
-    print "Hola Pablo!"
-    print "Estoy programando en Python."
-\end{codigo-python-sn}
-
-En el caso de tener más de un parámetro, éstos se separan entre sí por comas,
-y en la invocación también se separan por comas los argumentos.
+\begin{figure}[ht]
+\caption{Una función recibe parámetros y devuelve un resultado.}
+\begin{center}
+\input{graficos/funcion}
+\end{center}
+\end{figure}
 
 \section{Documentación de funciones}
 
 Cada función escrita por un programador realiza una tarea específica.  Cuando
 la cantidad de funciones disponibles para ser utilizadas es grande, puede ser
-difícil saber exactamente qué hace una función.  Es por eso que es
+difícil recordar exactamente qué hace cada función.  Es por eso que es
 extremadamente importante documentar en cada función cuál es la tarea que
 realiza, cuáles son los parámetros que recibe y qué es lo que devuelve, para
 que a la hora de utilizarla sea lo pueda hacer correctamente.
@@ -71,50 +51,86 @@ el ejemplo anterior:
 
 \begin{codigo-python-sn}
 def hola(alguien):
-    """ Imprime por pantalla un saludo, dirigido a la persona que
-        se indica por parámetro. """
-    print "Hola ", alguien, "!"
-    print "Estoy programando en Python."
+    """Devuelve un saludo dirigido a la persona indicada por parámetro."""
+    return "Hola " + alguien + "! Estoy programando en Python."
 \end{codigo-python-sn}
 
+\begin{sabias_que}
 Cuando una función definida está correctamente documentada, es posible acceder
-a su documentación mediante la función \lstinline!help! provista por Python:
+a su documentación mediante la función \lstinline!help! provista por Python.
+Suponiendo que la función |hola| está definida en el archivo |saludo.py|:
 
 \begin{codigo-python-sn}
+(~\$~) python -i saludo
 >>> help(hola)
 Help on function hola in module __main__:
 
 hola(alguien)
-    Imprime por pantalla un saludo, dirigido a la persona que
-    se indica por parámetro.
+    Devuelve un saludo dirigido a la persona indicada por parámetro.
 \end{codigo-python-sn}
 
 De esta forma no es necesario mirar el código de una función para saber lo que
 hace, simplemente llamando a \lstinline!help! es posible obtener esta
 información.
+\end{sabias_que}
 
-\section{Imprimir versus Devolver}
+\section{Imprimir versus devolver}
 
-A continuación se define una función
-\lstinline+print_asegundos (horas, minutos, segundos)+
-con tres parámetros (\lstinline+horas+, \lstinline+minutos+
-y \lstinline+segundos+) que imprime por pantalla la transformación a segundos
-de una medida de tiempo expresada en horas, minutos y segundos:
+Supongamos que tenemos una medida de tiempo expresada en horas, minutos y
+segundos, y queremos calcular la cantidad total de segundos. Cuando nos
+disponemos a escribir una función en Python para resolver este problema nos
+enfrentamos con dos posibilidades:
 
-\begin{codigo-python}
-def print_asegundos (horas, minutos, segundos):
-    """ Transforma en segundos una medida de tiempo expresada en
-        horas, minutos y segundos """
-    segsal = 3600 * horas + 60 * minutos + segundos  # regla de transformación
-    print "Son", segsal, "segundos"
-\end{codigo-python}
+\begin{enumerate}
+\item \emph{Devolver} el resultado con la instrucción |return|.
+\item \emph{Imprimir} el resultado llamando a la función |print|.
+\end{enumerate}
 
-Para ver si realmente funciona, podemos ejecutar la función de la siguiente
-forma:
+A continuación mostramos ambas implementaciones:
 
 \begin{codigo-python-sn}
->>> print_asegundos (1, 10, 10)
-Son 4210 segundos
+def devolver_segundos(horas, minutos, segundos):
+    """Transforma en segundos una medida de tiempo expresada en
+       horas, minutos y segundos"""
+    return 3600 * horas + 60 * minutos + segundos
+
+def imprimir_segundos(horas, minutos, segundos):
+    """Imprime una medida de tiempo expresada en horas, minutos y
+       segundos, luego de transformarla en segundos"""
+    print(3600 * horas + 60 * minutos + segundos)
+\end{codigo-python-sn}
+
+Veamos si funcionan:
+
+\begin{codigo-python-sn}
+>>> devolver_segundos(1, 10, 10)
+4210
+>>> imprimir_segundos(1, 10, 10)
+4210
+\end{codigo-python-sn}
+
+Aparentemente el comportamiento de ambas funciones es idéntico, pero hay una
+gran diferencia. La función |devolver_segundos| nos permite hacer algo como
+esto:
+
+\begin{codigo-python-sn}
+>>> s1 = devolver_segundos(1, 10, 10)
+>>> s2 = devolver_segundos(2, 32, 20)
+>>> s1 + s2
+13350
+\end{codigo-python-sn}
+
+En cambio, la función |imprimir_segundos| nos impide utilizar el resultado de
+la llamada para hacer otras operaciones; lo único que podemos hacer es
+mostrarlo en pantalla. Por eso decimos que |devolver_segundos| es más
+\emph{reutilizable}. Por ejemplo, podemos reutilizar |devolver_segundos| en la
+implementación de |imprimir_segundos|, pero no a la inversa:
+
+\begin{codigo-python-sn}
+def imprimir_segundos(horas, minutos, segundos):
+    """Imprime una medida de tiempo expresada en horas, minutos y
+       segundos, luego de transformarla en segundos"""
+    print(devolver_segundos(horas, minutos, segundos))
 \end{codigo-python-sn}
 
 Contar con funciones es de gran utilidad, ya que nos permite ir armando una
@@ -129,27 +145,12 @@ resultados se devuelven, para que la gente que usa esas funciones manipule
 esos resultados a voluntad: los imprima, los use para realizar cálculos
 más complejos, etc.
 
-\begin{codigo-python}
-def calc_asegundos (horas, minutos, segundos):
-    """ Transforma en segundos una medida de tiempo expresada en
-        horas, minutos y segundos """
-    segsal = 3600 * horas + 60 * minutos + segundos  # regla de transformacion
-    return segsal
-\end{codigo-python}
-
-De esta forma, es posible realizar distintas operaciones con el valor obtenido
-luego de hacer la cuenta:
-
-\begin{codigo-python-sn}
->>> print calc_asegundos (1, 10, 10)
-4210
->>> print "Son", calc_asegundos (1, 10, 10), "segundos"
-Son 4210 segundos
->>> y = calc_asegundos(1, 10, 10)
->>> z = calc_asegundos(2, 20, 20)
->>> y+z
-12630
-\end{codigo-python-sn}
+\begin{observacion}
+En general, una función es más reutilizable si devuelve un resultado en
+lugar de imprimirlo mediante la función |print|. Análogamente, una función es
+más reutilizable si recibe parámetros en lugar de leer datos mediante la
+función |input|.
+\end{observacion}
 
 \ejercicioc{Escribir una función \lstinline+repite_hola+ que reciba como
 parámetro un número entero \lstinline+n+ y escriba por pantalla el mensaje
@@ -157,7 +158,7 @@ parámetro un número entero \lstinline+n+ y escriba por pantalla el mensaje
 \lstinline+n+.}
 
 \ejercicioc{Escribir otra función \lstinline+repite_hola+ que reciba como
-parámetro un número entero \lstinline+n+ y retorne la cadena formada por
+parámetro un número entero \lstinline+n+ y devuelva la cadena formada por
 \lstinline+n+ concatenaciones de  \lstinline!"Hola"!. Invocarla con distintos
 valores de \lstinline+n+.}
 
@@ -168,7 +169,7 @@ Invocarla con distintos valores de \lstinline+n+ y de \lstinline+saludo+.}
 
 \ejercicioc{Escribir otra función \lstinline+repite_saludo+ que reciba como
 parámetro un número entero \lstinline+n+ y una cadena \lstinline+saludo+
-retorne el valor de \lstinline+n+ concatenaciones de \lstinline+saludo+.
+devuelva el valor de \lstinline+n+ concatenaciones de \lstinline+saludo+.
 Invocarla con distintos valores de \lstinline+n+ y de \lstinline+saludo+.}
 
 \section{Cómo usar una función en un programa}
@@ -177,117 +178,117 @@ Una función es útil porque nos permite repetir la misma
 instrucción (puede que con argumentos distintos) todas las veces
 que las necesitemos en un programa.
 
-Para utilizar las funciones definidas anteriormente, escribiremos un programa
-que pida tres duraciones, y en los tres casos las transforme a segundos y las
-muestra por pantalla.
+Supongamos que necesitamos un programa que permita transformar tres duraciones
+de tiempo en segundos:
 
 \begin{enumerate}
 
-\item {\bf Análisis: } El programa debe pedir tres duraciones expresadas en
-horas, minutos y segundos, y las tiene que mostrar en pantalla expresadas en
-segundos.
+\item {\bf Análisis: } El programa debe pedir al usuario tres duraciones
+    expresadas en horas, minutos y segundos, y las tiene que mostrar en
+    pantalla expresadas en segundos.
 
 \item {\bf Especificación: }
 \begin{itemize}
 \item {\bf Entradas: } Tres duraciones leídas de teclado y expresadas en horas,
 minutos y segundos.
 \item {\bf Salidas: } Mostrar por pantalla cada una de las duraciones
-ingresadas, convertidas a segundos.  Para cada juego de datos de entrada (h, m,
-s) se obtiene entonces 3600 * h + 60 * m + s, y se muestra ese resultado por
-pantalla.
+    ingresadas, convertidas a segundos.  Para cada juego de datos de entrada
+    ($h$, $m$, $s$) se obtiene entonces $3600 h + 60 m + s$, y se muestra
+    ese resultado por pantalla.
 \end{itemize}
+
 \item {\bf Diseño:}
 \begin{itemize}
 \item Se tienen que leer tres conjuntos de datos y para cada conjunto hacer lo
-mismo, se trata entonces de un programa con estructura de ciclo definido de
+mismo; se trata entonces de un programa con estructura de ciclo definido de
 tres pasos:
 
-\begin{verbatim}
+\begin{codigo-nohl-sn}
 repetir 3 veces:
     <hacer cosas>
-\end{verbatim}
+\end{codigo-nohl-sn}
 
-\item El cuerpo del ciclo ( \verb+<hacer cosas>+)  tiene la estructura {\it
-Entrada-Cálculo-Salida}.  En pseudocódigo:
+\item El cuerpo del ciclo (\verb+<hacer cosas>+) tiene la estructura
+\emph{Entrada-Cálculo-Salida}.  En pseudocódigo:
 
-\begin{verbatim}
+\begin{codigo-nohl-sn}
 Leer cuántas horas tiene el tiempo dado
- (y referenciarlo con la variable hs)
+ (y referenciarlo con la variable h)
 
 Leer cuántos minutos tiene tiene el tiempo dado
- (y referenciarlo con la variable min)
+ (y referenciarlo con la variable m)
 
 Leer cuántos segundos tiene el tiempo dado
- (y referenciarlo con la variable seg)
+ (y referenciarlo con la variable s)
 
-Mostrar por pantalla 3600 * hs + 60 * min + seg
-\end{verbatim}
+Mostrar por pantalla 3600 * h + 60 * m + s
+\end{codigo-nohl-sn}
 
-Pero convertir y mostrar por pantalla es exactamente lo que
-hace nuestra función \verb+print_asegundos+, por lo que podemos
-hacer que el cuerpo del ciclo se diseñe como:
+Pero la conversión a segundos es exactamente lo que hace nuestra función
+\verb+devolver_segundos+. Si la renombramos a |a_segundos|, podemos hacer que
+el cuerpo del ciclo se diseñe como:
 
-\begin{verbatim}
+\begin{codigo-nohl-sn}
 Leer cuántas horas tiene la duración dada
- (y referenciarlo con la variable hs)
+ (y referenciarlo con la variable h)
 
 Leer cuántos minutos tiene tiene la duración dada
- (y referenciarlo con la variable min)
+ (y referenciarlo con la variable m)
 
 Leer cuántas segundos tiene la duración dada
- (y referenciarlo con la variable seg)
+ (y referenciarlo con la variable s)
 
-Invocar la función print_asegundos(hs, min, seg)
-\end{verbatim}
+(@Invocar la función a_segundos(h, m, s) y@)
+(@mostrar el resultado en pantalla.@)
+\end{codigo-nohl-sn}
 
 \item El pseudocódigo final queda:
 
-\begin{verbatim}
+\begin{codigo-nohl-sn}
 repetir 3 veces:
-        Leer cuántas horas tiene la duración dada
-        (y referenciarlo con la variable hs)
+    Leer cuántas horas tiene la duración dada
+     (y referenciarlo con la variable h)
 
-        Leer cuántos minutos tiene la duración dada
-        (y referenciarlo con la variable min)
+    Leer cuántos minutos tiene la duración dada
+     (y referenciarlo con la variable m)
 
-        Leer cuántos segundos tiene la duración dada
-        (y referenciarlo con la variable seg)
+    Leer cuántos segundos tiene la duración dada
+     (y referenciarlo con la variable s)
 
-        Invocar la función print_asegundos(hs, min, seg)
-\end{verbatim}
+    Invocar la función a_segundos(h, m, s) y
+    mostrar el resultado en pantalla.
+\end{codigo-nohl-sn}
 
 \end{itemize}
 \item {\bf Implementación:} A partir del diseño, se escribe el programa
-Python que se muestra en el Código \ref{trestiempos}, que se guardará
+Python que se muestra en el Código~\ref{trestiempos}, que se guardará
 en el archivo \verb!tres_tiempos.py!.
 
 \begin{codigo}{\label{trestiempos} tres\_tiempos.py}{Lee tres tiempos y los imprime en segundos}
 \begin{codigo-python}
-def print_asegundos (horas, minutos, segundos):
-    """ Transforma en segundos una medida de tiempo expresada en
-        horas, minutos y segundos """
-    segsal = 3600 * horas + 60 * minutos + segundos
-    print "Son", segsal, "segundos"
+def a_segundos(horas, minutos, segundos):
+    """Transforma en segundos una medida de tiempo expresada en
+       horas, minutos y segundos"""
+    return 3600 * horas + 60 * minutos + segundos
 
 def main():
-	""" Lee tres tiempos expresados en hs, min y seg, y usa
-		print_asegundos para mostrar en pantalla la conversión a
-        segundos """
+    """Lee tres tiempos expresados en horas, minutos y segundos,
+       y muestra en pantalla su conversión a segundos"""
     for x in range(3):
-        hs = input("Cuantas horas?: ")
-        min = input("Cuantos minutos?: ")
-        seg = input("Cuantos segundos?: ")
-        print_asegundos(hs, min, seg)
+        h = int(input("Cuantas horas?: "))
+        m = int(input("Cuantos minutos?: "))
+        s = int(input("Cuantos segundos?: "))
+        print("Son", a_segundos(h, m, s), "segundos")
 
 main()
 \end{codigo-python}
 \end{codigo}
 
-\item {\bf Prueba: } Probamos el programa con las ternas (1,0,0), (0,1,0) y
-(0,0,1):
+\item {\bf Prueba: } Probamos el programa con las ternas $(1,0,0)$, $(0,1,0)$ y
+$(0,0,1)$:
 
-\begin{codigo-python-sn}
->>> import tres_tiempos
+\begin{codigo-nohl-sn}
+(~\$~) python tres_tiempos.py
 Cuantas horas?: 1
 Cuantos minutos?: 0
 Cuantos segundos?: 0
@@ -300,81 +301,60 @@ Cuantas horas?: 0
 Cuantos minutos?: 0
 Cuantos segundos?: 1
 Son 1 segundos
->>>
-\end{codigo-python-sn}
+\end{codigo-nohl-sn}
 \end{enumerate}
 
-\ejercicioc{Resolver el problema anterior usando ahora la función
-\verb+calc_asegundos+.}
+\section{Alcance de las variables}
 
-\section{Más sobre los resultados de las funciones}
-
-Ya hemos visto cómo hacer para que las funciones que se comporten como las
-funciones que conocemos, las de la matemática, que
-se usan para calcular resultados.
-
-Veremos ahora varias cuestiones a tener en cuenta al escribir
-funciones. Para ello volvemos a escribir una función que eleva al cuadrado un número.
+Ya hemos visto que podemos definir variables, ya sea dentro o fuera del cuerpo
+de una función. Veamos un ejemplo, utilizando la función |suma_cuadrados| de la
+unidad~\ref{chapter:conceptos}:
 
 \begin{codigo-python-sn}
->>> def cuadrado (x):
-...         cua = x * x
-...         return cua
-...
->>> y = cuadrado (5)
->>> y
-25
->>>
+>>> def suma_cuadrados(n):
+...     suma = 0
+...     for x in range(1, n + 1):
+...         suma = suma + cuadrado(x)
+...     return suma
 \end{codigo-python-sn}
 
-¿Por qué no usamos dentro del programa el valor \verb+cua+ calculado dentro de
-la función?
+¿Qué pasa si intentamos utilizar la variable |suma| fuera de la función?
 
 \begin{codigo-python-sn}
->>> def cuadrado (x):
-...     cua = x * x
-...     return cua
-...
->>> cua
-Traceback (most recent call last):
+>>> suma
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-NameError: name 'cua' is not defined
+NameError: name 'suma' is not defined^)
 >>>
 \end{codigo-python-sn}
 
 \begin{observacion}
-Las variables y los parámetros que se declaran
-dentro de una función no existen fuera de ella, no se los conoce.
-Fuera de la función se puede ver sólo el valor que retorna
-y es por eso que es necesario introducir la instrucción \lstinline!return!.
+Las variables y los parámetros que se declaran dentro de una función no existen
+fuera de ella, y por eso se las denomina \emph{variables locales}. Fuera de la
+función se puede acceder únicamente al valor que devuelve mediante |return|.
 \end{observacion}
 
-¿Para qué hay que introducir un \lstinline+return+ en la función?
-¿No alcanza con el valor que se calcula dentro de la misma
-para que se considere que la función retorna un valor? En
-Python no alcanza (hay otros lenguajes en los que se considera que el
-último valor calculado en una función es el valor de retorno de la misma).
+Veamos en detalle qué sucede cuando invocamos a la función mediante la
+instrucción:
 
 \begin{codigo-python-sn}
->>> def cuadrado (x):
-...     cua = x * x
-...
->>> y = cuadrado (5)
->>> y
->>>
+>>> y = suma_cuadrados(5)
 \end{codigo-python-sn}
 
-Cuando se invoca la función \lstinline!cuadrado! mediante la instrucción
-\verb+y = cuadrado (5)+ lo que sucede es lo siguiente:
-
 \begin{itemize}
-\item Se invoca a \lstinline!cuadrado! con el argumento \lstinline!5!, y se ejecuta
-el cuerpo de la función.
-\item El valor que devuelve la función se asocia con la variable \lstinline!y!.
+\item Se invoca a |suma_cuadrados| con el argumento 5, y se ejecuta
+    el cuerpo de la función con la variable local |n| $\ra$ 5.
+\item La función declara una variable local |suma| $\ra$ 0.
+\item Cuando la ejecución llega a la línea |return suma|, la variable |suma|
+    $\ra$ 55. Por lo tanto, la función devuelve el valor 55.
+\item La función termina su ejecución, y con ella dejan de existir todas sus
+    variables locales: |n| y |suma|.
+\item Se declara la variable |y| $\ra$ 55, que es el valor que devolvió la
+    función.
 \end{itemize}
 
-Es por eso que si la función no devuelve ningún valor, no queda ningún valor
-asociado a la variable \lstinline!y!.
+Si la función no devolviera ningún valor, la variable |y| no quedaría asociada
+a ningún valor.
 
 \section{Un ejemplo completo}
 
@@ -393,10 +373,11 @@ Aplicaremos los pasos aprendidos:
 
 \item {\bf Análisis: }
 \begin{itemize}
-\item ¿Cuántas tarifas distintas se usan? Una sola (la llamaremos \lstinline!f!).
+\item ¿Cuántas tarifas distintas se usan? Una sola (la llamaremos $p$).
 \item ¿Cuántas comunicaciones se realizaron? La cantidad de comunicaciones (a
-la que llamaremos \lstinline!n!) se informa cuando se inicia el programa.
-\item ¿En qué formato vienen las duraciones de las comunicaciones? Vienen como ternas (h, m, s).
+la que llamaremos $n$) se informa cuando se inicia el programa.
+\item ¿En qué formato vienen las duraciones de las comunicaciones? Vienen como
+    ternas $(h, m, s)$.
 \item ¿Qué se hace con esas ternas? Se convierten a segundos y se calcula el costo de cada
 comunicación multiplicando el tiempo por la tarifa.
 \end{itemize}
@@ -406,28 +387,29 @@ comunicación multiplicando el tiempo por la tarifa.
 
 \item {\bf Entradas: }
 \begin{itemize}
-\item Una tarifa \lstinline+f+ expresada en pesos/segundo.
-\item Una cantidad \lstinline+n+ de llamadas telefónicas.
-\item \lstinline+n+ duraciones de llamadas leídas de teclado y expresadas en horas, minutos y segundos.
+\item Una tarifa $p$ expresada en pesos/segundo.
+\item Una cantidad $n$ de llamadas telefónicas.
+\item $n$ duraciones de llamadas leídas de teclado y expresadas en horas, minutos y segundos.
 \end{itemize}
 
-\item {\bf Salidas: } Mostrar por pantalla las \lstinline+n+ duraciones ingresadas, convertidas a segundos,
+\item {\bf Salidas: } Mostrar por pantalla las $n$ duraciones ingresadas, convertidas a segundos,
 y su costo.
-Para cada juego de datos de entrada (h, m, s) se imprime:
-\begin{displaymath}
-3600 * h + 60 * m + s, f * (3600 * h + 60 * m + s) .
-\end{displaymath}
+Para cada juego de datos de entrada $(h, m, s)$ se imprime:
+$$ 3600 h + 60 m + s $$
+$$ p \cdot (3600 h + 60 m + s) $$
 \end{itemize}
 
 \item {\bf Diseño:}
 
-Siguiendo a Thompson, buscamos un programa que haga algo análogo, y vemos si se
-lo puede modificar para resolver nuestro problema.  El programa
-\lstinline+tres_tiempos+ que hicimos anteriormente,  se parece bastante a lo
-que necesitamos. Veamos las diferencias entre sus especificaciones.
+Lo primero que hacemos es buscar un programa que haga algo análogo y ver si se
+lo puede modificar para resolver nuestro problema.  Hay similitudes entre el requerimiento
+y el programa \lstinline+tres_tiempos+ que desarrollamos anteriormente. 
+Veamos las diferencias entre sus especificaciones.
 
-\begin{tabular}[l]{|p{6.8cm}|p{7.5cm}|}
-\hline {\lstinline!tres_tiempos.py!} & \lstinline!tarifador.py!\\
+\begin{center}
+\begin{tabular}{p{0.4\textwidth} p{0.4\textwidth}}
+\lstinline!tres_tiempos.py! & \lstinline!tarifador.py!
+\\
 \hline
 \begin{verbatim}
 repetir 3 veces:
@@ -435,7 +417,7 @@ repetir 3 veces:
 \end{verbatim}
 &
 \begin{verbatim}
-leer el valor de f
+leer el valor de p
 leer el valor de n
 repetir n veces:
     <hacer cosas>
@@ -445,116 +427,84 @@ repetir n veces:
 El cuerpo del ciclo:
 {\footnotesize
 \begin{verbatim}
-Leer el valor de hs
-Leer el valor de min
-Leer el valor de seg
-Invocar print_asegundos(hs, min, seg)
-
-
+Leer el valor de h
+Leer el valor de m
+Leer el valor de s
+Mostrar a_segundos(h, m, s)
 \end{verbatim}
 } &
 El cuerpo del ciclo:
 {\footnotesize
 \begin{verbatim}
-Leer el valor de hs
-Leer el valor de min
-Leer el valor de seg
-Asignar segcalc = asegundos(hs, min, seg)
-Calcular costo = segcalc * f
-Mostrar por pantalla segcalc y costo
+Leer el valor de h
+Leer el valor de m
+Leer el valor de s
+duracion = a_segundos(h, m, s)
+costo = duracion * p
+Mostrar duracion y costo
 \end{verbatim}
 } \\
-\hline
-{\footnotesize
-\begin{verbatim}
-print_asegundos (hs, min, seg):
-	segsal = 3600*hs+60*min+seg
-	print segsal
-\end{verbatim}
-} &
-{\footnotesize
-\begin{verbatim}
-asegundos (hs, min, seg):
-	segsal = 3600*hs+60*min+seg
-	return segsal
-\end{verbatim}
-} \\
-\hline
 \end{tabular}
+\end{center}
 
+\item {\bf Implementación:} El programa resultante se muestra en el Código~\ref{tarifador}.
 
-En primer lugar se observa que el \lstinline!tarifador! debe leer el valor de
-la tarifa (\lstinline!f!) y que en \lstinline!tres_tiempos! se conoce la
-cantidad de ternas (3), mientras que en \lstinline!tarifador! la cantidad
-de ternas es un dato a ingresar.
-
-Además, se puede ver que en el cuerpo del ciclo de
-\lstinline!tres_tiempos!, se lee una terna y se llama a
-\lstinline!print_asegundos! que calcula, imprime y no devuelve ningún
-valor.  Si hiciéramos lo mismo en \lstinline!tarifador!, no podríamos
-calcular el costo de la comunicación.  Es por ello que en lugar de usar
-\lstinline!print_asegundos! se utiliza la función \lstinline!asegundos!,
-que calcula el valor transformado y lo devuelve en lugar de imprimirlo y en
-el cuerpo principal del programa se imprime el tiempo junto con el costo
-asociado.
-
-\item {\bf Implementación:} El siguiente es el programa resultante:
-
-\begin{codigo}{tarifador.py}{Factura el tiempo de uso de un teléfono}
+\begin{codigo}{\label{tarifador} tarifador.py}{Programa para calcular el costo
+    de uso de un teléfono.}
 \begin{codigo-python}
 def main():
-	""" El usuario ingresa la tarifa por segundo, cuántas
-		comunicaciones se realizaron, y la duracion de cada
-		comunicación expresada en horas, minutos y segundos. Como
-		resultado se informa la duración en segundos de cada
-        comunicación y su costo. """
+    """El usuario ingresa la tarifa por segundo, cuántas
+       comunicaciones se realizaron, y la duracion de cada
+       comunicación expresada en horas, minutos y segundos. Como
+       resultado se informa la duración en segundos de cada
+       comunicación y su costo."""
 
-    f = input("¿Cuánto cuesta 1 segundo de comunicacion?: ")
-    n = input("¿Cuántas comunicaciones hubo?: ")
+    p = float(input("¿Cuánto cuesta 1 segundo de comunicacion?: "))
+    n = int(input("¿Cuántas comunicaciones hubo?: "))
     for x in range(n):
-        hs = input("¿Cuántas horas?: ")
-        min = input("¿Cuántos minutos?: ")
-        seg = input("¿Cuántos segundos?: ")
-        segcalc = asegundos(hs, min, seg)
-        costo = segcalc * f
-        print "Duracion: ", segcalc, "segundos. Costo: ",costo, "$."
+        h = int(input("¿Cuántas horas?: "))
+        m = int(input("¿Cuántos minutos?: "))
+        s = int(input("¿Cuántos segundos?: "))
+        duracion = a_segundos(h, m, s)
+        costo = duracion * p
+        print("Duracion:", duracion, "segundos. Costo: (~\$~)", costo)
 
-def asegundos (horas, minutos, segundos):
-           segsal = 3600 * horas + 60 * minutos + segundos
-           return segsal
+def a_segundos(horas, minutos, segundos):
+    """Transforma en segundos una medida de tiempo expresada en
+       horas, minutos y segundos"""
+	return 3600 * horas + 60 * minutos + segundos
 
 main()
 \end{codigo-python}
 \end{codigo}
 
-\item {\bf Prueba:} Lo probamos con una tarifa de \$ 0,40 el segundo y tres
-ternas de \lstinline!(1,0,0)!, \lstinline!(0,1,0)! y \lstinline!(0,0,1)!. Ésta
-es la corrida:
-\begin{codigo-python-sn}
->>> import tarifador
+\item {\bf Prueba:} Lo probamos con una tarifa de \$ 0.40 el segundo y tres
+ternas de \lstinline!(1,0,0)!, \lstinline!(0,1,0)! y \lstinline!(0,0,1)!:
+
+\begin{codigo-nohl-sn}
+(~\$~) python tarifador.py
 Cuanto cuesta 1 segundo de comunicacion?: 0.40
 Cuantas comunicaciones hubo?: 3
 Cuantas horas?: 1
 Cuantos minutos?: 0
 Cuantos segundos?: 0
-Duracion:  3600 segundos. Costo:  1440.0 $.
+Duracion: 3600 segundos. Costo: (~\$~) 1440.0
 Cuantas horas?: 0
 Cuantos minutos?: 1
 Cuantos segundos?: 0
-Duracion:  60 segundos. Costo:  24.0 $.
+Duracion: 60 segundos. Costo: (~\$~) 24.0
 Cuantas horas?: 0
 Cuantos minutos?: 0
 Cuantos segundos?: 1
-Duracion:  1 segundos. Costo:  0.4 $.
->>>
-\end{codigo-python-sn}
+Duracion: 1 segundos. Costo: (~\$~) 0.4
+\end{codigo-nohl-sn}
 
 \item {\bf Mantenimiento:}
 
 \ejercicioc {Corregir el programa para que:
 \begin{itemize}
-\item Imprima el costo en pesos y centavos, en lugar de un número decimal.
-\item Informe además cuál fue el total facturado en la corrida.
+\item Informe el costo en pesos y centavos, en lugar de un número decimal.
+\item Informe cuál fue el total facturado en la corrida.
 \end{itemize}
 }
 \end{enumerate}
@@ -562,10 +512,14 @@ Duracion:  1 segundos. Costo:  0.4 $.
 
 \section{Devolver múltiples resultados}
 \label{fun:multiple_return}
-Ahora nos piden que escribamos una función que dada una duración
-en segundos sin fracciones (representada por un número entero) calcule
-la misma duración en horas, minutos y segundos.
 
+\begin{problemac}
+Escribir una función que, dada una duración en segundos sin fracciones
+(representada por un número entero), calcule la misma duración en horas,
+minutos y segundos.
+\end{problemac}
+
+\begin{solucion}
 La especificación es sencilla:
 \begin{itemize}
 \item La cantidad de horas es la duración informada en segundos dividida
@@ -579,92 +533,85 @@ entero, todas las operaciones que se indican más arriba carecen de sentido.
 
 ¿Cómo hacemos para devolver más de un valor? En realidad lo que se espera
 de esta función es que devuelva una terna de valores: si ya calculamos
-\lstinline!hs!, \lstinline!min! y \lstinline!seg!, lo que debemos retornar
-es la terna \lstinline+(hs, min, seg)+:
+\lstinline!h!, \lstinline!m! y \lstinline!s!, lo que debemos devolver
+es la terna \lstinline+(h, m, s)+:
 
-\begin{codigo-python}
-def aHsMinSeg (x):
-   """ Dada una duración en segundos sin fracciones
-      (la función debe invocarse con números enteros)
-      se la convierte a horas, minutos y segundos """
-   hs = x / 3600
-   min = (x % 3600) / 60
-   seg = (x % 3600 ) % 60
-   return (hs, min, seg)
-\end{codigo-python}
+\begin{codigo-python-sn}
+def a_hms(segundos):
+   """Dada una duración entera en segundos
+      se la convierte a horas, minutos y segundos"""
+   h = segundos / 3600
+   m = (segundos % 3600) / 60
+   s = (segundos % 3600) % 60
+   return h, m, s
+\end{codigo-python-sn}
+\end{solucion}
 
 Esto es lo que sucede al invocar esta función:
 
 \begin{codigo-python-sn}
->>> (h, m, s) = aHsMinSeg(3661)
->>> print "Son",h,"horas",m,"minutos",s,"segundos"
+>>> h, m, s = a_hms(3661)
+>>> print("Son", h, "horas", m, "minutos", s, "segundos")
 Son 1 horas 1 minutos 1 segundos
->>> (h, m, s) = aHsMinSeg(3661.0)  # aca violamos la especificacion
->>> print "Son",h,"horas",m,"minutos",s,"segundos" # y esto es lo que pasa:
-Son 1.0169444444444444 horas 1.0166666666666666 minutos 1.0 segundos
->>>
 \end{codigo-python-sn}
 
 \begin{sabias_que}
-Cuando la función debe retornar múltiples resultados se empaquetan todos juntos
-en una n-upla del tamaño adecuado.
+Cuando la función debe devolver múltiples resultados, se empaquetan todos juntos
+en una \emph{n-upla} (secuencia de valores separados por comas) del tamaño adecuado.
 
-Esta característica está presente en Python, Haskell, y algunos otros pocos
+Esta característica está presente en Python, Ruby, Haskell y algunos otros pocos
 lenguajes.  En los lenguajes en los que esta característica no está
-presente, como C, Pascal, Java o PHP, es necesario recurrir a otras
+presente, como C, Pascal o Java, es necesario recurrir a otras
 técnicas más complejas para poder obtener un comportamiento similar.
 \end{sabias_que}
 
 Respecto de la variable que hará referencia al resultado de la invocación,
-se podrá usar tanto una n-upla de variables como en el ejemplo anterior,
-en cuyo caso podremos nombrar en forma separada cada uno de los resultados,
-o bien se podrá usar una sola variable, en cuyo caso se considerará que
-el resultado tiene un solo nombre y la forma de una n-upla:
+se podrá usar tanto una n-upla de variables, como en el ejemplo anterior
+(en cuyo caso podremos nombrar en forma separada cada uno de los resultados),
+o bien se podrá usar una sola variable (en cuyo caso se considerará que
+el resultado tiene un solo nombre y la forma de una n-upla):
 
 \begin{codigo-python-sn}
->>> t=aHsMinSeg(3661)
->>> print t
+>>> hms = a_hms(3661)
+>>> print(hms)
 (1, 1, 1)
->>>
 \end{codigo-python-sn}
 
-\begin{observacion}
+\begin{atencion}
 Si se usa una n-upla de variables para referirse a un resultado,
 la cantidad de variables tiene que coincidir con la cantidad de valores que
-se retornan.
+se devuelven.
 
 \begin{codigo-python-sn}
->>> (x,y)=aHsMinSeg(3661)
-Traceback (most recent call last):
+>>> x, y = a_hms(3661)
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ValueError: too many values to unpack
->>> (x,y,w,z)=aHsMinSeg(3661)
-Traceback (most recent call last):
+ValueError: too many values to unpack^)
+>>> x, y, w, z = a_hms(3661)
+(^Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
-ValueError: need more than 3 values to unpack
->>>
+ValueError: need more than 3 values to unpack^)
 \end{codigo-python-sn}
-\end{observacion}
+\end{atencion}
 
 \section{Resumen}
 
 \begin{itemize}
-\item Una función puede tener ninguno, uno o más parámetros.  En el
-caso de tener más de uno, se separan por comas tanto en la declaración
-de la función como en la invocación.
+\item Una función puede recibir ninguno, uno o más parámetros.
+Adicionalmente puede leer datos de la entrada del teclado.
+\item Una función puede no devolver nada, o devolver uno o más valores.
+Adicionalmente puede imprimir mensajes para
+comunicarlos al usuario.
+\item No es posible acceder a las variables definidas dentro de una función
+desde el programa principal. Si se quiere utilizar algún valor calculado en
+la función, será necesario devolverlo.
+\item Cuando una función realice un cálculo o una operación,
+es preferible que reciba los datos necesarios mediante los parámetros de
+la función, y que devuelva el resultado. Las funciones que
+leen datos del teclado o imprimen mensajes son menos reutilizables.
 \item Es altamente recomendable documentar cada función que se
 escribe, para poder saber qué parámetros recibe, qué devuelve y qué
 hace sin necesidad de leer el código.
-\item Las funciones pueden imprimir mensajes para comunicarlos al
-usuario, y/o devolver valores.  Cuando una función realice un cálculo
-o una operación con sus parámetros, es recomendable que devuelva el
-resultado en lugar de imprimirlo, permitiendo realizar otras
-operaciones con él.
-\item No es posible acceder a las variables definidas dentro de una
-función desde el programa principal, si se quiere utilizar algún
-valor calculado en la función, será necesario devolverlo.
-\item Si una función no devuelve nada, por más que se la asigne a una
-variable, no quedará ningún valor asociado a esa variable.
 \end{itemize}
 
 \begin{referencia_python}
@@ -687,29 +634,29 @@ de la función, que puede ser accedida mendiante el comando
 \lstinline!help(funcion)!.
 \begin{codigo-python-sn}
 def funcion():
-	""" Esta es la documentación de la función """
-	# hacer algo
+    """Esta es la documentación de la función"""
+    # hacer algo
 \end{codigo-python-sn}
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!return valor!}
 Dentro de una función se utiliza la instrucción \lstinline!return!
-para indicar el valor que la función debe devolver. \\
+para indicar el valor que la función debe devolver.
 
 Una vez que se ejecuta esta instrucción, se termina la ejecución de la
-función, sin importar si es la última línea o no. \\
+función, sin importar si es la última línea o no.
 
 Si la función no contiene esta instrucción, no devuelve nada.
 \end{sintaxis}
 
-\begin{sintaxis}{\lstinline!return (valor1, valor2, valor3)!}
+\begin{sintaxis}{\lstinline!return valor1, valor2, valor3!}
 Si se desea devolver más de un valor, se los {\textit empaqueta} en
-una tupla de valores.  Esta tupla puede o no ser desempaquetada al
+una n-upla de valores.  Esta n-upla puede o no ser desempaquetada al
 invocar la función:
 \begin{codigo-python-sn}
 def f(valor):
-	# operar
-	return (a1, a2, a3)
+    # operar
+    return a1, a2, a3
 
 # desempaquetado:
 v1, v2, v3 = f(x)
@@ -753,7 +700,7 @@ entre ellos ($8 = -2 \times -4$).
 
     \item Escribir una función que dado un vector al origen (definido por sus
  coordenadas \verb!x,y!), devuelva la norma del vector, dada por
- $||\vec{(x,y)}||=\sqrt{x^2+y^2}$
+ $\lVert\vec{(x,y)}\rVert=\sqrt{x^2+y^2}$
 
     \item Escribir una función que dados dos puntos en el plano (\verb!x1,y1! y
  \verb!x2,y2!), devuelva la resta de ambos (debe devolver un par de
