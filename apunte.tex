@@ -108,7 +108,7 @@
 %% Resto del preámbulo solo definido para el apunte. %%
 
 \setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
-\setmonofont[Scale=0.9]{Consolas}
+\setmonofont[Scale=0.9]{DejaVu Sans Mono}
 \usepackage[T1,small,euler-digits]{eulervm}
 
 \usepackage{graphicx}         % Permite insertar imagenes.
@@ -302,6 +302,9 @@
     umlclass/.style={draw,fill=none,inner sep=0pt},
     flecha/.style={draw,->,>=latex},
 }
+
+\newcommand*\circled[1]{\tikz[]{
+  \node[shape=circle,font=\ttfamily,draw,fill=black,text=white,inner sep=0.5pt] (char) {\tiny{#1}};}}
 
 \usepackage{multirow}
 

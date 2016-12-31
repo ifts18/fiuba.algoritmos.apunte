@@ -45,7 +45,7 @@ lenguajes diseñados especialmente para dar
 órdenes a una computadora, de manera exacta y no ambigua. Sería
 muy agradable poder darle las órdenes a la computadora en
 castellano, pero el problema del castellano, y de las lenguas
-habladas en general, es su ambigüedad:
+habladas en general, es su ambigüedad.
 
 Si alguien nos dice \emph{``Comprá el collar sin monedas''}, no sabremos
 si nos pide que compremos el collar que no tiene monedas, o que compremos
@@ -55,7 +55,7 @@ dudas no pueden aparecer cuando se le dan órdenes a una computadora.
 
 Este curso va a tratar precisamente de cómo se escriben programas
 para hacer que una computadora realice una determinada tarea.
-Vamos a usar un lenguaje específico (Python) porque es sencillo y
+Vamos a usar un lenguaje específico, Python, porque es sencillo y
 elegante, pero éste no será un curso de Python sino un curso de
 programación.
 
@@ -213,8 +213,8 @@ basura}.  La versión 2.2, lanzada en diciembre de 2001, fue también un hito
 importante ya que mejoró la orientación a objetos.  La última versión de
 esta línea es la 2.7 que fue lanzada en noviembre de 2010 y aún está vigente.
 
-En diciembre de 2008 se lanzó la rama 3.0, cuya versión actual es la 3.5, de
-septiembre de 2015, y es la que utilizamos en este libro. Python 3 fue diseñado
+En diciembre de 2008 se lanzó la rama 3.0, cuya versión actual es la 3.6, de
+diciembre de 2016, y es la que utilizamos en este libro. Python 3 fue diseñado
 para corregir algunos defectos de diseño en el lenguaje, y muchos de los
 cambios introducidos son incompatibles con las versiones anteriores. Por esta
 razón, las ramas 2.x y 3.x coexisten con distintos grados de adopción.
@@ -238,8 +238,8 @@ acerca de cómo ejecutar el intérprete en cada sistema operativo.
 
 \begin{codigo-nohl-sn}
 (~\$~) python3
-Python 3.5.0 (default, Sep 20 2015, 11:28:25)
-[GCC 5.2.0] on linux
+Python 3.6.0 (default, Dec 23 2016, 11:28:25)
+[GCC 6.2.1 20160830] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 \end{codigo-nohl-sn}
@@ -249,8 +249,8 @@ el \emph{prompt}), indicando que podemos escribir a continuación una
 \emph{sentencia} u orden que será evaluada.
 
 Algunas sentencias sencillas, por ejemplo, permiten utilizar el intérprete como
-una calculadora simple con números enteros. Para esto escribimos la 
-\emph{presión} que queremos resolver luego del \emph{prompt} y presionamos la tecla
+una calculadora simple con números enteros. Para esto escribimos la
+\emph{expresión} que queremos resolver luego del \emph{prompt} y presionamos la tecla
 \keys{Enter}. El intérprete de Python evalúa la expresión y muestra el
 resultado en la línea siguiente. Luego nos presenta nuevamente el \emph{prompt}.
 
@@ -359,20 +359,22 @@ meteorológicas de los próximos días no son más que grandes programas
 implementados introduciendo nuevas funciones a la máquina, escritas por uno o
 muchos programadores.
 
-Si queremos escribir una función (que llamaremos |hola_marta|) que devuelve la
+Si queremos crear una función (que llamaremos |hola_marta|) que devuelve la
 cadena de texto ``Hola Marta! Estoy programando en Python.'', lo que debemos
 hacer es ingresar el siguiente conjunto de líneas en Python:
 
 \begin{codigo-python-sn}
->>> def hola_marta():
-...     return "Hola Marta! Estoy programando en Python."
+>>> def hola_marta(): (~\circled{1}~)
+...     return "Hola Marta! Estoy programando en Python." (~\circled{2}~)
 ...
 >>>
 \end{codigo-python-sn}
 
-|def hola_marta():| le indica a Python que estamos escribiendo una función cuyo
+\circled{1} |def hola_marta():| le indica a Python que estamos escribiendo una función cuyo
 nombre es |hola_marta|, y los paréntesis indican que la función no recibe ningún
-parámetro.  La instrucción |return <expresion>| indica cuál será el resultado
+parámetro.
+
+\circled{2} La instrucción |return <expresion>| indica cuál será el resultado
 de la función.
 
 La sangría\footnote{La sangría puede ingresarse utilizando dos o más espacios,
@@ -382,8 +384,8 @@ escribe la línea |return| es importante: le indica a Python que estamos
 escribiendo el \emph{cuerpo} de la función (es decir, las instrucciones que la
 componen), que podría estar formado por más de una sentencia.  La línea en
 blanco que dejamos luego de la instrucción |return| le indica a Python que
-terminamos de escribir la función (y por eso aparece nuevamente el 
-\emph{ompt}).
+terminamos de escribir la función (y por eso aparece nuevamente el
+\emph{prompt}).
 
 Si ahora queremos que la máquina ejecute la función |hola_marta|, debemos
 escribir |hola_marta()| a continuación del \emph{prompt} de Python:
@@ -563,21 +565,25 @@ compacta:
 \begin{codigo-python-sn}
 >>> def suma_5_cuadrados():
 ...     suma = 0
-...     for x in range(1, 6):
+...     for x in range(1, 6): (~\circled{1}~)
 ...         suma = suma + cuadrado(x)
 ...     return suma
 \end{codigo-python-sn}
-\end{solucion}
-\end{problema}
 
-Notar que en nuestro ejemplo necesitamos recorrer todos los valores enteros
+\circled{1} Notar que en nuestro ejemplo necesitamos recorrer todos los valores enteros
 entre 1 y 5, y el rango generado por |range(n1, n2)| es \emph{abierto} en |n2|.
 Es decir, |x| tomará los valores |n1|, |n1 + 1|, |n1 + 2|, \ldots, |n2 - 1|.
 Por eso es que usamos |range(1, 6)|.
 
-Incluso podemos hacer una función más genérica que permita calcular la suma de
-los primeros |n| números cuadrados:
+\end{solucion}
+\end{problema}
 
+\begin{problema}
+Hacer una función más genérica que reciba un parámetro |n| y calcule la suma de
+los primeros |n| números cuadrados.
+
+\begin{solucion}
+\hfill\break
 \begin{codigo-python-sn}
 >>> def suma_cuadrados((@n@)):
 ...     suma = 0
@@ -590,6 +596,8 @@ los primeros |n| números cuadrados:
 >>> suma_cuadrados(100)
 338350
 \end{codigo-python-sn}
+\end{solucion}
+\end{problema}
 
 \section{Construir programas y módulos}
 
@@ -766,12 +774,12 @@ recibe \emph{convertido} a un número entero:
 42
 \end{codigo-python-sn}
 
-\subsection*{¿\ldots y \verb|return|?}
+\subsection*{¿\ldots\ y \verb|return|?}
 
 Cuando introdujimos el concepto de función dijimos que una función recibe 0 o
 más parámetros y devuelve un resultado. Pero en la función |saludar| que
 escribimos en el Código~\ref{saludar.py} no hay ninguna instrucción
-|return|\ldots
+|return|\dots\ 
 es decir, |saludar| es una función que no recibe parámetros \emph{¡y no devuelve
 nada!}.
 
