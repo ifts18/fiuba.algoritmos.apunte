@@ -52,10 +52,10 @@ el resultado es la concatenación de \lstinline+s+ consigo misma,
 
 A continuación, otras operaciones y particularidades de las cadenas.
 
-\subsection{Obtener el largo de una cadena}
+\subsection{Obtener la longitud de una cadena}
 
-Se puede averiguar la longitud de una cadena utilizando
-una función provista por Python: \lstinline+len{}+.
+Se puede averiguar la cantidad de caracteres que conforman una cadena
+utilizando una función provista por Python: |len|.
 \begin{codigo-python-sn}
 >>> len("programas ")
 10
@@ -526,9 +526,9 @@ queremos mostrarlo con dos dígitos decimales, para ello utilizaremos la
 marca |{:.2}| para indicar dos dígitos luego del separador decimal.
 
 \begin{codigo-python-sn}
->>> suma = 205.5
->>> 'Sin IVA: {:.2}. Con IVA: {:.2}'.format(suma, suma * 1.21)
-'Sin IVA: 205.50. Con IVA: 248.66'
+>>> precio = 205.5
+>>> 'Sin IVA: ${:.2}. Con IVA: ${:.2}'.format(precio, precio * 1.21)
+'Sin IVA: $205.50. Con IVA: $248.66'
 \end{codigo-python-sn}
 
 En otras situaciones, como el caso de un valor en un estudio médico, podemos
@@ -834,6 +834,8 @@ las veces. ¿Cómo harían para evitar esta variable usando la función
 %       incluir un número máximo de intentos
 %       incluir una pista si el jugador tipea "pista"
 %       preguntar si se quiere jugar otra vez
+
+\clearpage
 
 \section{Resumen}
 
