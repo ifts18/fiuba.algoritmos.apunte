@@ -146,10 +146,10 @@ esos resultados a voluntad: los imprima, los use para realizar cálculos
 más complejos, etc.
 
 \begin{observacion}
-En general, una función es más reutilizable si devuelve un resultado en
-lugar de imprimirlo mediante la función |print|. Análogamente, una función es
-más reutilizable si recibe parámetros en lugar de leer datos mediante la
-función |input|.
+En general, una función es más reutilizable si devuelve un resultado
+(utilizando |return|) en lugar de imprimirlo (utilizando |print|).
+Análogamente, una función es más reutilizable si recibe parámetros en lugar
+de leer datos mediante la función |input|.
 \end{observacion}
 
 \ejercicioc{Escribir una función \lstinline+repite_hola+ que reciba como
@@ -650,7 +650,7 @@ Si la función no contiene esta instrucción, no devuelve nada.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!return valor1, valor2, valor3!}
-Si se desea devolver más de un valor, se los {\textit empaqueta} en
+Si se desea devolver más de un valor, se los {\em empaqueta} en
 una n-upla de valores.  Esta n-upla puede o no ser desempaquetada al
 invocar la función:
 \begin{codigo-python-sn}

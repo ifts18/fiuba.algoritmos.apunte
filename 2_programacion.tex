@@ -183,13 +183,13 @@ del programa. Esto no es más que una convención: ``main'' significa
 ``principal'' en inglés.
 \end{nota}
 
-\item {\bf Prueba.} Probaremos el programa para valores para los que conocemos
+\item {\bf Prueba.} Probaremos el programa con valores para los que conocemos
 la solución:
 
 \begin{itemize}
-\item 1 milla, 0 pies, 0 pulgadas.
-\item 0 millas, 1 pie, 0 pulgada.
-\item 0 millas, 0 pies, 1 pulgada.
+\item 1 milla, 0 pies, 0 pulgadas (el resultado debe ser 1609.344 metros).
+\item 0 millas, 1 pie, 0 pulgada (el resultado debe ser 0.3048 metros).
+\item 0 millas, 0 pies, 1 pulgada (el resultado debe ser 0.0254 metros).
 \end{itemize}
 
 La prueba la documentaremos con la sesión de Python
@@ -270,14 +270,14 @@ break      except     in         raise
 
 \subsection{Expresiones}
 Una \emph{expresión} es una porción de código Python que produce o
-calcula un valor (resultado).
+calcula un \emph{valor} (resultado).
 
 \begin{itemize}
-\item La expresión más sencilla es un \emph{valor}.  Por ejemplo el
-    resultado de la expresión |111| es el valor |111|.
+\item La expresión más sencilla es un valor \emph{literal}.  Por ejemplo,
+    la expresión |12345| produce el valor numérico 12345.
 
 \item Una expresión puede ser una \emph{variable}, y el valor que produce es el
-    que tiene asociado la variable en el estado. Por ejemplo, si |x| $\ra$ 5 en
+    que tiene asociada la variable en el estado. Por ejemplo, si |x| $\ra$ 5 en
     el estado, entonces el resultado de la expresión |x|  es el valor 5.
 
 \item Usamos \emph{operaciones} para combinar expresiones y construir
@@ -363,7 +363,7 @@ expresiones del ejercicio anterior.}
 \section{No sólo de números viven los programas} \label{nosolo}
 
 No sólo tendremos expresiones numéricas en un programa Python.
-Recuerden el programa que se usó para saludar a muchos amigos:
+Recordemos el programa que se usó para saludar a muchos amigos:
 
 \begin{codigo-python-sn}
 >>> def hola(alguien):
@@ -447,7 +447,7 @@ instrucción \lstinline!return!,
 
 \item hemos asociado valores con variables
 
-\item hemos usado un ciclo |while| o |for| para repetir un cálculo.
+\item hemos usado un ciclo |for| para repetir un cálculo.
 \end{itemize}
 
 \section{Ciclos definidos}
