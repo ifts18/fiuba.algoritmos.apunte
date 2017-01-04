@@ -8,7 +8,7 @@ def guardar_puntajes(nombre_archivo, puntajes):
 
     with open(nombre_archivo, "w") as f:
         for nombre, puntaje, tiempo in puntajes:
-            f.write("{},{},{}\n".format(nombre, puntaje, tiempo)
+            f.write("{},{},{}\n".format(nombre, puntaje, tiempo))
 
 def recuperar_puntajes(nombre_archivo):
     """Recupera los puntajes a partir del archivo provisto.
