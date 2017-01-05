@@ -946,11 +946,11 @@ def potencia(b,n):
 
     if n % 2 == 0:
         # caso n par
-        p = potencia(b, n / 2)
+        p = potencia(b, n // 2)
         return p * p
     else:
         # caso n impar
-        p = potencia(b, (n-1)/2)
+        p = potencia(b, (n - 1) // 2)
         return p * p * b
 \end{codigo-python-sn}
 
@@ -1019,10 +1019,10 @@ def potencia(b, n):
     while n > 0:
         if n % 2 == 0:
             pila.append(True)
-            n /= 2
+            n //= 2
         else:
             pila.append(False)
-            n = (n - 1) / 2
+            n = (n - 1) // 2
 
     p = 1
     while pila:

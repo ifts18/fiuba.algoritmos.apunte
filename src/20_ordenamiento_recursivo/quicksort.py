@@ -2,7 +2,7 @@ def quick_sort(lista):
     """Ordena la lista de forma recursiva.
        Pre: los elementos de la lista deben ser comparables.
        Post: la lista está ordenada. """
-    quick_sort(lista, 0, len(lista) - 1)
+    _quick_sort(lista, 0, len(lista) - 1)
 
 def _quick_sort(lista, inicio, fin):
     """Función quick_sort recursiva.
