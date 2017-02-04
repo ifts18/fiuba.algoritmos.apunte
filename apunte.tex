@@ -77,12 +77,16 @@
         \setlength{\topsep}{0pt}
         \setlength{\itemsep}{0pt}}}
 {   \end{list} }
+
+\setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
+\setmonofont[Scale=0.9]{DejaVu Sans Mono}
+\usepackage[T1,small,euler-digits]{eulervm}
+
 \end{extract*}
 
 % Resto del preámbulo de ejercicios.tex
 \begin{extract}
 
-\usepackage{times}
 \renewcommand{\baselinestretch}{1.3}
 
 \oddsidemargin 0.0cm \evensidemargin 0.0cm \topmargin 0in
@@ -103,20 +107,16 @@
     \textbf{Guía de Ejercicios}}
 \date{1.\textsuperscript{er} cuatrimestre 2016}
 
+\usepackage{url}              % Para incluir URLs
 \end{extract}
 
 %% Resto del preámbulo solo definido para el apunte. %%
-
-\setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
-\setmonofont[Scale=0.9]{DejaVu Sans Mono}
-\usepackage[T1,small,euler-digits]{eulervm}
 
 \usepackage{graphicx}         % Permite insertar imagenes.
 
 \usepackage{longtable}        % tablas largas y flexibles
 \usepackage{nonfloat}         % Hace que las figuras no floten
 \usepackage{array}            % Permite alinear los párrafos en las celdas verticalmente
-\usepackage{url}              % Para incluir URLs
 \usepackage{eso-pic}
 
 % Margenes y largo del texto
@@ -372,6 +372,9 @@
 \include{18_Modelo_de_ejecucion}
 \include{19_ordenamiento}
 \include{20_ordenamiento_recursivo}
+\begin{extract}
+\include{ejercicios_c}
+\end{extract}
 
 \include{copyright}
 
