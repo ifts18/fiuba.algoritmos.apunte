@@ -918,6 +918,33 @@ frecuentemente:
 
 \end{sintaxis}
 
+\begin{sintaxis}{\lstinline!cadena.isdigit()!}
+Devuelve |True| si todos los caracteres de la cadena son dígitos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.isalpha()!}
+Devuelve |True| si todos los caracteres de la cadena son alfabéticos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.isalnum()!}
+Devuelve |True| si todos los caracteres de la cadena son alfanuméricos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.capitalize()!}
+Devuelve |True| si todos los caracteres de la cadena son alfanuméricos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.upper()!}
+Devuelve una copia de la cadena convertida a mayúsculas.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.lower()!}
+Devuelve una copia de la cadena convertida a minúsculas.
+\end{sintaxis}
 \end{referencia_python}
 
 
@@ -1023,3 +1050,12 @@ número en representación binaria) y devuelva el valor decimal
 correspondiente.
 \end{ejercicio}
 
+
+\extractionlabel{guia}
+\begin{ejercicio}
+Implementar la función |pedir_entero(mensaje, min, max)|, que debe imprimir el
+|mensaje| y luego esperar a que el usuario ingrese un valor.  Si el valor
+ingresado no es un número entero, o no es un número entre |min| y |max|
+(inclusive), se le debe avisar al usuario y pedir el ingreso de otro valor.
+Una vez que el usuario ingresa un valor válido, la función lo debe devolver.
+\end{ejercicio}
