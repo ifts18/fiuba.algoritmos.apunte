@@ -720,7 +720,7 @@ entre ellos ($8 = -2 \times -4$).
 
     \item Escribir una función que reciba las coordenadas de un vector |x,y|,
         una dirección unitaria de una recta |dx,dy| y las coordenadas de un punto
-        perteneciente a esa recta (|cx,cy|) y devuelva las coordenadas de la
+        perteneciente a esa recta |cx,cy| y devuelva las coordenadas de la
         proyección del punto sobre la recta. \\
     {\bf Diseño del algoritmo}:
     \begin{enumerate}
@@ -738,8 +738,7 @@ entre ellos ($8 = -2 \times -4$).
             r_x &= p_{11} \cdot x + p_{12} \cdot y \\
             r_y &= p_{21} \cdot x + p_{22} \cdot y
         \end{align*}
-     \item Al resultado obtenido sumar el punto restado en el paso 1, y
-        devolverlo.
+     \item Al resultado obtenido sumar el punto |cx,cy|, y devolverlo.
     \end{enumerate}
 
     \item Escribir una función que calcule el área de un triángulo a partir de
