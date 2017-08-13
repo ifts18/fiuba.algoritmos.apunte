@@ -700,28 +700,34 @@ entre ellos ($8 = -2 \times -4$).
 
     \item Escribir una función que reciba las coordenadas de un vector |x,y| y
         devuelva la norma del vector, dada por
-        $\lVert\vec{(x,y)}\rVert=\sqrt{x^2+y^2}$
+        $\lVert\vec{(x,y)}\rVert=\sqrt{x^2+y^2}$. \\
+        Ejemplo: |norma(3, 4)| $\rightarrow$ |5|
 
     \item Escribir una función que reciba las coordenadas de dos vectores
         (|x1,y1,x2,y2|) y devuelva las coordenadas del vector diferencia
-        (debe devolver un par de valores).
+        (debe devolver un par de valores). \\
+        Ejemplo: |diferencia(8, 7, 5, 3)| $\rightarrow$ |(3, 4)|
 
     \item Utilizando las funciones anteriores, escribir una función que reciba
         las coordenadas de dos vectores (|x1,y1,x2,y2|) y devuelva la distancia
-        entre ambos.
+        entre ambos. \\
+        Ejemplo: |distancia(8, 7, 5, 3)| $\rightarrow$ |5|
 
     \item Escribir una función que reciba las coordenadas de un vector |x,y|
         y devuelva las coordenadas del vector normalizado correspondiente
-        (debe devolver un par de valores).
+        (debe devolver un par de valores). \\
+        Ejemplo: |normalizar(3, 4)| $\rightarrow$ |(0.6, 0.8)|
 
     \item Utilizando las funciones anteriores (b y d), escribir una función que
-        reciba las coordenadas de dos vectores (|x1,y1,x2,y2|) y devuelva el
-        vector dirección unitario correspondiente a la recta que los une.
+        reciba las coordenadas de dos puntos (|x1,y1,x2,y2|) y devuelva el
+        vector dirección unitario correspondiente a la recta que los une. \\
+        Ejemplo: |direccion(8, 7, 5, 3)| $\rightarrow$ |(0.6, 0.8)|
 
     \item Escribir una función que reciba las coordenadas de un vector |x,y|,
         una dirección unitaria de una recta |dx,dy| y las coordenadas de un punto
         perteneciente a esa recta |cx,cy| y devuelva las coordenadas de la
         proyección del punto sobre la recta. \\
+        Ejemplo: |proyectar(2, 5, 0.6, 0.8, 3, 9)| $\rightarrow$ |(0.72, 5.96)| \\
     {\bf Diseño del algoritmo}:
     \begin{enumerate}
      \setlength{\itemsep}{0pt}
@@ -742,10 +748,13 @@ entre ellos ($8 = -2 \times -4$).
     \end{enumerate}
 
     \item Escribir una función que calcule el área de un triángulo a partir de
-        su base y su altura.
+        su base y su altura. \\
+        Ejemplo: |area_triangulo_base_altura(3, 4)| $\rightarrow$ |6| \\
 
     \item Utilizando las funciones anteriores escribir una función que reciba
         las coordenadas de tres puntos en el plano (|x1,y1,x2,y2,x3,y3|) y
-        devuelva el área del triángulo correspondiente.
+        devuelva el área del triángulo correspondiente. \\
+        Ejemplo: |area_triangulo_coordenadas(5, 5, 15, 30, 30, 0)|
+        $\rightarrow$ |337.5| \\
 \end{partes}
 \end{ejercicio}
