@@ -110,19 +110,19 @@ cada paso.
 
 El programa nos queda entonces como se muestra a continuación:
 
-\begin{codigo-python}
+\begin{codigo-python-sn}
 def busqueda_lineal(lista, x):
     """Si x está en lista devuelve su posición en lista, de lo
     contrario devuelve -1.
     """
 
     i = 0
-    for z in lista:
-        if z == x:
-            return i
+    for z in lista: (~\circled{1}~)
+        if z == x: (~\circled{2}~)
+            return i (~\circled{3}~)
         i += 1
     return -1
-\end{codigo-python}
+\end{codigo-python-sn}
 
 Y ahora lo probamos:
 
@@ -142,13 +142,13 @@ Y ahora lo probamos:
 Volvemos a preguntarnos lo mismo que en la sección anterior, pero con el nuevo
 programa: ¿cuánto esfuerzo computacional requiere este programa?, ¿cuántas
 veces compara el valor que buscamos con los datos de la lista? Ahora podemos
-analizar el texto de \lstinline!busqueda_lineal!:
+analizar el código de \lstinline!busqueda_lineal!:
 
 \begin{itemize}
-\item La {\bf línea 7} del código es un ciclo que recorre uno a uno los
-elementos de la lista, y en el cuerpo de ese ciclo, en la {\bf línea 8} se
-compara cada elemento con el valor buscado. En el caso de encontrarlo ({\bf
-línea 9}) se devuelve la posición.
+\item La línea \circled{1} es un ciclo que recorre uno a uno los
+elementos de la lista, y en el cuerpo de ese ciclo, en \circled{2} se
+compara cada elemento con el valor buscado. En el caso de encontrarlo
+(\circled{3}) se devuelve la posición.
 
 \item Si el valor no está en la lista se recorrerá la lista entera, haciendo
 una comparación por cada elemento.
@@ -187,7 +187,7 @@ estar:
 \begin{enumerate}
 \item Consideramos como segmento inicial de búsqueda a la lista completa.
 
-\item Analizamos el punto medio del segmento (el valor central), si es el valor
+\item Analizamos el punto medio del segmento (el valor central); si es el valor
 buscado, devolvemos el índice del punto medio.
 
 \item Si el valor central es mayor al buscado, podemos descartar el segmento

@@ -9,7 +9,7 @@ def modulo(vector):
         if not isinstance(x, (int, float, complex)):
             raise TypeError("El vector debe contener valores numéricos")
         suma += x * x
-    return suma
+    return suma ** 0.5
 
 def pedir_vector():
     vector = []

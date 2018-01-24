@@ -76,7 +76,7 @@ AssertionError^)
 \end{codigo-python-sn}
 
 Opcionalmente, la instrucción |assert| puede recibir
-mensaje de error que mostrará en caso que la condición no se cumpla.
+un mensaje de error que mostrará en caso que la condición no se cumpla.
 
 \begin{codigo-python-sn}
 >>> n = 0
@@ -171,7 +171,8 @@ que veremos a continuación, e invariantes de estado, que se verán más
 adelante.
 
 El invariante de ciclo permite conocer cómo llegar desde las precondiciones
-hasta las postcondiciones. El invariante de ciclo es, entonces, una
+hasta las postcondiciones, cuando la implementación se compone de un ciclo.
+El invariante de ciclo es, entonces, una
 aseveración que debe ser verdadera al comienzo de cada iteración.
 
 Por ejemplo, si el problema es ir desde el punto $A$ al punto $B$, las
@@ -337,7 +338,7 @@ nuevo valor.  Esa asignación sólo tiene efecto dentro de la función.
 
 \begin{codigo-python-sn}
 >>> def no_cambia_lista(lista):
-...     lista = range(len(lista))
+...     lista = [0, 1, 2, 3]
 ...     print("Dentro de la funcion lista =", lista)
 ...
 >>> lista = [10, 20, 30, 40]

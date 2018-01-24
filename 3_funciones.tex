@@ -146,10 +146,10 @@ esos resultados a voluntad: los imprima, los use para realizar cálculos
 más complejos, etc.
 
 \begin{observacion}
-En general, una función es más reutilizable si devuelve un resultado en
-lugar de imprimirlo mediante la función |print|. Análogamente, una función es
-más reutilizable si recibe parámetros en lugar de leer datos mediante la
-función |input|.
+En general, una función es más reutilizable si devuelve un resultado
+(utilizando |return|) en lugar de imprimirlo (utilizando |print|).
+Análogamente, una función es más reutilizable si recibe parámetros en lugar
+de leer datos mediante la función |input|.
 \end{observacion}
 
 \ejercicioc{Escribir una función \lstinline+repite_hola+ que reciba como
@@ -540,8 +540,8 @@ es la terna \lstinline+(h, m, s)+:
 def a_hms(segundos):
    """Dada una duración entera en segundos
       se la convierte a horas, minutos y segundos"""
-   h = segundos / 3600
-   m = (segundos % 3600) / 60
+   h = segundos // 3600
+   m = (segundos % 3600) // 60
    s = (segundos % 3600) % 60
    return h, m, s
 \end{codigo-python-sn}
@@ -618,7 +618,7 @@ hace sin necesidad de leer el código.
 
 \begin{sintaxis}{\lstinline!def funcion(param1, param2, param3):!}
 Permite definir funciones, que pueden tener ninguno, uno o más
-parámetros.  El cuerpo de la función debe estar un nivel de indentación
+parámetros.  El cuerpo de la función debe estar un nivel de sangría
 más adentro que la declaración de la función.
 
 \begin{codigo-python-sn}
@@ -650,7 +650,7 @@ Si la función no contiene esta instrucción, no devuelve nada.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline!return valor1, valor2, valor3!}
-Si se desea devolver más de un valor, se los {\textit empaqueta} en
+Si se desea devolver más de un valor, se los {\em empaqueta} en
 una n-upla de valores.  Esta n-upla puede o no ser desempaquetada al
 invocar la función:
 \begin{codigo-python-sn}
@@ -698,48 +698,63 @@ entre ellos ($8 = -2 \times -4$).
 {\bf Área de un triángulo en base a sus puntos}
 \begin{partes}
 
-    \item Escribir una función que dado un vector al origen (definido por sus
- coordenadas \verb!x,y!), devuelva la norma del vector, dada por
- $\lVert\vec{(x,y)}\rVert=\sqrt{x^2+y^2}$
+    \item Escribir una función que reciba las coordenadas de un vector |x,y| y
+        devuelva la norma del vector, dada por
+        $\lVert\vec{(x,y)}\rVert=\sqrt{x^2+y^2}$. \\
+        Ejemplo: |norma(3, 4)| $\rightarrow$ |5|
 
-    \item Escribir una función que dados dos puntos en el plano (\verb!x1,y1! y
- \verb!x2,y2!), devuelva la resta de ambos (debe devolver un par de
- valores).
+    \item Escribir una función que reciba las coordenadas de dos vectores
+        (|x1,y1,x2,y2|) y devuelva las coordenadas del vector diferencia
+        (debe devolver un par de valores). \\
+        Ejemplo: |diferencia(8, 7, 5, 3)| $\rightarrow$ |(3, 4)|
 
-    \item Utilizando las funciones anteriores, escribir una función que dados dos
- puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva la distancia
- entre ambos.
+    \item Utilizando las funciones anteriores, escribir una función que reciba
+        las coordenadas de dos vectores (|x1,y1,x2,y2|) y devuelva la distancia
+        entre ambos. \\
+        Ejemplo: |distancia(8, 7, 5, 3)| $\rightarrow$ |5|
 
-    \item Escribir una función que reciba un vector al origen (definido por sus
- coordenadas \verb!x,y!), y devuelva el vector normalizado correspondiente (debe
- devolver un par de valores \verb!x',y'!).
+    \item Escribir una función que reciba las coordenadas de un vector |x,y|
+        y devuelva las coordenadas del vector normalizado correspondiente
+        (debe devolver un par de valores). \\
+        Ejemplo: |normalizar(3, 4)| $\rightarrow$ |(0.6, 0.8)|
 
     \item Utilizando las funciones anteriores (b y d), escribir una función que
- dados dos puntos en el plano (\verb!x1,y1! y \verb!x2,y2!), devuelva el
- vector dirección unitario correspondiente a la recta que los une.
+        reciba las coordenadas de dos puntos (|x1,y1,x2,y2|) y devuelva el
+        vector dirección unitario correspondiente a la recta que los une. \\
+        Ejemplo: |direccion(8, 7, 5, 3)| $\rightarrow$ |(0.6, 0.8)|
 
-    \item Escribir una función que reciba un punto (\verb!x,y!), una dirección
- unitaria de una recta (\verb!dx,dy!) y un punto perteneciente a esa recta
- (\verb!cx,cy!) y devuelva la proyección del punto sobre la recta. \\
- {\bf Diseño del algoritmo}:
- \begin{enumerate}
+    \item Escribir una función que reciba las coordenadas de un vector |x,y|,
+        una dirección unitaria de una recta |dx,dy| y las coordenadas de un punto
+        perteneciente a esa recta |cx,cy| y devuelva las coordenadas de la
+        proyección del punto sobre la recta. \\
+        Ejemplo: |proyectar(2, 5, 0.6, 0.8, 3, 9)| $\rightarrow$ |(0.72, 5.96)| \\
+    {\bf Diseño del algoritmo}:
+    \begin{enumerate}
      \setlength{\itemsep}{0pt}
      \setlength{\parsep}{0pt}
-     \item Al punto a proyectar (\verb!x,y!) restarle el punto de la recta
- (\verb!cx,cy!)
-     \item Obtener la matriz de proyección $P$, dada por:  \\
- $p_{11} = d_x^2$,  $p_{12} = p_{21} = d_x*d_y$, $p_{22} = d_y^2$.
-     \item Multiplicar la matriz $P$ por el punto obtenido en el paso 1: \\
- $r_x = p_{11} * x + p_12 * y$, $r_y = p_{21} * x + p_{22} * y$.
-     \item Al resultado obtenido sumar el punto restado en el paso 1, y
- devolverlo.
- \end{enumerate}
+     \item Al punto a proyectar (|x,y|) restarle el punto de la recta (|cx,cy|)
+     \item Obtener las componentes de la matriz de proyección $P$, dada por:
+        \begin{align*}
+            p_{11} &= d_x^2 \\
+            p_{12} &= p_{21} = d_x \cdot d_y \\
+            p_{22} &= d_y^2
+        \end{align*}
+     \item Multiplicar la matriz $P$ por el punto obtenido en el paso 1:
+        \begin{align*}
+            r_x &= p_{11} \cdot x + p_{12} \cdot y \\
+            r_y &= p_{21} \cdot x + p_{22} \cdot y
+        \end{align*}
+     \item Al resultado obtenido sumar el punto |cx,cy|, y devolverlo.
+    \end{enumerate}
 
     \item Escribir una función que calcule el área de un triángulo a partir de
- su base y su altura.
+        su base y su altura. \\
+        Ejemplo: |area_triangulo_base_altura(3, 4)| $\rightarrow$ |6| \\
 
     \item Utilizando las funciones anteriores escribir una función que reciba
- tres puntos en el plano (\verb!x1,y1!, \verb!x2,y2! y \verb!x3,y3!) y
- devuelva el área del triángulo correspondiente.
+        las coordenadas de tres puntos en el plano (|x1,y1,x2,y2,x3,y3|) y
+        devuelva el área del triángulo correspondiente. \\
+        Ejemplo: |area_triangulo_coordenadas(5, 5, 15, 30, 30, 0)|
+        $\rightarrow$ |337.5| \\
 \end{partes}
 \end{ejercicio}

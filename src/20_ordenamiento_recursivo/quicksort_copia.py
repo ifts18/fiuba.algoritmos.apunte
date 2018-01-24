@@ -19,4 +19,3 @@ def _partition(lista):
         else:
             mayores.append(lista[x])
     return menores, [pivote], mayores
-

@@ -78,12 +78,16 @@
         \setlength{\topsep}{0pt}
         \setlength{\itemsep}{0pt}}}
 {   \end{list} }
+
+\setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
+\setmonofont[Scale=0.9]{DejaVu Sans Mono}
+\usepackage[T1,small,euler-digits]{eulervm}
+
 \end{extract*}
 
 % Resto del preámbulo de ejercicios.tex
 \begin{extract}
 
-\usepackage{times}
 \renewcommand{\baselinestretch}{1.3}
 
 \oddsidemargin 0.0cm \evensidemargin 0.0cm \topmargin 0in
@@ -102,22 +106,22 @@
 
 \title{75.40 Algoritmos y Programación I \\
     \textbf{Guía de Ejercicios}}
-\date{1.\textsuperscript{er} cuatrimestre 2016}
+\date{1.\textsuperscript{er} cuatrimestre 2017}
 
+\usepackage{url}              % Para incluir URLs
 \end{extract}
 
 %% Resto del preámbulo solo definido para el apunte. %%
 
-\setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
-%\setmonofont[Scale=0.9]{Monospace}
-\usepackage[T1,small,euler-digits]{eulervm}
+%\setmainfont[Ligatures=TeX]{TeXGyrePagellaX}  % Nuevo Palatino.
+%%\setmonofont[Scale=0.9]{Monospace}
+%\usepackage[T1,small,euler-digits]{eulervm}
 
 \usepackage{graphicx}         % Permite insertar imagenes.
 
 \usepackage{longtable}        % tablas largas y flexibles
 \usepackage{nonfloat}         % Hace que las figuras no floten
 \usepackage{array}            % Permite alinear los párrafos en las celdas verticalmente
-\usepackage{url}              % Para incluir URLs
 \usepackage{eso-pic}
 
 % Margenes y largo del texto
@@ -304,6 +308,9 @@
     flecha/.style={draw,->,>=latex},
 }
 
+\newcommand*\circled[1]{\tikz[]{
+  \node[shape=circle,font=\ttfamily,draw,fill=black,text=white,inner sep=0.5pt] (char) {\tiny{#1}};}}
+
 \usepackage{multirow}
 
 \begin{document}
@@ -344,7 +351,7 @@
 \end{extract}
 
 \title{{\bf Algoritmos y Programación I} \\ Aprendiendo a programar usando Python como herramienta}
-\date{2\textsuperscript{da} edición --- 2016}
+\date{2\textsuperscript{da} edición}
 \maketitle
 
 \tableofcontents
@@ -370,6 +377,9 @@
 \include{18_Modelo_de_ejecucion}
 \include{19_ordenamiento}
 \include{20_ordenamiento_recursivo}
+\begin{extract}
+\include{ejercicios_c}
+\end{extract}
 
 \include{copyright}
 

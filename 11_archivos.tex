@@ -227,7 +227,7 @@ Python y lo guarda en el archivo |saludo.py|:
 \begin{codigo-python-sn}
 with open("saludo.py", "w") as saludo:
     saludo.write("# Este programa fue generado por otro programa!\n")
-    saludo.write("print('Hola Mundo'\n"))
+    saludo.write("print('Hola Mundo')\n")
 \end{codigo-python-sn}
 
 \begin{atencion}
@@ -274,24 +274,22 @@ que requieran la funcionalidad de registrar los posibles errores o eventos que
 se produzcan durante la ejecución.
 
 Para utilizar este módulo, será necesario primero llamar a
-\lstinline!abrir_log! para abrir el archivo de log, luego llamar a
-\lstinline!guardar_log! por cada mensaje que se quiera registrar, y
-finalmente llamar a \lstinline!cerrar_log! cuando se quiera concluir la
+\lstinline!log.abrir()! para abrir el archivo de log, luego llamar a
+\lstinline!log.guardar()! por cada mensaje que se quiera registrar, y
+finalmente llamar a \lstinline!log.cerrar()! cuando se quiera concluir la
 registración de mensajes:
 
 \begin{codigo-python-sn}
 import log
 
-ARCHIVO_LOG = "mi_log.txt"
-
-archivo_log = log.abrir_log(ARCHIVO_LOG)
+archivo_log = log.abrir("log.txt")
 # ...
 # Hacer cosas que pueden dar error
 if error:
-    guardar_log(archivo_log, "ERROR: " + error)
+    log.guardar(archivo_log, "ERROR: " + error)
 # ...
 # Finalmente cerrar el archivo
-log.cerrar_log(archivo_log)
+log.cerrar(archivo_log)
 \end{codigo-python-sn}
 
 Este código, que incluye el módulo \lstinline!log! mostrado anteriormente,
@@ -461,8 +459,8 @@ preciado en un programador.
 
 Un formato que suele usarse para transferir datos entre programas es
 \textbf{csv} (del inglés \emph{comma separated values}: valores separados
-por comas) es un formato bastante sencillo, tanto para leerlo como para
-procesarlo desde el código, se parece al formato visto en el ejemplo
+por comas). Es un formato bastante sencillo, tanto para leerlo como para
+procesarlo desde el código, parecido al formato visto en el ejemplo
 anteriormente.
 
 \begin{codigo-nohl-sn}
@@ -478,7 +476,7 @@ entender el archivo.
 
 En las siguientes lineas se ingresan los datos de la base de datos, cada
 campo separado por comas. Los campos que son cadenas se suelen escribir
-entre comillas dobles, si alguna cadena contiene alguna comilla doble se la
+entre comillas dobles. Si alguna cadena contiene alguna comilla doble se la
 reemplaza por \verb!\"! y una contrabarra se escribe como \verb!\\!.
 
 En Python es bastante sencillo procesar de este tipo de archivos, tanto
@@ -486,17 +484,15 @@ para la lectura como para la escritura, mediante el módulo |csv|.
 
 La funciones del ejemplo anterior podrían programarse mediante el módulo
 |csv|.  En el Código~\ref{puntajes_csv} se muestra una posible implementación
-que utiliza este módulo.
+que utiliza este módulo.  Si se prueba este código, se obtiene un resultado
+idéntico al obtenido anteriormente.
 
 \begin{codigo}{puntajes\_csv.py}{Módulo para guardar y recuperar puntajes en un archivo que usa csv}
 \label{puntajes_csv}
 \lstinputlisting{src/11_archivos/puntajes_csv.py}
 \end{codigo}
 
-Si se prueba este código, se obtiene un resultado idéntico al obtenido
-anteriormente.
-
-El código, en este caso, es muy similar, ya que en el ejemplo original se
+El código en este caso es muy similar, ya que en el ejemplo original se
 hacían muy pocas consideraciones al respecto de los valores: se asumía que
 el primero y el tercero eran cadenas mientras que el segundo necesitaba ser
 convertido a cadena.
@@ -570,18 +566,20 @@ with open(ruta) as f:
 \begin{itemize}
 \item Para utilizar un archivo desde un programa, es necesario abrirlo, y
 cuando ya no se lo necesite, se lo debe cerrar.
-\item Las intrucciones más básicas para manejar un archivo son leer y escribir.
+\item Las instrucciones más básicas para manejar un archivo son leer y escribir.
 \item Cada archivo abierto tiene relacionada una posición que se puede
 consultar o cambiar.
 \item Los archivos de texto se procesan generalmente línea por línea y
 sirven para intercambiar información entre diversos programas o entre
 programas y humanos.
-\item En el caso de los archivos binarios, cada formato tiene sus propias
-reglas a seguir.
+\item Los archivos binarios se procesan generalmente byte por byte. Suelen ser
+más eficientes al ser interpretados por una computadora, pero son ilegibles
+para humanos.
 \item Es posible acceder de forma secuencial a los datos, o se puede ir
 accediendo a posiciones en distintas partes del archivo, dependiendo de
 cómo esté almacenada la información y qué se quiera hacer con ella.
-\item Leer todo el contenido de un archivo, puede consumir memoria
+\item Es posible leer todo el contenido de un archivo y almacentarlo en una
+única variable, pero si el archivo es muy grande puede consumir memoria
 innecesariamente.
 \end{itemize}
 
