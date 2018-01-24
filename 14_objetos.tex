@@ -93,7 +93,7 @@ archivo), mientras que \lstinline!tell! es un método, que para utilizarlo
 debemos llamarlo con paréntesis.
 
 \begin{observacion}
-Como ya sabemos, en Python los métodos se invocan con la \emph{notación punto}:
+En Python los métodos se invocan con la \emph{notación punto}:
 \lstinline+archivo.tell()+, \lstinline+cadena.split(":")+.
 
 Analicemos la segunda expresión.  El significado de ésta es: la variable
@@ -109,8 +109,8 @@ un método {\bf de} cadenas, y que no se lo puede utilizar con variables de
 otros tipos.
 
 Esta notación provocó un cambio de paradigma en la programación, y es uno de
-los ejes de la \emph{Programación Orientada a Objetos}
-\end{observacion}.
+los ejes de la \emph{Programación Orientada a Objetos}.
+\end{observacion}
 
 \section{Qué es un objeto}
 
@@ -207,7 +207,7 @@ el valor de ambas coordenadas.
 
 En el cuerpo del constructor se definen los atributos, utilizando la notación
 punto con la instancia |self|. En este caso los atributos se llamarán igual que
-los parámetros del constryuctor, |x| e |y|, y se inicializan con el valor de
+los parámetros del constructor, |x| e |y|, y se inicializan con el valor de
 los parámetros.
 
 Para utilizar esta clase que acabamos de definir, lo haremos de la
@@ -552,9 +552,9 @@ operadores, en lugar de llamar a métodos:
 >>> p = Punto(3, 4)
 >>> q = Punto(2, 5)
 >>> p - q
-(1, -1)
+Punto(1, -1)
 >>> p + q
-(5, 9)
+Punto(5, 9)
 \end{codigo-python-sn}
 
 De la misma forma, si se quiere poder utilizar cualquier otro operador

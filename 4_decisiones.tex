@@ -196,8 +196,9 @@ if <condición>:
 \end{codigo-python-sn}
 
 cuyo significado es el siguiente:
-se evalúa \lstinline+<condición>+ (que debe ser una expresión lógica), y si el resultado es \lstinline!True! (verdadero) se
-ejecutan las acciones indicadas como \emph{$<$hacer algo si se da la condición$>$}.
+se evalúa |<condición>| (que debe ser una expresión lógica), y si el resultado
+es |True| (verdadero) se ejecutan las acciones indicadas como
+|<hacer algo si se da la condición>|.
 
 Como ahora ya sabemos también cómo construir condiciones de comparación,
 estamos en condiciones de implementar nuestra solución. Escribimos la
@@ -241,9 +242,9 @@ Python como:
 \begin{codigo-python-sn}
 def positivo_o_no():
     x = int(input("Ingrese un número: "))
-    if x > 0:
+    if x > 0: (~\circled{1}~)
        print("Número positivo")
-    (@if not x > 0:@)
+    (@if not x > 0:@) (~\circled{2}~)
        print("Número no positivo")
 \end{codigo-python-sn}
 
@@ -261,9 +262,9 @@ Ingrese un número: 0
 Número no positivo
 \end{codigo-python-sn}
 
-Sin embargo hay algo que nos preocupa: si ya averiguamos una vez, en la segunda
-línea del cuerpo, si \lstinline!x > 0!, ¿Es realmente necesario volver a
-preguntarlo en la cuarta?.
+Sin embargo hay algo que nos preocupa: si ya averiguamos una vez, en
+\circled{1}, si \lstinline!x > 0!, ¿Es realmente necesario volver a
+preguntarlo en \circled{2}?.
 
 Existe una construcción alternativa para la estructura de decisión:
 
@@ -278,11 +279,11 @@ else:
 
 Donde \lstinline!if! y \lstinline!else! son palabras reservadas.
 
-Su significado es el siguiente: se evalúa \lstinline+<condición>+, si el
-resultado es \lstinline!True! se ejecutan las acciones
-indicadas como \emph{$<$hacer algo si se da la condición$>$}, y si el
-resultado es \lstinline!False! se ejecutan las acciones indicadas
-como \emph{$<$hacer otra cosa si no se da la condición$>$}.
+Su significado es el siguiente: se evalúa |<condición>|, si el
+resultado es |True| se ejecutan las acciones
+indicadas como |<hacer algo si se da la condición|, y si el
+resultado es |False| se ejecutan las acciones indicadas
+como |<hacer otra cosa si no se da la condición>|.
 
 Volvemos a nuestro diseño:
 
@@ -533,7 +534,7 @@ primera que sea verdadera.
 
 \begin{sintaxis}{\lstinline!if <condición>:!}
 Bloque condicional.  Las acciones a ejecutar si la condición
-es verdadera deben tener un mayor nivel de indentación.
+es verdadera deben tener un mayor nivel de sangría.
 \begin{codigo-python-sn}
 if <condición>:
     # acciones a ejecutar si condición es verdadera
@@ -545,7 +546,7 @@ Un bloque que se ejecuta cuando no se cumple la condición
 correspondiente al \lstinline!if!.  Sólo se puede utilizar
 \lstinline!else! si hay un \lstinline!if! correspondiente.  Debe
 escribirse al mismo nivel que \lstinline!if!, y las acciones a ejecutar
-deben tener un nivel de indentación mayor.
+deben tener un nivel de sangría mayor.
 \begin{codigo-python-sn}
 if <condición>:
     # acciones a ejecutar si condición es verdadera
@@ -559,7 +560,7 @@ Bloque que se ejecuta si no se cumplieron las condiciones
 anteriores pero sí se cumple la condición especificada.  Sólo se puede utilizar
 \lstinline!elif! si hay un \lstinline!if! correspondiente, se lo debe
 escribir al mismo nivel que \lstinline!if!, y las acciones a ejecutar deben
-escribirse en un bloque de indentación mayor.  Puede haber tantos
+escribirse en un bloque de sangría mayor.  Puede haber tantos
 \lstinline!elif! como se quiera, todos al mismo nivel.
 \begin{codigo-python-sn}
 if <condición1>:

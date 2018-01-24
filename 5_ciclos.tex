@@ -172,13 +172,13 @@ Mientras hay_mas_datos haga referencia a "Si":
 >>> muchos_pcn()
 Ingrese un numero: 25
 Numero positivo
-Quiere seguir? <Si-No>: "Si"
+Quiere seguir? <Si-No>: Si
 Ingrese un numero: 0
 Igual a 0
-Quiere seguir? <Si-No>: "Si"
+Quiere seguir? <Si-No>: Si
 Ingrese un numero: -5
 Numero negativo
-Quiere seguir? <Si-No>: "No"
+Quiere seguir? <Si-No>: No
 \end{codigo-python-sn}
 
 \section{Ciclo con centinela}
@@ -204,7 +204,7 @@ El programa resultante es el siguiente:
 
 \begin{codigo-python-sn}
 def muchos_pcn():
-    (@centinela = input("Ingrese un numero (* para terminar): ")@)
+    (@centinela = input("Ingrese un numero (* para terminar): ")@) (~\circled{1}~)
 
     (@while centinela != "*":@)
         (@x = int(centinela)@)
@@ -215,7 +215,7 @@ def muchos_pcn():
         else:
             print("Numero negativo")
 
-        (@centinela = input("Ingrese un numero (* para terminar): ")@)
+        (@centinela = input("Ingrese un numero (* para terminar): ")@) (~\circled{2}~)
 \end{codigo-python-sn}
 
 Notar que no podemos hacer |centinela = int(input(...))| porque cuando el
@@ -238,11 +238,7 @@ Ingrese un numero (* para terminar): *
 \end{codigo-python-sn}
 
 El ciclo con centinela es muy claro pero tiene un problema: hay una línea de
-código repetida, que es la línea en donde el usuario ingresa el dato:
-
-\begin{codigo-python-sn}
-centinela = input("Ingrese un numero (* para terminar): ")
-\end{codigo-python-sn}
+código repetida, marcada con \circled{1} y \circled{2}.
 
 Si en la etapa de mantenimiento tuviéramos que realizar un
 cambio en el ingreso del dato (por ejemplo, cambiar el mensaje) deberíamos
@@ -373,10 +369,14 @@ def f():
     while ...:
         ...
         if ...:
-            (@break@)
+            (@break@) (~\tikzmark{break1}~)
         ...
-    ... # (~$\leftarrow$~) luego del break, la ejecución continúa aquí
+    ... (~\tikzmark{break2}~)
 \end{codigo-python-sn}
+\tikz[overlay,remember picture] \draw[-latex,thick]
+    ($(break1.north east)$)
+    to[out=0,in=0,distance=1cm]
+    ($(break2.north east)$);
 \end{observacion}
 
 Hay otras dos instrucciones que permiten modificar el flujo del ciclo. Una de
@@ -390,13 +390,17 @@ pasa a la siguiente.
 \begin{codigo-python-sn}
 def f():
     ...
-    while ...: # (~$\leftarrow$~) luego del continue, la ejecución continúa aquí
+    while ...: (~\tikzmark{cont2}~)
         ...
         if ...:
-            (@continue@)
+            (@continue@) (~\tikzmark{cont1}~)
         ...
     ...
 \end{codigo-python-sn}
+\tikz[overlay,remember picture] \draw[-latex,thick]
+    ($(cont1.north east)$)
+    to[out=0,in=0,distance=1cm]
+    ($(cont2.north east)$);
 \end{observacion}
 
 Si la instrucción |continue| aparece dentro de un ciclo |while|, la condición
@@ -427,19 +431,23 @@ def f():
     while ...:
         ...
         if ...:
-            (@return@)
+            (@return@) (~\tikzmark{ret1}~)
         ...
     ...
 
 f()
-# (~$\leftarrow$~) luego del return, la ejecución continúa aquí
+(~\tikzmark{ret2}~)
 \end{codigo-python-sn}
+\tikz[overlay,remember picture] \draw[-latex,thick]
+    ($(ret1.north east)$)
+    to[out=0,in=0,distance=1cm]
+    ($(ret2.north east)$);
 \end{observacion}
 
 \begin{sabias_que}
-Desde hace mucho tiempo los ciclos infinitos vienen trayéndoles dolores de
+Desde hace mucho tiempo los ciclos infinitos vienen provocando dolores de
 cabeza a los programadores.  Cuando un programa deja de responder y se
-utiliza todos los recursos de la computadora, suele deberse a que entró 
+utiliza todos los recursos de la computadora, suele deberse a que entró
 en un ciclo del que no puede salir.
 
 Estos bucles pueden aparecer por una gran variedad de causas.  A

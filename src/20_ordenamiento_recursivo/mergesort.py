@@ -4,7 +4,7 @@ def merge_sort(lista):
        Devuelve: una nueva lista ordenada."""
     if len(lista) < 2:
         return lista
-    medio = len(lista) / 2
+    medio = len(lista) // 2
     izq = merge_sort(lista[:medio])
     der = merge_sort(lista[medio:])
     return merge(izq, der)

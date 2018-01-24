@@ -438,6 +438,14 @@ código en las diversas consideraciones a tener en cuenta.
 
 \begin{itemize}
 
+\item Si no se indica la posición, \lstinline!i! toma la última posición de la
+lista:
+
+\begin{codigo-python-sn}
+if i is None:
+    i = self.len - 1
+\end{codigo-python-sn}
+
 \item Si la posición es inválida (\lstinline!i! menor que $0$ o mayor o
 igual a la longitud de la lista), se considera error y se levanta la
 excepción |IndexError|.
@@ -447,14 +455,6 @@ Esto se resuelve con este fragmento de código:
 \begin{codigo-python-sn}
 if i < 0 or i >= self.len:
     raise IndexError("Índice fuera de rango")
-\end{codigo-python-sn}
-
-\item Si no se indica posición, \lstinline!i! toma la última posición de la
-lista:
-
-\begin{codigo-python-sn}
-if i is None:
-    i = self.len - 1
 \end{codigo-python-sn}
 
 \item Cuando la posición es $0$ se trata de un caso particular, ya que en ese

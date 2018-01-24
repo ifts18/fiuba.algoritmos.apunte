@@ -20,9 +20,9 @@ def reubicar(lista, p):
     # Recorrer el segmento [0:p-1] de derecha a izquierda hasta
     # encontrar la posición j tal que lista[j-1] <= v < lista[j].
     j = p
-    while j > 0 and v < lista[j-1]:
-		# Desplazar los elementos hacia la derecha, dejando lugar
-		# para insertar el elemento v donde corresponda.
+    while j > 0 and v < lista[j - 1]:
+        # Desplazar los elementos hacia la derecha, dejando lugar
+        # para insertar el elemento v donde corresponda.
         lista[j] = lista[j - 1]
         j -= 1
 

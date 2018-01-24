@@ -52,10 +52,10 @@ el resultado es la concatenación de \lstinline+s+ consigo misma,
 
 A continuación, otras operaciones y particularidades de las cadenas.
 
-\subsection{Obtener el largo de una cadena}
+\subsection{Obtener la longitud de una cadena}
 
-Se puede averiguar la longitud de una cadena utilizando
-una función provista por Python: \lstinline+len{}+.
+Se puede averiguar la cantidad de caracteres que conforman una cadena
+utilizando una función provista por Python: |len|.
 \begin{codigo-python-sn}
 >>> len("programas ")
 10
@@ -507,7 +507,7 @@ Por ahora es suficiente con entender que en la llamada |cadena.format(valor)|,
 es como si la función |format| recibiera dos parámetros, |cadena| y |valor|.
 
 Esta notación es propia de la \emph{orientación a objetos}. Aprenderemos más
-sobre objetos en la sección~\ref{objetos}.
+sobre objetos en la unidad~\ref{objetos}.
 \end{sabias_que}
 
 Otro ejemplo, utilizando varios valores, en este caso cadenas:
@@ -526,9 +526,9 @@ queremos mostrarlo con dos dígitos decimales, para ello utilizaremos la
 marca |{:.2}| para indicar dos dígitos luego del separador decimal.
 
 \begin{codigo-python-sn}
->>> suma = 205.5
->>> 'Sin IVA: {:.2}. Con IVA: {:.2}'.format(suma, suma * 1.21)
-'Sin IVA: 205.50. Con IVA: 248.66'
+>>> precio = 205.5
+>>> 'Sin IVA: ${:.2}. Con IVA: ${:.2}'.format(precio, precio * 1.21)
+'Sin IVA: $205.50. Con IVA: $248.66'
 \end{codigo-python-sn}
 
 En otras situaciones, como el caso de un valor en un estudio médico, podemos
@@ -835,6 +835,8 @@ las veces. ¿Cómo harían para evitar esta variable usando la función
 %       incluir una pista si el jugador tipea "pista"
 %       preguntar si se quiere jugar otra vez
 
+\clearpage
+
 \section{Resumen}
 
 \begin{itemize}
@@ -916,6 +918,33 @@ frecuentemente:
 
 \end{sintaxis}
 
+\begin{sintaxis}{\lstinline!cadena.isdigit()!}
+Devuelve |True| si todos los caracteres de la cadena son dígitos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.isalpha()!}
+Devuelve |True| si todos los caracteres de la cadena son alfabéticos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.isalnum()!}
+Devuelve |True| si todos los caracteres de la cadena son alfanuméricos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.capitalize()!}
+Devuelve |True| si todos los caracteres de la cadena son alfanuméricos, |False| en
+caso contrario.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.upper()!}
+Devuelve una copia de la cadena convertida a mayúsculas.
+\end{sintaxis}
+
+\begin{sintaxis}{\lstinline!cadena.lower()!}
+Devuelve una copia de la cadena convertida a minúsculas.
+\end{sintaxis}
 \end{referencia_python}
 
 
@@ -1021,3 +1050,12 @@ número en representación binaria) y devuelva el valor decimal
 correspondiente.
 \end{ejercicio}
 
+
+\extractionlabel{guia}
+\begin{ejercicio}
+Implementar la función |pedir_entero(mensaje, min, max)|, que debe imprimir el
+|mensaje| y luego esperar a que el usuario ingrese un valor.  Si el valor
+ingresado no es un número entero, o no es un número entre |min| y |max|
+(inclusive), se le debe avisar al usuario y pedir el ingreso de otro valor.
+Una vez que el usuario ingresa un valor válido, la función lo debe devolver.
+\end{ejercicio}

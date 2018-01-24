@@ -30,7 +30,7 @@ caso de las listas y tuplas, es posible acceder a los valores a
 través de sus claves, que pueden ser de diversos tipos.
 
 Las claves son únicas dentro de un diccionario, es decir que no puede haber
-un diccionario que tenga dos veces la misma clave, si se asigna un valor a
+un diccionario que tenga dos veces la misma clave. Si se asigna un valor a
 una clave ya existente, se reemplaza el valor anterior.
 
 No hay una forma directa de acceder a una clave a través de su valor, y
@@ -167,7 +167,7 @@ igual.
 
 Este algoritmo de \emph{hash} es también la razón por la cual las claves de
 los diccionarios deben ser inmutables, ya que la operación hecha sobre las
-claves debe dar siempre el mismo resultado, y si se utilizara una variable
+claves debe dar siempre el mismo resultado, y si se utilizara un valor
 mutable esto no sería posible.
 \end{sabias_que}
 
@@ -204,9 +204,9 @@ resultados poco satisfactorios.
 \begin{itemize}
 \item Los diccionarios (también llamados \emph{arreglos asociativos},
 \emph{mapas} o \emph{tablas de hash} en otros lenguajes), son una estructura de datos
-muy poderosa, que permite asociar un valor a una clave.
-\item Las claves deben ser de tipo inmutable, los valores
-pueden ser de cualquier tipo.
+muy poderosa, que permite almacenar un conjunto de pares $clave \rightarrow valor$.
+\item Las claves deben ser inmutables y únicas.
+\item Los valores pueden ser de cualquier tipo, y pueden no ser únicos.
 \item Los diccionarios no están ordenados.  Si bien se los puede recorrer,
 el orden en el que se tomarán los elementos no está determinado.
 \end{itemize}
@@ -239,17 +239,17 @@ el diccionario.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario.keys()}}
-Devuelve una lista desordenada, con todas las claves que se hayan ingresado
+Devuelve una secuencia desordenada, con todas las claves que se hayan ingresado
 al diccionario
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario.values()}}
-Devuelve una lista desordenada, con todos los valores que se hayan
+Devuelve una secuencia desordenada, con todos los valores que se hayan
 ingresado al diccionario.
 \end{sintaxis}
 
 \begin{sintaxis}{\lstinline{diccionario.items()}}
-Devuelve una lista desordenada con tuplas de dos elementos, en las que el
+Devuelve una secuencia desordenada con tuplas de dos elementos, en las que el
 primer elemento es la clave y el segundo el valor.
 \end{sintaxis}
 
